@@ -1,0 +1,527 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Header } from '../components/Header';
+import { Footer } from '../components/Footer';
+import { Button } from '../components/Button';
+import { Card } from '../components/Card';
+import { Badge } from '../components/Badge';
+import { ContactForm } from '../components/ContactForm';
+
+const features = [
+  {
+    icon: '📈',
+    title: 'Organic Growth',
+    description: 'Increase your visibility in search results and drive qualified traffic to your site.'
+  },
+  {
+    icon: '🎯',
+    title: 'Targeted Strategy',
+    description: 'Custom SEO strategies tailored to sports, fitness, and wellness brands.'
+  },
+  {
+    icon: '💡',
+    title: 'Expert Content',
+    description: 'Strategic content creation that ranks and converts.'
+  },
+  {
+    icon: '📊',
+    title: 'Data-Driven',
+    description: 'Real-time analytics and transparent reporting on all metrics.'
+  },
+  {
+    icon: '🔗',
+    title: 'Link Building',
+    description: 'High-quality backlinks from authoritative industry sources.'
+  },
+  {
+    icon: '⚡',
+    title: 'Technical Excellence',
+    description: 'Optimized site architecture for maximum search performance.'
+  },
+];
+
+const pricingPlans = [
+  {
+    name: 'Maintain',
+    price: '$99–199',
+    period: '/month',
+    setup: '$999 one-time setup',
+    description: 'Perfect for businesses that just need peace of mind.',
+    features: [
+      'Hosting, SSL, backups, uptime monitoring',
+      'Mobile-friendly, SEO-ready site',
+      'Monthly performance report',
+      '1–2 small content updates per month'
+    ],
+    tagline: 'Ensures your website is always live, secure, and healthy.',
+    highlighted: false,
+  },
+  {
+    name: 'Attract',
+    price: '$499',
+    period: '/month',
+    setup: '$999 one-time setup',
+    description: 'For businesses ready to bring in more traffic and customers.',
+    badge: 'Most Popular',
+    features: [
+      'Everything in Maintain',
+      'Live SEO dashboard',
+      'Monthly strategy call',
+      'SEO campaign (keyword tracking, blog posts, Google Business Profile optimization)',
+      '4–6 hours of content updates per month'
+    ],
+    tagline: 'Attract more customers every single month.',
+    highlighted: true,
+  },
+  {
+    name: 'Growth',
+    price: '$999',
+    period: '/month',
+    setup: '$999 one-time setup',
+    description: 'For businesses ready to dominate their local market and scale faster.',
+    features: [
+      'Everything in Attract',
+      'Weekly strategy calls',
+      'Advanced lead generation systems',
+      'Paid ad management (Google & Meta)',
+      'CRM automations + custom Leads Dashboard',
+      'Social media campaign support',
+      'Priority support'
+    ],
+    tagline: 'Scale leads, sales, and revenue with SEO + paid growth + automation.',
+    highlighted: false,
+  },
+];
+
+const addOns = [
+  { name: 'SEO Dashboard Setup', price: '$499' },
+  { name: 'Leads Dashboard', price: '$999' },
+  { name: 'AI Automations (chatbots, booking, reviews, payments)', price: '+$50–100/month' },
+  { name: 'Idea-to-MVP custom builds', price: 'from $5,000' },
+];
+
+const problemSolutions = [
+  {
+    problem: 'I don\'t want to waste money.',
+    solution: 'Your site is built to pay for itself.'
+  },
+  {
+    problem: 'Will anyone even find me?',
+    solution: 'We optimize for local SEO from day one.'
+  },
+  {
+    problem: 'I don\'t have time to manage it.',
+    solution: 'Edit it yourself or let us handle it.'
+  },
+  {
+    problem: 'What if I grow?',
+    solution: 'Your site scales with you — no rebuilds needed.'
+  },
+];
+
+const processSteps = [
+  {
+    number: '01',
+    title: 'Audit/Request New Website',
+    description: "Let's connect."
+  },
+  {
+    number: '02',
+    title: 'Strategy & Design',
+    description: 'We build your growth-first site.'
+  },
+  {
+    number: '03',
+    title: 'Build & Launch',
+    description: 'Go live in 3-4 weeks.'
+  },
+  {
+    number: '04',
+    title: 'Support & Growth',
+    description: 'Plans keep you ahead.'
+  },
+];
+
+const faqItems = [
+  {
+    question: 'How long does it take to launch my site?',
+    answer: 'Most go live within 4 weeks, depending on your plan.'
+  },
+  {
+    question: 'What\'s included in the monthly plan?',
+    answer: 'Hosting, maintenance, SEO reporting, and ongoing improvements.'
+  },
+  {
+    question: 'Do you only work with sports businesses?',
+    answer: 'We specialize in sports, fitness, and wellness — but we help all growth-minded brands.'
+  },
+  {
+    question: 'What happens after launch?',
+    answer: 'We monitor performance, improve SEO, and support you every month.'
+  },
+  {
+    question: 'How long does SEO take to show results?',
+    answer: 'Most clients see initial results within 3-6 months, with significant growth after 6-12 months.'
+  },
+  {
+    question: 'Do you guarantee first page rankings?',
+    answer: 'While no one can guarantee rankings, our strategies are proven to deliver results.'
+  },
+  {
+    question: 'Can I see reports on my progress?',
+    answer: 'Absolutely. We provide transparent, easy-to-understand reports depending on your tier.'
+  },
+  {
+    question: 'What if I\'m not satisfied?',
+    answer: 'Your satisfaction is our priority. We\'ll work with you to adjust strategies and hit your goals.'
+  },
+  {
+    question: 'Do you offer custom packages?',
+    answer: 'Yes. If you have unique needs, we\'re happy to discuss a personalized solution.'
+  },
+  {
+    question: 'Do I need to manage the site myself?',
+    answer: 'No. We handle updates and maintenance, or you can edit it yourself if you prefer.'
+  },
+];
+---
+
+<Layout title="Fadeaway Creatives - SEO Agency for Sports & Wellness Brands">
+  <Header client:load />
+
+  <main>
+    <section id="hero" class="relative min-h-screen flex items-center justify-center section-padding overflow-hidden">
+      <div class="absolute inset-0 -z-10 overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-fadeaway-orange/10 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute top-1/4 right-0 w-80 h-80 bg-fadeaway-teal/5 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+      </div>
+
+      <div class="container-max">
+        <div class="text-center max-w-3xl mx-auto animate-fade-in pt-[5px] md:pt-24">
+          <div class="flex justify-center mb-8">
+            <img src="/Fadeaway 2.0 - Logo.png" alt="Fadeaway Creatives" class="h-24 md:h-32 w-auto" />
+          </div>
+          <Badge client:load variant="primary">
+            <span>✨</span>
+            <span>Get found. Get clients. Grow online.</span>
+          </Badge>
+
+          <h1 class="text-5xl md:text-6xl font-outfit font-bold text-neutral-50 mt-6 mb-6 leading-tight text-balance">
+            Dominate Search Results in Your Market
+          </h1>
+
+          <p class="text-lg md:text-xl text-neutral-300 mb-6 text-balance">
+            Strategic SEO-first websites built for performance — get found online, attract better leads, and grow with SEO that works.
+          </p>
+
+          <p class="text-sm md:text-base text-neutral-400 mb-8 font-medium">
+            Trusted by small businesses, coaches, and studios across Canada.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+            <a href="#contact">
+              <Button client:load variant="primary" size="lg">
+                Get Your Free Audit
+              </Button>
+            </a>
+            <a href="#pricing">
+              <Button client:load variant="secondary" size="lg">
+                See Pricing Packages
+              </Button>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+            <div class="glass-effect px-2 py-3 rounded-2xl text-center">
+              <div class="flex items-center justify-center mb-2">
+                <span class="text-3xl">🎯</span>
+              </div>
+              <h3 class="text-neutral-50 font-semibold text-base mb-2">Get Found on Google</h3>
+              <p class="text-neutral-400 text-xs leading-relaxed">SEO baked into every build. Your next client is already searching — we'll make sure they find you first.</p>
+            </div>
+            <div class="glass-effect px-2 py-3 rounded-2xl text-center">
+              <div class="flex items-center justify-center mb-2">
+                <span class="text-3xl">⚡</span>
+              </div>
+              <h3 class="text-neutral-50 font-semibold text-base mb-2">Easy to Update</h3>
+              <p class="text-neutral-400 text-xs leading-relaxed">Manage your schedule, prices, or classes in minutes. Edit your site in minutes, no tech headaches.</p>
+            </div>
+            <div class="glass-effect px-2 py-3 rounded-2xl text-center">
+              <div class="flex items-center justify-center mb-2">
+                <span class="text-3xl">🚀</span>
+              </div>
+              <h3 class="text-neutral-50 font-semibold text-base mb-2">Future-Proof</h3>
+              <p class="text-neutral-400 text-xs leading-relaxed">Scale your site as your business grows.</p>
+            </div>
+            <div class="glass-effect px-2 py-3 rounded-2xl text-center">
+              <div class="flex items-center justify-center mb-2">
+                <span class="text-3xl">💬</span>
+              </div>
+              <h3 class="text-neutral-50 font-semibold text-base mb-2">Always Supported</h3>
+              <p class="text-neutral-400 text-xs leading-relaxed">Ongoing plans keep you ahead. Real people, real help, whenever you need it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section-padding border-t border-white/5">
+      <div class="container-max">
+        <div class="text-center mb-16 animate-fade-in">
+          <Badge client:load variant="primary">
+            <span>Our Services</span>
+          </Badge>
+          <h2 class="text-4xl md:text-5xl font-outfit font-bold mt-4 mb-4">Everything You Need to Win</h2>
+          <p class="text-lg text-neutral-300 max-w-2xl mx-auto">Comprehensive SEO solutions designed to accelerate your growth.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feature) => (
+            <Card client:load variant="glass" key={feature.title}>
+              <div class="text-4xl mb-4">{feature.icon}</div>
+              <h3 class="text-xl font-outfit font-semibold mb-2">{feature.title}</h3>
+              <p class="text-neutral-300 text-sm">{feature.description}</p>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section-padding border-t border-white/5">
+      <div class="container-max">
+        <div class="text-center mb-16 animate-fade-in">
+          <Badge client:load variant="primary">
+            <span>Pricing</span>
+          </Badge>
+          <h2 class="text-4xl md:text-5xl font-outfit font-bold mt-4 mb-4">Simple, Transparent <span class="text-fadeaway-teal">Packages</span></h2>
+          <p class="text-lg text-neutral-300 max-w-2xl mx-auto">Whether you're starting small or scaling fast, we've got a plan that fits.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12 auto-rows-fr">
+          {pricingPlans.sort((a, b) => {
+            const order = { 'Attract': 1, 'Growth': 2, 'Maintain': 3 };
+            return (order[a.name] || 99) - (order[b.name] || 99);
+          }).map((plan) => (
+            <div key={plan.name} class={`relative ${plan.highlighted ? 'md:scale-105' : ''} ${plan.name === 'Attract' ? 'order-1 md:order-2' : plan.name === 'Maintain' ? 'order-3 md:order-1' : 'order-2 md:order-3'}`}>
+              {plan.badge && (
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+                  <Badge client:load variant="primary">{plan.badge}</Badge>
+                </div>
+              )}
+              <div class={`${plan.highlighted ? 'glass-effect hover:bg-white/10 border-fadeaway-orange border-2' : 'glass-dark hover:border-white/10'} transition-all duration-300 rounded-lg p-4 h-full flex flex-col`}>
+                <h3 class="text-2xl font-outfit font-bold mb-2">{plan.name}</h3>
+                <p class="text-neutral-300 text-sm mb-3">{plan.description}</p>
+                <div class="mb-1">
+                  <span class="text-4xl font-bold text-fadeaway-teal">{plan.price}</span>
+                  <span class="text-lg text-neutral-400 font-normal">{plan.period}</span>
+                </div>
+                <p class="text-xs text-neutral-400 mb-4">+ {plan.setup}</p>
+                <ul class="space-y-2 mb-4 flex-1">
+                  {plan.features.map((feature) => (
+                    <li key={feature} class="flex items-start gap-2 text-sm">
+                      <span class="text-fadeaway-teal mt-0.5 flex-shrink-0">✓</span>
+                      <span class="text-neutral-300">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div class="pt-3 border-t border-white/10 mt-auto">
+                  <p class="text-sm text-neutral-400 italic mb-3">👉 {plan.tagline}</p>
+                  <a href="#contact" class="block w-full">
+                    <Button client:load variant={plan.highlighted ? 'primary' : 'secondary'} size="sm" class="w-full">
+                      Let's Talk
+                    </Button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <Card client:load variant="dark">
+          <h3 class="text-2xl font-outfit font-bold mb-6 text-center">Add-Ons & Custom Projects</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {addOns.map((addon) => (
+              <div key={addon.name} class="flex items-center justify-between p-4 glass-effect">
+                <span class="text-neutral-300 text-sm">{addon.name}</span>
+                <span class="text-fadeaway-orange font-bold">{addon.price}</span>
+              </div>
+            ))}
+          </div>
+        </Card>
+      </div>
+    </section>
+
+    <section id="problem-solution" class="section-padding border-t border-white/5">
+      <div class="container-max">
+        <div class="text-center mb-12 animate-fade-in">
+          <p class="text-lg text-neutral-300 mb-4">We've talked to hundreds of small business owners — and they all ask the same questions.</p>
+          <h2 class="text-4xl md:text-5xl font-outfit font-bold">We know what business owners <span class="text-fadeaway-teal">really worry about.</span></h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {problemSolutions.map((item) => (
+            <div key={item.problem} class="glass-dark hover:border-white/10 transition-all duration-300 rounded-lg p-6">
+              <p class="text-lg text-neutral-300 mb-3">&ldquo;{item.problem}&rdquo;</p>
+              <div class="flex items-start gap-2">
+                <span class="text-fadeaway-orange text-2xl">→</span>
+                <p class="text-lg font-semibold text-fadeaway-orange">{item.solution}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="section-padding border-t border-white/5">
+      <div class="container-max">
+        <div class="text-center mb-16 animate-fade-in">
+          <Badge client:load variant="primary">
+            <span>Our Process</span>
+          </Badge>
+          <h2 class="text-4xl md:text-5xl font-outfit font-bold mt-4 mb-4">Getting started and seeing results <span class="text-fadeaway-teal">is simple.</span></h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-fr">
+          {processSteps.map((step, index) => (
+            <div key={step.number} class="relative">
+              <div class="glass-dark hover:border-white/10 transition-all duration-300 rounded-lg p-4 h-full flex flex-col">
+                <p class="text-5xl font-outfit font-bold gradient-text mb-3">{step.number}</p>
+                <h3 class="text-xl font-outfit font-semibold mb-2">{step.title}</h3>
+                <p class="text-neutral-300 text-sm">{step.description}</p>
+              </div>
+              {index < processSteps.length - 1 && (
+                <div class="hidden md:block absolute top-1/2 -right-2 w-4 h-0.5 bg-gradient-to-r from-fadeaway-orange to-fadeaway-teal"></div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div class="text-center mt-12">
+          <a href="#contact">
+            <Button client:load variant="primary" size="lg">
+              Book a Call
+            </Button>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section-padding border-t border-white/5">
+      <div class="container-max">
+        <div class="text-center mb-16 animate-fade-in">
+          <Badge client:load variant="primary">
+            <span>About</span>
+          </Badge>
+          <h2 class="text-4xl md:text-5xl font-outfit font-bold mt-4 mb-4">
+            Built Like Athletes. <span class="text-fadeaway-teal">Focused on Performance.</span>
+          </h2>
+        </div>
+
+        <div class="max-w-3xl mx-auto">
+          <div class="glass-effect p-8 md:p-12 rounded-2xl mb-8">
+            <p class="text-lg md:text-xl text-neutral-200 mb-6 leading-relaxed">
+              Fadeaway was born from the same mindset athletes live by — discipline, clarity, and execution.
+            </p>
+            <p class="text-lg md:text-xl text-neutral-200 mb-6 leading-relaxed">
+              We believe small businesses deserve websites that perform like pros — fast, focused, and built to win.
+            </p>
+            <p class="text-lg md:text-xl text-neutral-200 leading-relaxed">
+              We're not just web designers — we're your long-term growth partner.
+            </p>
+          </div>
+
+          <div class="glass-dark p-8 md:p-10 rounded-2xl border-l-4 border-fadeaway-orange">
+            <div class="flex items-start gap-4 mb-6">
+              <div class="flex-1">
+                <p class="text-xl font-semibold text-neutral-50 mb-2">Hey, I'm Bhav — founder of Fadeaway Creatives.</p>
+                <p class="text-neutral-300 leading-relaxed">
+                  I've spent years helping local businesses grow through design, SEO, and performance systems.
+                </p>
+                <p class="text-neutral-300 leading-relaxed mt-4">
+                  Let's make your website your best sales engine.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-12">
+            <a href="#contact">
+              <Button client:load variant="primary" size="lg">
+                Book a Free Call
+              </Button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section-padding border-t border-white/5">
+      <div class="container-max">
+        <div class="text-center mb-16 animate-fade-in">
+          <Badge client:load variant="primary">
+            <span>FAQ</span>
+          </Badge>
+          <h2 class="text-4xl md:text-5xl font-outfit font-bold mt-4 mb-4">Questions? We Have Answers</h2>
+        </div>
+
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-3">
+          {faqItems.map((item, index) => (
+            <details key={index} class="glass-effect p-4 group cursor-pointer">
+              <summary class="flex items-center justify-between font-semibold text-base text-neutral-50 list-none">
+                {item.question}
+                <span class="transition-transform group-open:rotate-180 text-sm">▼</span>
+              </summary>
+              <p class="text-neutral-300 text-sm mt-3">{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-padding border-t border-white/5">
+      <div class="container-max">
+        <div class="max-w-3xl mx-auto">
+          <div class="text-center mb-12 animate-fade-in">
+            <h2 class="text-4xl md:text-5xl font-outfit font-bold mb-4">Ready to Grow Your Business Online?</h2>
+            <p class="text-lg text-neutral-300 mb-2">Request your website today — and let's build something that pays for itself.</p>
+            <p class="text-base text-neutral-400">Join 50+ growing businesses using Fadeaway to win online.</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mb-8 max-w-2xl mx-auto">
+            <a href="tel:705-650-0328" class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 border border-white/20 rounded-xl text-sm sm:text-base font-medium text-neutral-200 hover:bg-white/5 hover:border-white/30 transition-all min-h-[64px] sm:h-16">
+              <svg class="w-5 h-5 text-fadeaway-teal flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+              </svg>
+              <span class="text-center sm:text-left">Text/Call<br class="sm:hidden"/> 705-650-0328</span>
+            </a>
+            <a href="https://instagram.com/fadeawaycreatives" target="_blank" rel="noopener" class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 border border-white/20 rounded-xl text-sm sm:text-base font-medium text-neutral-200 hover:bg-white/5 hover:border-white/30 transition-all min-h-[64px] sm:h-16">
+              <svg class="w-5 h-5 text-fadeaway-teal flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              <span class="text-center sm:text-left">DM on<br class="sm:hidden"/> Instagram</span>
+            </a>
+            <a href="mailto:hello@fadeawaycreatives.com" class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 border border-white/20 rounded-xl text-sm sm:text-base font-medium text-neutral-200 hover:bg-white/5 hover:border-white/30 transition-all min-h-[64px] sm:h-16">
+              <svg class="w-5 h-5 text-fadeaway-teal flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+              </svg>
+              <span class="text-center sm:text-left break-all">hello@fadeawaycreatives.com</span>
+            </a>
+            <a href="https://facebook.com/fadeawaycreatives" target="_blank" rel="noopener" class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 border border-white/20 rounded-xl text-sm sm:text-base font-medium text-neutral-200 hover:bg-white/5 hover:border-white/30 transition-all min-h-[64px] sm:h-16">
+              <svg class="w-5 h-5 text-fadeaway-teal flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 3.667h-3.533v7.98H9.101z"/>
+              </svg>
+              <span class="text-center sm:text-left">DM on<br class="sm:hidden"/> Facebook</span>
+            </a>
+          </div>
+
+          <Card client:load variant="glass">
+            <ContactForm client:load />
+          </Card>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer client:load />
+</Layout>
