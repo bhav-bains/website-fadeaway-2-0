@@ -56,7 +56,7 @@ export const Header: React.FC = () => {
 
   return (
     <header className={clsx(
-      'z-50 transition-all duration-300',
+      'z-[100] transition-all duration-300',
       'absolute top-0 left-0 right-0',
       'md:fixed md:left-0 md:right-0',
       isScrolled ? 'md:top-[5px] md:py-2' : 'md:top-0 md:py-4',
