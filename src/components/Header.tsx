@@ -76,7 +76,7 @@ export const Header: React.FC = () => {
         </svg>
       </button>
 
-      <div className="hidden md:block container-max">
+      <div className="hidden md:block container-max max-w-4xl">
         <div className={clsx(
           'backdrop-blur-md bg-black/30 border border-white/10 shadow-lg transition-all duration-300 flex items-center justify-center px-4 md:px-6 rounded-2xl',
           isScrolled ? 'bg-black/60 py-1.5' : 'py-2'

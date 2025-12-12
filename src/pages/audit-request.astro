@@ -1,0 +1,132 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
+import { Button } from "../components/Button";
+import { Badge } from "../components/Badge";
+---
+
+<Layout title="Request Your Free Website Audit - Fadeaway Creatives">
+    <Header client:load />
+
+    <main class="pt-24 min-h-screen">
+        <section class="section-padding">
+            <div class="container-max max-w-2xl mx-auto">
+                <div class="text-center mb-10 animate-fade-in">
+                    <Badge variant="primary">
+                        <span>Free Audit</span>
+                    </Badge>
+                    <h1
+                        class="text-4xl md:text-5xl font-outfit font-bold mt-4 mb-4"
+                    >
+                        See Exactly How to <span class="text-fadeaway-teal"
+                            >Win Online</span
+                        >
+                    </h1>
+                    <p class="text-lg text-neutral-300">
+                        Get a breakdown of your website's SEO, design, and
+                        performance gaps.
+                    </p>
+                </div>
+
+                <div
+                    class="glass-effect p-6 md:p-8 rounded-2xl animate-slide-up"
+                >
+                    <form
+                        name="audit-request"
+                        method="POST"
+                        action="/audit-success"
+                        data-netlify="true"
+                        class="space-y-4"
+                    >
+                        <div class="space-y-4">
+                            <div>
+                                <label
+                                    for="name"
+                                    class="block text-sm font-medium text-neutral-300 mb-1"
+                                >
+                                    Your Name
+                                </label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    id="name"
+                                    required
+                                    placeholder="John Doe"
+                                    class="input-primary"
+                                />
+                            </div>
+
+                            <div>
+                                <label
+                                    for="email"
+                                    class="block text-sm font-medium text-neutral-300 mb-1"
+                                >
+                                    Email Address
+                                </label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    required
+                                    placeholder="john@example.com"
+                                    class="input-primary"
+                                />
+                            </div>
+
+                            <div>
+                                <label
+                                    for="website"
+                                    class="block text-sm font-medium text-neutral-300 mb-1"
+                                >
+                                    Website URL
+                                </label>
+                                <input
+                                    type="url"
+                                    name="website"
+                                    id="website"
+                                    required
+                                    placeholder="https://yourbusiness.com"
+                                    class="input-primary"
+                                />
+                            </div>
+
+                            <div>
+                                <label
+                                    for="notes"
+                                    class="block text-sm font-medium text-neutral-300 mb-1"
+                                >
+                                    Specific Challenges (Optional)
+                                </label>
+                                <textarea
+                                    name="notes"
+                                    id="notes"
+                                    placeholder="I'm struggling to rank for..."
+                                    class="input-primary min-h-[100px] resize-none"
+                                ></textarea>
+                            </div>
+
+                            <div class="pt-2">
+                                <Button
+                                    variant="primary"
+                                    size="lg"
+                                    className="w-full"
+                                    type="submit"
+                                >
+                                    Get My Free Audit
+                                </Button>
+                                <p
+                                    class="text-xs text-center text-neutral-500 mt-3"
+                                >
+                                    No credit card required. No obligation.
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+</Layout>
