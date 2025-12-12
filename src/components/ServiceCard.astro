@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+import { Card } from "./Card";
+
+interface Props {
+    eyebrow?: string;
+    title: string;
+    description: string;
+    image: ImageMetadata;
+    href: string;
+}
+
+const { eyebrow, title, description, image, href } = Astro.props;
+---
+
+<a href={href} class="group block h-full">
+    <Card
+        variant="glass"
+        className="h-full flex flex-col relative overflow-hidden !p-0 border border-white/5 transition-all duration-500 hover:shadow-[0_0_30px_rgba(45,212,191,0.1)]"
+    >
+        {/* Image Section */}
+        <div
+            class="relative h-64 overflow-hidden bg-white/5 flex items-center justify-center"
+        >
+            <div
+                class="absolute inset-0 bg-fadeaway-teal/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-3xl"
+            >
+            </div>
+
+            <Image
+                src={image}
+                alt={title}
+                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out z-10"
+            />
+        </div>
+
+        {/* Content Section */}
+        <div class="p-3 flex flex-col flex-1 bg-fadeaway-graphite/40">
+            {
+                eyebrow && (
+                    <span class="text-fadeaway-orange text-[10px] font-bold tracking-widest uppercase mb-1 block">
+                        {eyebrow}
+                    </span>
+                )
+            }
+            <h3
+                class="text-xl font-outfit font-bold text-neutral-50 mb-2 group-hover:text-fadeaway-teal transition-colors"
+            >
+                {title}
+            </h3>
+            <div class="text-neutral-400 text-sm leading-relaxed mb-4 flex-1">
+                <slot />
+            </div>
+
+            <div
+                class="mt-auto pt-1 flex items-center text-fadeaway-teal text-sm font-medium group-hover:translate-x-1 transition-transform duration-300"
+            >
+                See Details <span class="ml-1">→</span>
+            </div>
+        </div>
+    </Card>
+</a>

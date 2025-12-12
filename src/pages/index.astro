@@ -4,6 +4,7 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Button } from "../components/Button";
 import { Card } from "../components/Card";
+import ServiceCard from "../components/ServiceCard.astro";
 import { Badge } from "../components/Badge";
 import { ContactForm } from "../components/ContactForm";
 import {
@@ -16,6 +17,9 @@ import {
 } from "../data/landing-content";
 import { Image } from "astro:assets";
 import logoImage from "../assets/fadeaway-logo-2.png";
+import highPerformanceWebsiteImg from "../assets/high-performance-website.png";
+import localSeoRankingsImg from "../assets/local-seo-rankings.png";
+import growthAutomationImg from "../assets/growth-automation.png";
 ---
 
 <Layout title="Fadeaway Creatives - SEO Agency for Sports & Wellness Brands">
@@ -136,25 +140,50 @@ import logoImage from "../assets/fadeaway-logo-2.png";
             <span>Our Services</span>
           </Badge>
           <h2 class="text-4xl md:text-5xl font-outfit font-bold mt-4 mb-4">
-            Everything You Need to Win
+            Your Digital Playbook
           </h2>
           <p class="text-lg text-neutral-300 max-w-2xl mx-auto">
-            Comprehensive SEO solutions designed to accelerate your growth.
+            Proven SEO systems designed to deliver measurable results.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {
-            features.map((feature) => (
-              <Card variant="glass" key={feature.title}>
-                <div class="text-4xl mb-4">{feature.icon}</div>
-                <h3 class="text-xl font-outfit font-semibold mb-2">
-                  {feature.title}
-                </h3>
-                <p class="text-neutral-300 text-sm">{feature.description}</p>
-              </Card>
-            ))
-          }
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {/* Card 1: High-Performance Website - Active & Designed */}
+          {/* Card 1: High-Performance Website - Active & Designed */}
+          <ServiceCard
+            eyebrow="THE FOUNDATION"
+            title="High-Performance Website"
+            description=""
+            image={highPerformanceWebsiteImg}
+            href="/services/high-performance"
+          >
+            Get custom engineered blazing-fast, SEO-ready websites designed to
+            rank higher and impress every visitor instantly. Speed is your
+            competitive advantage.
+          </ServiceCard>
+
+          <ServiceCard
+            eyebrow="THE VISIBILITY"
+            title="Local SEO & Rankings"
+            description=""
+            image={localSeoRankingsImg}
+            href="/services/local-seo"
+          >
+            We optimize your Google Maps and search profile so you are the #1
+            choice when they search locally. Dominate your neighborhood.
+          </ServiceCard>
+
+          {/* Card 3: Growth & Automation Systems - Active & Designed */}
+          <ServiceCard
+            eyebrow="THE SCALE"
+            title="Growth & Automation Systems"
+            description=""
+            image={growthAutomationImg}
+            href="/services/growth-automation"
+          >
+            Tailored ad campaigns and automate booking flows so your business
+            grows while you sleep. Scale without the burnout.
+          </ServiceCard>
         </div>
       </div>
     </section>
