@@ -1,0 +1,277 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ServiceHero from "../../components/ServiceHero.astro";
+import PillarsSection from "../../components/PillarsSection.astro";
+import ContentSection from "../../components/ContentSection.astro";
+import FeatureGrid from "../../components/FeatureGrid.astro";
+import { Button } from "../../components/Button";
+import { Card } from "../../components/Card";
+import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
+import highPerformanceWebsiteImg from "../../assets/high-performance-website.png"; // Placeholder for OG
+
+const features = [
+    {
+        title: "Core Web Vitals Optimization",
+        description:
+            "We guarantee passing scores on Google’s strict performance metrics for LCP, FID, and CLS.",
+    },
+    {
+        title: "SSL/TLS Encryption Certificate",
+        description:
+            "Standardized security protocols to protect visitor data and establish trust.",
+    },
+    {
+        title: "Global CDN Propagation",
+        description:
+            "Content Delivery Network integration to serve your site assets from the server closest to your user.",
+    },
+    {
+        title: "Automatic Cache Invalidation",
+        description:
+            "Ensuring users always see the latest version of your site without manual refreshing.",
+    },
+    {
+        title: "Responsive Viewport Configuration",
+        description:
+            "Fluid layouts that adapt pixel-perfectly to mobile, tablet, and desktop breakpoints.",
+    },
+    {
+        title: "Semantic HTML5 Architecture",
+        description:
+            "Clean code structure that helps search engine crawlers index your content accurately.",
+    },
+    {
+        title: "Image Optimization & WebP Conversion",
+        description:
+            "Next-gen image formatting to reduce payload size without sacrificing quality.",
+    },
+    {
+        title: "Uptime Monitoring & Alerts",
+        description:
+            "24/7 automated surveillance to ensure your digital storefront never goes dark.",
+    },
+    {
+        title: "Server-Side Security Patching",
+        description:
+            "Proactive defense against vulnerabilities and malicious traffic spikes.",
+    },
+    {
+        title: "Schema Markup Implementation",
+        description:
+            "Structured data integration to help rich snippets appear in search results.",
+    },
+    {
+        title: "Monthly Analytics Reporting",
+        description:
+            "Transparent data regarding traffic sources, bounce rates, and user acquisition.",
+    },
+    {
+        title: "Content Management Support",
+        description:
+            "Regular content updates handled by our team so you never touch a line of code.",
+    },
+];
+
+const pillars = [
+    {
+        title: "Best-in-Class UX & UI Design",
+        copy: 'First impressions are everything. We deploy modern, polished User Interface (UI) and User Experience (UX) patterns that guide your visitors effortlessly from "just browsing" to "booked appointment."',
+        icon: "🎨",
+    },
+    {
+        title: "Rankings Out of the Box",
+        copy: "Most websites need expensive fixes to rank. Ours are born ready. Clean code and structure mean Google loves your site from Day 1, giving you a competitive edge in local search.",
+        icon: "📈",
+    },
+    {
+        title: "Built for Expansion",
+        copy: "Your business will grow, and your site should too. Whether you need to add E-commerce stores, automated booking engines, or complex CRM integrations later, our architecture handles it without a rebuild.",
+        icon: "🏗️",
+    },
+];
+---
+
+<Layout
+    title="Smart Custom Web Design | Fadeaway Creatives Vancouver"
+    description="Get a smart website that ranks out of the box. We build future-proof, high-performance sites ready for e-commerce and automation."
+    ogImage={highPerformanceWebsiteImg.src}
+>
+    <Header client:load />
+
+    <main>
+        {/* 01. Hero Section */}
+        <ServiceHero
+            title="Get a Smart Website That Pays For Itself."
+            subtitle="Stop settling for a digital brochure. We build intelligent, high-performance websites engineered to rank on Google out of the box and convert visitors into revenue."
+            ctaText="View Packages & Pricing"
+            ctaLink="/pricing"
+            badgeText="Web Design & Development"
+        />
+
+        {/* 02. The 3 Pillars */}
+        <PillarsSection
+            title="The 3 Pillars of a Smart Website"
+            pillars={pillars}
+        />
+
+        {/* 03. The Reality Check */}
+        <ContentSection
+            title="Is Your Current Site Holding You Back?"
+            variant="normal"
+            badgeText="The Reality Check"
+            id="reality-check"
+        >
+            <p>
+                You likely arrived here because you know your digital presence
+                could do more. Maybe it doesn't work perfectly on mobile, or it
+                just feels outdated compared to the competition.
+            </p>
+            <p>Here is the truth:</p>
+            <ul class="list-none space-y-4 my-6">
+                <li class="flex gap-3">
+                    <span class="text-fadeaway-orange font-bold"
+                        >Credibility is Currency:</span
+                    >
+                    <span
+                        >75% of consumers judge a company’s credibility based on
+                        web design alone. A smart website signals a smart
+                        business.</span
+                    >
+                </li>
+                <li class="flex gap-3">
+                    <span class="text-fadeaway-orange font-bold"
+                        >Speed is Sales:</span
+                    >
+                    <span
+                        >If your site feels slow, customers assume your service
+                        is slow. We fix that immediately.</span
+                    >
+                </li>
+                <li class="flex gap-3">
+                    <span class="text-fadeaway-orange font-bold"
+                        >The Opportunity Cost:</span
+                    >
+                    <span
+                        >Every visitor who leaves your confused site is a
+                        contract handed to your competitor.</span
+                    >
+                </li>
+            </ul>
+            <p
+                class="text-xl text-neutral-50 font-semibold border-l-4 border-fadeaway-teal pl-4 italic"
+            >
+                You don't need just a website. You need a performance asset.
+            </p>
+        </ContentSection>
+
+        {/* 04. The Solution */}
+        <ContentSection
+            title="A 'Set It and Forget It' Performance Asset."
+            variant="alternate"
+            badgeText="The Solution"
+        >
+            <p>
+                We don't just "design pages." We engineer a fully managed
+                digital presence that works 24/7. We handle the code, the
+                security, and the updates. You focus on running your business.
+            </p>
+            <p class="mt-4">
+                The Result? A future-proof platform that loads instantly, looks
+                professional on every device, and is ready for whatever growth
+                throws your way.
+            </p>
+        </ContentSection>
+
+        {/* 05. Features Grid */}
+        <FeatureGrid
+            title="Enterprise-Grade Tech Included Standard."
+            subtitle="Why pay thousands for a custom build? We include all of this in our standard maintenance plans."
+            features={features}
+        />
+
+        {/* 06. Social Proof / Demo Showcase */}
+        <section class="section-padding border-t border-white/5 bg-white/5">
+            <div class="container-max text-center">
+                <h2
+                    class="text-3xl md:text-5xl font-outfit font-bold text-neutral-50 mb-6"
+                >
+                    See What Professional Looks Like.
+                </h2>
+                <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-16">
+                    Don't just take our word for it. See the difference between
+                    a standard DIY site and a Fadeaway Performance Build. Clean
+                    lines, clear calls to action, and instant speed.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* Visual Placeholder 1 */}
+                    <Card
+                        variant="glass"
+                        className="aspect-video flex items-center justify-center p-0 overflow-hidden group"
+                    >
+                        <div
+                            class="absolute inset-0 bg-neutral-900/50 group-hover:bg-neutral-900/30 transition-colors"
+                        >
+                        </div>
+                        <span
+                            class="text-neutral-500 font-bold tracking-widest uppercase z-10 border border-neutral-700 px-4 py-2 rounded"
+                        >
+                            MetroStars Academy Demo
+                        </span>
+                        {
+                            /* When real image available: <Image src={demo1} alt="MetroStars Demo" class="absolute inset-0 w-full h-full object-cover" /> */
+                        }
+                    </Card>
+
+                    {/* Visual Placeholder 2 */}
+                    <Card
+                        variant="glass"
+                        className="aspect-video flex items-center justify-center p-0 overflow-hidden group"
+                    >
+                        <div
+                            class="absolute inset-0 bg-neutral-900/50 group-hover:bg-neutral-900/30 transition-colors"
+                        >
+                        </div>
+                        <span
+                            class="text-neutral-500 font-bold tracking-widest uppercase z-10 border border-neutral-700 px-4 py-2 rounded"
+                        >
+                            Courier/Logistics Demo
+                        </span>
+                    </Card>
+                </div>
+            </div>
+        </section>
+
+        {/* 07. Closing / ROI Section */}
+        <section class="section-padding py-24 border-t border-white/5">
+            <div class="container-max">
+                <div
+                    class="max-w-4xl mx-auto text-center glass-dark p-12 md:p-16 border border-fadeaway-teal/20"
+                >
+                    <h2
+                        class="text-3xl md:text-5xl font-outfit font-bold text-neutral-50 mb-6"
+                    >
+                        Stop Renting a Broken Billboard.
+                    </h2>
+                    <p
+                        class="text-xl text-neutral-300 leading-relaxed max-w-2xl mx-auto mb-10"
+                    >
+                        A cheap website costs you more in lost business than a
+                        professional one costs to maintain.
+                        <br /><br />
+                        For a predictable monthly fee, you get a dedicated team ensuring
+                        your digital face to the world is flawless. No hidden repair
+                        costs. No technical confusion. Just results.
+                    </p>
+                    <a href="/pricing">
+                        <Button variant="primary" size="lg"
+                            >See Pricing & Plans</Button
+                        >
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <Footer />
+</Layout>

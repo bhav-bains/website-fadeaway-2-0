@@ -15,11 +15,11 @@ export const Header: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { label: 'Home', href: '#hero' },
+    { label: 'Home', href: '/' },
     { label: 'Services', href: '#services' },
     { label: 'Process', href: '#process' },
     { label: 'Pricing', href: '#pricing' },
-    { label: 'Blog', href: '/blog' },
+    { label: 'Blog', href: '#' },
   ];
 
   const socialLinks = [
@@ -59,7 +59,7 @@ export const Header: React.FC = () => {
       'z-[100] transition-all duration-300',
       'absolute top-0 left-0 right-0',
       'md:fixed md:left-0 md:right-0',
-      isScrolled ? 'md:top-[5px] md:py-2' : 'md:top-0 md:py-4',
+      isScrolled ? 'md:top-[5px] md:py-2' : 'md:top-0 md:py-2',
       'py-4 px-4 md:px-6'
     )}>
       <button

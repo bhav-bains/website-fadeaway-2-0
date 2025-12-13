@@ -1,0 +1,52 @@
+---
+import { Badge } from "./Badge";
+
+interface Props {
+    title: string;
+    subtitle?: string;
+    variant?: "normal" | "alternate";
+    badgeText?: string;
+    id?: string;
+}
+
+const { title, subtitle, variant = "normal", badgeText, id } = Astro.props;
+---
+
+<section
+    id={id}
+    class={`section-padding ${variant === "alternate" ? "bg-white/5 border-y border-white/5" : "border-t border-white/5"}`}
+>
+    <div class="container-max">
+        <div class="max-w-4xl mx-auto">
+            <div class="mb-12">
+                {
+                    badgeText && (
+                        <div class="mb-6">
+                            <Badge variant="primary">{badgeText}</Badge>
+                        </div>
+                    )
+                }
+
+                <h2
+                    class="text-3xl md:text-5xl font-outfit font-bold text-neutral-50 mb-6 leading-tight"
+                >
+                    {title}
+                </h2>
+
+                {
+                    subtitle && (
+                        <p class="text-xl text-neutral-300 leading-relaxed font-outfit">
+                            {subtitle}
+                        </p>
+                    )
+                }
+            </div>
+
+            <div
+                class="prose prose-invert prose-lg max-w-none text-neutral-400 leading-relaxed font-dm-sans"
+            >
+                <slot />
+            </div>
+        </div>
+    </div>
+</section>
