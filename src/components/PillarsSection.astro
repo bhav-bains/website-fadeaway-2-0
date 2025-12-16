@@ -3,6 +3,7 @@ interface Pillar {
     title: string;
     copy: string;
     icon?: string;
+    image?: ImageMetadata;
 }
 
 interface Props {
@@ -11,9 +12,10 @@ interface Props {
 }
 
 const { title = "The 3 Pillars of Success", pillars } = Astro.props;
+import ServiceCard from "./ServiceCard.astro";
 ---
 
-<section class="section-padding border-t border-white/5">
+<section class="section-padding bg-[#0C0C0E]">
     <div class="container-max">
         {
             title && (
@@ -28,18 +30,13 @@ const { title = "The 3 Pillars of Success", pillars } = Astro.props;
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             {
                 pillars.map((pillar, index) => (
-                    <div class="glass-dark p-8 md:p-10 hover:bg-white/5 transition-colors duration-500 group">
-                        <div class="text- fadeaway-orange mb-6 text-4xl group-hover:scale-110 transition-transform duration-300">
-                            {pillar.icon ||
-                                (index + 1).toString().padStart(2, "0")}
-                        </div>
-                        <h3 class="text-2xl font-outfit font-bold text-neutral-50 mb-4">
-                            {pillar.title}
-                        </h3>
-                        <p class="text-neutral-400 leading-relaxed">
-                            {pillar.copy}
-                        </p>
-                    </div>
+                    <ServiceCard
+                        title={pillar.title}
+                        icon={pillar.icon}
+                        image={pillar.image}
+                    >
+                        {pillar.copy}
+                    </ServiceCard>
                 ))
             }
         </div>

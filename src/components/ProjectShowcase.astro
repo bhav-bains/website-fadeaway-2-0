@@ -1,0 +1,60 @@
+---
+import { Card } from "./Card";
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Project {
+    title: string;
+    image?: ImageMetadata;
+}
+
+interface Props {
+    title?: string;
+    subtitle?: string;
+    projects: Project[];
+}
+
+const {
+    title = "See What Professional Looks Like.",
+    subtitle = "Don't just take our word for it. See the difference between a standard DIY site and a Fadeaway Performance Build. Clean lines, clear calls to action, and instant speed.",
+    projects,
+} = Astro.props;
+---
+
+<section class="section-padding border-t border-white/5 bg-white/5">
+    <div class="container-max text-center">
+        <h2
+            class="text-3xl md:text-5xl font-outfit font-bold text-neutral-50 mb-6"
+        >
+            {title}
+        </h2>
+        <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-16">
+            {subtitle}
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {
+                projects.map((project) => (
+                    <Card
+                        variant="glass"
+                        className="aspect-video flex items-center justify-center p-0 overflow-hidden group relative"
+                    >
+                        <div class="absolute inset-0 bg-neutral-900/50 group-hover:bg-neutral-900/30 transition-colors z-10" />
+
+                        <span class="text-neutral-500 font-bold tracking-widest uppercase z-20 border border-neutral-700 px-4 py-2 rounded bg-neutral-900/80 backdrop-blur-sm">
+                            {project.title}
+                        </span>
+
+                        {project.image && (
+                            <Image
+                                src={project.image}
+                                alt={project.title}
+                                class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105"
+                            />
+                        )}
+                    </Card>
+                ))
+            }
+        </div>
+    </div>
+</section>

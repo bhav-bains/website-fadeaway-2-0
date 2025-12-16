@@ -1,0 +1,48 @@
+---
+import { Button } from "./Button";
+
+interface Props {
+    title?: string;
+    description?: string;
+    ctaText?: string;
+    ctaLink?: string;
+}
+
+const {
+    title = "Stop Renting a Broken Billboard.",
+    description = "A cheap website costs you more in lost business than a professional one costs to maintain.<br/><br/>For a predictable monthly fee, you get a dedicated team ensuring your digital face to the world is flawless. No hidden repair costs. No technical confusion. Just results.",
+    ctaText = "See Pricing & Plans",
+    ctaLink = "/pricing",
+} = Astro.props;
+---
+
+<section class="section-padding py-24 border-t border-white/5">
+    <div class="container-max">
+        <div
+            class="max-w-4xl mx-auto text-center glass-dark p-12 md:p-16 border border-fadeaway-teal/20 relative overflow-hidden group"
+        >
+            {/* Subtle hover glow effect */}
+            <div
+                class="absolute inset-0 bg-fadeaway-teal/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+            >
+            </div>
+
+            <h2
+                class="text-3xl md:text-5xl font-outfit font-bold text-neutral-50 mb-6 relative z-10"
+            >
+                {title}
+            </h2>
+
+            <p
+                class="text-xl text-neutral-300 leading-relaxed max-w-2xl mx-auto mb-10 relative z-10"
+                set:html={description}
+            />
+
+            <div class="relative z-10">
+                <a href={ctaLink}>
+                    <Button variant="primary" size="lg">{ctaText}</Button>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

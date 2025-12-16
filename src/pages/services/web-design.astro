@@ -4,12 +4,17 @@ import ServiceHero from "../../components/ServiceHero.astro";
 import PillarsSection from "../../components/PillarsSection.astro";
 import ContentSection from "../../components/ContentSection.astro";
 import FeatureGrid from "../../components/FeatureGrid.astro";
+import ProjectShowcase from "../../components/ProjectShowcase.astro";
+import ROISection from "../../components/ROISection.astro";
 import { Button } from "../../components/Button";
 import { Card } from "../../components/Card";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import highPerformanceWebsiteImg from "../../assets/high-performance-website.png"; // Placeholder for OG
 import websiteDesignHeroImg from "../../assets/website-design-background-image-hero.png";
+import fadeawayCreativesImg from "../../assets/image-fadeaway-creatives.png";
+import fcWebPillar2 from "../../assets/FC-web-pillar-2.png";
+import fcWebPillar3 from "../../assets/FC-web-pillar-3.png";
 
 const features = [
     {
@@ -78,17 +83,17 @@ const pillars = [
     {
         title: "Best-in-Class UX & UI Design",
         copy: 'First impressions are everything. We deploy modern, polished User Interface (UI) and User Experience (UX) patterns that guide your visitors effortlessly from "just browsing" to "booked appointment."',
-        icon: "🎨",
+        image: fadeawayCreativesImg,
     },
     {
         title: "Rankings Out of the Box",
         copy: "Most websites need expensive fixes to rank. Ours are born ready. Clean code and structure mean Google loves your site from Day 1, giving you a competitive edge in local search.",
-        icon: "📈",
+        image: fcWebPillar2,
     },
     {
         title: "Built for Expansion",
         copy: "Your business will grow, and your site should too. Whether you need to add E-commerce stores, automated booking engines, or complex CRM integrations later, our architecture handles it without a rebuild.",
-        icon: "🏗️",
+        image: fcWebPillar3,
     },
 ];
 ---
@@ -104,7 +109,7 @@ const pillars = [
         {/* 01. Hero Section */}
         <ServiceHero
             title="Get a Smart Website That Pays For Itself."
-            subtitle="Stop settling for a digital brochure. We build intelligent, high-performance websites engineered to rank on Google out of the box and convert visitors into revenue."
+            subtitle="Stop settling for just a brochure. Convert website visitors into revenue."
             ctaText="View Packages & Pricing"
             ctaLink="/pricing"
             badgeText="Web Design & Development"
@@ -193,87 +198,15 @@ const pillars = [
         />
 
         {/* 06. Social Proof / Demo Showcase */}
-        <section class="section-padding border-t border-white/5 bg-white/5">
-            <div class="container-max text-center">
-                <h2
-                    class="text-3xl md:text-5xl font-outfit font-bold text-neutral-50 mb-6"
-                >
-                    See What Professional Looks Like.
-                </h2>
-                <p class="text-xl text-neutral-300 max-w-3xl mx-auto mb-16">
-                    Don't just take our word for it. See the difference between
-                    a standard DIY site and a Fadeaway Performance Build. Clean
-                    lines, clear calls to action, and instant speed.
-                </p>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {/* Visual Placeholder 1 */}
-                    <Card
-                        variant="glass"
-                        className="aspect-video flex items-center justify-center p-0 overflow-hidden group"
-                    >
-                        <div
-                            class="absolute inset-0 bg-neutral-900/50 group-hover:bg-neutral-900/30 transition-colors"
-                        >
-                        </div>
-                        <span
-                            class="text-neutral-500 font-bold tracking-widest uppercase z-10 border border-neutral-700 px-4 py-2 rounded"
-                        >
-                            MetroStars Academy Demo
-                        </span>
-                        {
-                            /* When real image available: <Image src={demo1} alt="MetroStars Demo" class="absolute inset-0 w-full h-full object-cover" /> */
-                        }
-                    </Card>
-
-                    {/* Visual Placeholder 2 */}
-                    <Card
-                        variant="glass"
-                        className="aspect-video flex items-center justify-center p-0 overflow-hidden group"
-                    >
-                        <div
-                            class="absolute inset-0 bg-neutral-900/50 group-hover:bg-neutral-900/30 transition-colors"
-                        >
-                        </div>
-                        <span
-                            class="text-neutral-500 font-bold tracking-widest uppercase z-10 border border-neutral-700 px-4 py-2 rounded"
-                        >
-                            Courier/Logistics Demo
-                        </span>
-                    </Card>
-                </div>
-            </div>
-        </section>
+        <ProjectShowcase
+            projects={[
+                { title: "MetroStars Academy Demo" },
+                { title: "Courier/Logistics Demo" },
+            ]}
+        />
 
         {/* 07. Closing / ROI Section */}
-        <section class="section-padding py-24 border-t border-white/5">
-            <div class="container-max">
-                <div
-                    class="max-w-4xl mx-auto text-center glass-dark p-12 md:p-16 border border-fadeaway-teal/20"
-                >
-                    <h2
-                        class="text-3xl md:text-5xl font-outfit font-bold text-neutral-50 mb-6"
-                    >
-                        Stop Renting a Broken Billboard.
-                    </h2>
-                    <p
-                        class="text-xl text-neutral-300 leading-relaxed max-w-2xl mx-auto mb-10"
-                    >
-                        A cheap website costs you more in lost business than a
-                        professional one costs to maintain.
-                        <br /><br />
-                        For a predictable monthly fee, you get a dedicated team ensuring
-                        your digital face to the world is flawless. No hidden repair
-                        costs. No technical confusion. Just results.
-                    </p>
-                    <a href="/pricing">
-                        <Button variant="primary" size="lg"
-                            >See Pricing & Plans</Button
-                        >
-                    </a>
-                </div>
-            </div>
-        </section>
+        <ROISection />
     </main>
     <Footer />
 </Layout>
