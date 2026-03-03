@@ -19,7 +19,6 @@ export const Header: React.FC = () => {
     { label: 'Services', href: '#services' },
     { label: 'Process', href: '#process' },
     { label: 'Pricing', href: '#pricing' },
-    { label: 'Blog', href: '#' },
   ];
 
   const socialLinks = [
@@ -93,7 +92,7 @@ export const Header: React.FC = () => {
                 </a>
               ))}
               <a
-                href="#contact"
+                href="/audit-request"
                 className="text-fadeaway-orange hover:text-fadeaway-teal transition-all duration-300 font-semibold text-base px-3 py-1"
               >
                 Contact
@@ -134,7 +133,7 @@ export const Header: React.FC = () => {
             </a>
           ))}
           <a
-            href="#contact"
+            href="/audit-request"
             onClick={() => setIsOpen(false)}
             className="text-fadeaway-orange hover:text-fadeaway-teal transition-all duration-300 font-semibold text-base px-3 py-2 w-full text-center"
           >

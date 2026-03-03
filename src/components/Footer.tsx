@@ -29,8 +29,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-sm text-neutral-400">
               <li><a href="#hero" className="hover:text-fadeaway-teal transition-colors">Home</a></li>
               <li><a href="#pricing" className="hover:text-fadeaway-teal transition-colors">Pricing</a></li>
-              <li><a href="/blog" className="hover:text-fadeaway-teal transition-colors">Blog</a></li>
-              <li><a href="#contact" className="hover:text-fadeaway-teal transition-colors">Request Website</a></li>
+              <li><a href="/audit-request" className="hover:text-fadeaway-teal transition-colors">Request Website</a></li>
             </ul>
           </div>
 

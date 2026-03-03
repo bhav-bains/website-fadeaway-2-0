@@ -155,7 +155,6 @@ import growthAutomationImg from "../assets/growth-automation.png";
             title="High-Performance Website"
             description=""
             image={highPerformanceWebsiteImg}
-            href="/services/high-performance"
           >
             Get custom engineered blazing-fast, SEO-ready websites designed to
             rank higher and impress every visitor instantly. Speed is your
@@ -167,7 +166,6 @@ import growthAutomationImg from "../assets/growth-automation.png";
             title="Local SEO & Rankings"
             description=""
             image={localSeoRankingsImg}
-            href="/services/local-seo"
           >
             We optimize your Google Maps and search profile so you are the #1
             choice when they search locally. Dominate your neighborhood.
@@ -179,7 +177,6 @@ import growthAutomationImg from "../assets/growth-automation.png";
             title="Growth & Automation Systems"
             description=""
             image={growthAutomationImg}
-            href="/services/growth-automation"
           >
             Tailored ad campaigns and automate booking flows so your business
             grows while you sleep. Scale without the burnout.
@@ -212,7 +209,6 @@ import growthAutomationImg from "../assets/growth-automation.png";
               })
               .map((plan) => (
                 <div
-                  key={plan.name}
                   class={`relative ${plan.highlighted ? "md:scale-105" : ""} ${plan.name === "Attract" ? "order-1 md:order-2" : plan.name === "Maintain" ? "order-3 md:order-1" : "order-2 md:order-3"}`}
                 >
                   {plan.badge && (
@@ -240,10 +236,7 @@ import growthAutomationImg from "../assets/growth-automation.png";
                     <p class="text-xs text-neutral-400 mb-4">+ {plan.setup}</p>
                     <ul class="space-y-2 mb-4 flex-1">
                       {plan.features.map((feature) => (
-                        <li
-                          key={feature}
-                          class="flex items-start gap-2 text-sm"
-                        >
+                        <li class="flex items-start gap-2 text-sm">
                           <span class="text-fadeaway-teal mt-0.5 flex-shrink-0">
                             ✓
                           </span>
@@ -255,7 +248,7 @@ import growthAutomationImg from "../assets/growth-automation.png";
                       <p class="text-sm text-neutral-400 italic mb-3">
                         👉 {plan.tagline}
                       </p>
-                      <a href="#contact" class="block w-full">
+                      <a href="/audit-request" class="block w-full">
                         <Button
                           variant={plan.highlighted ? "primary" : "secondary"}
                           size="sm"
@@ -278,10 +271,7 @@ import growthAutomationImg from "../assets/growth-automation.png";
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             {
               addOns.map((addon) => (
-                <div
-                  key={addon.name}
-                  class="flex items-center justify-between p-4 glass-effect"
-                >
+                <div class="flex items-center justify-between p-4 glass-effect">
                   <span class="text-neutral-300 text-sm">{addon.name}</span>
                   <span class="text-fadeaway-orange font-bold">
                     {addon.price}
@@ -314,10 +304,7 @@ import growthAutomationImg from "../assets/growth-automation.png";
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {
             problemSolutions.map((item) => (
-              <div
-                key={item.problem}
-                class="glass-dark hover:border-white/10 transition-all duration-300 rounded-lg p-6"
-              >
+              <div class="glass-dark hover:border-white/10 transition-all duration-300 rounded-lg p-6">
                 <p class="text-lg text-neutral-300 mb-3">
                   &ldquo;{item.problem}&rdquo;
                 </p>
@@ -350,7 +337,7 @@ import growthAutomationImg from "../assets/growth-automation.png";
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-fr">
           {
             processSteps.map((step, index) => (
-              <div key={step.number} class="relative">
+              <div class="relative">
                 <div class="glass-dark hover:border-white/10 transition-all duration-300 rounded-lg p-4 h-full flex flex-col">
                   <p class="text-5xl font-outfit font-bold gradient-text mb-3">
                     {step.number}
@@ -369,7 +356,7 @@ import growthAutomationImg from "../assets/growth-automation.png";
         </div>
 
         <div class="text-center mt-12">
-          <a href="#contact">
+          <a href="/audit-request">
             <Button variant="primary" size="lg"> Book a Call </Button>
           </a>
         </div>
@@ -425,7 +412,7 @@ import growthAutomationImg from "../assets/growth-automation.png";
           </div>
 
           <div class="text-center mt-12">
-            <a href="#contact">
+            <a href="/audit-request">
               <Button variant="primary" size="lg"> Book a Free Call </Button>
             </a>
           </div>
@@ -447,10 +434,7 @@ import growthAutomationImg from "../assets/growth-automation.png";
         <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-3">
           {
             faqItems.map((item, index) => (
-              <details
-                key={index}
-                class="glass-effect p-4 group cursor-pointer"
-              >
+              <details class="glass-effect p-4 group cursor-pointer">
                 <summary class="flex items-center justify-between font-semibold text-base text-neutral-50 list-none">
                   {item.question}
                   <span class="transition-transform group-open:rotate-180 text-sm">
@@ -558,10 +542,6 @@ import growthAutomationImg from "../assets/growth-automation.png";
               >
             </a>
           </div>
-
-          <Card variant="glass">
-            <ContactForm client:load />
-          </Card>
         </div>
       </div>
     </section>
