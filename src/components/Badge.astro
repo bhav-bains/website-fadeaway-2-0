@@ -1,0 +1,23 @@
+---
+import clsx from 'clsx';
+
+interface Props {
+  variant?: 'primary' | 'success' | 'warning' | 'error' | 'outline';
+  className?: string;
+  [key: string]: any;
+}
+
+const { variant = 'primary', className, ...rest } = Astro.props;
+
+const variants = {
+  primary: 'badge-primary',
+  success: 'inline-flex items-center gap-1 px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-medium',
+  warning: 'inline-flex items-center gap-1 px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-medium',
+  error: 'inline-flex items-center gap-1 px-3 py-1 bg-red-500/20 text-red-400 rounded-full text-sm font-medium',
+  outline: 'inline-flex items-center gap-1 px-3 py-1 bg-transparent border border-white/20 text-neutral-300 rounded-full text-sm font-medium',
+};
+---
+
+<span class={clsx(variants[variant], className)} {...rest}>
+  <slot />
+</span>

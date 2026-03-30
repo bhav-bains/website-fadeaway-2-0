@@ -1,13 +1,15 @@
 ---
 import { Image } from "astro:assets";
-import { Button } from "./Button";
-import { Badge } from "./Badge";
+import Button from "./Button.astro";
+import Badge from "./Badge.astro";
 
 interface Props {
     title: string;
     subtitle: string;
     ctaText: string;
     ctaLink: string;
+    cta2Text?: string;
+    cta2Link?: string;
     badgeText?: string;
     backgroundImage?: ImageMetadata;
 }
@@ -17,13 +19,15 @@ const {
     subtitle,
     ctaText,
     ctaLink,
+    cta2Text,
+    cta2Link,
     badgeText = "Service",
     backgroundImage,
 } = Astro.props;
 ---
 
 <section
-    class="relative h-[100dvh] flex items-center justify-center section-padding overflow-hidden pt-24 md:pt-32"
+    class="relative pt-32 pb-20 md:pt-48 md:pb-32 flex items-center justify-center section-padding overflow-hidden"
 >
     {/* Background Image */}
     {
@@ -63,27 +67,38 @@ const {
             </div>
 
             <h1
-                class="text-5xl md:text-7xl font-outfit font-bold text-neutral-50 mb-6 leading-tight text-balance max-w-5xl mx-auto"
+                class="text-4xl sm:text-5xl md:text-7xl font-outfit font-bold text-neutral-50 mb-4 md:mb-6 leading-tight text-balance max-w-5xl mx-auto"
             >
                 {title}
             </h1>
 
             <p
-                class="text-lg md:text-xl text-neutral-300 mb-8 text-balance max-w-3xl mx-auto leading-relaxed"
+                class="text-base md:text-xl text-neutral-300 mb-6 md:mb-8 text-balance max-w-3xl mx-auto leading-relaxed opacity-90"
             >
                 {subtitle}
             </p>
 
-            <div class="flex justify-center">
+            <div class="flex flex-col sm:flex-row justify-center gap-3 md:gap-4">
                 <a href={ctaLink}>
                     <Button
                         variant="primary"
-                        size="lg"
-                        className="min-w-[200px]"
+                        size="md"
+                        className="md:size-lg min-w-[180px] md:min-w-[200px]"
                     >
                         {ctaText}
                     </Button>
                 </a>
+                {cta2Text && cta2Link && (
+                    <a href={cta2Link}>
+                        <Button
+                            variant="secondary"
+                            size="md"
+                            className="md:size-lg min-w-[180px] md:min-w-[200px]"
+                        >
+                            {cta2Text}
+                        </Button>
+                    </a>
+                )}
             </div>
         </div>
     </div>

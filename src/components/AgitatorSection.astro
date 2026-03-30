@@ -1,0 +1,78 @@
+---
+import { Image } from "astro:assets";
+import Badge from "./Badge.astro";
+
+interface Props {
+    title: string;
+    body: string;
+    punchline: string;
+    backgroundImage?: ImageMetadata;
+}
+
+const {
+    title,
+    body,
+    punchline,
+    backgroundImage,
+} = Astro.props;
+---
+
+<section class="relative pt-32 pb-24 md:py-32 overflow-hidden bg-[#0F0F10]">
+    {/* Background Context (Optional) */}
+    {backgroundImage && (
+        <div class="absolute inset-0 opacity-20 -z-10 grayscale">
+            <Image 
+                src={backgroundImage} 
+                alt="" 
+                class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-b from-fadeaway-dark via-transparent to-fadeaway-dark"></div>
+        </div>
+    )}
+
+    {/* Decorative Elements */}
+    <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[500px] h-[500px] bg-fadeaway-orange/5 rounded-full blur-[100px] -z-10"></div>
+    <div class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[500px] h-[500px] bg-fadeaway-teal/5 rounded-full blur-[100px] -z-10"></div>
+
+    <div class="container-max px-4 md:px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-col items-center text-center gap-8 lg:gap-12">
+                
+                {/* Content Level: The Reality Check */}
+                <div class="w-full bg-[#161618] backdrop-blur-xl p-8 px-5 py-10 md:p-16 border-t-4 border-t-fadeaway-orange border-x border-x-white/10 border-b border-b-white/10 rounded-2xl relative overflow-hidden shadow-2xl">
+                    {/* Decorative background glow */}
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-20 bg-fadeaway-orange/20 blur-[60px] pointer-events-none"></div>
+
+                    <div class="mb-4 flex justify-center">
+                        <Badge variant="outline" className="px-6 py-1.5 border-white/10 uppercase tracking-widest text-[#888]">Sideline Reality Check</Badge>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-5xl font-outfit font-bold text-neutral-50 mb-6 leading-tight text-balance">
+                        {title}
+                    </h2>
+
+                    <div class="space-y-6 text-neutral-400 max-w-3xl mx-auto">
+                        <p class="text-lg md:text-[22px] leading-relaxed">
+                            {body}
+                        </p>
+                        
+                        <div class="pt-6 border-t border-white/5">
+                            <p class="text-xl md:text-3xl font-bold text-neutral-50 italic leading-snug">
+                                <span class="text-fadeaway-teal not-italic font-outfit uppercase tracking-tighter text-sm block mb-2">The Financial Impact</span>
+                                <span set:html={`"${punchline}"`} />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Add any specific animations if needed */
+    .stat-glow {
+        filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.4));
+    }
+</style>

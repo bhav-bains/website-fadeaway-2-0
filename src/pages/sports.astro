@@ -1,0 +1,177 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import PillarsSection from "../components/PillarsSection.astro";
+import AgitatorSection from "../components/AgitatorSection.astro";
+import FeatureGrid from "../components/FeatureGrid.astro";
+import ProjectShowcase from "../components/ProjectShowcase.astro";
+import ROISection from "../components/ROISection.astro";
+import Button from "../components/Button.astro";
+import Card from "../components/Card.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import highPerformanceWebsiteImg from "../assets/high-performance-website.png"; // Placeholder for OG
+import websiteDesignHeroImg from "../assets/website-design-background-image-hero.png";
+import fadeawayCreativesImg from "../assets/image-fadeaway-creatives.png";
+import fcWebPillar2 from "../assets/FC-web-pillar-2.png";
+import fcWebPillar3 from "../assets/FC-web-pillar-3.png";
+import sportsSidelineImg from "../assets/sports-sideline.png";
+
+const features = [
+    {
+        title: "Core Web Vitals Optimization",
+        description:
+            "We guarantee passing scores on Google’s strict performance metrics for LCP, FID, and CLS.",
+    },
+    {
+        title: "SSL/TLS Encryption Certificate",
+        description:
+            "Standardized security protocols to protect visitor data and establish trust.",
+    },
+    {
+        title: "Global CDN Propagation",
+        description:
+            "Content Delivery Network integration to serve your site assets from the server closest to your user.",
+    },
+    {
+        title: "Automatic Cache Invalidation",
+        description:
+            "Ensuring users always see the latest version of your site without manual refreshing.",
+    },
+    {
+        title: "Responsive Viewport Configuration",
+        description:
+            "Fluid layouts that adapt pixel-perfectly to mobile, tablet, and desktop breakpoints.",
+    },
+    {
+        title: "Semantic HTML5 Architecture",
+        description:
+            "Clean code structure that helps search engine crawlers index your content accurately.",
+    },
+    {
+        title: "Image Optimization & WebP Conversion",
+        description:
+            "Next-gen image formatting to reduce payload size without sacrificing quality.",
+    },
+    {
+        title: "Uptime Monitoring & Alerts",
+        description:
+            "24/7 automated surveillance to ensure your digital storefront never goes dark.",
+    },
+    {
+        title: "Server-Side Security Patching",
+        description:
+            "Proactive defense against vulnerabilities and malicious traffic spikes.",
+    },
+    {
+        title: "Schema Markup Implementation",
+        description:
+            "Structured data integration to help rich snippets appear in search results.",
+    },
+    {
+        title: "Monthly Analytics Reporting",
+        description:
+            "Transparent data regarding traffic sources, bounce rates, and user acquisition.",
+    },
+    {
+        title: "Content Management Support",
+        description:
+            "Regular content updates handled by our team so you never touch a line of code.",
+    },
+];
+
+const pillars = [
+    {
+        title: "Elite User Experience",
+        copy: "First impressions are the difference between a lead and a bounce. We deploy high-performance UI/UX patterns that guide athletes and parents from 'just looking' to 'signed up' with zero friction.",
+        image: fadeawayCreativesImg,
+    },
+    {
+        title: "SEO for Local Dominance",
+        copy: "Most sports sites are buried on page 3. Ours are built to rank locally from day one. Clean code and local schema mean you're the first thing parents see when they search for training in your city.",
+        image: fcWebPillar2,
+    },
+    {
+        title: "Built for the Season",
+        copy: "Your business evolves, and your site should too. From automated registration engines to complex schedule integrations and e-commerce stores, our architecture handles it all without a rebuild.",
+        image: fcWebPillar3,
+    },
+];
+---
+
+<Layout
+    title="High-Performance Websites for Sports & Fitness | Fadeaway Creatives"
+    description="Dominate your local market with an SEO-first website built for sports academies, fitness brands, and high-performance teams."
+    ogImage={highPerformanceWebsiteImg.src}
+>
+    <Header />
+
+    <main>
+        {/* 01. Hero Section */}
+        <Hero
+            title="Turn Your Website Into a Roster-Filling Engine."
+            subtitle="Stop treating your website like a digital brochure. We build high-converting, mobile-first booking engines strictly for elite sports academies and club programs. Scale your memberships and pack your facility."
+            ctaText="Get Your Custom Demo"
+            ctaLink="/audit-request"
+            cta2Text="View Packages"
+            cta2Link="/#pricing"
+            badgeText="YOUR 24/7 ENROLLMENT OFFICER"
+            backgroundImage={websiteDesignHeroImg}
+        />
+
+        {/* 02. The Sideline Reality Check (Agitator) */}
+        <AgitatorSection
+            title="Parents Are Booking From the Sidelines. Are You Losing Them?"
+            body="90% of parents search for training programs on their phones while sitting at their kids' games or practices. If your site has walls of text, doesn't showcase your coaches' pedigree, or takes more than 3 clicks to check out, they are bouncing to a rival club."
+            punchline="You aren't just losing clicks.<br />You are losing $2,000+ LTV memberships."
+            backgroundImage={sportsSidelineImg}
+        />
+
+        {/* 03. The 3 Pillars */}
+        <PillarsSection
+            title="The 3 Pillars of a Digital Powerhouse"
+            pillars={pillars}
+        />
+
+        {/* 04. The Solution: Why Astro? */}
+        <PillarsSection
+            title="Modern Tech for an Active World."
+            pillars={[
+                {
+                    title: "Lightning Fast Mobile Loads",
+                    copy: "Aastro components serve zero hydration JS by default. Your site loads in milliseconds, capturing parents' attention before they look back at the field.",
+                    image: fcWebPillar2,
+                },
+                {
+                    title: "SEO-First Architecture",
+                    copy: "Clean HTML structure and automated sitemaps ensure you're at the top of Google when a parent searches for local clubs.",
+                    image: fcWebPillar3,
+                },
+                {
+                    title: "Roster Management Ready",
+                    copy: "Seamless integration with registration platforms or custom tournament filters. built to grow with your program.",
+                    image: fadeawayCreativesImg,
+                }
+            ]}
+        />
+
+        {/* 05. Features Grid */}
+        <FeatureGrid
+            title="Enterprise-Grade Tech Included Standard."
+            subtitle="Why pay thousands for a custom build? We include all of this in our standard maintenance plans."
+            features={features}
+        />
+
+        {/* 06. Social Proof / Demo Showcase */}
+        <ProjectShowcase
+            projects={[
+                { title: "MetroStars Academy Performance Build" },
+                { title: "Elite Performance Training Demo" },
+            ]}
+        />
+
+        {/* 07. Closing / ROI Section */}
+        <ROISection />
+    </main>
+    <Footer />
+</Layout>
