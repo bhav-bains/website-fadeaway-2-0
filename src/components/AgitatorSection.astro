@@ -44,7 +44,7 @@ const {
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-20 bg-fadeaway-orange/20 blur-[60px] pointer-events-none"></div>
 
                     <div class="mb-4 flex justify-center">
-                        <Badge variant="outline" className="px-6 py-1.5 border-white/10 uppercase tracking-widest text-[#888]">Sideline Reality Check</Badge>
+                        <Badge variant="primary" className="uppercase tracking-widest">Sideline Reality Check</Badge>
                     </div>
                     
                     <h2 class="text-3xl md:text-5xl font-outfit font-bold text-neutral-50 mb-6 leading-tight text-balance">
@@ -58,7 +58,7 @@ const {
                         
                         <div class="pt-6 border-t border-white/5">
                             <p class="text-xl md:text-3xl font-bold text-neutral-50 italic leading-snug">
-                                <span class="text-fadeaway-teal not-italic font-outfit uppercase tracking-tighter text-sm block mb-2">The Financial Impact</span>
+                                <div class="flex justify-center mb-3"><Badge variant="primary" className="uppercase tracking-widest">The Financial Impact</Badge></div>
                                 <span set:html={`"${punchline}"`} />
                             </p>
                         </div>

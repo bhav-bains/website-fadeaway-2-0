@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Card from "./Card.astro";
+import Badge from "./Badge.astro";
 
 interface Props {
     eyebrow?: string;
@@ -52,9 +53,9 @@ const Wrapper = href ? "a" : "div";
         <div class="p-6 flex flex-col flex-1 bg-fadeaway-graphite/40">
             {
                 eyebrow && (
-                    <span class="text-fadeaway-orange text-[10px] font-bold tracking-widest uppercase mb-1 block">
-                        {eyebrow}
-                    </span>
+                    <div class="mb-2">
+                        <Badge variant="primary" className="uppercase tracking-widest">{eyebrow}</Badge>
+                    </div>
                 )
             }
             <h3

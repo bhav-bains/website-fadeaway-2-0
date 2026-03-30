@@ -3,6 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import PillarsSection from "../components/PillarsSection.astro";
 import AgitatorSection from "../components/AgitatorSection.astro";
+import PackagesSection from "../components/PackagesSection.astro";
+import TestimonialSection from "../components/TestimonialSection.astro";
 import FeatureGrid from "../components/FeatureGrid.astro";
 import ProjectShowcase from "../components/ProjectShowcase.astro";
 import ROISection from "../components/ROISection.astro";
@@ -83,17 +85,17 @@ const features = [
 const pillars = [
     {
         title: "Elite User Experience",
-        copy: "First impressions are the difference between a lead and a bounce. We deploy high-performance UI/UX patterns that guide athletes and parents from 'just looking' to 'signed up' with zero friction.",
+        copy: "First impressions are the difference between a lead and a bounce. We deploy a sub-3-click mobile checkout that syncs directly with your court or facility availability, guiding parents from 'just looking' to 'signed up' while saving you hours of weekly admin work.",
         image: fadeawayCreativesImg,
     },
     {
         title: "SEO for Local Dominance",
-        copy: "Most sports sites are buried on page 3. Ours are built to rank locally from day one. Clean code and local schema mean you're the first thing parents see when they search for training in your city.",
+        copy: "Most sports sites are buried on page 3. We optimize your Google Business Profile to dominate the local Map Pack. Clean code and hyper-local landing pages ensure you rank #1 when parents search for camps and club teams in your city.",
         image: fcWebPillar2,
     },
     {
         title: "Built for the Season",
-        copy: "Your business evolves, and your site should too. From automated registration engines to complex schedule integrations and e-commerce stores, our architecture handles it all without a rebuild.",
+        copy: 'Your business evolves, and your site should too. From clear "Athlete Pathways" to complex schedule integrations and automated registration engines, our architecture captures leads and fills your facility to maximum capacity without ever needing a rebuild.',
         image: fcWebPillar3,
     },
 ];
@@ -109,7 +111,7 @@ const pillars = [
     <main>
         {/* 01. Hero Section */}
         <Hero
-            title="Turn Your Website Into a Roster-Filling Engine."
+            title="Turn Your Website Into a Roster-Filling Engine"
             subtitle="Stop treating your website like a digital brochure. We build high-converting, mobile-first booking engines strictly for elite sports academies and club programs. Scale your memberships and pack your facility."
             ctaText="Get Your Custom Demo"
             ctaLink="/audit-request"
@@ -127,15 +129,104 @@ const pillars = [
             backgroundImage={sportsSidelineImg}
         />
 
-        {/* 03. The 3 Pillars */}
+        {/* 04. The 3 Pillars */}
         <PillarsSection
-            title="The 3 Pillars of a Digital Powerhouse"
+            title="The Academy Growth Blueprint"
             pillars={pillars}
         />
 
-        {/* 04. The Solution: Why Astro? */}
+        {/* 05. Packages / Pricing */}
+        <PackagesSection
+            eyebrow="PRICING"
+            title={`Simple, Transparent <span class="text-fadeaway-teal">Packages</span>`}
+            subtitle="No hourly billing. No custom quote games. Just high-performance digital engines designed to pack your facility."
+            packages={[
+                {
+                    name: "Attract",
+                    badge: "Most Popular",
+                    price: "$499",
+                    period: "/month",
+                    setup: "$999 one-time website build setup",
+                    description:
+                        "For sports programs ready to turn mobile traffic into booked athletes.",
+                    features: [
+                        "Hosting, SSL, backups, uptime monitoring",
+                        "High-speed, mobile-first SEO-ready website build",
+                        "Direct booking & facility calendar sync",
+                        "Google Business Profile (Map Pack) setup",
+                        "Live SEO dashboard",
+                        "Monthly strategy call",
+                        "SEO campaigns (keyword tracking, blog posts, Google Business Profile optimization)",
+                    ],
+                    tagline:
+                        "Attract more customers every single month. Stop losing parents to slow, broken scheduling links.",
+                    ctaText: "See the demo",
+                    ctaLink: "/audit-request",
+                    highlighted: true,
+                },
+                {
+                    name: "Growth",
+                    price: "$999",
+                    period: "/month",
+                    setup: "$999 one-time website build setup",
+                    description:
+                        "For elite facilities ready to dominate local search and scale rapidly.",
+                    features: [
+                        "Everything in the Attract package",
+                        "Weekly strategy calls",
+                        "Advanced lead generation campaigns",
+                        "Paid ad management (Google & Meta)",
+                        "Hyper-local neighborhood SEO landing pages",
+                        "Social media campaign support",
+                        "Advanced capacity & direct-attribution analytics",
+                        "Automated parent review request system",
+                    ],
+                    tagline:
+                        "Scale registrations and facility capacity on autopilot.",
+                    ctaText: "See the demo",
+                    ctaLink: "/audit-request",
+                },
+            ]}
+        >
+            <div slot="footer" class="mt-8 md:mt-12 text-center max-w-2xl mx-auto glass-effect border-white/5 py-4 px-6 md:py-6 rounded-2xl relative overflow-hidden group hover:border-white/10 transition-colors">
+                <div class="absolute inset-0 bg-gradient-to-r from-fadeaway-teal/5 to-fadeaway-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                
+                <p class="text-neutral-400 text-sm md:text-base leading-relaxed relative z-10">
+                    Need something completely custom? We orchestrate <span class="text-neutral-200 font-medium whitespace-nowrap">bespoke builds</span> and <span class="text-fadeaway-teal font-medium whitespace-nowrap">automations</span> to bring your ideas to reality. <a href="/audit-request" class="text-fadeaway-orange hover:text-white transition-colors underline decoration-fadeaway-orange/30 hover:decoration-fadeaway-orange underline-offset-4 ml-1 whitespace-nowrap">Let's connect.</a>
+                </p>
+            </div>
+        </PackagesSection>
+
+        <TestimonialSection 
+            testimonials={[
+                {
+                    headline: "Summer camps sold out in 3 weeks.",
+                    quote: "We used to rely entirely on word of mouth. Bhav and the team completely overhauled our local SEO and Google Business Profile. Now, when parents search for 'kids basketball camps' in our city, we show up first. We hit maximum facility capacity faster than ever.",
+                    author: "[Name]",
+                    role: "Owner at [Facility Name]",
+                    stars: 5
+                },
+                {
+                    headline: "Leads doubled in half the time.",
+                    quote: "The team at Fadeaway built a platform that sells our vision 24/7. Our booking process is streamlined, and parents literally compliment us on how easy the checkout is from their phones.",
+                    author: "[Name]",
+                    role: "Director at [Facility Name]",
+                    stars: 5
+                },
+                {
+                    headline: "We spend zero time doing admin.",
+                    quote: "Our site used to be a brochure. Now it's a full registration engine. The automated scheduling means we don't have to hire a receptionist, saving us thousands a month.",
+                    author: "[Name]",
+                    role: "GM at [Facility Name]",
+                    stars: 5
+                }
+            ]}
+        />
+
+        {
+            /* 05. The Solution: Why Astro? — HIDDEN
         <PillarsSection
-            title="Modern Tech for an Active World."
+            title="Modern Tech for an Active World"
             pillars={[
                 {
                     title: "Lightning Fast Mobile Loads",
@@ -154,24 +245,35 @@ const pillars = [
                 }
             ]}
         />
+        */
+        }
 
-        {/* 05. Features Grid */}
+        {
+            /* 05. Features Grid — HIDDEN
         <FeatureGrid
-            title="Enterprise-Grade Tech Included Standard."
+            title="Enterprise-Grade Tech Included Standard"
             subtitle="Why pay thousands for a custom build? We include all of this in our standard maintenance plans."
             features={features}
         />
+        */
+        }
 
-        {/* 06. Social Proof / Demo Showcase */}
+        {
+            /* 06. Social Proof / Demo Showcase — HIDDEN
         <ProjectShowcase
             projects={[
                 { title: "MetroStars Academy Performance Build" },
                 { title: "Elite Performance Training Demo" },
             ]}
         />
+        */
+        }
 
-        {/* 07. Closing / ROI Section */}
+        {
+            /* 07. Closing / ROI Section — HIDDEN
         <ROISection />
+        */
+        }
     </main>
     <Footer />
 </Layout>

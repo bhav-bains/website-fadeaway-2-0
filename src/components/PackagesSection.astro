@@ -1,0 +1,167 @@
+---
+import Button from "./Button.astro";
+import Badge from "./Badge.astro";
+
+interface Package {
+    name: string;
+    eyebrow?: string;
+    badge?: string;
+    price: string;
+    period?: string;
+    setup?: string;
+    description: string;
+    features: string[];
+    tagline?: string;
+    ctaText?: string;
+    ctaLink?: string;
+    highlighted?: boolean;
+}
+
+interface AddOn {
+    name: string;
+    price: string;
+}
+
+interface Props {
+    eyebrow?: string;
+    title?: string;
+    subtitle?: string;
+    packages: Package[];
+    addOns?: AddOn[];
+}
+
+const {
+    eyebrow = "PACKAGES",
+    title = "Simple, Transparent Packages",
+    subtitle = "Whether you're starting small or scaling fast, we've got a plan that fits.",
+    packages,
+    addOns,
+} = Astro.props;
+---
+
+<section class="section-padding bg-[#0C0C0E] border-t border-white/5" id="pricing">
+    <div class="container-max">
+
+        {/* Section Header */}
+        <div class="mb-16 text-center animate-fade-in">
+            {eyebrow && (
+                <div class="flex justify-center mb-4">
+                    <Badge variant="primary" className="uppercase tracking-widest">{eyebrow}</Badge>
+                </div>
+            )}
+            <h2 class="text-4xl md:text-5xl font-outfit font-bold text-neutral-50 mb-4" set:html={title} />
+            {subtitle && (
+                <p class="text-lg text-neutral-300 max-w-2xl mx-auto">
+                    {subtitle}
+                </p>
+            )}
+        </div>
+
+        {/* Package Cards Grid */}
+        <div class={`grid grid-cols-1 ${packages.length === 2 ? "md:grid-cols-2 max-w-5xl mx-auto" : "md:grid-cols-3"} gap-6 md:gap-8 mb-12 auto-rows-fr`}>
+            {packages
+                .sort((a, b) => {
+                    // highlighted card goes to center
+                    if (a.highlighted) return 0;
+                    if (b.highlighted) return 0;
+                    return 0;
+                })
+                .map((pkg) => (
+                    <div
+                        class="relative flex flex-col"
+                    >
+                        {/* Badge */}
+                        {pkg.badge && (
+                            <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+                                <Badge variant="primary" className="uppercase tracking-widest whitespace-nowrap">{pkg.badge}</Badge>
+                            </div>
+                        )}
+
+                        <div
+                            class={`${
+                                pkg.highlighted
+                                    ? "bg-[#1A1A1C] border-2 border-fadeaway-orange/60 shadow-[0_0_30px_rgba(249,115,22,0.15)] md:scale-105"
+                                    : "bg-[#151517] border border-white/10 hover:border-white/20 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]"
+                            } transition-all duration-300 rounded-2xl p-8 h-full flex flex-col relative z-0`}
+                        >
+                            {/* Plan name */}
+                            <h3 class="text-2xl font-outfit font-bold mb-2 text-neutral-50">
+                                {pkg.name}
+                            </h3>
+
+                            {/* Description */}
+                            <p class="text-neutral-300 text-sm mb-3">
+                                {pkg.description}
+                            </p>
+
+                            {/* Price */}
+                            <div class="mb-1">
+                                <span class="text-4xl font-bold text-fadeaway-teal">
+                                    {pkg.price}
+                                </span>
+                                {pkg.period && (
+                                    <span class="text-lg text-neutral-400 font-normal">
+                                        {pkg.period}
+                                    </span>
+                                )}
+                            </div>
+
+                            {/* Setup fee */}
+                            {pkg.setup && (
+                                <p class="text-xs text-neutral-400 mb-4">+ {pkg.setup}</p>
+                            )}
+
+                            {/* Features */}
+                            <ul class="space-y-2 mb-4 flex-1">
+                                {pkg.features.map((feature) => (
+                                    <li class="flex items-start gap-2 text-sm">
+                                        <span class="text-fadeaway-teal mt-0.5 flex-shrink-0">✓</span>
+                                        <span class="text-neutral-300">{feature}</span>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            {/* Tagline + CTA */}
+                            <div class="pt-3 border-t border-white/10 mt-auto">
+                                {pkg.tagline && (
+                                    <p class="text-sm text-neutral-400 italic mb-3">
+                                        👉 {pkg.tagline}
+                                    </p>
+                                )}
+                                <a href={pkg.ctaLink ?? "/audit-request"} class="block w-full">
+                                    <Button
+                                        variant={pkg.highlighted ? "primary" : "secondary"}
+                                        size="sm"
+                                        className="w-full"
+                                    >
+                                        {pkg.ctaText ?? "Let's Talk"}
+                                    </Button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+
+        {/* Add-Ons Grid */}
+        {addOns && addOns.length > 0 && (
+            <div class="glass-dark rounded-lg p-6 md:p-8">
+                <h3 class="text-2xl font-outfit font-bold mb-6 text-center text-neutral-50">
+                    Add-Ons & Custom Projects
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {addOns.map((addon) => (
+                        <div class="flex items-center justify-between p-4 glass-effect rounded-lg">
+                            <span class="text-neutral-300 text-sm">{addon.name}</span>
+                            <span class="text-fadeaway-orange font-bold">{addon.price}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        )}
+
+        <slot name="footer" />
+
+    </div>
+</section>
