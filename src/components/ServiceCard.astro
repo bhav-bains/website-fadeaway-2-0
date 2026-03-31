@@ -19,11 +19,11 @@ const Wrapper = href ? "a" : "div";
 <Wrapper href={href} class="group block h-full">
     <Card
         variant="glass"
-        className="h-full flex flex-col relative overflow-hidden !p-0 border border-white/5 transition-all duration-500 hover:shadow-[0_0_30px_rgba(45,212,191,0.1)]"
+        className="h-full flex flex-col relative overflow-hidden !p-0 bg-fadeaway-graphite border-2 border-white/20 rounded-3xl transition-all duration-500 hover:shadow-[0_0_40px_rgba(249,115,22,0.15)]"
     >
         {/* Media Section (Image or Icon) */}
         <div
-            class="relative h-64 overflow-hidden bg-white/5 flex items-center justify-center"
+            class="relative h-64 overflow-hidden bg-fadeaway-darker flex items-center justify-center"
         >
             <div
                 class="absolute inset-0 bg-fadeaway-teal/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-3xl"
@@ -53,7 +53,7 @@ const Wrapper = href ? "a" : "div";
         </div>
 
         {/* Content Section */}
-        <div class="p-6 flex flex-col flex-1 bg-fadeaway-graphite/40">
+        <div class="p-6 flex flex-col flex-1">
             {
                 eyebrow && (
                     <div class="mb-2">

@@ -6,6 +6,7 @@ interface Props {
     description?: string;
     ctaText?: string;
     ctaLink?: string;
+    microCopy?: string;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
     description = "A cheap website costs you more in lost business than a professional one costs to maintain.<br/><br/>For a predictable monthly fee, you get a dedicated team ensuring your digital face to the world is flawless. No hidden repair costs. No technical confusion. Just results.",
     ctaText = "See Pricing & Plans",
     ctaLink = "/pricing",
+    microCopy,
 } = Astro.props;
 ---
 
@@ -37,6 +39,13 @@ const {
                 <a href={ctaLink}>
                     <Button variant="primary" size="lg">{ctaText}</Button>
                 </a>
+                {
+                    microCopy && (
+                        <p class="mt-4 text-sm text-neutral-400 font-dm-sans opacity-80">
+                            {microCopy}
+                        </p>
+                    )
+                }
             </div>
         </div>
     </div>

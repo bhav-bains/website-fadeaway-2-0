@@ -9,12 +9,14 @@ interface Props {
     title: string;
     subtitle?: string;
     steps: Step[];
+    bgClass?: string;
+    cardClass?: string;
 }
 
-const { title, subtitle, steps } = Astro.props;
+const { title, subtitle, steps, bgClass = "bg-fadeaway-dark", cardClass = "bg-fadeaway-graphite" } = Astro.props;
 ---
 
-<section class="py-20 md:py-32 relative overflow-hidden bg-fadeaway-dark">
+<section class={`py-20 md:py-32 relative overflow-hidden ${bgClass}`}>
     {/* Setup subtle ambient background */}
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(20,184,166,0.05),transparent_40%)] pointer-events-none"></div>
 
@@ -32,7 +34,7 @@ const { title, subtitle, steps } = Astro.props;
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
             {steps.map((step, index) => (
-                <div class="relative bg-gradient-to-br from-[#18181A] to-[#0D0D0F] border border-white/5 rounded-xl p-5 md:p-5 overflow-hidden">
+                <div class={`relative ${cardClass} border-2 border-white/10 rounded-3xl p-6 md:p-8 overflow-hidden transition-all duration-300 hover:border-fadeaway-teal/40`}>
                     
                     {/* Big background number watermark */}
                     <span class="absolute -top-3 -right-2 text-[80px] leading-none font-outfit font-black text-white/[0.02] pointer-events-none select-none">
