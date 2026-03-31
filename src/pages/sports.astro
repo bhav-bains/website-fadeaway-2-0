@@ -2,23 +2,18 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import PillarsSection from "../components/PillarsSection.astro";
-import AgitatorSection from "../components/AgitatorSection.astro";
 import PackagesSection from "../components/PackagesSection.astro";
 import TestimonialSection from "../components/TestimonialSection.astro";
 import StepsGridSection from "../components/StepsGridSection.astro";
-import FeatureGrid from "../components/FeatureGrid.astro";
-import ProjectShowcase from "../components/ProjectShowcase.astro";
 import ROISection from "../components/ROISection.astro";
-import Button from "../components/Button.astro";
-import Card from "../components/Card.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import AgitatorCard from "../components/AgitatorCard.astro";
 import highPerformanceWebsiteImg from "../assets/high-performance-website.png"; // Placeholder for OG
 import websiteDesignHeroImg from "../assets/website-design-background-image-hero.png";
-import fadeawayCreativesImg from "../assets/image-fadeaway-creatives.png";
-import fcWebPillar2 from "../assets/FC-web-pillar-2.png";
-import fcWebPillar3 from "../assets/FC-web-pillar-3.png";
-import sportsSidelineImg from "../assets/sports-sideline.png";
+import basketballEliteUX from "../assets/basketball-elite-ux.png";
+import basketballSEO from "../assets/basketball-seo.png";
+import basketballSeason from "../assets/basketball-season.png";
 
 const features = [
     {
@@ -87,17 +82,17 @@ const pillars = [
     {
         title: "Elite User Experience",
         copy: "First impressions are the difference between a lead and a bounce. We deploy a sub-3-click mobile checkout that syncs directly with your court or facility availability, guiding parents from 'just looking' to 'signed up' while saving you hours of weekly admin work.",
-        image: fadeawayCreativesImg,
+        image: basketballEliteUX,
     },
     {
         title: "SEO for Local Dominance",
         copy: "Most sports sites are buried on page 3. We optimize your Google Business Profile to dominate the local Map Pack. Clean code and hyper-local landing pages ensure you rank #1 when parents search for camps and club teams in your city.",
-        image: fcWebPillar2,
+        image: basketballSEO,
     },
     {
         title: "Built for the Season",
         copy: 'Your business evolves, and your site should too. From clear "Athlete Pathways" to complex schedule integrations and automated registration engines, our architecture captures leads and fills your facility to maximum capacity without ever needing a rebuild.',
-        image: fcWebPillar3,
+        image: basketballSeason,
     },
 ];
 ---
@@ -122,17 +117,15 @@ const pillars = [
             backgroundImage={websiteDesignHeroImg}
         />
 
-        {/* 02. The Sideline Reality Check (Agitator) */}
-        <AgitatorSection
-            punchline="You aren't just losing clicks.<br />You are losing $2,000+ LTV memberships."
-            backgroundImage={sportsSidelineImg}
-        />
-
         {/* 04. The 3 Pillars */}
         <PillarsSection
             title="The Academy Growth Blueprint"
             pillars={pillars}
-        />
+        >
+            <AgitatorCard
+                punchline="You aren't just losing clicks.<br />You are losing $2,000+ LTV memberships."
+            />
+        </PillarsSection>
 
         {/* 05. Packages / Pricing */}
         <PackagesSection
@@ -280,52 +273,6 @@ const pillars = [
                 },
             ]}
         />
-
-        {
-            /* 05. The Solution: Why Astro? — HIDDEN
-        <PillarsSection
-            title="Modern Tech for an Active World"
-            pillars={[
-                {
-                    title: "Lightning Fast Mobile Loads",
-                    copy: "Aastro components serve zero hydration JS by default. Your site loads in milliseconds, capturing parents' attention before they look back at the field.",
-                    image: fcWebPillar2,
-                },
-                {
-                    title: "SEO-First Architecture",
-                    copy: "Clean HTML structure and automated sitemaps ensure you're at the top of Google when a parent searches for local clubs.",
-                    image: fcWebPillar3,
-                },
-                {
-                    title: "Roster Management Ready",
-                    copy: "Seamless integration with registration platforms or custom tournament filters. built to grow with your program.",
-                    image: fadeawayCreativesImg,
-                }
-            ]}
-        />
-        */
-        }
-
-        {
-            /* 05. Features Grid — HIDDEN
-        <FeatureGrid
-            title="Enterprise-Grade Tech Included Standard"
-            subtitle="Why pay thousands for a custom build? We include all of this in our standard maintenance plans."
-            features={features}
-        />
-        */
-        }
-
-        {
-            /* 06. Social Proof / Demo Showcase — HIDDEN
-        <ProjectShowcase
-            projects={[
-                { title: "MetroStars Academy Performance Build" },
-                { title: "Elite Performance Training Demo" },
-            ]}
-        />
-        */
-        }
 
         {/* 07. Closing / ROI Section */}
         <ROISection 

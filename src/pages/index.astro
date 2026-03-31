@@ -1,3 +1,349 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Button from "../components/Button.astro";
+import Badge from "../components/Badge.astro";
+import { Image } from "astro:assets";
+import logoImage from "../assets/fadeaway-logo-2.png";
+import highPerformanceWebsiteImg from "../assets/high-performance-website.png";
+import sportsMockupImg from "../assets/sports-website-mockup.png";
+import wellnessMockupImg from "../assets/wellness-website-mockup.png";
 ---
-<meta http-equiv="refresh" content="0;url=/sports" />
+
+<Layout
+    title="Fadeaway Creatives | SEO Websites for Sports & Wellness Brands"
+    description="We build high-converting, SEO-first websites for sports academies and wellness studios. Get found on Google, fill your schedule, and scale your business."
+    ogImage={highPerformanceWebsiteImg.src}
+>
+    <Header />
+
+    <main>
+        {/* ── 01. HERO ── */}
+        <section
+            id="hero"
+            class="relative min-h-screen flex items-center justify-center overflow-hidden bg-fadeaway-dark px-4 md:px-8 py-16 md:py-24"
+        >
+            {/* Background glow blobs */}
+            <div class="absolute inset-0 -z-10 overflow-hidden">
+                <div
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-fadeaway-orange/10 rounded-full blur-3xl animate-pulse"
+                >
+                </div>
+                <div
+                    class="absolute top-1/4 right-0 w-80 h-80 bg-fadeaway-teal/5 rounded-full blur-3xl animate-pulse"
+                    style="animation-delay: 1s;"
+                >
+                </div>
+            </div>
+
+            <div class="container-max w-full">
+                <div
+                    class="text-center max-w-3xl mx-auto animate-fade-in pt-16 md:pt-20"
+                >
+                    {/* Logo — hidden on mobile, shown on desktop */}
+                    <div class="hidden md:flex justify-center mb-8">
+                        <Image
+                            src={logoImage}
+                            alt="Fadeaway Creatives"
+                            class="h-24 md:h-32 w-auto"
+                        />
+                    </div>
+
+                    {/* Badge */}
+                    <Badge variant="primary">
+                        <span>✨</span>
+                        <span>Get found. Get clients. Grow online.</span>
+                        <span>✨</span>
+                    </Badge>
+
+                    {/* H1 */}
+                    <h1
+                        class="text-5xl md:text-6xl font-outfit font-bold text-neutral-50 mt-6 mb-6 leading-tight text-balance"
+                    >
+                        Dominate Search Results in Your Market
+                    </h1>
+
+                    {/* Subtitle */}
+                    <p
+                        class="text-lg md:text-xl text-neutral-300 mb-6 text-balance leading-relaxed"
+                    >
+                        SEO-first websites built for performance.<br />
+                        Get found online. Attract better leads. Grow with SEO.
+                    </p>
+
+                    {/* CTAs */}
+                    <div
+                        class="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-12"
+                    >
+                        <a href="/contact">
+                            <Button
+                                variant="secondary"
+                                size="md"
+                                className="min-w-[180px] md:min-w-[200px]"
+                                >Book a Growth Call</Button
+                            >
+                        </a>
+                        <a href="#playbooks">
+                            <Button
+                                variant="secondary"
+                                size="md"
+                                className="min-w-[180px] md:min-w-[200px]"
+                                >View Our Playbooks</Button
+                            >
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* ── 02. CHOOSE YOUR PLAYBOOK ── */}
+        <section
+            id="playbooks"
+            class="section-padding bg-fadeaway-darker border-t border-white/5"
+        >
+            <div class="container-max">
+                <div class="text-center mb-12 animate-fade-in">
+                    <Badge variant="primary">
+                        <span>Industry Playbooks</span>
+                    </Badge>
+                    <h2
+                        class="text-4xl md:text-5xl font-outfit font-bold mt-4 mb-4"
+                    >
+                        Built for Your <span class="text-fadeaway-teal"
+                            >Industry</span
+                        >
+                    </h2>
+                    <p class="text-lg text-neutral-300 max-w-2xl mx-auto">
+                        We don't build generic websites. Every playbook is a
+                        battle-tested system engineered around how your clients
+                        search and book.
+                    </p>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto"
+                >
+                    {/* Sports Card */}
+                    <a
+                        href="/sports"
+                        class="group relative block overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-fadeaway-orange/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(249,115,22,0.15)]"
+                    >
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-fadeaway-orange/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                        >
+                        </div>
+                        <Image
+                            src={sportsMockupImg}
+                            alt="Sports Academy Website"
+                            class="w-full h-64 object-cover object-center opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                        />
+                        <div class="p-6 md:p-8">
+                            <span
+                                class="inline-block text-xs font-bold uppercase tracking-widest text-fadeaway-orange mb-3"
+                            >
+                                Sports Academy Playbook
+                            </span>
+                            <h3
+                                class="text-2xl md:text-3xl font-outfit font-bold text-neutral-50 mb-3"
+                            >
+                                Dominate Local Search.<br />Fill Your Roster.
+                            </h3>
+                            <p
+                                class="text-neutral-400 text-sm leading-relaxed mb-6"
+                            >
+                                For sports academies, club programs, and elite
+                                training facilities ready to scale memberships
+                                and pack their facility.
+                            </p>
+                            <div
+                                class="flex items-center gap-2 text-fadeaway-orange font-semibold text-sm group-hover:gap-4 transition-all duration-300"
+                            >
+                                <span>View Sports Playbook</span>
+                                <svg
+                                    class="w-4 h-4"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    {/* Wellness Card */}
+                    <a
+                        href="/wellness"
+                        class="group relative block overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-fadeaway-teal/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(20,184,166,0.15)]"
+                    >
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-fadeaway-teal/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                        >
+                        </div>
+                        <Image
+                            src={wellnessMockupImg}
+                            alt="Wellness Studio Website"
+                            class="w-full h-64 object-cover object-center opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                        />
+                        <div class="p-6 md:p-8">
+                            <span
+                                class="inline-block text-xs font-bold uppercase tracking-widest text-fadeaway-teal mb-3"
+                            >
+                                Wellness & Boutique Fitness Playbook
+                            </span>
+                            <h3
+                                class="text-2xl md:text-3xl font-outfit font-bold text-neutral-50 mb-3"
+                            >
+                                Dominate Local Search.<br />Fully Book Your
+                                Schedule.
+                            </h3>
+                            <p
+                                class="text-neutral-400 text-sm leading-relaxed mb-6"
+                            >
+                                For boutique fitness studios and wellness
+                                clinics ready to scale their practice and fill
+                                every appointment slot.
+                            </p>
+                            <div
+                                class="flex items-center gap-2 text-fadeaway-teal font-semibold text-sm group-hover:gap-4 transition-all duration-300"
+                            >
+                                <span>View Wellness Playbook</span>
+                                <svg
+                                    class="w-4 h-4"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        {/* ── 04. CONTACT ── */}
+        <section
+            id="contact"
+            class="section-padding bg-fadeaway-dark border-t border-white/5"
+        >
+            <div class="container-max">
+                <div class="max-w-3xl mx-auto">
+                    <div class="text-center mb-12 animate-fade-in">
+                        <h2
+                            class="text-4xl md:text-5xl font-outfit font-bold mb-4"
+                        >
+                            Ready to Grow Your Business Online?
+                        </h2>
+                        <p class="text-lg text-neutral-300 mb-2">
+                            Request your website today — and let's build
+                            something that pays for itself.
+                        </p>
+                        <p class="text-base text-neutral-400">
+                            Join 50+ growing businesses using Fadeaway to win
+                            online.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 mb-8 max-w-2xl mx-auto">
+                        <a
+                            href="tel:705-650-0328"
+                            class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 border border-white/20 rounded-xl text-sm sm:text-base font-medium text-neutral-200 hover:bg-white/5 hover:border-white/30 transition-all min-h-[64px] sm:h-16"
+                        >
+                            <svg
+                                class="w-5 h-5 text-fadeaway-teal flex-shrink-0"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
+                                ></path>
+                            </svg>
+                            <span class="text-center sm:text-left"
+                                >Text/Call<br class="sm:hidden" /> 705-650-0328</span
+                            >
+                        </a>
+                        <a
+                            href="https://instagram.com/fadeawaycreatives"
+                            target="_blank"
+                            rel="noopener"
+                            class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 border border-white/20 rounded-xl text-sm sm:text-base font-medium text-neutral-200 hover:bg-white/5 hover:border-white/30 transition-all min-h-[64px] sm:h-16"
+                        >
+                            <svg
+                                class="w-5 h-5 text-fadeaway-teal flex-shrink-0"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                                ></path>
+                            </svg>
+                            <span class="text-center sm:text-left"
+                                >DM on<br class="sm:hidden" /> Instagram</span
+                            >
+                        </a>
+                        <a
+                            href="mailto:hello@fadeawaycreatives.com"
+                            class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 border border-white/20 rounded-xl text-sm sm:text-base font-medium text-neutral-200 hover:bg-white/5 hover:border-white/30 transition-all min-h-[64px] sm:h-16"
+                        >
+                            <svg
+                                class="w-5 h-5 text-fadeaway-teal flex-shrink-0"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+                                ></path>
+                                <path
+                                    d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+                                ></path>
+                            </svg>
+                            <span class="text-center sm:text-left break-all"
+                                >hello@fadeawaycreatives.com</span
+                            >
+                        </a>
+                        <a
+                            href="https://facebook.com/fadeawaycreatives"
+                            target="_blank"
+                            rel="noopener"
+                            class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 border border-white/20 rounded-xl text-sm sm:text-base font-medium text-neutral-200 hover:bg-white/5 hover:border-white/30 transition-all min-h-[64px] sm:h-16"
+                        >
+                            <svg
+                                class="w-5 h-5 text-fadeaway-teal flex-shrink-0"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 3.667h-3.533v7.98H9.101z"
+                                ></path>
+                            </svg>
+                            <span class="text-center sm:text-left"
+                                >DM on<br class="sm:hidden" /> Facebook</span
+                            >
+                        </a>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="/contact">
+                            <Button variant="primary" size="lg"
+                                >Send Us a Message</Button
+                            >
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+</Layout>
