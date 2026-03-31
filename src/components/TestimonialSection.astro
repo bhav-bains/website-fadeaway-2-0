@@ -31,7 +31,7 @@ const {
         <div class="text-center mb-12 md:mb-16 animate-fade-in">
             {eyebrow && (
                 <div class="mb-4 flex justify-center">
-                    <Badge variant="primary" className="uppercase tracking-[0.2em] text-xs px-4">{eyebrow}</Badge>
+                    <Badge variant="primary">{eyebrow}</Badge>
                 </div>
             )}
             {title && (
@@ -40,7 +40,7 @@ const {
         </div>
 
         {/* Scrollable Container */}
-        <div class="-mx-4 px-4 md:mx-0 md:px-0 flex gap-4 md:gap-6 overflow-x-auto overscroll-x-contain snap-x snap-mandatory no-scrollbar pb-8 md:grid md:grid-cols-3 md:overflow-visible w-screen md:w-full">
+        <div id="testimonial-scroll-container" class="-mx-4 px-4 md:mx-0 md:px-0 flex gap-4 md:gap-6 overflow-x-auto overscroll-x-contain snap-x snap-mandatory no-scrollbar pb-8 md:grid md:grid-cols-3 md:overflow-visible w-screen md:w-full">
             {testimonials.map((testimonial) => (
                 <div class="flex-shrink-0 w-[85vw] md:w-auto snap-center bg-[#131315] border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col shadow-[0_0_30px_rgba(0,0,0,0.5)] border-t-2 border-t-fadeaway-orange animate-fade-in relative hover:border-white/20 transition-all duration-300">
                     
@@ -64,8 +64,8 @@ const {
                         </p>
                     </div>
 
-                    {/* Attribution */}
-                    <div class="pt-6 border-t border-white/5 mt-auto">
+                    {/* Attribution (Hidden for now based on user request) */}
+                    <div class="pt-6 border-t border-white/5 mt-auto hidden">
                         <span class="text-fadeaway-teal font-bold block">{testimonial.author}</span>
                         <span class="text-neutral-500 text-xs uppercase tracking-widest mt-1 block">{testimonial.role}</span>
                     </div>
@@ -74,3 +74,55 @@ const {
         </div>
     </div>
 </section>
+
+<script>
+    function setupTestimonialScroll() {
+        const container = document.getElementById('testimonial-scroll-container');
+        if (!container) return;
+
+        let autoScrollInterval: ReturnType<typeof setInterval> | undefined;
+        
+        const startAutoScroll = () => {
+            // Only auto-scroll on screens smaller than md (768px)
+            if (window.innerWidth >= 768) return;
+            
+            // Clear any existing interval to prevent runaway speeds
+            if (autoScrollInterval) clearInterval(autoScrollInterval);
+
+            autoScrollInterval = setInterval(() => {
+                // Check if scrolled to the absolute right edge
+                // We leave a tiny 10px buffer for precision bugs in browser scrollWidths
+                if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+                    // Loop back to the start smoothly
+                    container.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    // Advance right by ~85vw (which is the width of one card from our Tailwind classes)
+                    const scrollAmount = window.innerWidth * 0.85;
+                    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+            }, 3000);
+        };
+
+        const stopAutoScroll = () => {
+            if (autoScrollInterval) clearInterval(autoScrollInterval);
+        };
+
+        // Initialize
+        startAutoScroll();
+
+        // Pause auto-scroll immediately if the user touches the screen to avoid fighting their thumb
+        container.addEventListener('touchstart', stopAutoScroll, { passive: true });
+        
+        // Handle window re-sizes dynamically
+        window.addEventListener('resize', () => {
+            stopAutoScroll();
+            startAutoScroll();
+        });
+    }
+
+    // Run setup immediately since Astro scripts are deferred modules
+    setupTestimonialScroll();
+    
+    // Support Astro View Transitions API if used anywhere on the site
+    document.addEventListener('astro:page-load', setupTestimonialScroll);
+</script>

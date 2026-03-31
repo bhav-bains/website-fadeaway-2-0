@@ -85,7 +85,7 @@
   }
 
   .badge-primary {
-    @apply inline-flex items-center gap-1 px-3 py-1 bg-fadeaway-orange/20 text-fadeaway-orange rounded-full text-sm font-medium;
+    @apply inline-flex items-center justify-center gap-1.5 px-6 py-2 md:px-8 md:py-2.5 bg-fadeaway-orange/20 text-fadeaway-orange rounded-full text-[14px] md:text-[15px] font-medium tracking-normal normal-case whitespace-nowrap;
   }
 
   .card-glass {

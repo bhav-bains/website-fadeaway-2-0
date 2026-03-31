@@ -1,0 +1,73 @@
+---
+import Badge from "./Badge.astro";
+
+interface Phase {
+    number: string;
+    title: string;
+    description: string;
+    features: string[];
+}
+
+interface Props {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    phases: Phase[];
+}
+
+const { eyebrow, title, subtitle, phases } = Astro.props;
+---
+
+<section class="relative py-24 md:py-32 overflow-hidden bg-fadeaway-dark">
+    {/* Decorative background glow */}
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-fadeaway-orange/5 blur-[120px] pointer-events-none -z-10"></div>
+
+    <div class="container-max px-4 md:px-6">
+        <div class="max-w-4xl mx-auto text-center mb-16 md:mb-24">
+            <div class="mb-4">
+                <Badge variant="primary">{eyebrow}</Badge>
+            </div>
+            <h2 class="text-4xl md:text-6xl font-outfit font-bold text-neutral-50 mb-6 leading-tight">
+                {title}
+            </h2>
+            <p class="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto">
+                {subtitle}
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+            {/* Connecting Line (Desktop) */}
+            <div class="hidden md:block absolute top-1/2 left-0 w-full h-px bg-white/10 -z-10 translate-y-12"></div>
+
+            {phases.map((phase) => (
+                <div class="relative group">
+                    <div class="bg-[#161618] border border-white/5 rounded-2xl p-8 h-full transition-all duration-500 hover:border-fadeaway-orange/30 hover:shadow-[0_0_30px_rgba(249,115,22,0.1)]">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-fadeaway-orange/10 border border-fadeaway-orange/20 flex items-center justify-center text-fadeaway-orange font-outfit font-bold text-xl drop-shadow-[0_0_8px_rgba(249,115,22,0.3)]">
+                                {phase.number}
+                            </div>
+                            <h3 class="text-xl font-bold text-neutral-50">
+                                {phase.title}
+                            </h3>
+                        </div>
+                        
+                        <p class="text-neutral-400 mb-8 text-sm leading-relaxed">
+                            {phase.description}
+                        </p>
+
+                        <ul class="space-y-3">
+                            {phase.features.map((feature) => (
+                                <li class="flex items-start gap-2 text-sm text-neutral-500 group-hover:text-neutral-300 transition-colors">
+                                    <svg class="w-4 h-4 mt-0.5 text-fadeaway-teal/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    <span>{feature}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

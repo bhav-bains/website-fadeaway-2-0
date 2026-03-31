@@ -10,6 +10,7 @@ interface Package {
     period?: string;
     setup?: string;
     description: string;
+    includesSubtext?: string;
     features: string[];
     tagline?: string;
     ctaText?: string;
@@ -46,7 +47,7 @@ const {
         <div class="mb-16 text-center animate-fade-in">
             {eyebrow && (
                 <div class="flex justify-center mb-4">
-                    <Badge variant="primary" className="uppercase tracking-widest">{eyebrow}</Badge>
+                    <Badge variant="primary">{eyebrow}</Badge>
                 </div>
             )}
             <h2 class="text-4xl md:text-5xl font-outfit font-bold text-neutral-50 mb-4" set:html={title} />
@@ -73,7 +74,7 @@ const {
                         {/* Badge */}
                         {pkg.badge && (
                             <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-                                <Badge variant="primary" className="uppercase tracking-widest whitespace-nowrap">{pkg.badge}</Badge>
+                                <Badge variant="primary">{pkg.badge}</Badge>
                             </div>
                         )}
 
@@ -93,6 +94,12 @@ const {
                             <p class="text-neutral-300 text-sm mb-3">
                                 {pkg.description}
                             </p>
+
+                            {pkg.includesSubtext && (
+                                <p class="text-[15px] font-semibold text-white/90 mb-6 bg-white/5 border border-white/10 rounded-lg p-4 shadow-inner">
+                                    {pkg.includesSubtext}
+                                </p>
+                            )}
 
                             {/* Price */}
                             <div class="mb-1">
@@ -125,7 +132,7 @@ const {
                             <div class="pt-3 border-t border-white/10 mt-auto">
                                 {pkg.tagline && (
                                     <p class="text-sm text-neutral-400 italic mb-3">
-                                        👉 {pkg.tagline}
+                                        {pkg.tagline}
                                     </p>
                                 )}
                                 <a href={pkg.ctaLink ?? "/audit-request"} class="block w-full">
