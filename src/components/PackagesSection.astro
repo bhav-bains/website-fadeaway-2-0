@@ -40,7 +40,7 @@ const {
 } = Astro.props;
 ---
 
-<section class="section-padding bg-[#0C0C0E] border-t border-white/5" id="pricing">
+<section class="section-padding bg-fadeaway-dark border-t border-white/5" id="pricing">
     <div class="container-max">
 
         {/* Section Header */}
@@ -135,7 +135,7 @@ const {
                                         {pkg.tagline}
                                     </p>
                                 )}
-                                <a href={pkg.ctaLink ?? "/audit-request"} class="block w-full">
+                                <a href={pkg.ctaLink ?? "/contact"} class="block w-full">
                                     <Button
                                         variant={pkg.highlighted ? "primary" : "secondary"}
                                         size="sm"

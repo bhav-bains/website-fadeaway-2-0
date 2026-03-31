@@ -88,8 +88,8 @@ const socialLinks = [
       </nav>
 
       <a
-        href="/audit-request"
-        class="bg-fadeaway-orange/10 border border-fadeaway-orange/50 text-fadeaway-orange hover:bg-fadeaway-orange hover:text-black transition-all duration-300 font-bold text-xs px-4 py-1.5 rounded-lg uppercase tracking-wider shadow-[0_0_10px_rgba(249,115,22,0.1)]"
+        href="/contact"
+        class="bg-fadeaway-orange/10 border border-fadeaway-orange/50 text-fadeaway-orange hover:bg-fadeaway-orange hover:text-black transition-all duration-300 font-bold text-xs px-4 py-1.5 rounded-lg uppercase tracking-wider shadow-[0_0_10px_rgba(249,115,22,0.15)]"
       >
         See Demo
       </a>
@@ -97,26 +97,32 @@ const socialLinks = [
   </div>
 
   <!-- Mobile Navigation Menu -->
-  <nav id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 backdrop-blur-md bg-black/95 border-b border-white/10 shadow-lg transition-all duration-300">
-    <div class="flex flex-col items-center gap-1.5 p-4">
+  <nav id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 h-[calc(100vh-60px)] backdrop-blur-sm bg-black/40 transition-all duration-300">
+    <div class="m-4 rounded-3xl backdrop-blur-2xl bg-[#1a1a1c]/90 border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] flex flex-col items-stretch gap-4 p-6 py-8 w-full max-w-sm mx-auto mt-4">
       {navLinks.map((link) => {
         const isActive = normalizedPath === link.href;
         return (
           <a
             href={link.href}
-            class={`mobile-nav-link transition-all duration-300 font-medium text-sm px-3 py-1.5 w-full text-center relative ${
+            class={`mobile-nav-link transition-all duration-300 flex items-center justify-between font-outfit font-medium text-[17px] px-5 py-4 rounded-2xl w-full ${
               isActive 
-              ? "text-white after:absolute after:bottom-0 after:left-1/4 after:right-1/4 after:h-0.5 after:bg-fadeaway-orange" 
-              : "text-neutral-400 hover:text-white"
+              ? "bg-fadeaway-orange/20 border border-fadeaway-orange/50 text-white shadow-inner" 
+              : "bg-white/5 border border-white/10 text-neutral-300 hover:bg-white/10 hover:text-white"
             }`}
           >
-            {link.label}
+            <span>{link.label}</span>
+            <svg class={`w-5 h-5 ${isActive ? 'text-fadeaway-orange shadow-sm' : 'text-neutral-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
           </a>
         );
       })}
+      
+      <div class="h-px bg-white/10 my-2 w-full"></div>
+
       <a
-        href="/audit-request"
-        class="mobile-nav-link mt-2 bg-fadeaway-orange/10 border border-fadeaway-orange/50 text-fadeaway-orange hover:bg-fadeaway-orange hover:text-black transition-all duration-300 font-bold text-xs px-4 py-2 rounded-lg uppercase tracking-wider w-full text-center shadow-[0_0_10px_rgba(249,115,22,0.1)]"
+        href="/contact"
+        class="mobile-nav-link bg-fadeaway-orange hover:bg-orange-500 text-black transition-all duration-300 font-bold text-[15px] px-6 py-4 rounded-2xl uppercase tracking-wider w-full text-center shadow-[0_0_20px_rgba(249,115,22,0.3)] mt-2"
       >
         See Demo
       </a>

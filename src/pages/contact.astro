@@ -1,31 +1,30 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
-import { Button } from "../components/Button";
-import { Badge } from "../components/Badge";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Button from "../components/Button.astro";
+import Badge from "../components/Badge.astro";
 ---
 
-<Layout title="Request Your Free Website Audit - Fadeaway Creatives">
-    <Header client:load />
+<Layout title="Contact Us | Fadeaway Creatives" description="Ready to scale your sports or wellness brand? Send us a message and we'll build the digital engine your academy deserves.">
+    <Header />
 
     <main class="pt-24 min-h-screen">
         <section class="section-padding">
             <div class="container-max max-w-2xl mx-auto">
                 <div class="text-center mb-10 animate-fade-in">
                     <Badge variant="primary">
-                        <span>Free Audit</span>
+                        <span>Contact</span>
                     </Badge>
                     <h1
                         class="text-4xl md:text-5xl font-outfit font-bold mt-4 mb-4"
                     >
-                        See Exactly How to <span class="text-fadeaway-teal"
-                            >Win Online</span
+                        Build the Digital Engine Your <span class="text-fadeaway-teal"
+                            >Brand Deserves</span
                         >
                     </h1>
                     <p class="text-lg text-neutral-300">
-                        Get a breakdown of your website's SEO, design, and
-                        performance gaps.
+                        Ready to scale? Send us a message and we'll get back to you within 24 hours.
                     </p>
                 </div>
 
@@ -33,9 +32,9 @@ import { Badge } from "../components/Badge";
                     class="glass-effect p-6 md:p-8 rounded-2xl animate-slide-up"
                 >
                     <form
-                        name="audit-request"
+                        name="contact"
                         method="POST"
-                        action="/audit-success"
+                        action="/contact-success"
                         data-netlify="true"
                         class="space-y-4"
                     >
@@ -53,7 +52,7 @@ import { Badge } from "../components/Badge";
                                     id="name"
                                     required
                                     placeholder="John Doe"
-                                    class="input-primary"
+                                    class="input-primary w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-neutral-500 focus:border-fadeaway-teal/50 outline-none transition-colors"
                                 />
                             </div>
 
@@ -70,7 +69,7 @@ import { Badge } from "../components/Badge";
                                     id="email"
                                     required
                                     placeholder="john@example.com"
-                                    class="input-primary"
+                                    class="input-primary w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-neutral-500 focus:border-fadeaway-teal/50 outline-none transition-colors"
                                 />
                             </div>
 
@@ -79,30 +78,31 @@ import { Badge } from "../components/Badge";
                                     for="website"
                                     class="block text-sm font-medium text-neutral-300 mb-1"
                                 >
-                                    Website URL
+                                    Website URL / Company Name
                                 </label>
                                 <input
-                                    type="url"
+                                    type="text"
                                     name="website"
                                     id="website"
                                     required
                                     placeholder="https://yourbusiness.com"
-                                    class="input-primary"
+                                    class="input-primary w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-neutral-500 focus:border-fadeaway-teal/50 outline-none transition-colors"
                                 />
                             </div>
 
                             <div>
                                 <label
-                                    for="notes"
+                                    for="message"
                                     class="block text-sm font-medium text-neutral-300 mb-1"
                                 >
-                                    Specific Challenges (Optional)
+                                    Your Message
                                 </label>
                                 <textarea
-                                    name="notes"
-                                    id="notes"
-                                    placeholder="I'm struggling to rank for..."
-                                    class="input-primary min-h-[100px] resize-none"
+                                    name="message"
+                                    id="message"
+                                    required
+                                    placeholder="Tell us about your project, goals, or any questions you have..."
+                                    class="input-primary w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-neutral-500 focus:border-fadeaway-teal/50 outline-none transition-colors min-h-[150px] resize-none"
                                 ></textarea>
                             </div>
 
@@ -113,12 +113,12 @@ import { Badge } from "../components/Badge";
                                     className="w-full"
                                     type="submit"
                                 >
-                                    Get My Free Audit
+                                    Send Message
                                 </Button>
                                 <p
                                     class="text-xs text-center text-neutral-500 mt-3"
                                 >
-                                    No credit card required. No obligation.
+                                    We typically respond in less than 24 hours.
                                 </p>
                             </div>
                         </div>

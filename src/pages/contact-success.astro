@@ -1,34 +1,32 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
-import { Button } from "../components/Button";
-import { Badge } from "../components/Badge";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Button from "../components/Button.astro";
+import Badge from "../components/Badge.astro";
 ---
 
-<Layout title="Request Received - Fadeaway Creatives">
-    <Header client:load />
+<Layout title="Message Sent | Fadeaway Creatives">
+    <Header />
 
     <main class="pt-24 min-h-screen flex items-center justify-center">
         <section class="section-padding mb-24">
             <div class="container-max max-w-2xl mx-auto text-center">
                 <div
-                    class="glass-effect p-8 md:p-12 rounded-2xl animate-fade-in"
+                    class="glass-effect p-8 md:p-12 rounded-3xl animate-fade-in border border-white/10 shadow-2xl bg-[#1a1a1c]/50 backdrop-blur-xl"
                 >
-                    <div class="text-6xl mb-6">🎉</div>
+                    <div class="text-6xl mb-6">🚀</div>
 
                     <h1 class="text-3xl md:text-4xl font-outfit font-bold mb-4">
-                        We've Received Your Request!
+                        We've Received Your Message!
                     </h1>
 
                     <p
                         class="text-lg text-neutral-300 mb-8 max-w-lg mx-auto leading-relaxed"
                     >
-                        Thanks for reaching out. We're already analyzing your
-                        site's stats (just kidding, but we will soon).
+                        Thanks for reaching out to Fadeaway Creatives. We're already spinning up our digital engine to see how we can best scale your brand.
                         <br /><br />
-                        Keep an eye on your inbox — we'll send your personalized audit
-                        video shortly.
+                        Keep an eye on your inbox — we'll be in touch within 24 hours.
                     </p>
 
                     <a href="/">

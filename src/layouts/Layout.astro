@@ -8,6 +8,9 @@ interface Props {
 }
 
 const { title, description = 'Fadeaway Creatives - SEO Agency for Sports & Wellness Brands', ogImage } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://fadeawaycreatives.com');
+const siteName = 'Fadeaway Creatives';
+
 ---
 
 <!doctype html>
@@ -18,24 +21,56 @@ const { title, description = 'Fadeaway Creatives - SEO Agency for Sports & Welln
     <link rel="icon" type="image/png" href="/fadeaway-logo.png" />
     <link rel="apple-touch-icon" href="/fadeaway-logo.png" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#FF6B35" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site || 'https://fadeawaycreatives.com')} />}
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={new URL(ogImage, Astro.site || 'https://fadeawaycreatives.com')} />}
+
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4T10QZ6L2D"></script>
-    <script>
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'G-4T10QZ6L2D');
     </script>
+    <script type="application/ld+json" set:html={`
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Fadeaway Creatives",
+        "url": "https://fadeawaycreatives.com",
+        "logo": "https://fadeawaycreatives.com/fadeaway-logo.png",
+        "sameAs": [
+          "https://instagram.com/fadeawaycreatives",
+          "https://facebook.com/fadeawaycreatives"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "hello@fadeawaycreatives.com",
+          "contactType": "customer service"
+        }
+      }
+    `} />
   </head>
   <body>
     <slot />
