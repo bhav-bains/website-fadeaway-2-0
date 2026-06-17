@@ -19,29 +19,15 @@ import Badge from "../components/Badge.astro";
                     <h1 class="text-4xl md:text-5xl font-outfit font-bold mt-4 mb-4">
                         We've Received Your Details!
                     </h1>
-                    <p class="text-xl text-neutral-300 max-w-2xl mx-auto">
-                        One last step to confirm your custom demo — please book a time on the calendar below for your 15-minute walkthrough.
+                    <p class="text-xl text-neutral-300 max-w-2xl mx-auto mb-10">
+                        Thank you for reaching out! We have successfully received your details. A member of our team will review your message and get back to you within 24 hours.
                     </p>
+                    <div class="flex justify-center">
+                        <a href="/">
+                            <Button variant="primary" size="md">Back to Homepage</Button>
+                        </a>
+                    </div>
                 </div>
-
-                <div
-                    class="glass-effect p-4 md:p-6 rounded-3xl animate-slide-up border border-white/10 shadow-2xl bg-[#1a1a1c]/30 backdrop-blur-xl overflow-hidden"
-                >
-                    <!-- Google Calendar Appointment Scheduling begin -->
-                    <iframe 
-                        src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1kpzbQL7FmgB-XKiRGJbBtXxfpJQE7ESZrGNcxMNQbfNJmTi6FQb0a737-48v-8tmmC0X0ik4e?gv=true" 
-                        style="border: 0" 
-                        width="100%" 
-                        height="700" 
-                        frameborder="0"
-                        class="rounded-2xl bg-white"
-                    ></iframe>
-                    <!-- end Google Calendar Appointment Scheduling -->
-                </div>
-                
-                <p class="mt-8 text-neutral-400">
-                    Can't find a time? <a href="/contact" class="text-fadeaway-orange hover:underline">Go back</a> or message us on WhatsApp.
-                </p>
             </div>
         </section>
     </main>
