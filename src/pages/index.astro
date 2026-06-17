@@ -9,8 +9,12 @@ import logoImage from "../assets/fadeaway-logo-2.png";
 import highPerformanceWebsiteImg from "../assets/high-performance-website.png";
 import sportsMockupImg from "../assets/sports-website-mockup.png";
 import wellnessMockupImg from "../assets/wellness-website-mockup.png";
+import serviceProductMockupImg from "../assets/service-product-mockup.png";
+import ecommerceMockupImg from "../assets/ecommerce-mockup.png";
 import StepsGridSection from "../components/StepsGridSection.astro";
 import ROISection from "../components/ROISection.astro";
+import ServicesSection from "../components/ServicesSection.astro";
+import LabsMVPSection from "../components/LabsMVPSection.astro";
 ---
 
 <Layout
@@ -166,15 +170,6 @@ import ROISection from "../components/ROISection.astro";
                 <div
                     class="text-center max-w-3xl mx-auto animate-fade-in pt-16 md:pt-20"
                 >
-                    {/* Logo — hidden on mobile, shown on desktop */}
-                    <div class="hidden md:flex justify-center mb-8">
-                        <Image
-                            src={logoImage}
-                            alt="Fadeaway Creatives"
-                            class="h-24 md:h-32 w-auto"
-                        />
-                    </div>
-
                     {/* Badge */}
                     <Badge variant="primary">
                         <span>✨</span>
@@ -213,12 +208,12 @@ import ROISection from "../components/ROISection.astro";
                                 >Book a Growth Call</Button
                             >
                         </a>
-                        <a href="#playbooks">
+                        <a href="#services">
                             <Button
                                 variant="secondary"
                                 size="md"
                                 className="min-w-[180px] md:min-w-[200px]"
-                                >View Our Playbooks</Button
+                                >View Our Services</Button
                             >
                         </a>
                     </div>
@@ -369,27 +364,29 @@ import ROISection from "../components/ROISection.astro";
             }
         </style>
 
-        {/* ── 02. CHOOSE YOUR PLAYBOOK ── */}
+        <ServicesSection />
+
+        {/* ── 02. SOLUTIONS ── */}
         <section
-            id="playbooks"
+            id="solutions"
             class="section-padding bg-fadeaway-darker border-t border-white/5"
         >
             <div class="container-max">
                 <div class="text-center mb-12 animate-fade-in">
                     <Badge variant="primary">
-                        <span>Industry Playbooks</span>
+                        <span>SOLUTIONS</span>
                     </Badge>
                     <h2
                         class="text-4xl md:text-5xl font-outfit font-bold mt-4 mb-4"
                     >
-                        Built for Your <span class="text-fadeaway-teal"
-                            >Industry</span
+                        Tailored Solutions for Your <span class="text-fadeaway-teal"
+                            >Business</span
                         >
                     </h2>
                     <p class="text-lg text-neutral-300 max-w-2xl mx-auto">
-                        We don't build generic websites. Every playbook is a
-                        battle-tested system engineered around how your clients
-                        search and book.
+                        We don't build generic websites. Every solution is a
+                        battle-tested system engineered around how your specific
+                        audience searches, engages, and converts.
                     </p>
                 </div>
 
@@ -414,7 +411,7 @@ import ROISection from "../components/ROISection.astro";
                             <span
                                 class="inline-block text-xs font-bold uppercase tracking-widest text-fadeaway-orange mb-3"
                             >
-                                Sports Academy Playbook
+                                Sports Academies
                             </span>
                             <h3
                                 class="text-2xl md:text-3xl font-outfit font-bold text-neutral-50 mb-3"
@@ -425,13 +422,13 @@ import ROISection from "../components/ROISection.astro";
                                 class="text-neutral-400 text-sm leading-relaxed mb-6"
                             >
                                 For sports academies, club programs, and elite
-                                training facilities ready to scale memberships
-                                and pack their facility.
+                                training facilities ready to scale memberships,
+                                capture registrations, and pack their facility.
                             </p>
                             <div
                                 class="flex items-center gap-2 text-fadeaway-orange font-semibold text-sm group-hover:gap-4 transition-all duration-300"
                             >
-                                <span>View Sports Playbook</span>
+                                <span>View Sports Solution</span>
                                 <svg
                                     class="w-4 h-4"
                                     fill="none"
@@ -466,7 +463,7 @@ import ROISection from "../components/ROISection.astro";
                             <span
                                 class="inline-block text-xs font-bold uppercase tracking-widest text-fadeaway-teal mb-3"
                             >
-                                Wellness & Boutique Fitness Playbook
+                                Boutique Fitness & Wellness
                             </span>
                             <h3
                                 class="text-2xl md:text-3xl font-outfit font-bold text-neutral-50 mb-3"
@@ -477,14 +474,14 @@ import ROISection from "../components/ROISection.astro";
                             <p
                                 class="text-neutral-400 text-sm leading-relaxed mb-6"
                             >
-                                For boutique fitness studios and wellness
-                                clinics ready to scale their practice and fill
-                                every appointment slot.
+                                For boutique fitness studios, wellness clinics,
+                                and personal trainers ready to scale their practice,
+                                capture appointments, and fill every class slot.
                             </p>
                             <div
                                 class="flex items-center gap-2 text-fadeaway-teal font-semibold text-sm group-hover:gap-4 transition-all duration-300"
                             >
-                                <span>View Wellness Playbook</span>
+                                <span>View Wellness Solution</span>
                                 <svg
                                     class="w-4 h-4"
                                     fill="none"
@@ -500,9 +497,75 @@ import ROISection from "../components/ROISection.astro";
                             </div>
                         </div>
                     </a>
+
+                    {/* Startups & SaaS Card */}
+                    <div
+                        class="group relative block overflow-hidden rounded-3xl border border-white/20 bg-fadeaway-graphite hover:border-fadeaway-orange/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(249,115,22,0.15)]"
+                    >
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-fadeaway-orange/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                        >
+                        </div>
+                        <Image
+                            src={serviceProductMockupImg}
+                            alt="Startups & SaaS Website"
+                            class="w-full h-64 object-cover object-center opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                        />
+                        <div class="p-6 md:p-8">
+                            <span
+                                class="inline-block text-xs font-bold uppercase tracking-widest text-fadeaway-orange mb-3"
+                            >
+                                Startups & SaaS
+                            </span>
+                            <h3
+                                class="text-2xl md:text-3xl font-outfit font-bold text-neutral-50 mb-3"
+                            >
+                                Capture High-Intent Leads.<br />Scale Demos & Signups.
+                            </h3>
+                            <p
+                                class="text-neutral-400 text-sm leading-relaxed"
+                            >
+                                For startups, service-based brands, and SaaS products looking to turn high-intent search traffic into booked product demos, new signups, and scalable growth.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* E-commerce Card */}
+                    <div
+                        class="group relative block overflow-hidden rounded-3xl border border-white/20 bg-fadeaway-graphite hover:border-fadeaway-teal/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(20,184,166,0.15)]"
+                    >
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-fadeaway-teal/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                        >
+                        </div>
+                        <Image
+                            src={ecommerceMockupImg}
+                            alt="E-commerce Store Website"
+                            class="w-full h-64 object-cover object-center opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                        />
+                        <div class="p-6 md:p-8">
+                            <span
+                                class="inline-block text-xs font-bold uppercase tracking-widest text-fadeaway-teal mb-3"
+                            >
+                                E-commerce Stores
+                            </span>
+                            <h3
+                                class="text-2xl md:text-3xl font-outfit font-bold text-neutral-50 mb-3"
+                            >
+                                Optimize Shopping Funnels.<br />Increase Average Order Value.
+                            </h3>
+                            <p
+                                class="text-neutral-400 text-sm leading-relaxed"
+                            >
+                                For physical and digital product brands looking to scale online sales with lightning-fast shops, custom cart systems, and optimized checkout experiences.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <LabsMVPSection />
 
         {/* ── 03. HOW WE HELP ── */}
         <StepsGridSection
@@ -548,9 +611,8 @@ import ROISection from "../components/ROISection.astro";
         <ROISection
             title="Build the Digital Engine Your Brand Deserves."
             description="Stop letting bad tech slow down your growth. Let’s build a frictionless, 24/7 digital engine that captures high-intent leads and scales your business on autopilot."
-            ctaText="Request Custom Demo"
-            ctaLink="/contact"
-            microCopy="Zero pressure. We build it, we show you how it works, you decide if you want it."
+            ctaText="Book a Growth Call"
+            ctaLink="https://calendar.app.google/muWWvjBAQdLVuBtM9"
         />
     </main>
 

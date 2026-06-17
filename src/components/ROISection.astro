@@ -36,7 +36,11 @@ const {
             />
 
             <div class="relative z-10">
-                <a href={ctaLink}>
+                <a 
+                    href={ctaLink}
+                    target={ctaLink.startsWith('http') ? '_blank' : '_self'}
+                    rel={ctaLink.startsWith('http') ? 'noopener' : undefined}
+                >
                     <Button variant="primary" size="lg">{ctaText}</Button>
                 </a>
                 {
