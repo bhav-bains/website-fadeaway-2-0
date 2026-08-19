@@ -1,98 +1,190 @@
 ---
 import '../styles/globals.css';
+import { siteConfig } from '../data/site';
 
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
   ogImage?: string;
+  ogType?: string;
+  noIndex?: boolean;
+  jsonLd?: Record<string, any>;
 }
 
-const { title, description = 'Fadeaway Creatives - SEO Agency for Sports & Wellness Brands', ogImage } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://fadeawaycreatives.com');
-const siteName = 'Fadeaway Creatives';
+const {
+  title = siteConfig.title,
+  description = siteConfig.description,
+  ogImage,
+  ogType = 'website',
+  noIndex = false,
+  jsonLd,
+} = Astro.props;
 
+// Canonical URL generation
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const canonicalURL = new URL(currentPath, siteConfig.url).toString();
+
+// OpenGraph Image Resolution
+const imagePath = ogImage || siteConfig.defaultOgImage;
+const resolvedOgImage = imagePath.startsWith('http')
+  ? imagePath
+  : new URL(imagePath, siteConfig.url).toString();
+
+// Default Schema.org Structured Data (Organization & WebSite)
+const defaultJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${siteConfig.url}/#organization`,
+      name: siteConfig.name,
+      url: siteConfig.url,
+      logo: `${siteConfig.url}/fadeaway-logo.png`,
+      image: resolvedOgImage,
+      description: siteConfig.description,
+      priceRange: '$$',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: siteConfig.address.city,
+        addressRegion: siteConfig.address.region,
+        addressCountry: siteConfig.address.countryCode,
+      },
+      sameAs: [
+        siteConfig.social.instagram,
+        siteConfig.social.facebook,
+      ],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: siteConfig.email,
+        contactType: 'customer service',
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteConfig.url}/#website`,
+      url: siteConfig.url,
+      name: siteConfig.name,
+      description: siteConfig.description,
+      publisher: {
+        '@id': `${siteConfig.url}/#organization`,
+      },
+      inLanguage: 'en-US',
+    },
+  ],
+};
+
+const structuredData = jsonLd
+  ? {
+      '@context': 'https://schema.org',
+      '@graph': [...defaultJsonLd['@graph'], jsonLd],
+    }
+  : defaultJsonLd;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/fadeaway-logo.png" />
     <link rel="apple-touch-icon" href="/fadeaway-logo.png" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#FF6B35" />
+    <meta name="theme-color" content={siteConfig.themeColor} />
+    
+    <!-- Primary SEO Meta Tags -->
     <title>{title}</title>
+    <meta name="title" content={title} />
     <meta name="description" content={description} />
+    <meta name="author" content={siteConfig.name} />
     <link rel="canonical" href={canonicalURL} />
-    <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow" />
+    <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+    <meta name="googlebot" content={noIndex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+
+    <!-- Google Fonts Preconnect & Non-Blocking Async Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap"
+      />
+    </noscript>
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:site_name" content={siteName} />
+    <meta property="og:site_name" content={siteConfig.name} />
     <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site || 'https://fadeawaycreatives.com')} />}
+    <meta property="og:image" content={resolvedOgImage} />
+    <meta property="og:image:alt" content={`${title} - ${siteConfig.name}`} />
 
-    <!-- Twitter -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    {ogImage && <meta name="twitter:image" content={new URL(ogImage, Astro.site || 'https://fadeawaycreatives.com')} />}
+    <meta name="twitter:image" content={resolvedOgImage} />
+    <meta name="twitter:image:alt" content={`${title} - ${siteConfig.name}`} />
 
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4T10QZ6L2D"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-4T10QZ6L2D');
-    </script>
+    <!-- Google Analytics (GA4) -->
+    {siteConfig.analytics.googleAnalyticsId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.analytics.googleAnalyticsId}`}></script>
+        <script is:inline define:vars={{ gaId: siteConfig.analytics.googleAnalyticsId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', gaId, { send_page_view: true });
+        </script>
+      </>
+    )}
     
-    <!-- Meta Pixel Code -->
-    <script is:inline>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '1490844932455143');
-      fbq('track', 'PageView');
-    </script>
-    <!-- End Meta Pixel Code -->
+    <!-- Meta Pixel Code (Non-blocking) -->
+    {siteConfig.analytics.metaPixelId && (
+      <script is:inline define:vars={{ pixelId: siteConfig.analytics.metaPixelId }}>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', pixelId);
+        fbq('track', 'PageView');
+      </script>
+    )}
 
-    <script type="application/ld+json" set:html={`
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Fadeaway Creatives",
-        "url": "https://fadeawaycreatives.com",
-        "logo": "https://fadeawaycreatives.com/fadeaway-logo.png",
-        "sameAs": [
-          "https://instagram.com/fadeawaycreatives",
-          "https://facebook.com/fadeawaycreatives"
-        ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "email": "hello@fadeawaycreatives.com",
-          "contactType": "customer service"
-        }
-      }
-    `} />
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body>
     <!-- Meta Pixel Code (noscript) -->
-    <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1490844932455143&ev=PageView&noscript=1"
-    /></noscript>
+    {siteConfig.analytics.metaPixelId && (
+      <noscript>
+        <img
+          height="1"
+          width="1"
+          style="display:none"
+          src={`https://www.facebook.com/tr?id=${siteConfig.analytics.metaPixelId}&ev=PageView&noscript=1`}
+          alt=""
+        />
+      </noscript>
+    )}
     
     <slot />
   </body>
