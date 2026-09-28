@@ -49,7 +49,8 @@ Notes for the build:
 - Logo → /
 - **Services** (dropdown)
   - Build: Custom Web Development · Website Redesign · E-commerce Builds · Site Migration → all link to /services/build
-  - Growth: Instant Audit · Full Audit · Attract Plan · Growth Plan → all link to /services/growth
+  - Growth: SEO + AEO · Full Audit · Growth Strategy · CRO · Paid Media → all link to /services/growth
+  - Design: "Build" and "Growth" are big and bold (each links to its page); the sub-services under each are subtle supporting text.
 - **Solutions** (dropdown): E-commerce → /solutions/ecommerce · Wellness & Counselling → /solutions/wellness-counselling · Boutique Fitness → /solutions/boutique-fitness · Sports Academies → /solutions/sports
 - **Labs** → /labs
 - **Resources** → /resources

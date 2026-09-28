@@ -1,18 +1,15 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Button from "../components/Button.astro";
 import Badge from "../components/Badge.astro";
 ---
 
-<Layout
+<BaseLayout
+    mainClass="pt-24 min-h-screen"
     title="Contact Us | Fadeaway Creatives"
     description="Ready to scale your sports or wellness brand? Send us a message and we'll build the digital engine your academy deserves."
 >
-    <Header />
 
-    <main class="pt-24 min-h-screen">
         <section class="section-padding">
             <div class="container-max max-w-6xl mx-auto">
                 <div class="text-center mb-16 animate-fade-in">
@@ -225,7 +222,5 @@ import Badge from "../components/Badge.astro";
                 </div>
             </div>
         </section>
-    </main>
 
-    <Footer />
-</Layout>
+</BaseLayout>

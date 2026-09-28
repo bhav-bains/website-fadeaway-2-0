@@ -1,0 +1,68 @@
+---
+// Everything a page needs in <head> for search and sharing (CLAUDE.md section 4).
+import { siteConfig } from '../../data/site';
+import { buildGraph, serializeJsonLd, type JsonLdNode } from '../../lib/schema';
+
+export interface SeoProps {
+  title?: string;
+  description?: string;
+  /** Absolute URL; defaults to the current path on the production domain */
+  canonical?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: 'website' | 'article';
+  noIndex?: boolean;
+  /** Page-level JSON-LD nodes, added to the sitewide Organization + WebSite graph */
+  jsonLd?: JsonLdNode[];
+}
+
+const {
+  title = siteConfig.title,
+  description = siteConfig.description,
+  canonical,
+  ogImage = siteConfig.defaultOgImage,
+  ogImageAlt = siteConfig.name,
+  ogType = 'website',
+  noIndex = false,
+  jsonLd = [],
+} = Astro.props as SeoProps;
+
+const TITLE_MAX = 60;
+const DESCRIPTION_MAX = 155;
+if (title.length > TITLE_MAX) {
+  console.warn(`[seo] ${Astro.url.pathname}: title is ${title.length} chars (max ${TITLE_MAX})`);
+}
+if (description.length > DESCRIPTION_MAX) {
+  console.warn(`[seo] ${Astro.url.pathname}: description is ${description.length} chars (max ${DESCRIPTION_MAX})`);
+}
+
+// Trailing slash matches the built /page/index.html files, Netlify's URLs and the sitemap
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonicalUrl = canonical ?? new URL(path, siteConfig.url).toString();
+const ogImageUrl = new URL(ogImage, siteConfig.url).toString();
+const robots = noIndex
+  ? 'noindex, nofollow'
+  : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+<meta name="robots" content={robots} />
+
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content={siteConfig.name} />
+<meta property="og:locale" content={siteConfig.locale} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:image:alt" content={ogImageAlt} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+<meta name="twitter:image:alt" content={ogImageAlt} />
+
+<script type="application/ld+json" set:html={serializeJsonLd(buildGraph(jsonLd))} />

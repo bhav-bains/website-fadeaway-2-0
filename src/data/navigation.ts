@@ -1,113 +1,102 @@
-export interface NavSubItem {
+// Header and footer navigation. Labels are copied word for word from copy/home.md
+// (Header / Nav and Footer sections). Change copy there first, then here.
+import { routes } from './routes';
+import { siteConfig } from './site';
+
+export interface NavLink {
   label: string;
   href: string;
-  description?: string;
 }
 
-export interface NavItemDropdown {
-  label: string;
-  type: 'dropdown';
-  items: NavSubItem[];
-}
-
-export interface NavItemLink {
+/** A bold, linked service with a subtle list of what it includes (Services dropdown) */
+export interface NavFeature {
   label: string;
   href: string;
-  type?: 'link';
+  includes: string[];
 }
 
-export type NavItem = NavItemDropdown | NavItemLink;
+export type NavItem =
+  | { type: 'link'; label: string; href: string }
+  | { type: 'features'; label: string; features: NavFeature[] }
+  | { type: 'links'; label: string; links: NavLink[] };
 
-export interface SocialLink {
-  name: string;
-  href: string;
-  platform: 'instagram' | 'facebook' | 'email';
-}
+// ---------- Header ----------
 
-export interface FooterColumn {
-  title: string;
-  links: { label: string; href: string }[];
-}
-
-// Main Header Navigation
 export const mainNavigation: NavItem[] = [
   {
+    type: 'features',
     label: 'Services',
-    type: 'dropdown',
-    items: [
-      { label: 'Audit & Growth Strategy', href: '#' },
-      { label: 'Website Redesign', href: '#' },
-      { label: 'Site Migrations', href: '#' },
-      { label: 'Idea to MVP', href: '#' },
+    features: [
+      {
+        label: 'Build',
+        href: routes.build,
+        includes: ['Custom Web Development', 'Website Redesign', 'E-commerce Builds', 'Site Migration'],
+      },
+      {
+        label: 'Growth',
+        href: routes.growth,
+        includes: ['SEO + AEO', 'Full Audit', 'Growth Strategy', 'CRO', 'Paid Media'],
+      },
     ],
   },
   {
+    type: 'links',
     label: 'Solutions',
-    type: 'dropdown',
-    items: [
-      { label: 'Sports Academies', href: '/sports' },
-      { label: 'Boutique Fitness & Wellness', href: '/wellness' },
-      { label: 'Startups & SaaS', href: '#' },
-      { label: 'E-commerce Stores', href: '#' },
+    links: [
+      { label: 'E-commerce', href: routes.ecommerce },
+      { label: 'Wellness & Counselling', href: routes.wellnessCounselling },
+      { label: 'Boutique Fitness', href: routes.boutiqueFitness },
+      { label: 'Sports Academies', href: routes.sports },
     ],
   },
+  { type: 'link', label: 'Labs', href: routes.labs },
+  { type: 'link', label: 'Resources', href: routes.resources },
+  { type: 'link', label: 'Contact', href: routes.contact },
 ];
 
-// Header Call to Action Button
-export const headerCta = {
-  label: 'Contact',
-  href: '/contact',
-};
+export const headerCta: NavLink = { label: 'Get Your Free Audit', href: routes.audit };
 
-// Social Links & Contact Channels
-export const socialLinks: SocialLink[] = [
-  {
-    name: 'Instagram',
-    href: 'https://instagram.com/fadeawaycreatives',
-    platform: 'instagram',
-  },
-  {
-    name: 'Facebook',
-    href: 'https://facebook.com/fadeawaycreatives',
-    platform: 'facebook',
-  },
-  {
-    name: 'Email',
-    href: 'mailto:hello@fadeawaycreatives.com',
-    platform: 'email',
-  },
-];
+// ---------- Footer ----------
 
-// Footer Navigation Columns
-export const footerColumns: FooterColumn[] = [
+export const footerTagline = 'Growth partner for local businesses across the US & Canada.';
+
+export const footerColumns: { title: string; links: NavLink[] }[] = [
   {
     title: 'Services',
     links: [
-      { label: 'Audit & Growth Strategy', href: '#' },
-      { label: 'Website Redesign', href: '#' },
-      { label: 'Site Migrations', href: '#' },
-      { label: 'Idea to MVP', href: '#' },
+      { label: 'Build', href: routes.build },
+      { label: 'Growth', href: routes.growth },
+      { label: 'Fadeaway Labs', href: routes.labs },
     ],
   },
   {
     title: 'Solutions',
     links: [
-      { label: 'Sports Academies', href: '/sports' },
-      { label: 'Boutique Fitness & Wellness', href: '/wellness' },
-      { label: 'Startups & SaaS', href: '#' },
-      { label: 'E-commerce Stores', href: '#' },
+      { label: 'E-commerce', href: routes.ecommerce },
+      { label: 'Wellness & Counselling', href: routes.wellnessCounselling },
+      { label: 'Boutique Fitness', href: routes.boutiqueFitness },
+      { label: 'Sports Academies', href: routes.sports },
     ],
   },
   {
     title: 'Company',
     links: [
-      { label: 'Contact Us', href: '/contact' },
+      { label: 'About', href: routes.about },
+      { label: 'Contact', href: routes.contact },
+      { label: 'Privacy Policy', href: routes.privacy },
+      { label: 'Terms of Service', href: routes.terms },
     ],
   },
 ];
 
-// Legal Links in Footer
-export const legalLinks = [
-  { label: 'Privacy Policy', href: '#' },
-  { label: 'Terms of Service', href: '#' },
+export interface SocialLink {
+  name: string;
+  href: string;
+  platform: 'instagram' | 'facebook' | 'linkedin';
+}
+
+// Footer social row per copy: Instagram, Facebook (email is shown as text next to them)
+export const footerSocial: SocialLink[] = [
+  { name: 'Instagram', href: siteConfig.social.instagram, platform: 'instagram' },
+  { name: 'Facebook', href: siteConfig.social.facebook, platform: 'facebook' },
 ];

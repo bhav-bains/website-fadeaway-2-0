@@ -1,20 +1,39 @@
+// Sitewide entity facts (CLAUDE.md section 5). The schema, SEO defaults and footer read from here.
 export const siteConfig = {
   name: 'Fadeaway Creatives',
   url: 'https://fadeawaycreatives.com',
-  title: 'Fadeaway Creatives | High-Performance SEO Websites',
-  description: 'We build high-converting, SEO-first websites for sports academies, fitness studios, and modern brands.',
+  // Defaults for pages that don't set their own; taken from copy/home.md
+  title: 'Fadeaway Creatives | Revenue-Focused Growth Partners',
+  description:
+    'SEO, AI search, and websites built to turn traffic into paying customers. Fixed pricing, real growth, no guesswork.',
   defaultOgImage: '/fadeaway-logo.png',
+  logo: '/fadeaway-logo.png',
   themeColor: '#FF6B35',
+  locale: 'en_US',
+  language: 'en-US',
   email: 'hello@fadeawaycreatives.com',
+  foundingDate: '2023',
+  locationLine: 'Vancouver, BC, working with clients across Canada and the US.',
   address: {
     city: 'Vancouver',
     region: 'BC',
     country: 'Canada',
     countryCode: 'CA',
   },
+  areaServed: ['Canada', 'United States'],
+  knowsAbout: [
+    'SEO',
+    'answer engine optimization',
+    'web development',
+    'e-commerce',
+    'business process automation',
+    'AI implementation',
+    'MVP development',
+  ],
   social: {
     instagram: 'https://instagram.com/fadeawaycreatives',
     facebook: 'https://facebook.com/fadeawaycreatives',
+    linkedin: 'https://www.linkedin.com/company/fadeaway-creatives/',
   },
   analytics: {
     googleAnalyticsId: 'G-4T10QZ6L2D',

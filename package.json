@@ -10,13 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^7.0.7",
-    "@astrojs/sitemap": "^3.7.3",
-    "@supabase/supabase-js": "^2.112.3",
+    "@astrojs/mdx": "^8.0.2",
+    "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.2.4",
+    "astro": "^7.3.5",
     "clsx": "^2.1.1",
-    "tailwindcss": "^4.3.3",
-    "zod": "^4.4.3"
+    "tailwindcss": "^4.3.3"
   }
 }

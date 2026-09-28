@@ -1,13 +1,11 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import PillarsSection from "../components/PillarsSection.astro";
 import PackagesSection from "../components/PackagesSection.astro";
 import TestimonialSection from "../components/TestimonialSection.astro";
 import StepsGridSection from "../components/StepsGridSection.astro";
 import ROISection from "../components/ROISection.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import AgitatorCard from "../components/AgitatorCard.astro";
 import highPerformanceWebsiteImg from "../assets/high-performance-website.png"; // Placeholder for OG
 import websiteDesignHeroImg from "../assets/website-design-background-image-hero.png";
@@ -97,14 +95,12 @@ const pillars = [
 ];
 ---
 
-<Layout
+<BaseLayout
     title="High-Performance Websites for Wellness & Fitness | Fadeaway Creatives"
     description="Dominate your local market with an SEO-first website built for wellness studios, gyms, yoga, and fitness brands."
     ogImage={highPerformanceWebsiteImg.src}
 >
-    <Header />
 
-    <main>
         {/* 01. Hero Section */}
         <Hero
             title="Dominate Local Search.<br />Fully Book Your Schedule."
@@ -280,6 +276,4 @@ const pillars = [
             ctaLink="/contact"
             microCopy="Zero pressure. We build it, we show you how it works, you decide if you want it."
         />
-    </main>
-    <Footer />
-</Layout>
+</BaseLayout>

@@ -1,7 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Button from "../components/Button.astro";
 import Badge from "../components/Badge.astro";
 import { Image } from "astro:assets";
@@ -17,14 +15,12 @@ import ServicesSection from "../components/ServicesSection.astro";
 import LabsMVPSection from "../components/LabsMVPSection.astro";
 ---
 
-<Layout
+<BaseLayout
     title="Fadeaway Creatives | SEO Websites for Sports & Wellness Brands"
     description="We build high-converting, SEO-first websites for sports academies and wellness studios. Get found on Google, fill your schedule, and scale your business."
     ogImage={highPerformanceWebsiteImg.src}
 >
-    <Header />
 
-    <main>
         {/* ── 01. HERO ── */}
         <section
             id="hero"
@@ -196,26 +192,14 @@ import LabsMVPSection from "../components/LabsMVPSection.astro";
                     <div
                         class="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-12"
                     >
-                        <a
-                            href="https://calendar.app.google/muWWvjBAQdLVuBtM9"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            <Button
+                        <Button href="https://calendar.app.google/muWWvjBAQdLVuBtM9"
                                 variant="secondary"
                                 size="md"
-                                className="min-w-[180px] md:min-w-[200px]"
-                                >Book a Growth Call</Button
-                            >
-                        </a>
-                        <a href="#services">
-                            <Button
+                                className="min-w-[180px] md:min-w-[200px]">Book a Growth Call</Button>
+                        <Button href="#services"
                                 variant="secondary"
                                 size="md"
-                                className="min-w-[180px] md:min-w-[200px]"
-                                >View Our Services</Button
-                            >
-                        </a>
+                                className="min-w-[180px] md:min-w-[200px]">View Our Services</Button>
                     </div>
                 </div>
             </div>
@@ -614,7 +598,5 @@ import LabsMVPSection from "../components/LabsMVPSection.astro";
             ctaText="Book a Growth Call"
             ctaLink="https://calendar.app.google/muWWvjBAQdLVuBtM9"
         />
-    </main>
 
-    <Footer />
-</Layout>
+</BaseLayout>

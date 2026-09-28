@@ -1,0 +1,84 @@
+---
+// Shell for every page section: anchor id, optional eyebrow / H2 / intro, background tone,
+// content width and responsive spacing. Blocks (CardGrid, Steps, Faq...) render inside it.
+// Mobile-first: unprefixed classes are the phone layout; sm/md/lg scale up.
+import clsx from 'clsx';
+import Badge from '../Badge.astro';
+
+interface Props {
+  /** Anchor id from the copy file, e.g. "how-it-works" */
+  id: string;
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
+  tone?: 'canvas' | 'surface' | 'deep';
+  width?: 'site' | 'narrow' | 'prose';
+  align?: 'center' | 'start';
+  divider?: boolean;
+  class?: string;
+}
+
+const {
+  id,
+  eyebrow,
+  heading,
+  intro,
+  tone = 'canvas',
+  width = 'site',
+  align = 'center',
+  divider = false,
+  class: className,
+} = Astro.props;
+
+const headingId = heading ? `${id}-heading` : undefined;
+
+const tones = {
+  canvas: 'bg-canvas',
+  surface: 'bg-surface',
+  deep: 'bg-surface-deep',
+};
+
+const widths = {
+  site: 'max-w-site',
+  narrow: 'max-w-5xl',
+  prose: 'max-w-3xl',
+};
+
+const hasHeader = eyebrow || heading || intro;
+---
+
+<section
+  id={id}
+  aria-labelledby={headingId}
+  class={clsx(
+    'px-2 py-6 sm:px-3 md:py-10 lg:px-4 lg:py-24',
+    tones[tone],
+    divider && 'border-t border-line',
+    className,
+  )}
+>
+  <div class={clsx('mx-auto w-full', widths[width])}>
+    {
+      hasHeader && (
+        <header
+          class={clsx(
+            'mb-4 flex flex-col gap-2 md:mb-6',
+            align === 'center' ? 'items-center text-center' : 'items-start text-left',
+          )}
+        >
+          {eyebrow && <Badge variant="primary">{eyebrow}</Badge>}
+          {heading && (
+            <h2
+              id={headingId}
+              class="max-w-4xl text-balance font-display text-2xl font-bold text-ink sm:text-3xl lg:text-5xl"
+            >
+              {heading}
+            </h2>
+          )}
+          {intro && <p class="max-w-2xl text-base text-ink-soft md:text-lg">{intro}</p>}
+        </header>
+      )
+    }
+    <slot />
+  </div>
+</section>

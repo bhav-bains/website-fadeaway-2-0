@@ -135,15 +135,14 @@ const {
                                         {pkg.tagline}
                                     </p>
                                 )}
-                                <a href={pkg.ctaLink ?? "/contact"} class="block w-full">
-                                    <Button
-                                        variant={pkg.highlighted ? "primary" : "secondary"}
-                                        size="sm"
-                                        className="w-full"
-                                    >
-                                        {pkg.ctaText ?? "Let's Talk"}
-                                    </Button>
-                                </a>
+                                <Button
+                                    href={pkg.ctaLink ?? "/contact"}
+                                    variant={pkg.highlighted ? "primary" : "secondary"}
+                                    size="sm"
+                                    fullWidth
+                                >
+                                    {pkg.ctaText ?? "Let's Talk"}
+                                </Button>
                             </div>
                         </div>
                     </div>
