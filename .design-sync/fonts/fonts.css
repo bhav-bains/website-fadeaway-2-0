@@ -1,0 +1,16 @@
+/* Brand fonts, copied from the Astro Fonts API build (both are variable fonts, latin subset). */
+@font-face {
+  font-family: "Outfit";
+  src: url("./outfit-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("./dm-sans-latin.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}

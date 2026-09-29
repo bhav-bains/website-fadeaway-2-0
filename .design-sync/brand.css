@@ -1,0 +1,38 @@
+/*
+ * Tailwind input for the Claude Design sync: compiles the site's real theme
+ * (src/styles/theme.css + globals.css) into one standalone stylesheet.
+ * Rebuild: see .design-sync/NOTES.md.
+ */
+@import "../src/styles/globals.css";
+@source "../src";
+
+/* Drop Tailwind's default serif stack (not a brand font) so designs can't fall back to it. */
+@theme {
+  --font-serif: initial;
+}
+
+/* The site's --ff-* variables come from the Astro Fonts API at runtime; point them at the shipped fonts. */
+:root {
+  --ff-outfit: "Outfit", sans-serif;
+  --ff-dm-sans: "DM Sans", sans-serif;
+}
+
+/* Safelist every token-backed utility so designs can use the full vocabulary, not only what the site uses today. */
+@source inline("{hover:,}{bg,text,border}-{canvas,surface,surface-deep,surface-raised,ink,ink-soft,ink-muted,ink-subtle,line,line-strong,accent,accent-ink,highlight}");
+@source inline("{ring,fill,stroke,from,via,to,outline,divide,decoration,placeholder}-{canvas,surface,surface-deep,surface-raised,ink,ink-soft,ink-muted,ink-subtle,line,line-strong,accent,accent-ink,highlight}");
+@source inline("{hover:,}{bg,text,border}-fadeaway-{orange,teal,graphite,dark,darker}");
+@source inline("{bg,text,border}-neutral-{50,100,200,300,400,500,600,700,800,900}");
+@source inline("{hover:,}{bg,border,text}-{accent,highlight,white,black}/{5,10,20,30,40,50,60,70,80,90}");
+@source inline("font-{display,body,outfit,dm-sans}");
+@source inline("{md:,lg:,}text-{xs,meta,sm,base,lg,xl,2xl,3xl,4xl,5xl,6xl,display,title,lead,heading}");
+@source inline("{md:,lg:,}{p,px,py,pt,pb,pl,pr,m,mx,my,mt,mb,gap,gap-x,gap-y,space-y,space-x}-{0,1,2,3,4,5,6,7,8,9,10}");
+@source inline("size-icon{,-xs,-sm} max-w-site");
+@source inline("rounded-{control,card,pill} shadow-glow-{accent,highlight} {,backdrop-}blur-{md,lg}");
+@source inline("{motion-safe:,}animate-{fade-in,slide-up,slide-down,float}");
+/* Common layout vocabulary: the site only emits what it uses, but designs need the usual grid/flex set. */
+@source inline("{sm:,md:,lg:,}{block,inline-block,inline-flex,flex,grid,hidden}");
+@source inline("{sm:,md:,lg:,}grid-cols-{1,2,3,4,5,6,12}");
+@source inline("{sm:,md:,lg:,}col-span-{1,2,3,4,5,6,12,full}");
+@source inline("{sm:,md:,lg:,}flex-{row,col,wrap,1} {sm:,md:,lg:,}{items,justify}-{start,center,end,between} {sm:,md:,lg:,}text-{left,center}");
+@source inline("{w,h}-{full,auto} min-h-screen {md:,lg:,}w-{1/2,1/3,2/3} max-w-{sm,md,lg,xl,2xl,3xl,4xl,5xl,6xl,7xl} mx-auto");
+@source inline("section-padding container-max gradient-text glass-effect glass-dark btn-primary btn-secondary btn-tertiary input-primary badge-primary card-glass text-balance no-scrollbar bg-grid");

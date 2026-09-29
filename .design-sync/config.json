@@ -1,0 +1,11 @@
+{
+  "projectId": "eb79761a-deb6-491b-9f1d-aac41fd3f783",
+  "pkg": "fadeaway-creatives",
+  "globalName": "Fadeaway",
+  "shape": "package",
+  "entry": ".design-sync/entry.mjs",
+  "buildCmd": "node .ds-sync/node_modules/@tailwindcss/cli/dist/index.mjs -i .design-sync/brand.css -o .design-sync/.cache/fadeaway.css --minify",
+  "cssEntry": ".design-sync/.cache/fadeaway.css",
+  "extraFonts": [".design-sync/fonts/fonts.css"],
+  "readmeHeader": ".design-sync/conventions.md"
+}
