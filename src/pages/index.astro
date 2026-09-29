@@ -3,8 +3,10 @@
 // The previous homepage is parked at src/pages/_inactive/home-2025.astro for reference.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/blocks/hero/Hero.astro';
+import Section from '../components/blocks/Section.astro';
+import IconGrid from '../components/blocks/IconGrid.astro';
 import { HERO_VARIANTS } from '../components/blocks/hero/types';
-import { seo, hero, heroVariant } from '../data/pages/home';
+import { seo, hero, heroVariant, answerCapsule, trust } from '../data/pages/home';
 
 // Dev-only design preview: /?hero=split | centered | editorial | visual | all.
 // `npm run dev` renders every variant and a script shows the requested one; the build ships only heroVariant.
@@ -25,6 +27,13 @@ const heroes = isDev ? HERO_VARIANTS : [heroVariant];
       </div>
     ))
   }
+
+  <!-- Trust Bar: answer capsule (AEO summary, plain text right under the Hero), then 4 trust signals -->
+  <Section id={trust.id} separator>
+    <!-- Hidden on phones to keep the first scroll light; still in the HTML for search and AI crawlers -->
+    <p class="mx-auto hidden max-w-3xl text-pretty text-center text-lead text-ink-soft sm:block">{answerCapsule}</p>
+    <IconGrid items={trust.items} titleAs="p" class="sm:mt-6 md:mt-8" />
+  </Section>
 
   {
     isDev && (

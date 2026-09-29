@@ -1,5 +1,5 @@
 ---
-// Shell for every page section: anchor id, optional eyebrow / H2 / intro, background tone,
+// Shell for every page section: anchor id, optional eyebrow / H2 / intro, background tone, optional glow separator,
 // content width and responsive spacing. Blocks (CardGrid, Steps, Faq...) render inside it.
 // Mobile-first: unprefixed classes are the phone layout; sm/md/lg scale up.
 import clsx from 'clsx';
@@ -14,7 +14,8 @@ interface Props {
   tone?: 'canvas' | 'surface' | 'deep';
   width?: 'site' | 'narrow' | 'prose';
   align?: 'center' | 'start';
-  divider?: boolean;
+  /** Faint hairline at the top edge (fades out at both ends): use only between major sections. Sections otherwise share one background. */
+  separator?: boolean;
   class?: string;
 }
 
@@ -26,7 +27,7 @@ const {
   tone = 'canvas',
   width = 'site',
   align = 'center',
-  divider = false,
+  separator = false,
   class: className,
 } = Astro.props;
 
@@ -51,12 +52,18 @@ const hasHeader = eyebrow || heading || intro;
   id={id}
   aria-labelledby={headingId}
   class={clsx(
-    'px-2 py-6 sm:px-3 md:py-10 lg:px-4 lg:py-24',
+    'relative isolate px-2 py-6 sm:px-3 md:py-10 lg:px-4 lg:py-24',
     tones[tone],
-    divider && 'border-t border-line',
     className,
   )}
 >
+  {
+    separator && (
+      <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 -z-10 flex justify-center">
+        <span class="h-px w-full max-w-4xl bg-gradient-to-r from-transparent via-highlight/25 to-transparent" />
+      </div>
+    )
+  }
   <div class={clsx('mx-auto w-full', widths[width])}>
     {
       hasHeader && (

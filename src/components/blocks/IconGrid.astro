@@ -1,0 +1,41 @@
+---
+// Grid of icon cards: icon tile, short title, one supporting line.
+// Used for the Trust Bar; reusable for any "4 reasons / 6 methods" style row.
+// Mobile-first: 1 column, 2 from sm, `columns` from lg.
+import clsx from 'clsx';
+import Icon, { type IconName } from '../ui/Icon.astro';
+
+export interface IconGridItem {
+  icon: IconName;
+  title: string;
+  text: string;
+}
+
+interface Props {
+  items: IconGridItem[];
+  columns?: 2 | 3 | 4;
+  /** Heading level for card titles: h3 inside a titled section, p when the section has no heading */
+  titleAs?: 'h3' | 'p';
+  class?: string;
+}
+
+const { items, columns = 4, titleAs: Title = 'h3', class: className } = Astro.props;
+
+const lgColumns = { 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4' };
+---
+
+<ul class={clsx('grid gap-2 sm:grid-cols-2 sm:gap-3', lgColumns[columns], className)}>
+  {
+    items.map((item) => (
+      <li class="flex flex-col gap-2 rounded-card border border-line-strong bg-surface-raised/60 p-3 md:p-4">
+        <span class="inline-flex size-11 items-center justify-center rounded-control border border-highlight/20 bg-highlight/10 text-highlight">
+          <Icon name={item.icon} />
+        </span>
+        <div class="flex flex-col gap-0.5">
+          <Title class="font-display text-lg font-bold text-ink">{item.title}</Title>
+          <p class="text-meta text-ink-muted">{item.text}</p>
+        </div>
+      </li>
+    ))
+  }
+</ul>

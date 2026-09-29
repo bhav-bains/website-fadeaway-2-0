@@ -66,14 +66,14 @@ Notes for the build:
 - Primary CTA: See How It Works → #how-it-works
 - Secondary CTA: Get Your Free Audit → /audit
 - Visual: illustration (search bar, AI answer card citing a business, bookings chart, reviews, map pin). Hero fits one screen.
-- Answer capsule: not shown inside the Hero (it repeated the sub-headline). Placement decided with the Trust Bar section.
+- Answer capsule: not shown inside the Hero (it repeated the sub-headline). It renders as the intro paragraph of the Trust Bar, directly under the Hero.
 
 ## Trust Bar {#trust}
 
-Format: 4 icon boxes.
+Format: answer capsule (from frontmatter `answer_capsule`) as a centered intro paragraph, then 4 icon boxes.
 
-1. **15+ Years Experience** · sub-line: Founder-led · Fadeaway est. 2023
-2. **Specialty** · Built for Google and modern AI search (SEO + AEO focus)
+1. **15+ Years Experience** · sub-line: Founder-led, hands-on from first call to launch
+2. **SEO + AEO Specialists** · Built for Google and modern AI search
 3. **Fixed Pricing** · No hourly billing, scope defined before we start
 4. **Revenue-Tracked** · Results measured in bookings & sales, not traffic
 
