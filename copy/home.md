@@ -71,6 +71,7 @@ Notes for the build:
 ## Trust Bar {#trust}
 
 Format: answer capsule (from frontmatter `answer_capsule`) as a centered intro paragraph, then 4 icon boxes.
+TODO (later): rework into a subtler row: smaller icon + short heading, 3 to 4 items. Avoid repeating the Why section's points.
 
 1. **15+ Years Experience** · sub-line: Founder-led, hands-on from first call to launch
 2. **SEO + AEO Specialists** · Built for Google and modern AI search
@@ -99,6 +100,8 @@ Fill your roster and keep it full. For clubs, academies, combat sports gyms, and
 [Link: See how we help sports programs → /solutions/sports]
 
 ## Why Growing Businesses Choose Fadeaway {#why}
+
+Layout: split. Heading on the left (pinned on desktop), numbered list 01 to 04 on the right. No cards or icons.
 
 ### Clear Pricing & Deliverable Transparency
 Fixed pricing, defined scope, no guesswork. You'll know exactly what you're getting and what it costs before we start.

@@ -4,6 +4,7 @@ import { routes } from '../routes';
 import type { HeroContent, HeroVariant } from '../../components/blocks/hero/types';
 import type { IconGridItem } from '../../components/blocks/IconGrid.astro';
 import type { CardGridItem } from '../../components/blocks/CardGrid.astro';
+import type { NumberedListItem } from '../../components/blocks/NumberedList.astro';
 
 export const seo = {
   title: 'Fadeaway Creatives | Revenue-Focused Growth Partners',
@@ -66,6 +67,29 @@ export const industries: { id: string; heading: string; intro: string; items: Ca
       body: 'Fill your roster and keep it full. For clubs, academies, combat sports gyms, and camps, we build websites parents can actually find on Google and in AI answers, connected to the registration software you already use, like LeagueApps or TeamSnap.',
       link: { label: 'See how we help sports programs', href: routes.sports },
       illustration: 'sports',
+    },
+  ],
+};
+
+export const why: { id: string; heading: string; items: NumberedListItem[] } = {
+  id: 'why',
+  heading: 'Why Growing Businesses Choose Fadeaway',
+  items: [
+    {
+      title: 'Clear Pricing & Deliverable Transparency',
+      text: "Fixed pricing, defined scope, no guesswork. You'll know exactly what you're getting and what it costs before we start.",
+    },
+    {
+      title: 'Revenue-First',
+      text: 'We track bookings, sales, and customers walking through the door, not traffic or impressions.',
+    },
+    {
+      title: 'Future-Proof',
+      text: 'SEO and AEO built to scale as your business grows, not just launch and fade.',
+    },
+    {
+      title: 'Reliable Growth Partner',
+      text: 'Enterprise-level work, real engineering and real strategy, at small-business-reasonable pricing.',
     },
   ],
 };

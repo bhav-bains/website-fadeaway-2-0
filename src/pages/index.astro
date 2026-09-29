@@ -6,8 +6,9 @@ import Hero from '../components/blocks/hero/Hero.astro';
 import Section from '../components/blocks/Section.astro';
 import IconGrid from '../components/blocks/IconGrid.astro';
 import CardGrid from '../components/blocks/CardGrid.astro';
+import NumberedList from '../components/blocks/NumberedList.astro';
 import { HERO_VARIANTS } from '../components/blocks/hero/types';
-import { seo, hero, heroVariant, answerCapsule, trust, industries } from '../data/pages/home';
+import { seo, hero, heroVariant, answerCapsule, trust, industries, why } from '../data/pages/home';
 
 // Dev-only design preview: /?hero=split | centered | editorial | visual | all.
 // `npm run dev` renders every variant and a script shows the requested one; the build ships only heroVariant.
@@ -38,6 +39,10 @@ const heroes = isDev ? HERO_VARIANTS : [heroVariant];
 
   <Section id={industries.id} heading={industries.heading} intro={industries.intro} separator>
     <CardGrid items={industries.items} columns={2} />
+  </Section>
+
+  <Section id={why.id} heading={why.heading} layout="split" separator>
+    <NumberedList items={why.items} />
   </Section>
 
   {
