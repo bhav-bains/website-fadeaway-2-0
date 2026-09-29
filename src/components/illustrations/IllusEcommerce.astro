@@ -1,0 +1,52 @@
+---
+// E-commerce: product grid, cart with an item count, checkout card with a confirmed order.
+// Decorative, no words; colors from theme tokens.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+
+const tiles = [
+  { x: 56, y: 66, shape: 'circle', tone: 'fill-accent/80' },
+  { x: 158, y: 66, shape: 'square', tone: 'fill-highlight/70' },
+  { x: 56, y: 140, shape: 'square', tone: 'fill-accent/40' },
+  { x: 158, y: 140, shape: 'circle', tone: 'fill-highlight' },
+];
+---
+
+<svg class={className} viewBox="0 0 400 240" fill="none" aria-hidden="true" focusable="false">
+  <!-- Storefront -->
+  <rect x="40" y="28" width="220" height="190" rx="14" class="fill-surface-raised stroke-line-strong" stroke-width="1.5" />
+  <rect x="56" y="44" width="90" height="8" rx="4" class="fill-white/20" />
+  <rect x="216" y="44" width="28" height="8" rx="4" class="fill-white/10" />
+  {
+    tiles.map((t) => (
+      <g>
+        <rect x={t.x} y={t.y} width="86" height="62" rx="8" class="fill-canvas stroke-line" />
+        {t.shape === 'circle' ? (
+          <circle cx={t.x + 43} cy={t.y + 24} r="12" class={t.tone} />
+        ) : (
+          <rect x={t.x + 31} y={t.y + 12} width="24" height="24" rx="6" class={t.tone} />
+        )}
+        <rect x={t.x + 10} y={t.y + 46} width="40" height="6" rx="3" class="fill-white/15" />
+        <rect x={t.x + 56} y={t.y + 46} width="20" height="6" rx="3" class="fill-highlight/70" />
+      </g>
+    ))
+  }
+
+  <!-- Cart with item count -->
+  <circle cx="264" cy="42" r="21" class="fill-surface-raised stroke-line-strong" stroke-width="1.5" />
+  <path d="M253 34h4l3.2 11.5h10.6l3-8.5H258.5" class="stroke-ink-soft" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="261.5" cy="49.5" r="1.8" class="fill-ink-soft" />
+  <circle cx="270" cy="49.5" r="1.8" class="fill-ink-soft" />
+  <circle cx="279" cy="27" r="8" class="fill-accent" />
+
+  <!-- Checkout, order confirmed -->
+  <rect x="226" y="108" width="146" height="110" rx="14" class="fill-surface-raised stroke-line-strong" stroke-width="1.5" />
+  <rect x="242" y="126" width="70" height="8" rx="4" class="fill-white/25" />
+  <circle cx="354" cy="130" r="10" class="fill-highlight/20" />
+  <path d="M349.5 130l3 3 5.5-6" class="stroke-highlight" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <rect x="242" y="146" width="112" height="6" rx="3" class="fill-white/10" />
+  <rect x="242" y="158" width="88" height="6" rx="3" class="fill-white/10" />
+  <rect x="242" y="182" width="114" height="22" rx="11" class="fill-accent" />
+</svg>

@@ -1,0 +1,47 @@
+---
+// Wellness & Counselling: a week calendar filling with booked sessions, a new booking confirmed,
+// and a leaf badge. Decorative, no words; colors from theme tokens.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+
+const cols = [56, 98, 140, 182, 224];
+const rows = [82, 112, 142, 172];
+// [col, row] booked sessions; one new booking highlighted in accent
+const booked = ['0,0', '1,0', '3,0', '0,1', '2,1', '3,1', '4,1', '1,2', '2,2', '4,2', '0,3', '3,3'];
+const fresh = '2,3';
+---
+
+<svg class={className} viewBox="0 0 400 240" fill="none" aria-hidden="true" focusable="false">
+  <!-- Calendar -->
+  <rect x="40" y="28" width="236" height="190" rx="14" class="fill-surface-raised stroke-line-strong" stroke-width="1.5" />
+  <rect x="56" y="44" width="80" height="8" rx="4" class="fill-white/20" />
+  <circle cx="240" cy="48" r="4" class="fill-white/10" />
+  <circle cx="254" cy="48" r="4" class="fill-white/10" />
+  {cols.map((x) => <rect x={x + 8} y="66" width="20" height="5" rx="2.5" class="fill-white/10" />)}
+  {
+    rows.map((y, r) =>
+      cols.map((x, c) => {
+        const key = `${c},${r}`;
+        const tone = key === fresh ? 'fill-accent/70' : booked.includes(key) ? 'fill-highlight/30' : 'fill-white/5';
+        return <rect x={x} y={y} width="36" height="24" rx="6" class={tone} />;
+      }),
+    )
+  }
+
+  <!-- Leaf badge -->
+  <circle cx="318" cy="60" r="24" class="fill-surface-raised stroke-line-strong" stroke-width="1.5" />
+  <path d="M308 70c0-14 10-21 21-19 2 11-7 21-21 19z" class="fill-highlight/25 stroke-highlight" stroke-width="1.8" stroke-linejoin="round" />
+  <path d="M308 70l13-12" class="stroke-highlight" stroke-width="1.8" stroke-linecap="round" />
+
+  <!-- New booking confirmed -->
+  <rect x="236" y="138" width="140" height="66" rx="14" class="fill-surface-raised stroke-line-strong" stroke-width="1.5" />
+  <circle cx="262" cy="171" r="13" class="fill-highlight/20" />
+  <circle cx="262" cy="167" r="4.5" class="fill-highlight" />
+  <path d="M254 179c1.5-4.5 4.5-6.5 8-6.5s6.5 2 8 6.5" class="stroke-highlight" stroke-width="2" stroke-linecap="round" />
+  <rect x="284" y="160" width="58" height="8" rx="4" class="fill-white/25" />
+  <rect x="284" y="174" width="42" height="6" rx="3" class="fill-white/10" />
+  <circle cx="358" cy="156" r="9" class="fill-accent/20" />
+  <path d="M354 156l2.8 2.8 5-5.5" class="stroke-accent" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

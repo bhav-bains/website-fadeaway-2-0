@@ -1,0 +1,49 @@
+---
+// Boutique Fitness: class schedule with capacity bars filling up, a full-class ring,
+// and a stack of member avatars. Decorative, no words; colors from theme tokens.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+
+const classes = [
+  { y: 66, fill: 76, full: true },
+  { y: 102, fill: 64, full: false },
+  { y: 138, fill: 76, full: true },
+  { y: 174, fill: 52, full: false },
+];
+const members = [
+  { cx: 284, tone: 'fill-highlight/50' },
+  { cx: 302, tone: 'fill-accent/60' },
+  { cx: 320, tone: 'fill-white/25' },
+  { cx: 338, tone: 'fill-highlight' },
+];
+---
+
+<svg class={className} viewBox="0 0 400 240" fill="none" aria-hidden="true" focusable="false">
+  <!-- Class schedule -->
+  <rect x="40" y="28" width="212" height="190" rx="14" class="fill-surface-raised stroke-line-strong" stroke-width="1.5" />
+  <rect x="56" y="44" width="90" height="8" rx="4" class="fill-white/20" />
+  {
+    classes.map((c, i) => (
+      <g>
+        <circle cx="64" cy={c.y + 14} r="5" class={c.full ? 'fill-accent' : 'fill-accent/40'} />
+        <rect x="78" y={c.y + 6} width="66" height="7" rx="3.5" class="fill-white/25" />
+        <rect x="78" y={c.y + 17} width="42" height="5" rx="2.5" class="fill-white/10" />
+        <rect x="158" y={c.y + 11} width="76" height="6" rx="3" class="fill-white/10" />
+        <rect x="158" y={c.y + 11} width={c.fill} height="6" rx="3" class={c.full ? 'fill-highlight' : 'fill-highlight/50'} />
+        {i < classes.length - 1 && <line x1="56" y1={c.y + 32} x2="236" y2={c.y + 32} class="stroke-line" />}
+      </g>
+    ))
+  }
+
+  <!-- Class full -->
+  <rect x="264" y="36" width="108" height="108" rx="16" class="fill-surface-raised stroke-line-strong" stroke-width="1.5" />
+  <circle cx="318" cy="90" r="30" class="stroke-white/10" stroke-width="8" />
+  <circle cx="318" cy="90" r="30" class="stroke-highlight" stroke-width="8" stroke-linecap="round" stroke-dasharray="170 19" transform="rotate(-90 318 90)" />
+  <path d="M308 90l7 7 13-14" class="stroke-highlight" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Members -->
+  <rect x="264" y="160" width="108" height="46" rx="23" class="fill-surface-raised stroke-line-strong" stroke-width="1.5" />
+  {members.map((m) => <circle cx={m.cx} cy="183" r="11" class={`${m.tone} stroke-surface-raised`} stroke-width="3" />)}
+</svg>

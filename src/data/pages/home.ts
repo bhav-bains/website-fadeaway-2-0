@@ -3,6 +3,7 @@
 import { routes } from '../routes';
 import type { HeroContent, HeroVariant } from '../../components/blocks/hero/types';
 import type { IconGridItem } from '../../components/blocks/IconGrid.astro';
+import type { CardGridItem } from '../../components/blocks/CardGrid.astro';
 
 export const seo = {
   title: 'Fadeaway Creatives | Revenue-Focused Growth Partners',
@@ -34,5 +35,37 @@ export const trust: { id: string; items: IconGridItem[] } = {
     { icon: 'search-ai', title: 'SEO + AEO Specialists', text: 'Built for Google and modern AI search' },
     { icon: 'price-tag', title: 'Fixed Pricing', text: 'No hourly billing, scope defined before we start' },
     { icon: 'chart-up', title: 'Revenue-Tracked', text: 'Results measured in bookings & sales, not traffic' },
+  ],
+};
+
+export const industries: { id: string; heading: string; intro: string; items: CardGridItem[] } = {
+  id: 'industries',
+  heading: 'Growth Built Around Your Industry',
+  intro: 'Websites, SEO and AEO shaped around how your customers search and book.',
+  items: [
+    {
+      title: 'E-commerce',
+      body: "We bring deep, hands-on experience with larger e-commerce stores: the technical SEO and site work that turns search traffic into sales in a competitive, established market. It's not a quick-win space, which is exactly why the foundation matters more than shortcuts.",
+      link: { label: 'See how we help e-commerce brands', href: routes.ecommerce },
+      illustration: 'ecommerce',
+    },
+    {
+      title: 'Wellness & Counselling',
+      body: 'Fill your caseload. We build websites and run SEO and AEO for therapists, counsellors, chiropractors, and wellness practices, so clients find you beyond directory listings like Psychology Today. Built to work with the practice software you already use, like Jane App or SimplePractice.',
+      link: { label: 'See how we help wellness & counselling practices', href: routes.wellnessCounselling },
+      illustration: 'wellness',
+    },
+    {
+      title: 'Boutique Fitness',
+      body: 'Keep every class full. We build websites and local SEO systems for yoga, pilates, spin/cycling, and barre-format studios ready to scale memberships and fill every class slot. Built to work with the booking software you already use, like Mindbody or Momence.',
+      link: { label: 'See how we help boutique fitness studios', href: routes.boutiqueFitness },
+      illustration: 'fitness',
+    },
+    {
+      title: 'Sports Academies',
+      body: 'Fill your roster and keep it full. For clubs, academies, combat sports gyms, and camps, we build websites parents can actually find on Google and in AI answers, connected to the registration software you already use, like LeagueApps or TeamSnap.',
+      link: { label: 'See how we help sports programs', href: routes.sports },
+      illustration: 'sports',
+    },
   ],
 };

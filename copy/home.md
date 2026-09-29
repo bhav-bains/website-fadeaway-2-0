@@ -77,12 +77,12 @@ Format: answer capsule (from frontmatter `answer_capsule`) as a centered intro p
 3. **Fixed Pricing** · No hourly billing, scope defined before we start
 4. **Revenue-Tracked** · Results measured in bookings & sales, not traffic
 
-## Built for E-commerce, Wellness & Counselling, Boutique Fitness, and Sports Academies {#industries}
+## Growth Built Around Your Industry {#industries}
 
-Intro: Find your industry.
+Intro: Websites, SEO and AEO shaped around how your customers search and book.
 
 ### E-commerce
-(Largest visual treatment, first in order.)
+(First in order. All 4 cards are equal weight in a 2x2 grid, each with its own illustration.)
 We bring deep, hands-on experience with larger e-commerce stores: the technical SEO and site work that turns search traffic into sales in a competitive, established market. It's not a quick-win space, which is exactly why the foundation matters more than shortcuts.
 [Link: See how we help e-commerce brands → /solutions/ecommerce]
 
