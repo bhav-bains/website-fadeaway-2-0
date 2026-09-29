@@ -120,9 +120,12 @@ const subLinkClass =
       </nav>
 
       <div class="flex items-center gap-1">
-        <Button href={headerCta.href} variant="secondary" size="sm" className="hidden lg:inline-flex">
-          {headerCta.label}
-        </Button>
+        <!-- Desktop CTA; on smaller screens the CTA lives inside the menu panel -->
+        <div class="hidden lg:block">
+          <Button href={headerCta.href} variant="secondary" size="sm">
+            {headerCta.label}
+          </Button>
+        </div>
 
         <button
           type="button"

@@ -1,0 +1,34 @@
+---
+// Hero CTA row. Mobile: full-width stacked buttons. sm and up: side by side.
+import clsx from 'clsx';
+import Button from '../../Button.astro';
+import type { HeroCta } from './types';
+
+interface Props {
+  primary: HeroCta;
+  secondary?: HeroCta;
+  align?: 'center' | 'start';
+  class?: string;
+}
+
+const { primary, secondary, align = 'start', class: className } = Astro.props;
+---
+
+<div
+  class={clsx(
+    'flex w-full flex-col gap-2 sm:w-auto sm:flex-row',
+    align === 'center' ? 'sm:justify-center' : 'sm:justify-start',
+    className,
+  )}
+>
+  <Button href={primary.href} variant="primary" size="base" className="w-full sm:w-auto">
+    {primary.label}
+  </Button>
+  {
+    secondary && (
+      <Button href={secondary.href} variant="secondary" size="base" className="w-full sm:w-auto">
+        {secondary.label}
+      </Button>
+    )
+  }
+</div>

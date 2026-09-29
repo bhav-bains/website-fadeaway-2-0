@@ -1,0 +1,59 @@
+---
+// Hero variant A: centered stack over a faint grid and glow; answer capsule in a card below.
+import HeroActions from './HeroActions.astro';
+import type { HeroContent } from './types';
+
+type Props = HeroContent;
+const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta, answerCapsule } = Astro.props;
+---
+
+<section
+  id="hero"
+  aria-labelledby="hero-title"
+  class="relative isolate overflow-hidden px-2 pb-6 pt-24 sm:px-3 md:pb-10 md:pt-40 lg:px-4"
+>
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 -z-10 bg-grid [mask-image:radial-gradient(ellipse_70%_55%_at_50%_0%,#000_60%,transparent_100%)]"
+  >
+  </div>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute left-1/2 top-1/4 -z-10 aspect-square w-[36rem] max-w-full -translate-x-1/2 rounded-full bg-highlight/5 blur-[120px]"
+  >
+  </div>
+
+  <div class="mx-auto flex max-w-5xl flex-col items-center text-center">
+    {
+      eyebrow && (
+        <p class="text-balance rounded-pill bg-accent/15 px-2 py-1 text-meta font-medium text-accent">
+          {eyebrow}
+        </p>
+      )
+    }
+
+    {
+      displayLine && (
+        <p class="mt-3 text-balance font-display text-display font-bold tracking-tight text-ink">
+          {displayLine}
+        </p>
+      )
+    }
+
+    <h1 id="hero-title" class="mt-2 max-w-3xl text-balance font-display text-title font-semibold text-ink-soft">
+      {h1}
+    </h1>
+
+    {sub && <p class="mt-2 max-w-2xl text-pretty text-lead text-ink-muted">{sub}</p>}
+
+    <HeroActions primary={primaryCta} secondary={secondaryCta} align="center" class="mt-4" />
+
+    {
+      answerCapsule && (
+        <p class="mt-6 max-w-3xl rounded-card border border-line border-l-2 border-l-highlight bg-white/[0.03] p-3 text-left text-base text-ink-soft md:mt-8 md:p-4">
+          {answerCapsule}
+        </p>
+      )
+    }
+  </div>
+</section>

@@ -1,0 +1,54 @@
+---
+// Hero variant D. Sized to fit one screen (100svh) with room to breathe.
+// - Phones/tablets: illustration on top (compact), then everything centered.
+// - lg and up: text left, illustration right; display type and illustration also scale with screen height.
+// Top padding clears the overlaid header plus breathing room.
+import Eyebrow from '../Eyebrow.astro';
+import HeroActions from './HeroActions.astro';
+import HeroIllustration from './HeroIllustration.astro';
+import type { HeroContent } from './types';
+
+type Props = HeroContent;
+const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta } = Astro.props;
+---
+
+<section
+  id="hero"
+  aria-labelledby="hero-title"
+  class="relative isolate flex min-h-svh flex-col overflow-hidden px-2 pb-6 pt-28 sm:px-3 sm:pt-32 lg:px-4 lg:pb-8 lg:pt-40"
+>
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 -z-10 bg-grid [mask-image:radial-gradient(ellipse_60%_60%_at_75%_45%,#000_40%,transparent_100%)]"
+  >
+  </div>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute right-0 top-1/3 -z-10 aspect-square w-[36rem] max-w-full rounded-full bg-highlight/10 blur-[140px]"
+  >
+  </div>
+
+  <div class="mx-auto grid w-full max-w-site flex-1 content-center items-center gap-5 lg:grid-cols-[1fr_1fr] lg:content-normal lg:gap-12">
+    <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
+      {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+
+      {
+        displayLine && (
+          <p class="mt-2 max-w-2xl text-balance font-display text-display lg:mt-3 font-bold tracking-tight text-ink">
+            {displayLine}
+          </p>
+        )
+      }
+
+      <h1 id="hero-title" class="mt-2 max-w-xl lg:mt-3 text-balance font-display text-title font-semibold text-ink-soft">
+        {h1}
+      </h1>
+
+      {sub && <p class="mt-2 max-w-xl text-pretty text-lead text-ink-muted">{sub}</p>}
+
+      <HeroActions primary={primaryCta} secondary={secondaryCta} align="center" class="mt-4 lg:mt-5 lg:justify-start" />
+    </div>
+
+    <HeroIllustration class="order-first mx-auto h-auto w-full max-w-72 sm:max-w-sm lg:order-none lg:max-h-[52svh] lg:max-w-xl" />
+  </div>
+</section>

@@ -115,3 +115,11 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Decorative square grid (hero backgrounds). Pair with a mask to fade it out. */
+@utility bg-grid {
+  background-image:
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+}

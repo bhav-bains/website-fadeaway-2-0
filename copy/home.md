@@ -62,9 +62,11 @@ Notes for the build:
 - Display line (bold, largest type in the Hero, above the H1): **Revenue-Focused. Growth Partners.**
 - Eyebrow: Growth Partner for Local Businesses Across the US & Canada
 - H1: Websites, SEO & AI Search for Growing Businesses
-- Sub-headline: We build SEO- and AI-search-ready websites and run growth systems that turn traffic into paying customers. Fixed pricing, no guesswork, built to scale as you grow.
+- Sub-headline: We build websites ready for SEO and AI search, and run growth systems that turn traffic into paying customers. Fixed pricing, no guesswork, built to scale as you grow.
 - Primary CTA: See How It Works → #how-it-works
 - Secondary CTA: Get Your Free Audit → /audit
+- Visual: illustration (search bar, AI answer card citing a business, bookings chart, reviews, map pin). Hero fits one screen.
+- Answer capsule: not shown inside the Hero (it repeated the sub-headline). Placement decided with the Trust Bar section.
 
 ## Trust Bar {#trust}
 

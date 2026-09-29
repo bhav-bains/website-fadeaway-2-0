@@ -1,0 +1,27 @@
+---
+// Small label above a headline.
+// Phones: plain small text (long labels wrap cleanly, no boxed look). sm and up: tinted pill.
+import clsx from 'clsx';
+
+interface Props {
+  tone?: 'highlight' | 'accent';
+  class?: string;
+}
+
+const { tone = 'highlight', class: className } = Astro.props;
+
+const tones = {
+  highlight: 'text-highlight sm:border-highlight/30 sm:bg-highlight/10',
+  accent: 'text-accent sm:border-accent/30 sm:bg-accent/10',
+};
+---
+
+<p
+  class={clsx(
+    'max-w-full text-balance text-xs font-medium sm:inline-block sm:rounded-pill sm:border sm:px-2 sm:py-1 sm:text-meta',
+    tones[tone],
+    className,
+  )}
+>
+  <slot />
+</p>

@@ -6,7 +6,8 @@ import clsx from 'clsx';
 interface Props {
   href?: string;
   variant?: 'primary' | 'secondary' | 'tertiary';
-  size?: 'sm' | 'md' | 'lg';
+  /** sm/md/lg keep the legacy padding; `base` is the slimmer 48px size for new blocks */
+  size?: 'sm' | 'base' | 'md' | 'lg';
   fullWidth?: boolean;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
@@ -37,6 +38,7 @@ const variants = {
 // Every size keeps a 44px minimum touch target.
 const sizes = {
   sm: 'min-h-11 px-4 py-1.5 text-sm',
+  base: 'min-h-12 px-3 py-1.5 text-base',
   md: 'min-h-11 px-4 py-3 text-base',
   lg: 'min-h-14 px-6 py-4 text-lg',
 };

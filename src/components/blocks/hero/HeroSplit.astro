@@ -1,0 +1,68 @@
+---
+// Hero variant B: text on the left, answer capsule as a feature card on the right.
+// Mobile: one column, card after the buttons. lg and up: two columns.
+import HeroActions from './HeroActions.astro';
+import type { HeroContent } from './types';
+
+type Props = HeroContent;
+const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta, answerCapsule } = Astro.props;
+---
+
+<section
+  id="hero"
+  aria-labelledby="hero-title"
+  class="relative isolate overflow-hidden px-2 pb-6 pt-24 sm:px-3 md:pb-10 md:pt-36 lg:px-4 lg:pt-40"
+>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -right-40 -top-40 -z-10 aspect-square w-[40rem] max-w-[120vw] rounded-full bg-accent/10 blur-[140px]"
+  >
+  </div>
+
+  <div class="mx-auto grid max-w-site gap-6 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-10">
+    <div class="flex flex-col items-start">
+      {
+        eyebrow && (
+          <p class="flex items-center gap-1 text-meta font-semibold uppercase tracking-wider text-highlight">
+            <span aria-hidden="true" class="h-px w-3 shrink-0 bg-highlight" />
+            <span class="text-balance">{eyebrow}</span>
+          </p>
+        )
+      }
+
+      {
+        displayLine && (
+          <p class="mt-2 text-balance font-display text-display font-bold tracking-tight text-ink">
+            {displayLine}
+          </p>
+        )
+      }
+
+      <h1 id="hero-title" class="mt-2 text-balance font-display text-title font-semibold text-ink-soft">
+        {h1}
+      </h1>
+
+      {sub && <p class="mt-2 max-w-xl text-pretty text-lead text-ink-muted">{sub}</p>}
+
+      <HeroActions primary={primaryCta} secondary={secondaryCta} class="mt-4" />
+    </div>
+
+    {
+      answerCapsule && (
+        <div class="rounded-card bg-gradient-to-br from-accent/50 via-line to-highlight/50 p-px shadow-glow-accent">
+          <div class="flex flex-col gap-2 rounded-[calc(var(--radius-card)-1px)] bg-surface-raised p-3 md:p-5">
+            <span
+              aria-hidden="true"
+              class="inline-flex size-11 items-center justify-center rounded-full bg-accent/15 text-accent"
+            >
+              <svg class="size-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9L12 2zm7 12l.95 2.55L22.5 17.5l-2.55.95L19 21l-.95-2.55L15.5 17.5l2.55-.95L19 14z" />
+              </svg>
+            </span>
+            <p class="text-base text-ink-soft md:text-lg">{answerCapsule}</p>
+          </div>
+        </div>
+      )
+    }
+  </div>
+</section>
