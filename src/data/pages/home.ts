@@ -7,6 +7,7 @@ import type { CardGridItem } from '../../components/blocks/CardGrid.astro';
 import type { NumberedListItem } from '../../components/blocks/NumberedList.astro';
 import type { ServiceGridItem } from '../../components/blocks/ServiceGrid.astro';
 import type { StepItem } from '../../components/blocks/Steps.astro';
+import type { FeatureListItem } from '../../components/blocks/FeatureList.astro';
 
 export const seo = {
   title: 'Fadeaway Creatives | Revenue-Focused Growth Partners',
@@ -181,6 +182,44 @@ export const work = {
   limit: 3,
   cta: { label: 'View Full Portfolio', href: routes.portfolio },
 } as const;
+
+export const method: { id: string; heading: string; intro: string; items: FeatureListItem[] } = {
+  id: 'method',
+  heading: 'Our SEO & AEO Method',
+  intro: "Here's exactly how we get you found, on Google and in AI search.",
+  items: [
+    {
+      icon: 'map-pin',
+      title: 'Google Business Profile & Map Pack',
+      text: 'We optimize your Google Business Profile so you show up first on the map when local customers search.',
+    },
+    {
+      icon: 'map',
+      title: 'Neighborhood-Level Content',
+      text: 'Customers search their specific area, not just your city, so we build content targeting the neighborhoods you actually serve.',
+    },
+    {
+      icon: 'braces',
+      title: 'Structured Data for AI Search',
+      text: "We add the schema markup to your site, like Organization, LocalBusiness, and FAQPage, that AI search tools like ChatGPT and Google's AI Overviews read to decide who to recommend.",
+    },
+    {
+      icon: 'star',
+      title: 'Review Generation',
+      text: 'We set up automated reminders that make it easy for happy customers to leave a review right after a great experience.',
+    },
+    {
+      icon: 'gauge',
+      title: 'Site Performance',
+      text: 'We build every site to load fast for real customers, using the techniques search engines actually reward.',
+    },
+    {
+      icon: 'chart-up',
+      title: 'Conversion Tracking',
+      text: 'We track which searches turn into a booked appointment or a paid customer, not just which pages get visited.',
+    },
+  ],
+};
 
 export const why: { id: string; heading: string; items: NumberedListItem[] } = {
   id: 'why',

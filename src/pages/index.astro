@@ -14,6 +14,7 @@ import ArrowLink from '../components/ui/ArrowLink.astro';
 import IllusAiShopping from '../components/illustrations/IllusAiShopping.astro';
 import CtaBlock from '../components/blocks/CtaBlock.astro';
 import ProofGrid from '../components/blocks/ProofGrid.astro';
+import FeatureList from '../components/blocks/FeatureList.astro';
 import { getCaseStudies } from '../lib/case-studies';
 import { HERO_VARIANTS } from '../components/blocks/hero/types';
 import { howToSchema } from '../lib/schema';
@@ -31,6 +32,7 @@ import {
   ecommerce,
   labs,
   work,
+  method,
 } from '../data/pages/home';
 
 const featuredWork = await getCaseStudies({ tag: work.tag, limit: work.limit });
@@ -118,6 +120,10 @@ const heroes = isDev ? HERO_VARIANTS : [heroVariant];
       </Section>
     )
   }
+
+  <Section id={method.id} heading={method.heading} intro={method.intro} layout="split" separator>
+    <FeatureList items={method.items} />
+  </Section>
 
   {
     isDev && (

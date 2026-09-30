@@ -1,0 +1,37 @@
+---
+// Open list of features: icon beside an H3 title, one sentence under it, hairline dividers, no card boxes.
+// Lighter than IconGrid; good for 4 to 8 "how we do it" points. Pairs well with Section layout="split".
+// Mobile-first: 1 column, `columns` from md.
+import clsx from 'clsx';
+import Icon, { type IconName } from '../ui/Icon.astro';
+
+export interface FeatureListItem {
+  icon: IconName;
+  title: string;
+  text: string;
+}
+
+interface Props {
+  items: FeatureListItem[];
+  columns?: 1 | 2;
+  class?: string;
+}
+
+const { items, columns = 2, class: className } = Astro.props;
+---
+
+<ul class={clsx('grid gap-x-6', columns === 2 && 'md:grid-cols-2', className)}>
+  {
+    items.map((item) => (
+      <li class="flex flex-col gap-1 border-t border-line py-3 md:py-4">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex size-9 shrink-0 items-center justify-center rounded-control border border-highlight/20 bg-highlight/10 text-highlight">
+            <Icon name={item.icon} />
+          </span>
+          <h3 class="text-balance font-display text-lg font-bold text-ink md:text-xl">{item.title}</h3>
+        </div>
+        <p class="text-pretty text-base text-ink-muted">{item.text}</p>
+      </li>
+    ))
+  }
+</ul>
