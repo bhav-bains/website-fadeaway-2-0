@@ -13,6 +13,8 @@ import Button from '../components/Button.astro';
 import ArrowLink from '../components/ui/ArrowLink.astro';
 import IllusAiShopping from '../components/illustrations/IllusAiShopping.astro';
 import CtaBlock from '../components/blocks/CtaBlock.astro';
+import ProofGrid from '../components/blocks/ProofGrid.astro';
+import { getCaseStudies } from '../lib/case-studies';
 import { HERO_VARIANTS } from '../components/blocks/hero/types';
 import { howToSchema } from '../lib/schema';
 import { siteConfig } from '../data/site';
@@ -28,7 +30,10 @@ import {
   howItWorks,
   ecommerce,
   labs,
+  work,
 } from '../data/pages/home';
+
+const featuredWork = await getCaseStudies({ tag: work.tag, limit: work.limit });
 
 const jsonLd = [
   howToSchema({
@@ -100,6 +105,19 @@ const heroes = isDev ? HERO_VARIANTS : [heroVariant];
     <IconGrid items={labs.items} columns={2} size="md" />
     <CtaBlock {...labs.cta} class="mt-4 md:mt-6" />
   </Section>
+
+  {
+    featuredWork.length > 0 && (
+      <Section id={work.id} heading={work.heading} intro={work.intro} separator>
+        <ProofGrid entries={featuredWork} />
+        <div class="mt-4 flex justify-center md:mt-6">
+          <Button href={work.cta.href} variant="secondary" size="base">
+            {work.cta.label}
+          </Button>
+        </div>
+      </Section>
+    )
+  }
 
   {
     isDev && (

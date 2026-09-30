@@ -172,6 +172,16 @@ export const labs = {
   },
 };
 
+/** Renders only when case studies tagged `featured` exist (never placeholder cards) */
+export const work = {
+  id: 'work',
+  heading: 'Real Work, Real Results',
+  intro: "See what we've built for businesses like yours.",
+  tag: 'featured',
+  limit: 3,
+  cta: { label: 'View Full Portfolio', href: routes.portfolio },
+} as const;
+
 export const why: { id: string; heading: string; items: NumberedListItem[] } = {
   id: 'why',
   heading: 'Why Growing Businesses Choose Fadeaway',

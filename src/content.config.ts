@@ -6,21 +6,27 @@ import { CONTENT_TAGS } from './data/tags';
 const tags = z.array(z.enum(CONTENT_TAGS)).default([]);
 
 // Real, permission-confirmed client work only. Never invent a client, result or quote.
+// Exception: `placeholder: true` entries exist to design the layout; getCaseStudies() drops them from production builds.
 const caseStudies = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/case-studies' }),
   schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      client: z.string(),
-      summary: z.string(),
-      results: z.array(z.string()).default([]),
-      image: image().optional(),
-      imageAlt: z.string().optional(),
-      url: z.url().optional(),
-      tags,
-      rank: z.number().int().default(100), // lower shows first in proof grids
-      permissionConfirmed: z.literal(true),
-    }),
+    z
+      .object({
+        title: z.string(),
+        client: z.string(),
+        summary: z.string(),
+        results: z.array(z.string()).default([]),
+        image: image().optional(),
+        imageAlt: z.string().optional(),
+        url: z.url().optional(),
+        tags,
+        rank: z.number().int().default(100), // lower shows first in proof grids
+        placeholder: z.boolean().default(false),
+        permissionConfirmed: z.boolean().default(false),
+      })
+      .refine((d) => d.placeholder || d.permissionConfirmed, {
+        message: 'Real case studies need permissionConfirmed: true (or mark the entry placeholder: true)',
+      }),
 });
 
 const testimonials = defineCollection({
