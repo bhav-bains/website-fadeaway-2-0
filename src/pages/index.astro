@@ -2,7 +2,7 @@
 // Homepage. Content: src/data/pages/home.ts (from copy/home.md). Sections are added as they're rebuilt.
 // The previous homepage is parked at src/pages/_inactive/home-2025.astro for reference.
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/blocks/hero/Hero.astro';
+import HeroPreview from '../components/blocks/hero/HeroPreview.astro';
 import Section from '../components/blocks/Section.astro';
 import IconGrid from '../components/blocks/IconGrid.astro';
 import CardGrid from '../components/blocks/CardGrid.astro';
@@ -17,7 +17,6 @@ import ProofGrid from '../components/blocks/ProofGrid.astro';
 import FeatureList from '../components/blocks/FeatureList.astro';
 import Faq from '../components/blocks/Faq.astro';
 import { getCaseStudies } from '../lib/case-studies';
-import { HERO_VARIANTS } from '../components/blocks/hero/types';
 import { howToSchema, faqSchema } from '../lib/schema';
 import { siteConfig } from '../data/site';
 import {
@@ -49,26 +48,11 @@ const jsonLd = [
   }),
   faqSchema(faq.items),
 ];
-
-// Dev-only design preview: /?hero=split | centered | editorial | visual | all.
-// `npm run dev` renders every variant and a script shows the requested one; the build ships only heroVariant.
-const isDev = import.meta.env.DEV;
-const heroes = isDev ? HERO_VARIANTS : [heroVariant];
 ---
 
 <BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
-  {
-    heroes.map((variant) => (
-      <div data-hero-variant={variant} hidden={isDev && variant !== heroVariant ? true : undefined}>
-        {isDev && (
-          <p data-hero-label hidden class="bg-accent px-2 py-1 text-center text-meta font-semibold text-accent-ink">
-            Dev preview: hero variant "{variant}"
-          </p>
-        )}
-        <Hero variant={variant} {...hero} />
-      </div>
-    ))
-  }
+  <!-- Dev-only preview: /?hero=split | centered | editorial | visual | all -->
+  <HeroPreview content={hero} variant={heroVariant} options={['centered', 'split', 'editorial', 'visual']} />
 
   <!-- Trust Bar: answer capsule (AEO summary, plain text right under the Hero), then 4 trust signals -->
   <Section id={trust.id} separator>
@@ -137,22 +121,4 @@ const heroes = isDev ? HERO_VARIANTS : [heroVariant];
   <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
     <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
   </Section>
-
-  {
-    isDev && (
-      <script is:inline>
-        (() => {
-          const wanted = new URLSearchParams(location.search).get('hero');
-          if (!wanted) return;
-          const blocks = document.querySelectorAll('[data-hero-variant]');
-          const all = wanted === 'all';
-          if (!all && ![...blocks].some((b) => b.dataset.heroVariant === wanted)) return;
-          blocks.forEach((b) => {
-            b.hidden = !all && b.dataset.heroVariant !== wanted;
-            b.querySelector('[data-hero-label]').hidden = !all;
-          });
-        })();
-      </script>
-    )
-  }
 </BaseLayout>

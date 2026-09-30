@@ -1,0 +1,20 @@
+---
+// E-commerce Solutions page. Content: src/data/pages/ecommerce.ts (from copy/ecommerce.md). Sections are added as they're built.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
+import Section from '../../components/blocks/Section.astro';
+import { breadcrumbSchema } from '../../lib/schema';
+import { seo, breadcrumb, hero, heroVariant, answerCapsule } from '../../data/pages/ecommerce';
+
+const jsonLd = [breadcrumbSchema(breadcrumb)];
+---
+
+<BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
+  <!-- Dev-only preview: /solutions/ecommerce?hero=showcase | statement | visual | all -->
+  <HeroPreview content={hero} variant={heroVariant} options={['showcase', 'statement', 'visual']} />
+
+  <!-- Answer capsule: AEO summary as plain text directly under the Hero -->
+  <Section id="overview" width="narrow" separator>
+    <p class="mx-auto max-w-3xl text-pretty text-center text-lead text-ink-soft">{answerCapsule}</p>
+  </Section>
+</BaseLayout>

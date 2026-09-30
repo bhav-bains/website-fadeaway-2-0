@@ -80,6 +80,20 @@ export function faqSchema(faq: { q: string; a: string }[]): JsonLdNode {
   };
 }
 
+// BreadcrumbList from the same items the Breadcrumb block renders.
+// URLs get a trailing slash so they match the canonical URLs SeoHead emits.
+export function breadcrumbSchema(items: { label: string; href: string }[]): JsonLdNode {
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.label,
+      item: abs(item.href.endsWith('/') ? item.href : `${item.href}/`),
+    })),
+  };
+}
+
 // One @graph per page: sitewide nodes first, then the page's own nodes.
 export function buildGraph(pageNodes: JsonLdNode[] = []) {
   return {

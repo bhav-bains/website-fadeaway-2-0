@@ -3,13 +3,17 @@
 // - Phones/tablets: illustration on top (compact), then everything centered.
 // - lg and up: text left, illustration right; display type and illustration also scale with screen height.
 // Top padding clears the overlaid header plus breathing room.
+import clsx from 'clsx';
 import Eyebrow from '../Eyebrow.astro';
+import Breadcrumb from '../Breadcrumb.astro';
 import HeroActions from './HeroActions.astro';
 import HeroIllustration from './HeroIllustration.astro';
+import { illustrations } from '../../illustrations';
 import type { HeroContent } from './types';
 
 type Props = HeroContent;
-const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta } = Astro.props;
+const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta, breadcrumb, visual } = Astro.props;
+const Visual = visual ? illustrations[visual] : HeroIllustration;
 ---
 
 <section
@@ -28,6 +32,7 @@ const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta } = Astro.props;
 
   <div class="mx-auto grid w-full max-w-site flex-1 content-center items-center gap-5 lg:grid-cols-[1fr_1fr] lg:content-normal lg:gap-12">
     <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
+      {breadcrumb && <Breadcrumb items={breadcrumb} class="mb-3" />}
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
 
       {
@@ -38,7 +43,15 @@ const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta } = Astro.props;
         )
       }
 
-      <h1 id="hero-title" class="mt-2 max-w-xl lg:mt-3 text-balance font-display text-title font-semibold text-ink-soft">
+      <h1
+        id="hero-title"
+        class={clsx(
+          'mt-2 text-balance font-display lg:mt-3',
+          displayLine
+            ? 'max-w-xl text-title font-semibold text-ink-soft'
+            : 'max-w-2xl text-display font-bold tracking-tight text-ink',
+        )}
+      >
         {h1}
       </h1>
 
@@ -47,6 +60,6 @@ const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta } = Astro.props;
       <HeroActions primary={primaryCta} secondary={secondaryCta} align="center" class="mt-4 lg:mt-5 lg:justify-start" />
     </div>
 
-    <HeroIllustration class="order-first mx-auto h-auto w-full max-w-72 sm:max-w-sm lg:order-none lg:max-h-[52svh] lg:max-w-xl" />
+    <Visual class="order-first mx-auto h-auto w-full max-w-72 sm:max-w-sm lg:order-none lg:max-h-[52svh] lg:max-w-xl" />
   </div>
 </section>

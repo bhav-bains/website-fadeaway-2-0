@@ -49,6 +49,7 @@ Astro site, hosted on Netlify. This file gives Claude Code the standing rules fo
 - **Sync habit:** start every session with `git pull` on `dev`, end every session with `git push` on `dev`.
 - **Page by page, section by section.** Implement one section at a time, show the diff, wait for review, then commit to `dev`.
 - **Reusable blocks.** Homepage first; its blocks become the shared blocks for every later page, so build them to be reusable, not homepage-specific.
+- **Design direction: fresh, not generic.** Break the usual template patterns (endless card grids, identical section layouts) and give the eye something new in each section, while staying clean and on-brand. Vary layouts across a page; prefer a considered idea (annotated visuals, oversized type, open lists) over the default card.
 - Test locally (`npm run dev`, `npm run build`) before committing.
 - Don't create or delete pages, routes, or redirects without asking.
 
@@ -91,7 +92,7 @@ Astro site, hosted on Netlify. This file gives Claude Code the standing rules fo
 - Name: **Fadeaway Creatives** (Labs is **Fadeaway Labs**, part of the same entity)
 - **Founder-led · 15+ years of experience · Fadeaway est. 2023**
 - Location line: **"Vancouver, BC, working with clients across Canada and the US."**
-- Organization schema: `areaServed` = Canada, United States; `foundingDate` 2023; address Vancouver, BC, Canada. `sameAs`: Instagram, Facebook, LinkedIn (confirmed, in `src/data/site.ts`); Crunchbase, Clutch, GoodFirms, DesignRush once claimed (pending). `knowsAbout`: SEO, answer engine optimization, web development, e-commerce, business process automation, AI implementation, MVP development.
+- Organization schema: `areaServed` = Canada, United States; `foundingDate` 2023; address Vancouver, BC, Canada. `sameAs`: Instagram, Facebook, LinkedIn (confirmed, in `src/data/site.ts`); Crunchbase, Clutch, GoodFirms, DesignRush once claimed (pending). `knowsAbout`: SEO, answer engine optimization, web development, e-commerce, business process automation, AI implementation, MVP development, plus the platforms and tools we genuinely use (Shopify, WooCommerce, WordPress, BigCommerce, headless commerce, Next.js, Astro, Shopify Hydrogen, Stripe, Google Search Console, Google Analytics, Google Merchant Center, Google Ads, Klaviyo, Meta Ads, ChatGPT, Perplexity, Google Gemini). Keep this list and the logo bands in sync; never list a tool we don't use.
 - Contact: hello@fadeawaycreatives.com
 
 ## 6. URL map
