@@ -15,9 +15,10 @@ import IllusAiShopping from '../components/illustrations/IllusAiShopping.astro';
 import CtaBlock from '../components/blocks/CtaBlock.astro';
 import ProofGrid from '../components/blocks/ProofGrid.astro';
 import FeatureList from '../components/blocks/FeatureList.astro';
+import Faq from '../components/blocks/Faq.astro';
 import { getCaseStudies } from '../lib/case-studies';
 import { HERO_VARIANTS } from '../components/blocks/hero/types';
-import { howToSchema } from '../lib/schema';
+import { howToSchema, faqSchema } from '../lib/schema';
 import { siteConfig } from '../data/site';
 import {
   seo,
@@ -33,6 +34,7 @@ import {
   labs,
   work,
   method,
+  faq,
 } from '../data/pages/home';
 
 const featuredWork = await getCaseStudies({ tag: work.tag, limit: work.limit });
@@ -43,6 +45,7 @@ const jsonLd = [
     steps: howItWorks.items,
     url: new URL(`/#${howItWorks.id}`, siteConfig.url).toString(),
   }),
+  faqSchema(faq.items),
 ];
 
 // Dev-only design preview: /?hero=split | centered | editorial | visual | all.
@@ -123,6 +126,10 @@ const heroes = isDev ? HERO_VARIANTS : [heroVariant];
 
   <Section id={method.id} heading={method.heading} intro={method.intro} layout="split" separator>
     <FeatureList items={method.items} />
+  </Section>
+
+  <Section id={faq.id} heading={faq.heading} width="narrow" separator>
+    <Faq faq={faq.items} />
   </Section>
 
   {

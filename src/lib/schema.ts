@@ -68,6 +68,18 @@ export function howToSchema({
   };
 }
 
+// FAQPage from the same `faq` array the Faq block renders, so visible text and schema match word for word.
+export function faqSchema(faq: { q: string; a: string }[]): JsonLdNode {
+  return {
+    '@type': 'FAQPage',
+    mainEntity: faq.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  };
+}
+
 // One @graph per page: sitewide nodes first, then the page's own nodes.
 export function buildGraph(pageNodes: JsonLdNode[] = []) {
   return {

@@ -8,6 +8,7 @@ import type { NumberedListItem } from '../../components/blocks/NumberedList.astr
 import type { ServiceGridItem } from '../../components/blocks/ServiceGrid.astro';
 import type { StepItem } from '../../components/blocks/Steps.astro';
 import type { FeatureListItem } from '../../components/blocks/FeatureList.astro';
+import type { FaqItem } from '../../components/blocks/Faq.astro';
 
 export const seo = {
   title: 'Fadeaway Creatives | Revenue-Focused Growth Partners',
@@ -217,6 +218,34 @@ export const method: { id: string; heading: string; intro: string; items: Featur
       icon: 'chart-up',
       title: 'Conversion Tracking',
       text: 'We track which searches turn into a booked appointment or a paid customer, not just which pages get visited.',
+    },
+  ],
+};
+
+/** Also feeds the FAQPage JSON-LD, so visible Q&A and schema always match */
+export const faq: { id: string; heading: string; items: FaqItem[] } = {
+  id: 'faq',
+  heading: 'Frequently Asked Questions',
+  items: [
+    {
+      q: "What's included in the free Instant Audit?",
+      a: "A quick, automated review of your website, local search visibility, and paid media opportunities, enough to flag where you're losing ground and what's worth fixing first. We walk you through the results so nothing gets lost in a report. It's free, with no obligation to work with us afterward.",
+    },
+    {
+      q: 'How much does the Full Audit cost?',
+      a: 'The Full Audit is a fixed $945, one time. It includes a full account review, keyword research, a content strategy foundation, quick wins, and a clear 3 to 6 month action plan. No hourly billing, no surprises, and if you move ahead with a new website, the fee is credited toward your build.',
+    },
+    {
+      q: 'Do you work with the booking system or CRM I already use?',
+      a: "Yes. We don't replace the software you already run your business on. We build your website and growth systems to work with what you have, like Jane App, SimplePractice, Mindbody, Momence, LeagueApps, or TeamSnap, so your team keeps its tools and your customers get a smoother way in.",
+    },
+    {
+      q: 'Do you work with businesses outside Vancouver?',
+      a: "Yes. We're based in Vancouver, BC, and work with clients across Canada and the United States. Everything from audits and strategy calls to builds and launches happens remotely, and we build for how your specific local market searches, wherever your business is.",
+    },
+    {
+      q: 'How long until I see results?',
+      a: "SEO and AEO build over time. Your Full Audit includes a 3 to 6 month action plan, and that's the window where ranking and visibility gains start compounding. Technical fixes and local listing improvements usually show up sooner, and your dashboard tracks bookings and sales the whole way, so you're never guessing.",
     },
   ],
 };
