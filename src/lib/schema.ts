@@ -49,6 +49,25 @@ export function websiteSchema(): JsonLdNode {
   };
 }
 
+// HowTo from a page's process section. Pass the same steps the Steps block renders so text matches word for word.
+export function howToSchema({
+  name,
+  steps,
+  url,
+}: {
+  name: string;
+  steps: { title: string; text: string }[];
+  /** Absolute URL of the section, e.g. https://fadeawaycreatives.com/#how-it-works */
+  url: string;
+}): JsonLdNode {
+  return {
+    '@type': 'HowTo',
+    name,
+    url,
+    step: steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.title, text: s.text })),
+  };
+}
+
 // One @graph per page: sitewide nodes first, then the page's own nodes.
 export function buildGraph(pageNodes: JsonLdNode[] = []) {
   return {

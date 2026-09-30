@@ -115,16 +115,18 @@ SEO and AEO built to scale as your business grows, not just launch and fade.
 ### Reliable Growth Partner
 Enterprise-level work, real engineering and real strategy, at small-business-reasonable pricing.
 
-## Build & Growth: How We Work With You {#services}
+## How We Work With You {#services}
+
+Eyebrow: Our Services
 
 ### Build
 From a full website redesign to migrating an existing site without losing your search rankings, every build is designed around your brand and scoped with a fixed price before we start, so you get enterprise-quality work without an enterprise price tag or timeline.
-*Includes:* Custom Web Development · Website Redesign · E-commerce Builds · Site Migration
+Sub-service tiles (no label): Custom Web Development · Website Redesign · E-commerce Builds · Site Migration
 [Link: See Build Services → /services/build]
 
 ### Growth
 We start with a clear picture of where you stand: a free Instant Audit, then a Full Audit that maps exactly what needs to change. From there, ongoing SEO and AEO work keeps you visible on Google and in AI search results, with every deliverable tied to bookings and sales, not traffic.
-*Includes:* Instant Audit · Full Audit · Attract Plan · Growth Plan
+Sub-service tiles (no label): Local SEO · AI Search (AEO) · Conversion Optimization · Paid Ads
 [Link: See Growth Services → /services/growth]
 
 ## How It Works {#how-it-works}

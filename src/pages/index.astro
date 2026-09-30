@@ -7,8 +7,20 @@ import Section from '../components/blocks/Section.astro';
 import IconGrid from '../components/blocks/IconGrid.astro';
 import CardGrid from '../components/blocks/CardGrid.astro';
 import NumberedList from '../components/blocks/NumberedList.astro';
+import ServiceGrid from '../components/blocks/ServiceGrid.astro';
+import Steps from '../components/blocks/Steps.astro';
 import { HERO_VARIANTS } from '../components/blocks/hero/types';
-import { seo, hero, heroVariant, answerCapsule, trust, industries, why } from '../data/pages/home';
+import { howToSchema } from '../lib/schema';
+import { siteConfig } from '../data/site';
+import { seo, hero, heroVariant, answerCapsule, trust, industries, why, services, howItWorks } from '../data/pages/home';
+
+const jsonLd = [
+  howToSchema({
+    name: howItWorks.heading,
+    steps: howItWorks.items,
+    url: new URL(`/#${howItWorks.id}`, siteConfig.url).toString(),
+  }),
+];
 
 // Dev-only design preview: /?hero=split | centered | editorial | visual | all.
 // `npm run dev` renders every variant and a script shows the requested one; the build ships only heroVariant.
@@ -16,7 +28,7 @@ const isDev = import.meta.env.DEV;
 const heroes = isDev ? HERO_VARIANTS : [heroVariant];
 ---
 
-<BaseLayout title={seo.title} description={seo.description}>
+<BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
   {
     heroes.map((variant) => (
       <div data-hero-variant={variant} hidden={isDev && variant !== heroVariant ? true : undefined}>
@@ -43,6 +55,14 @@ const heroes = isDev ? HERO_VARIANTS : [heroVariant];
 
   <Section id={why.id} heading={why.heading} layout="split" separator>
     <NumberedList items={why.items} />
+  </Section>
+
+  <Section id={services.id} eyebrow={services.eyebrow} heading={services.heading} separator>
+    <ServiceGrid items={services.items} />
+  </Section>
+
+  <Section id={howItWorks.id} heading={howItWorks.heading} separator>
+    <Steps items={howItWorks.items} />
   </Section>
 
   {

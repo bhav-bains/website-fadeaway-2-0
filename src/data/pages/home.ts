@@ -5,6 +5,8 @@ import type { HeroContent, HeroVariant } from '../../components/blocks/hero/type
 import type { IconGridItem } from '../../components/blocks/IconGrid.astro';
 import type { CardGridItem } from '../../components/blocks/CardGrid.astro';
 import type { NumberedListItem } from '../../components/blocks/NumberedList.astro';
+import type { ServiceGridItem } from '../../components/blocks/ServiceGrid.astro';
+import type { StepItem } from '../../components/blocks/Steps.astro';
 
 export const seo = {
   title: 'Fadeaway Creatives | Revenue-Focused Growth Partners',
@@ -67,6 +69,62 @@ export const industries: { id: string; heading: string; intro: string; items: Ca
       body: 'Fill your roster and keep it full. For clubs, academies, combat sports gyms, and camps, we build websites parents can actually find on Google and in AI answers, connected to the registration software you already use, like LeagueApps or TeamSnap.',
       link: { label: 'See how we help sports programs', href: routes.sports },
       illustration: 'sports',
+    },
+  ],
+};
+
+export const services: { id: string; eyebrow: string; heading: string; items: ServiceGridItem[] } = {
+  id: 'services',
+  eyebrow: 'Our Services',
+  heading: 'How We Work With You',
+  items: [
+    {
+      title: 'Build',
+      body: 'From a full website redesign to migrating an existing site without losing your search rankings, every build is designed around your brand and scoped with a fixed price before we start, so you get enterprise-quality work without an enterprise price tag or timeline.',
+      icon: 'browser',
+      tone: 'accent',
+      art: 'build',
+      includes: [
+        { label: 'Custom Web Development', icon: 'code' },
+        { label: 'Website Redesign', icon: 'refresh' },
+        { label: 'E-commerce Builds', icon: 'bag' },
+        { label: 'Site Migration', icon: 'migrate' },
+      ],
+      link: { label: 'See Build Services', href: routes.build },
+    },
+    {
+      title: 'Growth',
+      body: 'We start with a clear picture of where you stand: a free Instant Audit, then a Full Audit that maps exactly what needs to change. From there, ongoing SEO and AEO work keeps you visible on Google and in AI search results, with every deliverable tied to bookings and sales, not traffic.',
+      icon: 'chart-up',
+      tone: 'highlight',
+      art: 'growth',
+      includes: [
+        { label: 'Local SEO', icon: 'map-pin' },
+        { label: 'AI Search (AEO)', icon: 'search-ai' },
+        { label: 'Conversion Optimization', icon: 'target' },
+        { label: 'Paid Ads', icon: 'megaphone' },
+      ],
+      link: { label: 'See Growth Services', href: routes.growth },
+    },
+  ],
+};
+
+/** Also feeds the HowTo JSON-LD, so visible steps and schema always match */
+export const howItWorks: { id: string; heading: string; items: StepItem[] } = {
+  id: 'how-it-works',
+  heading: 'How It Works',
+  items: [
+    {
+      title: 'Instant Audit (Free)',
+      text: 'We run a fast, automated audit of your website, local search visibility, and paid opportunities, and send you the results at no cost.',
+    },
+    {
+      title: 'Full Audit',
+      text: 'We do a full account review, keyword research, and build a clear action plan for your business.',
+    },
+    {
+      title: 'Build, Then Grow',
+      text: 'From there, we either build or rebuild your site around your brand, or move straight into an ongoing Growth Plan, whichever your business needs first.',
     },
   ],
 };

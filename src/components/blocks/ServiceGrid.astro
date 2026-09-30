@@ -1,0 +1,161 @@
+---
+// Service cards: toned icon badge, oversized corner line art, H3 title, real prose, sub-service tiles (icon each), one link.
+// Each card has its own tone (accent or highlight) so side-by-side services read as distinct offers.
+// The whole card is clickable (stretched link) but only the link is announced.
+// Mobile-first: 1 column, tiles 1 column; 2 cards from md, 2x2 tiles from sm.
+import clsx from 'clsx';
+import Icon, { type IconName } from '../ui/Icon.astro';
+
+export interface ServiceGridItem {
+  title: string;
+  body: string;
+  icon: IconName;
+  tone: 'accent' | 'highlight';
+  art: ArtName;
+  includes: { label: string; icon: IconName }[];
+  link: { label: string; href: string };
+}
+
+type ArtName = 'build' | 'growth';
+
+// Decorative corner line art (240 grid, currentColor), drawn oversized and faded into the card
+const art: Record<ArtName, string> = {
+  // stacked browser windows with a page layout sketched in
+  build: `
+    <rect x="78" y="22" width="150" height="112" rx="12" opacity=".45"/>
+    <path d="M78 44h150" opacity=".45"/>
+    <rect x="28" y="66" width="176" height="140" rx="14" style="fill:var(--color-surface-raised)"/>
+    <path d="M28 92h176"/>
+    <circle cx="44" cy="79" r="3.5"/><circle cx="57" cy="79" r="3.5"/><circle cx="70" cy="79" r="3.5"/>
+    <rect x="46" y="108" width="84" height="11" rx="4"/>
+    <rect x="46" y="127" width="60" height="7" rx="3.5" opacity=".6"/>
+    <rect x="46" y="142" width="40" height="12" rx="6"/>
+    <rect x="142" y="108" width="46" height="46" rx="8"/>
+    <path d="m150 146 11-12 9 8 7-6 11 10" opacity=".6"/>
+    <rect x="46" y="168" width="42" height="24" rx="5" opacity=".6"/>
+    <rect x="96" y="168" width="42" height="24" rx="5" opacity=".6"/>
+    <rect x="146" y="168" width="42" height="24" rx="5" opacity=".6"/>`,
+  // rising performance line with a target ring on the peak
+  growth: `
+    <path d="M24 204h200M24 164h200M24 124h200M24 84h200" stroke-dasharray="2 7" opacity=".45"/>
+    <path d="M24 190 68 170l36 8 40-50 36-20 32-46V204H24z" fill="currentColor" stroke="none" opacity=".07"/>
+    <path d="M24 190 68 170l36 8 40-50 36-20 32-46"/>
+    <circle cx="68" cy="170" r="4"/><circle cx="104" cy="178" r="4"/><circle cx="144" cy="128" r="4"/><circle cx="180" cy="108" r="4"/>
+    <circle cx="212" cy="62" r="6" fill="currentColor" stroke="none"/>
+    <circle cx="212" cy="62" r="16" opacity=".55"/>
+    <circle cx="212" cy="62" r="30" opacity=".25"/>
+    <path d="M60 204v-18M100 204v-12M140 204v-48M176 204v-68" opacity=".35"/>`,
+};
+
+interface Props {
+  items: ServiceGridItem[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+
+// Full class strings so Tailwind can see them
+const tones = {
+  accent: {
+    card: 'hover:border-accent/40 has-[a:focus-visible]:ring-accent',
+    glow: 'bg-accent/15',
+    art: 'text-accent',
+    badge: 'border-accent/25 bg-accent/10 text-accent',
+    tile: 'text-accent',
+    link: 'text-accent',
+  },
+  highlight: {
+    card: 'hover:border-highlight/40 has-[a:focus-visible]:ring-highlight',
+    glow: 'bg-highlight/15',
+    art: 'text-highlight',
+    badge: 'border-highlight/25 bg-highlight/10 text-highlight',
+    tile: 'text-highlight',
+    link: 'text-highlight',
+  },
+};
+---
+
+<ul class={clsx('grid gap-3 md:grid-cols-2 lg:gap-4', className)}>
+  {
+    items.map((item) => {
+      const t = tones[item.tone];
+      return (
+        <li
+          class={clsx(
+            'group relative isolate flex flex-col overflow-hidden rounded-card border border-line-strong bg-surface-raised/60 transition-colors duration-300 has-[a:focus-visible]:ring-2',
+            t.card,
+          )}
+        >
+          <div
+            aria-hidden="true"
+            class={clsx(
+              'pointer-events-none absolute -right-10 -top-10 -z-10 size-[14rem] rounded-full opacity-60 blur-lg transition-opacity duration-500 group-hover:opacity-100',
+              t.glow,
+            )}
+          />
+          <div
+            aria-hidden="true"
+            class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[10rem] bg-grid [mask-image:linear-gradient(to_bottom,#000,transparent)]"
+          />
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 240 240"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class={clsx(
+              'pointer-events-none absolute -right-6 -top-6 -z-10 size-[13rem] opacity-25 transition-[opacity,transform] duration-700 [mask-image:radial-gradient(circle_at_75%_25%,#000_35%,transparent_75%)] group-hover:-translate-x-1 group-hover:translate-y-1 group-hover:opacity-40 md:size-[17rem]',
+              t.art,
+            )}
+            set:html={art[item.art]}
+          />
+
+          <div class="flex flex-1 flex-col gap-3 p-3 md:p-4">
+            <span class={clsx('inline-flex size-12 items-center justify-center rounded-control border', t.badge)}>
+              <Icon name={item.icon} class="size-icon" />
+            </span>
+
+            <div class="flex flex-col gap-2">
+              <h3 class="font-display text-2xl font-bold text-ink md:text-3xl">{item.title}</h3>
+              <p class="text-pretty text-base text-ink-muted">{item.body}</p>
+            </div>
+
+            <ul class="grid gap-1 sm:grid-cols-2">
+              {item.includes.map((inc) => (
+                <li class="flex items-center gap-2 rounded-control border border-line bg-canvas/60 px-2 py-2 transition-colors duration-300 group-hover:border-line-strong">
+                  <Icon name={inc.icon} class={clsx('size-icon shrink-0', t.tile)} />
+                  <span class="text-sm font-medium text-ink">{inc.label}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="border-t border-line px-3 py-2 md:px-4">
+            <a
+              href={item.link.href}
+              class={clsx(
+                'inline-flex items-center gap-1 py-1 font-semibold after:absolute after:inset-0 focus-visible:outline-none',
+                t.link,
+              )}
+            >
+              {item.link.label}
+              <svg
+                class="size-icon-sm transition-transform duration-300 group-hover:translate-x-1"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </a>
+          </div>
+        </li>
+      );
+    })
+  }
+</ul>
