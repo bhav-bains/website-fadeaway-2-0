@@ -1,0 +1,32 @@
+<!-- @dsCard group="Foundations" viewport="760x650" -->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Colors</title>
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="bg-canvas text-ink font-body">
+<div class="p-3 space-y-4">
+  <section>
+    <h2 class="text-xl text-ink">Semantic colors</h2>
+    <p class="text-sm text-ink-muted mt-1">Use these first. Class shown as bg-*; the same names work as text-* and border-*.</p>
+    <div class="grid grid-cols-4 gap-2 mt-2" data-swatches="canvas surface surface-deep surface-raised ink ink-soft ink-muted ink-subtle line line-strong accent highlight"></div>
+  </section>
+  <section>
+    <h2 class="text-xl text-ink">Brand palette</h2>
+    <div class="grid grid-cols-5 gap-2 mt-2" data-swatches="fadeaway-orange fadeaway-teal fadeaway-graphite fadeaway-dark fadeaway-darker"></div>
+  </section>
+</div>
+<script>
+const hex = (c) => { const m = c.match(/[\d.]+/g); if (!m) return c; const [r, g, b, a] = m.map(Number);
+  const h = '#' + [r, g, b].map((v) => Math.round(v).toString(16).padStart(2, '0')).join('').toUpperCase();
+  return a !== undefined && a < 1 ? h + ' / ' + Math.round(a * 100) + '%' : h; };
+for (const grid of document.querySelectorAll('[data-swatches]')) {
+  for (const n of grid.dataset.swatches.split(' ')) {
+    const cell = document.createElement('div');
+    cell.innerHTML = '<div class="bg-' + n + ' border border-line-strong rounded-control" style="height:56px"></div>' +
+      '<p class="text-xs text-ink mt-1">' + n + '</p><p class="text-xs text-ink-subtle" data-hex></p>';
+    grid.appendChild(cell);
+    cell.querySelector('[data-hex]').textContent = hex(getComputedStyle(cell.firstChild).backgroundColor);
+  }
+}
+</script>
+</body></html>

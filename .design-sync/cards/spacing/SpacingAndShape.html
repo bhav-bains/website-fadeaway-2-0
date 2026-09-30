@@ -1,0 +1,39 @@
+<!-- @dsCard group="Foundations" viewport="760x690" -->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Spacing and shape</title>
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="bg-canvas text-ink font-body">
+<div class="p-3 space-y-4">
+  <section>
+    <h2 class="text-xl">Spacing: 8px scale</h2>
+    <p class="text-sm text-ink-muted mt-1">p-1 = 8px up to p-10 = 80px. Same steps for m, gap and space-y.</p>
+    <div class="space-y-1 mt-2" id="scale"></div>
+  </section>
+  <section>
+    <h2 class="text-xl">Radius</h2>
+    <div class="flex gap-3 mt-2">
+      <div class="bg-surface-raised border border-line rounded-control flex items-center justify-center" style="width:140px;height:72px"><span class="text-xs text-ink-muted">rounded-control</span></div>
+      <div class="bg-surface-raised border border-line rounded-card flex items-center justify-center" style="width:140px;height:72px"><span class="text-xs text-ink-muted">rounded-card</span></div>
+      <div class="bg-surface-raised border border-line rounded-pill flex items-center justify-center" style="width:140px;height:40px"><span class="text-xs text-ink-muted">rounded-pill</span></div>
+    </div>
+  </section>
+  <section>
+    <h2 class="text-xl">Glow</h2>
+    <div class="flex gap-4 mt-2">
+      <div class="bg-surface rounded-card shadow-glow-accent flex items-center justify-center" style="width:200px;height:72px"><span class="text-xs text-ink-muted">shadow-glow-accent</span></div>
+      <div class="bg-surface rounded-card shadow-glow-highlight flex items-center justify-center" style="width:200px;height:72px"><span class="text-xs text-ink-muted">shadow-glow-highlight</span></div>
+    </div>
+  </section>
+</div>
+<script>
+const scale = document.getElementById('scale');
+for (let i = 1; i <= 10; i++) {
+  const row = document.createElement('div');
+  row.className = 'flex items-center gap-2';
+  row.innerHTML = '<span class="text-xs text-ink-subtle" style="width:72px;white-space:nowrap">' + i + ' · ' + i * 8 + 'px</span>' +
+    '<div class="bg-accent rounded-control" style="height:10px;width:var(--spacing-' + i + ')"></div>';
+  scale.appendChild(row);
+}
+</script>
+</body></html>

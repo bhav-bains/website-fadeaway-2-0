@@ -11,11 +11,14 @@
 
 - **Windows:** the Tailwind CLI sometimes prints `Assertion failed: !(handle->flags & UV_HANDLE_CLOSING) ... async.c` on exit. It's a libuv shutdown quirk; the CLI still exits 0 and the output is correct. Check the exit code, not the message.
 
+- **Overview cards are hand-authored** in `.design-sync/cards/<dir>/<Name>.html` (Colors, Typography, SpacingAndShape, BrandPieces). Without cards, Claude Design's picker labels the project "empty" even though the tokens are uploaded. The converter doesn't know about these and wipes `ds-bundle/tokens/` on every build, so **after every build, copy them in** (`cp -r .design-sync/cards/* ds-bundle/tokens/`) and include `tokens/**` in the upload. Each card's first line is `<!-- @dsCard group="..." viewport="WxH" -->`, and each needs its own folder (Claude Design indexes one card per folder). The viewport heights were measured to fit the content, so re-measure if you change a card.
+
 ## Rebuild commands
 
 ```bash
 node .ds-sync/node_modules/@tailwindcss/cli/dist/index.mjs -i .design-sync/brand.css -o .design-sync/.cache/fadeaway.css --minify
 node .ds-sync/resync.mjs --config .design-sync/config.json --node-modules ./.ds-sync/node_modules --out ./ds-bundle --no-render-check [--remote .design-sync/.cache/remote-sync.json]
+cp -r .design-sync/cards/* ds-bundle/tokens/
 ```
 
 ## Known render warns
