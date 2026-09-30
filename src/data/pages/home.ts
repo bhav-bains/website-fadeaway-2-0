@@ -250,6 +250,13 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
   ],
 };
 
+export const cta = {
+  id: 'cta',
+  heading: 'Ready to Grow?',
+  text: 'Start with a free Instant Audit: a clear picture of where you stand, no obligation.',
+  cta: { label: 'Get Your Free Audit', href: routes.audit },
+};
+
 export const why: { id: string; heading: string; items: NumberedListItem[] } = {
   id: 'why',
   heading: 'Why Growing Businesses Choose Fadeaway',

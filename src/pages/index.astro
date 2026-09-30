@@ -35,6 +35,7 @@ import {
   work,
   method,
   faq,
+  cta,
 } from '../data/pages/home';
 
 const featuredWork = await getCaseStudies({ tag: work.tag, limit: work.limit });
@@ -130,6 +131,10 @@ const heroes = isDev ? HERO_VARIANTS : [heroVariant];
 
   <Section id={faq.id} heading={faq.heading} width="narrow" separator>
     <Faq faq={faq.items} />
+  </Section>
+
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
+    <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
   </Section>
 
   {

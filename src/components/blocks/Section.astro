@@ -22,6 +22,8 @@ interface Props {
   align?: 'center' | 'start';
   /** Faint hairline at the top edge (fades out at both ends): use only between major sections. Sections otherwise share one background. */
   separator?: boolean;
+  /** Id of a heading rendered inside the content (use when the section has no `heading` of its own) */
+  labelledBy?: string;
   class?: string;
 }
 
@@ -35,6 +37,7 @@ const {
   width = 'site',
   align = 'center',
   separator = false,
+  labelledBy,
   class: className,
 } = Astro.props;
 
@@ -59,7 +62,7 @@ const hasHeader = eyebrow || heading || intro;
 
 <section
   id={id}
-  aria-labelledby={headingId}
+  aria-labelledby={headingId ?? labelledBy}
   class={clsx('relative isolate px-2 py-6 sm:px-3 md:py-10 lg:px-4 lg:py-24', tones[tone], className)}
 >
   {
