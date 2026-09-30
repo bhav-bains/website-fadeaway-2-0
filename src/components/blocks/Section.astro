@@ -5,6 +5,7 @@
 //   stack (default): header above the content
 //   split: header in a left column (pinned while scrolling on lg), content on the right; stacked on phones
 // Optional "actions" slot: links or buttons under the intro, inside the header.
+// Optional `lead`: a standfirst paragraph above the header (e.g. a page's answer capsule in the first section after the Hero).
 // Mobile-first: unprefixed classes are the phone layout; sm/md/lg scale up.
 import clsx from 'clsx';
 import Eyebrow from './Eyebrow.astro';
@@ -15,6 +16,8 @@ interface Props {
   eyebrow?: string;
   heading?: string;
   intro?: string;
+  /** Standfirst above the header: real text with a thin accent rule, quieter than the heading */
+  lead?: string;
   layout?: 'stack' | 'split';
   tone?: 'canvas' | 'surface' | 'deep';
   width?: 'site' | 'narrow' | 'prose';
@@ -38,6 +41,7 @@ const {
   align = 'center',
   separator = false,
   labelledBy,
+  lead,
   class: className,
 } = Astro.props;
 
@@ -58,6 +62,9 @@ const widths = {
 };
 
 const hasHeader = eyebrow || heading || intro;
+
+// Keep hyphenated words ("E-commerce") on one line; the text itself is unchanged
+const headingParts = heading ? heading.split(/(\S+-\S+)/) : [];
 ---
 
 <section
@@ -80,6 +87,18 @@ const hasHeader = eyebrow || heading || intro;
     )}
   >
     {
+      lead && (
+        <p
+          class={clsx(
+            'mx-auto max-w-3xl text-pretty border-l-2 border-accent/70 pl-2 text-left text-base text-ink-muted md:pl-3 md:text-lg',
+            split ? 'lg:col-span-2' : 'mb-6 md:mb-10',
+          )}
+        >
+          {lead}
+        </p>
+      )
+    }
+    {
       hasHeader && (
         <header
           class={clsx(
@@ -91,7 +110,7 @@ const hasHeader = eyebrow || heading || intro;
           {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
           {heading && (
             <h2 id={headingId} class="max-w-3xl text-balance font-display text-heading font-bold text-ink">
-              {heading}
+              {headingParts.map((part, i) => (i % 2 === 1 ? <span class="whitespace-nowrap">{part}</span> : part))}
             </h2>
           )}
           {intro && <p class="max-w-2xl text-pretty text-base text-ink-soft md:text-lg">{intro}</p>}

@@ -3,8 +3,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
 import Section from '../../components/blocks/Section.astro';
+import AnnotatedVisual from '../../components/blocks/AnnotatedVisual.astro';
+import BentoGrid from '../../components/blocks/BentoGrid.astro';
 import { breadcrumbSchema } from '../../lib/schema';
-import { seo, breadcrumb, hero, heroVariant, answerCapsule } from '../../data/pages/ecommerce';
+import { seo, breadcrumb, hero, heroVariant, answerCapsule, aiShopping, standard } from '../../data/pages/ecommerce';
 
 const jsonLd = [breadcrumbSchema(breadcrumb)];
 ---
@@ -13,8 +15,12 @@ const jsonLd = [breadcrumbSchema(breadcrumb)];
   <!-- Dev-only preview: /solutions/ecommerce?hero=showcase | statement | visual | all -->
   <HeroPreview content={hero} variant={heroVariant} options={['showcase', 'statement', 'visual']} />
 
-  <!-- Answer capsule: AEO summary as plain text directly under the Hero -->
-  <Section id="overview" width="narrow" separator>
-    <p class="mx-auto max-w-3xl text-pretty text-center text-lead text-ink-soft">{answerCapsule}</p>
+  <!-- Answer capsule (AEO summary) is the lead paragraph of the first section after the Hero -->
+  <Section id={aiShopping.id} lead={answerCapsule} heading={aiShopping.heading} intro={aiShopping.intro}>
+    <AnnotatedVisual visual="ai-shopping" items={aiShopping.items} />
+  </Section>
+
+  <Section id={standard.id} heading={standard.heading} intro={standard.intro} align="start" separator>
+    <BentoGrid items={standard.items} cta={standard.cta} />
   </Section>
 </BaseLayout>

@@ -95,7 +95,7 @@ Home → E-commerce
 - Primary CTA: Get Started → /contact
 - Secondary CTA: See How It Works → #how-it-works
   (Switch to "See Our E-commerce Work → #real-work" once the Real Work section has at least one approved case study.)
-- Answer capsule: renders directly under the Hero, from the frontmatter.
+- Answer capsule: renders directly under the Hero, from the frontmatter. (Decided Sept 29: shown as the lead paragraph at the top of the AI Shopping section, not as its own block.)
 
 ## Is Your Store Ready for AI Shopping? {#ai-shopping}
 
@@ -110,7 +110,9 @@ Being found isn't only about search position anymore. It's about whether an AI a
 ### Early, On Purpose
 This is still early. Getting your store's foundations right now is a real head start, not a trend to catch up on later.
 
-## Built for How E-commerce Actually Works {#standard}
+## Built for the Way E-commerce Actually Works {#standard}
+
+(Heading fixed Sept 29: was "Built for How E-commerce Actually Works".)
 
 Every store we build or grow follows the same standard, whatever platform you're on.
 

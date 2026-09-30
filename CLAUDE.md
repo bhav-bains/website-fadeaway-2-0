@@ -50,6 +50,7 @@ Astro site, hosted on Netlify. This file gives Claude Code the standing rules fo
 - **Page by page, section by section.** Implement one section at a time, show the diff, wait for review, then commit to `dev`.
 - **Reusable blocks.** Homepage first; its blocks become the shared blocks for every later page, so build them to be reusable, not homepage-specific.
 - **Design direction: fresh, not generic.** Break the usual template patterns (endless card grids, identical section layouts) and give the eye something new in each section, while staying clean and on-brand. Vary layouts across a page; prefer a considered idea (annotated visuals, oversized type, open lists) over the default card.
+- **Decoration = big, subtle line SVGs, not glow blobs.** For atmosphere in cards and panels, use an oversized line illustration that relates to the content (theme colour, low opacity, bleeding off an edge, masked to fade toward the text). Avoid blurred gradient "glow" circles.
 - Test locally (`npm run dev`, `npm run build`) before committing.
 - Don't create or delete pages, routes, or redirects without asking.
 
@@ -124,7 +125,7 @@ If a live URL changes, add a 301 in Netlify `_redirects` (ask first).
 All in `src/components/blocks/`. Mobile-first, semantic tokens only, no copy inside (content comes from `src/data/pages/*.ts`).
 
 - **SeoHead / BaseLayout:** all meta, OG, Twitter, canonical, robots, JSON-LD `@graph`; header, footer, sitewide Organization + WebSite schema. Done.
-- **Section:** shell for every section: anchor `id`, optional `eyebrow` / `heading` (H2) / `intro`, `layout` (`stack` | `split`, split pins the header left on lg), `tone` (`canvas` | `surface` | `deep`), `width` (`site` | `narrow` | `prose`), `separator`, an `actions` slot for buttons/links under the intro, and `labelledBy` when the H2 lives inside the content.
+- **Section:** shell for every section: anchor `id`, optional `eyebrow` / `heading` (H2) / `intro`, `layout` (`stack` | `split`, split pins the header left on lg), `tone` (`canvas` | `surface` | `deep`), `width` (`site` | `narrow` | `prose`), `separator`, an `actions` slot for buttons/links under the intro, `labelledBy` when the H2 lives inside the content, and `lead` (a standfirst above the header; solutions pages put the answer capsule here in the first section after the Hero instead of a standalone paragraph block).
 - **Hero** (`hero/`): display line above the H1, eyebrow, H1, sub-headline, two CTAs. Answer capsule renders in the Trust Bar directly under it.
 - **IconGrid:** icon tile + title + text. `size="sm"` for one-line captions (Trust Bar), `size="md"` for a sentence or two (Labs). `columns` 2 to 4.
 - **CardGrid:** illustration + title + prose + link, whole card clickable (Industries).

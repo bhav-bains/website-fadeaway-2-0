@@ -5,6 +5,7 @@ import { routes } from '../routes';
 import type { HeroContent, HeroVariant } from '../../components/blocks/hero/types';
 import type { BreadcrumbItem } from '../../components/blocks/Breadcrumb.astro';
 import type { AnnotatedPoint } from '../../components/blocks/AnnotatedVisual.astro';
+import type { BentoItem } from '../../components/blocks/BentoGrid.astro';
 
 export const seo = {
   title: 'Fadeaway Creatives | E-commerce Web Design & Growth',
@@ -62,10 +63,7 @@ export const hero: HeroContent = {
   },
 };
 
-/**
- * Parked (not on the page): the AnnotatedVisual layout was pulled on Sept 29; the copy will be placed elsewhere later.
- * Markers point at the matching part of the ai-shopping illustration (560x440 viewBox).
- */
+/** Markers point at the matching part of the ai-shopping illustration (560x440 viewBox) */
 export const aiShopping: { id: string; heading: string; intro: string; items: AnnotatedPoint[] } = {
   id: 'ai-shopping',
   heading: 'Is Your Store Ready for AI Shopping?',
@@ -88,4 +86,33 @@ export const aiShopping: { id: string; heading: string; intro: string; items: An
       at: { x: 36.5, y: 72.5 }, // rising sales card
     },
   ],
+};
+
+export const standard: { id: string; heading: string; intro: string; items: BentoItem[]; cta: { text: string; label: string; href: string } } = {
+  id: 'standard',
+  heading: 'Built for the Way E-commerce Actually Works',
+  intro: "Every store we build or grow follows the same standard, whatever platform you're on.",
+  items: [
+    {
+      title: 'Designed to Convert, Not Just Look Good',
+      text: 'Every design decision is built around your actual buying flow: product pages, cart, and checkout, not just visual polish.',
+    },
+    {
+      title: 'Built for AI Shopping and Search',
+      text: 'Your store is structured with the schema and content signals that AI shopping assistants and search tools read when recommending where to buy.',
+    },
+    {
+      title: 'Deep Platform Expertise',
+      text: 'Hands-on experience across Shopify, WooCommerce, and headless commerce, not a generic template applied to every store.',
+    },
+    {
+      title: 'Tailored to Your Store',
+      text: 'Every recommendation comes from your actual catalog, your actual traffic, and your actual competitors, not a one-size playbook.',
+    },
+    {
+      title: 'Solid Technical Foundations',
+      text: 'Site structure, category and tag architecture, and technical SEO built to handle a large catalog cleanly as it grows.',
+    },
+  ],
+  cta: { text: 'Ready to see this in action?', label: 'Get Started', href: routes.contact },
 };
