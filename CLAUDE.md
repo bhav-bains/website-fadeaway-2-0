@@ -4,29 +4,39 @@ Astro site, hosted on Netlify. This file gives Claude Code the standing rules fo
 
 ---
 
-## 1. Project structure (verified against `dev`, Sept 28, 2026)
+## 1. Project structure (verified against `dev`, Sept 29, 2026)
 
-- **Stack:** Astro 7.3, Tailwind v4.3 via `@tailwindcss/vite` (no `tailwind.config`, no PostCSS config), `@astrojs/mdx` 8, `@astrojs/sitemap`, `clsx`. Node 22.19+ required by `undici` (this machine: 22.23.2). All components are `.astro`; no React, no daisyUI. No database: Supabase (client, edge function, migrations) was removed; forms use Netlify Forms.
-- **Git:** remote `origin` → github.com/bhav-bains/website-fadeaway-2-0 (`main`, `dev`). `main` is production and stays untouched during the rebuild (see section 2).
+- **Stack:** Astro 7.3, Tailwind v4.3 via `@tailwindcss/vite` (no `tailwind.config`, no PostCSS config), `@astrojs/mdx` 8, `@astrojs/sitemap`, `clsx`. Node 22.19+ required by `undici` (desktop: 22.23.2, laptop: 24.15). All components are `.astro`; no React, no daisyUI. No database: Supabase (client, edge function, migrations) was removed; forms use Netlify Forms.
+- **Git:** github.com/bhav-bains/website-fadeaway-2-0 (`main`, `dev`). The remote is named `origin` on the desktop and `bhav-laptop` on the laptop; check with `git remote`. `main` is production and stays untouched during the rebuild (see section 2).
+- **Windows / PowerShell:** plain `npm` is blocked by the execution policy on the laptop; use `npm.cmd run dev` (or set `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once).
 - **Config:** `astro.config.mjs` sets `site: "https://fadeawaycreatives.com"`. `public/robots.txt` allows all and points to `sitemap-index.xml`. No `netlify.toml` or `public/_redirects` yet.
 - **Layout:** `src/layouts/BaseLayout.astro` for every page: head (fonts, `SeoHead`, `Analytics`), skip link, Header, `<main id="main">`, Footer. Pages render only their sections inside it. Props: the SeoHead props plus `mainClass`.
   - `src/components/seo/SeoHead.astro`: title, description, canonical (trailing slash, production domain), robots, OG, Twitter, one JSON-LD `@graph`. Props: `title`, `description`, `canonical`, `ogImage`, `ogImageAlt`, `ogType`, `noIndex`, `jsonLd` (array of page nodes). Warns at build when title > 60 or description > 155 chars.
   - `src/components/seo/Analytics.astro`: GA4 + Meta Pixel, IDs in `site.ts`.
-  - `src/lib/schema.ts`: JSON-LD builders (`organizationSchema`, `websiteSchema`, `buildGraph`, `serializeJsonLd`). Organization + WebSite are on every page; entity facts come from `src/data/site.ts`.
+  - `src/lib/schema.ts`: JSON-LD builders (`organizationSchema`, `websiteSchema`, `howToSchema`, `faqSchema`, `buildGraph`, `serializeJsonLd`). Organization + WebSite are on every page; entity facts come from `src/data/site.ts`. Pages pass their own nodes (HowTo, FAQPage...) via the layout's `jsonLd` prop, built from the same data the page renders.
   - Default OG image is still the logo until the homepage share image exists.
   - Sitemap excludes noindex pages (filter in `astro.config.mjs`).
-- **Header / Footer:** `Header.astro`, `Footer.astro`, fed by `src/data/navigation.ts`. That file still has 14 `#` placeholder links and the old nav structure (Audit & Growth Strategy, Startups & SaaS, etc.); header CTA is Contact → /contact. Replace with the nav/footer in `copy/home.md`.
-- **Live pages (`src/pages/`):** `/` (`index.astro`), `/contact`, `/contact-success`, `/sports`, `/wellness`.
-- **Parked pages (`src/pages/_inactive/`, not routed by Astro):** old index, `blog/index`, `blog/[slug]`, `demo-request`, `demo-success`, `services/web-design`. `/audit-request` and `/audit-success` do not exist anywhere.
-- **Components:** `src/components/blocks/` holds the new shared blocks (`Section.astro` so far). `Button.astro` renders an `<a>` when given `href`, a `<button>` otherwise; never wrap a Button in a link. Legacy: AgitatorCard, AgitatorSection, Badge, Button, Card, FeatureGrid, Footer, Header, Hero, LabsMVPSection, PackagesSection, PillarsSection, ProjectShowcase, ROISection, ServiceCard, ServicesSection, SolutionSection, StepsGridSection, TestimonialSection.
+- **Header / Footer:** `Header.astro`, `Footer.astro`, fed by `src/data/navigation.ts` (no `#` placeholder links left). The nav's Growth sub-services ("SEO + AEO · Full Audit · Growth Strategy · CRO · Paid Media") no longer match the homepage Growth tiles; align them when the nav is revisited.
+- **Routes:** every internal URL lives in `src/data/routes.ts`; link to `routes.x`, never a hardcoded path.
+- **Live pages (`src/pages/`):** `/` (`index.astro`, rebuilt), `/contact`, `/contact-success`, `/sports`, `/wellness`.
+- **Parked pages (`src/pages/_inactive/`, not routed by Astro):** `home-2025.astro` (the previous homepage, for reference), old index, `blog/index`, `blog/[slug]`, `demo-request`, `demo-success`, `services/web-design`. `/audit-request` and `/audit-success` do not exist anywhere.
+- **Page content lives in `src/data/pages/<page>.ts`** (e.g. `home.ts`), copied word for word from `/copy/<page>.md`. Blocks never contain copy; pages pass content in.
+- **Components:**
+  - `src/components/blocks/`: shared page blocks (see section 7).
+  - `src/components/blocks/hero/`: `Hero.astro` picks a variant (`split`, `centered`, `editorial`, `visual`); the homepage ships `visual`. In `npm run dev`, preview others with `/?hero=split` (or `all`).
+  - `src/components/ui/`: `Icon.astro` (shared line icons: add new ones to the `IconName` type and the `icons` map), `ArrowLink.astro` (text link with arrow), `Logo.astro`, `SocialIcon.astro`.
+  - `src/components/illustrations/`: decorative SVG illustrations (`IllusEcommerce`, `IllusWellness`, `IllusFitness`, `IllusSports`, `IllusAiShopping`). No words inside, theme tokens only, `aria-hidden`.
+  - `Button.astro` renders an `<a>` when given `href`, a `<button>` otherwise; never wrap a Button in a link. New blocks use `size="base"`.
+  - Legacy (used by `/sports`, `/wellness` and `_inactive` pages only; retire as those pages are rebuilt): AgitatorCard, AgitatorSection, Badge, Card, FeatureGrid, Hero (root), LabsMVPSection, PackagesSection, PillarsSection, ProjectShowcase, ROISection, ServiceCard, ServicesSection, SolutionSection, StepsGridSection, TestimonialSection.
 - **Forms:** `/contact` uses **Netlify Forms** (`data-netlify="true"`, honeypot `bot-field`, action `/contact-success`). No Supabase form on live pages.
-- **Content collections** (`src/content.config.ts`, `glob()` loaders, `z` from `astro/zod`): `case-studies` and `testimonials` (empty; tags validated against `src/data/tags.ts`; `permissionConfirmed: true` required on every entry), `blog` (3 placeholder-era posts, free-form tags). `src/data/landing-content.ts` is only used by `_inactive/index.astro`.
+- **Content collections** (`src/content.config.ts`, `glob()` loaders, `z` from `astro/zod`): `case-studies` (3 dev-only placeholder entries, see section 8), `testimonials` (empty), `blog` (3 placeholder-era posts, free-form tags). Tags validated against `src/data/tags.ts`. `src/lib/case-studies.ts` → `getCaseStudies({ tag, limit })`. `src/data/landing-content.ts` is only used by `_inactive/index.astro`.
 - **Theme / tokens:** `src/styles/theme.css` is the single source for design tokens (and the basis for the Claude Design theme). Two layers: brand palette (`fadeaway-*`, the cool-grey `neutral-*` scale) and semantic tokens (`canvas`, `surface`, `surface-raised`, `ink`, `ink-soft`, `ink-muted`, `line`, `accent`, `highlight`, `font-display`, `font-body`, `radius-card`, `radius-control`, `shadow-glow-*`, `max-w-site`). **New blocks use semantic tokens only**; no hex values, `rgba()` or `[#...]` in components. Type scale (sm 16px to 6xl 80px) and 8px spacing steps 1 to 10 match the pre-v4 site.
 - **Fonts:** Outfit + DM Sans, self-hosted via the Astro Fonts API (`fonts` in `astro.config.mjs`, `<Font>` in the layout), exposed as `--ff-outfit` / `--ff-dm-sans`.
 - **Styles:** `src/styles/globals.css` imports the theme, keeps two v3-compat base rules (border color, button cursor), base heading styles, and shared classes are `@utility` blocks (`section-padding`, `container-max`, `gradient-text`, `glass-effect`, `glass-dark`, `btn-primary/secondary/tertiary`, `input-primary`, `badge-primary`, `card-glass`, `text-balance`, `no-scrollbar`).
 - **Images:** `src/assets/*.png`, rendered through `astro:assets` `<Image>` (webp output).
-- **Missing:** homepage og image, `_redirects`, FAQPage/HowTo/Breadcrumb schema.
-- **Old copy still in code** (index, sports, wellness, `site.ts`, `navigation.ts`): all replaced by `/copy/` as each page is rebuilt.
+- **Missing:** homepage og image, `_redirects`, Breadcrumb schema (interior pages), visible "last updated" date.
+- **Old copy still in code** (sports, wellness, `site.ts`): all replaced by `/copy/` as each page is rebuilt.
+- **Claude Design sync** (`.design-sync/`): the brand tokens, fonts and a conventions guide are synced to the Claude Design project "Fadeaway Creatives". Tokens-only (Astro components can't be imported there). Re-run `/design-sync` after `theme.css` changes; `.design-sync/NOTES.md` has the steps.
 - `.env` is gitignored. Never print or commit it.
 
 ## 2. How we work
@@ -35,7 +45,7 @@ Astro site, hosted on Netlify. This file gives Claude Code the standing rules fo
 - **Copy changes the user gives in chat are approved.** Apply them in the code and update the `/copy/` file in the same change, so the file always matches the site. Expect frequent updates; the current file is the base.
 - **Positioning: AEO leads.** Answer engine optimization is the focus and the market's hot term. When listing SEO/AEO services, put SEO + AEO first.
 - **Work happens on `dev`.** No per-page branches and no pull requests by default. A separate branch only when a specific piece of work needs it.
-- **`main` stays untouched** until the whole rebuild is done and tested. Then one push to production.
+- **Build every page on `dev` first. No merges to `main`** until all pages are built and tested; then one push to production.
 - **Sync habit:** start every session with `git pull` on `dev`, end every session with `git push` on `dev`.
 - **Page by page, section by section.** Implement one section at a time, show the diff, wait for review, then commit to `dev`.
 - **Reusable blocks.** Homepage first; its blocks become the shared blocks for every later page, so build them to be reusable, not homepage-specific.
@@ -108,24 +118,34 @@ Astro site, hosted on Netlify. This file gives Claude Code the standing rules fo
 
 If a live URL changes, add a 301 in Netlify `_redirects` (ask first).
 
-## 7. Shared blocks to build (homepage first, reused everywhere)
+## 7. Shared blocks (built on the homepage, reused everywhere)
 
-- **SeoHead:** all meta, OG, Twitter, canonical, robots, plus a JSON-LD slot.
-- **BaseLayout:** header/nav, footer, sitewide Organization schema.
-- **Hero:** optional display line above the H1, eyebrow, H1, sub-headline, two CTAs, optional answer capsule below.
-- **CardGrid:** heading + real prose per card + link (industries, value pillars, Labs, method).
-- **Steps:** numbered process that also emits HowTo schema.
-- **Faq:** takes a `faq` array, renders visible Q&A, and emits matching FAQPage JSON-LD.
-- **ProofGrid / Testimonials / BlogCards:** pull from content collections filtered by tag; render nothing when empty.
-  - Homepage `#work` section: built fully (tag filtering on `featured`), but **hidden until the portfolio is built**, via a visibility flag in the page data.
-- **CtaBlock:** heading, one line, one button.
-- Later pages add **PricingCard** and **Breadcrumb**.
+All in `src/components/blocks/`. Mobile-first, semantic tokens only, no copy inside (content comes from `src/data/pages/*.ts`).
+
+- **SeoHead / BaseLayout:** all meta, OG, Twitter, canonical, robots, JSON-LD `@graph`; header, footer, sitewide Organization + WebSite schema. Done.
+- **Section:** shell for every section: anchor `id`, optional `eyebrow` / `heading` (H2) / `intro`, `layout` (`stack` | `split`, split pins the header left on lg), `tone` (`canvas` | `surface` | `deep`), `width` (`site` | `narrow` | `prose`), `separator`, an `actions` slot for buttons/links under the intro, and `labelledBy` when the H2 lives inside the content.
+- **Hero** (`hero/`): display line above the H1, eyebrow, H1, sub-headline, two CTAs. Answer capsule renders in the Trust Bar directly under it.
+- **IconGrid:** icon tile + title + text. `size="sm"` for one-line captions (Trust Bar), `size="md"` for a sentence or two (Labs). `columns` 2 to 4.
+- **CardGrid:** illustration + title + prose + link, whole card clickable (Industries).
+- **NumberedList:** 01 to 04 points with hairlines, no icons (Why; pairs with `layout="split"`).
+- **ServiceGrid:** service cards with a tone (`accent` | `highlight`), oversized corner line art (`build` | `growth`), icon badge, sub-service tiles, footer link (Build & Growth).
+- **Steps:** numbered process with a connector line; pair with `howToSchema()` fed the same items (How It Works).
+- **FeatureList:** icon beside title + one sentence, hairline dividers, no cards (Method).
+- **ProofGrid:** case-study cards from `getCaseStudies()`; renders nothing when empty; columns adapt to 1, 2 or 3 entries.
+  - Homepage `#work`: built, but **hidden in production until `/portfolio` is built** (`work.showInProduction` in `home.ts`); always visible in `npm run dev`.
+- **Faq:** native `<details>` accordion from a `faq` array; pair with `faqSchema()` fed the same array.
+- **CtaBlock:** heading, one line, one button. `layout="split"` for inline call-outs (Labs), `layout="center"` with `headingAs="h2"` for a closing CTA.
+- Later pages add **PricingCard**, **Breadcrumb** (+ BreadcrumbList schema), **Testimonials**, **BlogCards**.
 
 ## 8. Content collections and tags
 
-Collections (empty to start, filled only with real, permission-confirmed content): `case-studies`, `testimonials`, `posts`.
+Collections (filled only with real, permission-confirmed content): `case-studies`, `testimonials`, `posts`.
 Each entry has `tags`. Tag names (use exactly): `featured`, `ecommerce`, `wellness-counselling`, `boutique-fitness`, `sports-academies`, `labs`, `labs-product`, `build`, `growth`.
 **Never invent a client, result, quote, or article.**
+
+- **Real entries** need `permissionConfirmed: true`; the build fails without it.
+- **Placeholder entries** (`placeholder: true`) exist only to design layouts. `getCaseStudies()` shows them in `npm run dev` and drops them from every production build (live site and deploy previews); ProofGrid tags them "Placeholder". `src/content/case-studies/placeholder-*.md` are three of these; `placeholder-ecommerce.md` documents every field a real case study needs.
+- **Launch plan:** 3 real case studies replace the placeholders (copy a placeholder file, fill it in, remove `placeholder: true`, add `permissionConfirmed: true`).
 
 ## 9. QA checklist before calling a page done
 
@@ -138,3 +158,9 @@ Each entry has `tags`. Tag names (use exactly): `featured`, `ecommerce`, `wellne
 - [ ] Copy matches `/copy/[page].md` word for word
 - [ ] Lighthouse check (performance, accessibility, SEO) on a local production build (`npm run build` + `npm run preview`)
 - [ ] Mobile layout checked
+
+## 10. Rebuild status
+
+- **Home (`/`): all sections built** from `copy/home.md` (Hero, Trust Bar, Industries, Why, Build & Growth, How It Works, E-commerce, Labs, Real Work, Method, FAQ, closing CTA). Local QA passes: one H1, title/description lengths, no dashes, no `#` links, HowTo + FAQPage match the visible text.
+  - Open before launch: og/share image; visible "last updated" date; 3 real case studies + `/portfolio` (then set `work.showInProduction`); `/portfolio?filter=ecommerce` link format; Lighthouse + schema validator pass.
+- **Next:** remaining pages in the URL map (section 6). Every homepage link to them must resolve before launch.

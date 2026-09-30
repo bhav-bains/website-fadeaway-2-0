@@ -38,7 +38,8 @@ import {
   cta,
 } from '../data/pages/home';
 
-const featuredWork = await getCaseStudies({ tag: work.tag, limit: work.limit });
+const featuredWork =
+  import.meta.env.DEV || work.showInProduction ? await getCaseStudies({ tag: work.tag, limit: work.limit }) : [];
 
 const jsonLd = [
   howToSchema({

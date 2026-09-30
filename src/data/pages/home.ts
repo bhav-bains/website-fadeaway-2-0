@@ -174,9 +174,13 @@ export const labs = {
   },
 };
 
-/** Renders only when case studies tagged `featured` exist (never placeholder cards) */
+/**
+ * Renders only when case studies tagged `featured` exist (never placeholder cards).
+ * `showInProduction` stays false until /portfolio is built; `npm run dev` always shows it.
+ */
 export const work = {
   id: 'work',
+  showInProduction: false,
   heading: 'Real Work, Real Results',
   intro: "See what we've built for businesses like yours.",
   tag: 'featured',
