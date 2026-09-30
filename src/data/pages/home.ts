@@ -129,6 +129,49 @@ export const howItWorks: { id: string; heading: string; items: StepItem[] } = {
   ],
 };
 
+export const ecommerce = {
+  id: 'ecommerce',
+  heading: 'Your Store, Built for AI Search',
+  body: "E-commerce is one of the most competitive spaces in search: established players, deep case-study libraries, years of SEO investment already in place. That's exactly why we treat it as a long-term investment, not a quick fix. We handle the technical SEO and AEO work that gets your store found by Google and by AI shopping assistants, alongside site builds, migrations, and checkout optimization that turn that traffic into sales.",
+  // TODO(portfolio): query-string filter needs a decision when /portfolio is built (copy/home.md open items)
+  link: { label: 'See our e-commerce work', href: `${routes.portfolio}?filter=ecommerce` },
+  cta: { label: 'See the E-commerce Approach', href: routes.ecommerce },
+};
+
+export const labs = {
+  id: 'labs',
+  heading: 'Fadeaway Labs: MVPs, AI Automation & Custom Software',
+  intro:
+    'Fadeaway Labs is where we build for the love of building: MVPs, business automation, custom software, and AI tools set up properly inside your business. If you can picture a system that would save you hours a week, this is where we make it real.',
+  items: [
+    {
+      icon: 'bulb',
+      title: 'From Idea to MVP',
+      text: 'Got a product idea? We take it from architecture to launch, a working first version real users can try, with a roadmap for what comes next.',
+    },
+    {
+      icon: 'workflow',
+      title: 'Business Process Automation',
+      text: 'We connect your CRM, email, booking software, and internal tools, then automate the manual work between them, with AI handling the sorting, summaries, and follow-ups.',
+    },
+    {
+      icon: 'sparkles',
+      title: 'Claude & ChatGPT, Set Up for Your Business',
+      text: 'Most teams already pay for AI tools. We set them up to know your business, connect them to your tools, and train your team to use them with confidence.',
+    },
+    {
+      icon: 'dashboard',
+      title: 'Custom Apps & Dashboards',
+      text: "Client portals, internal tools, and live dashboards tracking rankings, bookings, and revenue in one place, so you're never guessing what's working.",
+    },
+  ] satisfies IconGridItem[],
+  cta: {
+    heading: 'Have a Custom Project in Mind?',
+    text: "Let's map the architecture, scope the MVP, and build a roadmap to bring it to life.",
+    cta: { label: "Let's Build Your MVP", href: `${routes.labs}#idea-to-mvp` },
+  },
+};
+
 export const why: { id: string; heading: string; items: NumberedListItem[] } = {
   id: 'why',
   heading: 'Why Growing Businesses Choose Fadeaway',

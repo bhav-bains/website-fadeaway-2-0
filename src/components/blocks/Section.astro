@@ -4,6 +4,7 @@
 // Layouts:
 //   stack (default): header above the content
 //   split: header in a left column (pinned while scrolling on lg), content on the right; stacked on phones
+// Optional "actions" slot: links or buttons under the intro, inside the header.
 // Mobile-first: unprefixed classes are the phone layout; sm/md/lg scale up.
 import clsx from 'clsx';
 import Eyebrow from './Eyebrow.astro';
@@ -90,7 +91,12 @@ const hasHeader = eyebrow || heading || intro;
               {heading}
             </h2>
           )}
-          {intro && <p class="max-w-2xl text-base text-ink-soft md:text-lg">{intro}</p>}
+          {intro && <p class="max-w-2xl text-pretty text-base text-ink-soft md:text-lg">{intro}</p>}
+          {Astro.slots.has('actions') && (
+            <div class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2">
+              <slot name="actions" />
+            </div>
+          )}
         </header>
       )
     }

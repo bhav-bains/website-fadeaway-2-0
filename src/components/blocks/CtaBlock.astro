@@ -1,0 +1,37 @@
+---
+// Call-to-action panel: heading, one line, one button. Gradient border (accent to highlight).
+// Phones: stacked. md and up: text left, button right.
+import clsx from 'clsx';
+import Button from '../Button.astro';
+
+interface Props {
+  heading: string;
+  text: string;
+  cta: { label: string; href: string };
+  /** h3 inside a titled section; h2 when the CTA is the section's own heading */
+  headingAs?: 'h2' | 'h3';
+  headingId?: string;
+  class?: string;
+}
+
+const { heading, text, cta, headingAs: Heading = 'h3', headingId, class: className } = Astro.props;
+---
+
+<div class={clsx('rounded-card bg-gradient-to-br from-accent/50 via-line to-highlight/50 p-px shadow-glow-accent', className)}>
+  <div
+    class="relative isolate flex flex-col gap-3 overflow-hidden rounded-[calc(var(--radius-card)-1px)] bg-surface-raised p-3 md:flex-row md:items-center md:justify-between md:gap-6 md:p-5"
+  >
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute -right-10 -top-10 -z-10 size-[16rem] rounded-full bg-accent/10 blur-lg"
+    >
+    </div>
+    <div class="flex flex-col gap-1">
+      <Heading id={headingId} class="text-balance font-display text-2xl font-bold text-ink md:text-3xl">{heading}</Heading>
+      <p class="max-w-2xl text-pretty text-base text-ink-soft md:text-lg">{text}</p>
+    </div>
+    <Button href={cta.href} variant="primary" size="base" className="shrink-0 self-start md:self-auto">
+      {cta.label}
+    </Button>
+  </div>
+</div>

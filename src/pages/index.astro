@@ -9,10 +9,26 @@ import CardGrid from '../components/blocks/CardGrid.astro';
 import NumberedList from '../components/blocks/NumberedList.astro';
 import ServiceGrid from '../components/blocks/ServiceGrid.astro';
 import Steps from '../components/blocks/Steps.astro';
+import Button from '../components/Button.astro';
+import ArrowLink from '../components/ui/ArrowLink.astro';
+import IllusAiShopping from '../components/illustrations/IllusAiShopping.astro';
+import CtaBlock from '../components/blocks/CtaBlock.astro';
 import { HERO_VARIANTS } from '../components/blocks/hero/types';
 import { howToSchema } from '../lib/schema';
 import { siteConfig } from '../data/site';
-import { seo, hero, heroVariant, answerCapsule, trust, industries, why, services, howItWorks } from '../data/pages/home';
+import {
+  seo,
+  hero,
+  heroVariant,
+  answerCapsule,
+  trust,
+  industries,
+  why,
+  services,
+  howItWorks,
+  ecommerce,
+  labs,
+} from '../data/pages/home';
 
 const jsonLd = [
   howToSchema({
@@ -63,6 +79,26 @@ const heroes = isDev ? HERO_VARIANTS : [heroVariant];
 
   <Section id={howItWorks.id} heading={howItWorks.heading} separator>
     <Steps items={howItWorks.items} />
+  </Section>
+
+  <Section id={ecommerce.id} heading={ecommerce.heading} intro={ecommerce.body} layout="split" separator>
+    <Fragment slot="actions">
+      <Button href={ecommerce.cta.href} variant="secondary" size="base">{ecommerce.cta.label}</Button>
+      <ArrowLink href={ecommerce.link.href}>{ecommerce.link.label}</ArrowLink>
+    </Fragment>
+    <div class="relative">
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 -z-10 bg-grid [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_30%,transparent_100%)]"
+      >
+      </div>
+      <IllusAiShopping class="mx-auto h-auto w-full max-w-2xl" />
+    </div>
+  </Section>
+
+  <Section id={labs.id} heading={labs.heading} intro={labs.intro} tone="surface">
+    <IconGrid items={labs.items} columns={2} size="md" />
+    <CtaBlock {...labs.cta} class="mt-4 md:mt-6" />
   </Section>
 
   {

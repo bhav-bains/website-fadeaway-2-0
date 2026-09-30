@@ -1,0 +1,31 @@
+---
+// Inline text link with a trailing arrow that nudges right on hover.
+import clsx from 'clsx';
+
+interface Props {
+  href: string;
+  class?: string;
+}
+
+const { href, class: className } = Astro.props;
+---
+
+<a
+  href={href}
+  class={clsx(
+    'group/link inline-flex items-center gap-1 font-semibold text-highlight transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight/50 rounded-control',
+    className,
+  )}
+>
+  <slot />
+  <svg
+    class="size-icon-sm transition-transform duration-300 group-hover/link:translate-x-1"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.75"
+    aria-hidden="true"
+  >
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8h10M9 4l4 4-4 4"></path>
+  </svg>
+</a>
