@@ -33,6 +33,7 @@
   --color-canvas: var(--color-fadeaway-graphite);   /* page background */
   --color-surface: var(--color-fadeaway-dark);      /* section background */
   --color-surface-deep: var(--color-fadeaway-darker);
+  --color-surface-alt: #222225;                     /* alternating section band, a step lighter than canvas */
   --color-surface-raised: #151517;                  /* cards, panels */
   --color-ink: var(--color-neutral-50);             /* headings, primary text */
   --color-ink-soft: var(--color-neutral-300);       /* sub-headlines, lead text */

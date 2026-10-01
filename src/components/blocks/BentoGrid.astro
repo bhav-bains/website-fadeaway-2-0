@@ -1,0 +1,84 @@
+---
+// Asymmetric bento of numbered points, closing with a CTA tile. Typographic: large outlined numbers, no icons.
+// Built for 5 points + CTA: lg is 4 columns (first and CTA tiles span 2), md is 2 columns (first and CTA full width),
+// phones stack. Other counts still work; only the first item and the CTA get the wide spans.
+import clsx from 'clsx';
+import Button from '../Button.astro';
+
+export interface BentoItem {
+  title: string;
+  text: string;
+}
+
+interface Props {
+  items: BentoItem[];
+  cta?: { text: string; label: string; href: string };
+  class?: string;
+}
+
+const { items, cta, class: className } = Astro.props;
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+
+<ul class={clsx('grid gap-2 md:grid-cols-2 md:gap-3 lg:grid-cols-4', className)}>
+  {
+    items.map((item, i) => {
+      const lead = i === 0;
+      return (
+        <li
+          class={clsx(
+            'group relative flex flex-col gap-4 overflow-hidden rounded-card border border-line-strong bg-surface-raised/60 p-3 transition-colors duration-300 hover:border-highlight/40 md:p-4',
+            lead && 'md:col-span-2',
+          )}
+        >
+          <span
+            aria-hidden="true"
+            class={clsx(
+              'font-display font-bold leading-none text-transparent transition-colors duration-500 [-webkit-text-stroke:1px_var(--color-line-strong)] group-hover:[-webkit-text-stroke-color:var(--color-highlight)]',
+              lead ? 'text-6xl' : 'text-5xl',
+            )}
+          >
+            {pad(i + 1)}
+          </span>
+          <div class="flex flex-col gap-1">
+            <h3 class={clsx('text-balance font-display font-bold text-ink', lead ? 'text-2xl md:text-3xl' : 'text-xl')}>
+              {item.title}
+            </h3>
+            <p class={clsx('text-pretty text-ink-muted', lead ? 'max-w-xl text-base md:text-lg' : 'text-base')}>{item.text}</p>
+          </div>
+        </li>
+      );
+    })
+  }
+  {
+    cta && (
+      <li class="rounded-card bg-gradient-to-br from-accent/60 via-line to-highlight/40 p-px md:col-span-2">
+        <div class="relative isolate flex h-full flex-col justify-between gap-4 overflow-hidden rounded-[calc(var(--radius-card)-1px)] bg-surface-raised p-3 md:p-4">
+          {/* Oversized line art: a cursor clicking a button, "see this in action" */}
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 240 240"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="pointer-events-none absolute -bottom-12 -right-10 -z-10 size-[17rem] text-accent opacity-30 [mask-image:radial-gradient(circle_at_70%_60%,#000_35%,transparent_80%)] md:size-[20rem]"
+          >
+            <rect x="46" y="70" width="176" height="60" rx="30" opacity=".6" />
+            <path d="M78 100h58" opacity=".5" />
+            <circle cx="150" cy="100" r="18" opacity=".55" />
+            <circle cx="150" cy="100" r="34" opacity=".25" />
+            <path d="M150 58v-14M122 70l-10-10M178 70l10-10M110 100H96" />
+            <path d="M150 100v96l24-22 15 34 17-8-15-33h34z" />
+          </svg>
+          <p class="max-w-md text-balance font-display text-2xl font-bold text-ink md:text-3xl">{cta.text}</p>
+          <Button href={cta.href} variant="primary" size="base" className="self-start">
+            {cta.label}
+          </Button>
+        </div>
+      </li>
+    )
+  }
+</ul>

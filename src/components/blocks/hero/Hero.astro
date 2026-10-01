@@ -4,6 +4,8 @@ import HeroCentered from './HeroCentered.astro';
 import HeroSplit from './HeroSplit.astro';
 import HeroEditorial from './HeroEditorial.astro';
 import HeroVisual from './HeroVisual.astro';
+import HeroShowcase from './HeroShowcase.astro';
+import HeroStatement from './HeroStatement.astro';
 import type { HeroContent, HeroVariant } from './types';
 
 interface Props extends HeroContent {
@@ -17,6 +19,8 @@ const variants = {
   split: HeroSplit,
   editorial: HeroEditorial,
   visual: HeroVisual,
+  showcase: HeroShowcase,
+  statement: HeroStatement,
 };
 
 const Variant = variants[variant];

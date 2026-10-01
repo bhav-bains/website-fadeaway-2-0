@@ -49,7 +49,9 @@ Astro site, hosted on Netlify. This file gives Claude Code the standing rules fo
 - **Sync habit:** start every session with `git pull` on `dev`, end every session with `git push` on `dev`.
 - **Page by page, section by section.** Implement one section at a time, show the diff, wait for review, then commit to `dev`.
 - **Reusable blocks.** Homepage first; its blocks become the shared blocks for every later page, so build them to be reusable, not homepage-specific.
-- Test locally (`npm run dev`, `npm run build`) before committing.
+- **Design direction: fresh, not generic.** Break the usual template patterns (endless card grids, identical section layouts) and give the eye something new in each section, while staying clean and on-brand. Vary layouts across a page; prefer a considered idea (annotated visuals, oversized type, open lists) over the default card.
+- **Decoration = big, subtle line SVGs, not glow blobs.** For atmosphere in cards and panels, use an oversized line illustration that relates to the content (theme colour, low opacity, bleeding off an edge, masked to fade toward the text). Avoid blurred gradient "glow" circles.
+- Test locally before committing. **Claude verifies with `npm run build` and the HTML in `dist/` only.** Never open the browser pane, take screenshots, or start a dev/preview server (not even in the background to curl a page) without asking first and getting a yes. The user reviews visually in their own `npm.cmd run dev`.
 - Don't create or delete pages, routes, or redirects without asking.
 
 ## 3. Responsive rules (always)
@@ -91,7 +93,7 @@ Astro site, hosted on Netlify. This file gives Claude Code the standing rules fo
 - Name: **Fadeaway Creatives** (Labs is **Fadeaway Labs**, part of the same entity)
 - **Founder-led · 15+ years of experience · Fadeaway est. 2023**
 - Location line: **"Vancouver, BC, working with clients across Canada and the US."**
-- Organization schema: `areaServed` = Canada, United States; `foundingDate` 2023; address Vancouver, BC, Canada. `sameAs`: Instagram, Facebook, LinkedIn (confirmed, in `src/data/site.ts`); Crunchbase, Clutch, GoodFirms, DesignRush once claimed (pending). `knowsAbout`: SEO, answer engine optimization, web development, e-commerce, business process automation, AI implementation, MVP development.
+- Organization schema: `areaServed` = Canada, United States; `foundingDate` 2023; address Vancouver, BC, Canada. `sameAs`: Instagram, Facebook, LinkedIn (confirmed, in `src/data/site.ts`); Crunchbase, Clutch, GoodFirms, DesignRush once claimed (pending). `knowsAbout`: SEO, answer engine optimization, web development, e-commerce, business process automation, AI implementation, MVP development, plus the platforms and tools we genuinely use (Shopify, WooCommerce, WordPress, BigCommerce, headless commerce, Next.js, Astro, Shopify Hydrogen, Stripe, Google Search Console, Google Analytics, Google Merchant Center, Google Ads, Klaviyo, Meta Ads, ChatGPT, Perplexity, Google Gemini). Keep this list and the logo bands in sync; never list a tool we don't use.
 - Contact: hello@fadeawaycreatives.com
 
 ## 6. URL map
@@ -123,7 +125,7 @@ If a live URL changes, add a 301 in Netlify `_redirects` (ask first).
 All in `src/components/blocks/`. Mobile-first, semantic tokens only, no copy inside (content comes from `src/data/pages/*.ts`).
 
 - **SeoHead / BaseLayout:** all meta, OG, Twitter, canonical, robots, JSON-LD `@graph`; header, footer, sitewide Organization + WebSite schema. Done.
-- **Section:** shell for every section: anchor `id`, optional `eyebrow` / `heading` (H2) / `intro`, `layout` (`stack` | `split`, split pins the header left on lg), `tone` (`canvas` | `surface` | `deep`), `width` (`site` | `narrow` | `prose`), `separator`, an `actions` slot for buttons/links under the intro, and `labelledBy` when the H2 lives inside the content.
+- **Section:** shell for every section: anchor `id`, optional `eyebrow` / `heading` (H2) / `intro`, `layout` (`stack` | `split`, split pins the header left on lg), `tone` (`canvas` | `surface` | `deep`), `width` (`site` | `narrow` | `prose`), `separator`, an `actions` slot for buttons/links under the intro, `labelledBy` when the H2 lives inside the content, and `lead` (a standfirst above the header; solutions pages put the answer capsule here in the first section after the Hero instead of a standalone paragraph block).
 - **Hero** (`hero/`): display line above the H1, eyebrow, H1, sub-headline, two CTAs. Answer capsule renders in the Trust Bar directly under it.
 - **IconGrid:** icon tile + title + text. `size="sm"` for one-line captions (Trust Bar), `size="md"` for a sentence or two (Labs). `columns` 2 to 4.
 - **CardGrid:** illustration + title + prose + link, whole card clickable (Industries).
@@ -135,7 +137,8 @@ All in `src/components/blocks/`. Mobile-first, semantic tokens only, no copy ins
   - Homepage `#work`: built, but **hidden in production until `/portfolio` is built** (`work.showInProduction` in `home.ts`); always visible in `npm run dev`.
 - **Faq:** native `<details>` accordion from a `faq` array; pair with `faqSchema()` fed the same array.
 - **CtaBlock:** heading, one line, one button. `layout="split"` for inline call-outs (Labs), `layout="center"` with `headingAs="h2"` for a closing CTA.
-- Later pages add **PricingCard**, **Breadcrumb** (+ BreadcrumbList schema), **Testimonials**, **BlogCards**.
+- **Added on the e-commerce page:** **Breadcrumb** (+ `breadcrumbSchema()`), **LogoBand** (platform/tool marquee in the Hero), **AnnotatedVisual** (numbered markers over an illustration), **BentoGrid** (numbered points + CTA tile), **ServiceIndex** (editorial service rows with optional links + CTA), `Steps direction="vertical"` (timeline for longer steps), `serviceSchema()`. Section line art lives in `illustrations/` (`IllusCycle`, `IllusAsk`), placed in a split Section's `actions` slot. CtaBlock now uses line art instead of glow blobs.
+- Later pages add **PricingCard**, **Testimonials**, **BlogCards**.
 
 ## 8. Content collections and tags
 
@@ -163,4 +166,7 @@ Each entry has `tags`. Tag names (use exactly): `featured`, `ecommerce`, `wellne
 
 - **Home (`/`): all sections built** from `copy/home.md` (Hero, Trust Bar, Industries, Why, Build & Growth, How It Works, E-commerce, Labs, Real Work, Method, FAQ, closing CTA). Local QA passes: one H1, title/description lengths, no dashes, no `#` links, HowTo + FAQPage match the visible text.
   - Open before launch: og/share image; visible "last updated" date; 3 real case studies + `/portfolio` (then set `work.showInProduction`); `/portfolio?filter=ecommerce` link format; Lighthouse + schema validator pass.
+- **E-commerce (`/solutions/ecommerce`, branch `page/ecommerce`): all sections built** from `copy/ecommerce.md` (Hero statement + platform logo band, AI Shopping with the answer capsule as lead, Standard bento, What We Do (ServiceIndex), How It Works (vertical Steps), Real Work, FAQ, closing CTA). Schema: BreadcrumbList, 6 Service, HowTo, FAQPage. Sections alternate canvas / `alt` bands.
+  - Renders nothing yet: Testimonials (no real quotes), From the Blog (no `/resources`; data is `blog` in `ecommerce.ts`). Real Work hidden in production until `/portfolio` exists.
+  - Copy approved Sept 30 (meta description, answer capsule, Service schema list, FAQ). Open: og image, "last updated" date.
 - **Next:** remaining pages in the URL map (section 6). Every homepage link to them must resolve before launch.

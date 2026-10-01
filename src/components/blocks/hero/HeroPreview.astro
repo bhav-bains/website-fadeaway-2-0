@@ -1,0 +1,49 @@
+---
+// Renders the page's Hero. In `npm run dev` it also renders the other `options` (hidden) so a page can be
+// previewed with ?hero=<variant> (or ?hero=all). Production builds ship only `variant`.
+import Hero from './Hero.astro';
+import { HERO_VARIANTS, type HeroContent, type HeroVariant } from './types';
+
+interface Props {
+  content: HeroContent;
+  /** The variant that ships */
+  variant: HeroVariant;
+  /** Dev-only alternatives to preview; defaults to every variant */
+  options?: readonly HeroVariant[];
+}
+
+const { content, variant, options = HERO_VARIANTS } = Astro.props;
+const isDev = import.meta.env.DEV;
+const heroes = isDev ? [variant, ...options.filter((v) => v !== variant)] : [variant];
+---
+
+{
+  heroes.map((v) => (
+    <div data-hero-variant={v} hidden={isDev && v !== variant ? true : undefined}>
+      {isDev && (
+        <p data-hero-label hidden class="bg-accent px-2 py-1 text-center text-meta font-semibold text-accent-ink">
+          Dev preview: hero variant "{v}"
+        </p>
+      )}
+      <Hero variant={v} {...content} />
+    </div>
+  ))
+}
+
+{
+  isDev && (
+    <script is:inline>
+      (() => {
+        const wanted = new URLSearchParams(location.search).get('hero');
+        if (!wanted) return;
+        const blocks = document.querySelectorAll('[data-hero-variant]');
+        const all = wanted === 'all';
+        if (!all && ![...blocks].some((b) => b.dataset.heroVariant === wanted)) return;
+        blocks.forEach((b) => {
+          b.hidden = !all && b.dataset.heroVariant !== wanted;
+          b.querySelector('[data-hero-label]').hidden = !all;
+        });
+      })();
+    </script>
+  )
+}

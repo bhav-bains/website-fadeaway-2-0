@@ -1,0 +1,70 @@
+---
+// Hero variant E: showcase. Centered text, then a wide framed "product shot" panel with the page's illustration
+// that fades off the bottom edge into the next section. Built for solutions pages.
+import clsx from 'clsx';
+import Eyebrow from '../Eyebrow.astro';
+import Breadcrumb from '../Breadcrumb.astro';
+import HeroActions from './HeroActions.astro';
+import HeroIllustration from './HeroIllustration.astro';
+import { illustrations } from '../../illustrations';
+import type { HeroContent } from './types';
+
+type Props = HeroContent;
+const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta, breadcrumb, visual } = Astro.props;
+const Visual = visual ? illustrations[visual] : HeroIllustration;
+---
+
+<section id="hero" aria-labelledby="hero-title" class="relative isolate overflow-hidden px-2 pt-28 sm:px-3 sm:pt-32 lg:px-4 lg:pt-40">
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+    <div class="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_70%_50%_at_50%_0%,#000_50%,transparent_100%)]"></div>
+    <div class="absolute left-1/2 top-[55%] aspect-square w-[44rem] max-w-full -translate-x-1/2 rounded-full bg-accent/10 blur-[140px]"></div>
+  </div>
+
+  <div class="mx-auto flex max-w-4xl flex-col items-center text-center">
+    {breadcrumb && <Breadcrumb items={breadcrumb} class="mb-3" />}
+    {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+
+    {
+      displayLine && (
+        <p class="mt-3 text-balance font-display text-display font-bold tracking-tight text-ink">{displayLine}</p>
+      )
+    }
+
+    <h1
+      id="hero-title"
+      class={clsx(
+        'text-balance font-display',
+        displayLine
+          ? 'mt-2 max-w-3xl text-title font-semibold text-ink-soft'
+          : 'mt-3 text-display font-bold tracking-tight text-ink',
+      )}
+    >
+      {h1}
+    </h1>
+
+    {sub && <p class="mt-3 max-w-2xl text-pretty text-lead text-ink-muted">{sub}</p>}
+
+    <HeroActions primary={primaryCta} secondary={secondaryCta} align="center" class="mt-4 md:mt-5" />
+  </div>
+
+  <!-- Showcase panel: a framed window with the illustration, fading out at the bottom -->
+  <div
+    aria-hidden="true"
+    class="relative mx-auto mt-6 max-w-5xl [mask-image:linear-gradient(to_bottom,#000_55%,transparent_100%)] md:mt-10"
+  >
+    <div class="rounded-t-card bg-gradient-to-b from-line-strong via-line to-transparent p-px">
+      <div class="rounded-t-[calc(var(--radius-card)-1px)] bg-surface-raised">
+        <div class="flex items-center gap-1 border-b border-line px-3 py-2">
+          <span class="size-icon-xs rounded-full bg-white/15"></span>
+          <span class="size-icon-xs rounded-full bg-white/15"></span>
+          <span class="size-icon-xs rounded-full bg-white/15"></span>
+          <span class="ml-2 h-icon-sm w-1/3 rounded-pill bg-white/5"></span>
+        </div>
+        <div class="relative px-3 pb-6 pt-4 md:px-8 md:pb-10 md:pt-6">
+          <div class="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_60%_70%_at_50%_40%,#000_30%,transparent_100%)]"></div>
+          <Visual class="relative mx-auto h-auto w-full max-w-3xl" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,90 @@
+---
+// Editorial index of services: full-width rows split by hairlines, no cards, no icons.
+// lg: number | large title | text + optional link, in three columns; phones stack number/title above the text.
+// Hover (pointer devices): a highlight rule sweeps along the row's top edge and the title nudges right.
+// Decoration: one oversized line drawing (a shopping bag with a rising line) bleeding off the top-right edge.
+// An optional closing CTA row sits after the last service.
+import clsx from 'clsx';
+import ArrowLink from '../ui/ArrowLink.astro';
+import Button from '../Button.astro';
+
+export interface ServiceIndexItem {
+  title: string;
+  text: string;
+  link?: { label: string; href: string };
+}
+
+interface Props {
+  items: ServiceIndexItem[];
+  cta?: { label: string; href: string };
+  class?: string;
+}
+
+const { items, cta, class: className } = Astro.props;
+const pad = (n: number) => String(n).padStart(2, '0');
+const total = pad(items.length);
+---
+
+<div class={clsx('relative isolate', className)}>
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    viewBox="0 0 320 320"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.25"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="pointer-events-none absolute -right-16 -top-24 -z-10 hidden size-[26rem] text-accent opacity-25 [mask-image:radial-gradient(circle_at_60%_40%,#000_30%,transparent_75%)] md:block lg:-right-24 lg:-top-40 lg:size-[34rem]"
+  >
+    <!-- Shopping bag -->
+    <path d="M70 110h180l-14 170H84z" />
+    <path d="M120 110V88a40 40 0 0 1 80 0v22" />
+    <path d="M78 140h164" opacity=".4" />
+    <!-- Rising line + point inside the bag -->
+    <path d="M104 238l36-30 28 18 50-50" opacity=".7" />
+    <path d="M200 176h18v18" opacity=".7" />
+    <circle cx="140" cy="208" r="3.5" opacity=".7" />
+    <circle cx="168" cy="226" r="3.5" opacity=".7" />
+    <!-- Price tag hanging off the handle -->
+    <path d="M200 92l34 6 22 30-26 20-22-30z" opacity=".55" />
+    <circle cx="214" cy="104" r="4" opacity=".55" />
+    <!-- Orbit rings -->
+    <circle cx="160" cy="190" r="128" opacity=".18" />
+    <circle cx="160" cy="190" r="152" opacity=".1" />
+  </svg>
+
+  <ol class="border-b border-line">
+    {
+      items.map((item, i) => (
+        <li class="group relative grid gap-x-4 gap-y-2 border-t border-line py-4 md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] md:py-5 lg:grid-cols-[5rem_minmax(0,5fr)_minmax(0,6fr)] lg:gap-x-6 lg:py-6">
+          <span
+            aria-hidden="true"
+            class="absolute -top-px left-0 h-px w-0 bg-gradient-to-r from-highlight to-accent transition-[width] duration-500 ease-out group-hover:w-full motion-reduce:transition-none"
+          />
+          <span aria-hidden="true" class="font-display text-meta font-semibold tabular-nums text-highlight md:col-span-2 lg:col-span-1 lg:pt-1.5">
+            {pad(i + 1)}
+            <span class="text-ink-muted/60">/{total}</span>
+          </span>
+          <h3 class="text-balance font-display text-xl font-bold text-ink transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none md:text-2xl lg:text-[1.75rem] lg:leading-tight">
+            {item.title}
+          </h3>
+          <div class="flex flex-col items-start gap-2">
+            <p class="max-w-xl text-pretty text-base text-ink-muted">{item.text}</p>
+            {item.link && <ArrowLink href={item.link.href}>{item.link.label}</ArrowLink>}
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+
+  {
+    cta && (
+      <div class="mt-4 flex md:mt-6 lg:justify-end">
+        <Button href={cta.href} variant="primary" size="base">
+          {cta.label}
+        </Button>
+      </div>
+    )
+  }
+</div>
