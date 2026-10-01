@@ -91,7 +91,8 @@ const headingParts = heading ? heading.split(/(\S+-\S+)/) : [];
       lead && (
         <p
           class={clsx(
-            'mx-auto max-w-3xl text-pretty border-l-2 border-accent/70 pl-2 text-left text-base text-ink-muted md:pl-3 md:text-lg',
+            'max-w-3xl text-pretty border-l-2 border-accent/70 pl-2 text-left text-base text-ink-muted md:pl-3 md:text-lg',
+            centered && 'mx-auto',
             split ? 'lg:col-span-2' : 'mb-6 md:mb-10',
           )}
         >

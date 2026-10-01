@@ -1,14 +1,145 @@
 ---
-// Build Services page. Content: src/data/pages/build.ts (from copy/build.md). Sections are added as they're built.
+// Build Services page. Content: src/data/pages/build.ts (from copy/build.md).
+// Service pages use the blueprint Hero and drafting-style line art, so they read differently from solutions pages.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
-import { breadcrumbSchema } from '../../lib/schema';
-import { seo, breadcrumb, hero, heroVariant } from '../../data/pages/build';
+import Section from '../../components/blocks/Section.astro';
+import SpecGrid from '../../components/blocks/SpecGrid.astro';
+import ServiceRows from '../../components/blocks/ServiceRows.astro';
+import CardGrid from '../../components/blocks/CardGrid.astro';
+import Steps from '../../components/blocks/Steps.astro';
+import FeatureList from '../../components/blocks/FeatureList.astro';
+import ProofGrid from '../../components/blocks/ProofGrid.astro';
+import IconGrid from '../../components/blocks/IconGrid.astro';
+import Faq from '../../components/blocks/Faq.astro';
+import CtaBlock from '../../components/blocks/CtaBlock.astro';
+import Button from '../../components/Button.astro';
+import ArrowLink from '../../components/ui/ArrowLink.astro';
+import IllusLayers from '../../components/illustrations/IllusLayers.astro';
+import IllusQuote from '../../components/illustrations/IllusQuote.astro';
+import { breadcrumbSchema, howToSchema, faqSchema, serviceSchema } from '../../lib/schema';
+import { getCaseStudies } from '../../lib/case-studies';
+import { siteConfig } from '../../data/site';
+import { routes } from '../../data/routes';
+import {
+  seo,
+  breadcrumb,
+  hero,
+  heroVariant,
+  answerCapsule,
+  standard,
+  services,
+  industries,
+  howItWorks,
+  pricing,
+  realWork,
+  labs,
+  faq,
+  serviceNames,
+  cta,
+} from '../../data/pages/build';
 
-const jsonLd = [breadcrumbSchema(breadcrumb)];
+const work =
+  import.meta.env.DEV || realWork.showInProduction ? await getCaseStudies({ tag: realWork.tag, limit: realWork.limit }) : [];
+
+// Bands alternate canvas / lighter "alt". #real-work only renders when it has entries, so the bands after it flip.
+const hasWork = work.length > 0;
+const band = (lighter: boolean) => (lighter ? 'alt' : 'canvas');
+
+const jsonLd = [
+  breadcrumbSchema(breadcrumb),
+  ...serviceSchema({ names: serviceNames, url: routes.build }),
+  howToSchema({
+    name: howItWorks.heading,
+    steps: howItWorks.items,
+    url: new URL(`${routes.build}#${howItWorks.id}`, siteConfig.url).toString(),
+  }),
+  faqSchema(faq.items),
+];
 ---
 
 <BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
   <!-- Dev-only preview: /services/build/?hero=blueprint | statement | showcase | all -->
   <HeroPreview content={hero} variant={heroVariant} options={['blueprint', 'statement', 'showcase']} />
+
+  <!-- Answer capsule (AEO summary) is the lead paragraph of the first section after the Hero -->
+  <Section id={standard.id} lead={answerCapsule} heading={standard.heading} tone="alt" align="start" class="overflow-x-clip">
+    <SpecGrid items={standard.items} />
+  </Section>
+
+  <Section id={services.id} heading={services.heading} align="start">
+    <ServiceRows items={services.items} />
+  </Section>
+
+  <Section id={industries.id} heading={industries.heading} intro={industries.intro} tone="alt">
+    <CardGrid items={industries.items} columns={2} />
+    <div class="mt-4 grid gap-3 border-t border-line pt-4 md:mt-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-6 md:pt-6">
+      <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-pretty text-base text-ink-soft md:text-lg">
+        <span><strong class="font-semibold text-ink">{industries.demo.lead}</strong> {industries.demo.text}</span>
+        <ArrowLink href={industries.demo.link.href}>{industries.demo.link.label}</ArrowLink>
+      </p>
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-base text-ink-muted">{industries.audit.text}</span>
+        <Button href={industries.audit.cta.href} variant="secondary" size="base">{industries.audit.cta.label}</Button>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Target of the Hero's "See How It Works" button -->
+  <Section id={howItWorks.id} heading={howItWorks.heading} layout="split">
+    {/* Oversized line art under the pinned heading: research, design and development layers, then growth */}
+    <IllusLayers
+      slot="actions"
+      class="pointer-events-none -ml-6 mt-4 hidden w-[26rem] max-w-none text-highlight opacity-30 [mask-image:radial-gradient(circle,#000_45%,transparent_80%)] lg:block"
+    />
+    <Steps items={howItWorks.items} direction="vertical" />
+  </Section>
+
+  <Section id={pricing.id} heading={pricing.heading} intro={pricing.intro} layout="split" tone="alt">
+    <Fragment slot="actions">
+      <Button href={pricing.cta.href} variant="primary" size="base">{pricing.cta.label}</Button>
+      <IllusQuote
+        class="pointer-events-none -ml-4 mt-2 hidden w-full basis-full text-accent opacity-25 [mask-image:radial-gradient(circle_at_40%_45%,#000_40%,transparent_78%)] lg:block lg:max-w-[22rem]"
+      />
+    </Fragment>
+    <FeatureList items={pricing.items} columns={1} />
+  </Section>
+
+  {
+    hasWork && (
+      <Section id={realWork.id} heading={realWork.heading} align="start">
+        <ProofGrid entries={work} />
+        <div class="mt-4 flex flex-col gap-2 border-t border-line pt-4 sm:flex-row sm:items-center sm:justify-between md:mt-6">
+          <p class="font-display text-xl font-bold text-ink md:text-2xl">{realWork.ctaText}</p>
+          <div class="flex flex-wrap gap-2">
+            <Button href={realWork.primaryCta.href} variant="primary" size="base">
+              {realWork.primaryCta.label}
+            </Button>
+            <Button href={realWork.secondaryCta.href} variant="secondary" size="base">
+              {realWork.secondaryCta.label}
+            </Button>
+          </div>
+        </div>
+      </Section>
+    )
+  }
+
+  <Section id={labs.id} heading={labs.heading} intro={labs.intro} tone={band(hasWork)}>
+    <IconGrid items={labs.items} columns={2} size="md" />
+    <div class="mt-4 flex justify-center md:mt-6">
+      <Button href={labs.cta.href} variant="secondary" size="base">{labs.cta.label}</Button>
+    </div>
+  </Section>
+
+  <!-- Testimonials (tag build): renders nothing until real, permission-confirmed quotes exist -->
+
+  <Section id={faq.id} heading={faq.heading} width="narrow" tone={band(!hasWork)}>
+    <Faq faq={faq.items} />
+  </Section>
+
+  <!-- From the Blog (tag build, data: `blog` in build.ts): renders nothing until /resources has real Build posts -->
+
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow" tone={band(hasWork)}>
+    <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
+  </Section>
 </BaseLayout>

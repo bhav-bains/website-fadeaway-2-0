@@ -1,0 +1,108 @@
+---
+// Services as large alternating rows (zigzag on lg): a framed blueprint tile with the service's own line drawing
+// on one side, title + long description + optional link on the other. For services with a paragraph each
+// (Build: "What We Build"). Phones: tile above the text. No cards around the text, hairlines between rows.
+import clsx from 'clsx';
+import ArrowLink from '../ui/ArrowLink.astro';
+
+export type ServiceArt = 'custom' | 'redesign' | 'store' | 'migration';
+
+export interface ServiceRowItem {
+  title: string;
+  text: string;
+  art: ServiceArt;
+  link?: { label: string; href: string };
+}
+
+interface Props {
+  items: ServiceRowItem[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+const pad = (n: number) => String(n).padStart(2, '0');
+
+// Line drawings on a 240x160 sheet. Accent marks the key element; the rest is ink.
+const art: Record<ServiceArt, string> = {
+  // Custom build: code brackets beside components snapping into a layout
+  custom: `
+    <rect x="22" y="22" width="196" height="116" rx="8" opacity=".55"/>
+    <path d="M22 42h196" opacity=".4"/>
+    <rect x="38" y="56" width="70" height="30" rx="4" opacity=".7"/>
+    <rect x="38" y="96" width="70" height="26" rx="4" opacity=".7"/>
+    <rect x="122" y="56" width="80" height="66" rx="4" class="text-accent" stroke-dasharray="4 4"/>
+    <path d="M150 80l-10 9 10 9M174 80l10 9-10 9M166 78l-8 22" class="text-accent"/>`,
+  // Redesign: old layout on the left, rebuilt layout on the right, arrow between
+  redesign: `
+    <rect x="18" y="34" width="86" height="92" rx="6" opacity=".4" stroke-dasharray="3 5"/>
+    <path d="M30 54h50M30 66h36M30 88h62M30 100h44" opacity=".35"/>
+    <path d="M114 80h18M126 73l7 7-7 7" class="text-accent"/>
+    <rect x="142" y="26" width="82" height="108" rx="6" opacity=".7"/>
+    <path d="M142 44h82" opacity=".45"/>
+    <rect x="154" y="56" width="58" height="10" rx="2" opacity=".75"/>
+    <rect x="154" y="74" width="28" height="12" rx="6" class="text-accent"/>
+    <rect x="154" y="96" width="26" height="26" rx="3" opacity=".6"/>
+    <rect x="186" y="96" width="26" height="26" rx="3" opacity=".6"/>`,
+  // E-commerce store: product grid, cart and a short checkout path
+  store: `
+    <rect x="18" y="22" width="150" height="116" rx="8" opacity=".55"/>
+    <path d="M18 42h150" opacity=".4"/>
+    <rect x="32" y="54" width="36" height="36" rx="4" opacity=".6"/>
+    <rect x="75" y="54" width="36" height="36" rx="4" opacity=".6"/>
+    <rect x="118" y="54" width="36" height="36" rx="4" opacity=".6"/>
+    <path d="M32 100h24M75 100h20M118 100h28" opacity=".4"/>
+    <path d="M32 116h122" opacity=".3"/>
+    <path d="M182 56h8l8 34h26l6-24h-36" class="text-accent"/>
+    <circle cx="202" cy="100" r="4" class="text-accent"/>
+    <circle cx="222" cy="100" r="4" class="text-accent"/>
+    <path d="M190 124h40M222 118l8 6-8 6" opacity=".6"/>`,
+  // Migration: data rows moving from an old system to a new one, redirect arrows
+  migration: `
+    <rect x="16" y="30" width="72" height="100" rx="6" opacity=".45" stroke-dasharray="3 5"/>
+    <path d="M28 52h48M28 66h40M28 80h48M28 94h32M28 108h44" opacity=".4"/>
+    <rect x="152" y="30" width="72" height="100" rx="6" opacity=".75"/>
+    <path d="M164 52h48M164 66h48M164 80h48M164 94h48M164 108h48" opacity=".55"/>
+    <path d="M96 58c20 0 28 -8 48 -8M96 80h48M96 102c20 0 28 8 48 8" class="text-accent"/>
+    <path d="M138 44l7 6-7 6M138 74l7 6-7 6M138 104l7 6-7 6" class="text-accent"/>`,
+};
+---
+
+<ol class={clsx('border-b border-line', className)}>
+  {
+    items.map((item, i) => {
+      const flip = i % 2 === 1;
+      return (
+        <li class="grid items-center gap-4 border-t border-line py-6 md:gap-6 md:py-8 lg:grid-cols-2 lg:gap-12 lg:py-10">
+          <div
+            aria-hidden="true"
+            class={clsx(
+              'relative overflow-hidden rounded-card border border-line bg-surface-raised/50',
+              flip && 'lg:order-2',
+            )}
+          >
+            <div class="absolute inset-0 bg-grid opacity-70 [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_40%,transparent_100%)]" />
+            <svg
+              viewBox="0 0 240 160"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.25"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              focusable="false"
+              class="relative mx-auto h-auto w-full max-w-md p-3 text-ink-soft md:p-4"
+              set:html={art[item.art]}
+            />
+            <span class="absolute left-2 top-2 font-display text-meta font-semibold tabular-nums text-highlight md:left-3 md:top-3">
+              {pad(i + 1)}
+            </span>
+          </div>
+          <div class="flex flex-col items-start gap-2">
+            <h3 class="text-balance font-display text-2xl font-bold text-ink md:text-3xl">{item.title}</h3>
+            <p class="max-w-xl text-pretty text-base text-ink-muted md:text-lg">{item.text}</p>
+            {item.link && <ArrowLink href={item.link.href} class="mt-1">{item.link.label}</ArrowLink>}
+          </div>
+        </li>
+      );
+    })
+  }
+</ol>
