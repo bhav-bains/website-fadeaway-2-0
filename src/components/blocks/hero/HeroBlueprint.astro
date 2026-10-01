@@ -1,0 +1,83 @@
+---
+// Hero variant G: blueprint. Built for service pages (Build, Growth), so they read differently from the
+// solutions pages' statement hero. Text column on the left; on the right a "spec sheet": a framed panel with
+// a blueprint grid, corner crop marks and the page's line illustration. At least one screen tall.
+// Phones: one column, the sheet after the buttons.
+import Breadcrumb from '../Breadcrumb.astro';
+import HeroActions from './HeroActions.astro';
+import HeroIllustration from './HeroIllustration.astro';
+import { illustrations } from '../../illustrations';
+import type { HeroContent } from './types';
+
+type Props = HeroContent;
+const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta, breadcrumb, visual } = Astro.props;
+const Visual = visual ? illustrations[visual] : HeroIllustration;
+
+// Crop marks at the sheet corners (blueprint feel)
+const corners = [
+  'left-0 top-0 border-l border-t',
+  'right-0 top-0 border-r border-t',
+  'bottom-0 left-0 border-b border-l',
+  'bottom-0 right-0 border-b border-r',
+];
+---
+
+<section
+  id="hero"
+  aria-labelledby="hero-title"
+  class="relative isolate flex min-h-svh flex-col overflow-hidden border-b border-line px-2 pb-6 pt-28 sm:px-3 sm:pt-32 md:pb-10 lg:px-4 lg:pb-16 lg:pt-40"
+>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-10 bg-grid [mask-image:radial-gradient(ellipse_60%_70%_at_80%_50%,#000_30%,transparent_100%)]"
+  >
+  </div>
+
+  <div
+    class="mx-auto grid w-full max-w-site flex-1 content-center items-center gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12"
+  >
+    <div class="flex flex-col items-start">
+      {breadcrumb && <Breadcrumb items={breadcrumb} class="mb-3" />}
+
+      {
+        eyebrow && (
+          <p class="flex items-center gap-1 text-meta font-medium text-ink-muted">
+            <span aria-hidden="true" class="size-1 shrink-0 rounded-sm bg-highlight" />
+            <span class="text-balance">{eyebrow}</span>
+          </p>
+        )
+      }
+
+      {
+        displayLine && (
+          <p class="mt-3 max-w-4xl text-balance font-display text-display font-bold tracking-tight text-ink">{displayLine}</p>
+        )
+      }
+
+      <h1
+        id="hero-title"
+        class:list={[
+          'text-balance font-display',
+          displayLine
+            ? 'mt-3 max-w-3xl text-title font-semibold text-ink-soft'
+            : 'mt-3 max-w-4xl text-[clamp(2.5rem,1.5rem+4vw,4.75rem)] font-bold leading-[1.02] tracking-tight text-ink',
+        ]}
+      >
+        {h1}
+      </h1>
+
+      {sub && <p class="mt-4 max-w-2xl text-pretty text-lead text-ink-soft md:mt-5">{sub}</p>}
+
+      <HeroActions primary={primaryCta} secondary={secondaryCta} class="mt-5 md:mt-6" />
+    </div>
+
+    <!-- Spec sheet -->
+    <div aria-hidden="true" class="relative mx-auto w-full max-w-xl p-2 md:p-3">
+      {corners.map((c) => <span class:list={['absolute size-3 border-highlight/50', c]} />)}
+      <div class="relative overflow-hidden rounded-card border border-line bg-surface-raised/40">
+        <div class="absolute inset-0 bg-grid opacity-60"></div>
+        <Visual class="relative h-auto w-full p-2 md:p-4" />
+      </div>
+    </div>
+  </div>
+</section>

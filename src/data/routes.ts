@@ -13,6 +13,9 @@ export const routes = {
   resources: '/resources/',
   about: '/about/',
   contact: '/contact/',
+  // Free website demo funnel (fitness, wellness, sports; e-commerce has no demo)
+  demoRequest: '/demo-request/',
+  demoSuccess: '/demo-success/',
   // Free audit CTAs go to Contact until an audit page exists
   audit: '/contact/',
   privacy: '/privacy/',

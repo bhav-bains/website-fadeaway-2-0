@@ -1,0 +1,14 @@
+---
+// Build Services page. Content: src/data/pages/build.ts (from copy/build.md). Sections are added as they're built.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
+import { breadcrumbSchema } from '../../lib/schema';
+import { seo, breadcrumb, hero, heroVariant } from '../../data/pages/build';
+
+const jsonLd = [breadcrumbSchema(breadcrumb)];
+---
+
+<BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
+  <!-- Dev-only preview: /services/build/?hero=blueprint | statement | showcase | all -->
+  <HeroPreview content={hero} variant={heroVariant} options={['blueprint', 'statement', 'showcase']} />
+</BaseLayout>

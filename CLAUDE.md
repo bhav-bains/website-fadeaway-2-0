@@ -18,7 +18,7 @@ Astro site, hosted on Netlify. This file gives Claude Code the standing rules fo
   - Sitemap excludes noindex pages (filter in `astro.config.mjs`).
 - **Header / Footer:** `Header.astro`, `Footer.astro`, fed by `src/data/navigation.ts` (no `#` placeholder links left). The nav's Growth sub-services ("SEO + AEO · Full Audit · Growth Strategy · CRO · Paid Media") no longer match the homepage Growth tiles; align them when the nav is revisited.
 - **Routes:** every internal URL lives in `src/data/routes.ts`; link to `routes.x`, never a hardcoded path.
-- **Live pages (`src/pages/`):** `/` (`index.astro`, rebuilt), `/contact`, `/contact-success`, `/sports`, `/wellness`, `/solutions/ecommerce`, and `404.astro` (Netlify serves `dist/404.html` for missing URLs; copy in `copy/404.md`, approved). noindex pages get no canonical tag.
+- **Live pages (`src/pages/`):** `/` (`index.astro`, rebuilt), `/contact`, `/contact-success`, `/sports`, `/wellness`, `/solutions/ecommerce`, `/demo-request`, `/demo-success`, and `404.astro` (Netlify serves `dist/404.html` for missing URLs; copy in `copy/404.md`, approved). noindex pages get no canonical tag.
 - **Parked pages (`src/pages/_inactive/`, not routed by Astro):** `home-2025.astro` (the previous homepage, for reference), old index, `blog/index`, `blog/[slug]`, `demo-request`, `demo-success`, `services/web-design`. `/audit-request` and `/audit-success` do not exist anywhere.
 - **Page content lives in `src/data/pages/<page>.ts`** (e.g. `home.ts`), copied word for word from `/copy/<page>.md`. Blocks never contain copy; pages pass content in.
 - **Components:**
@@ -110,7 +110,7 @@ Astro site, hosted on Netlify. This file gives Claude Code the standing rules fo
 | Fadeaway Labs | /labs |
 | About | /about |
 | Free audit | /audit (**not built yet.** Decision: all "Get Your Free Audit" CTAs link to **/contact** until an audit page exists.) |
-| Demo request (fitness, wellness, sports) | /demo-request (parked in `_inactive`, not live on `dev`) |
+| Demo request (fitness, wellness, sports) | /demo-request + /demo-success (rebuilt from `copy/demo-request.md`, Netlify form `demo-request`; success page noindex, out of the sitemap) |
 | Old service page | /services/web-design (parked in `_inactive`; decide when the Build page is done, 301 to /services/build if production still has it) |
 | Current solution pages | /sports, /wellness (live on `dev`; the new map moves them to /solutions/sports and /solutions/wellness-counselling, so 301s needed. Ask first.) |
 | Portfolio | /portfolio |

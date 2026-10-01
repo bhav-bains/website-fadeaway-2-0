@@ -7,6 +7,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Eyebrow from '../components/blocks/Eyebrow.astro';
 import Button from '../components/Button.astro';
 import LineRings from '../components/ui/LineRings.astro';
+import LinkIndex from '../components/blocks/LinkIndex.astro';
 import { seo, notFound } from '../data/pages/not-found';
 ---
 
@@ -67,40 +68,7 @@ import { seo, notFound } from '../data/pages/not-found';
           </div>
         </div>
 
-        <nav aria-labelledby="not-found-links">
-          <h2 id="not-found-links" class="text-meta font-semibold uppercase tracking-wider text-ink-muted">
-            {notFound.linksHeading}
-          </h2>
-          <ul class="mt-2 border-b border-line">
-            {
-              notFound.links.map((link) => (
-                <li class="border-t border-line">
-                  <a
-                    href={link.href}
-                    class="group flex items-center justify-between gap-3 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight/50 md:py-3"
-                  >
-                    <span class="flex flex-col">
-                      <span class="font-display text-xl font-bold text-ink transition-colors group-hover:text-highlight">
-                        {link.label}
-                      </span>
-                      <span class="text-meta text-ink-muted">{link.text}</span>
-                    </span>
-                    <svg
-                      class="size-icon shrink-0 text-ink-muted transition-[color,transform] duration-300 group-hover:translate-x-1 group-hover:text-highlight"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.75"
-                      aria-hidden="true"
-                    >
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 8h10M9 4l4 4-4 4" />
-                    </svg>
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </nav>
+        <LinkIndex heading={notFound.linksHeading} id="not-found-links" links={notFound.links} />
       </div>
     </div>
   </section>
