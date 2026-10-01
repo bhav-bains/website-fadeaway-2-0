@@ -32,7 +32,7 @@ const jsonLd = [
   howToSchema({
     name: howItWorks.heading,
     steps: howItWorks.items,
-    url: new URL(`${routes.ecommerce}/#${howItWorks.id}`, siteConfig.url).toString(),
+    url: new URL(`${routes.ecommerce}#${howItWorks.id}`, siteConfig.url).toString(),
   }),  faqSchema(faq.items),
 ];
 ---

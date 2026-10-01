@@ -81,7 +81,7 @@ export function faqSchema(faq: { q: string; a: string }[]): JsonLdNode {
 }
 
 // BreadcrumbList from the same items the Breadcrumb block renders.
-// URLs get a trailing slash so they match the canonical URLs SeoHead emits.
+// URLs keep the sitewide trailing slash (routes.ts already has it; this guards hand-written paths).
 export function breadcrumbSchema(items: { label: string; href: string }[]): JsonLdNode {
   return {
     '@type': 'BreadcrumbList',

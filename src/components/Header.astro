@@ -7,7 +7,8 @@ import Logo from './ui/Logo.astro';
 import Button from './Button.astro';
 import { mainNavigation, headerCta } from '../data/navigation';
 
-const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+// Page URLs end in a slash sitewide (routes.ts), so compare in that form
+const current = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const isCurrent = (href: string) => (href === current ? 'page' : undefined);
 const slug = (label: string) => label.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 

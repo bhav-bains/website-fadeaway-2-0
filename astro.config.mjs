@@ -7,6 +7,10 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: "https://fadeawaycreatives.com",
+  // One URL form sitewide: every page is /path/ (folder + index.html). Canonicals, internal links (routes.ts),
+  // JSON-LD and the sitemap all use the trailing slash; Netlify 301s /path to /path/.
+  trailingSlash: 'always',
+  build: { format: 'directory' },
   integrations: [
     mdx(),
     // Keep noindex pages (thank-you pages) out of the sitemap

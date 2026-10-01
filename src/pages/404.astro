@@ -1,0 +1,141 @@
+---
+// 404 page. Netlify serves dist/404.html for any missing URL. noindex (Astro also keeps it out of the sitemap).
+// Content: src/data/pages/not-found.ts (from copy/404.md).
+// Design: an oversized outlined "404" whose zero is a broken chain link (a dead link, literally), over a faint grid
+// and line rings; below a hairline, the H1 + actions on the left and an index of live pages on the right.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Eyebrow from '../components/blocks/Eyebrow.astro';
+import Button from '../components/Button.astro';
+import LineRings from '../components/ui/LineRings.astro';
+import { seo, notFound } from '../data/pages/not-found';
+---
+
+<BaseLayout title={seo.title} description={seo.description} noIndex>
+  <section
+    aria-labelledby="not-found-title"
+    class="relative isolate flex min-h-svh flex-col overflow-hidden px-2 pb-6 pt-28 sm:px-3 sm:pt-32 md:pb-10 lg:px-4 lg:pb-16 lg:pt-40"
+  >
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,#000_40%,transparent_100%)]"></div>
+      <LineRings
+        class="absolute -right-56 -top-40 w-[52rem] max-w-none text-accent opacity-20 [mask-image:radial-gradient(circle_at_35%_55%,#000_30%,transparent_70%)] md:-right-40"
+      />
+    </div>
+
+    <div class="mx-auto flex w-full max-w-site flex-1 flex-col justify-center">
+      <!-- Oversized "404": outlined digits, the zero is a broken chain link -->
+      <p
+        aria-hidden="true"
+        class="flex select-none items-center font-display text-[clamp(7rem,3rem+24vw,20rem)] font-bold leading-[0.85] tracking-tight text-transparent [-webkit-text-stroke:1.5px_var(--color-line-strong)]"
+      >
+        <span>4</span>
+        <svg
+          class="broken-link mx-[0.04em] h-[0.72em] w-[0.9em] shrink-0"
+          viewBox="0 0 120 100"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          focusable="false"
+        >
+          <g class="half-left text-accent">
+            <path d="M48 30H30a20 20 0 0 0 0 40h18" vector-effect="non-scaling-stroke" />
+            <path d="M34 50h12" vector-effect="non-scaling-stroke" />
+          </g>
+          <g class="half-right text-accent">
+            <path d="M72 30h18a20 20 0 0 1 0 40H72" vector-effect="non-scaling-stroke" />
+            <path d="M74 50h12" vector-effect="non-scaling-stroke" />
+          </g>
+          <g class="sparks text-highlight">
+            <path d="M60 14v10M60 76v10M47 19l4 7M73 19l-4 7M47 81l4-7M73 81l-4-7" vector-effect="non-scaling-stroke" />
+          </g>
+        </svg>
+        <span>4</span>
+      </p>
+
+      <div class="mt-6 grid gap-6 border-t border-line pt-6 md:mt-8 md:pt-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-12">
+        <div class="flex flex-col items-start gap-2">
+          <Eyebrow tone="accent">{notFound.eyebrow}</Eyebrow>
+          <h1 id="not-found-title" class="max-w-2xl text-balance font-display text-heading font-bold text-ink">
+            {notFound.h1}
+          </h1>
+          <p class="max-w-xl text-pretty text-lead text-ink-soft">{notFound.text}</p>
+          <div class="mt-2 flex flex-wrap gap-2">
+            <Button href={notFound.primaryCta.href} variant="primary" size="base">{notFound.primaryCta.label}</Button>
+            <Button href={notFound.secondaryCta.href} variant="secondary" size="base">{notFound.secondaryCta.label}</Button>
+          </div>
+        </div>
+
+        <nav aria-labelledby="not-found-links">
+          <h2 id="not-found-links" class="text-meta font-semibold uppercase tracking-wider text-ink-muted">
+            {notFound.linksHeading}
+          </h2>
+          <ul class="mt-2 border-b border-line">
+            {
+              notFound.links.map((link) => (
+                <li class="border-t border-line">
+                  <a
+                    href={link.href}
+                    class="group flex items-center justify-between gap-3 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight/50 md:py-3"
+                  >
+                    <span class="flex flex-col">
+                      <span class="font-display text-xl font-bold text-ink transition-colors group-hover:text-highlight">
+                        {link.label}
+                      </span>
+                      <span class="text-meta text-ink-muted">{link.text}</span>
+                    </span>
+                    <svg
+                      class="size-icon shrink-0 text-ink-muted transition-[color,transform] duration-300 group-hover:translate-x-1 group-hover:text-highlight"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.75"
+                      aria-hidden="true"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 8h10M9 4l4 4-4 4" />
+                    </svg>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* The two halves of the link drift apart and back; sparks flicker in the gap. Off for reduced motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    .half-left {
+      animation: drift-left 4s ease-in-out infinite;
+    }
+    .half-right {
+      animation: drift-right 4s ease-in-out infinite;
+    }
+    .sparks {
+      animation: flicker 4s ease-in-out infinite;
+    }
+  }
+  @keyframes drift-left {
+    50% {
+      transform: translateX(-4px);
+    }
+  }
+  @keyframes drift-right {
+    50% {
+      transform: translateX(4px);
+    }
+  }
+  @keyframes flicker {
+    0%,
+    100% {
+      opacity: 0.35;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+</style>

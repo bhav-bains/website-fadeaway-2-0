@@ -6,7 +6,8 @@ import SocialIcon from './ui/SocialIcon.astro';
 import { footerColumns, footerSocial, footerTagline } from '../data/navigation';
 import { siteConfig } from '../data/site';
 
-const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+// Page URLs end in a slash sitewide (routes.ts), so compare in that form
+const current = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const year = new Date().getFullYear();
 
 const linkClass =

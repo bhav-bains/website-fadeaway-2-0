@@ -47,7 +47,8 @@ const robots = noIndex
 
 <title>{title}</title>
 <meta name="description" content={description} />
-<link rel="canonical" href={canonicalUrl} />
+{/* noindex pages (404, thank-you) get no canonical: there is no URL to consolidate to */}
+{!noIndex && <link rel="canonical" href={canonicalUrl} />}
 <meta name="robots" content={robots} />
 
 <meta property="og:type" content={ogType} />
