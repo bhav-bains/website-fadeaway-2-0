@@ -1,5 +1,6 @@
 ---
-// Hero variant A: centered stack over a faint grid and glow; answer capsule in a card below.
+// Hero variant A: centered stack over a faint grid and line rings; answer capsule in a card below.
+import LineRings from '../../ui/LineRings.astro';
 import HeroActions from './HeroActions.astro';
 import type { HeroContent } from './types';
 
@@ -17,11 +18,9 @@ const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta, answerCapsule }
     class="absolute inset-0 -z-10 bg-grid [mask-image:radial-gradient(ellipse_70%_55%_at_50%_0%,#000_60%,transparent_100%)]"
   >
   </div>
-  <div
-    aria-hidden="true"
-    class="pointer-events-none absolute left-1/2 top-1/4 -z-10 aspect-square w-[36rem] max-w-full -translate-x-1/2 rounded-full bg-highlight/5 blur-[120px]"
-  >
-  </div>
+  <LineRings
+    class="pointer-events-none absolute left-1/2 top-[8%] -z-10 w-[44rem] max-w-none -translate-x-1/2 text-highlight opacity-20 [mask-image:radial-gradient(circle,#000_30%,transparent_70%)] md:w-[56rem]"
+  />
 
   <div class="mx-auto flex max-w-5xl flex-col items-center text-center">
     {

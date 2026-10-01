@@ -1,6 +1,7 @@
 ---
 // Hero variant B: text on the left, answer capsule as a feature card on the right.
 // Mobile: one column, card after the buttons. lg and up: two columns.
+import LineRings from '../../ui/LineRings.astro';
 import HeroActions from './HeroActions.astro';
 import type { HeroContent } from './types';
 
@@ -13,11 +14,9 @@ const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta, answerCapsule }
   aria-labelledby="hero-title"
   class="relative isolate overflow-hidden px-2 pb-6 pt-24 sm:px-3 md:pb-10 md:pt-36 lg:px-4 lg:pt-40"
 >
-  <div
-    aria-hidden="true"
-    class="pointer-events-none absolute -right-40 -top-40 -z-10 aspect-square w-[40rem] max-w-[120vw] rounded-full bg-accent/10 blur-[140px]"
-  >
-  </div>
+  <LineRings
+    class="pointer-events-none absolute -right-48 -top-48 -z-10 w-[44rem] max-w-none text-accent opacity-20 [mask-image:radial-gradient(circle_at_40%_60%,#000_30%,transparent_70%)]"
+  />
 
   <div class="mx-auto grid max-w-site gap-6 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-10">
     <div class="flex flex-col items-start">
@@ -49,7 +48,7 @@ const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta, answerCapsule }
 
     {
       answerCapsule && (
-        <div class="rounded-card bg-gradient-to-br from-accent/50 via-line to-highlight/50 p-px shadow-glow-accent">
+        <div class="rounded-card bg-gradient-to-br from-accent/50 via-line to-highlight/50 p-px">
           <div class="flex flex-col gap-2 rounded-[calc(var(--radius-card)-1px)] bg-surface-raised p-3 md:p-5">
             <span
               aria-hidden="true"

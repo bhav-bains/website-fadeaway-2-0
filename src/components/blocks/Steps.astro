@@ -41,7 +41,7 @@ const mdColumns = { 2: 'md:grid-cols-2', 3: 'md:grid-cols-3', 4: 'md:grid-cols-4
             aria-hidden="true"
             class={clsx(
               'relative inline-flex size-12 items-center justify-center rounded-full border bg-surface-raised font-display text-base font-semibold tabular-nums',
-              i === 0 ? 'border-accent/50 text-accent shadow-glow-accent' : 'border-highlight/40 text-highlight',
+              i === 0 ? 'border-accent/50 text-accent outline outline-1 outline-offset-4 outline-accent/25' : 'border-highlight/40 text-highlight',
             )}
           >
             {pad(i + 1)}
