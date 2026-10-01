@@ -1,7 +1,8 @@
 ---
 // Case-study cards from the case-studies collection: image, client, title, summary, result chips.
 // Renders nothing when given no entries; pages should also skip the surrounding Section (CLAUDE.md section 4).
-// Columns follow the count so 1 or 2 case studies sit centred instead of hugging the left; 3+ go 3 across on lg.
+// Columns follow the count: a single case study becomes one wide feature (image left, text right from md),
+// 2 sit centred side by side, 3+ go 3 across on lg.
 import { Image } from 'astro:assets';
 import clsx from 'clsx';
 import type { CaseStudy } from '../../lib/case-studies';
@@ -13,9 +14,10 @@ interface Props {
 
 const { entries, class: className } = Astro.props;
 
+const single = entries.length === 1;
 const layout =
-  entries.length === 1
-    ? 'mx-auto max-w-md'
+  single
+    ? ''
     : entries.length === 2
       ? 'mx-auto max-w-4xl md:grid-cols-2'
       : 'md:grid-cols-2 lg:grid-cols-3';
@@ -25,17 +27,25 @@ const layout =
   entries.length > 0 && (
     <ul class={clsx('grid gap-3 lg:gap-4', layout, className)}>
       {entries.map(({ data }) => (
-        <li class="flex flex-col overflow-hidden rounded-card border border-line-strong bg-surface-raised/60">
+        <li
+          class={clsx(
+            'flex flex-col overflow-hidden rounded-card border border-line-strong bg-surface-raised/60',
+            single && 'md:grid md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]',
+          )}
+        >
           {data.image && (
             <Image
               src={data.image}
               alt={data.imageAlt ?? ''}
               widths={[400, 640, 960]}
-              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-              class="aspect-[16/10] w-full border-b border-line object-cover"
+              sizes={single ? '(min-width: 768px) 60vw, 100vw' : '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw'}
+              class={clsx(
+                'aspect-[16/10] w-full border-b border-line object-cover',
+                single && 'md:h-full md:border-b-0 md:border-r',
+              )}
             />
           )}
-          <div class="flex flex-1 flex-col gap-2 p-3 md:p-4">
+          <div class={clsx('flex flex-1 flex-col gap-2 p-3 md:p-4', single && 'lg:justify-center lg:p-6')}>
             {data.placeholder && (
               <p class="self-start rounded-pill bg-accent px-2 py-1 text-xs font-semibold text-accent-ink">Placeholder</p>
             )}
@@ -56,10 +66,10 @@ const layout =
                 data.client
               )}
             </p>
-            <h3 class="text-balance font-display text-xl font-bold text-ink">{data.title}</h3>
-            <p class="text-pretty text-sm text-ink-muted">{data.summary}</p>
+            <h3 class={clsx('text-balance font-display font-bold text-ink', single ? 'text-xl lg:text-2xl' : 'text-xl')}>{data.title}</h3>
+            <p class={clsx('text-pretty text-ink-muted', single ? 'text-base' : 'text-sm')}>{data.summary}</p>
             {data.results.length > 0 && (
-              <ul class="mt-auto flex flex-col gap-1 border-t border-line pt-2">
+              <ul class={clsx('flex flex-col gap-1 border-t border-line pt-2', single ? 'mt-2' : 'mt-auto')}>
                 {data.results.map((r) => (
                   <li class="flex items-start gap-1 text-meta font-medium text-ink">
                     <svg

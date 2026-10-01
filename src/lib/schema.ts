@@ -94,6 +94,19 @@ export function breadcrumbSchema(items: { label: string; href: string }[]): Json
   };
 }
 
+// Service entries for a page, as listed in its copy file. No prices; Fadeaway is the provider.
+// Only services visible on the page (copy rule), linked to the page URL where they're described.
+export function serviceSchema({ names, url }: { names: string[]; url: string }): JsonLdNode[] {
+  return names.map((name) => ({
+    '@type': 'Service',
+    name,
+    serviceType: name,
+    url: abs(url.endsWith('/') ? url : `${url}/`),
+    provider: { '@id': ORGANIZATION_ID },
+    areaServed: siteConfig.areaServed.map((country) => ({ '@type': 'Country', name: country })),
+  }));
+}
+
 // One @graph per page: sitewide nodes first, then the page's own nodes.
 export function buildGraph(pageNodes: JsonLdNode[] = []) {
   return {

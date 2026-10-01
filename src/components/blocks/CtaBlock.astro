@@ -1,5 +1,5 @@
 ---
-// Call-to-action panel: heading, one line, one button. Gradient border (accent to highlight).
+// Call-to-action panel: heading, one line, one button. Gradient border (accent to highlight), oversized line art, no glow.
 // layout "split" (inline call-outs): stacked on phones, text left and button right from md.
 // layout "center" (closing CTA): larger type, everything centred.
 import clsx from 'clsx';
@@ -28,7 +28,7 @@ const {
 const center = layout === 'center';
 ---
 
-<div class={clsx('rounded-card bg-gradient-to-br from-accent/50 via-line to-highlight/50 p-px shadow-glow-accent', className)}>
+<div class={clsx('rounded-card bg-gradient-to-br from-accent/50 via-line to-highlight/50 p-px', className)}>
   <div
     class={clsx(
       'relative isolate flex flex-col overflow-hidden rounded-[calc(var(--radius-card)-1px)] bg-surface-raised',
@@ -37,23 +37,34 @@ const center = layout === 'center';
         : 'gap-3 p-3 md:flex-row md:items-center md:justify-between md:gap-6 md:p-5',
     )}
   >
-    <div
+    {/* Oversized line art (no glow): a forward arrow breaking out of concentric rings, bleeding off the right edge */}
+    <svg
       aria-hidden="true"
-      class="pointer-events-none absolute -right-10 -top-10 -z-10 size-[16rem] rounded-full bg-accent/10 blur-lg"
+      focusable="false"
+      viewBox="0 0 320 320"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.25"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class={clsx(
+        'pointer-events-none absolute -z-10 text-accent opacity-25 [mask-image:radial-gradient(circle_at_50%_50%,#000_35%,transparent_75%)]',
+        center ? '-bottom-24 -right-20 size-[22rem] md:size-[30rem]' : '-bottom-20 -right-16 size-[18rem] md:size-[22rem]',
+      )}
     >
-    </div>
+      <circle cx="160" cy="160" r="60" opacity=".6" />
+      <circle cx="160" cy="160" r="96" opacity=".35" />
+      <circle cx="160" cy="160" r="132" opacity=".18" />
+      <path d="M104 216L250 70" />
+      <path d="M180 70h70v70" />
+      <path d="M128 70h24M250 192v-24" opacity=".5" />
+    </svg>
     {
       center && (
-        <>
-          <div
-            aria-hidden="true"
-            class="pointer-events-none absolute -bottom-10 -left-10 -z-10 size-[16rem] rounded-full bg-highlight/10 blur-lg"
-          />
-          <div
-            aria-hidden="true"
-            class="pointer-events-none absolute inset-0 -z-10 bg-grid [mask-image:radial-gradient(ellipse_60%_70%_at_50%_50%,#000_20%,transparent_100%)]"
-          />
-        </>
+        <div
+          aria-hidden="true"
+          class="pointer-events-none absolute inset-0 -z-10 bg-grid [mask-image:radial-gradient(ellipse_60%_70%_at_50%_50%,#000_20%,transparent_100%)]"
+        />
       )
     }
     <div class={clsx('flex flex-col', center ? 'items-center gap-2' : 'gap-1')}>

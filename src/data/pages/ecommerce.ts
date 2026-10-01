@@ -6,6 +6,7 @@ import type { HeroContent, HeroVariant } from '../../components/blocks/hero/type
 import type { BreadcrumbItem } from '../../components/blocks/Breadcrumb.astro';
 import type { AnnotatedPoint } from '../../components/blocks/AnnotatedVisual.astro';
 import type { BentoItem } from '../../components/blocks/BentoGrid.astro';
+import type { FaqItem } from '../../components/blocks/Faq.astro';
 import type { StepItem } from '../../components/blocks/Steps.astro';
 import type { ServiceIndexItem } from '../../components/blocks/ServiceIndex.astro';
 
@@ -184,4 +185,76 @@ export const howItWorks: { id: string; heading: string; items: StepItem[] } = {
       text: 'You get a dashboard tracking traffic, conversions, and revenue, reviewed on a regular cadence, with strategy that adjusts based on what the data shows.',
     },
   ],
+};
+
+/** ProofGrid of case studies tagged `ecommerce`. Hidden in production until /portfolio exists (its CTA links there);
+ * always visible in `npm run dev`. Renders nothing when there are no approved case studies. */
+export const realWork = {
+  id: 'real-work',
+  showInProduction: false,
+  heading: 'Real Work, Real Results',
+  intro: "Stores we've built and grown.",
+  tag: 'ecommerce',
+  limit: 3,
+  ctaText: 'Like what you see?',
+  primaryCta: { label: 'Get Started', href: routes.contact },
+  secondaryCta: { label: 'View Full Portfolio', href: routes.portfolio },
+} as const;
+
+/** Also feeds the FAQPage schema, so the visible Q&A and the JSON-LD match word for word */
+export const faq: { id: string; heading: string; items: FaqItem[] } = {
+  id: 'faq',
+  heading: 'Frequently Asked Questions',
+  items: [
+    {
+      q: 'Do you build on Shopify, WooCommerce, or headless commerce?',
+      a: 'Yes, all three. The right platform depends on your catalog size, your budget, and how much control you need over the backend. We help you choose before anything gets built, then design the store, product pages, and checkout around how your customers actually buy, not around a template.',
+    },
+    {
+      q: 'How much do e-commerce web design and SEO cost?',
+      a: "It depends on your catalog, your platform, and the scope of work. A small migration and a full custom headless build are very different projects. Every build and growth plan is scoped and quoted at a fixed price before we start, with no hourly billing. Reach out and we'll walk you through real numbers for your store.",
+    },
+    {
+      q: 'Can you migrate my store without losing my search rankings?',
+      a: 'Yes. Migrations are where most stores lose the search visibility they spent years building. We handle the move end to end, including product data, URLs, redirects, and messy backend content, so your rankings and content come with you to the new platform instead of starting over from zero.',
+    },
+    {
+      q: 'How do you increase e-commerce sales from the traffic I already have?',
+      a: 'We start where shoppers drop off: product pages, add-to-cart, and checkout. Then we run ongoing conversion rate optimization, cart abandonment recovery, and email campaigns that bring past customers back. The goal is more sales from the visitors you already have, tracked in a dashboard that shows revenue, not just traffic.',
+    },
+    {
+      q: 'Can AI shopping assistants like ChatGPT recommend my store?',
+      a: "They can, if they can read your store clearly. AI assistants rely on structured product data, schema, reviews, and clear product content when deciding what to recommend. We build and clean up those signals so tools like ChatGPT, Perplexity, and Google's AI Overviews can describe your products accurately and point shoppers to you.",
+    },
+    {
+      q: 'What if I need custom software or integrations beyond my storefront?',
+      a: "That's Fadeaway Labs. Custom apps, platform integrations, order and inventory automations, and internal dashboards that go beyond the storefront live there. It's the same team, scoped as its own project, so your store build and growth work stay focused while the bigger system gets built alongside it.",
+    },
+  ],
+};
+
+/** Service JSON-LD entries (copy/ecommerce.md frontmatter `schema`). No prices. */
+export const serviceNames = [
+  'E-commerce Store Builds',
+  'Website Redesign & Migration',
+  'E-commerce SEO & AEO',
+  'Conversion Rate Optimization',
+  'Email & Lead Generation Campaigns',
+  'Custom Apps & Integrations',
+];
+
+/** From the Blog (tag ecommerce): renders nothing until /resources exists and has real e-commerce posts. */
+export const blog = {
+  id: 'blog',
+  heading: 'From the Blog',
+  intro: 'Practical answers to the e-commerce questions we hear most.',
+  tag: 'ecommerce',
+  cta: { label: 'View All Resources', href: routes.resources },
+} as const;
+
+export const cta = {
+  id: 'cta',
+  heading: 'Ready to Build or Grow Your Store?',
+  text: "Tell us where your store is today, and we'll help you figure out what's next.",
+  cta: { label: 'Get Started', href: routes.contact },
 };

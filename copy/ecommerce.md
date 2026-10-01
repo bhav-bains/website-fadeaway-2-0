@@ -35,7 +35,7 @@ pricing: none  # E-commerce is priced by scope of work. No numbers anywhere on t
 schema:
   - Organization    # sitewide, from the base layout
   - BreadcrumbList  # see open item on the Solutions crumb
-  - Service         # one entry per service shown in "What We Do": E-commerce Store Builds, Website Redesign & Migration, E-commerce SEO & AEO, Conversion Rate Optimization, Email & Lead Generation Campaigns. No prices.
+  - Service         # one entry per service shown in "What We Do": E-commerce Store Builds, Website Redesign & Migration, E-commerce SEO & AEO, Conversion Rate Optimization, Email & Lead Generation Campaigns, Custom Apps & Integrations. No prices.
   - HowTo           # from How It Works
   - FAQPage         # generated from the faq list below
 content_tag: ecommerce  # Real Work, Testimonials, and From the Blog pull entries with this tag
@@ -58,7 +58,7 @@ Notes for the build:
 | Field | Value | Status |
 |---|---|---|
 | Title tag | Fadeaway Creatives \| E-commerce Web Design & Growth (51 chars) | Set |
-| Meta description | E-commerce web design and growth for Shopify, WooCommerce, and headless stores. SEO, AEO, and conversion work that turns browsers into buyers. (142 chars) | Updated, needs approval |
+| Meta description | E-commerce web design and growth for Shopify, WooCommerce, and headless stores. SEO, AEO, and conversion work that turns browsers into buyers. (142 chars) | Set (approved Sept 30) |
 | Canonical | https://fadeawaycreatives.com/solutions/ecommerce | Set |
 | H1 | Your E-commerce Web Design & Growth Partner | Set |
 | og:title / og:description | Mirror title tag / meta description | Set |
@@ -69,12 +69,12 @@ Notes for the build:
 | Robots meta | index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1 | Set |
 | Viewport meta | width=device-width, initial-scale=1, viewport-fit=cover (sitewide, in the layout) | Set |
 | Schema: Organization | Inherited sitewide, no LocalBusiness for Fadeaway itself | Set |
-| Schema: Service | E-commerce Store Builds, Website Redesign & Migration, E-commerce SEO & AEO, Conversion Rate Optimization, Email & Lead Generation Campaigns. No prices. | Updated, needs approval |
+| Schema: Service | E-commerce Store Builds, Website Redesign & Migration, E-commerce SEO & AEO, Conversion Rate Optimization, Email & Lead Generation Campaigns, Custom Apps & Integrations. No prices. | Set (approved Sept 30) |
 | Schema: HowTo | From How It Works (4 steps) | Set |
 | Schema: FAQPage | From the FAQ list, matches visible copy verbatim | Set |
 | Schema: BreadcrumbList | Home > E-commerce (no /solutions hub yet) | Set (decided Sept 29) |
-| Answer capsule | See frontmatter `answer_capsule` (59 words) | Updated, needs approval |
-| Visible FAQ block | 6 questions, 47 to 57 word answers | Updated, needs approval |
+| Answer capsule | See frontmatter `answer_capsule` (59 words) | Set (approved Sept 30) |
+| Visible FAQ block | 6 questions, 47 to 57 word answers | Set (approved Sept 30) |
 | Last updated date | Set at launch | Pending launch |
 | Internal links | /services/build, /services/growth, /labs, /contact, /portfolio, /resources. Zero `#` placeholders. | To QA |
 | Primary keyword | ecommerce web design agency (1,200/mo US KD 0; 150/mo Canada KD 1) | Set |
