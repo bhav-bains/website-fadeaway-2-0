@@ -40,6 +40,11 @@ import {
 const featuredWork =
   import.meta.env.DEV || work.showInProduction ? await getCaseStudies({ tag: work.tag, limit: work.limit }) : [];
 
+// Sections alternate between the page background and a lighter band (tone "alt"), starting with the Trust Bar.
+// #work is hidden in production until /portfolio exists, so the bands after it flip to keep alternating.
+const hasWork = featuredWork.length > 0;
+const band = (lighter: boolean) => (lighter ? 'alt' : 'canvas');
+
 const jsonLd = [
   howToSchema({
     name: howItWorks.heading,
@@ -55,29 +60,29 @@ const jsonLd = [
   <HeroPreview content={hero} variant={heroVariant} options={['centered', 'split', 'editorial', 'visual']} />
 
   <!-- Trust Bar: answer capsule (AEO summary, plain text right under the Hero), then 4 trust signals -->
-  <Section id={trust.id} separator>
+  <Section id={trust.id} tone="alt">
     <!-- Hidden on phones to keep the first scroll light; still in the HTML for search and AI crawlers -->
     <p class="mx-auto hidden max-w-3xl text-pretty text-center text-lead text-ink-soft sm:block">{answerCapsule}</p>
     <IconGrid items={trust.items} titleAs="p" class="sm:mt-6 md:mt-8" />
   </Section>
 
-  <Section id={industries.id} heading={industries.heading} intro={industries.intro} separator>
+  <Section id={industries.id} heading={industries.heading} intro={industries.intro}>
     <CardGrid items={industries.items} columns={2} />
   </Section>
 
-  <Section id={why.id} heading={why.heading} layout="split" separator>
+  <Section id={why.id} heading={why.heading} layout="split" tone="alt">
     <NumberedList items={why.items} />
   </Section>
 
-  <Section id={services.id} eyebrow={services.eyebrow} heading={services.heading} separator>
+  <Section id={services.id} eyebrow={services.eyebrow} heading={services.heading}>
     <ServiceGrid items={services.items} />
   </Section>
 
-  <Section id={howItWorks.id} heading={howItWorks.heading} separator>
+  <Section id={howItWorks.id} heading={howItWorks.heading} tone="alt">
     <Steps items={howItWorks.items} />
   </Section>
 
-  <Section id={ecommerce.id} heading={ecommerce.heading} intro={ecommerce.body} layout="split" separator>
+  <Section id={ecommerce.id} heading={ecommerce.heading} intro={ecommerce.body} layout="split">
     <Fragment slot="actions">
       <Button href={ecommerce.cta.href} variant="secondary" size="base">{ecommerce.cta.label}</Button>
       <ArrowLink href={ecommerce.link.href}>{ecommerce.link.label}</ArrowLink>
@@ -92,14 +97,14 @@ const jsonLd = [
     </div>
   </Section>
 
-  <Section id={labs.id} heading={labs.heading} intro={labs.intro} tone="surface">
+  <Section id={labs.id} heading={labs.heading} intro={labs.intro} tone="alt">
     <IconGrid items={labs.items} columns={2} size="md" />
     <CtaBlock {...labs.cta} class="mt-4 md:mt-6" />
   </Section>
 
   {
     featuredWork.length > 0 && (
-      <Section id={work.id} heading={work.heading} intro={work.intro} separator>
+      <Section id={work.id} heading={work.heading} intro={work.intro}>
         <ProofGrid entries={featuredWork} />
         <div class="mt-4 flex justify-center md:mt-6">
           <Button href={work.cta.href} variant="secondary" size="base">
@@ -110,15 +115,15 @@ const jsonLd = [
     )
   }
 
-  <Section id={method.id} heading={method.heading} intro={method.intro} layout="split" separator>
+  <Section id={method.id} heading={method.heading} intro={method.intro} layout="split" tone={band(hasWork)}>
     <FeatureList items={method.items} />
   </Section>
 
-  <Section id={faq.id} heading={faq.heading} width="narrow" separator>
+  <Section id={faq.id} heading={faq.heading} width="narrow" tone={band(!hasWork)}>
     <Faq faq={faq.items} />
   </Section>
 
-  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow" tone={band(hasWork)}>
     <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
   </Section>
 </BaseLayout>

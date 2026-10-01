@@ -19,7 +19,7 @@ interface Props {
   /** Standfirst above the header: real text with a thin accent rule, quieter than the heading */
   lead?: string;
   layout?: 'stack' | 'split';
-  tone?: 'canvas' | 'surface' | 'deep';
+  tone?: 'canvas' | 'alt' | 'surface' | 'deep';
   width?: 'site' | 'narrow' | 'prose';
   /** Header alignment in the stack layout (split is always left-aligned) */
   align?: 'center' | 'start';
@@ -51,6 +51,7 @@ const centered = !split && align === 'center';
 
 const tones = {
   canvas: 'bg-canvas',
+  alt: 'bg-surface-alt',
   surface: 'bg-surface',
   deep: 'bg-surface-deep',
 };

@@ -6,6 +6,8 @@ import type { HeroContent, HeroVariant } from '../../components/blocks/hero/type
 import type { BreadcrumbItem } from '../../components/blocks/Breadcrumb.astro';
 import type { AnnotatedPoint } from '../../components/blocks/AnnotatedVisual.astro';
 import type { BentoItem } from '../../components/blocks/BentoGrid.astro';
+import type { StepItem } from '../../components/blocks/Steps.astro';
+import type { ServiceIndexItem } from '../../components/blocks/ServiceIndex.astro';
 
 export const seo = {
   title: 'Fadeaway Creatives | E-commerce Web Design & Growth',
@@ -115,4 +117,71 @@ export const standard: { id: string; heading: string; intro: string; items: Bent
     },
   ],
   cta: { text: 'Ready to see this in action?', label: 'Get Started', href: routes.contact },
+};
+
+export const services: { id: string; heading: string; items: ServiceIndexItem[]; cta: { label: string; href: string } } = {
+  id: 'services',
+  heading: 'What We Do for E-commerce Stores',
+  items: [
+    {
+      title: 'A Store Built to Convert',
+      text: 'Custom Shopify, WooCommerce, or headless builds, designed around your actual buying flow: add-to-cart, checkout, and everything in between, not just how it looks.',
+      link: { label: 'Store builds and redesigns', href: routes.build },
+    },
+    {
+      title: 'Found by Google and AI Shopping Tools',
+      text: "Technical SEO and AEO built into your store from day one, including Shopify SEO and WooCommerce SEO, so you show up whether someone's searching on Google or asking an AI assistant where to buy.",
+      link: { label: 'SEO and AEO growth work', href: routes.growth },
+    },
+    {
+      title: 'A Catalog That Stays Organized as You Grow',
+      text: 'Site structure, category and tag architecture, and custom apps or plugins built to handle thousands of products cleanly, not just a handful.',
+    },
+    {
+      title: 'More Sales From the Traffic You Already Have',
+      text: 'Ongoing conversion rate optimization and cart abandonment recovery, focused on turning browsers already on your site into buyers.',
+    },
+    {
+      title: 'Growing Into New Markets',
+      text: 'Lead generation, email marketing, and go-to-market strategy for stores ready to expand into new markets or channels.',
+    },
+    {
+      title: 'Migrations and Store Management Without the Risk',
+      text: 'Platform migrations and ongoing domain and store management, handled without losing your search rankings.',
+    },
+    {
+      title: "Knowing Exactly What's Working",
+      text: "A dashboard tracking your traffic, conversions, and revenue in one place, so you're never guessing.",
+    },
+    {
+      title: 'Custom Apps and Integrations',
+      text: 'When your store needs software beyond the storefront, like custom integrations, automations, or internal dashboards, Fadeaway Labs builds it.',
+      link: { label: 'Fadeaway Labs', href: routes.labs },
+    },
+  ],
+  cta: { label: 'Get Started', href: routes.contact },
+};
+
+/** Also feeds the HowTo schema, so the visible steps and the JSON-LD match word for word */
+export const howItWorks: { id: string; heading: string; items: StepItem[] } = {
+  id: 'how-it-works',
+  heading: 'How It Works',
+  items: [
+    {
+      title: 'Audit',
+      text: "We start with a free Instant Audit of your store, your platform, your catalog, and your current traffic. When you need the full picture, the Full Audit maps exactly what's working and what isn't.",
+    },
+    {
+      title: 'Plan',
+      text: 'Based on what we find, we map out whether you need a new build, a redesign or migration, ongoing growth work, or a mix. No fixed package forced onto your store, and if you move ahead with a build, your Full Audit fee is credited toward it.',
+    },
+    {
+      title: 'Build and Grow',
+      text: "Build work and growth work move on their own real timelines, tied to your store's actual scope, not a one-size schedule.",
+    },
+    {
+      title: 'Report and Improve',
+      text: 'You get a dashboard tracking traffic, conversions, and revenue, reviewed on a regular cadence, with strategy that adjusts based on what the data shows.',
+    },
+  ],
 };

@@ -5,10 +5,22 @@ import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
 import Section from '../../components/blocks/Section.astro';
 import AnnotatedVisual from '../../components/blocks/AnnotatedVisual.astro';
 import BentoGrid from '../../components/blocks/BentoGrid.astro';
-import { breadcrumbSchema } from '../../lib/schema';
-import { seo, breadcrumb, hero, heroVariant, answerCapsule, aiShopping, standard } from '../../data/pages/ecommerce';
+import ServiceIndex from '../../components/blocks/ServiceIndex.astro';
+import Steps from '../../components/blocks/Steps.astro';
+import IllusCycle from '../../components/illustrations/IllusCycle.astro';
+import { breadcrumbSchema, howToSchema } from '../../lib/schema';
+import { siteConfig } from '../../data/site';
+import { routes } from '../../data/routes';
+import { seo, breadcrumb, hero, heroVariant, answerCapsule, aiShopping, standard, services, howItWorks } from '../../data/pages/ecommerce';
 
-const jsonLd = [breadcrumbSchema(breadcrumb)];
+const jsonLd = [
+  breadcrumbSchema(breadcrumb),
+  howToSchema({
+    name: howItWorks.heading,
+    steps: howItWorks.items,
+    url: new URL(`${routes.ecommerce}/#${howItWorks.id}`, siteConfig.url).toString(),
+  }),
+];
 ---
 
 <BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
@@ -16,11 +28,25 @@ const jsonLd = [breadcrumbSchema(breadcrumb)];
   <HeroPreview content={hero} variant={heroVariant} options={['showcase', 'statement', 'visual']} />
 
   <!-- Answer capsule (AEO summary) is the lead paragraph of the first section after the Hero -->
-  <Section id={aiShopping.id} lead={answerCapsule} heading={aiShopping.heading} intro={aiShopping.intro}>
+  <Section id={aiShopping.id} tone="alt" lead={answerCapsule} heading={aiShopping.heading} intro={aiShopping.intro}>
     <AnnotatedVisual visual="ai-shopping" items={aiShopping.items} />
   </Section>
 
-  <Section id={standard.id} heading={standard.heading} intro={standard.intro} align="start" separator>
+  <Section id={standard.id} heading={standard.heading} intro={standard.intro} align="start">
     <BentoGrid items={standard.items} cta={standard.cta} />
+  </Section>
+
+  <Section id={services.id} heading={services.heading} tone="alt" align="start" class="overflow-x-clip">
+    <ServiceIndex items={services.items} cta={services.cta} />
+  </Section>
+
+  <!-- Target of the Hero's "See How It Works" button -->
+  <Section id={howItWorks.id} heading={howItWorks.heading} layout="split">
+    {/* Oversized loop line art under the pinned heading: step 4 feeds back into step 1 */}
+    <IllusCycle
+      slot="actions"
+      class="pointer-events-none -ml-6 mt-4 hidden w-[26rem] max-w-none text-accent opacity-30 [mask-image:radial-gradient(circle,#000_45%,transparent_80%)] lg:block"
+    />
+    <Steps items={howItWorks.items} direction="vertical" />
   </Section>
 </BaseLayout>
