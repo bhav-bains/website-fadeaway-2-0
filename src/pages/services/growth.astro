@@ -1,0 +1,151 @@
+---
+// Growth Services page. Content: src/data/pages/growth.ts (from copy/growth.md v2). No prices anywhere.
+// Service pages use the blueprint Hero and drafting-style line art (paired with Build); the centerpiece is the
+// six-step revenue system (SystemFlow), which also feeds the HowTo schema.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
+import Section from '../../components/blocks/Section.astro';
+import SpecGrid from '../../components/blocks/SpecGrid.astro';
+import SystemFlow from '../../components/blocks/SystemFlow.astro';
+import AuditCta from '../../components/blocks/AuditCta.astro';
+import FeatureList from '../../components/blocks/FeatureList.astro';
+import Ladder from '../../components/blocks/Ladder.astro';
+import ServiceIndex from '../../components/blocks/ServiceIndex.astro';
+import CardGrid from '../../components/blocks/CardGrid.astro';
+import ProofGrid from '../../components/blocks/ProofGrid.astro';
+import Faq from '../../components/blocks/Faq.astro';
+import CtaBlock from '../../components/blocks/CtaBlock.astro';
+import ForkCallout from '../../components/blocks/ForkCallout.astro';
+import IllusDashboard from '../../components/illustrations/IllusDashboard.astro';
+import { breadcrumbSchema, howToSchema, faqSchema, serviceSchema } from '../../lib/schema';
+import { getCaseStudies } from '../../lib/case-studies';
+import { siteConfig } from '../../data/site';
+import { routes } from '../../data/routes';
+import { auditCta } from '../../data/pages/audit';
+import {
+  seo,
+  breadcrumb,
+  hero,
+  heroVariant,
+  answerCapsule,
+  standard,
+  results,
+  revenueSystem,
+  capabilities,
+  ladder,
+  industries,
+  somethingElse,
+  realWork,
+  faq,
+  serviceNames,
+  cta,
+} from '../../data/pages/growth';
+
+const work =
+  import.meta.env.DEV || realWork.showInProduction ? await getCaseStudies({ tag: realWork.tag, limit: realWork.limit }) : [];
+
+// Bands alternate canvas / lighter "alt". #real-work only renders when it has entries, so the bands after it flip.
+const hasWork = work.length > 0;
+const band = (lighter: boolean) => (lighter ? 'alt' : 'canvas');
+
+const jsonLd = [
+  breadcrumbSchema(breadcrumb),
+  ...serviceSchema({ names: serviceNames, url: routes.growth }),
+  howToSchema({
+    name: revenueSystem.heading,
+    steps: revenueSystem.items,
+    url: new URL(`${routes.growth}#${revenueSystem.id}`, siteConfig.url).toString(),
+  }),
+  faqSchema(faq.items),
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
+  <!-- Dev-only preview: /services/growth/?hero=blueprint | statement | showcase | all -->
+  <HeroPreview content={hero} variant={heroVariant} options={['blueprint', 'statement', 'showcase']} />
+
+  <!-- Answer capsule (AEO summary) is the wide intro of the first section after the Hero; the section's own line sits above the grid -->
+  <Section
+    id={standard.id}
+    heading={standard.heading}
+    intro={answerCapsule}
+    introStyle="wide"
+    tone="alt"
+    align="start"
+    class="overflow-x-clip"
+  >
+    <p class="mb-3 max-w-2xl text-pretty text-base font-medium text-ink md:mb-4 md:text-lg">{standard.intro}</p>
+    <SpecGrid items={standard.items} columns={4} art="gauge" />
+  </Section>
+
+  <!-- Results Strip: renders only when real, verified, unnamed results exist (results in growth.ts) -->
+  {
+    results.length > 0 && (
+      <section aria-label="Results" class="border-y border-line px-2 py-6 sm:px-3 md:py-8 lg:px-4">
+        <dl class="mx-auto grid w-full max-w-site gap-4 sm:grid-cols-3">
+          {results.map((r) => (
+            <div class="flex flex-col gap-1">
+              <dt class="order-2 text-meta text-ink-muted">{r.label}</dt>
+              <dd class="order-1 font-display text-4xl font-bold text-ink">{r.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    )
+  }
+
+  <!-- Centerpiece. Target of the Hero's "See How We Move Revenue" button. -->
+  <Section id={revenueSystem.id} heading={revenueSystem.heading} intro={revenueSystem.intro} align="start">
+    <SystemFlow items={revenueSystem.items} />
+    <AuditCta
+      heading={revenueSystem.cta.heading}
+      fieldLabel={auditCta.fieldLabel}
+      placeholder={auditCta.placeholder}
+      button={revenueSystem.cta.button}
+      action={auditCta.action}
+      class="mt-6 md:mt-10"
+    />
+  </Section>
+
+  <Section id={capabilities.id} heading={capabilities.heading} layout="split" tone="alt">
+    {/* Oversized dashboard line art under the pinned heading */}
+    <IllusDashboard
+      slot="actions"
+      class="pointer-events-none -ml-6 mt-4 hidden w-[26rem] max-w-none text-highlight opacity-30 [mask-image:radial-gradient(circle,#000_45%,transparent_80%)] lg:block"
+    />
+    <FeatureList items={capabilities.items} columns={1} />
+  </Section>
+
+  <Section id={ladder.id} heading={ladder.heading} intro={ladder.intro} align="start">
+    <Ladder items={ladder.items} />
+    <ForkCallout heading={ladder.note.heading} text={ladder.note.text} link={ladder.note.link} class="mt-6 md:mt-10" />
+  </Section>
+
+  <Section id={industries.id} heading={industries.heading} intro={industries.intro} tone="alt" align="start">
+    <ServiceIndex items={industries.items} art="none" />
+  </Section>
+
+  <Section id={somethingElse.id} heading={somethingElse.heading} align="start">
+    <CardGrid items={somethingElse.items} columns={2} />
+  </Section>
+
+  {
+    hasWork && (
+      <Section id={realWork.id} heading={realWork.heading} tone="alt" align="start">
+        <ProofGrid entries={work} />
+      </Section>
+    )
+  }
+
+  <!-- Testimonials (tag growth): renders nothing until real, permission-confirmed quotes exist -->
+
+  <Section id={faq.id} heading={faq.heading} width="narrow" tone={band(!hasWork)}>
+    <Faq faq={faq.items} />
+  </Section>
+
+  <!-- From the Blog (tag growth, data: `blog` in growth.ts): renders nothing until /resources has real Growth posts -->
+
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow" tone={band(hasWork)}>
+    <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
+  </Section>
+</BaseLayout>

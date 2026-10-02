@@ -2,7 +2,7 @@
 // Spec sheet: standards in a hairline table (cells split by 1px rules, no separate cards), each with a ticked
 // box, an index and title + one line. Corner crop marks frame the table; an oversized drafting-compass line drawing
 // bleeds off the bottom-right edge behind it. Service pages (Build: "Built Right, From Day One").
-// Phones: 1 column; md: 2; lg: 3. The parent Section should clip overflow (class="overflow-x-clip").
+// Phones: 1 column; md: 2; lg: `columns` (3 default). The parent Section should clip overflow (class="overflow-x-clip").
 import clsx from 'clsx';
 
 export interface SpecItem {
@@ -12,10 +12,15 @@ export interface SpecItem {
 
 interface Props {
   items: SpecItem[];
+  /** Columns on lg: 3 (default), 2 or 4. Pick the count that leaves no orphan cell. */
+  columns?: 2 | 3 | 4;
+  /** Background drawing: drafting compass (Build) or a gauge with a rising needle (Growth) */
+  art?: 'compass' | 'gauge';
   class?: string;
 }
 
-const { items, class: className } = Astro.props;
+const { items, columns = 3, art = 'compass', class: className } = Astro.props;
+const lgColumns = { 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4' };
 const pad = (n: number) => String(n).padStart(2, '0');
 
 const corners = [
@@ -27,7 +32,7 @@ const corners = [
 ---
 
 <div class={clsx('relative isolate', className)}>
-  {/* Drafting compass: two legs from a hinge, an arc being drawn, a measured radius */}
+  {/* compass: two legs from a hinge, an arc being drawn, a measured radius. gauge: a dial with the needle in the top range */}
   <svg
     aria-hidden="true"
     focusable="false"
@@ -39,6 +44,9 @@ const corners = [
     stroke-linejoin="round"
     class="pointer-events-none absolute -bottom-40 -right-28 -z-10 hidden size-[30rem] text-highlight opacity-25 [mask-image:radial-gradient(circle_at_45%_45%,#000_30%,transparent_72%)] md:block lg:size-[38rem]"
   >
+    {
+      art === 'compass' ? (
+        <Fragment>
     <circle cx="160" cy="58" r="12" />
     <circle cx="160" cy="58" r="4" />
     <path d="M160 40V24" />
@@ -48,12 +56,25 @@ const corners = [
     <path d="M88 266a150 150 0 0 0 142 0" opacity=".7" stroke-dasharray="4 6" />
     <path d="M88 284h142" opacity=".5" />
     <path d="M88 278v12M230 278v12M159 280v8" opacity=".5" />
+        </Fragment>
+      ) : (
+        <Fragment>
+          <path d="M60 220a100 100 0 0 1 200 0" />
+          <path d="M80 220a80 80 0 0 1 160 0" opacity=".4" stroke-dasharray="3 6" />
+          <path d="M160 220l58 -66" stroke-width="2" />
+          <circle cx="160" cy="220" r="8" />
+          <path d="M60 220h14M246 220h14M160 120v14M89 149l10 10M231 149l-10 10" opacity=".6" />
+          <path d="M70 264h180" opacity=".5" />
+          <path d="M70 258v12M250 258v12M160 260v8" opacity=".5" />
+        </Fragment>
+      )
+    }
     <circle cx="160" cy="160" r="150" opacity=".12" />
   </svg>
 
   {corners.map((c) => <span aria-hidden="true" class={clsx('absolute size-3 border-highlight/50', c)} />)}
 
-  <ul class="grid gap-px overflow-hidden rounded-card border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+  <ul class={clsx('grid gap-px overflow-hidden rounded-card border border-line bg-line md:grid-cols-2', lgColumns[columns])}>
     {
       items.map((item, i) => (
         <li class="group flex flex-col gap-3 bg-surface-raised/90 p-3 transition-colors duration-300 hover:bg-surface-raised md:p-4">

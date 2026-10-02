@@ -1,0 +1,61 @@
+---
+// Growth-page line art for the blueprint Hero: a chart on a blueprint sheet. A leaky funnel being patched on the
+// left (find the leaks, fix conversion), a rising revenue line with plotted points across the middle, an AI answer
+// bubble citing the business (AEO) top right, and dimension ticks along the axes. No words, decorative.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg
+  aria-hidden="true"
+  focusable="false"
+  viewBox="0 0 480 400"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.25"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+>
+  <!-- Chart frame and axes -->
+  <g class="text-ink-soft">
+    <rect x="60" y="60" width="360" height="270" rx="10" class="fill-surface-raised" opacity=".9" />
+    <path d="M96 300h300M96 300V96" opacity=".55" />
+    <path d="M96 252h300M96 204h300M96 156h300" opacity=".15" stroke-dasharray="2 6" />
+  </g>
+
+  <!-- Axis ticks (dimension marks) -->
+  <g class="text-highlight" opacity=".8">
+    <path d="M146 300v8M196 300v8M246 300v8M296 300v8M346 300v8" />
+    <path d="M88 252h8M88 204h8M88 156h8" />
+  </g>
+
+  <!-- Baseline (before) and rising revenue line (after) -->
+  <path d="M96 276l50 -6 50 4 50 -8 50 2 50 -6" class="text-ink-muted" opacity=".55" stroke-dasharray="3 5" />
+  <path d="M96 272l50 -14 50 -10 50 -34 50 -26 50 -56" class="text-accent" stroke-width="2" />
+  <g class="text-accent">
+    <circle cx="146" cy="258" r="4" class="fill-surface-raised" />
+    <circle cx="196" cy="248" r="4" class="fill-surface-raised" />
+    <circle cx="246" cy="214" r="4" class="fill-surface-raised" />
+    <circle cx="296" cy="188" r="4" class="fill-surface-raised" />
+    <circle cx="346" cy="132" r="5" class="fill-surface-raised" />
+  </g>
+  <path d="M338 120l16 -14M354 106h-14M354 106v14" class="text-accent" />
+
+  <!-- Funnel with a patched leak -->
+  <g class="text-ink-soft">
+    <path d="M120 104h76l-24 34v26l-28 14v-40z" opacity=".75" />
+    <path d="M150 178v10M144 196v6" class="text-highlight" opacity=".7" />
+    <rect x="164" y="122" width="16" height="10" rx="2" class="text-highlight" transform="rotate(-20 172 127)" />
+  </g>
+
+  <!-- AI answer bubble citing the business -->
+  <g class="text-highlight">
+    <path d="M300 78h92a14 14 0 0 1 14 14v34a14 14 0 0 1-14 14h-58l-16 14v-14h-18a14 14 0 0 1-14-14V92a14 14 0 0 1 14-14z" class="fill-surface-raised" />
+    <path d="M304 100h60M304 114h44" opacity=".6" />
+    <rect x="356" y="108" width="28" height="12" rx="6" class="text-accent" />
+    <path d="M396 74l3 -8 3 8 8 3 -8 3 -3 8 -3 -8 -8 -3z" opacity=".8" />
+  </g>
+</svg>
