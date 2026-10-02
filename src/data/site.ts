@@ -6,7 +6,9 @@ export const siteConfig = {
   title: 'Fadeaway Creatives | Revenue-Focused Growth Partners',
   description:
     'SEO, AI search, and websites built to turn traffic into paying customers. Fixed pricing, real growth, no guesswork.',
-  defaultOgImage: '/fadeaway-logo.png',
+  // Sitewide share image (1200x630) until a page sets its own
+  defaultOgImage: '/og-default.jpg',
+  defaultOgImageAlt: 'Fadeaway Creatives: Revenue-Focused. Growth Partners. Websites, SEO & AI Search for Growing Businesses',
   logo: '/fadeaway-logo.png',
   themeColor: '#FF6B35',
   locale: 'en_US',

@@ -10,7 +10,7 @@ title: "Fadeaway Creatives | Free Website Demo for Your Business"
 description: "Fitness studios, wellness practices, and sports academies: tell us about your business and we'll build you a free custom website demo. No obligation."
 canonical: "https://fadeawaycreatives.com/demo-request"
 og:
-  image: /og-default.png
+  image: /og-default.jpg
 robots: "index, follow"
 h1: "Get a Free Custom Website Demo"
 answer_capsule: >-
@@ -42,7 +42,7 @@ E-commerce has no demo (by decision). E-commerce visitors go to /contact.
 | Meta description | Fitness studios, wellness practices, and sports academies: tell us about your business and we'll build you a free custom website demo. No obligation. (149 chars) | Set (approved Oct 1) |
 | Canonical | https://fadeawaycreatives.com/demo-request | Set |
 | H1 | Get a Free Custom Website Demo | Set (approved Oct 1) |
-| og:image | /og-default.png (sitewide default) | Set |
+| og:image | /og-default.jpg (sitewide default) | Set |
 | Robots | index, follow (the success page is noindex) | Set |
 | Schema | Organization (sitewide), BreadcrumbList, HowTo, FAQPage | Set |
 | Answer capsule | See frontmatter (64 words) | Set (approved Oct 1) |

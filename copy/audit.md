@@ -10,7 +10,7 @@ title: "Free Website Audit | Fadeaway Creatives"
 description: "A free audit of your website's SEO and AEO readiness, performance, site structure, and on-page copy, in a branded report within 24 hours."
 canonical: "https://fadeawaycreatives.com/audit"
 og:
-  image: /og-default.png
+  image: /og-default.jpg
 robots: "index, follow"
 h1: "Get a Free Website Audit"
 answer_capsule: >-

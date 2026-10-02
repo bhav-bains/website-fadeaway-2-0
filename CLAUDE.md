@@ -14,7 +14,7 @@ Astro site, hosted on Netlify. This file gives Claude Code the standing rules fo
   - `src/components/seo/SeoHead.astro`: title, description, canonical (trailing slash, production domain), robots, OG, Twitter, one JSON-LD `@graph`. Props: `title`, `description`, `canonical`, `ogImage`, `ogImageAlt`, `ogType`, `noIndex`, `jsonLd` (array of page nodes). Warns at build when title > 60 or description > 155 chars.
   - `src/components/seo/Analytics.astro`: GA4 + Meta Pixel, IDs in `site.ts`.
   - `src/lib/schema.ts`: JSON-LD builders (`organizationSchema`, `websiteSchema`, `howToSchema`, `faqSchema`, `buildGraph`, `serializeJsonLd`). Organization + WebSite are on every page; entity facts come from `src/data/site.ts`. Pages pass their own nodes (HowTo, FAQPage...) via the layout's `jsonLd` prop, built from the same data the page renders.
-  - Default OG image is still the logo until the homepage share image exists.
+  - Default OG image: `public/og-default.jpg` (1200x630, `defaultOgImage` + `defaultOgImageAlt` in `site.ts`). Pages can pass their own `ogImage`.
   - Sitemap excludes noindex pages (filter in `astro.config.mjs`).
 - **Header / Footer:** `Header.astro`, `Footer.astro`, fed by `src/data/navigation.ts` (no `#` placeholder links left). The nav's Growth sub-services ("SEO + AEO · Full Audit · Growth Strategy · CRO · Paid Media") no longer match the homepage Growth tiles; align them when the nav is revisited.
 - **Routes:** every internal URL lives in `src/data/routes.ts`; link to `routes.x`, never a hardcoded path.
@@ -34,7 +34,7 @@ Astro site, hosted on Netlify. This file gives Claude Code the standing rules fo
 - **Fonts:** Outfit + DM Sans, self-hosted via the Astro Fonts API (`fonts` in `astro.config.mjs`, `<Font>` in the layout), exposed as `--ff-outfit` / `--ff-dm-sans`.
 - **Styles:** `src/styles/globals.css` imports the theme, keeps two v3-compat base rules (border color, button cursor), base heading styles, and shared classes are `@utility` blocks (`section-padding`, `container-max`, `gradient-text`, `glass-effect`, `glass-dark`, `btn-primary/secondary/tertiary`, `input-primary`, `badge-primary`, `card-glass`, `text-balance`, `no-scrollbar`).
 - **Images:** `src/assets/*.png`, rendered through `astro:assets` `<Image>` (webp output).
-- **Missing:** homepage og image, `_redirects`, Breadcrumb schema (interior pages), visible "last updated" date.
+- **Missing:** `_redirects`, Breadcrumb schema (interior pages), visible "last updated" date.
 - **Old copy still in code** (sports, wellness, `site.ts`): all replaced by `/copy/` as each page is rebuilt.
 - **Claude Design sync** (`.design-sync/`): the brand tokens, fonts and a conventions guide are synced to the Claude Design project "Fadeaway Creatives". Tokens-only (Astro components can't be imported there). Re-run `/design-sync` after `theme.css` changes; `.design-sync/NOTES.md` has the steps.
 - `.env` is gitignored. Never print or commit it.
