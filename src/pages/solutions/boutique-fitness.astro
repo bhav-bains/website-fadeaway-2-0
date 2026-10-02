@@ -1,7 +1,7 @@
 ---
-// Wellness & Counselling Solutions page: a conversion funnel. Content: src/data/pages/wellness.ts
-// (from copy/wellness-counselling.md). Order: hook → insight → why us → who it's for → what we do → free demo
-// → pricing → what to expect → how it works → proof → FAQ → final ask. Demo is the primary action, audit the second.
+// Boutique Fitness Solutions page: a conversion funnel on the same blocks as Wellness & Counselling.
+// Content: src/data/pages/fitness.ts (from copy/boutique-fitness.md). Order: hook → insight → why us → who it's for
+// → what we do → free demo → pricing → what to expect → how it works → proof → FAQ → final ask.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
 import Section from '../../components/blocks/Section.astro';
@@ -17,7 +17,7 @@ import Steps from '../../components/blocks/Steps.astro';
 import ProofGrid from '../../components/blocks/ProofGrid.astro';
 import Faq from '../../components/blocks/Faq.astro';
 import CtaBlock from '../../components/blocks/CtaBlock.astro';
-import IllusBooking from '../../components/illustrations/IllusBooking.astro';
+import IllusClass from '../../components/illustrations/IllusClass.astro';
 import { breadcrumbSchema, howToSchema, faqSchema, serviceSchema } from '../../lib/schema';
 import { getCaseStudies } from '../../lib/case-studies';
 import { siteConfig } from '../../data/site';
@@ -30,7 +30,7 @@ import {
   answerCapsule,
   insights,
   why,
-  practices,
+  audience,
   services,
   demo,
   pricing,
@@ -41,7 +41,7 @@ import {
   serviceNames,
   serviceOffers,
   cta,
-} from '../../data/pages/wellness';
+} from '../../data/pages/fitness';
 
 const work =
   import.meta.env.DEV || realWork.showInProduction ? await getCaseStudies({ tag: realWork.tag, limit: realWork.limit }) : [];
@@ -52,18 +52,18 @@ const band = (lighter: boolean) => (lighter ? 'alt' : 'canvas');
 
 const jsonLd = [
   breadcrumbSchema(breadcrumb),
-  ...serviceSchema({ names: serviceNames, url: routes.wellnessCounselling, offers: serviceOffers }),
+  ...serviceSchema({ names: serviceNames, url: routes.boutiqueFitness, offers: serviceOffers }),
   howToSchema({
     name: howItWorks.heading,
     steps: howItWorks.items,
-    url: new URL(`${routes.wellnessCounselling}#${howItWorks.id}`, siteConfig.url).toString(),
+    url: new URL(`${routes.boutiqueFitness}#${howItWorks.id}`, siteConfig.url).toString(),
   }),
   faqSchema(faq.items),
 ];
 ---
 
 <BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
-  <!-- Dev-only preview: /solutions/wellness-counselling/?hero=statement | showcase | visual | all -->
+  <!-- Dev-only preview: /solutions/boutique-fitness/?hero=statement | showcase | visual | all -->
   <HeroPreview content={hero} variant={heroVariant} options={['statement', 'showcase', 'visual']} />
 
   <!-- Insight: the answer capsule is the wide intro; the section's own line sits above the bento -->
@@ -73,17 +73,16 @@ const jsonLd = [
   </Section>
 
   <Section id={why.id} heading={why.heading} layout="split">
-    {/* Oversized line art under the pinned heading: booking on a phone, compliance shield, local pin */}
-    <IllusBooking
+    {/* Oversized line art under the pinned heading: class schedule on a phone, neighbourhood pin, review star */}
+    <IllusClass
       slot="actions"
       class="pointer-events-none -ml-6 mt-4 hidden w-[24rem] max-w-none text-highlight opacity-30 [mask-image:radial-gradient(circle,#000_45%,transparent_80%)] lg:block"
     />
     <FeatureList items={why.items} columns={1} />
   </Section>
 
-  <Section id={practices.id} heading={practices.heading} tone="alt" align="start">
-    <ServiceIndex items={practices.items} art="none" />
-    <p class="mt-3 text-pretty text-base text-ink-muted md:mt-4">{practices.note}</p>
+  <Section id={audience.id} heading={audience.heading} tone="alt" align="start">
+    <ServiceIndex items={audience.items} art="none" />
   </Section>
 
   <Section id={services.id} heading={services.heading} align="start">
@@ -123,13 +122,13 @@ const jsonLd = [
     )
   }
 
-  <!-- Testimonials (tag wellness-counselling): renders nothing until real, permission-confirmed quotes exist -->
+  <!-- Testimonials (tag boutique-fitness): renders nothing until real, permission-confirmed quotes exist -->
 
   <Section id={faq.id} heading={faq.heading} width="narrow" tone={band(!hasWork)}>
     <Faq faq={faq.items} />
   </Section>
 
-  <!-- From the Blog (tag wellness-counselling, data: `blog` in wellness.ts): renders nothing until /resources has real posts -->
+  <!-- From the Blog (tag boutique-fitness, data: `blog` in fitness.ts): renders nothing until /resources has real posts -->
 
   <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow" tone={band(hasWork)}>
     <CtaBlock

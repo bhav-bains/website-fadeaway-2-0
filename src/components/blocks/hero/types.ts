@@ -12,6 +12,8 @@ export interface HeroContent {
   /** Slogan shown above the H1, largest type in the Hero (CLAUDE.md copy rule) */
   displayLine?: string;
   eyebrow?: string;
+  /** statement: small credibility line above the eyebrow (e.g. founder-led, years of experience) */
+  proofLine?: string;
   /** Real service-term heading; the page's only H1 */
   h1: string;
   sub?: string;

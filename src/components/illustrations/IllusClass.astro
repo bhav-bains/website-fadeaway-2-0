@@ -1,0 +1,44 @@
+---
+// Boutique fitness "why us" line art: a phone with a class schedule (one class booked, one with spots filling),
+// a map pin with the neighbourhood ring, and a review star. Line only, currentColor, decorative.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg
+  aria-hidden="true"
+  focusable="false"
+  viewBox="0 0 320 320"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.25"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+>
+  <!-- Phone with class list -->
+  <rect x="104" y="40" width="124" height="240" rx="20" />
+  <path d="M146 56h40" opacity=".6" />
+  <g>
+    <rect x="118" y="86" width="96" height="34" rx="6" />
+    <path d="M128 98h40M128 108h24" opacity=".6" />
+    <path d="M190 103l5 5 10 -11" />
+    <rect x="118" y="130" width="96" height="34" rx="6" opacity=".7" />
+    <path d="M128 142h44M128 152h28" opacity=".5" />
+    <path d="M186 152h20" opacity=".4" />
+    <path d="M186 152h12" stroke-width="2.5" />
+    <rect x="118" y="174" width="96" height="34" rx="6" opacity=".5" />
+    <path d="M128 186h36M128 196h22" opacity=".4" />
+  </g>
+  <rect x="122" y="228" width="88" height="26" rx="13" />
+  <!-- Map pin and neighbourhood ring -->
+  <path d="M58 140s-22 -19 -22 -36a22 22 0 0 1 44 0c0 17 -22 36 -22 36z" opacity=".75" />
+  <circle cx="58" cy="104" r="7" opacity=".75" />
+  <ellipse cx="58" cy="146" rx="34" ry="9" opacity=".35" stroke-dasharray="3 5" />
+  <!-- Review star -->
+  <path d="M262 92l7 14 15 2 -11 11 3 15 -14 -7 -14 7 3 -15 -11 -11 15 -2z" opacity=".8" />
+  <path d="M248 160h30M254 172h18" opacity=".4" />
+  <circle cx="160" cy="160" r="150" opacity=".1" />
+</svg>

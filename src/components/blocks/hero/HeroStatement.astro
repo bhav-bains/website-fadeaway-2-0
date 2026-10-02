@@ -11,7 +11,7 @@ import { illustrations } from '../../illustrations';
 import type { HeroContent } from './types';
 
 type Props = HeroContent;
-const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta, breadcrumb, visual, logos } = Astro.props;
+const { displayLine, eyebrow, proofLine, h1, sub, primaryCta, secondaryCta, breadcrumb, visual, logos } = Astro.props;
 const Visual = visual ? illustrations[visual] : HeroIllustration;
 
 const statementSize = 'text-[clamp(2.75rem,1.25rem+5.5vw,6rem)] leading-[1]';
@@ -32,6 +32,8 @@ const statementSize = 'text-[clamp(2.75rem,1.25rem+5.5vw,6rem)] leading-[1]';
 
   <div class="mx-auto flex w-full max-w-site flex-1 flex-col justify-center">
     {breadcrumb && <Breadcrumb items={breadcrumb} class="mb-3" />}
+
+    {proofLine && <p class="mb-2 max-w-3xl text-pretty text-meta text-ink-soft">{proofLine}</p>}
 
     {
       eyebrow && (
