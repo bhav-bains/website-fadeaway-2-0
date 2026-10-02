@@ -16,6 +16,8 @@ interface Props {
   eyebrow?: string;
   heading?: string;
   intro?: string;
+  /** `wide`: the intro runs three quarters of the row on lg instead of the usual measure (the page's answer capsule) */
+  introStyle?: 'default' | 'wide';
   /** Standfirst above the header: real text with a thin accent rule, quieter than the heading */
   lead?: string;
   layout?: 'stack' | 'split';
@@ -35,6 +37,7 @@ const {
   eyebrow,
   heading,
   intro,
+  introStyle = 'default',
   layout = 'stack',
   tone = 'canvas',
   width = 'site',
@@ -64,8 +67,9 @@ const widths = {
 
 const hasHeader = eyebrow || heading || intro;
 
-// Keep hyphenated words ("E-commerce") on one line; the text itself is unchanged
+// Keep hyphenated words ("E-commerce") on one line in the heading and intro; the text itself is unchanged
 const headingParts = heading ? heading.split(/(\S+-\S+)/) : [];
+const introParts = intro ? intro.split(/(\S+-\S+)/) : [];
 ---
 
 <section
@@ -115,7 +119,17 @@ const headingParts = heading ? heading.split(/(\S+-\S+)/) : [];
               {headingParts.map((part, i) => (i % 2 === 1 ? <span class="whitespace-nowrap">{part}</span> : part))}
             </h2>
           )}
-          {intro && <p class="max-w-2xl text-pretty text-base text-ink-soft md:text-lg">{intro}</p>}
+          {intro && (
+            <p
+              class={clsx(
+                'text-pretty text-ink-soft',
+                'text-base md:text-lg',
+                introStyle === 'wide' ? 'w-full lg:w-3/4' : 'max-w-2xl',
+              )}
+            >
+              {introParts.map((part, i) => (i % 2 === 1 ? <span class="whitespace-nowrap">{part}</span> : part))}
+            </p>
+          )}
           {Astro.slots.has('actions') && (
             <div class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2">
               <slot name="actions" />

@@ -24,7 +24,7 @@ export const breadcrumb: BreadcrumbItem[] = [
   { label: 'Build', href: routes.build },
 ];
 
-/** AEO answer capsule: lead paragraph of the first section after the Hero */
+/** AEO answer capsule: the wide, offset intro of the first section after the Hero */
 export const answerCapsule =
   "Fadeaway Creatives builds custom websites, redesigns existing sites, and builds e-commerce stores for growing businesses across Canada and the US, engineered for real customers and for AI search, not just Google. Every project starts with a written scope of work and a fixed price, and migrations keep the search rankings you've already earned.";
 
@@ -72,9 +72,10 @@ export const standard: { id: string; heading: string; items: SpecItem[] } = {
   ],
 };
 
-export const services: { id: string; heading: string; items: ServiceRowItem[] } = {
+export const services: { id: string; eyebrow: string; heading: string; items: ServiceRowItem[] } = {
   id: 'services',
-  heading: 'What We Build: Custom Development, Redesigns, and E-commerce Stores',
+  eyebrow: 'What We Build',
+  heading: 'Start Fresh, Rebuild, or Move Without Losing a Thing',
   items: [
     {
       title: 'Custom Web Development',

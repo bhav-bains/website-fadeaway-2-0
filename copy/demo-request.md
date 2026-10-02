@@ -38,14 +38,14 @@ E-commerce has no demo (by decision). E-commerce visitors go to /contact.
 
 | Field | Value | Status |
 |---|---|---|
-| Title tag | Fadeaway Creatives \| Free Website Demo for Your Business (56 chars) | Needs approval |
-| Meta description | Fitness studios, wellness practices, and sports academies: tell us about your business and we'll build you a free custom website demo. No obligation. (149 chars) | Needs approval |
+| Title tag | Fadeaway Creatives \| Free Website Demo for Your Business (56 chars) | Set (approved Oct 1) |
+| Meta description | Fitness studios, wellness practices, and sports academies: tell us about your business and we'll build you a free custom website demo. No obligation. (149 chars) | Set (approved Oct 1) |
 | Canonical | https://fadeawaycreatives.com/demo-request | Set |
-| H1 | Get a Free Custom Website Demo | Needs approval |
+| H1 | Get a Free Custom Website Demo | Set (approved Oct 1) |
 | og:image | /og-default.png (sitewide default) | Set |
 | Robots | index, follow (the success page is noindex) | Set |
 | Schema | Organization (sitewide), BreadcrumbList, HowTo, FAQPage | Set |
-| Answer capsule | See frontmatter (64 words) | Needs approval |
+| Answer capsule | See frontmatter (64 words) | Set (approved Oct 1) |
 | Internal links | /solutions/boutique-fitness, /solutions/wellness-counselling, /solutions/sports, /contact | To QA |
 
 ## Breadcrumb {#breadcrumb}

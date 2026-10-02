@@ -1,0 +1,51 @@
+---
+// Free (Instant) Audit request. Content: src/data/pages/audit.ts (from copy/audit.md).
+// Every "Get Your Free Audit" CTA sitewide lands here (routes.audit). Arriving from an AuditCta block,
+// ?website=... pre-fills the website field (client-side; the page itself is static).
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FormHero from '../components/blocks/FormHero.astro';
+import Section from '../components/blocks/Section.astro';
+import FeatureList from '../components/blocks/FeatureList.astro';
+import Steps from '../components/blocks/Steps.astro';
+import Faq from '../components/blocks/Faq.astro';
+import { breadcrumbSchema, howToSchema, faqSchema } from '../lib/schema';
+import { siteConfig } from '../data/site';
+import { routes } from '../data/routes';
+import { seo, breadcrumb, answerCapsule, hero, form, checks, howItWorks, faq } from '../data/pages/audit';
+
+const jsonLd = [
+  breadcrumbSchema(breadcrumb),
+  howToSchema({
+    name: howItWorks.heading,
+    steps: howItWorks.items,
+    url: new URL(`${routes.audit}#${howItWorks.id}`, siteConfig.url).toString(),
+  }),
+  faqSchema(faq.items),
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
+  <FormHero breadcrumb={breadcrumb} eyebrow={hero.eyebrow} h1={hero.h1} sub={hero.sub} form={form} halfWidth={['name', 'email']} />
+
+  <!-- Answer capsule (AEO summary) is the wide intro of the first section after the Hero -->
+  <Section id={checks.id} heading={checks.heading} intro={answerCapsule} introStyle="wide" tone="alt" align="start">
+    <FeatureList items={checks.items} columns={2} />
+  </Section>
+
+  <Section id={howItWorks.id} heading={howItWorks.heading}>
+    <Steps items={howItWorks.items} />
+  </Section>
+
+  <Section id={faq.id} heading={faq.heading} width="narrow" tone="alt">
+    <Faq faq={faq.items} />
+  </Section>
+</BaseLayout>
+
+<script is:inline>
+  // Pre-fill the website field when arriving from an audit CTA (?website=...); only into an empty field
+  (() => {
+    const site = new URLSearchParams(location.search).get('website');
+    const field = document.getElementById('field-website');
+    if (site && field && !field.value) field.value = site.slice(0, 200);
+  })();
+</script>

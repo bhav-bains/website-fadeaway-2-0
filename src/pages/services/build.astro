@@ -6,6 +6,7 @@ import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
 import Section from '../../components/blocks/Section.astro';
 import SpecGrid from '../../components/blocks/SpecGrid.astro';
 import ServiceRows from '../../components/blocks/ServiceRows.astro';
+import AuditCta from '../../components/blocks/AuditCta.astro';
 import CardGrid from '../../components/blocks/CardGrid.astro';
 import Steps from '../../components/blocks/Steps.astro';
 import FeatureList from '../../components/blocks/FeatureList.astro';
@@ -38,12 +39,14 @@ import {
   serviceNames,
   cta,
 } from '../../data/pages/build';
+import { auditCta } from '../../data/pages/audit';
 
 const work =
   import.meta.env.DEV || realWork.showInProduction ? await getCaseStudies({ tag: realWork.tag, limit: realWork.limit }) : [];
 
 // Bands alternate canvas / lighter "alt". #real-work only renders when it has entries, so the bands after it flip.
 const hasWork = work.length > 0;
+
 const band = (lighter: boolean) => (lighter ? 'alt' : 'canvas');
 
 const jsonLd = [
@@ -62,13 +65,23 @@ const jsonLd = [
   <!-- Dev-only preview: /services/build/?hero=blueprint | statement | showcase | all -->
   <HeroPreview content={hero} variant={heroVariant} options={['blueprint', 'statement', 'showcase']} />
 
-  <!-- Answer capsule (AEO summary) is the lead paragraph of the first section after the Hero -->
-  <Section id={standard.id} lead={answerCapsule} heading={standard.heading} tone="alt" align="start" class="overflow-x-clip">
+  <!-- Answer capsule (AEO summary) directly under the Hero, as the first section's wide, offset intro -->
+  <Section
+    id={standard.id}
+    heading={standard.heading}
+    intro={answerCapsule}
+    introStyle="wide"
+    tone="alt"
+    align="start"
+    class="overflow-x-clip"
+  >
     <SpecGrid items={standard.items} />
   </Section>
 
-  <Section id={services.id} heading={services.heading} align="start">
+  <Section id={services.id} eyebrow={services.eyebrow} heading={services.heading} align="start">
     <ServiceRows items={services.items} />
+    <!-- Next step for visitors with a current site: free audit (URL carries over to /audit/) -->
+    <AuditCta {...auditCta} class="mt-6 md:mt-10" />
   </Section>
 
   <Section id={industries.id} heading={industries.heading} intro={industries.intro} tone="alt">

@@ -56,8 +56,8 @@ Notes for the build:
 
 | Field | Value | Status |
 |---|---|---|
-| Title tag | Fadeaway Creatives \| Custom Web Development & Redesign (54 chars) | Updated, needs approval (was 62 chars, over the limit) |
-| Meta description | Custom web development, website redesigns, and e-commerce builds. Enterprise-quality work, a fixed price for every scope, AEO built in. (135 chars) | Updated, needs approval |
+| Title tag | Fadeaway Creatives \| Custom Web Development & Redesign (54 chars) | Set (approved Oct 1) |
+| Meta description | Custom web development, website redesigns, and e-commerce builds. Enterprise-quality work, a fixed price for every scope, AEO built in. (135 chars) | Set (approved Oct 1) |
 | Canonical | https://fadeawaycreatives.com/services/build | Set |
 | H1 | Custom Web Development, Built to Convert and Rank | Set |
 | og:title / og:description | Mirror title tag / meta description | Set |
@@ -71,8 +71,8 @@ Notes for the build:
 | Schema: Service | Custom Web Development, Website Redesign, E-commerce Store Builds, Website Migration. No prices. | Set |
 | Schema: HowTo | From How It Works (3 steps) | Set |
 | Schema: FAQPage | From the FAQ list, matches visible copy verbatim | Set |
-| Schema: BreadcrumbList | Home > Build (no /services hub page) | Updated, needs approval (was Home > Services > Build) |
-| Answer capsule | See frontmatter `answer_capsule` (53 words) | Updated, needs approval |
+| Schema: BreadcrumbList | Home > Build (no /services hub page) | Set (approved Oct 1) |
+| Answer capsule | See frontmatter `answer_capsule` (53 words) | Set (approved Oct 1) |
 | Visible FAQ block | 6 questions, 40 to 52 word answers | Set |
 | Last updated date | Set at launch | Pending launch |
 | Internal links | All 4 Solutions pages, /labs, /contact, /demo-request, /audit, /portfolio, /resources. Zero `#` placeholders. | To QA |
@@ -113,7 +113,11 @@ Built to handle growth and stay protected as your business scales, not rebuilt w
 ### Mobile-First Responsive Design
 Built for how your customers actually browse, not adapted afterward.
 
-## What We Build: Custom Development, Redesigns, and E-commerce Stores {#services}
+## Start Fresh, Rebuild, or Move Without Losing a Thing {#services}
+
+Eyebrow: What We Build
+
+<!-- Heading changed by the founder (Oct 1). Was "What We Build: Custom Development, Redesigns, and E-commerce Stores" (generic, and it repeated the four service titles below it). -->
 
 ### Custom Web Development
 When your business runs on more than a standard template can handle, we build your website from scratch around exactly what you need. That means custom functionality, integrations with the tools you already use, and a site structured the way your business actually works, not squeezed into someone else's layout.

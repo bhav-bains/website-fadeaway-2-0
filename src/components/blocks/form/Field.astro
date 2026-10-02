@@ -1,6 +1,7 @@
 ---
 // One labelled form control: text / email / url / tel input, select or textarea. Semantic tokens only.
 // The label is always visible (no placeholder-as-label); optional fields say so in the label text from the copy.
+// `url` renders a plain text input with the URL keyboard, so "mysite.com" is accepted without https://.
 // Mobile-first: full width; 48px+ tall controls for touch.
 import clsx from 'clsx';
 
@@ -56,7 +57,10 @@ const control =
       <input
         id={id}
         name={name}
-        type={type}
+        type={type === 'url' ? 'text' : type}
+        inputmode={type === 'url' ? 'url' : undefined}
+        spellcheck={type === 'url' ? 'false' : undefined}
+        autocapitalize={type === 'url' ? 'off' : undefined}
         required={required}
         placeholder={placeholder}
         autocomplete={autocomplete}

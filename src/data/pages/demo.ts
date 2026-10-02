@@ -3,7 +3,7 @@
 // E-commerce has no demo (decision); those visitors are pointed to /contact.
 import { routes } from '../routes';
 import type { BreadcrumbItem } from '../../components/blocks/Breadcrumb.astro';
-import type { FieldProps } from '../../components/blocks/form/Field.astro';
+import type { FormContent } from '../../components/blocks/FormHero.astro';
 import type { StepItem } from '../../components/blocks/Steps.astro';
 import type { CardGridItem } from '../../components/blocks/CardGrid.astro';
 import type { FaqItem } from '../../components/blocks/Faq.astro';
@@ -32,14 +32,7 @@ export const hero = {
 };
 
 /** Netlify Forms: name `demo-request`, honeypot `bot-field`, posts to the success page */
-export const form: {
-  name: string;
-  action: string;
-  fields: FieldProps[];
-  submit: string;
-  note: string;
-  ecommerce: { text: string; link: { label: string; href: string } };
-} = {
+export const form: FormContent = {
   name: 'demo-request',
   action: routes.demoSuccess,
   fields: [
@@ -63,7 +56,7 @@ export const form: {
   ],
   submit: 'Build My Free Demo',
   note: "Free, with no obligation. We'll only use your details to send your demo.",
-  ecommerce: { text: 'Running an online store?', link: { label: 'Talk to us about e-commerce', href: routes.contact } },
+  footer: { text: 'Running an online store?', link: { label: 'Talk to us about e-commerce', href: routes.contact } },
 };
 
 /** Also feeds the HowTo schema */
