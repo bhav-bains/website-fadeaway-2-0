@@ -8,7 +8,9 @@ import ArrowLink from '../ui/ArrowLink.astro';
 
 interface Props {
   heading: string;
-  text: string;
+  text?: string;
+  /** Optional bookend line in large display type above the button (center layout), e.g. a brand slogan */
+  signoff?: string;
   cta: { label: string; href: string };
   /** Optional lower-commitment link under the button (center layout) */
   link?: { label: string; href: string };
@@ -24,6 +26,7 @@ const {
   text,
   cta,
   link,
+  signoff,
   headingAs: Heading = 'h3',
   headingId,
   layout = 'split',
@@ -81,8 +84,9 @@ const center = layout === 'center';
       >
         {heading}
       </Heading>
-      <p class="max-w-2xl text-pretty text-base text-ink-soft md:text-lg">{text}</p>
+      {text && <p class="max-w-2xl text-pretty text-base text-ink-soft md:text-lg">{text}</p>}
     </div>
+    {signoff && <p class="font-display text-3xl font-bold tracking-tight text-accent md:text-4xl">{signoff}</p>}
     <Button
       href={cta.href}
       variant="primary"

@@ -1,0 +1,35 @@
+---
+// Small panels that each point to one or more pages: title, one line, a row of arrow links.
+// For "works with the rest of what we do" style sections. Hairline-bordered panels, 1 / 2 / 3 columns.
+import clsx from 'clsx';
+import ArrowLink from '../ui/ArrowLink.astro';
+
+export interface LinkCardItem {
+  title: string;
+  text: string;
+  links: { label: string; href: string }[];
+}
+
+interface Props {
+  items: LinkCardItem[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+---
+
+<ul class={clsx('grid gap-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-4', className)}>
+  {
+    items.map((item) => (
+      <li class="flex flex-col gap-2 rounded-card border border-line-strong bg-surface-raised/60 p-3 md:p-4">
+        <h3 class="font-display text-xl font-bold text-ink md:text-2xl">{item.title}</h3>
+        <p class="text-pretty text-base text-ink-muted">{item.text}</p>
+        <div class="mt-auto flex flex-wrap gap-x-4 gap-y-1 pt-2">
+          {item.links.map((link) => (
+            <ArrowLink href={link.href}>{link.label}</ArrowLink>
+          ))}
+        </div>
+      </li>
+    ))
+  }
+</ul>

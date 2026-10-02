@@ -4,11 +4,14 @@
 // Mobile-first: 1 column, 2 from sm, `columns` from lg.
 import clsx from 'clsx';
 import Icon, { type IconName } from '../ui/Icon.astro';
+import ArrowLink from '../ui/ArrowLink.astro';
 
 export interface IconGridItem {
   icon: IconName;
   title: string;
   text: string;
+  /** Optional link under the text (md size) */
+  link?: { label: string; href: string };
 }
 
 interface Props {
@@ -38,6 +41,7 @@ const lgColumns = { 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4
           <Title class={clsx('font-display font-bold text-ink', md ? 'text-xl md:text-2xl' : 'text-lg')}>{item.title}</Title>
           <p class={clsx('text-ink-muted', md ? 'text-pretty text-base' : 'text-meta')}>{item.text}</p>
         </div>
+        {item.link && <ArrowLink href={item.link.href} class="mt-auto self-start pt-1">{item.link.label}</ArrowLink>}
       </li>
     ))
   }

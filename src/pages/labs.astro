@@ -1,0 +1,129 @@
+---
+// Fadeaway Labs. Content: src/data/pages/labs.ts (from copy/labs.md). The founder's most personal page:
+// "We always cookin'." opens (display line, the largest type, not the H1) and closes the page (CTA bookend).
+// Hero art is an original abstract fadeaway jumper on court lines (no real player's likeness).
+// Anchors kept exact for links and networking follow-ups: #idea-to-mvp, #ai-native, #products, #see-it-working.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroPreview from '../components/blocks/hero/HeroPreview.astro';
+import Section from '../components/blocks/Section.astro';
+import IconGrid from '../components/blocks/IconGrid.astro';
+import CtaBlock from '../components/blocks/CtaBlock.astro';
+import FeatureList from '../components/blocks/FeatureList.astro';
+import ForkCallout from '../components/blocks/ForkCallout.astro';
+import Steps from '../components/blocks/Steps.astro';
+import LinkCards from '../components/blocks/LinkCards.astro';
+import Faq from '../components/blocks/Faq.astro';
+import Button from '../components/Button.astro';
+import IllusLaunch from '../components/illustrations/IllusLaunch.astro';
+import { breadcrumbSchema, howToSchema, faqSchema, serviceSchema } from '../lib/schema';
+import { siteConfig } from '../data/site';
+import { routes } from '../data/routes';
+import {
+  seo,
+  breadcrumb,
+  hero,
+  heroVariant,
+  answerCapsule,
+  whyLabs,
+  build,
+  aiNative,
+  seeItWorking,
+  ideaToMvp,
+  pricing,
+  worksWith,
+  faq,
+  serviceNames,
+  cta,
+} from '../data/pages/labs';
+
+const jsonLd = [
+  breadcrumbSchema(breadcrumb),
+  ...serviceSchema({ names: serviceNames, url: routes.labs }),
+  howToSchema({
+    name: ideaToMvp.heading,
+    steps: ideaToMvp.items,
+    url: new URL(`${routes.labs}#${ideaToMvp.id}`, siteConfig.url).toString(),
+  }),
+  faqSchema(faq.items),
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
+  <!-- Dev-only preview: /labs/?hero=statement | showcase | visual | all -->
+  <HeroPreview content={hero} variant={heroVariant} options={['statement', 'showcase', 'visual']} />
+
+  <!-- Answer capsule (AEO summary) is the wide intro; the two "why" paragraphs sit side by side below it -->
+  <Section id={whyLabs.id} heading={whyLabs.heading} intro={answerCapsule} introStyle="wide" tone="alt" align="start">
+    <div class="grid gap-4 border-t border-line pt-4 md:grid-cols-2 md:gap-8 md:pt-6">
+      {whyLabs.paragraphs.map((p) => <p class="text-pretty text-lg text-ink md:text-xl md:leading-relaxed">{p}</p>)}
+    </div>
+    <!-- Founder quote (open item in copy/labs.md): renders here once supplied, in the founder's words -->
+  </Section>
+
+  <Section id={build.id} heading={build.heading} align="start">
+    <IconGrid items={build.items} columns={3} size="md" />
+    <CtaBlock heading={build.cta.heading} cta={build.cta.cta} class="mt-6 md:mt-10" />
+  </Section>
+
+  <Section id={aiNative.id} heading={aiNative.heading} intro={aiNative.intro} layout="split" tone="alt">
+    <FeatureList items={aiNative.items} columns={1} />
+    <p class="mt-4 border-l-2 border-highlight/60 pl-2 text-pretty text-base text-ink-soft md:pl-3">{aiNative.proof}</p>
+    <div class="mt-4 flex">
+      <Button href={aiNative.cta.href} variant="primary" size="base">{aiNative.cta.label}</Button>
+    </div>
+  </Section>
+
+  <!-- Our Products (#products, tag labs-product): renders nothing until real, showable products exist.
+       Each public product will also get a SoftwareApplication schema entry. -->
+
+  <Section id={seeItWorking.id} heading={seeItWorking.heading} align="start">
+    <div class="grid gap-3">
+      {seeItWorking.items.map((item) => <ForkCallout heading={item.heading} text={item.text} link={item.link} />)}
+    </div>
+  </Section>
+
+  <!-- Networking follow-up anchor. Also the HowTo schema. -->
+  <Section id={ideaToMvp.id} heading={ideaToMvp.heading} layout="split" tone="alt">
+    {/* Oversized line art under the pinned heading: idea → architecture → working app */}
+    <IllusLaunch
+      slot="actions"
+      class="pointer-events-none -ml-6 mt-4 hidden w-[24rem] max-w-none text-highlight opacity-30 [mask-image:radial-gradient(circle,#000_45%,transparent_80%)] lg:block"
+    />
+    <Steps items={ideaToMvp.items} direction="vertical" />
+    <div class="mt-6 flex md:mt-8">
+      <Button href={ideaToMvp.cta.href} variant="primary" size="base">{ideaToMvp.cta.label}</Button>
+    </div>
+  </Section>
+
+  <Section id={pricing.id} heading={pricing.heading} width="narrow" align="start">
+    <div class="flex flex-col gap-3">
+      {pricing.paragraphs.map((p) => <p class="text-pretty text-lg text-ink-soft md:text-xl md:leading-relaxed">{p}</p>)}
+    </div>
+    <div class="mt-5 flex md:mt-6">
+      <Button href={pricing.cta.href} variant="primary" size="base">{pricing.cta.label}</Button>
+    </div>
+  </Section>
+
+  <Section id={worksWith.id} heading={worksWith.heading} intro={worksWith.intro} tone="alt" align="start">
+    <LinkCards items={worksWith.items} />
+  </Section>
+
+  <Section id={faq.id} heading={faq.heading} width="narrow">
+    <Faq faq={faq.items} />
+  </Section>
+
+  <!-- From the Lab (tag labs, data: `blog` in labs.ts): renders nothing until /resources has real posts -->
+
+  <!-- Bookend: "We always cookin'." returns above the button -->
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow" tone="alt">
+    <CtaBlock
+      heading={cta.heading}
+      text={cta.text}
+      signoff={cta.signoff}
+      cta={cta.cta}
+      headingAs="h2"
+      headingId={`${cta.id}-heading`}
+      layout="center"
+    />
+  </Section>
+</BaseLayout>

@@ -1,0 +1,59 @@
+---
+// Labs hero line art (basketball roots, "We always cookin'"): an original, abstract fadeaway jumper. Half-court
+// lines and the three-point arc, a dotted shot arc leaving a release point that drifts back (the fadeaway),
+// spin lines on the ball, and the hoop with a net. No people, no real player's likeness. Decorative.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg
+  aria-hidden="true"
+  focusable="false"
+  viewBox="0 0 600 440"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+>
+  <!-- Court: baseline, key, free-throw circle, three-point arc -->
+  <g class="text-ink-muted" opacity=".6">
+    <path d="M20 400h560" />
+    <path d="M470 400V250h110" />
+    <path d="M470 250a60 60 0 0 0 -120 0" stroke-dasharray="4 8" />
+    <path d="M580 120c-240 10 -400 120 -440 280" />
+    <path d="M60 400v-30M120 400v-20" opacity=".5" />
+  </g>
+
+  <!-- Hoop, backboard and net -->
+  <g class="text-ink-soft">
+    <path d="M560 70v80" />
+    <path d="M556 122h-20" />
+    <ellipse cx="510" cy="124" rx="26" ry="7" class="text-accent" />
+    <path d="M486 126l8 30M498 129l4 28M512 131v26M524 129l-4 28M534 126l-8 30" opacity=".6" />
+    <path d="M492 140h36M496 152h28" opacity=".45" />
+  </g>
+
+  <!-- The fadeaway: release point drifting back, dotted arc to the rim -->
+  <g class="text-highlight">
+    <path d="M150 300c40 -200 250 -250 350 -176" stroke-dasharray="2 10" stroke-width="2.25" />
+    <path d="M150 300l-28 26M138 290l-30 20M146 312l-24 30" opacity=".55" />
+  </g>
+
+  <!-- Ball in flight with spin lines -->
+  <g class="text-accent">
+    <circle cx="300" cy="104" r="26" class="fill-surface-raised" />
+    <path d="M274 104h52M300 78v52" />
+    <path d="M282 86c12 10 12 26 0 36M318 86c-12 10 -12 26 0 36" />
+  </g>
+  <path d="M262 132c-14 6 -26 4 -36 -4M258 146c-16 4 -30 0 -40 -10" class="text-accent" opacity=".45" />
+
+  <!-- Steam lines: always cookin' -->
+  <g class="text-ink-muted" opacity=".5">
+    <path d="M90 250c-8 -12 8 -20 0 -32s8 -20 0 -32" />
+    <path d="M114 236c-8 -12 8 -20 0 -32" />
+  </g>
+</svg>
