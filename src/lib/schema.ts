@@ -96,15 +96,45 @@ export function breadcrumbSchema(items: { label: string; href: string }[]): Json
 
 // Service entries for a page, as listed in its copy file. No prices; Fadeaway is the provider.
 // Only services visible on the page (copy rule), linked to the page URL where they're described.
-export function serviceSchema({ names, url }: { names: string[]; url: string }): JsonLdNode[] {
-  return names.map((name) => ({
-    '@type': 'Service',
-    name,
-    serviceType: name,
-    url: abs(url.endsWith('/') ? url : `${url}/`),
-    provider: { '@id': ORGANIZATION_ID },
-    areaServed: siteConfig.areaServed.map((country) => ({ '@type': 'Country', name: country })),
-  }));
+export function serviceSchema({
+  names,
+  url,
+  offers,
+  currencies = ['USD', 'CAD'],
+}: {
+  names: string[];
+  url: string;
+  /** Pages that show prices: { [service name]: { price, unit? } }. unit "MON" for monthly plans. */
+  offers?: Record<string, { price: number; unit?: 'MON' }>;
+  /** One Offer per currency at the same price (e.g. USD and CAD: clients pay in their own currency) */
+  currencies?: string[];
+}): JsonLdNode[] {
+  return names.map((name) => {
+    const offer = offers?.[name];
+    return {
+      '@type': 'Service',
+      name,
+      serviceType: name,
+      url: abs(url.endsWith('/') ? url : `${url}/`),
+      provider: { '@id': ORGANIZATION_ID },
+      areaServed: siteConfig.areaServed.map((country) => ({ '@type': 'Country', name: country })),
+      ...(offer && {
+        offers: currencies.map((currency) => ({
+          '@type': 'Offer',
+          price: offer.price,
+          priceCurrency: currency,
+          ...(offer.unit && {
+            priceSpecification: {
+              '@type': 'UnitPriceSpecification',
+              price: offer.price,
+              priceCurrency: currency,
+              unitCode: offer.unit,
+            },
+          }),
+        })),
+      }),
+    };
+  });
 }
 
 // One @graph per page: sitewide nodes first, then the page's own nodes.

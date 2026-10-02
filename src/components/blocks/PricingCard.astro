@@ -1,0 +1,79 @@
+---
+// One priced offer: name, price + cadence, who it's for, "What's included" list, and the outcome line.
+// `featured` gets the gradient border (the plan to lead with); others a hairline border. No buttons inside:
+// pricing sections close with one shared next step. Equal-height in a grid (h-full).
+import clsx from 'clsx';
+
+export interface PricingItem {
+  name: string;
+  price: string;
+  /** e.g. "one time", "a month" */
+  cadence: string;
+  /** Who it's for (one sentence) */
+  for: string;
+  /** Optional context paragraph under "for" */
+  note?: string;
+  includedLabel: string;
+  included: string[];
+  outcomeLabel: string;
+  outcome: string;
+  featured?: boolean;
+}
+
+interface Props extends PricingItem {
+  class?: string;
+}
+
+const { name, price, cadence, for: forWho, note, includedLabel, included, outcomeLabel, outcome, featured, class: className } =
+  Astro.props;
+---
+
+<article
+  class={clsx(
+    'h-full rounded-card p-px',
+    featured ? 'bg-gradient-to-br from-accent/60 via-line to-highlight/50' : 'bg-line-strong',
+    className,
+  )}
+>
+  <div class="flex h-full flex-col gap-4 rounded-[calc(var(--radius-card)-1px)] bg-surface-raised p-3 md:p-4 lg:p-5">
+    <header class="flex flex-col gap-2 border-b border-line pb-3">
+      <h3 class="font-display text-xl font-bold text-ink md:text-2xl">{name}</h3>
+      <p class="flex items-baseline gap-1">
+        <span class="font-display text-4xl font-bold tracking-tight text-ink md:text-5xl">{price}</span>
+        <span class="text-base text-ink-muted">{cadence}</span>
+      </p>
+      <p class="text-pretty text-base text-ink-soft">{forWho}</p>
+      {note && <p class="text-pretty text-meta text-ink-muted">{note}</p>}
+    </header>
+
+    <div class="flex flex-col gap-2">
+      <p class="text-meta font-semibold uppercase tracking-wider text-ink-muted">{includedLabel}</p>
+      <ul class="flex flex-col gap-1.5">
+        {
+          included.map((line) => (
+            <li class="flex items-start gap-1.5 text-base text-ink-soft">
+              <svg
+                aria-hidden="true"
+                class={clsx('mt-1 size-icon-sm shrink-0', featured ? 'text-accent' : 'text-highlight')}
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="m3.5 8.5 3 3 6-7" />
+              </svg>
+              <span class="text-pretty">{line}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="mt-auto rounded-control border-l-2 border-highlight/60 bg-canvas/50 p-2 md:p-3">
+      <p class="text-pretty text-base text-ink-soft">
+        <strong class="font-semibold text-ink">{outcomeLabel}</strong>
+        {' '}{outcome}
+      </p>
+    </div>
+  </div>
+</article>

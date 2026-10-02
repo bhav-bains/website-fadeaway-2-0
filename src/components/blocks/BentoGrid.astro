@@ -1,6 +1,6 @@
 ---
 // Asymmetric bento of numbered points, closing with a CTA tile. Typographic: large outlined numbers, no icons.
-// Built for 5 points + CTA: lg is 4 columns (first and CTA tiles span 2), md is 2 columns (first and CTA full width),
+// Built for 5 points + CTA (or 4 + CTA, where the 4th also spans 2 on lg): lg is 4 columns (first and CTA tiles span 2), md is 2 columns (first and CTA full width),
 // phones stack. Other counts still work; only the first item and the CTA get the wide spans.
 import clsx from 'clsx';
 import Button from '../Button.astro';
@@ -24,11 +24,13 @@ const pad = (n: number) => String(n).padStart(2, '0');
   {
     items.map((item, i) => {
       const lead = i === 0;
+      const wideLast = items.length === 4 && i === 3 && !!cta;
       return (
         <li
           class={clsx(
             'group relative flex flex-col gap-4 overflow-hidden rounded-card border border-line-strong bg-surface-raised/60 p-3 transition-colors duration-300 hover:border-highlight/40 md:p-4',
             lead && 'md:col-span-2',
+            wideLast && 'lg:col-span-2',
           )}
         >
           <span

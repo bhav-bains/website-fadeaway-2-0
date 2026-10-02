@@ -4,11 +4,14 @@
 // layout "center" (closing CTA): larger type, everything centred.
 import clsx from 'clsx';
 import Button from '../Button.astro';
+import ArrowLink from '../ui/ArrowLink.astro';
 
 interface Props {
   heading: string;
   text: string;
   cta: { label: string; href: string };
+  /** Optional lower-commitment link under the button (center layout) */
+  link?: { label: string; href: string };
   /** h3 inside a titled section; h2 when the CTA is the section's own heading */
   headingAs?: 'h2' | 'h3';
   headingId?: string;
@@ -20,6 +23,7 @@ const {
   heading,
   text,
   cta,
+  link,
   headingAs: Heading = 'h3',
   headingId,
   layout = 'split',
@@ -87,5 +91,6 @@ const center = layout === 'center';
     >
       {cta.label}
     </Button>
+    {link && <ArrowLink href={link.href}>{link.label}</ArrowLink>}
   </div>
 </div>

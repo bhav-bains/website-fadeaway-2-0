@@ -22,7 +22,9 @@ export type IconName =
   | 'map'
   | 'braces'
   | 'star'
-  | 'gauge';
+  | 'gauge'
+  | 'shield'
+  | 'calendar';
 
 interface Props {
   name: IconName;
@@ -32,6 +34,10 @@ interface Props {
 const { name, class: className = 'size-icon' } = Astro.props;
 
 const icons: Record<IconName, string> = {
+  // shield with a tick: compliance-ready
+  shield: '<path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.3 7.5 9.5 4.3-1.2 7.5-4.9 7.5-9.5V6z"/><path d="m8.8 12.2 2.3 2.3 4.2-4.6"/>',
+  // calendar with a booked slot: booking flow
+  calendar: '<rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="m9.3 15 1.9 1.9 3.6-3.8"/>',
   // magnifier with a sparkle: search + AI answers
   'search-ai':
     '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/><path d="M10.5 7.2l.85 2.45 2.45.85-2.45.85-.85 2.45-.85-2.45-2.45-.85 2.45-.85z"/>',
