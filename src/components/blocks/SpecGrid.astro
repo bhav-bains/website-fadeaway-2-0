@@ -1,0 +1,86 @@
+---
+// Spec sheet: standards in a hairline table (cells split by 1px rules, no separate cards), each with a ticked
+// box, an index and title + one line. Corner crop marks frame the table; an oversized drafting-compass line drawing
+// bleeds off the bottom-right edge behind it. Service pages (Build: "Built Right, From Day One").
+// Phones: 1 column; md: 2; lg: 3. The parent Section should clip overflow (class="overflow-x-clip").
+import clsx from 'clsx';
+
+export interface SpecItem {
+  title: string;
+  text: string;
+}
+
+interface Props {
+  items: SpecItem[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+const pad = (n: number) => String(n).padStart(2, '0');
+
+const corners = [
+  '-left-1 -top-1 border-l border-t',
+  '-right-1 -top-1 border-r border-t',
+  '-bottom-1 -left-1 border-b border-l',
+  '-bottom-1 -right-1 border-b border-r',
+];
+---
+
+<div class={clsx('relative isolate', className)}>
+  {/* Drafting compass: two legs from a hinge, an arc being drawn, a measured radius */}
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    viewBox="0 0 320 320"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.25"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="pointer-events-none absolute -bottom-40 -right-28 -z-10 hidden size-[30rem] text-highlight opacity-25 [mask-image:radial-gradient(circle_at_45%_45%,#000_30%,transparent_72%)] md:block lg:size-[38rem]"
+  >
+    <circle cx="160" cy="58" r="12" />
+    <circle cx="160" cy="58" r="4" />
+    <path d="M160 40V24" />
+    <path d="M152 68L92 250M168 68l60 182" />
+    <path d="M92 250l-4 16M228 250l2 16" />
+    <path d="M118 170h84" opacity=".6" />
+    <path d="M88 266a150 150 0 0 0 142 0" opacity=".7" stroke-dasharray="4 6" />
+    <path d="M88 284h142" opacity=".5" />
+    <path d="M88 278v12M230 278v12M159 280v8" opacity=".5" />
+    <circle cx="160" cy="160" r="150" opacity=".12" />
+  </svg>
+
+  {corners.map((c) => <span aria-hidden="true" class={clsx('absolute size-3 border-highlight/50', c)} />)}
+
+  <ul class="grid gap-px overflow-hidden rounded-card border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+    {
+      items.map((item, i) => (
+        <li class="group flex flex-col gap-3 bg-surface-raised/90 p-3 transition-colors duration-300 hover:bg-surface-raised md:p-4">
+          <div class="flex items-center justify-between">
+            <svg
+              aria-hidden="true"
+              class="size-6 text-highlight"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="4" opacity=".5" />
+              <path d="m7.5 12.5 3 3 6-7" class="transition-[stroke-width] duration-300 group-hover:[stroke-width:2.25]" />
+            </svg>
+            <span aria-hidden="true" class="font-display text-meta font-semibold tabular-nums text-ink-muted/70">
+              {pad(i + 1)}
+            </span>
+          </div>
+          <div class="flex flex-col gap-1">
+            <h3 class="text-balance font-display text-xl font-bold text-ink">{item.title}</h3>
+            <p class="text-pretty text-base text-ink-muted">{item.text}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</div>

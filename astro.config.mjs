@@ -14,7 +14,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     // Keep noindex pages (thank-you pages) out of the sitemap
-    sitemap({ filter: (page) => !page.includes('/contact-success') }),
+    sitemap({ filter: (page) => !['/contact-success', '/demo-success', '/audit-success'].some((path) => page.includes(path)) }),
   ],
   // Self-hosted at build time; exposed as --ff-* CSS variables (see src/styles/theme.css)
   fonts: [

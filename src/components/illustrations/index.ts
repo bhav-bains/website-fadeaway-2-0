@@ -6,6 +6,9 @@ import IllusSports from './IllusSports.astro';
 import IllusAiShopping from './IllusAiShopping.astro';
 import IllusCycle from './IllusCycle.astro';
 import IllusAsk from './IllusAsk.astro';
+import IllusWireframe from './IllusWireframe.astro';
+import IllusLayers from './IllusLayers.astro';
+import IllusQuote from './IllusQuote.astro';
 
 export const illustrations = {
   ecommerce: IllusEcommerce,
@@ -15,6 +18,9 @@ export const illustrations = {
   'ai-shopping': IllusAiShopping,
   cycle: IllusCycle,
   ask: IllusAsk,
+  wireframe: IllusWireframe,
+  layers: IllusLayers,
+  quote: IllusQuote,
 };
 
 export type IllustrationName = keyof typeof illustrations;

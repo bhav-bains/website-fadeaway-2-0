@@ -1,0 +1,86 @@
+---
+// Inline free-audit call-out: heading + one line on the left, a single "your website" field + button on the right.
+// Submitting (GET) carries the URL to the audit page (?website=...), which pre-fills its form so the visitor only
+// adds name, email and business there. A fallback line points visitors without a site elsewhere.
+// Gradient border, oversized line art (magnifier over a page with a gauge), no glow. Stacks on phones.
+// Heading is an H3: the block sits inside a titled Section.
+import clsx from 'clsx';
+import Button from '../Button.astro';
+import ArrowLink from '../ui/ArrowLink.astro';
+
+interface Props {
+  heading: string;
+  text: string;
+  fieldLabel: string;
+  placeholder?: string;
+  button: string;
+  /** Audit page URL */
+  action: string;
+  fallback?: { text: string; link: { label: string; href: string } };
+  class?: string;
+}
+
+const { heading, text, fieldLabel, placeholder, button, action, fallback, class: className } = Astro.props;
+const fieldId = 'audit-cta-website';
+---
+
+<div class={clsx('rounded-card bg-gradient-to-br from-highlight/50 via-line to-accent/50 p-px', className)}>
+  <div
+    class="relative isolate grid gap-4 overflow-hidden rounded-[calc(var(--radius-card)-1px)] bg-surface-raised p-3 md:p-5 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:items-center lg:gap-10 lg:p-6"
+  >
+    {/* Magnifier over a page with a gauge: "audit your current site" */}
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      viewBox="0 0 320 320"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.25"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="pointer-events-none absolute -bottom-24 -left-16 -z-10 size-[20rem] text-highlight opacity-20 [mask-image:radial-gradient(circle_at_45%_45%,#000_35%,transparent_75%)] md:size-[26rem]"
+    >
+      <rect x="40" y="50" width="190" height="220" rx="12" opacity=".6" />
+      <path d="M40 80h190" opacity=".4" />
+      <path d="M66 112h90M66 130h120M66 148h70" opacity=".45" />
+      <path d="M78 228a58 58 0 0 1 116 0" opacity=".7" />
+      <path d="M136 228l26 -30" />
+      <path d="M86 228h-8M194 228h-8M136 176v-8" opacity=".6" />
+      <circle cx="206" cy="160" r="54" />
+      <circle cx="206" cy="160" r="40" opacity=".35" />
+      <path d="M245 199l46 46" stroke-width="2.5" />
+    </svg>
+
+    <div class="flex flex-col gap-1">
+      <h3 class="text-balance font-display text-2xl font-bold text-ink md:text-3xl">{heading}</h3>
+      <p class="max-w-xl text-pretty text-base text-ink-soft md:text-lg">{text}</p>
+    </div>
+
+    <form method="GET" action={action} class="flex flex-col gap-2">
+      <label for={fieldId} class="text-meta font-medium text-ink-soft">{fieldLabel}</label>
+      <div class="flex flex-col gap-2 sm:flex-row">
+        <input
+          id={fieldId}
+          name="website"
+          type="text"
+          inputmode="url"
+          autocomplete="url"
+          spellcheck="false"
+          autocapitalize="off"
+          required
+          placeholder={placeholder}
+          class="min-h-12 w-full min-w-0 flex-1 rounded-control border border-line-strong bg-canvas/60 px-2 py-1.5 text-base text-ink placeholder:text-ink-muted/70 transition-colors hover:border-ink-muted/50 focus:border-highlight focus:outline-none focus-visible:ring-2 focus-visible:ring-highlight/30"
+        />
+        <Button type="submit" variant="primary" size="base" className="shrink-0">{button}</Button>
+      </div>
+      {
+        fallback && (
+          <p class="flex flex-wrap items-center gap-x-1 text-meta text-ink-muted">
+            {fallback.text}
+            <ArrowLink href={fallback.link.href}>{fallback.link.label}</ArrowLink>
+          </p>
+        )
+      }
+    </form>
+  </div>
+</div>

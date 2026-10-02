@@ -18,7 +18,7 @@ Astro site, hosted on Netlify. This file gives Claude Code the standing rules fo
   - Sitemap excludes noindex pages (filter in `astro.config.mjs`).
 - **Header / Footer:** `Header.astro`, `Footer.astro`, fed by `src/data/navigation.ts` (no `#` placeholder links left). The nav's Growth sub-services ("SEO + AEO · Full Audit · Growth Strategy · CRO · Paid Media") no longer match the homepage Growth tiles; align them when the nav is revisited.
 - **Routes:** every internal URL lives in `src/data/routes.ts`; link to `routes.x`, never a hardcoded path.
-- **Live pages (`src/pages/`):** `/` (`index.astro`, rebuilt), `/contact`, `/contact-success`, `/sports`, `/wellness`, `/solutions/ecommerce`, and `404.astro` (Netlify serves `dist/404.html` for missing URLs; copy in `copy/404.md`, approved). noindex pages get no canonical tag.
+- **Live pages (`src/pages/`):** `/` (`index.astro`, rebuilt), `/contact`, `/contact-success`, `/sports`, `/wellness`, `/solutions/ecommerce`, `/demo-request`, `/demo-success`, `/audit`, `/audit-success`, and `404.astro` (Netlify serves `dist/404.html` for missing URLs; copy in `copy/404.md`, approved). noindex pages get no canonical tag.
 - **Parked pages (`src/pages/_inactive/`, not routed by Astro):** `home-2025.astro` (the previous homepage, for reference), old index, `blog/index`, `blog/[slug]`, `demo-request`, `demo-success`, `services/web-design`. `/audit-request` and `/audit-success` do not exist anywhere.
 - **Page content lives in `src/data/pages/<page>.ts`** (e.g. `home.ts`), copied word for word from `/copy/<page>.md`. Blocks never contain copy; pages pass content in.
 - **Components:**
@@ -109,8 +109,8 @@ Astro site, hosted on Netlify. This file gives Claude Code the standing rules fo
 | Sports Academies | /solutions/sports |
 | Fadeaway Labs | /labs |
 | About | /about |
-| Free audit | /audit (**not built yet.** Decision: all "Get Your Free Audit" CTAs link to **/contact** until an audit page exists.) |
-| Demo request (fitness, wellness, sports) | /demo-request (parked in `_inactive`, not live on `dev`) |
+| Free audit | /audit + /audit-success (built Oct 1 from `copy/audit.md`, copy approved; Netlify form `audit-request`). Every "Get Your Free Audit" CTA uses `routes.audit`. The `AuditCta` block (URL field) carries `?website=` to the form. Promise: branded report within 24 hours. |
+| Demo request (fitness, wellness, sports) | /demo-request + /demo-success (rebuilt from `copy/demo-request.md`, Netlify form `demo-request`; success page noindex, out of the sitemap) |
 | Old service page | /services/web-design (parked in `_inactive`; decide when the Build page is done, 301 to /services/build if production still has it) |
 | Current solution pages | /sports, /wellness (live on `dev`; the new map moves them to /solutions/sports and /solutions/wellness-counselling, so 301s needed. Ask first.) |
 | Portfolio | /portfolio |
@@ -169,4 +169,6 @@ Each entry has `tags`. Tag names (use exactly): `featured`, `ecommerce`, `wellne
 - **E-commerce (`/solutions/ecommerce`): all sections built** (merged into `dev` Sept 30) from `copy/ecommerce.md` (Hero statement + platform logo band, AI Shopping with the answer capsule as lead, Standard bento, What We Do (ServiceIndex), How It Works (vertical Steps), Real Work, FAQ, closing CTA). Schema: BreadcrumbList, 6 Service, HowTo, FAQPage. Sections alternate canvas / `alt` bands.
   - Renders nothing yet: Testimonials (no real quotes), From the Blog (no `/resources`; data is `blog` in `ecommerce.ts`). Real Work hidden in production until `/portfolio` exists.
   - Copy approved Sept 30 (meta description, answer capsule, Service schema list, FAQ). Open: og image, "last updated" date.
+- **Build (`/services/build`): all sections built, merged into `dev` Oct 1.** Service pages use the `blueprint` Hero and drafting-style line art (SpecGrid, ServiceRows, IllusLayers, IllusQuote) so they read differently from solutions pages. Schema: BreadcrumbList, 4 Service, HowTo, FAQPage. Copy approved Oct 1.
+- **Demo request (`/demo-request`, `/demo-success`) and Free Audit (`/audit`, `/audit-success`): built**, copy approved Oct 1. Open: audit workflow + branded report template (24-hour promise), where form submissions go.
 - **Next:** remaining pages in the URL map (section 6). Every homepage link to them must resolve before launch.

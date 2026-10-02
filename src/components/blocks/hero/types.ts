@@ -19,7 +19,7 @@ export interface HeroContent {
   secondaryCta?: HeroCta;
   /** AEO summary paragraph; must stay plain text in the raw HTML */
   answerCapsule?: string;
-  /** Interior pages: crumbs shown above the eyebrow (visual, showcase, statement). Last item is the current page. */
+  /** Interior pages: crumbs shown above the eyebrow (visual, showcase, statement, blueprint). Last item is the current page. */
   breadcrumb?: BreadcrumbItem[];
   /** visual / showcase / statement: illustration by name; defaults to the homepage search/AI illustration */
   visual?: IllustrationName;
@@ -27,5 +27,5 @@ export interface HeroContent {
   logos?: { label: string; groups: LogoItem[][] };
 }
 
-export const HERO_VARIANTS = ['centered', 'split', 'editorial', 'visual', 'showcase', 'statement'] as const;
+export const HERO_VARIANTS = ['centered', 'split', 'editorial', 'visual', 'showcase', 'statement', 'blueprint'] as const;
 export type HeroVariant = (typeof HERO_VARIANTS)[number];

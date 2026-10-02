@@ -1,0 +1,71 @@
+---
+// One labelled form control: text / email / url / tel input, select or textarea. Semantic tokens only.
+// The label is always visible (no placeholder-as-label); optional fields say so in the label text from the copy.
+// `url` renders a plain text input with the URL keyboard, so "mysite.com" is accepted without https://.
+// Mobile-first: full width; 48px+ tall controls for touch.
+import clsx from 'clsx';
+
+export interface FieldProps {
+  name: string;
+  label: string;
+  type?: 'text' | 'email' | 'url' | 'tel' | 'select' | 'textarea';
+  required?: boolean;
+  placeholder?: string;
+  /** select only */
+  options?: string[];
+  autocomplete?: string;
+  class?: string;
+}
+
+type Props = FieldProps;
+
+const { name, label, type = 'text', required = false, placeholder, options = [], autocomplete, class: className } = Astro.props;
+const id = `field-${name}`;
+
+const control =
+  'w-full rounded-control border border-line-strong bg-canvas/60 px-2 py-1.5 text-base text-ink placeholder:text-ink-muted/70 transition-colors hover:border-ink-muted/50 focus:border-highlight focus:outline-none focus-visible:ring-2 focus-visible:ring-highlight/30';
+---
+
+<div class={clsx('flex flex-col gap-1', className)}>
+  <label for={id} class="text-meta font-medium text-ink-soft">
+    {label}
+    {required && <span aria-hidden="true" class="text-accent"> *</span>}
+  </label>
+  {
+    type === 'select' ? (
+      <div class="relative">
+        <select id={id} name={name} required={required} class={clsx(control, 'min-h-12 appearance-none pr-6')}>
+          <option value="" disabled selected hidden />
+          {options.map((o) => (
+            <option value={o}>{o}</option>
+          ))}
+        </select>
+        <svg
+          aria-hidden="true"
+          class="pointer-events-none absolute right-2 top-1/2 size-icon-sm -translate-y-1/2 text-ink-muted"
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4 6 4 4 4-4" />
+        </svg>
+      </div>
+    ) : type === 'textarea' ? (
+      <textarea id={id} name={name} required={required} placeholder={placeholder} rows="4" class={clsx(control, 'resize-y')} />
+    ) : (
+      <input
+        id={id}
+        name={name}
+        type={type === 'url' ? 'text' : type}
+        inputmode={type === 'url' ? 'url' : undefined}
+        spellcheck={type === 'url' ? 'false' : undefined}
+        autocapitalize={type === 'url' ? 'off' : undefined}
+        required={required}
+        placeholder={placeholder}
+        autocomplete={autocomplete}
+        class={clsx(control, 'min-h-12')}
+      />
+    )
+  }
+</div>

@@ -1,0 +1,54 @@
+---
+// Free website demo request (fitness, wellness, sports). Content: src/data/pages/demo.ts (from copy/demo-request.md).
+// Rebuilt from scratch; the Dec 2025 version stays parked in src/pages/_inactive for reference.
+// Hero: FormHero (text left, form right on lg, form directly below the text on phones). No CTA buttons in the Hero.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FormHero from '../components/blocks/FormHero.astro';
+import Section from '../components/blocks/Section.astro';
+import Steps from '../components/blocks/Steps.astro';
+import CardGrid from '../components/blocks/CardGrid.astro';
+import Faq from '../components/blocks/Faq.astro';
+import CtaBlock from '../components/blocks/CtaBlock.astro';
+import { breadcrumbSchema, howToSchema, faqSchema } from '../lib/schema';
+import { siteConfig } from '../data/site';
+import { routes } from '../data/routes';
+import { seo, breadcrumb, answerCapsule, hero, form, howItWorks, industries, faq, cta } from '../data/pages/demo';
+
+const jsonLd = [
+  breadcrumbSchema(breadcrumb),
+  howToSchema({
+    name: howItWorks.heading,
+    steps: howItWorks.items,
+    url: new URL(`${routes.demoRequest}#${howItWorks.id}`, siteConfig.url).toString(),
+  }),
+  faqSchema(faq.items),
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
+  <FormHero
+    breadcrumb={breadcrumb}
+    eyebrow={hero.eyebrow}
+    h1={hero.h1}
+    sub={hero.sub}
+    form={form}
+    halfWidth={['name', 'email', 'business', 'industry']}
+  />
+
+  <!-- Answer capsule (AEO summary) is the wide intro of the first section after the Hero -->
+  <Section id={howItWorks.id} heading={howItWorks.heading} intro={answerCapsule} introStyle="wide" tone="alt" align="start">
+    <Steps items={howItWorks.items} />
+  </Section>
+
+  <Section id={industries.id} heading={industries.heading}>
+    <CardGrid items={industries.items} columns={3} />
+  </Section>
+
+  <Section id={faq.id} heading={faq.heading} width="narrow" tone="alt">
+    <Faq faq={faq.items} />
+  </Section>
+
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`}>
+    <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} />
+  </Section>
+</BaseLayout>
