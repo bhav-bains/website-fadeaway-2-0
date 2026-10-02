@@ -9,7 +9,7 @@ import type { FeatureListItem } from '../../components/blocks/FeatureList.astro'
 import type { ServiceIndexItem } from '../../components/blocks/ServiceIndex.astro';
 import type { IconGridItem } from '../../components/blocks/IconGrid.astro';
 import type { DemoOfferStep } from '../../components/blocks/DemoOffer.astro';
-import type { PricingItem } from '../../components/blocks/PricingCard.astro';
+import type { PricingContent } from '../../components/blocks/PricingSection.astro';
 import type { TimelineItem } from '../../components/blocks/Timeline.astro';
 import type { StepItem } from '../../components/blocks/Steps.astro';
 import type { FaqItem } from '../../components/blocks/Faq.astro';
@@ -204,16 +204,7 @@ export const demo: {
 const included = "What's included:";
 const outcome = 'What you get out of it:';
 
-export const pricing: {
-  id: string;
-  heading: string;
-  intro: string;
-  start: PricingItem[];
-  plans: PricingItem[];
-  finePrint: string;
-  custom: { heading: string; text: string; link: { label: string; href: string } };
-  cta: { label: string; href: string };
-} = {
+export const pricing: PricingContent & { id: string; heading: string; intro: string } = {
   id: 'pricing',
   heading: 'What You Pay For, and What You Get',
   intro: 'Fixed prices, complete deliverable lists, and honest expectations. You pay for an audit or a website setup to start, never both.',

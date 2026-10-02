@@ -12,6 +12,8 @@ import IllusQuote from './IllusQuote.astro';
 import IllusGrowth from './IllusGrowth.astro';
 import IllusDashboard from './IllusDashboard.astro';
 import IllusBooking from './IllusBooking.astro';
+import IllusClass from './IllusClass.astro';
+import IllusRadius from './IllusRadius.astro';
 
 export const illustrations = {
   ecommerce: IllusEcommerce,
@@ -27,6 +29,8 @@ export const illustrations = {
   growth: IllusGrowth,
   dashboard: IllusDashboard,
   booking: IllusBooking,
+  class: IllusClass,
+  radius: IllusRadius,
 };
 
 export type IllustrationName = keyof typeof illustrations;
