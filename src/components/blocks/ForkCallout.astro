@@ -1,0 +1,53 @@
+---
+// "Other route" call-out: a question as the heading, one line of context, and a button to the other path.
+// Dashed blueprint border (an alternate route, not the main CTA) and an oversized fork-in-the-road line drawing
+// bleeding off the right edge: one path climbs straight on, the other branches off to a new build.
+// Phones: stacked; md and up: text left, button right. Heading is an H3 (sits inside a titled Section).
+import clsx from 'clsx';
+import Button from '../Button.astro';
+
+interface Props {
+  heading: string;
+  text: string;
+  link: { label: string; href: string };
+  class?: string;
+}
+
+const { heading, text, link, class: className } = Astro.props;
+---
+
+<div
+  class={clsx(
+    'relative isolate grid gap-3 overflow-hidden rounded-card border border-dashed border-highlight/40 bg-surface-raised/50 p-3 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-6 md:p-5 lg:p-6',
+    className,
+  )}
+>
+  {/* Fork in the path: the main line keeps climbing, a branch splits off to a framed new page */}
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    viewBox="0 0 320 200"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.25"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="pointer-events-none absolute -right-10 top-1/2 -z-10 hidden w-[24rem] -translate-y-1/2 text-highlight opacity-30 [mask-image:linear-gradient(to_left,#000_45%,transparent_95%)] md:block lg:w-[30rem]"
+  >
+    <path d="M20 170h70l60 -60h150" stroke-dasharray="4 6" opacity=".6" />
+    <path d="M150 110c30 0 40 -40 70 -60h40" />
+    <path d="M250 42l10 8-10 8" />
+    <rect x="266" y="26" width="44" height="50" rx="5" />
+    <path d="M266 38h44M274 50h28M274 60h20" opacity=".6" />
+    <circle cx="150" cy="110" r="5" class="fill-surface-raised" />
+    <path d="M290 102l10 8-10 8" opacity=".6" />
+  </svg>
+
+  <div class="flex flex-col gap-1">
+    <h3 class="text-balance font-display text-xl font-bold text-ink md:text-2xl">{heading}</h3>
+    <p class="max-w-2xl text-pretty text-base text-ink-soft md:text-lg">{text}</p>
+  </div>
+  <Button href={link.href} variant="secondary" size="base" className="self-start md:self-auto">
+    {link.label}
+  </Button>
+</div>

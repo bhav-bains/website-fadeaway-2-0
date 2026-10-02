@@ -9,6 +9,8 @@ import IllusAsk from './IllusAsk.astro';
 import IllusWireframe from './IllusWireframe.astro';
 import IllusLayers from './IllusLayers.astro';
 import IllusQuote from './IllusQuote.astro';
+import IllusGrowth from './IllusGrowth.astro';
+import IllusDashboard from './IllusDashboard.astro';
 
 export const illustrations = {
   ecommerce: IllusEcommerce,
@@ -21,6 +23,8 @@ export const illustrations = {
   wireframe: IllusWireframe,
   layers: IllusLayers,
   quote: IllusQuote,
+  growth: IllusGrowth,
+  dashboard: IllusDashboard,
 };
 
 export type IllustrationName = keyof typeof illustrations;

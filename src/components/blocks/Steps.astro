@@ -2,6 +2,7 @@
 // Numbered process: markers joined by a connector line (accent to highlight), H3 title, one line of prose.
 // Phones: vertical timeline. md and up: steps side by side, or `direction="vertical"` keeps the timeline at every width
 // (for longer step text, e.g. beside a Section layout="split" header).
+// Connectors run through the centre of the 48px number circles (1.5rem; theme spacing step 6 is 48px, so not top-6).
 // Pair with howToSchema() (src/lib/schema.ts) fed from the same items so the HowTo JSON-LD matches the visible text.
 import clsx from 'clsx';
 import ArrowLink from '../ui/ArrowLink.astro';
@@ -35,8 +36,8 @@ const mdColumns = { 2: 'md:grid-cols-2', 3: 'md:grid-cols-3', 4: 'md:grid-cols-4
             <span
               aria-hidden="true"
               class={clsx(
-                'absolute left-6 top-12 -bottom-5 w-px bg-gradient-to-b from-accent/60 to-highlight/60',
-                vertical ? 'md:-bottom-6' : 'md:left-14 md:right-0 md:top-6 md:bottom-auto md:h-px md:w-auto md:bg-gradient-to-r',
+                'absolute left-[1.5rem] top-12 -bottom-5 w-px bg-gradient-to-b from-accent/60 to-highlight/60',
+                vertical ? 'md:-bottom-6' : 'md:left-14 md:right-0 md:top-[1.5rem] md:bottom-auto md:h-px md:w-auto md:bg-gradient-to-r',
               )}
             />
           )}
