@@ -24,7 +24,8 @@ export type IconName =
   | 'star'
   | 'gauge'
   | 'shield'
-  | 'calendar';
+  | 'calendar'
+  | 'chat';
 
 interface Props {
   name: IconName;
@@ -34,6 +35,8 @@ interface Props {
 const { name, class: className = 'size-icon' } = Astro.props;
 
 const icons: Record<IconName, string> = {
+  // speech bubble with a spark: AI chat assistant
+  chat: '<path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v9a1.5 1.5 0 0 1-1.5 1.5H10l-4.5 4v-4h0A1.5 1.5 0 0 1 4 14.5z"/><path d="M12 7.2l.8 2.1 2.1.8-2.1.8-.8 2.1-.8-2.1-2.1-.8 2.1-.8z"/>',
   // shield with a tick: compliance-ready
   shield: '<path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.3 7.5 9.5 4.3-1.2 7.5-4.9 7.5-9.5V6z"/><path d="m8.8 12.2 2.3 2.3 4.2-4.6"/>',
   // calendar with a booked slot: booking flow
