@@ -1,0 +1,49 @@
+---
+// Founder card: portrait (photo when supplied; until then a line-art placeholder with the initials), name + title
+// as the H3, bio, and an optional profile link. Phones: stacked; md and up: portrait left, text right.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import ArrowLink from '../ui/ArrowLink.astro';
+
+interface Props {
+  name: string;
+  title: string;
+  bio: string;
+  photo?: ImageMetadata;
+  photoAlt?: string;
+  link?: { label: string; href: string };
+}
+
+const { name, title, bio, photo, photoAlt, link } = Astro.props;
+const initials = name
+  .split(' ')
+  .map((part) => part[0])
+  .join('')
+  .slice(0, 2);
+---
+
+<article class="grid gap-4 rounded-card border border-line-strong bg-surface-raised/60 p-3 md:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] md:items-center md:gap-8 md:p-5 lg:p-6">
+  <div class="relative aspect-[4/5] w-full max-w-xs overflow-hidden rounded-card border border-line bg-canvas/60 md:max-w-none">
+    {
+      photo ? (
+        <Image src={photo} alt={photoAlt ?? name} widths={[320, 480, 640]} sizes="(min-width: 768px) 30vw, 80vw" class="h-full w-full object-cover" />
+      ) : (
+        <div aria-hidden="true" class="absolute inset-0 grid place-items-center">
+          <div class="absolute inset-0 bg-grid opacity-60 [mask-image:radial-gradient(circle,#000_30%,transparent_80%)]" />
+          <svg viewBox="0 0 200 250" fill="none" stroke="currentColor" stroke-width="1.25" class="absolute inset-0 h-full w-full text-ink-muted/40">
+            <circle cx="100" cy="92" r="38" />
+            <path d="M34 250c6 -52 32 -80 66 -80s60 28 66 80" />
+          </svg>
+          <span class="relative font-display text-5xl font-bold tracking-tight text-ink-soft">{initials}</span>
+        </div>
+      )
+    }
+  </div>
+  <div class="flex flex-col items-start gap-2">
+    <h3 class="font-display text-2xl font-bold text-ink md:text-3xl">
+      {name}<span class="text-ink-muted">, {title}</span>
+    </h3>
+    <p class="max-w-2xl text-pretty text-base text-ink-soft md:text-lg md:leading-relaxed">{bio}</p>
+    {link && <ArrowLink href={link.href} class="mt-1">{link.label}</ArrowLink>}
+  </div>
+</article>
