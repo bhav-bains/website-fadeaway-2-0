@@ -183,13 +183,13 @@ Stores we've built and grown.
 [CTA: View Full Portfolio → /portfolio]
 
 <!--
-Candidate case studies (real clients from the portfolio). Each needs real results
-(traffic, conversion, or revenue with a timeframe) and written permission before it ships:
-- Luisa Paixao: full e-commerce build for an international fashion brand, live across two markets. luisa-paixao.com
-- Boarderline Skate Shop: custom e-commerce store for a skate and streetwear brand. boarderlineskateshop.ca
-- Blank A Brand: blankabrand.com
-- Chronic Ink Tattoo: chronicinktattoo.com
-- Alternates: caddetails.com, cprosolutions.com
+Case studies (founder, Sept 30): the three real case studies are New West Progressives, Echo
+Storytelling, and HeartStamp. None is tagged ecommerce yet (HeartStamp may be, if it sells products
+online), so this section renders nothing for now. That's expected.
+The e-commerce stores below are portfolio entries on /portfolio, not case studies:
+Luisa Paixao (luisa-paixao.com), Boarderline Skate Shop (boarderlineskateshop.ca), Blank A Brand
+(blankabrand.com), Chronic Ink Tattoo (chronicinktattoo.com), CAD Details (caddetails.com),
+CPRO Solutions (cprosolutions.com).
 Never invent a number.
 -->
 

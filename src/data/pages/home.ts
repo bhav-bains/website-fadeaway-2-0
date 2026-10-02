@@ -236,8 +236,8 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
       a: "A quick, automated review of your website, local search visibility, and paid media opportunities, enough to flag where you're losing ground and what's worth fixing first. We walk you through the results so nothing gets lost in a report. It's free, with no obligation to work with us afterward.",
     },
     {
-      q: 'How much does the Full Audit cost?',
-      a: 'The Full Audit is a fixed $945, one time. It includes a full account review, keyword research, a content strategy foundation, quick wins, and a clear 3 to 6 month action plan. No hourly billing, no surprises, and if you move ahead with a new website, the fee is credited toward your build.',
+      q: "What's included in the Full Audit?",
+      a: "A full account and website review, keyword research for your market, an in-depth AEO readiness check, a content strategy foundation, quick wins, and a clear 3 to 6 month action plan. It's a fixed, one-time fee with no hourly billing, and if you move ahead with a new website, the fee is credited toward your build.",
     },
     {
       q: 'Do you work with the booking system or CRM I already use?',

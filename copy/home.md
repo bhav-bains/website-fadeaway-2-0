@@ -201,8 +201,8 @@ We track which searches turn into a booked appointment or a paid customer, not j
 faq:
   - q: "What's included in the free Instant Audit?"
     a: "A quick, automated review of your website, local search visibility, and paid media opportunities, enough to flag where you're losing ground and what's worth fixing first. We walk you through the results so nothing gets lost in a report. It's free, with no obligation to work with us afterward."
-  - q: "How much does the Full Audit cost?"
-    a: "The Full Audit is a fixed $945, one time. It includes a full account review, keyword research, a content strategy foundation, quick wins, and a clear 3 to 6 month action plan. No hourly billing, no surprises, and if you move ahead with a new website, the fee is credited toward your build."
+  - q: "What's included in the Full Audit?"
+    a: "A full account and website review, keyword research for your market, an in-depth AEO readiness check, a content strategy foundation, quick wins, and a clear 3 to 6 month action plan. It's a fixed, one-time fee with no hourly billing, and if you move ahead with a new website, the fee is credited toward your build."
   - q: "Do you work with the booking system or CRM I already use?"
     a: "Yes. We don't replace the software you already run your business on. We build your website and growth systems to work with what you have, like Jane App, SimplePractice, Mindbody, Momence, LeagueApps, or TeamSnap, so your team keeps its tools and your customers get a smoother way in."
   - q: "Do you work with businesses outside Vancouver?"
@@ -234,4 +234,12 @@ Open items for this page (not blockers for building the blocks):
 - /portfolio?filter=ecommerce: a query-string filter needs client-side filtering on a static Astro site.
   Alternative: /portfolio#ecommerce or /portfolio/ecommerce. Decide when /portfolio is built.
 - Boutique Fitness card could mention the free demo request (applies to fitness, wellness, sports). Optional, not in approved copy yet.
+CHANGE LOG (Oct 1): founder decision, no prices on the homepage. FAQ 2 changed from
+"How much does the Full Audit cost?" / "The Full Audit is a fixed $945, one time. It includes a full
+account review, keyword research, a content strategy foundation, quick wins, and a clear 3 to 6 month
+action plan. No hourly billing, no surprises, and if you move ahead with a new website, the fee is
+credited toward your build."
+to "What's included in the Full Audit?" (no number). The Full Audit stays $945 for every client;
+the number now appears only on the Boutique Fitness, Wellness & Counselling, and Sports pages.
+Dev: update the FAQ data in src/data/pages/home.ts to match (it feeds both the visible FAQ and the JSON-LD).
 -->
