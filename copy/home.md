@@ -99,6 +99,30 @@ Keep every class full. We build websites and local SEO systems for yoga, pilates
 Fill your roster and keep it full. For clubs, academies, combat sports gyms, and camps, we build websites parents can actually find on Google and in AI answers, connected to the registration software you already use, like LeagueApps or TeamSnap.
 [Link: See how we help sports programs → /solutions/sports]
 
+## Your Website Should Be Your Best Salesperson {#salesperson}
+
+It works 24/7, never calls in sick, and talks to every customer the moment they're ready. Most websites just sit there. We build yours to do the whole job.
+
+### Find the Customers
+SEO puts you in front of people searching on Google, and AEO makes your case when someone asks an AI assistant for a recommendation.
+
+### Answer Their Questions
+Clear pages and FAQs handle what a good salesperson would explain: what you offer, what it costs, and why you're the right choice.
+
+### Close the Sale
+Booking, checkout, and sign-up flows that make saying yes effortless, on any phone, at any hour.
+
+### Follow Up
+Email, reviews, and lead campaigns that bring people back instead of letting them go cold.
+
+### Report the Numbers
+A dashboard showing which visits turned into bookings and sales, so you know exactly what your website is earning.
+
+<!-- Added Oct 2 (founder): the "24/7 salesperson" framing. This section is the core of it; each other page
+carries one adapted line. Layout suggestion: 5 numbered steps, like a sales pipeline.
+ADD AT LAUNCH ONLY IF the free audit report workflow is live (so the claim is true):
+"This site works the same way. It brings in and qualifies our own leads around the clock." -->
+
 ## Why Growing Businesses Choose Fadeaway {#why}
 
 Layout: split. Heading on the left (pinned on desktop), numbered list 01 to 04 on the right. No cards or icons.
@@ -242,4 +266,6 @@ credited toward your build."
 to "What's included in the Full Audit?" (no number). The Full Audit stays $945 for every client;
 the number now appears only on the Boutique Fitness, Wellness & Counselling, and Sports pages.
 Dev: update the FAQ data in src/data/pages/home.ts to match (it feeds both the visible FAQ and the JSON-LD).
+CHANGE LOG (Oct 2): new section "Your Website Should Be Your Best Salesperson" {#salesperson} between Industries and Why
+(founder: the website is a 24/7 salesperson; same thinking for Fadeaway's own site). Maps the five sales jobs to our services.
 -->

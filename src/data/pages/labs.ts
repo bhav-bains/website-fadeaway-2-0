@@ -45,7 +45,8 @@ export const whyLabs = {
   id: 'why-labs',
   heading: 'Why Labs Exists',
   paragraphs: [
-    'Every business we work with pays the same hidden cost: hours lost copying data between tools, chasing leads by hand, and guessing which numbers matter. Labs exists to take that work off your team for good.',
+    // Last sentence added Oct 2 (24/7 salesperson framing)
+    'Every business we work with pays the same hidden cost: hours lost copying data between tools, chasing leads by hand, and guessing which numbers matter. Labs exists to take that work off your team for good. Your website can sell all night; automation makes sure every lead it brings in gets followed up by morning.',
     "It's also our workshop. The demos behind our industry pages, the products we run ourselves, and every experiment we think could make running a business easier start here first. We test everything on our own work before we build it for yours.",
   ],
 };

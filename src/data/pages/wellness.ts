@@ -69,7 +69,8 @@ export const insights: {
     },
     {
       title: 'Booking Has to Be Effortless',
-      text: 'Most first visits happen on a phone, often late at night. If booking takes more than a few taps, or sends people to a confusing third-party page, they leave and book somewhere else.',
+      // Last sentence added Oct 2 (24/7 salesperson framing)
+      text: 'Most first visits happen on a phone, often late at night. If booking takes more than a few taps, or sends people to a confusing third-party page, they leave and book somewhere else. Your website should be the one booking new clients at 11pm, long after your front desk has gone home.',
     },
   ],
   // CTA touchpoint, rendered as the bento's closing tile

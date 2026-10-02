@@ -100,7 +100,8 @@ Home → Sports Academies
 
 (Insight section.)
 
-Parents compare clubs online long before they show up to a tryout. Most club websites lose them in a few quiet ways.
+Parents compare clubs online long before they show up to a tryout, and they check fees and tryout dates at midnight. Your site should answer before another club does. Most club websites lose them in a few quiet ways.
+<!-- Added Oct 2 (founder): "your website is a 24/7 salesperson" framing. One line per page, worded for this audience. -->
 
 ### Your Site Looks Like Every Other Club's
 Template sites make a serious program look the same as the rec league down the road. Parents paying premium season fees expect a site that looks like the program they're paying for.

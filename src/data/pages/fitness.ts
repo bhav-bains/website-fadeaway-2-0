@@ -55,7 +55,8 @@ export const insights: {
   items: [
     {
       title: 'The Booking Flow Loses People',
-      text: 'If booking a class takes more than a couple of taps, or bounces people to a confusing schedule page, some of them simply leave. Most studio sites make this harder than it needs to be.',
+      // Last sentence added Oct 2 (24/7 salesperson framing)
+      text: "If booking a class takes more than a couple of taps, or bounces people to a confusing schedule page, some of them simply leave. Most studio sites make this harder than it needs to be. Your site should fill tomorrow's 6am class while you're teaching tonight's.",
     },
     {
       title: 'Invisible on the Map in Your Own Neighbourhood',

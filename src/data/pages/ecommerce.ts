@@ -94,7 +94,8 @@ export const aiShopping: { id: string; heading: string; intro: string; items: An
 export const standard: { id: string; heading: string; intro: string; items: BentoItem[]; cta: { text: string; label: string; href: string } } = {
   id: 'standard',
   heading: 'Built for the Way E-commerce Actually Works',
-  intro: "Every store we build or grow follows the same standard, whatever platform you're on.",
+  // "Your store is open at 2am..." added Oct 2 (24/7 salesperson framing)
+  intro: "Your store is open at 2am. It should sell like it. Every store we build or grow follows the same standard, whatever platform you're on.",
   items: [
     {
       title: 'Designed to Convert, Not Just Look Good',

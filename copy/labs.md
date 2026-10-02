@@ -102,7 +102,8 @@ Home → Labs
 
 ## Why Labs Exists {#why-labs}
 
-Every business we work with pays the same hidden cost: hours lost copying data between tools, chasing leads by hand, and guessing which numbers matter. Labs exists to take that work off your team for good.
+Every business we work with pays the same hidden cost: hours lost copying data between tools, chasing leads by hand, and guessing which numbers matter. Labs exists to take that work off your team for good. Your website can sell all night; automation makes sure every lead it brings in gets followed up by morning.
+<!-- Added Oct 2 (founder): "your website is a 24/7 salesperson" framing. One line per page, worded for this audience. -->
 
 It's also our workshop. The demos behind our industry pages, the products we run ourselves, and every experiment we think could make running a business easier start here first. We test everything on our own work before we build it for yours.
 
