@@ -15,6 +15,12 @@ export const siteConfig = {
   language: 'en-US',
   email: 'hello@fadeawaycreatives.com',
   foundingDate: '2023',
+  // Founder (About page Person schema; Organization.founder sitewide). linkedin: personal profile, add when supplied.
+  founder: {
+    name: 'Bhav Bains',
+    jobTitle: 'Founder',
+    linkedin: '',
+  },
   locationLine: 'Vancouver, BC, working with clients across Canada and the US.',
   address: {
     city: 'Vancouver',

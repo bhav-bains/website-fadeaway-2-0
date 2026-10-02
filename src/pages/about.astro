@@ -1,0 +1,113 @@
+---
+// About page: the entity page. Content: src/data/pages/about.ts (from copy/about.md).
+// Schema here: AboutPage (mainEntity → Organization), the founder's Person, BreadcrumbList, FAQPage. The sitewide
+// Organization node already names the founder. "At a Glance" is the main AEO asset (one plain-text fact per line).
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroPreview from '../components/blocks/hero/HeroPreview.astro';
+import Section from '../components/blocks/Section.astro';
+import FactList from '../components/blocks/FactList.astro';
+import SpecGrid from '../components/blocks/SpecGrid.astro';
+import FounderCard from '../components/blocks/FounderCard.astro';
+import IconGrid from '../components/blocks/IconGrid.astro';
+import LinkCards from '../components/blocks/LinkCards.astro';
+import ProofGrid from '../components/blocks/ProofGrid.astro';
+import Faq from '../components/blocks/Faq.astro';
+import CtaBlock from '../components/blocks/CtaBlock.astro';
+import IllusCourt from '../components/illustrations/IllusCourt.astro';
+import { breadcrumbSchema, faqSchema, aboutPageSchema, founderSchema } from '../lib/schema';
+import { getCaseStudies } from '../lib/case-studies';
+import { routes } from '../data/routes';
+import {
+  seo,
+  breadcrumb,
+  hero,
+  heroVariant,
+  answerCapsule,
+  glance,
+  whyFadeaway,
+  beliefs,
+  founder,
+  howWeWork,
+  whoWeWorkWith,
+  realWork,
+  faq,
+  cta,
+} from '../data/pages/about';
+
+const work =
+  import.meta.env.DEV || realWork.showInProduction ? await getCaseStudies({ tag: realWork.tag, limit: realWork.limit }) : [];
+
+// Bands alternate canvas / lighter "alt". #real-work only renders when it has entries, so the bands after it flip.
+const hasWork = work.length > 0;
+const band = (lighter: boolean) => (lighter ? 'alt' : 'canvas');
+
+const jsonLd = [
+  aboutPageSchema({ url: routes.about, name: seo.title, description: seo.description }),
+  founderSchema({ description: founder.bio }),
+  breadcrumbSchema(breadcrumb),
+  faqSchema(faq.items),
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
+  <!-- Dev-only preview: /about/?hero=statement | showcase | visual | all -->
+  <HeroPreview content={hero} variant={heroVariant} options={['statement', 'showcase', 'visual']} />
+
+  <!-- Answer capsule (AEO summary) is the wide intro; the fact sheet follows -->
+  <Section id={glance.id} heading={glance.heading} intro={answerCapsule} introStyle="wide" tone="alt" align="start">
+    <FactList items={glance.items} />
+  </Section>
+
+  <Section id={whyFadeaway.id} heading={whyFadeaway.heading} layout="split" class="overflow-x-clip">
+    {/* The shot the name comes from, under the pinned heading */}
+    <IllusCourt
+      slot="actions"
+      class="pointer-events-none -ml-6 mt-4 hidden w-[30rem] max-w-none opacity-40 [mask-image:radial-gradient(circle_at_50%_45%,#000_40%,transparent_80%)] lg:block"
+    />
+    <div class="flex flex-col gap-4">
+      {whyFadeaway.paragraphs.map((p) => <p class="text-pretty text-lg text-ink md:text-2xl md:leading-relaxed">{p}</p>)}
+    </div>
+    <!-- Founder's own version of the name story (open item in copy/about.md) renders here once supplied -->
+  </Section>
+
+  <Section id={beliefs.id} heading={beliefs.heading} tone="alt" align="start" class="overflow-x-clip">
+    <SpecGrid items={beliefs.items} columns={3} />
+  </Section>
+
+  <Section id={founder.id} heading={founder.heading} align="start">
+    <FounderCard name={founder.name} title={founder.title} bio={founder.bio} />
+  </Section>
+
+  <!-- Target of the Hero's "See How We Work" -->
+  <Section id={howWeWork.id} heading={howWeWork.heading} tone="alt" align="start">
+    <IconGrid items={howWeWork.items} columns={3} size="md" />
+  </Section>
+
+  <Section id={whoWeWorkWith.id} heading={whoWeWorkWith.heading} align="start">
+    <LinkCards items={whoWeWorkWith.items} />
+  </Section>
+
+  {
+    hasWork && (
+      <Section id={realWork.id} heading={realWork.heading} intro={realWork.intro} tone="alt" align="start">
+        <ProofGrid entries={work} />
+      </Section>
+    )
+  }
+
+  <Section id={faq.id} heading={faq.heading} width="narrow" tone={band(!hasWork)}>
+    <Faq faq={faq.items} />
+  </Section>
+
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow" tone={band(hasWork)}>
+    <CtaBlock
+      heading={cta.heading}
+      text={cta.text}
+      cta={cta.cta}
+      link={cta.link}
+      headingAs="h2"
+      headingId={`${cta.id}-heading`}
+      layout="center"
+    />
+  </Section>
+</BaseLayout>

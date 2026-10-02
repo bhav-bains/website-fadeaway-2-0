@@ -7,6 +7,7 @@ const abs = (path: string) => new URL(path, siteConfig.url).toString();
 
 export const ORGANIZATION_ID = `${siteConfig.url}/#organization`;
 export const WEBSITE_ID = `${siteConfig.url}/#website`;
+export const FOUNDER_ID = `${siteConfig.url}/#founder`;
 
 // Fadeaway is an Organization, never a LocalBusiness: it serves Canada and the US; Vancouver is only HQ.
 export function organizationSchema(): JsonLdNode {
@@ -19,6 +20,7 @@ export function organizationSchema(): JsonLdNode {
     description: siteConfig.description,
     email: siteConfig.email,
     foundingDate: siteConfig.foundingDate,
+    founder: { '@type': 'Person', '@id': FOUNDER_ID, name: siteConfig.founder.name },
     address: {
       '@type': 'PostalAddress',
       addressLocality: siteConfig.address.city,
@@ -135,6 +137,33 @@ export function serviceSchema({
       }),
     };
   });
+}
+
+// About page: the page itself, with the Organization as its main entity.
+export function aboutPageSchema({ url, name, description }: { url: string; name: string; description: string }): JsonLdNode {
+  return {
+    '@type': 'AboutPage',
+    '@id': `${abs(url)}#webpage`,
+    url: abs(url),
+    name,
+    description,
+    isPartOf: { '@id': WEBSITE_ID },
+    mainEntity: { '@id': ORGANIZATION_ID },
+  };
+}
+
+// Founder as a Person (fullest on the About page). sameAs only when a personal profile URL is supplied.
+export function founderSchema({ description }: { description?: string } = {}): JsonLdNode {
+  const { name, jobTitle, linkedin } = siteConfig.founder;
+  return {
+    '@type': 'Person',
+    '@id': FOUNDER_ID,
+    name,
+    jobTitle,
+    worksFor: { '@id': ORGANIZATION_ID },
+    ...(description && { description }),
+    ...(linkedin && { sameAs: [linkedin] }),
+  };
 }
 
 // One @graph per page: sitewide nodes first, then the page's own nodes.

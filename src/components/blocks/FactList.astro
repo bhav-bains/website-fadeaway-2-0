@@ -1,0 +1,28 @@
+---
+// Plain fact sheet: one fact per row as a definition list (term | value), hairline rows, two columns of rows on lg.
+// Built as an AEO asset: every fact is plain text in the raw HTML, one per line (About: "At a Glance").
+import clsx from 'clsx';
+
+export interface FactItem {
+  term: string;
+  value: string;
+}
+
+interface Props {
+  items: FactItem[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+---
+
+<dl class={clsx('grid border-t border-line lg:grid-cols-2 lg:gap-x-12', className)}>
+  {
+    items.map((item) => (
+      <div class="grid gap-1 border-b border-line py-3 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] sm:gap-4 md:py-4">
+        <dt class="text-meta font-semibold uppercase tracking-wider text-highlight">{item.term}</dt>
+        <dd class="text-pretty text-base text-ink md:text-lg">{item.value}</dd>
+      </div>
+    ))
+  }
+</dl>
