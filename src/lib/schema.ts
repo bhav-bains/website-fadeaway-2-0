@@ -178,6 +178,61 @@ export function webPageSchema({ url, name, description }: { url: string; name: s
   };
 }
 
+// Listing page: CollectionPage with an ItemList of the item URLs (e.g. case studies)
+export function collectionPageSchema({
+  url,
+  name,
+  description,
+  items,
+}: {
+  url: string;
+  name: string;
+  description: string;
+  items: { name: string; url: string }[];
+}): JsonLdNode {
+  return {
+    '@type': 'CollectionPage',
+    '@id': `${abs(url)}#webpage`,
+    url: abs(url),
+    name,
+    description,
+    isPartOf: { '@id': WEBSITE_ID },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: items.map((item, i) => ({ '@type': 'ListItem', position: i + 1, name: item.name, url: abs(item.url) })),
+    },
+  };
+}
+
+// Case study detail: an Article by Fadeaway about the client (an Organization with its live URL)
+export function caseStudySchema({
+  url,
+  headline,
+  description,
+  image,
+  client,
+}: {
+  url: string;
+  headline: string;
+  description: string;
+  /** Site-relative or absolute image URL */
+  image?: string;
+  client: { name: string; url?: string };
+}): JsonLdNode {
+  return {
+    '@type': 'Article',
+    '@id': `${abs(url)}#article`,
+    url: abs(url),
+    mainEntityOfPage: abs(url),
+    headline,
+    description,
+    ...(image && { image: abs(image) }),
+    author: { '@id': ORGANIZATION_ID },
+    publisher: { '@id': ORGANIZATION_ID },
+    about: { '@type': 'Organization', name: client.name, ...(client.url && { url: client.url }) },
+  };
+}
+
 // Founder as a Person (fullest on the About page). sameAs only when a personal profile URL is supplied.
 export function founderSchema({ description }: { description?: string } = {}): JsonLdNode {
   const { name, jobTitle, linkedin } = siteConfig.founder;

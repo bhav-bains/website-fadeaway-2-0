@@ -395,13 +395,13 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
   ],
 };
 
-/** From the Blog (tag boutique-fitness): renders nothing until /resources has real posts */
+/** From the Blog (tag boutique-fitness): renders nothing until /articles/ has real posts */
 export const blog = {
   id: 'blog',
   heading: 'From the Blog',
   intro: "Real, practical answers for studio owners, whether you're already running one or about to open one.",
   tag: 'boutique-fitness',
-  cta: { label: 'View All Resources', href: routes.resources },
+  cta: { label: 'View All Resources', href: routes.articles },
 } as const;
 
 /** Service JSON-LD entries. Custom Website Build is scoped, so it has no offer. */

@@ -1,0 +1,72 @@
+---
+// Case Studies listing (Resources dropdown). Content: src/data/pages/case-studies.ts (from copy/case-studies.md).
+// Cards come from the case-studies collection (strongest first). Production drops placeholders; with no published
+// case studies the page shows only the Hero, the More of Our Work line and the CTA (no empty grid).
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
+import Section from '../../components/blocks/Section.astro';
+import ProofGrid from '../../components/blocks/ProofGrid.astro';
+import Faq from '../../components/blocks/Faq.astro';
+import AuditCta from '../../components/blocks/AuditCta.astro';
+import ArrowLink from '../../components/ui/ArrowLink.astro';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+import { getCaseStudies, caseStudyHref } from '../../lib/case-studies';
+import { routes } from '../../data/routes';
+import { auditCta } from '../../data/pages/audit';
+import { seo, breadcrumb, hero, heroVariant, answerCapsule, moreWork, faq, listingCta } from '../../data/pages/case-studies';
+
+const entries = await getCaseStudies();
+// The capsule cites the NWP result, so it only renders while that case study is published
+const showCapsule = entries.some((e) => e.id === 'new-west-progressives');
+
+const jsonLd = [
+  collectionPageSchema({
+    url: routes.caseStudies,
+    name: seo.title,
+    description: seo.description,
+    items: entries.filter((e) => !e.data.placeholder).map((e) => ({ name: e.data.title, url: caseStudyHref(e) })),
+  }),
+  breadcrumbSchema(breadcrumb),
+  faqSchema(faq.items),
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
+  <!-- Dev-only preview: /case-studies/?hero=statement | showcase | visual | all -->
+  <HeroPreview content={hero} variant={heroVariant} options={['statement', 'showcase', 'visual']} />
+
+  <Section
+    id="case-studies"
+    intro={showCapsule ? answerCapsule : undefined}
+    introStyle="wide"
+    tone="alt"
+    align="start"
+  >
+    <ProofGrid entries={entries} headingAs="h2" />
+    <p class="mt-6 flex flex-wrap items-center gap-x-2 gap-y-1 border-t border-line pt-4 text-pretty text-base text-ink-soft md:mt-8 md:text-lg">
+      <span>{moreWork.text}</span>
+      <ArrowLink href={moreWork.link.href}>{moreWork.link.label}</ArrowLink>
+    </p>
+  </Section>
+
+  {
+    entries.length > 0 && (
+      <Section id={faq.id} heading={faq.heading} width="narrow">
+        <Faq faq={faq.items} />
+      </Section>
+    )
+  }
+
+  <Section id="cta" tone="alt" labelledBy="cta-heading">
+    <AuditCta
+      heading={listingCta.heading}
+      text={listingCta.text}
+      fieldLabel={auditCta.fieldLabel}
+      placeholder={auditCta.placeholder}
+      button={listingCta.button}
+      action={auditCta.action}
+      headingAs="h2"
+      headingId="cta-heading"
+    />
+  </Section>
+</BaseLayout>

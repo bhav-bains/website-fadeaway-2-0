@@ -5,7 +5,7 @@ import Button from '../../Button.astro';
 import type { HeroCta } from './types';
 
 interface Props {
-  primary: HeroCta;
+  primary?: HeroCta;
   secondary?: HeroCta;
   align?: 'center' | 'start';
   class?: string;
@@ -21,9 +21,13 @@ const { primary, secondary, align = 'start', class: className } = Astro.props;
     className,
   )}
 >
-  <Button href={primary.href} variant="primary" size="base" className="w-full sm:w-auto">
-    {primary.label}
-  </Button>
+  {
+    primary && (
+      <Button href={primary.href} variant="primary" size="base" className="w-full sm:w-auto">
+        {primary.label}
+      </Button>
+    )
+  }
   {
     secondary && (
       <Button href={secondary.href} variant="secondary" size="base" className="w-full sm:w-auto">

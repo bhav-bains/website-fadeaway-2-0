@@ -279,13 +279,13 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
   ],
 };
 
-/** From the Blog (tag growth): renders nothing until /resources has real Growth posts */
+/** From the Blog (tag growth): renders nothing until /articles/ has real Growth posts */
 export const blog = {
   id: 'blog',
   heading: 'From the Blog',
   intro: 'Real, practical answers to the SEO and AEO questions we hear most.',
   tag: 'growth',
-  cta: { label: 'View All Resources', href: routes.resources },
+  cta: { label: 'View All Resources', href: routes.articles },
 } as const;
 
 /** Service JSON-LD entries (copy/growth.md frontmatter `schema`). No prices. */

@@ -53,7 +53,7 @@ Notes for the build:
   - Design: "Build" and "Growth" are big and bold (each links to its page); the sub-services under each are subtle supporting text.
 - **Solutions** (dropdown): E-commerce → /solutions/ecommerce · Wellness & Counselling → /solutions/wellness-counselling · Boutique Fitness → /solutions/boutique-fitness · Sports Academies → /solutions/sports
 - **Labs** → /labs
-- **Resources** → /resources
+- **Resources** (dropdown, no landing page; founder, Oct 3): Case Studies → /case-studies/ · Portfolio Work → /portfolio/ · Articles → /articles/ · About → /about/
 - **Contact** → /contact
 - CTA button: **Get Your Free Audit** → /audit
 

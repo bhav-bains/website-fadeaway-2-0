@@ -3,7 +3,7 @@
 // Submitting (GET) carries the URL to the audit page (?website=...), which pre-fills its form so the visitor only
 // adds name, email and business there. A fallback line points visitors without a site elsewhere.
 // Gradient border, oversized line art (magnifier over a page with a gauge), no glow. Stacks on phones.
-// Heading is an H3: the block sits inside a titled Section.
+// Heading is an H3 inside a titled Section, or an H2 (`headingAs`) when it is the section's own heading.
 import clsx from 'clsx';
 import Button from '../Button.astro';
 import ArrowLink from '../ui/ArrowLink.astro';
@@ -17,10 +17,13 @@ interface Props {
   /** Audit page URL */
   action: string;
   fallback?: { text: string; link: { label: string; href: string } };
+  /** h3 inside a titled Section (default); h2 when the block is the section's own heading */
+  headingAs?: 'h2' | 'h3';
+  headingId?: string;
   class?: string;
 }
 
-const { heading, text, fieldLabel, placeholder, button, action, fallback, class: className } = Astro.props;
+const { heading, text, fieldLabel, placeholder, button, action, fallback, headingAs: Heading = 'h3', headingId, class: className } = Astro.props;
 const fieldId = 'audit-cta-website';
 ---
 
@@ -52,7 +55,7 @@ const fieldId = 'audit-cta-website';
     </svg>
 
     <div class="flex flex-col gap-1">
-      <h3 class="text-balance font-display text-2xl font-bold text-ink md:text-3xl">{heading}</h3>
+      <Heading id={headingId} class="text-balance font-display text-2xl font-bold text-ink md:text-3xl">{heading}</Heading>
       {text && <p class="max-w-xl text-pretty text-base text-ink-soft md:text-lg">{text}</p>}
     </div>
 
