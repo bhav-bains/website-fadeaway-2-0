@@ -34,6 +34,17 @@ const jsonLd = [contactPageSchema({ url: routes.contact, name: seo.title, descri
         {hero.emailLabel}{' '}
         <a href={`mailto:${hero.email}`} class="font-semibold text-highlight transition-colors hover:text-ink">{hero.email}</a>
       </p>
+      <p>
+        <a
+          href={hero.whatsapp.href}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex min-h-11 items-center gap-1.5 font-semibold text-highlight transition-colors hover:text-ink"
+        >
+          <SocialIcon platform="whatsapp" class="size-icon" />
+          {hero.whatsapp.label}
+        </a>
+      </p>
       <p class="text-pretty text-meta text-ink-muted">{hero.location}</p>
       <ul class="flex gap-2">
         {

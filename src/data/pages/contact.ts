@@ -1,4 +1,4 @@
-// Contact page + success page content, copied word for word from copy/contact.md (draft, awaiting approval).
+// Contact page + success page content, copied word for word from copy/contact.md (approved Oct 2).
 // Every "Get a Quote" / "Book a Call" / "Tell Us What You're Building" CTA lands here.
 import { routes } from '../routes';
 import { siteConfig } from '../site';
@@ -10,7 +10,7 @@ import type { LinkIndexItem } from '../../components/blocks/LinkIndex.astro';
 export const seo = {
   title: 'Contact Fadeaway Creatives | Start Your Project',
   description:
-    'Tell us about your business and what you need: a new website, SEO and AEO, an e-commerce store, or custom software. We reply within 24 hours.',
+    'Tell us about your business and what you need: a new website, SEO and AEO, an e-commerce store, or custom software. We reply within one business day.',
 };
 
 export const breadcrumb: BreadcrumbItem[] = [
@@ -21,10 +21,12 @@ export const breadcrumb: BreadcrumbItem[] = [
 export const hero = {
   eyebrow: 'Contact',
   h1: 'Contact Fadeaway Creatives',
-  sub: "Tell us about your business and what you need, whether it's a new website, SEO and AEO, an e-commerce store, or custom software. We'll reply within 24 hours.",
+  sub: "Tell us about your business and what you need, whether it's a new website, SEO and AEO, an e-commerce store, or custom software. We'll reply within one business day.",
   emailLabel: 'Email us directly:',
   email: siteConfig.email,
   location: siteConfig.locationLine,
+  // WhatsApp (founder, Oct 2: keep it public, as on the old page)
+  whatsapp: { label: 'Message us on WhatsApp', href: siteConfig.whatsapp },
 };
 
 /** Netlify form name unchanged from the old page so existing notifications keep working */
@@ -58,7 +60,7 @@ export const form: FormContent = {
     },
   ],
   submit: 'Send Message',
-  note: "We reply within 24 hours. We'll only use your details to respond.",
+  note: "We reply within one business day. We'll only use your details to respond.",
   footer: { text: 'Want to start free?', link: { label: 'Get a free audit', href: routes.audit } },
 };
 
@@ -68,7 +70,7 @@ export const nextSteps: { id: string; heading: string; items: StepItem[] } = {
   items: [
     { title: 'We read your message', text: "We look at what you've sent, and at your current site if you have one." },
     {
-      title: 'We reply within 24 hours',
+      title: 'We reply within one business day',
       text: 'With a few questions, or a time for a short call if that makes more sense.',
     },
     {
@@ -107,7 +109,7 @@ export const success: {
 } = {
   seo: { title: 'Message Sent | Fadeaway Creatives', description: 'Your message is in.' },
   h1: 'Your Message Is In',
-  text: "Thanks for reaching out. We've got your details and we'll reply within 24 hours.",
+  text: "Thanks for reaching out. We've got your details and we'll reply within one business day.",
   linksHeading: 'While you wait, take a look around.',
   links: [
     { label: 'Build', href: routes.build },
