@@ -1,6 +1,6 @@
 ---
 // Case Studies listing (Resources dropdown). Content: src/data/pages/case-studies.ts (from copy/case-studies.md).
-// Cards come from the case-studies collection (strongest first). Production drops placeholders; with no published
+// Cards come from the case-studies collection (strongest first), real entries only (no placeholders, even in dev); with no published
 // case studies the page shows only the Hero, the More of Our Work line and the CTA (no empty grid).
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
@@ -15,7 +15,7 @@ import { routes } from '../../data/routes';
 import { auditCta } from '../../data/pages/audit';
 import { seo, breadcrumb, hero, heroVariant, answerCapsule, moreWork, faq, listingCta } from '../../data/pages/case-studies';
 
-const entries = await getCaseStudies();
+const entries = await getCaseStudies({ realOnly: true });
 // The capsule cites the NWP result, so it only renders while that case study is published
 const showCapsule = entries.some((e) => e.id === 'new-west-progressives');
 
@@ -24,7 +24,7 @@ const jsonLd = [
     url: routes.caseStudies,
     name: seo.title,
     description: seo.description,
-    items: entries.filter((e) => !e.data.placeholder).map((e) => ({ name: e.data.title, url: caseStudyHref(e) })),
+    items: entries.map((e) => ({ name: e.data.title, url: caseStudyHref(e) })),
   }),
   breadcrumbSchema(breadcrumb),
   faqSchema(faq.items),

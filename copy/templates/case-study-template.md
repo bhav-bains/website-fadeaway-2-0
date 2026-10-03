@@ -164,5 +164,5 @@ permissionConfirmed: true  # required; the build won't accept a testimonial with
 | Client | Work | Tags | Results collected | Permission | Image | Live |
 |---|---|---|---|---|---|---|
 | New West Progressives | Website + campaign operations | featured, build, growth | ☐ | ☐ | ☐ | ☐ |
-| Echo Storytelling | Website + marketing (Fadeaway-era work only) | featured, build, growth | ☐ | ☐ | ☐ | ☐ |
+| Echo Storytelling | Website rebuild + ongoing growth | featured, build, growth | ☐ | ☐ | ☐ | ☐ |
 | HeartStamp | Technical, on-page, and AI visibility audit + growth roadmap | featured, growth (+ ecommerce?) | ☐ | ☐ | ☐ | ☐ |

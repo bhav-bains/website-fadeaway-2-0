@@ -49,7 +49,8 @@ const facts = [
 // Testimonial: only a permission-confirmed entry for this client
 const testimonial = (await getCollection('testimonials')).find((t) => t.data.company === data.client);
 
-const others = all.filter((e) => e.id !== entry.id).slice(0, 2);
+// More Case Studies: real entries only (placeholder pages still exist in dev for cards on other pages)
+const others = all.filter((e) => e.id !== entry.id && !e.data.placeholder).slice(0, 2);
 const description = data.metaDescription ?? data.summary;
 const shareImage = data.ogImage ?? data.image;
 

@@ -195,9 +195,9 @@ timeframe), written permission to be named, and an image before it renders. Neve
 - New West Progressives (NWP): website design, setup, and launch for the New Westminster civic party,
   plus monthly campaign operations (maintenance, landing pages, petition pages, KPI dashboard).
   Suggested tags: featured, build, growth.
-- Echo Storytelling Agency: website and marketing work, including the white paper landing page
-  (echostories.com/white-paper-story). Suggested tags: featured, build, growth.
-  (Part of Bhav's Echo work was done as an Echo contractor in 2023. Show only the work Fadeaway did as Fadeaway.)
+- Echo Storytelling Agency: website rebuild plus ongoing SEO, AEO, landing pages and campaigns.
+  Suggested tags: featured, build, growth. (Founder, Oct 3: Bhav worked inside Echo's team as part of Fadeaway,
+  so the whole rebuild is Fadeaway work. Don't single out individual pieces like the white paper page.)
 - HeartStamp: technical, on-page, and AI visibility audit plus a 30-60-90 day growth roadmap on a
   Next.js stack. Suggested tags: featured, growth (+ ecommerce if HeartStamp sells products online).
 Portfolio entries (no case study): Conexus Credit Union Merger, Luisa Paixao, Strength Counselling,
