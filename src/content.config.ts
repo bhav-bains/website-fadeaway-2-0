@@ -30,10 +30,6 @@ const caseStudies = defineCollection({
         ogImage: image().optional(),
         // Extra screenshots shown on the detail page ("A Closer Look"); first item renders wide
         gallery: z.array(z.object({ image: image(), alt: z.string() })).default([]),
-        // Article schema dates. Normally left out: they come from git (src/lib/git-dates.ts), so datePublished is
-        // the day the entry reaches `main` (launch) and dateModified the day it last changed there. Set to override.
-        datePublished: z.coerce.date().optional(),
-        dateModified: z.coerce.date().optional(),
         tags,
         rank: z.number().int().default(100), // lower shows first in proof grids
         placeholder: z.boolean().default(false),

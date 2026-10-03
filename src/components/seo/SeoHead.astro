@@ -1,7 +1,8 @@
 ---
 // Everything a page needs in <head> for search and sharing (CLAUDE.md section 4).
 import { siteConfig } from '../../data/site';
-import { buildGraph, serializeJsonLd, type JsonLdNode } from '../../lib/schema';
+import { buildGraph, serializeJsonLd, webPageSchema, type JsonLdNode } from '../../lib/schema';
+import { pageDates } from '../../lib/page-dates';
 
 export interface SeoProps {
   title?: string;
@@ -40,6 +41,26 @@ if (description.length > DESCRIPTION_MAX) {
 const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const canonicalUrl = canonical ?? new URL(path, siteConfig.url).toString();
 const ogImageUrl = new URL(ogImage, siteConfig.url).toString();
+
+// Dates from git (src/lib/page-dates.ts; same source as the sitemap <lastmod>). Metadata only, never shown.
+// Indexable pages: dateModified on the page's own node (WebPage, CollectionPage, AboutPage, ContactPage or
+// Article); a page without one gets a WebPage node. Articles also get datePublished + article:*_time meta.
+const PAGE_NODE_TYPES = ['WebPage', 'CollectionPage', 'AboutPage', 'ContactPage', 'Article'];
+const dates = noIndex ? {} : pageDates(path);
+const pageNode = jsonLd.find((node) => PAGE_NODE_TYPES.includes(node['@type'] as string));
+const isArticle = pageNode?.['@type'] === 'Article';
+const withDates = (node: JsonLdNode): JsonLdNode => ({
+  ...node,
+  ...(isArticle && dates.published && { datePublished: dates.published }),
+  ...(dates.modified && { dateModified: dates.modified }),
+});
+const pageJsonLd = noIndex
+  ? jsonLd
+  : pageNode
+    ? jsonLd.map((node) => (node === pageNode ? withDates(node) : node))
+    : [withDates(webPageSchema({ url: path, name: title, description })), ...jsonLd];
+const articleTimes = ogType === 'article' && !noIndex ? dates : {};
+
 const robots = noIndex
   ? 'noindex, nofollow'
   : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
@@ -59,6 +80,8 @@ const robots = noIndex
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImageUrl} />
 <meta property="og:image:alt" content={ogImageAlt} />
+{articleTimes.published && <meta property="article:published_time" content={articleTimes.published} />}
+{articleTimes.modified && <meta property="article:modified_time" content={articleTimes.modified} />}
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
@@ -66,4 +89,4 @@ const robots = noIndex
 <meta name="twitter:image" content={ogImageUrl} />
 <meta name="twitter:image:alt" content={ogImageAlt} />
 
-<script type="application/ld+json" set:html={serializeJsonLd(buildGraph(jsonLd))} />
+<script type="application/ld+json" set:html={serializeJsonLd(buildGraph(pageJsonLd))} />

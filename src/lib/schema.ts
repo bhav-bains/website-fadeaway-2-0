@@ -204,15 +204,14 @@ export function collectionPageSchema({
   };
 }
 
-// Case study detail: an Article by Fadeaway about the client (an Organization with its live URL)
+// Case study detail: an Article by Fadeaway about the client (an Organization with its live URL).
+// datePublished / dateModified are added by SeoHead from git (src/lib/page-dates.ts).
 export function caseStudySchema({
   url,
   headline,
   description,
   image,
   client,
-  datePublished,
-  dateModified,
 }: {
   url: string;
   headline: string;
@@ -220,9 +219,6 @@ export function caseStudySchema({
   /** Site-relative or absolute image URL */
   image?: string;
   client: { name: string; url?: string };
-  /** ISO dates (YYYY-MM-DD); left out when unknown, never guessed */
-  datePublished?: string;
-  dateModified?: string;
 }): JsonLdNode {
   return {
     '@type': 'Article',
@@ -232,8 +228,6 @@ export function caseStudySchema({
     headline,
     description,
     ...(image && { image: abs(image) }),
-    ...(datePublished && { datePublished }),
-    ...((dateModified ?? datePublished) && { dateModified: dateModified ?? datePublished }),
     author: { '@id': ORGANIZATION_ID },
     publisher: { '@id': ORGANIZATION_ID },
     about: { '@type': 'Organization', name: client.name, ...(client.url && { url: client.url }) },
