@@ -165,4 +165,4 @@ permissionConfirmed: true  # required; the build won't accept a testimonial with
 |---|---|---|---|---|---|---|
 | New West Progressives | Website + campaign operations | featured, build, growth | ☐ | ☐ | ☐ | ☐ |
 | Echo Storytelling | Website rebuild + ongoing growth | featured, build, growth | ☐ | ☐ | ☐ | ☐ |
-| HeartStamp | Technical, on-page, and AI visibility audit + growth roadmap | featured, growth (+ ecommerce?) | ☐ | ☐ | ☐ | ☐ |
+| HeartStamp | Go-to-market growth partner (SEO, AEO, catalog, CRO) | featured, growth, ecommerce | ☐ | ☐ | ☐ | ☐ |

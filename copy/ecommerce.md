@@ -185,8 +185,8 @@ Stores we've built and grown.
 
 <!--
 Case studies (founder, Sept 30): the three real case studies are New West Progressives, Echo
-Storytelling, and HeartStamp. None is tagged ecommerce yet (HeartStamp may be, if it sells products
-online), so this section renders nothing for now. That's expected.
+Storytelling, and HeartStamp. HeartStamp is tagged ecommerce (Oct 3), so it fills this section once Real Work
+sections go live (with /portfolio).
 The e-commerce stores below are portfolio entries on /portfolio, not case studies:
 Luisa Paixao (luisa-paixao.com), Boarderline Skate Shop (boarderlineskateshop.ca), Blank A Brand
 (blankabrand.com), Chronic Ink Tattoo (chronicinktattoo.com), CAD Details (caddetails.com),

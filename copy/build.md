@@ -198,8 +198,8 @@ timeframe), written permission to be named, and an image before it renders. Neve
 - Echo Storytelling Agency: website rebuild plus ongoing SEO, AEO, landing pages and campaigns.
   Suggested tags: featured, build, growth. (Founder, Oct 3: Bhav worked inside Echo's team as part of Fadeaway,
   so the whole rebuild is Fadeaway work. Don't single out individual pieces like the white paper page.)
-- HeartStamp: technical, on-page, and AI visibility audit plus a 30-60-90 day growth roadmap on a
-  Next.js stack. Suggested tags: featured, growth (+ ecommerce if HeartStamp sells products online).
+- HeartStamp: go-to-market growth partner (founder, Oct 3): SEO, AEO, technical SEO, catalog and mega menu,
+  content and organic funnels, UX/UI reviews and CRO. Tags: featured, growth, ecommerce.
 Portfolio entries (no case study): Conexus Credit Union Merger, Luisa Paixao, Strength Counselling,
 Boarderline Skate Shop, Blank A Brand, Chronic Ink Tattoo, CAD Details, CPRO Solutions.
 -->

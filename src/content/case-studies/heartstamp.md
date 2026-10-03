@@ -1,10 +1,12 @@
 ---
-# REAL CASE STUDY: HeartStamp. Copy by Claude, Oct 3 2026; founder to confirm wording and results.
+# REAL CASE STUDY: HeartStamp. Copy by Claude, Oct 3 2026; wording, facts and alt text approved by the founder Oct 3.
 # Client consent: confirmed by the founder. Testimonial: to be decided.
 # Not a web design project (founder, Oct 3): growth partner for an early-stage startup. SEO, AEO, technical SEO,
 # go-to-market, catalog management, mega menu, content strategy, organic and conversion funnels, UX/UI reviews, CRO.
 # RESULTS: none supplied yet. The chips below describe the work, not outcomes. Swap in real results
 # (organic traffic, indexed pages, rankings, AI mentions, conversion rate) before launch if you have them.
+# Founder, Oct 3: keep the work-based chips until real results are sent. HeartStamp's AI features
+# (Stampy AI search, AI-designed cards) are their product, not our work: never claim them.
 # Never round up. No before image: HeartStamp is growth work on their own build, not a redesign.
 title: "Building HeartStamp's organic growth engine from the ground up"
 client: "HeartStamp"
@@ -24,6 +26,19 @@ services:
 timeline: "Go-to-market growth partner · Ongoing"
 image: ../../assets/case-studies/heartstamp/heartstamp-hero.png
 imageAlt: "HeartStamp's birthday category page and a personalized card product page in browser windows"
+ogImage: ../../assets/case-studies/heartstamp/heartstamp-og.png
+# Detail page "A Closer Look" (first one renders wide). Alt text approved Oct 3.
+gallery:
+  - image: ../../assets/case-studies/heartstamp/heartstamp-responsive.png
+    alt: "A HeartStamp card product page on a laptop and a phone, with printed and digital card options"
+  - image: ../../assets/case-studies/heartstamp/heartstamp-mobile.png
+    alt: "Three phone screens of HeartStamp: the birthday category, a card product page, and the homepage"
+  - image: ../../assets/case-studies/heartstamp/heartstamp-home.png
+    alt: "The HeartStamp homepage, Pretty in print. Magic in Digital., with the occasion menu across the top"
+  - image: ../../assets/case-studies/heartstamp/heartstamp-category.png
+    alt: "The HeartStamp birthday category page with filters for recipient, age, style and tone"
+  - image: ../../assets/case-studies/heartstamp/heartstamp-catalog.png
+    alt: "HeartStamp catalog rows: weekly trending cards and text and word cards"
 url: "https://heartstamp.com/"
 tags: ["featured", "growth", "ecommerce"]
 rank: 30
