@@ -95,6 +95,9 @@ Home → Build
 
 ## Built Right, From Day One {#standard}
 
+We build your 24/7 salesperson: a site that answers questions, handles doubts, and books the next step while you're busy.
+<!-- Added Oct 2 (founder): "your website is a 24/7 salesperson" framing. One line per page, worded for this audience. -->
+
 ### AEO & SEO Built In
 Schema markup, structured data, and answer-ready content from launch, not bolted on later.
 

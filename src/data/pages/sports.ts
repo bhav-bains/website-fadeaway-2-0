@@ -53,7 +53,9 @@ export const problem: {
 } = {
   id: 'problem',
   heading: 'What Parents See Before They Ever Call You',
-  intro: 'Parents compare clubs online long before they show up to a tryout. Most club websites lose them in a few quiet ways.',
+  // Midnight line added Oct 2 (24/7 salesperson framing)
+  intro:
+    'Parents compare clubs online long before they show up to a tryout, and they check fees and tryout dates at midnight. Your site should answer before another club does. Most club websites lose them in a few quiet ways.',
   items: [
     {
       title: "Your Site Looks Like Every Other Club's",

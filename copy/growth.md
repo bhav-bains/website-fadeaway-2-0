@@ -121,7 +121,10 @@ names, each as number + metric + timeframe + client type. Example of the FORMAT 
 
 (Emits HowTo schema. This is the page's centerpiece.)
 
+A great salesperson in an empty room sells nothing. Growth is how we send the right people in.
+
 Growth isn't one tactic. It's a system, and every step feeds the next.
+<!-- Added Oct 2 (founder): "your website is a 24/7 salesperson" framing. One line per page, worded for this audience. -->
 
 1. **Measure the baseline**: Before we change anything, we make sure every booking, form, call, and sale is tracked in Google Analytics and Search Console, so you know what your revenue looks like today and can see exactly what moves it.
 2. **Find the leaks**: The Full Audit maps where you're losing customers: pages that don't rank, AI tools that don't mention you, slow pages, unclear offers, and forms people abandon. You get a prioritized 3 to 6 month action plan.

@@ -111,7 +111,8 @@ People rarely search for "a therapist." They search for help with anxiety, coupl
 More people ask ChatGPT, Perplexity, or Google's AI Overviews to suggest a provider. Those tools recommend practices whose websites clearly state who they help, where, how to book, and what they accept.
 
 ### Booking Has to Be Effortless
-Most first visits happen on a phone, often late at night. If booking takes more than a few taps, or sends people to a confusing third-party page, they leave and book somewhere else.
+Most first visits happen on a phone, often late at night. If booking takes more than a few taps, or sends people to a confusing third-party page, they leave and book somewhere else. Your website should be the one booking new clients at 11pm, long after your front desk has gone home.
+<!-- Added Oct 2 (founder): "your website is a 24/7 salesperson" framing. One line per page, worded for this audience. -->
 
 [CTA touchpoint: Want to see how your practice shows up today? Get a Free Audit → /audit/]
 

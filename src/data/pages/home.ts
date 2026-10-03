@@ -5,6 +5,7 @@ import type { HeroContent, HeroVariant } from '../../components/blocks/hero/type
 import type { IconGridItem } from '../../components/blocks/IconGrid.astro';
 import type { CardGridItem } from '../../components/blocks/CardGrid.astro';
 import type { NumberedListItem } from '../../components/blocks/NumberedList.astro';
+import type { PipelineItem } from '../../components/blocks/Pipeline.astro';
 import type { ServiceGridItem } from '../../components/blocks/ServiceGrid.astro';
 import type { StepItem } from '../../components/blocks/Steps.astro';
 import type { FeatureListItem } from '../../components/blocks/FeatureList.astro';
@@ -259,6 +260,38 @@ export const cta = {
   heading: 'Ready to Grow?',
   text: 'Start with a free Instant Audit: a clear picture of where you stand, no obligation.',
   cta: { label: 'Get Your Free Audit', href: routes.audit },
+};
+
+// Added Oct 2 (founder): the "24/7 salesperson" framing, laid out as a 5-stage sales pipeline.
+// copy/home.md holds one more line ("This site works the same way...") to add AT LAUNCH ONLY IF the
+// free audit report workflow is live, so the claim is true. Not rendered.
+export const salesperson: { id: string; heading: string; intro: string; items: PipelineItem[] } = {
+  id: 'salesperson',
+  heading: 'Your Website Should Be Your Best Salesperson',
+  intro:
+    "It works 24/7, never calls in sick, and talks to every customer the moment they're ready. Most websites just sit there. We build yours to do the whole job.",
+  items: [
+    {
+      title: 'Find the Customers',
+      text: 'SEO puts you in front of people searching on Google, and AEO makes your case when someone asks an AI assistant for a recommendation.',
+    },
+    {
+      title: 'Answer Their Questions',
+      text: "Clear pages and FAQs handle what a good salesperson would explain: what you offer, what it costs, and why you're the right choice.",
+    },
+    {
+      title: 'Close the Sale',
+      text: 'Booking, checkout, and sign-up flows that make saying yes effortless, on any phone, at any hour.',
+    },
+    {
+      title: 'Follow Up',
+      text: 'Email, reviews, and lead campaigns that bring people back instead of letting them go cold.',
+    },
+    {
+      title: 'Report the Numbers',
+      text: 'A dashboard showing which visits turned into bookings and sales, so you know exactly what your website is earning.',
+    },
+  ],
 };
 
 export const why: { id: string; heading: string; items: NumberedListItem[] } = {

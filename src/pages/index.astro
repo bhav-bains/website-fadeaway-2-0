@@ -7,6 +7,7 @@ import Section from '../components/blocks/Section.astro';
 import IconGrid from '../components/blocks/IconGrid.astro';
 import CardGrid from '../components/blocks/CardGrid.astro';
 import NumberedList from '../components/blocks/NumberedList.astro';
+import Pipeline from '../components/blocks/Pipeline.astro';
 import ServiceGrid from '../components/blocks/ServiceGrid.astro';
 import Steps from '../components/blocks/Steps.astro';
 import Button from '../components/Button.astro';
@@ -26,6 +27,7 @@ import {
   answerCapsule,
   trust,
   industries,
+  salesperson,
   why,
   services,
   howItWorks,
@@ -70,19 +72,23 @@ const jsonLd = [
     <CardGrid items={industries.items} columns={2} />
   </Section>
 
-  <Section id={why.id} heading={why.heading} layout="split" tone="alt">
+  <Section id={salesperson.id} heading={salesperson.heading} intro={salesperson.intro} tone="alt">
+    <Pipeline items={salesperson.items} />
+  </Section>
+
+  <Section id={why.id} heading={why.heading} layout="split">
     <NumberedList items={why.items} />
   </Section>
 
-  <Section id={services.id} eyebrow={services.eyebrow} heading={services.heading}>
+  <Section id={services.id} eyebrow={services.eyebrow} heading={services.heading} tone="alt">
     <ServiceGrid items={services.items} />
   </Section>
 
-  <Section id={howItWorks.id} heading={howItWorks.heading} tone="alt">
+  <Section id={howItWorks.id} heading={howItWorks.heading}>
     <Steps items={howItWorks.items} />
   </Section>
 
-  <Section id={ecommerce.id} heading={ecommerce.heading} intro={ecommerce.body} layout="split">
+  <Section id={ecommerce.id} heading={ecommerce.heading} intro={ecommerce.body} layout="split" tone="alt">
     <Fragment slot="actions">
       <Button href={ecommerce.cta.href} variant="secondary" size="base">{ecommerce.cta.label}</Button>
       <ArrowLink href={ecommerce.link.href}>{ecommerce.link.label}</ArrowLink>
@@ -97,14 +103,14 @@ const jsonLd = [
     </div>
   </Section>
 
-  <Section id={labs.id} heading={labs.heading} intro={labs.intro} tone="alt">
+  <Section id={labs.id} heading={labs.heading} intro={labs.intro}>
     <IconGrid items={labs.items} columns={2} size="md" />
     <CtaBlock {...labs.cta} class="mt-4 md:mt-6" />
   </Section>
 
   {
     featuredWork.length > 0 && (
-      <Section id={work.id} heading={work.heading} intro={work.intro}>
+      <Section id={work.id} heading={work.heading} intro={work.intro} tone="alt">
         <ProofGrid entries={featuredWork} />
         <div class="mt-4 flex justify-center md:mt-6">
           <Button href={work.cta.href} variant="secondary" size="base">
@@ -115,15 +121,15 @@ const jsonLd = [
     )
   }
 
-  <Section id={method.id} heading={method.heading} intro={method.intro} layout="split" tone={band(hasWork)}>
+  <Section id={method.id} heading={method.heading} intro={method.intro} layout="split" tone={band(!hasWork)}>
     <FeatureList items={method.items} />
   </Section>
 
-  <Section id={faq.id} heading={faq.heading} width="narrow" tone={band(!hasWork)}>
+  <Section id={faq.id} heading={faq.heading} width="narrow" tone={band(hasWork)}>
     <Faq faq={faq.items} />
   </Section>
 
-  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow" tone={band(hasWork)}>
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow" tone={band(!hasWork)}>
     <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
   </Section>
 </BaseLayout>

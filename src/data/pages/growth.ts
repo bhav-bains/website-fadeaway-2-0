@@ -73,13 +73,17 @@ export const results: { value: string; label: string }[] = [];
 export const revenueSystem: {
   id: string;
   heading: string;
-  intro: string;
+  intro: string[];
   items: StepItem[];
   cta: { heading: string; button: string };
 } = {
   id: 'revenue-system',
   heading: 'How We Move Revenue',
-  intro: "Growth isn't one tactic. It's a system, and every step feeds the next.",
+  intro: [
+    // Added Oct 2 (24/7 salesperson framing)
+    'A great salesperson in an empty room sells nothing. Growth is how we send the right people in.',
+    "Growth isn't one tactic. It's a system, and every step feeds the next.",
+  ],
   items: [
     {
       title: 'Measure the baseline',

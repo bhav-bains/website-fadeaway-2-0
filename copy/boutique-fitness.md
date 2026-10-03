@@ -97,7 +97,8 @@ Home → Boutique Fitness
 Most studio websites have the same quiet problems, and most owners have never had anyone point them out.
 
 ### The Booking Flow Loses People
-If booking a class takes more than a couple of taps, or bounces people to a confusing schedule page, some of them simply leave. Most studio sites make this harder than it needs to be.
+If booking a class takes more than a couple of taps, or bounces people to a confusing schedule page, some of them simply leave. Most studio sites make this harder than it needs to be. Your site should fill tomorrow's 6am class while you're teaching tonight's.
+<!-- Added Oct 2 (founder): "your website is a 24/7 salesperson" framing. One line per page, worded for this audience. -->
 
 ### Invisible on the Map in Your Own Neighbourhood
 Someone searches "yoga studio near me" three blocks from your door, and a studio across town shows up first. That's usually a fixable Google Business Profile and site problem, not bad luck.

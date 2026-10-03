@@ -1,0 +1,80 @@
+---
+// Stages laid out like a CRM sales pipeline: chevron segments that flow from accent (first stage) to highlight (last).
+// lg and up: one continuous horizontal stage bar, each stage's text under its segment.
+// Below lg: full-width segments pointing down, stacked, text under each.
+// Colours are mixed from theme tokens (no hex); the chevron shape is decoration only (clip-path).
+import clsx from 'clsx';
+
+export interface PipelineItem {
+  title: string;
+  text: string;
+}
+
+interface Props {
+  items: PipelineItem[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+const pad = (n: number) => String(n).padStart(2, '0');
+const last = items.length - 1;
+
+// Stage tint: accent at the first stage, blending to highlight at the last
+const tint = (i: number) => {
+  const accentShare = last > 0 ? Math.round(100 - (i / last) * 100) : 100;
+  return `--stage: color-mix(in oklab, var(--color-accent) ${accentShare}%, var(--color-highlight));`;
+};
+
+const lgColumns = { 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4', 5: 'lg:grid-cols-5', 6: 'lg:grid-cols-6' } as Record<number, string>;
+---
+
+<ol class={clsx('grid gap-3 lg:gap-x-1 lg:gap-y-0', lgColumns[items.length] ?? 'lg:grid-cols-5', className)}>
+  {
+    items.map((item, i) => (
+      <li class="flex flex-col gap-2 lg:gap-3" style={tint(i)}>
+        <div
+          class={clsx(
+            'pipeline-stage flex min-h-16 items-center gap-1.5 bg-[color-mix(in_oklab,var(--stage)_20%,transparent)] px-3 pb-3 pt-2',
+            'lg:min-h-20 lg:pb-2 lg:pr-5',
+            i === 0 ? 'pipeline-stage--first' : 'lg:pl-6',
+          )}
+        >
+          <span aria-hidden="true" class="font-display text-meta font-semibold tabular-nums text-[var(--stage)]">
+            {pad(i + 1)}
+          </span>
+          <h3 class="text-balance font-display text-lg font-bold leading-tight text-ink">{item.title}</h3>
+        </div>
+        <p class="text-pretty text-base text-ink-muted lg:pr-2 lg:text-meta xl:text-base">{item.text}</p>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  /* Phones/tablets: each stage points down. lg: chevrons pointing right, notched to nest into the previous stage. */
+  .pipeline-stage {
+    --tip: 0.75rem;
+    border-radius: var(--radius-control) var(--radius-control) 0 0;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--tip)), 50% 100%, 0 calc(100% - var(--tip)));
+  }
+
+  @media (min-width: 64rem) {
+    .pipeline-stage {
+      --tip: 1rem;
+      border-radius: 0;
+      clip-path: polygon(
+        0 0,
+        calc(100% - var(--tip)) 0,
+        100% 50%,
+        calc(100% - var(--tip)) 100%,
+        0 100%,
+        var(--tip) 50%
+      );
+    }
+
+    .pipeline-stage--first {
+      border-radius: var(--radius-control) 0 0 var(--radius-control);
+      clip-path: polygon(0 0, calc(100% - var(--tip)) 0, 100% 50%, calc(100% - var(--tip)) 100%, 0 100%);
+    }
+  }
+</style>

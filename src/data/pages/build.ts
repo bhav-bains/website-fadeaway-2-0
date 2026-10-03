@@ -41,9 +41,11 @@ export const hero: HeroContent = {
   visual: 'wireframe',
 };
 
-export const standard: { id: string; heading: string; items: SpecItem[] } = {
+export const standard: { id: string; heading: string; intro: string; items: SpecItem[] } = {
   id: 'standard',
   heading: 'Built Right, From Day One',
+  // Added Oct 2 (24/7 salesperson framing); renders after the answer capsule
+  intro: "We build your 24/7 salesperson: a site that answers questions, handles doubts, and books the next step while you're busy.",
   items: [
     {
       title: 'AEO & SEO Built In',

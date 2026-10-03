@@ -114,7 +114,8 @@ This is still early. Getting your store's foundations right now is a real head s
 
 (Heading fixed Sept 29: was "Built for How E-commerce Actually Works".)
 
-Every store we build or grow follows the same standard, whatever platform you're on.
+Your store is open at 2am. It should sell like it. Every store we build or grow follows the same standard, whatever platform you're on.
+<!-- Added Oct 2 (founder): "your website is a 24/7 salesperson" framing. One line per page, worded for this audience. -->
 
 ### Designed to Convert, Not Just Look Good
 Every design decision is built around your actual buying flow: product pages, cart, and checkout, not just visual polish.
