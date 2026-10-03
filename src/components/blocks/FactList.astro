@@ -10,13 +10,15 @@ export interface FactItem {
 
 interface Props {
   items: FactItem[];
+  /** Columns of rows on lg: 2 (default) or 1 (narrow asides) */
+  columns?: 1 | 2;
   class?: string;
 }
 
-const { items, class: className } = Astro.props;
+const { items, columns = 2, class: className } = Astro.props;
 ---
 
-<dl class={clsx('grid border-t border-line lg:grid-cols-2 lg:gap-x-12', className)}>
+<dl class={clsx('grid border-t border-line', columns === 2 && 'lg:grid-cols-2 lg:gap-x-12', className)}>
   {
     items.map((item) => (
       <div class="grid gap-1 border-b border-line py-3 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] sm:gap-4 md:py-4">

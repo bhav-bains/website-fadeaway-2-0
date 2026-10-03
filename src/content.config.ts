@@ -19,6 +19,17 @@ const caseStudies = defineCollection({
         image: image().optional(),
         imageAlt: z.string().optional(),
         url: z.url().optional(),
+        // Detail page (copy/case-studies.md, "Schema additions"). All optional so placeholders still build.
+        metaDescription: z.string().max(155).optional(),
+        industry: z.string().optional(),
+        services: z.array(z.string()).default([]),
+        timeline: z.string().optional(),
+        beforeImage: image().optional(),
+        beforeImageAlt: z.string().optional(),
+        // Share image for the detail page (1200x630); falls back to `image`, then the sitewide default
+        ogImage: image().optional(),
+        // Extra screenshots shown on the detail page ("A Closer Look"); first item renders wide
+        gallery: z.array(z.object({ image: image(), alt: z.string() })).default([]),
         tags,
         rank: z.number().int().default(100), // lower shows first in proof grids
         placeholder: z.boolean().default(false),

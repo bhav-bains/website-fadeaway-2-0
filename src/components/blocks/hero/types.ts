@@ -17,7 +17,8 @@ export interface HeroContent {
   /** Real service-term heading; the page's only H1 */
   h1: string;
   sub?: string;
-  primaryCta: HeroCta;
+  /** Optional: listing pages (e.g. Case Studies) have no Hero buttons */
+  primaryCta?: HeroCta;
   secondaryCta?: HeroCta;
   /** AEO summary paragraph; must stay plain text in the raw HTML */
   answerCapsule?: string;

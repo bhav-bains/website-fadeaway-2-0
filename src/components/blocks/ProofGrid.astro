@@ -1,18 +1,23 @@
 ---
-// Case-study cards from the case-studies collection: image, client, title, summary, result chips.
-// Renders nothing when given no entries; pages should also skip the surrounding Section (CLAUDE.md section 4).
+// Case-study cards from the case-studies collection: image, client, title, summary, result chips, and a
+// "Read the case study" link to /case-studies/[slug]/. The whole card is clickable (stretched link); the live-site
+// link lives on the detail page. Renders nothing when given no entries; pages should also skip the surrounding
+// Section (CLAUDE.md section 4).
 // Columns follow the count: a single case study becomes one wide feature (image left, text right from md),
-// 2 sit centred side by side, 3+ go 3 across on lg.
+// 2 sit centred side by side, 3+ go 3 across on lg. `headingAs` sets the card title level (h3 by default).
 import { Image } from 'astro:assets';
 import clsx from 'clsx';
-import type { CaseStudy } from '../../lib/case-studies';
+import { caseStudyHref, type CaseStudy } from '../../lib/case-studies';
+import { cardLinkLabel } from '../../data/pages/case-studies';
+import { visibleTags } from '../../data/tags';
 
 interface Props {
   entries: CaseStudy[];
+  headingAs?: 'h2' | 'h3';
   class?: string;
 }
 
-const { entries, class: className } = Astro.props;
+const { entries, headingAs: Title = 'h3', class: className } = Astro.props;
 
 const single = entries.length === 1;
 const layout =
@@ -26,70 +31,85 @@ const layout =
 {
   entries.length > 0 && (
     <ul class={clsx('grid gap-3 lg:gap-4', layout, className)}>
-      {entries.map(({ data }) => (
-        <li
-          class={clsx(
-            'flex flex-col overflow-hidden rounded-card border border-line-strong bg-surface-raised/60',
-            single && 'md:grid md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]',
-          )}
-        >
-          {data.image && (
-            <Image
-              src={data.image}
-              alt={data.imageAlt ?? ''}
-              widths={[400, 640, 960]}
-              sizes={single ? '(min-width: 768px) 60vw, 100vw' : '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw'}
-              class={clsx(
-                'aspect-[16/10] w-full border-b border-line object-cover',
-                single && 'md:h-full md:border-b-0 md:border-r',
-              )}
-            />
-          )}
-          <div class={clsx('flex flex-1 flex-col gap-2 p-3 md:p-4', single && 'lg:justify-center lg:p-6')}>
-            {data.placeholder && (
-              <p class="self-start rounded-pill bg-accent px-2 py-1 text-xs font-semibold text-accent-ink">Placeholder</p>
+      {entries.map((entry) => {
+        const { data } = entry;
+        return (
+          <li
+            class={clsx(
+              'group relative flex flex-col overflow-hidden rounded-card border border-line-strong bg-surface-raised/60 transition-colors duration-300 hover:border-highlight/40 has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-highlight',
+              single && 'md:grid md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]',
             )}
-            <p class="text-meta font-semibold text-highlight">
-              {data.url ? (
-                <a
-                  href={data.url}
-                  target="_blank"
-                  rel="noopener"
-                  class="inline-flex items-center gap-1 rounded-control hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight/50"
+          >
+            {data.image && (
+              <div class={clsx('overflow-hidden border-b border-line', single && 'md:border-b-0 md:border-r')}>
+                <Image
+                  src={data.image}
+                  alt={data.imageAlt ?? ''}
+                  widths={[400, 640, 960, 1280]}
+                  sizes={single ? '(min-width: 768px) 60vw, 100vw' : '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw'}
+                  class={clsx(
+                    'aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] motion-reduce:transition-none',
+                    single && 'md:h-full',
+                  )}
+                />
+              </div>
+            )}
+            <div class={clsx('flex flex-1 flex-col gap-2 p-3 md:p-4', single && 'lg:justify-center lg:p-6')}>
+              {data.placeholder && (
+                <p class="self-start rounded-pill bg-accent px-2 py-1 text-xs font-semibold text-accent-ink">Placeholder</p>
+              )}
+              <p class="text-meta font-semibold text-highlight">{data.client}</p>
+              {visibleTags(data.tags).length > 0 && (
+                <ul class="flex flex-wrap gap-1" aria-label="Services and industry">
+                  {visibleTags(data.tags).map((t) => (
+                    <li class="rounded-pill border border-line-strong px-1.5 py-0.5 text-xs font-medium text-ink-muted">{t.label}</li>
+                  ))}
+                </ul>
+              )}
+              <Title class={clsx('text-balance font-display font-bold text-ink', single ? 'text-xl lg:text-2xl' : 'text-xl')}>
+                {data.title}
+              </Title>
+              <p class={clsx('text-pretty text-ink-muted', single ? 'text-base' : 'text-sm')}>{data.summary}</p>
+              {data.results.length > 0 && (
+                <ul class={clsx('flex flex-col gap-1 border-t border-line pt-2', single ? 'mt-2' : 'mt-auto')}>
+                  {data.results.map((r) => (
+                    <li class="flex items-start gap-1 text-meta font-medium text-ink">
+                      <svg
+                        class="mt-0.5 size-icon-sm shrink-0 text-highlight"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        aria-hidden="true"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m3.5 8.5 3 3 6-7" />
+                      </svg>
+                      {r}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <a
+                href={caseStudyHref(entry)}
+                class="inline-flex items-center gap-1 pt-1 font-semibold text-highlight after:absolute after:inset-0 focus-visible:outline-none"
+              >
+                {cardLinkLabel}
+                <span class="sr-only">: {data.client}</span>
+                <svg
+                  class="size-icon-sm transition-transform duration-300 group-hover:translate-x-1"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  aria-hidden="true"
                 >
-                  {data.client}
-                  <svg class="size-icon-xs" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 2.5h5v5M9.5 2.5l-7 7" />
-                  </svg>
-                </a>
-              ) : (
-                data.client
-              )}
-            </p>
-            <h3 class={clsx('text-balance font-display font-bold text-ink', single ? 'text-xl lg:text-2xl' : 'text-xl')}>{data.title}</h3>
-            <p class={clsx('text-pretty text-ink-muted', single ? 'text-base' : 'text-sm')}>{data.summary}</p>
-            {data.results.length > 0 && (
-              <ul class={clsx('flex flex-col gap-1 border-t border-line pt-2', single ? 'mt-2' : 'mt-auto')}>
-                {data.results.map((r) => (
-                  <li class="flex items-start gap-1 text-meta font-medium text-ink">
-                    <svg
-                      class="mt-0.5 size-icon-sm shrink-0 text-highlight"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      aria-hidden="true"
-                    >
-                      <path stroke-linecap="round" stroke-linejoin="round" d="m3.5 8.5 3 3 6-7" />
-                    </svg>
-                    {r}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </li>
-      ))}
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8h10M9 4l4 4-4 4" />
+                </svg>
+              </a>
+            </div>
+          </li>
+        );
+      })}
     </ul>
   )
 }
