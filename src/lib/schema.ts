@@ -165,6 +165,19 @@ export function contactPageSchema({ url, name, description }: { url: string; nam
   };
 }
 
+// Plain page node (legal pages and other simple pages)
+export function webPageSchema({ url, name, description }: { url: string; name: string; description: string }): JsonLdNode {
+  return {
+    '@type': 'WebPage',
+    '@id': `${abs(url)}#webpage`,
+    url: abs(url),
+    name,
+    description,
+    isPartOf: { '@id': WEBSITE_ID },
+    publisher: { '@id': ORGANIZATION_ID },
+  };
+}
+
 // Founder as a Person (fullest on the About page). sameAs only when a personal profile URL is supplied.
 export function founderSchema({ description }: { description?: string } = {}): JsonLdNode {
   const { name, jobTitle, linkedin } = siteConfig.founder;
