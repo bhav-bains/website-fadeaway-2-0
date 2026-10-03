@@ -313,10 +313,10 @@ faq:
 
 ## From the Blog {#blog}
 
-(BlogCards block, tag `boutique-fitness`. Renders nothing until /resources exists and has real posts.)
+(BlogCards block, tag `boutique-fitness`. Renders nothing until /articles/ exists and has real posts.)
 
 Real, practical answers for studio owners, whether you're already running one or about to open one.
-[CTA: View All Resources → /resources/]
+[CTA: View All Resources → /articles/]
 
 <!-- Research-backed queue: "What It Actually Costs to Open a Pilates Studio", "How to Open a Yoga Studio:
 The Digital Setup Checklist", "Local SEO for Yoga and Pilates Studios". -->

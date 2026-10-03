@@ -254,13 +254,13 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
   ],
 };
 
-/** From the Lab (tag labs): renders nothing until /resources has real posts */
+/** From the Lab (tag labs): renders nothing until /articles/ has real posts */
 export const blog = {
   id: 'blog',
   heading: 'From the Lab',
   intro: "Notes from the workshop: what we're building, what we're learning, and what's worth automating.",
   tag: 'labs',
-  cta: { label: 'View All Resources', href: routes.resources },
+  cta: { label: 'View All Resources', href: routes.articles },
 } as const;
 
 /** Service JSON-LD entries (copy frontmatter `schema`). No prices. */

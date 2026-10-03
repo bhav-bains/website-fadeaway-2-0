@@ -244,13 +244,13 @@ export const serviceNames = [
   'Custom Apps & Integrations',
 ];
 
-/** From the Blog (tag ecommerce): renders nothing until /resources exists and has real e-commerce posts. */
+/** From the Blog (tag ecommerce): renders nothing until /articles/ has real e-commerce posts. */
 export const blog = {
   id: 'blog',
   heading: 'From the Blog',
   intro: 'Practical answers to the e-commerce questions we hear most.',
   tag: 'ecommerce',
-  cta: { label: 'View All Resources', href: routes.resources },
+  cta: { label: 'View All Resources', href: routes.articles },
 } as const;
 
 export const cta = {

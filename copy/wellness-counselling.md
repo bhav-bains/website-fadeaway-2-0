@@ -321,10 +321,10 @@ faq:
 
 ## From the Blog {#blog}
 
-(BlogCards block, tag `wellness-counselling`. Renders nothing until /resources exists and has real posts.)
+(BlogCards block, tag `wellness-counselling`. Renders nothing until /articles/ exists and has real posts.)
 
 Real, practical answers to the questions we hear most from therapists, counsellors, chiropractors, and wellness practices.
-[CTA: View All Resources → /resources/]
+[CTA: View All Resources → /articles/]
 
 <!-- Research-backed queue (Sept 23): "SEO for Therapists: A Plain-English Guide", "How to Get More Therapy
 Clients Without Relying on Psychology Today", "Chiropractic Marketing That Actually Brings in Patients",

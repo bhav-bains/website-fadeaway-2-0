@@ -250,10 +250,10 @@ faq:
 
 ## From the Blog {#blog}
 
-(BlogCards block, tag `build`. Renders nothing until /resources exists and has real Build posts.)
+(BlogCards block, tag `build`. Renders nothing until /articles/ exists and has real Build posts.)
 
 Real, practical answers to the website questions we hear most.
-[CTA: View All Resources → /resources]
+[CTA: View All Resources → /articles/]
 
 <!-- First article candidate: a website migration guide around "website migration services" (800/mo US, KD 4, cleanest SERP in the Build research). -->
 

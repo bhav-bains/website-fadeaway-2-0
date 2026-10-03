@@ -50,7 +50,16 @@ export const mainNavigation: NavItem[] = [
     ],
   },
   { type: 'link', label: 'Labs', href: routes.labs },
-  { type: 'link', label: 'Resources', href: routes.resources },
+  {
+    type: 'links',
+    label: 'Resources',
+    links: [
+      { label: 'Case Studies', href: routes.caseStudies },
+      { label: 'Portfolio Work', href: routes.portfolio },
+      { label: 'Articles', href: routes.articles },
+      { label: 'About', href: routes.about },
+    ],
+  },
   { type: 'link', label: 'Contact', href: routes.contact },
 ];
 

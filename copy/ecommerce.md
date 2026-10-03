@@ -220,10 +220,10 @@ faq:
 
 ## From the Blog {#blog}
 
-(BlogCards block, tag `ecommerce`. Renders nothing until /resources exists and has real e-commerce posts.)
+(BlogCards block, tag `ecommerce`. Renders nothing until /articles/ exists and has real e-commerce posts.)
 
 Practical answers to the e-commerce questions we hear most.
-[CTA: View All Resources → /resources]
+[CTA: View All Resources → /articles/]
 
 <!-- First article candidate: an "ecommerce site audit" checklist (highest CPC in the Sept 22 research, $15; the SERP wants a guide, not a service page). -->
 

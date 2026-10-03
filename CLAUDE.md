@@ -114,7 +114,7 @@ Astro site, hosted on Netlify. This file gives Claude Code the standing rules fo
 | Old service page | /services/web-design (parked in `_inactive`; decide when the Build page is done, 301 to /services/build if production still has it) |
 | Current solution pages | /sports, /wellness (live on `dev`; the new map moves them to /solutions/sports and /solutions/wellness-counselling, so 301s needed. Ask first.) |
 | Portfolio | /portfolio |
-| Resources | /resources |
+| Resources (header dropdown, no landing page) | Case Studies /case-studies · Portfolio Work /portfolio · Articles /articles · About /about (founder, Oct 3). /resources is retired; "View All Resources" CTAs go to /articles |
 | Contact | /contact |
 | Privacy / Terms | /privacy, /terms |
 
@@ -181,5 +181,5 @@ Each entry has `tags`. Tag names (use exactly): `featured`, `ecommerce`, `wellne
 - **"24/7 salesperson" framing (copy added Oct 2): applied on every page.** Homepage `#salesperson` section, plus one adapted line on Build, Growth, E-commerce, Wellness, Fitness, Sports and Labs. Marked `Added Oct 2` in each copy file.
 - **Share image:** sitewide default `public/og-default.jpg` is in place; page-specific images are optional.
 - **Privacy (`/privacy`) and Terms (`/terms`), merged into `dev` Oct 2: built from DRAFT copy (`copy/privacy.md`, `copy/terms.md`, written by Claude at the founder's request Oct 2), awaiting founder review and legal review before launch.** Shared `LegalDoc` block (visible effective date, sticky table of contents); `webPageSchema()`. `src/data/pages/legal.ts` mirrors the copy files word for word. Open: cookie consent decision (GA4 + Meta Pixel load for everyone, no banner).
-- **Unbuilt link targets sitewide:** `/resources/` (header/footer) and `/portfolio/?filter=ecommerce` (homepage E-commerce section).
+- **Unbuilt link targets sitewide:** `/case-studies/`, `/portfolio/`, `/articles/` (Resources dropdown, branch `page/resources`, listing pages to build next) and `/portfolio/?filter=ecommerce` (homepage E-commerce section).
 - **Next:** remaining pages in the URL map (section 6). Every homepage link to them must resolve before launch.

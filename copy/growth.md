@@ -239,10 +239,10 @@ faq:
 
 ## From the Blog {#blog}
 
-(BlogCards block, tag `growth`. Renders nothing until /resources exists and has real Growth posts.)
+(BlogCards block, tag `growth`. Renders nothing until /articles/ exists and has real Growth posts.)
 
 Real, practical answers to the SEO and AEO questions we hear most.
-[CTA: View All Resources → /resources/]
+[CTA: View All Resources → /articles/]
 
 <!-- Research-backed first articles: an honest "Is AEO worth it?" (the #1 result for "aeo agency" is a Reddit thread asking exactly that) and an SEO audit cost guide ("seo audit cost", 600/mo). -->
 

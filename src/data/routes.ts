@@ -9,8 +9,10 @@ export const routes = {
   boutiqueFitness: '/solutions/boutique-fitness/',
   sports: '/solutions/sports/',
   labs: '/labs/',
+  // Resources dropdown (no /resources/ landing page, founder Oct 3): three listing pages
+  caseStudies: '/case-studies/',
   portfolio: '/portfolio/',
-  resources: '/resources/',
+  articles: '/articles/',
   about: '/about/',
   contact: '/contact/',
   contactSuccess: '/contact-success/',

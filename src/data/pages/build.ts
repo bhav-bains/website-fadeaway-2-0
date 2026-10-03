@@ -250,13 +250,13 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
   ],
 };
 
-/** From the Blog (tag build): renders nothing until /resources has real Build posts */
+/** From the Blog (tag build): renders nothing until /articles/ has real Build posts */
 export const blog = {
   id: 'blog',
   heading: 'From the Blog',
   intro: 'Real, practical answers to the website questions we hear most.',
   tag: 'build',
-  cta: { label: 'View All Resources', href: routes.resources },
+  cta: { label: 'View All Resources', href: routes.articles },
 } as const;
 
 /** Service JSON-LD entries (copy/build.md frontmatter `schema`). No prices. */

@@ -324,10 +324,10 @@ faq:
 
 ## From the Blog {#blog}
 
-(BlogCards block, tag `sports-academies`. Renders nothing until /resources exists and has real posts.)
+(BlogCards block, tag `sports-academies`. Renders nothing until /articles/ exists and has real posts.)
 
 Real, practical answers for club directors, coaches, and the parents they serve.
-[CTA: View All Resources → /resources/]
+[CTA: View All Resources → /articles/]
 
 <!-- Research-backed queue (all KD 0): "How to Choose a Youth Sports Club" (2,800/mo), "How Much Does Club
 Volleyball Cost? A Real Breakdown" (300/mo), "How to Start a Travel Baseball Team" (200/mo). The

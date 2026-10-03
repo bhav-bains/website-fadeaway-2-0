@@ -394,13 +394,13 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
   ],
 };
 
-/** From the Blog (tag wellness-counselling): renders nothing until /resources has real posts */
+/** From the Blog (tag wellness-counselling): renders nothing until /articles/ has real posts */
 export const blog = {
   id: 'blog',
   heading: 'From the Blog',
   intro: 'Real, practical answers to the questions we hear most from therapists, counsellors, chiropractors, and wellness practices.',
   tag: 'wellness-counselling',
-  cta: { label: 'View All Resources', href: routes.resources },
+  cta: { label: 'View All Resources', href: routes.articles },
 } as const;
 
 /** Service JSON-LD entries (copy frontmatter `schema`). Custom Website Build is scoped, so it has no offer. */

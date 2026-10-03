@@ -228,10 +228,10 @@ faq:
 
 ## From the Lab {#blog}
 
-(BlogCards block, tag `labs`. Renders nothing until /resources exists and has real posts.)
+(BlogCards block, tag `labs`. Renders nothing until /articles/ exists and has real posts.)
 
 Notes from the workshop: what we're building, what we're learning, and what's worth automating.
-[CTA: View All Resources → /resources/]
+[CTA: View All Resources → /articles/]
 
 <!-- Candidates (not yet keyword-checked): "What Is an MVP? A Plain-English Guide for Founders", a business
 process automation starter guide, build logs and product updates (freshness signals). -->
