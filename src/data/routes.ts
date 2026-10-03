@@ -13,6 +13,7 @@ export const routes = {
   resources: '/resources/',
   about: '/about/',
   contact: '/contact/',
+  contactSuccess: '/contact-success/',
   // Free website demo funnel (fitness, wellness, sports; e-commerce has no demo)
   demoRequest: '/demo-request/',
   demoSuccess: '/demo-success/',

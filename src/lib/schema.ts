@@ -152,6 +152,19 @@ export function aboutPageSchema({ url, name, description }: { url: string; name:
   };
 }
 
+// Contact page node (Organization as the entity you contact)
+export function contactPageSchema({ url, name, description }: { url: string; name: string; description: string }): JsonLdNode {
+  return {
+    '@type': 'ContactPage',
+    '@id': `${abs(url)}#webpage`,
+    url: abs(url),
+    name,
+    description,
+    isPartOf: { '@id': WEBSITE_ID },
+    about: { '@id': ORGANIZATION_ID },
+  };
+}
+
 // Founder as a Person (fullest on the About page). sameAs only when a personal profile URL is supplied.
 export function founderSchema({ description }: { description?: string } = {}): JsonLdNode {
   const { name, jobTitle, linkedin } = siteConfig.founder;
