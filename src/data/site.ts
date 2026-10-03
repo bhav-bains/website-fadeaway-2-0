@@ -14,6 +14,8 @@ export const siteConfig = {
   locale: 'en_US',
   language: 'en-US',
   email: 'hello@fadeawaycreatives.com',
+  // Contact page only; kept out of `social` so it never lands in Organization sameAs
+  whatsapp: 'https://wa.me/17056500328',
   foundingDate: '2023',
   // Founder (About page Person schema; Organization.founder sitewide). linkedin: personal profile, add when supplied.
   founder: {
