@@ -1,5 +1,5 @@
 // Case Studies listing page + the shared detail-page labels, copied word for word from copy/case-studies.md
-// (draft, awaiting approval). Per-study content lives in src/content/case-studies/[slug].md.
+// (approved Oct 3). Per-study content lives in src/content/case-studies/[slug].md.
 import { routes } from '../routes';
 import type { BreadcrumbItem } from '../../components/blocks/Breadcrumb.astro';
 import type { HeroContent, HeroVariant } from '../../components/blocks/hero/types';
@@ -11,9 +11,9 @@ export const cardLinkLabel = 'Read the case study';
 // ---------- Listing (/case-studies/) ----------
 
 export const seo = {
-  title: 'Website & SEO Case Studies | Fadeaway Creatives',
+  title: 'Website, SEO & AEO Case Studies | Fadeaway Creatives',
   description:
-    'Website, migration and growth case studies from Fadeaway Creatives: real projects for growing businesses across Canada and the US, with real results.',
+    'Website, migration, SEO and AEO case studies from Fadeaway Creatives: real projects for growing businesses across Canada and the US, with real results.',
 };
 
 export const breadcrumb: BreadcrumbItem[] = [

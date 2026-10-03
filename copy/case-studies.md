@@ -1,12 +1,12 @@
 ---
 # Case Studies: listing page (/case-studies/) + detail page template (/case-studies/[slug]/).
-# Drafted by Claude, Oct 3 2026. Founder to approve.
+# Drafted by Claude, Oct 3 2026. Approved by the founder Oct 3 (title and description: AEO added).
 # Resources dropdown item (founder, Oct 3). First real entry: New West Progressives
 # (src/content/case-studies/new-west-progressives.md). Echo Stories and HeartStamp follow the same format.
 page: case-studies
 url: /case-studies/
-title: "Website & SEO Case Studies | Fadeaway Creatives"
-description: "Website, migration and growth case studies from Fadeaway Creatives: real projects for growing businesses across Canada and the US, with real results."
+title: "Website, SEO & AEO Case Studies | Fadeaway Creatives"
+description: "Website, migration, SEO and AEO case studies from Fadeaway Creatives: real projects for growing businesses across Canada and the US, with real results."
 canonical: "https://fadeawaycreatives.com/case-studies/"
 og:
   image: /og-default.jpg
@@ -43,11 +43,11 @@ Word counts: capsule 60 (40 to 80). FAQ answers 56 / 48 / 49 (40 to 60).
 
 | Field | Value | Status |
 |---|---|---|
-| Title tag | Website & SEO Case Studies \| Fadeaway Creatives (47 chars) | Needs approval |
-| Meta description | Website, migration and growth case studies from Fadeaway Creatives: real projects for growing businesses across Canada and the US, with real results. (149 chars) | Needs approval |
-| Display line | Proof, not promises. | Needs approval |
-| H1 | Website and Growth Case Studies | Needs approval |
-| Answer capsule | See frontmatter (60 words). Mentions the NWP result, so it goes live only once NWP is published | Needs approval |
+| Title tag | Website & SEO Case Studies \| Fadeaway Creatives (52 chars) | Approved Oct 3 |
+| Meta description | Website, migration, SEO and AEO case studies from Fadeaway Creatives: real projects for growing businesses across Canada and the US, with real results. (151 chars) | Approved Oct 3 |
+| Display line | Proof, not promises. | Approved Oct 3 |
+| H1 | Website and Growth Case Studies | Approved Oct 3 |
+| Answer capsule | See frontmatter (60 words). Mentions the NWP result, so it goes live only once NWP is published | Approved Oct 3 |
 | Schema | Organization (sitewide), CollectionPage + ItemList, BreadcrumbList, FAQPage | Set |
 
 # Listing page (/case-studies/)
@@ -120,7 +120,7 @@ One template for every case study. Content comes from the entry file in `src/con
 5. **Results at a glance:** `results` as large chips (eyebrow: Results)
 6. **The story:** the markdown body (The Challenge · What We Did · Ongoing Growth and Campaigns · The Results)
 6b. **A Closer Look** (only when the entry has a `gallery`): heading "A Closer Look", extra screenshots of the
-   build, the first one wide. Added by Claude, Oct 3 (founder asked to use the full NWP image set): approve the heading.
+   build, the first one wide. Added by Claude, Oct 3 (founder asked to use the full NWP image set): heading approved Oct 3.
 7. **Before and after** (only when `beforeImage` exists): heading "Before and After", two images side by side
    (stacked on mobile), labels "Before" and "After"
 8. **Testimonial** (only when a permission-confirmed testimonial exists for this client): quote, name, role
@@ -153,7 +153,6 @@ OPEN ITEMS
 - NWP publishes with the relaunch (founder, Oct 3). No publish delay.
 - NWP images: src/assets/case-studies/nwp-after.png (new site, browser mockup) and nwp-before.png (old site), 1600x1000.
 - NWP testimonial: Alysia Ker, President. Request email later (founder, Oct 3). Testimonial entry only once approved in writing.
-- NWP maintenance line: "hosting, security updates and day-to-day maintenance". Confirm wording; add backups or
-  uptime monitoring only if we actually do them.
+- NWP maintenance line: hosting, security updates, backups, uptime monitoring and day-to-day maintenance (founder confirmed Oct 3).
 - Echo Stories and HeartStamp: same format, next.
 -->

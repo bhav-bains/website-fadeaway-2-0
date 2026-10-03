@@ -1,5 +1,5 @@
 ---
-# REAL CASE STUDY: New West Progressives (NWP). Copy by Claude, Oct 3 2026; founder to confirm numbers and wording.
+# REAL CASE STUDY: New West Progressives (NWP). Copy by Claude, Oct 3 2026; numbers, wording and alt text approved by the founder Oct 3.
 # Client consent: confirmed by the founder (Oct 2). Testimonial (Alysia Ker, President) to be requested. Live at relaunch (founder, Oct 3).
 # Detail page: /case-studies/new-west-progressives/  (page structure and shared copy: copy/case-studies.md)
 #
@@ -25,7 +25,7 @@ imageAlt: "The redesigned New West Progressives homepage and platform page in br
 beforeImage: ../../assets/case-studies/nwp-before.png
 beforeImageAlt: "The old New West Progressives website before the redesign"
 ogImage: ../../assets/case-studies/nwp/nwp-og.png
-# Detail page "A Closer Look" (first one renders wide). Alt text by Claude, Oct 3: confirm.
+# Detail page "A Closer Look" (first one renders wide). Alt text approved Oct 3.
 gallery:
   - image: ../../assets/case-studies/nwp/nwp-responsive.png
     alt: "The new NWP homepage on a laptop and a phone, with the candidates photo and Meet the Candidates button"
@@ -71,7 +71,7 @@ After launch, we became part of the campaign team. Working alongside the head ca
 - Add campaign tools like the election-day countdown and voter resources as voting day gets closer
 - Track what's working and shift effort to the pages and channels bringing in supporters
 
-We also run the hosting, security updates and day-to-day maintenance, so the campaign team never has to think about whether the website is working. They only think about what goes on it.
+We also run the hosting, security updates, backups, uptime monitoring and day-to-day maintenance, so the campaign team never has to think about whether the website is working. They only think about what goes on it.
 
 ## The Results
 
