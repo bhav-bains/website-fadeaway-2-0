@@ -211,6 +211,8 @@ export function caseStudySchema({
   description,
   image,
   client,
+  datePublished,
+  dateModified,
 }: {
   url: string;
   headline: string;
@@ -218,6 +220,9 @@ export function caseStudySchema({
   /** Site-relative or absolute image URL */
   image?: string;
   client: { name: string; url?: string };
+  /** ISO dates (YYYY-MM-DD); left out when unknown, never guessed */
+  datePublished?: string;
+  dateModified?: string;
 }): JsonLdNode {
   return {
     '@type': 'Article',
@@ -227,6 +232,8 @@ export function caseStudySchema({
     headline,
     description,
     ...(image && { image: abs(image) }),
+    ...(datePublished && { datePublished }),
+    ...((dateModified ?? datePublished) && { dateModified: dateModified ?? datePublished }),
     author: { '@id': ORGANIZATION_ID },
     publisher: { '@id': ORGANIZATION_ID },
     about: { '@type': 'Organization', name: client.name, ...(client.url && { url: client.url }) },

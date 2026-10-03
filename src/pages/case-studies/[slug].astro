@@ -13,6 +13,7 @@ import ProofGrid from '../../components/blocks/ProofGrid.astro';
 import AuditCta from '../../components/blocks/AuditCta.astro';
 import { breadcrumbSchema, caseStudySchema } from '../../lib/schema';
 import { getCaseStudies, caseStudyHref, type CaseStudy } from '../../lib/case-studies';
+import { gitDates } from '../../lib/git-dates';
 import { routes } from '../../data/routes';
 import { auditCta } from '../../data/pages/audit';
 import { detail } from '../../data/pages/case-studies';
@@ -54,6 +55,12 @@ const others = all.filter((e) => e.id !== entry.id && !e.data.placeholder).slice
 const description = data.metaDescription ?? data.summary;
 const shareImage = data.ogImage ?? data.image;
 
+// Article dates: frontmatter override, else git (published = landed on this branch, i.e. the merge into main at launch)
+const isoDate = (d?: Date) => d?.toISOString().slice(0, 10);
+const fromGit = gitDates(entry.filePath);
+const datePublished = isoDate(data.datePublished) ?? fromGit.published;
+const dateModified = isoDate(data.dateModified) ?? fromGit.modified;
+
 const jsonLd = [
   caseStudySchema({
     url: href,
@@ -61,6 +68,8 @@ const jsonLd = [
     description,
     image: shareImage?.src,
     client: { name: data.client, url: data.url },
+    datePublished,
+    dateModified,
   }),
   breadcrumbSchema(breadcrumb),
 ];
