@@ -12,13 +12,13 @@ import FeatureList from '../../components/blocks/FeatureList.astro';
 import Ladder from '../../components/blocks/Ladder.astro';
 import ServiceIndex from '../../components/blocks/ServiceIndex.astro';
 import CardGrid from '../../components/blocks/CardGrid.astro';
-import ProofGrid from '../../components/blocks/ProofGrid.astro';
+import WorkGrid from '../../components/blocks/WorkGrid.astro';
 import Faq from '../../components/blocks/Faq.astro';
 import CtaBlock from '../../components/blocks/CtaBlock.astro';
 import ForkCallout from '../../components/blocks/ForkCallout.astro';
 import IllusDashboard from '../../components/illustrations/IllusDashboard.astro';
 import { breadcrumbSchema, howToSchema, faqSchema, serviceSchema } from '../../lib/schema';
-import { getCaseStudies } from '../../lib/case-studies';
+import { getRealWork } from '../../lib/work';
 import { siteConfig } from '../../data/site';
 import { routes } from '../../data/routes';
 import { auditCta } from '../../data/pages/audit';
@@ -41,8 +41,7 @@ import {
   cta,
 } from '../../data/pages/growth';
 
-const work =
-  import.meta.env.DEV || realWork.showInProduction ? await getCaseStudies({ tag: realWork.tag, limit: realWork.limit }) : [];
+const work = await getRealWork(realWork.tag, realWork.limit);
 
 // Bands alternate canvas / lighter "alt". #real-work only renders when it has entries, so the bands after it flip.
 const hasWork = work.length > 0;
@@ -132,7 +131,7 @@ const jsonLd = [
   {
     hasWork && (
       <Section id={realWork.id} heading={realWork.heading} tone="alt" align="start">
-        <ProofGrid entries={work} />
+        <WorkGrid entries={work} />
       </Section>
     )
   }

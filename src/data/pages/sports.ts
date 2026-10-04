@@ -351,10 +351,9 @@ export const howItWorks: { id: string; heading: string; items: StepItem[] } = {
   ],
 };
 
-/** ProofGrid, tag sports-academies. Hidden in production until /portfolio exists; always visible in dev. */
+/** Real Work: WorkGrid from getRealWork(tag): case studies with this tag first, then featured and labs work (portfolio.yaml), max `limit`. Renders nothing when none match. */
 export const realWork = {
   id: 'real-work',
-  showInProduction: false,
   heading: 'Real Work, Real Results',
   tag: 'sports-academies',
   limit: 3,

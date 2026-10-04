@@ -14,10 +14,10 @@ import Button from '../components/Button.astro';
 import ArrowLink from '../components/ui/ArrowLink.astro';
 import IllusAiShopping from '../components/illustrations/IllusAiShopping.astro';
 import CtaBlock from '../components/blocks/CtaBlock.astro';
-import ProofGrid from '../components/blocks/ProofGrid.astro';
+import WorkGrid from '../components/blocks/WorkGrid.astro';
 import FeatureList from '../components/blocks/FeatureList.astro';
 import Faq from '../components/blocks/Faq.astro';
-import { getCaseStudies } from '../lib/case-studies';
+import { getRealWork } from '../lib/work';
 import { howToSchema, faqSchema } from '../lib/schema';
 import { siteConfig } from '../data/site';
 import {
@@ -39,8 +39,7 @@ import {
   cta,
 } from '../data/pages/home';
 
-const featuredWork =
-  import.meta.env.DEV || work.showInProduction ? await getCaseStudies({ tag: work.tag, limit: work.limit }) : [];
+const featuredWork = await getRealWork(work.tag, work.limit);
 
 // Sections alternate between the page background and a lighter band (tone "alt"), starting with the Trust Bar.
 // #work is hidden in production until /portfolio exists, so the bands after it flip to keep alternating.
@@ -111,7 +110,7 @@ const jsonLd = [
   {
     featuredWork.length > 0 && (
       <Section id={work.id} heading={work.heading} intro={work.intro} tone="alt">
-        <ProofGrid entries={featuredWork} />
+        <WorkGrid entries={featuredWork} />
         <div class="mt-4 flex justify-center md:mt-6">
           <Button href={work.cta.href} variant="secondary" size="base">
             {work.cta.label}

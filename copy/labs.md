@@ -155,7 +155,7 @@ Proof line: We run Fadeaway this way. Our own planning, research, and content wo
 
 ## Our Products {#products}
 
-(Tag-based block, tag `labs-product`, with a visible status badge: Alpha, Beta, or Live. Renders nothing until the founder supplies real, showable products. Each public product also gets a SoftwareApplication schema entry.)
+(Cards from src/content/portfolio.yaml, `kind: labs` with `owner` ours or cofounded, each with a visible status badge: Alpha, Beta, or Live. Renders nothing when none are visible. Each public product also gets a SoftwareApplication schema entry. Oct 4: JabJab MMA and Anvido.)
 
 We don't only build for clients. We build and run our own products, and we use them in our own work first.
 
@@ -165,7 +165,7 @@ Only list products that can be shown; an empty or vague product card hurts more 
 
 ## See It Working: Demos, Builds & Dashboards {#see-it-working}
 
-(Showcase block, tag `labs`, filterable by type: Demo, Build, Dashboard, Automation. Renders only with real content. Screenshots or short screen recordings beat descriptions.)
+(Cards from src/content/portfolio.yaml, `kind: labs` with `owner` client or demo, above the demo call-out. Renders only with real content. Screenshots or short screen recordings beat descriptions. Oct 4: Nadu Gifhorn, Sports Academy Demo Website.)
 
 ### Industry Demo Websites
 Tell us about your business and we build a personalized demo website for it, so you see it before you commit. Available for boutique fitness studios, wellness and counselling practices, and sports programs.

@@ -136,8 +136,7 @@ export const ecommerce = {
   id: 'ecommerce',
   heading: 'Your Store, Built for AI Search',
   body: "E-commerce is one of the most competitive spaces in search: established players, deep case-study libraries, years of SEO investment already in place. That's exactly why we treat it as a long-term investment, not a quick fix. We handle the technical SEO and AEO work that gets your store found by Google and by AI shopping assistants, alongside site builds, migrations, and checkout optimization that turn that traffic into sales.",
-  // TODO(portfolio): query-string filter needs a decision when /portfolio is built (copy/home.md open items)
-  link: { label: 'See our e-commerce work', href: `${routes.portfolio}?filter=ecommerce` },
+  link: { label: 'See our e-commerce work', href: `${routes.portfolio}#ecommerce` },
   cta: { label: 'See the E-commerce Approach', href: routes.ecommerce },
 };
 
@@ -175,13 +174,9 @@ export const labs = {
   },
 };
 
-/**
- * Renders only when case studies tagged `featured` exist (never placeholder cards).
- * `showInProduction` stays false until /portfolio is built; `npm run dev` always shows it.
- */
+/** Real Work: WorkGrid from getRealWork(tag): case studies with this tag first, then featured and labs work (portfolio.yaml), max `limit`. Renders nothing when none match. */
 export const work = {
   id: 'work',
-  showInProduction: false,
   heading: 'Real Work, Real Results',
   intro: "See what we've built for businesses like yours.",
   tag: 'featured',

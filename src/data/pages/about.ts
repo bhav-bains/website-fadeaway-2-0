@@ -167,10 +167,9 @@ export const whoWeWorkWith: { id: string; heading: string; items: LinkCardItem[]
   ],
 };
 
-/** ProofGrid of `featured` case studies. Hidden in production until /portfolio exists; always visible in dev. */
+/** Real Work: WorkGrid from getRealWork(tag): case studies with this tag first, then featured and labs work (portfolio.yaml), max `limit`. Renders nothing when none match. */
 export const realWork = {
   id: 'real-work',
-  showInProduction: false,
   heading: 'Real Work',
   intro: "We'd rather show you than tell you.",
   tag: 'featured',

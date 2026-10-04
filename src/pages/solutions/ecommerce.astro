@@ -7,20 +7,19 @@ import AnnotatedVisual from '../../components/blocks/AnnotatedVisual.astro';
 import BentoGrid from '../../components/blocks/BentoGrid.astro';
 import ServiceIndex from '../../components/blocks/ServiceIndex.astro';
 import Steps from '../../components/blocks/Steps.astro';
-import ProofGrid from '../../components/blocks/ProofGrid.astro';
+import WorkGrid from '../../components/blocks/WorkGrid.astro';
 import Button from '../../components/Button.astro';
 import Faq from '../../components/blocks/Faq.astro';
 import CtaBlock from '../../components/blocks/CtaBlock.astro';
 import IllusAsk from '../../components/illustrations/IllusAsk.astro';
 import IllusCycle from '../../components/illustrations/IllusCycle.astro';
 import { breadcrumbSchema, howToSchema, faqSchema, serviceSchema } from '../../lib/schema';
-import { getCaseStudies } from '../../lib/case-studies';
+import { getRealWork } from '../../lib/work';
 import { siteConfig } from '../../data/site';
 import { routes } from '../../data/routes';
 import { seo, breadcrumb, hero, heroVariant, answerCapsule, aiShopping, standard, services, howItWorks, realWork, faq, serviceNames, cta } from '../../data/pages/ecommerce';
 
-const work =
-  import.meta.env.DEV || realWork.showInProduction ? await getCaseStudies({ tag: realWork.tag, limit: realWork.limit }) : [];
+const work = await getRealWork(realWork.tag, realWork.limit);
 
 // Bands alternate canvas / lighter "alt". #real-work only renders when it has entries, so the bands after it flip.
 const hasWork = work.length > 0;
@@ -67,7 +66,7 @@ const jsonLd = [
   {
     work.length > 0 && (
       <Section id={realWork.id} heading={realWork.heading} intro={realWork.intro} tone="alt" align="start">
-        <ProofGrid entries={work} />
+        <WorkGrid entries={work} />
         <div class="mt-4 flex flex-col gap-2 border-t border-line pt-4 sm:flex-row sm:items-center sm:justify-between md:mt-6">
           <p class="font-display text-xl font-bold text-ink md:text-2xl">{realWork.ctaText}</p>
           <div class="flex flex-wrap gap-2">

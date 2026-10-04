@@ -12,10 +12,13 @@ import FeatureList from '../components/blocks/FeatureList.astro';
 import ForkCallout from '../components/blocks/ForkCallout.astro';
 import Steps from '../components/blocks/Steps.astro';
 import LinkCards from '../components/blocks/LinkCards.astro';
+import WorkCard from '../components/blocks/WorkCard.astro';
 import Faq from '../components/blocks/Faq.astro';
 import Button from '../components/Button.astro';
 import IllusLaunch from '../components/illustrations/IllusLaunch.astro';
-import { breadcrumbSchema, howToSchema, faqSchema, serviceSchema } from '../lib/schema';
+import { breadcrumbSchema, howToSchema, faqSchema, serviceSchema, softwareApplicationSchema } from '../lib/schema';
+import { getWork } from '../lib/work';
+import { cardLabels } from '../data/pages/portfolio';
 import { siteConfig } from '../data/site';
 import { routes } from '../data/routes';
 import {
@@ -27,6 +30,7 @@ import {
   whyLabs,
   build,
   aiNative,
+  products,
   seeItWorking,
   ideaToMvp,
   pricing,
@@ -36,8 +40,16 @@ import {
   cta,
 } from '../data/pages/labs';
 
+// Labs work from the central collection (src/content/portfolio.yaml): our products, then client builds and demos
+const labsWork = await getWork({ kind: 'labs' });
+const productWork = labsWork.filter((w) => (products.owners as readonly string[]).includes(w.data.owner ?? ''));
+const showcaseWork = labsWork.filter((w) => seeItWorking.owners.includes(w.data.owner ?? ''));
+
 const jsonLd = [
   breadcrumbSchema(breadcrumb),
+  ...productWork.flatMap((w) =>
+    w.data.url ? [softwareApplicationSchema({ name: w.data.name, url: w.data.url, description: w.data.summary })] : [],
+  ),
   ...serviceSchema({ names: serviceNames, url: routes.labs }),
   howToSchema({
     name: ideaToMvp.heading,
@@ -73,10 +85,34 @@ const jsonLd = [
     </div>
   </Section>
 
-  <!-- Our Products (#products, tag labs-product): renders nothing until real, showable products exist.
-       Each public product will also get a SoftwareApplication schema entry. -->
+  <!-- Our Products (#products): portfolio.yaml labs entries we own or co-founded; each with a url gets a
+       SoftwareApplication schema node. Renders nothing when none are visible. -->
+  {
+    productWork.length > 0 && (
+      <Section id={products.id} heading={products.heading} intro={products.intro} align="start">
+        <ul class="grid gap-3 md:grid-cols-2 lg:gap-4">
+          {productWork.map((w) => (
+            <li>
+              <WorkCard entry={w} labels={cardLabels} variant="labs" />
+            </li>
+          ))}
+        </ul>
+      </Section>
+    )
+  }
 
-  <Section id={seeItWorking.id} heading={seeItWorking.heading} align="start">
+  <Section id={seeItWorking.id} heading={seeItWorking.heading} align="start" separator={productWork.length > 0}>
+    {
+      showcaseWork.length > 0 && (
+        <ul class="mb-3 grid gap-3 md:grid-cols-2 lg:mb-4 lg:gap-4">
+          {showcaseWork.map((w) => (
+            <li>
+              <WorkCard entry={w} labels={cardLabels} variant="labs" />
+            </li>
+          ))}
+        </ul>
+      )
+    }
     <div class="grid gap-3">
       {seeItWorking.items.map((item) => <ForkCallout heading={item.heading} text={item.text} link={item.link} />)}
     </div>

@@ -1,0 +1,43 @@
+---
+// Mixed "Real Work" grid from the central work collection (getRealWork() in src/lib/work.ts): case-study entries
+// render as CaseStudyCard (link to the case study), featured and labs entries as WorkCard (live site, new tab).
+// Renders nothing when given no entries; pages should also skip the surrounding Section (CLAUDE.md section 4).
+// Columns follow the count like ProofGrid: 1 = one wide case study (or one centred card), 2 centred, 3 across on lg.
+import clsx from 'clsx';
+import CaseStudyCard from './CaseStudyCard.astro';
+import WorkCard from './WorkCard.astro';
+import type { Work } from '../../lib/work';
+import { cardLabels } from '../../data/pages/portfolio';
+
+interface Props {
+  entries: Work[];
+  class?: string;
+}
+
+const { entries, class: className } = Astro.props;
+
+const single = entries.length === 1;
+const layout = single
+  ? entries[0].study
+    ? ''
+    : 'mx-auto max-w-xl'
+  : entries.length === 2
+    ? 'mx-auto max-w-4xl md:grid-cols-2'
+    : 'md:grid-cols-2 lg:grid-cols-3';
+---
+
+{
+  entries.length > 0 && (
+    <ul class={clsx('grid gap-3 lg:gap-4', layout, className)}>
+      {entries.map((w) =>
+        w.study ? (
+          <CaseStudyCard entry={w.study} single={single} />
+        ) : (
+          <li>
+            <WorkCard entry={w} labels={cardLabels} variant={w.data.kind === 'labs' ? 'labs' : 'featured'} />
+          </li>
+        ),
+      )}
+    </ul>
+  )
+}

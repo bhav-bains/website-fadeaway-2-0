@@ -178,6 +178,19 @@ export function webPageSchema({ url, name, description }: { url: string; name: s
   };
 }
 
+// A Labs product (copy/labs.md, Our Products): one node per public product, made by Fadeaway
+export function softwareApplicationSchema({ name, url, description }: { name: string; url: string; description?: string }): JsonLdNode {
+  return {
+    '@type': 'SoftwareApplication',
+    name,
+    url,
+    ...(description && { description }),
+    applicationCategory: 'WebApplication',
+    operatingSystem: 'Web',
+    creator: { '@id': ORGANIZATION_ID },
+  };
+}
+
 // Listing page: CollectionPage with an ItemList of the item URLs (e.g. case studies)
 export function collectionPageSchema({
   url,

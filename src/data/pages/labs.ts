@@ -135,21 +135,24 @@ export const aiNative: {
   cta: { label: 'Get Your Team AI-Ready', href: routes.contact },
 };
 
-/** Tag-driven (labs-product): renders nothing until real, showable products exist */
+/** Cards from portfolio.yaml (getWork kind labs, owner ours | cofounded); renders nothing when none are visible */
 export const products = {
   id: 'products',
   heading: 'Our Products',
   intro: "We don't only build for clients. We build and run our own products, and we use them in our own work first.",
-  tag: 'labs-product',
+  owners: ['ours', 'cofounded'],
 } as const;
 
+/** Cards from portfolio.yaml (getWork kind labs, owner client | demo), then the demo call-out */
 export const seeItWorking: {
   id: string;
   heading: string;
+  owners: readonly string[];
   items: { heading: string; text: string; link: { label: string; href: string } }[];
 } = {
   id: 'see-it-working',
   heading: 'See It Working: Demos, Builds & Dashboards',
+  owners: ['client', 'demo'],
   items: [
     {
       heading: 'Industry Demo Websites',

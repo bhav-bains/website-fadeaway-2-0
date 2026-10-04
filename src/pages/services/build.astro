@@ -10,7 +10,7 @@ import AuditCta from '../../components/blocks/AuditCta.astro';
 import CardGrid from '../../components/blocks/CardGrid.astro';
 import Steps from '../../components/blocks/Steps.astro';
 import FeatureList from '../../components/blocks/FeatureList.astro';
-import ProofGrid from '../../components/blocks/ProofGrid.astro';
+import WorkGrid from '../../components/blocks/WorkGrid.astro';
 import IconGrid from '../../components/blocks/IconGrid.astro';
 import Faq from '../../components/blocks/Faq.astro';
 import CtaBlock from '../../components/blocks/CtaBlock.astro';
@@ -19,7 +19,7 @@ import ArrowLink from '../../components/ui/ArrowLink.astro';
 import IllusLayers from '../../components/illustrations/IllusLayers.astro';
 import IllusQuote from '../../components/illustrations/IllusQuote.astro';
 import { breadcrumbSchema, howToSchema, faqSchema, serviceSchema } from '../../lib/schema';
-import { getCaseStudies } from '../../lib/case-studies';
+import { getRealWork } from '../../lib/work';
 import { siteConfig } from '../../data/site';
 import { routes } from '../../data/routes';
 import {
@@ -41,8 +41,7 @@ import {
 } from '../../data/pages/build';
 import { auditCta } from '../../data/pages/audit';
 
-const work =
-  import.meta.env.DEV || realWork.showInProduction ? await getCaseStudies({ tag: realWork.tag, limit: realWork.limit }) : [];
+const work = await getRealWork(realWork.tag, realWork.limit);
 
 // Bands alternate canvas / lighter "alt". #real-work only renders when it has entries, so the bands after it flip.
 const hasWork = work.length > 0;
@@ -121,7 +120,7 @@ const jsonLd = [
   {
     hasWork && (
       <Section id={realWork.id} heading={realWork.heading} align="start">
-        <ProofGrid entries={work} />
+        <WorkGrid entries={work} />
         <div class="mt-4 flex flex-col gap-2 border-t border-line pt-4 sm:flex-row sm:items-center sm:justify-between md:mt-6">
           <p class="font-display text-xl font-bold text-ink md:text-2xl">{realWork.ctaText}</p>
           <div class="flex flex-wrap gap-2">

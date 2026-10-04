@@ -165,7 +165,7 @@ Sub-service tiles (no label): Local SEO · AI Search (AEO) · Conversion Optimiz
 
 E-commerce is one of the most competitive spaces in search: established players, deep case-study libraries, years of SEO investment already in place. That's exactly why we treat it as a long-term investment, not a quick fix. We handle the technical SEO and AEO work that gets your store found by Google and by AI shopping assistants, alongside site builds, migrations, and checkout optimization that turn that traffic into sales.
 
-[Link: See our e-commerce work → /portfolio?filter=ecommerce]
+[Link: See our e-commerce work → /portfolio/#ecommerce]
 [Secondary CTA: See the E-commerce Approach → /solutions/ecommerce]
 
 ## Fadeaway Labs: MVPs, AI Automation & Custom Software {#labs}
@@ -255,8 +255,7 @@ Open items for this page (not blockers for building the blocks):
 - Organization schema sameAs links wait on directory listings (LinkedIn, Crunchbase, Clutch, GoodFirms, DesignRush).
 - Links to pages not rebuilt yet (/audit, /portfolio, /labs, /about, /solutions/*, /services/*, /resources, /privacy, /terms):
   each must resolve at launch. Either keep the current live pages at those URLs, or decide per link before merging.
-- /portfolio?filter=ecommerce: a query-string filter needs client-side filtering on a static Astro site.
-  Alternative: /portfolio#ecommerce or /portfolio/ecommerce. Decide when /portfolio is built.
+- Resolved Oct 4: the e-commerce link goes to /portfolio/#ecommerce (no query-string filter).
 - Boutique Fitness card could mention the free demo request (applies to fitness, wellness, sports). Optional, not in approved copy yet.
 CHANGE LOG (Oct 1): founder decision, no prices on the homepage. FAQ 2 changed from
 "How much does the Full Audit cost?" / "The Full Audit is a fixed $945, one time. It includes a full

@@ -35,7 +35,7 @@ faq:
   - q: "How does a project with Fadeaway start?"
     a: "Most projects start with a free audit or a short call. We look at what you have, what's holding it back, and what you need, then send a written scope with a fixed price before any work starts. Website builds, redesigns, migrations and ongoing growth work are all scoped this way."
   - q: "Can you rebuild a website we already have?"
-    a: "Yes. Many projects listed here, like CPro Solutions and Crane Mountain Dental, replaced an older site that had stopped performing. We rebuild on a modern, modular setup with SEO and AEO built in, and we carry your content, links and search visibility over carefully so nothing important is lost along the way."
+    a: "Yes. Many projects listed here, like CenturionPro and Crane Mountain Dental, replaced an older site that had stopped performing. We rebuild on a modern, modular setup with SEO and AEO built in, and we carry your content, links and search visibility over carefully so nothing important is lost along the way."
   - q: "What is Fadeaway Labs?"
     a: "Fadeaway Labs is where we build software: MVPs, automations, AI tools and web apps. Some are for clients, and some are our own products, like JabJab MMA and Anvido. If you have a product idea or a process you want automated, we can take it from idea to a working first version."
 ---
@@ -130,7 +130,7 @@ Home → Portfolio
 - Heading: More of Our Work
 - No line under the heading (founder, Oct 4).
 - Data: `kind: list`, grouped by `group`, each group in `rank` order. Group order, headings and anchors:
-  1. **E-commerce** `{#ecommerce}`. First line under the heading: Featured above: [CPro Solutions → #featured]. Full story: [HeartStamp → /case-studies/heartstamp/].
+  1. **E-commerce** `{#ecommerce}`. First line under the heading: Featured above: [CenturionPro → #featured]. Full story: [HeartStamp → /case-studies/heartstamp/].
   2. **Practices & Local Businesses** `{#practices}`
   3. **SaaS & Enterprise** `{#saas}`
   4. **Organizations** `{#organizations}`
@@ -174,10 +174,10 @@ Hidden entries (`hidden: true`) never render and never appear in the ItemList.
 **Reused blocks.** Breadcrumb, Hero (display line variant), ProofGrid (case studies), a new WorkCard (featured and
 labs, with an image-optional variant), a new WorkCompactCard (list), Faq, AuditCta.
 
-## Sitewide changes this page unlocks
+## Sitewide changes this page unlocks (done Oct 4)
 
 - Resources menu "Portfolio Work" (/portfolio/) resolves.
-- Homepage "Real Work": set `work.showInProduction` to true; feed it from `getWork` (CLAUDE.md section 8).
+- Homepage "Real Work": live in production (the `showInProduction` gate is removed); fed from `getRealWork` (CLAUDE.md section 8).
 - Homepage E-commerce link: `/portfolio/?filter=ecommerce` becomes `/portfolio/#ecommerce`.
 - Build, Growth and solution pages "Real Work": switch to `getWork` (case studies with the page tag first, then
   featured and labs entries with that tag, max 3).

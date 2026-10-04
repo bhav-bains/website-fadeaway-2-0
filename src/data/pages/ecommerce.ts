@@ -188,11 +188,9 @@ export const howItWorks: { id: string; heading: string; items: StepItem[] } = {
   ],
 };
 
-/** ProofGrid of case studies tagged `ecommerce`. Hidden in production until /portfolio exists (its CTA links there);
- * always visible in `npm run dev`. Renders nothing when there are no approved case studies. */
+/** Real Work: WorkGrid from getRealWork(tag): case studies with this tag first, then featured and labs work (portfolio.yaml), max `limit`. Renders nothing when none match. */
 export const realWork = {
   id: 'real-work',
-  showInProduction: false,
   heading: 'Real Work, Real Results',
   intro: "Stores we've built and grown.",
   tag: 'ecommerce',

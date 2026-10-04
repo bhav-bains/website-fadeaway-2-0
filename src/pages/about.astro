@@ -10,12 +10,12 @@ import SpecGrid from '../components/blocks/SpecGrid.astro';
 import FounderCard from '../components/blocks/FounderCard.astro';
 import IconGrid from '../components/blocks/IconGrid.astro';
 import LinkCards from '../components/blocks/LinkCards.astro';
-import ProofGrid from '../components/blocks/ProofGrid.astro';
+import WorkGrid from '../components/blocks/WorkGrid.astro';
 import Faq from '../components/blocks/Faq.astro';
 import CtaBlock from '../components/blocks/CtaBlock.astro';
 import IllusCourt from '../components/illustrations/IllusCourt.astro';
 import { breadcrumbSchema, faqSchema, aboutPageSchema, founderSchema } from '../lib/schema';
-import { getCaseStudies } from '../lib/case-studies';
+import { getRealWork } from '../lib/work';
 import { routes } from '../data/routes';
 import {
   seo,
@@ -34,8 +34,7 @@ import {
   cta,
 } from '../data/pages/about';
 
-const work =
-  import.meta.env.DEV || realWork.showInProduction ? await getCaseStudies({ tag: realWork.tag, limit: realWork.limit }) : [];
+const work = await getRealWork(realWork.tag, realWork.limit);
 
 // Bands alternate canvas / lighter "alt". #real-work only renders when it has entries, so the bands after it flip.
 const hasWork = work.length > 0;
@@ -90,7 +89,7 @@ const jsonLd = [
   {
     hasWork && (
       <Section id={realWork.id} heading={realWork.heading} intro={realWork.intro} tone="alt" align="start">
-        <ProofGrid entries={work} />
+        <WorkGrid entries={work} />
       </Section>
     )
   }

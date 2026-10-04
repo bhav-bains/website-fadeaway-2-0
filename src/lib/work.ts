@@ -46,6 +46,12 @@ export async function getWork({
   return limit ? work.slice(0, limit) : work;
 }
 
+/**
+ * "Real Work" sections (Home, About, Build, Growth, solution pages): case studies with the tag first, then featured
+ * and labs entries with it, max 3 by default. List items never show outside /portfolio/.
+ */
+export const getRealWork = (tag: ContentTag, limit = 3) => getWork({ kind: ['case-study', 'featured', 'labs'], tag, limit });
+
 /** Where a card links: the case study when the entry has one, otherwise the live site (may be undefined for labs) */
 export const workHref = (w: Work) => (w.study ? caseStudyHref(w.study) : w.data.url);
 

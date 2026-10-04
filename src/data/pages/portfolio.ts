@@ -92,10 +92,10 @@ export const moreWork = {
   ] as { group: WorkGroup; heading: string }[],
   /**
    * First line under the E-commerce heading. Each part names a portfolio.yaml entry (`work`) and renders only while
-   * that entry is visible: "Featured above: [CPro Solutions → #featured]. Full story: [HeartStamp → case study]."
+   * that entry is visible: "Featured above: [CenturionPro → #featured]. Full story: [HeartStamp → case study]."
    */
   ecommerceNote: [
-    { prefix: 'Featured above:', label: 'CPro Solutions', work: 'cpro-solutions', href: '#featured' },
+    { prefix: 'Featured above:', label: 'CenturionPro', work: 'cpro-solutions', href: '#featured' },
     { prefix: 'Full story:', label: 'HeartStamp', work: 'heartstamp', href: `${routes.caseStudies}heartstamp/` },
   ],
 };
@@ -111,7 +111,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
     },
     {
       q: 'Can you rebuild a website we already have?',
-      a: 'Yes. Many projects listed here, like CPro Solutions and Crane Mountain Dental, replaced an older site that had stopped performing. We rebuild on a modern, modular setup with SEO and AEO built in, and we carry your content, links and search visibility over carefully so nothing important is lost along the way.',
+      a: 'Yes. Many projects listed here, like CenturionPro and Crane Mountain Dental, replaced an older site that had stopped performing. We rebuild on a modern, modular setup with SEO and AEO built in, and we carry your content, links and search visibility over carefully so nothing important is lost along the way.',
     },
     {
       q: 'What is Fadeaway Labs?',

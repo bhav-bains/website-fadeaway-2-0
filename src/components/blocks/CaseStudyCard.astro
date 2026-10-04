@@ -1,0 +1,94 @@
+---
+// One case-study card: image, client, tag chips, title, summary, result chips, and a "Read the case study" link to
+// /case-studies/[slug]/. The whole card is clickable (stretched link). `single`: one wide feature (image left on md).
+// Rendered as an <li>: use inside a <ul> grid (ProofGrid, WorkGrid).
+import { Image } from 'astro:assets';
+import clsx from 'clsx';
+import { caseStudyHref, type CaseStudy } from '../../lib/case-studies';
+import { cardLinkLabel } from '../../data/pages/case-studies';
+import { visibleTags } from '../../data/tags';
+
+interface Props {
+  entry: CaseStudy;
+  headingAs?: 'h2' | 'h3';
+  single?: boolean;
+}
+
+const { entry, headingAs: Title = 'h3', single = false } = Astro.props;
+const { data } = entry;
+---
+
+<li
+  class={clsx(
+    'group relative flex flex-col overflow-hidden rounded-card border border-line-strong bg-surface-raised/60 transition-colors duration-300 hover:border-highlight/40 has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-highlight',
+    single && 'md:grid md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]',
+  )}
+>
+  {data.image && (
+    <div class={clsx('overflow-hidden border-b border-line', single && 'md:border-b-0 md:border-r')}>
+      <Image
+        src={data.image}
+        alt={data.imageAlt ?? ''}
+        widths={[400, 640, 960, 1280]}
+        sizes={single ? '(min-width: 768px) 60vw, 100vw' : '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw'}
+        class={clsx(
+          'aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] motion-reduce:transition-none',
+          single && 'md:h-full',
+        )}
+      />
+    </div>
+  )}
+  <div class={clsx('flex flex-1 flex-col gap-2 p-3 md:p-4', single && 'lg:justify-center lg:p-6')}>
+    {data.placeholder && (
+      <p class="self-start rounded-pill bg-accent px-2 py-1 text-xs font-semibold text-accent-ink">Placeholder</p>
+    )}
+    <p class="text-meta font-semibold text-highlight">{data.client}</p>
+    {visibleTags(data.tags, data.displayTags).length > 0 && (
+      <ul class="flex flex-wrap gap-1" aria-label="Services and industry">
+        {visibleTags(data.tags, data.displayTags).map((t) => (
+          <li class="rounded-pill border border-line-strong px-1.5 py-0.5 text-xs font-medium text-ink-muted">{t.label}</li>
+        ))}
+      </ul>
+    )}
+    <Title class={clsx('text-balance font-display font-bold text-ink', single ? 'text-xl lg:text-2xl' : 'text-xl')}>
+      {data.title}
+    </Title>
+    <p class={clsx('text-pretty text-ink-muted', single ? 'text-base' : 'text-sm')}>{data.summary}</p>
+    {data.results.length > 0 && (
+      <ul class={clsx('flex flex-col gap-1 border-t border-line pt-2', single ? 'mt-2' : 'mt-auto')}>
+        {data.results.map((r) => (
+          <li class="flex items-start gap-1 text-meta font-medium text-ink">
+            <svg
+              class="mt-0.5 size-icon-sm shrink-0 text-highlight"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="m3.5 8.5 3 3 6-7" />
+            </svg>
+            {r}
+          </li>
+        ))}
+      </ul>
+    )}
+    <a
+      href={caseStudyHref(entry)}
+      class="inline-flex items-center gap-1 pt-1 font-semibold text-highlight after:absolute after:inset-0 focus-visible:outline-none"
+    >
+      {cardLinkLabel}
+      <span class="sr-only">: {data.client}</span>
+      <svg
+        class="size-icon-sm transition-transform duration-300 group-hover:translate-x-1"
+        viewBox="0 0 16 16"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.75"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8h10M9 4l4 4-4 4" />
+      </svg>
+    </a>
+  </div>
+</li>

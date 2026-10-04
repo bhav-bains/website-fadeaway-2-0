@@ -16,12 +16,12 @@ import DemoOffer from '../../components/blocks/DemoOffer.astro';
 import PricingSection from '../../components/blocks/PricingSection.astro';
 import Timeline from '../../components/blocks/Timeline.astro';
 import Steps from '../../components/blocks/Steps.astro';
-import ProofGrid from '../../components/blocks/ProofGrid.astro';
+import WorkGrid from '../../components/blocks/WorkGrid.astro';
 import Faq from '../../components/blocks/Faq.astro';
 import CtaBlock from '../../components/blocks/CtaBlock.astro';
 import IllusRadius from '../../components/illustrations/IllusRadius.astro';
 import { breadcrumbSchema, howToSchema, faqSchema, serviceSchema } from '../../lib/schema';
-import { getCaseStudies } from '../../lib/case-studies';
+import { getRealWork } from '../../lib/work';
 import { siteConfig } from '../../data/site';
 import { routes } from '../../data/routes';
 import {
@@ -46,8 +46,7 @@ import {
   cta,
 } from '../../data/pages/sports';
 
-const work =
-  import.meta.env.DEV || realWork.showInProduction ? await getCaseStudies({ tag: realWork.tag, limit: realWork.limit }) : [];
+const work = await getRealWork(realWork.tag, realWork.limit);
 
 // Bands alternate canvas / lighter "alt". #real-work only renders when it has entries, so the bands after it flip.
 const hasWork = work.length > 0;
@@ -120,7 +119,7 @@ const jsonLd = [
   {
     hasWork && (
       <Section id={realWork.id} heading={realWork.heading} tone="alt" align="start">
-        <ProofGrid entries={work} />
+        <WorkGrid entries={work} />
       </Section>
     )
   }
