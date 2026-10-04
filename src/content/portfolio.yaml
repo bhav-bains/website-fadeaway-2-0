@@ -4,7 +4,9 @@
 #
 # Where entries show (helper: getWork({ kind, tag, limit }) in src/lib/work.ts; skips hidden; order = kind order case-study, featured, labs, list; then rank)
 #   /portfolio/          everything visible: case-study, then featured, then labs, then list (founder, Oct 4)
-#   /labs/               kind: labs. "Our Products" = owner ours | cofounded; "See It Working" = owner client | demo
+#   /labs/               kind: labs. "From Labs to Live Users" = every labs entry without the `internal` tag (3 across);
+#                        then the internal tools and demo sites (tag `internal`: "Internal" badge, never linked).
+#                        `internal` entries show on /labs/ ONLY (founder, Oct 4): getWork() skips them unless includeInternal.
 #   Home, Build, Growth, solution pages ("Real Work" sections): case studies with the page tag first, then featured and
 #                        labs entries with the page tag; max 3 cards; list items never show outside /portfolio/
 #   /case-studies/       the case-studies collection (unchanged)
@@ -140,7 +142,7 @@
   kind: labs
   owner: ours
   status: live
-  industry: "Our product · Sports media"
+  industry: "Sports media"
   summary: "Our own MMA web app, taken from idea to MVP: fight matchups, fighter stats, rankings and event schedules for casual and hardcore fans. Automated data ingestion from live APIs keeps it current around the clock. It grows feature by feature, with every page indexed and search traffic climbing."
   chips: ["Idea to MVP", "Next.js", "Supabase", "Vercel", "API Data Pipelines"]
   tags: ["labs", "labs-product"]   # not sports-academies (betting-odds product next to youth sports is the wrong fit)
@@ -152,7 +154,7 @@
   kind: labs
   owner: cofounded
   status: live
-  industry: "Co-founded · EdTech · Germany"
+  industry: "EdTech · Germany"
   summary: "A learning-support platform for families of children with dyslexia and dyscalculia, co-founded with a certified learning therapist and taken from idea to MVP. Parents photograph their child's writing and get an AI-powered analysis in about 60 seconds, then personalized exercises and printable story booklets. Built on Next.js with complex backend services, GDPR-compliant and live in the German market."
   chips: ["Idea to MVP", "AI Product", "Next.js", "EdTech"]
   tags: ["labs", "labs-product"]
@@ -162,12 +164,12 @@
   name: Nadu Gifhorn
   url: https://nadu-gifhorn.de/
   kind: labs
-  owner: client
+  owner: cofounded
   status: live
-  industry: "Client build · Local media · Germany"
-  summary: "A hyperlocal news and community platform for the Gifhorn region, built for a client from idea to MVP. Their editorial team publishes local news, police and emergency updates, and events, alongside weather, a restaurant guide with daily lunch specials, and a directory of community support services."
-  chips: ["Idea to MVP", "Client Build", "Local Media", "Publishing Platform"]
-  tags: ["labs"]
+  industry: "Local media · Germany"
+  summary: "A hyperlocal news and community platform for the Gifhorn region, built from idea to MVP. Their editorial team publishes local news, police and emergency updates, and events, alongside weather, a restaurant guide with daily lunch specials, and a directory of community support services."
+  chips: ["Idea to MVP", "Local Media", "Publishing Platform"]
+  tags: ["labs", "labs-product"]
   rank: 25
 
 - id: sports-demo
@@ -179,7 +181,7 @@
   industry: "Industry demo"
   summary: "The demo site behind our free custom demos for sports programs. Request one and we build a personalized version for your club before you commit to anything."
   chips: ["Industry Demo", "Astro", "Free Demo"]
-  tags: ["labs", "sports-academies"]
+  tags: ["labs", "sports-academies", "internal"]   # internal: not linked yet (founder, Oct 4)
   rank: 30
 
 - id: easytiffin
@@ -202,8 +204,7 @@
   industry: "Internal tool"
   summary: "Our internal lead nurturing, audit and CRM tool, in alpha."
   chips: ["Internal Tool"]
-  tags: ["labs", "labs-product"]
-  hidden: true   # needs screenshots first; never link the live app
+  tags: ["labs", "labs-product", "internal"]   # internal: never linked (founder, Oct 4: shown on /labs/ as an internal tool)
   rank: 50
 
 - id: fitness-demo
@@ -214,8 +215,7 @@
   industry: "Industry demo"
   summary: "The demo site behind our free custom demos for boutique fitness studios."
   chips: ["Industry Demo", "Astro", "Free Demo"]
-  tags: ["labs", "boutique-fitness"]
-  hidden: true   # founder, Oct 4: in build. Add the url and unhide when live.
+  tags: ["labs", "boutique-fitness", "internal"]   # founder, Oct 4: shown as an internal tool, not linked (still in build)
   rank: 32
 
 - id: wellness-demo
@@ -226,6 +226,5 @@
   industry: "Industry demo"
   summary: "The demo site behind our free custom demos for wellness and counselling practices."
   chips: ["Industry Demo", "Astro", "Free Demo"]
-  tags: ["labs", "wellness-counselling"]
-  hidden: true   # founder, Oct 4: in build. Add the url and unhide when live.
+  tags: ["labs", "wellness-counselling", "internal"]   # founder, Oct 4: shown as an internal tool, not linked (still in build)
   rank: 34

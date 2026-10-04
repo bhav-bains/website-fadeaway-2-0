@@ -1,31 +1,46 @@
 ---
-// Inline text link with a trailing arrow that nudges right on hover.
+// Inline text link with a trailing arrow that nudges right on hover. `external`: new tab, rel noopener, diagonal arrow,
+// and a screen-reader note (pass `newTabLabel`, e.g. "opens in a new tab", from the page data).
 import clsx from 'clsx';
 
 interface Props {
   href: string;
+  external?: boolean;
+  newTabLabel?: string;
   class?: string;
 }
 
-const { href, class: className } = Astro.props;
+const { href, external = false, newTabLabel, class: className } = Astro.props;
 ---
 
 <a
   href={href}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener' : undefined}
   class={clsx(
     'group/link inline-flex items-center gap-1 font-semibold text-highlight transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight/50 rounded-control',
     className,
   )}
 >
   <slot />
+  {external && newTabLabel && <span class="sr-only">, {newTabLabel}</span>}
   <svg
-    class="size-icon-sm transition-transform duration-300 group-hover/link:translate-x-1"
+    class={clsx(
+      'size-icon-sm transition-transform duration-300',
+      external ? 'group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5' : 'group-hover/link:translate-x-1',
+    )}
     viewBox="0 0 16 16"
     fill="none"
     stroke="currentColor"
     stroke-width="1.75"
     aria-hidden="true"
   >
-    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8h10M9 4l4 4-4 4"></path>
+    {
+      external ? (
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 11 11 5M6 5h5v5" />
+      ) : (
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8h10M9 4l4 4-4 4" />
+      )
+    }
   </svg>
 </a>

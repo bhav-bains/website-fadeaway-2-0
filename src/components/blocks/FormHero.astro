@@ -18,7 +18,8 @@ export interface FormContent {
   submit: string;
   note: string;
   /** One line under the form, e.g. pointing another kind of visitor elsewhere */
-  footer?: { text: string; link: { label: string; href: string } };
+  /** `external`: opens in a new tab (e.g. the booking page); `newTabLabel` is its screen-reader note */
+  footer?: { text: string; link: { label: string; href: string; external?: boolean; newTabLabel?: string } };
 }
 
 interface Props {
@@ -86,7 +87,9 @@ const half = new Set(halfWidth);
           form.footer && (
             <p class="flex flex-wrap items-center justify-center gap-x-1 border-t border-line pt-3 text-meta text-ink-soft sm:col-span-2">
               {form.footer.text}
-              <ArrowLink href={form.footer.link.href}>{form.footer.link.label}</ArrowLink>
+              <ArrowLink href={form.footer.link.href} external={form.footer.link.external} newTabLabel={form.footer.link.newTabLabel}>
+                {form.footer.link.label}
+              </ArrowLink>
             </p>
           )
         }

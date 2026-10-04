@@ -117,13 +117,11 @@ Home → Portfolio
 - Eyebrow: Fadeaway Labs
 - Heading: From the Lab
 - Line: Products we build from idea to MVP, for ourselves and for clients.
-- Data: `kind: labs`, in `rank` order.
-- Card: status badge (Live, Beta, Alpha), chips above the name, name, industry line (it says whose it is: Our product, Co-founded, Client
-  build, Industry demo), summary, chips. Button: **Visit Site ↗** (new tab) when the entry has a `url`; no button when
+- Data: `kind: labs`, in `rank` order. Never the `internal` entries (demo sites, internal tools): those show on /labs/ only (founder, Oct 4).
+- Card: status badge (Live, Beta, Alpha), chips above the name, name, industry line (no owner labels, founder Oct 4), summary. Button: **Visit Site ↗** (new tab) when the entry has a `url`; no button when
   it doesn't.
 - Layout: 3 across on desktop, 2 on tablet, 1 on mobile.
 - [Link: Explore Fadeaway Labs → /labs/]
-- Under the sports demo card only: [Link: Get Your Free Demo → /demo-request/]
 
 ## More of Our Work {#more-work}
 
@@ -181,7 +179,7 @@ labs, with an image-optional variant), a new WorkCompactCard (list), Faq, AuditC
 - Homepage E-commerce link: `/portfolio/?filter=ecommerce` becomes `/portfolio/#ecommerce`.
 - Build, Growth and solution pages "Real Work": switch to `getWork` (case studies with the page tag first, then
   featured and labs entries with that tag, max 3).
-- Labs page "Our Products" (`owner` ours, cofounded) and "See It Working" (`owner` client, demo): from `getWork({ kind: 'labs' })`.
+- Labs page "From Labs to Live Users" and the internal tools row: from `getWork({ kind: 'labs', includeInternal: true })`.
 
 <!--
 OPEN ITEMS
@@ -189,9 +187,8 @@ OPEN ITEMS
   make mockups, or the founder sends them). Cards ship without images until then.
 - FFD Fresno (dental clinic, website rebuild, ongoing): hidden until the new site is live.
 - Easytiffin (marketplace): hidden until beta launches.
-- Fadeaway Leads CRM (internal, alpha): hidden until screenshots exist; never link the live app. Turn off public
-  sign-up on the app and replace "Dominate" in its headline.
-- Yoga studio and wellness practice demos: hidden until each is live.
+- Fadeaway Leads CRM and the three demo sites: tagged `internal`, shown on /labs/ only, never linked (founder, Oct 4).
+  Turn off public sign-up on the CRM app and replace "Dominate" in its headline.
 - Optional 5th featured card: Strength Counselling or Phare Counselling (needs one line on what we did).
 - List entries: add `industry` + `chips` one by one after launch.
 - JabJab MMA and Anvido: add a Fadeaway footer credit; JabJab homepage headline still says "real-time betting odds".

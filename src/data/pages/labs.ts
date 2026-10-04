@@ -1,6 +1,6 @@
 // Fadeaway Labs page content, copied word for word from copy/labs.md.
 // The founder's most personal page: energetic, builder-first, basketball roots. No prices (scoped per project).
-// Anchors used in links and networking follow-ups: #idea-to-mvp, #ai-native, #products, #see-it-working.
+// Anchors used in links and networking follow-ups: #what-we-build, #idea-to-mvp, #ai-native, #products, #see-it-working.
 import { routes } from '../routes';
 import type { HeroContent, HeroVariant } from '../../components/blocks/hero/types';
 import type { BreadcrumbItem } from '../../components/blocks/Breadcrumb.astro';
@@ -21,7 +21,7 @@ export const breadcrumb: BreadcrumbItem[] = [
   { label: 'Labs', href: routes.labs },
 ];
 
-/** AEO answer capsule: the wide intro of the first section after the Hero */
+/** AEO answer capsule: the wide intro of What We Build, the first section after the Hero */
 export const answerCapsule =
   'Fadeaway Labs offers MVP development services, business process automation, custom web apps, and AI implementation for small businesses and startups across Canada and the US. We take product ideas from architecture to launch, automate the manual work between the tools you already use, and set up AI tools like Claude and ChatGPT inside your team, with every project scoped and priced before we start.';
 
@@ -35,27 +35,18 @@ export const hero: HeroContent = {
   eyebrow: 'Fadeaway Labs: MVP Development, Automation, Custom Apps & AI Setup',
   h1: 'MVP Development Services & AI Automation for Growing Businesses',
   sub: 'Labs is where we build for the love of building. MVPs taken from idea to launch, automations that take the manual work off your plate, custom apps and dashboards shaped around how you actually work, and AI tools like Claude and ChatGPT set up properly inside your business.',
-  primaryCta: { label: "Tell Us What You're Building", href: routes.contact },
-  secondaryCta: { label: 'See How an MVP Comes Together', href: '#idea-to-mvp' },
+  // Founder, Oct 4: both hero CTAs move down the page; "idea to live product" instead of "MVP" for people new to the term
+  primaryCta: { label: 'What We Build', href: '#what-we-build' },
+  secondaryCta: { label: 'See Idea to Live Product Journey', href: '#idea-to-mvp' },
   breadcrumb,
   visual: 'court',
-};
-
-export const whyLabs = {
-  id: 'why-labs',
-  heading: 'Why Labs Exists',
-  paragraphs: [
-    // Last sentence added Oct 2 (24/7 salesperson framing)
-    'Every business we work with pays the same hidden cost: hours lost copying data between tools, chasing leads by hand, and guessing which numbers matter. Labs exists to take that work off your team for good. Your website can sell all night; automation makes sure every lead it brings in gets followed up by morning.',
-    "It's also our workshop. The demos behind our industry pages, the products we run ourselves, and every experiment we think could make running a business easier start here first. We test everything on our own work before we build it for yours.",
-  ],
 };
 
 export const build: {
   id: string;
   heading: string;
   items: IconGridItem[];
-  cta: { heading: string; cta: { label: string; href: string } };
+  cta: { heading: string; cta: { label: string; href: string }; secondaryCta: { label: string; href: string } };
 } = {
   id: 'what-we-build',
   heading: 'What We Build',
@@ -64,7 +55,6 @@ export const build: {
       icon: 'bulb',
       title: 'From Idea to MVP',
       text: 'Got a product idea? We take it from architecture to launch: a working first version real users can try, with a roadmap for what comes next.',
-      link: { label: 'See how an MVP comes together', href: '#idea-to-mvp' },
     },
     {
       icon: 'workflow',
@@ -92,8 +82,12 @@ export const build: {
       text: "Rankings, bookings, leads, and revenue in one live view, so you can see what's working at a glance instead of stitching reports together every month.",
     },
   ],
-  // CTA touchpoint
-  cta: { heading: 'Have a process that eats your week?', cta: { label: "Tell Us What You'd Automate", href: routes.contact } },
+  // CTA touchpoint (founder, Oct 4: two buttons)
+  cta: {
+    heading: 'Got an idea, or a process that eats your week?',
+    cta: { label: "Let's Discuss Your Idea", href: routes.labsStart },
+    secondaryCta: { label: "Tell Us What You'd Automate", href: routes.labsStart },
+  },
 };
 
 export const aiNative: {
@@ -132,35 +126,25 @@ export const aiNative: {
   ],
   // Proof line: wording to confirm before launch (copy file open item)
   proof: 'We run Fadeaway this way. Our own planning, research, and content workflows run on the same kind of setup we build for you.',
-  cta: { label: 'Get Your Team AI-Ready', href: routes.contact },
+  cta: { label: 'Get Your Team AI-Ready', href: routes.labsStart },
 };
 
-/** Cards from portfolio.yaml (getWork kind labs, owner ours | cofounded); renders nothing when none are visible */
+/**
+ * Live products (portfolio.yaml labs entries without the `internal` tag: ours, co-founded and client builds), 3 across.
+ * Renders nothing when none are visible. `link`: proposed by Claude Oct 4 (needs approval).
+ */
 export const products = {
   id: 'products',
-  heading: 'Our Products',
-  intro: "We don't only build for clients. We build and run our own products, and we use them in our own work first.",
-  owners: ['ours', 'cofounded'],
+  heading: 'From Labs to Live Users',
+  link: { label: 'See the Full Portfolio', href: routes.portfolio },
+  /** SoftwareApplication schema only for products we own or co-founded */
+  schemaOwners: ['ours', 'cofounded'],
 } as const;
 
-/** Cards from portfolio.yaml (getWork kind labs, owner client | demo), then the demo call-out */
-export const seeItWorking: {
-  id: string;
-  heading: string;
-  owners: readonly string[];
-  items: { heading: string; text: string; link: { label: string; href: string } }[];
-} = {
+/** Internal tools and demo sites (portfolio.yaml labs entries tagged `internal`): no heading, "Internal" badge, never linked */
+export const seeItWorking = {
   id: 'see-it-working',
-  heading: 'See It Working: Demos, Builds & Dashboards',
-  owners: ['client', 'demo'],
-  items: [
-    {
-      heading: 'Industry Demo Websites',
-      text: 'Tell us about your business and we build a personalized demo website for it, so you see it before you commit. Available for boutique fitness studios, wellness and counselling practices, and sports programs.',
-      link: { label: 'Request a free demo', href: routes.demoRequest },
-    },
-  ],
-};
+} as const;
 
 /** Networking follow-up anchor. Also feeds the HowTo schema. */
 export const ideaToMvp: { id: string; heading: string; items: StepItem[]; cta: { label: string; href: string } } = {
@@ -184,17 +168,7 @@ export const ideaToMvp: { id: string; heading: string; items: StepItem[]; cta: {
       text: 'We launch, watch how it performs with real users, and refine from there. Your automations and apps keep getting better as your business grows.',
     },
   ],
-  cta: { label: "Let's Build Your MVP", href: routes.contact },
-};
-
-export const pricing = {
-  id: 'pricing',
-  heading: 'How Labs Pricing Works',
-  paragraphs: [
-    'Every Labs project is scoped and priced before we start. After a discovery call, you get a written scope, a fixed price for that scope, and a clear roadmap. No hourly billing, no surprise invoices.',
-    "A single automation and a full MVP are very different projects, so we price each one on what it actually takes, not on a package that doesn't fit.",
-  ],
-  cta: { label: 'Get a Scoped Quote', href: routes.contact },
+  cta: { label: "Let's Build Your MVP", href: routes.labsStart },
 };
 
 export const worksWith: { id: string; heading: string; intro: string; items: LinkCardItem[] } = {
@@ -282,5 +256,5 @@ export const cta = {
   heading: "Got a Process You'd Love to Never Do Again?",
   text: "Tell us about it. We'll map what can be automated, what's worth building, and what it would take.",
   signoff: displayLine,
-  cta: { label: "Let's Build It", href: routes.contact },
+  cta: { label: "Let's Build It", href: routes.labsStart },
 };

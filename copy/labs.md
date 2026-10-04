@@ -53,9 +53,9 @@ Notes for the build:
   It appears again in the final CTA as a bookend.
 - Hero background: the basketball "cookin'" idea. Use an ORIGINAL illustrated character or abstract
   motif. No real player's likeness (no Tim Duncan, no James Harden) unless properly licensed.
-- Section anchors are used in links and networking follow-ups: #idea-to-mvp, #ai-native, #products,
-  #see-it-working. Keep them exactly.
-- Products and See It Working are tag-driven and render nothing until real content exists.
+- Section anchors are used in links and networking follow-ups: #what-we-build, #idea-to-mvp, #ai-native,
+  #products, #see-it-working. Keep them exactly.
+- Products and the internal tools row come from src/content/portfolio.yaml and render nothing when empty.
 - [Link: text → url] and [CTA: text → url] are link specs, not visible brackets.
 -->
 
@@ -81,7 +81,7 @@ Notes for the build:
 | Answer capsule | See frontmatter | Updated, needs approval (adds Canada and the US) |
 | Visible FAQ block | 6 questions, 40 to 60 word answers | Set |
 | Last updated date | Set at launch; update when a product or demo changes status | Pending launch |
-| Internal links | /contact/, /services/build/, /services/growth/, all 4 Solutions pages, /demo-request/. Anchors #idea-to-mvp, #ai-native, #products, #see-it-working are real sections | To QA |
+| Internal links | /labs/start/ (every CTA, founder Oct 4), /portfolio/, /services/build/, /services/growth/, all 4 Solutions pages. Anchors #what-we-build, #idea-to-mvp, #ai-native, #products, #see-it-working are real sections | To QA |
 | Primary keyword | mvp development services (2,400/mo US KD 0; 200/mo Canada KD 0; $25 CPC) | Set |
 | Secondary keywords | business process automation services, ai implementation services, custom web app development, saas mvp development | Set |
 | Pricing display | None. Every project scoped and quoted | Set |
@@ -96,25 +96,14 @@ Home → Labs
 - Eyebrow: Fadeaway Labs: MVP Development, Automation, Custom Apps & AI Setup
 - H1: MVP Development Services & AI Automation for Growing Businesses
 - Sub-headline: Labs is where we build for the love of building. MVPs taken from idea to launch, automations that take the manual work off your plate, custom apps and dashboards shaped around how you actually work, and AI tools like Claude and ChatGPT set up properly inside your business.
-- Primary CTA: Tell Us What You're Building → /contact/
-- Secondary CTA: See How an MVP Comes Together → #idea-to-mvp
-- Answer capsule: renders directly under the Hero, from the frontmatter.
-
-## Why Labs Exists {#why-labs}
-
-Every business we work with pays the same hidden cost: hours lost copying data between tools, chasing leads by hand, and guessing which numbers matter. Labs exists to take that work off your team for good. Your website can sell all night; automation makes sure every lead it brings in gets followed up by morning.
-<!-- Added Oct 2 (founder): "your website is a 24/7 salesperson" framing. One line per page, worded for this audience. -->
-
-It's also our workshop. The demos behind our industry pages, the products we run ourselves, and every experiment we think could make running a business easier start here first. We test everything on our own work before we build it for yours.
-
-<!-- OPEN (founder): one or two lines in your own words on why Labs matters to you. This is the most
-personal page on the site and it should sound like you. Renders as a short quote with your name. -->
+- Primary CTA: What We Build → #what-we-build
+- Secondary CTA: See Idea to Live Product Journey → #idea-to-mvp
+- Answer capsule: renders directly under the Hero, from the frontmatter (the wide intro of What We Build).
 
 ## What We Build {#what-we-build}
 
 ### From Idea to MVP
 Got a product idea? We take it from architecture to launch: a working first version real users can try, with a roadmap for what comes next.
-[Link: See how an MVP comes together → #idea-to-mvp]
 
 ### Business Process Automation
 A lead comes in, gets qualified, lands in your CRM, and receives a follow-up, without anyone copying and pasting. We map your manual steps and automate every one that doesn't need a human, with AI handling the sorting, summaries, and follow-ups.
@@ -131,7 +120,7 @@ CRM, email, booking, payments, and point of sale, connected so data flows betwee
 ### Performance Dashboards
 Rankings, bookings, leads, and revenue in one live view, so you can see what's working at a glance instead of stitching reports together every month.
 
-[CTA touchpoint: Have a process that eats your week? Tell Us What You'd Automate → /contact/]
+[CTA touchpoint: Got an idea, or a process that eats your week? Let's Discuss Your Idea → /labs/start/ · Tell Us What You'd Automate → /labs/start/]
 
 ## Go AI-Native {#ai-native}
 
@@ -151,25 +140,21 @@ Clear rules on what data goes in and who can access what, plus hands-on training
 
 Proof line: We run Fadeaway this way. Our own planning, research, and content workflows run on the same kind of setup we build for you.
 
-[CTA: Get Your Team AI-Ready → /contact/]
+[CTA: Get Your Team AI-Ready → /labs/start/]
 
-## Our Products {#products}
+## From Labs to Live Users {#products}
 
-(Cards from src/content/portfolio.yaml, `kind: labs` with `owner` ours or cofounded, each with a visible status badge: Alpha, Beta, or Live. Renders nothing when none are visible. Each public product also gets a SoftwareApplication schema entry. Oct 4: JabJab MMA and Anvido.)
+(Cards from src/content/portfolio.yaml: every `kind: labs` entry without the `internal` tag, 3 across on desktop,
+each with a status badge: Alpha, Beta, or Live. No intro line. Renders nothing when none are visible. Products we
+own or co-founded also get a SoftwareApplication schema entry. Oct 4: JabJab MMA, Anvido, Nadu Gifhorn.)
 
-We don't only build for clients. We build and run our own products, and we use them in our own work first.
+[Link: See the Full Portfolio → /portfolio/]  <!-- Proposed by Claude Oct 4, needs approval -->
 
-<!-- OPEN (founder): names, one-line descriptions, stages, and whether each can be public.
-Known so far (Offer & Pricing doc): a lead nurturing / audit / CRM tool, a web app, and a marketplace app.
-Only list products that can be shown; an empty or vague product card hurts more than no card. -->
+## Internal Tools {#see-it-working}
 
-## See It Working: Demos, Builds & Dashboards {#see-it-working}
-
-(Cards from src/content/portfolio.yaml, `kind: labs` with `owner` client or demo, above the demo call-out. Renders only with real content. Screenshots or short screen recordings beat descriptions. Oct 4: Nadu Gifhorn, Sports Academy Demo Website.)
-
-### Industry Demo Websites
-Tell us about your business and we build a personalized demo website for it, so you see it before you commit. Available for boutique fitness studios, wellness and counselling practices, and sports programs.
-[Link: Request a free demo → /demo-request/]
+(No visible heading (founder, Oct 4). Cards from src/content/portfolio.yaml tagged `internal`: our demo sites and
+internal tools, with an "Internal" badge and no link yet. Oct 4: Sports Academy Demo Website, Yoga Studio Demo
+Website, Wellness Practice Demo Website, Fadeaway Leads CRM. Screenshots beat line art when available.)
 
 ## From Idea to MVP: How a Labs Project Works {#idea-to-mvp}
 
@@ -180,15 +165,7 @@ Tell us about your business and we build a personalized demo website for it, so 
 3. **Build and Test**: We build in focused stages and test with real data along the way, so you see working pieces early instead of waiting for one big reveal.
 4. **Launch and Keep Improving**: We launch, watch how it performs with real users, and refine from there. Your automations and apps keep getting better as your business grows.
 
-[CTA: Let's Build Your MVP → /contact/]
-
-## How Labs Pricing Works {#pricing}
-
-Every Labs project is scoped and priced before we start. After a discovery call, you get a written scope, a fixed price for that scope, and a clear roadmap. No hourly billing, no surprise invoices.
-
-A single automation and a full MVP are very different projects, so we price each one on what it actually takes, not on a package that doesn't fit.
-
-[CTA: Get a Scoped Quote → /contact/]
+[CTA: Let's Build Your MVP → /labs/start/]
 
 ## Works With Everything Else We Do {#works-with}
 
@@ -242,7 +219,7 @@ Tell us about it. We'll map what can be automated, what's worth building, and wh
 
 **We always cookin'.**
 
-[CTA: Let's Build It → /contact/]
+[CTA: Let's Build It → /labs/start/]
 
 <!--
 CHANGE LOG vs the Claude Doc draft (rev 6, Sept 23). Originals stay in the Doc.
@@ -265,11 +242,20 @@ CHANGE LOG vs the Claude Doc draft (rev 6, Sept 23). Originals stay in the Doc.
    built into", "You keep the software you know; it just"). URLs use the trailing slash.
    Internal AEO/SEO check lines from the Doc are not page copy and are left out.
 
+9. Founder, Oct 4: removed Why Labs Exists (the answer capsule moves to the What We Build intro; no "24/7
+   salesperson" line on Labs, founder Oct 4), How Labs Pricing Works (covered by the FAQ "How much does an MVP
+   cost?") and the Industry Demo Websites call-out. Hero CTAs: "What We Build → #what-we-build" and "See Idea to
+   Live Product Journey → #idea-to-mvp" (plain words instead of "MVP"). The From Idea to MVP card loses its link.
+   What We Build CTA adds "Let's Discuss Your Idea". "Our Products" became "From Labs to Live Users" (no intro,
+   adds Nadu Gifhorn, 3 across). "See It Working" heading removed; demo sites and internal tools show unlinked
+   with an "Internal" badge. "Our product" / "Co-founded" removed from the card industry lines.
+
 OPEN ITEMS (founder)
-- Why Labs Exists: one or two lines in your own words.
-- Products: names, descriptions, stages, and which can be public.
-- See It Working: real builds, dashboards, or automations to show (screenshots or screen recordings).
+- Founder quote: one or two lines in your own words (was planned for Why Labs Exists).
+- Products: screenshots for the cards.
+- Internal tools: screenshots or screen recordings; links once the demos are live.
 - Proof line in Go AI-Native ("We run Fadeaway this way"): confirm the wording before launch.
 - n8n: confirm whether Fadeaway builds on n8n before targeting "n8n automation agency" (350/mo KD 0).
 - Labs pricing: still open in Offer & Pricing. The page stays number-free.
+- Labs intake page /labs/start/ (copy/labs-start.md, Oct 4): every Labs CTA points there.
 -->

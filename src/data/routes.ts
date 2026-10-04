@@ -9,6 +9,9 @@ export const routes = {
   boutiqueFitness: '/solutions/boutique-fitness/',
   sports: '/solutions/sports/',
   labs: '/labs/',
+  // Labs intake (founder, Oct 4): every Labs page CTA lands here instead of /contact/
+  labsStart: '/labs/start/',
+  labsStartSuccess: '/labs/start/success/',
   // Resources dropdown (no /resources/ landing page, founder Oct 3): three listing pages
   caseStudies: '/case-studies/',
   portfolio: '/portfolio/',

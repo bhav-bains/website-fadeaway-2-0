@@ -59,6 +59,7 @@ export const cardLabels = {
   readCaseStudy: 'Read the Case Study',
   newTab: 'opens in a new tab',
   status: { live: 'Live', beta: 'Beta', alpha: 'Alpha' },
+  internal: 'Internal',
 };
 
 export const featured = {
@@ -74,11 +75,6 @@ export const labs = {
   heading: 'From the Lab',
   intro: 'Products we build from idea to MVP, for ourselves and for clients.',
   link: { label: 'Explore Fadeaway Labs', href: routes.labs },
-  /** Extra link under one Lab card only (by portfolio.yaml id) */
-  cardLinks: { 'sports-demo': { label: 'Get Your Free Demo', href: routes.demoRequest } } as Record<
-    string,
-    { label: string; href: string }
-  >,
 };
 
 export const moreWork = {

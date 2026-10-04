@@ -1,5 +1,5 @@
 ---
-// Call-to-action panel: heading, one line, one button. Gradient border (accent to highlight), oversized line art, no glow.
+// Call-to-action panel: heading, one line, one button (optional second button beside it). Gradient border (accent to highlight), oversized line art, no glow.
 // layout "split" (inline call-outs): stacked on phones, text left and button right from md.
 // layout "center" (closing CTA): larger type, everything centred.
 import clsx from 'clsx';
@@ -12,6 +12,8 @@ interface Props {
   /** Optional bookend line in large display type above the button (center layout), e.g. a brand slogan */
   signoff?: string;
   cta: { label: string; href: string };
+  /** Optional second button (secondary style) beside the first */
+  secondaryCta?: { label: string; href: string };
   /** Optional lower-commitment link under the button (center layout) */
   link?: { label: string; href: string };
   /** h3 inside a titled section; h2 when the CTA is the section's own heading */
@@ -25,6 +27,7 @@ const {
   heading,
   text,
   cta,
+  secondaryCta,
   link,
   signoff,
   headingAs: Heading = 'h3',
@@ -87,14 +90,27 @@ const center = layout === 'center';
       {text && <p class="max-w-2xl text-pretty text-base text-ink-soft md:text-lg">{text}</p>}
     </div>
     {signoff && <p class="font-display text-3xl font-bold tracking-tight text-accent md:text-4xl">{signoff}</p>}
-    <Button
-      href={cta.href}
-      variant="primary"
-      size="base"
-      className={clsx('shrink-0', center ? '' : 'self-start md:self-auto')}
-    >
-      {cta.label}
-    </Button>
+    {
+      secondaryCta ? (
+        <div class={clsx('flex shrink-0 flex-wrap gap-2', center ? 'justify-center' : 'self-start md:self-auto')}>
+          <Button href={cta.href} variant="primary" size="base">
+            {cta.label}
+          </Button>
+          <Button href={secondaryCta.href} variant="secondary" size="base">
+            {secondaryCta.label}
+          </Button>
+        </div>
+      ) : (
+        <Button
+          href={cta.href}
+          variant="primary"
+          size="base"
+          className={clsx('shrink-0', center ? '' : 'self-start md:self-auto')}
+        >
+          {cta.label}
+        </Button>
+      )
+    }
     {link && <ArrowLink href={link.href}>{link.label}</ArrowLink>}
   </div>
 </div>

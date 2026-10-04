@@ -15,6 +15,8 @@ export const CONTENT_TAGS = [
   'website-redesign',
   'website-migration',
   'growth',
+  // Internal tools and demo sites (founder, Oct 4): shown with an "Internal" badge and never linked (workHref)
+  'internal',
 ] as const;
 
 export type ContentTag = (typeof CONTENT_TAGS)[number];

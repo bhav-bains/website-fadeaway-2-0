@@ -20,6 +20,7 @@ export const PAGE_SOURCES: Record<string, string[]> = {
   [routes.boutiqueFitness]: [data('fitness'), copy('boutique-fitness')],
   [routes.sports]: [data('sports'), copy('sports')],
   [routes.labs]: [data('labs'), copy('labs')],
+  [routes.labsStart]: [data('labs-start'), copy('labs-start')],
   [routes.caseStudies]: [data('case-studies'), copy('case-studies')],
   [routes.portfolio]: [data('portfolio'), copy('portfolio'), 'src/content/portfolio.yaml'],
   [routes.about]: [data('about'), copy('about')],

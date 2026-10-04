@@ -1,0 +1,49 @@
+---
+// Labs intake (/labs/start/). Content: src/data/pages/labs-start.ts (from copy/labs-start.md).
+// Same lead-capture layout as /demo-request/ and /audit/: FormHero (text left, form right on lg, form directly
+// below the text on phones), then the answer capsule + What Happens Next (HowTo), FAQ, and a CTA back to Labs.
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FormHero from '../../../components/blocks/FormHero.astro';
+import Section from '../../../components/blocks/Section.astro';
+import Steps from '../../../components/blocks/Steps.astro';
+import Faq from '../../../components/blocks/Faq.astro';
+import CtaBlock from '../../../components/blocks/CtaBlock.astro';
+import { breadcrumbSchema, howToSchema, faqSchema } from '../../../lib/schema';
+import { siteConfig } from '../../../data/site';
+import { routes } from '../../../data/routes';
+import { seo, breadcrumb, answerCapsule, hero, form, howItWorks, faq, cta } from '../../../data/pages/labs-start';
+
+const jsonLd = [
+  breadcrumbSchema(breadcrumb),
+  howToSchema({
+    name: howItWorks.heading,
+    steps: howItWorks.items,
+    url: new URL(`${routes.labsStart}#${howItWorks.id}`, siteConfig.url).toString(),
+  }),
+  faqSchema(faq.items),
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
+  <FormHero
+    breadcrumb={breadcrumb}
+    eyebrow={hero.eyebrow}
+    h1={hero.h1}
+    sub={hero.sub}
+    form={form}
+    halfWidth={['name', 'email', 'company', 'website']}
+  />
+
+  <!-- Answer capsule (AEO summary) is the wide intro of the first section after the Hero -->
+  <Section id={howItWorks.id} heading={howItWorks.heading} intro={answerCapsule} introStyle="wide" tone="alt" align="start">
+    <Steps items={howItWorks.items} />
+  </Section>
+
+  <Section id={faq.id} heading={faq.heading} width="narrow">
+    <Faq faq={faq.items} />
+  </Section>
+
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} tone="alt">
+    <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} />
+  </Section>
+</BaseLayout>

@@ -18,7 +18,7 @@ export default defineConfig({
     // stay out. <lastmod> = the page's latest git date (src/lib/page-dates.ts, same as its JSON-LD dateModified);
     // no known source → no lastmod, never the build time.
     sitemap({
-      filter: (page) => !['/contact-success', '/demo-success', '/audit-success'].some((path) => page.includes(path)),
+      filter: (page) => !['/contact-success', '/demo-success', '/audit-success', '/labs/start/success'].some((path) => page.includes(path)),
       serialize(item) {
         const { modified } = pageDates(new URL(item.url).pathname);
         return modified ? { ...item, lastmod: modified } : item;

@@ -1,14 +1,14 @@
 ---
 // One project card from the central work collection (src/content/portfolio.yaml, via getWork()).
 // variant `featured`: image (or line art when the entry has none, see workArt()), industry, chips, name, summary.
-// variant `labs`: image or line art, status badge (Live / Beta / Alpha), industry line (whose it is), name, summary, chips.
+// variant `labs`: image or line art, status badge (Live / Beta / Alpha, or Internal), industry line, chips, name, summary.
 // Links: an entry with a case study links there ("Read the Case Study"); otherwise to its live site in a new tab
 // ("Visit Site", rel from the entry: noopener + noreferrer / nofollow when set). No url, no link. When linked, the
 // whole card is clickable (stretched link) with one accessible name. `extraLink` adds a second, internal link
 // under the card that sits above the stretched link. Labels come from the page (no copy in the block).
 import { Image } from 'astro:assets';
 import clsx from 'clsx';
-import { workHref, workRel, isExternalWork, workArt, type Work } from '../../lib/work';
+import { workHref, workRel, isExternalWork, isInternalWork, workArt, type Work } from '../../lib/work';
 import { illustrations } from '../illustrations';
 
 export interface WorkCardLabels {
@@ -16,6 +16,8 @@ export interface WorkCardLabels {
   readCaseStudy: string;
   newTab: string;
   status: { live: string; beta: string; alpha: string };
+  /** Badge for internal tools and demos (tag `internal`), in place of the status */
+  internal: string;
 }
 
 interface Props {
@@ -33,8 +35,10 @@ const href = workHref(entry);
 const external = isExternalWork(entry);
 const linkLabel = entry.study ? labels.readCaseStudy : labels.visitSite;
 // Status badge on Lab cards only (founder, Oct 4: no Ongoing badge on cards; `ongoing` stays in the data)
-const badge = variant === 'labs' && data.status ? labels.status[data.status] : undefined;
-const badgeLive = data.status === 'live';
+// Internal tools and demos show "Internal" instead of a status (founder, Oct 4)
+const internal = isInternalWork(entry);
+const badge = variant === 'labs' ? (internal ? labels.internal : data.status && labels.status[data.status]) : undefined;
+const badgeLive = !internal && data.status === 'live';
 const Art = data.image ? null : illustrations[workArt(entry)];
 ---
 

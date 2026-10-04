@@ -1,71 +1,155 @@
 ---
-// One labelled form control: text / email / url / tel input, select or textarea. Semantic tokens only.
+// One labelled form control: text / email / url / tel input, select, textarea, or a choice group. Semantic tokens only.
 // The label is always visible (no placeholder-as-label); optional fields say so in the label text from the copy.
 // `url` renders a plain text input with the URL keyboard, so "mysite.com" is accepted without https://.
-// Mobile-first: full width; 48px+ tall controls for touch.
+// `checkboxes` (pick any) and `radios` (pick one) render the options as selectable pills inside a fieldset, so the
+// choices are visible at once and match the theme (no OS dropdown). Checkboxes post as `name[]` (Netlify Forms keeps
+// every ticked value); a required checkbox group needs at least one tick (small script below; without JS the group
+// is simply optional). Select options are themed too, for browsers that honour option colours.
+// Mobile-first: full width; 48px+ tall controls for touch (44px+ for pills).
 import clsx from 'clsx';
 
 export interface FieldProps {
   name: string;
   label: string;
-  type?: 'text' | 'email' | 'url' | 'tel' | 'select' | 'textarea';
+  type?: 'text' | 'email' | 'url' | 'tel' | 'select' | 'textarea' | 'checkboxes' | 'radios';
   required?: boolean;
   placeholder?: string;
-  /** select only */
+  /** select, checkboxes and radios */
   options?: string[];
+  /** checkboxes and radios: a short line under the legend, e.g. "Pick all that apply." */
+  hint?: string;
+  /** required checkboxes: browser message until one is ticked (from the page data) */
+  requiredMessage?: string;
   autocomplete?: string;
   class?: string;
 }
 
 type Props = FieldProps;
 
-const { name, label, type = 'text', required = false, placeholder, options = [], autocomplete, class: className } = Astro.props;
+const {
+  name,
+  label,
+  type = 'text',
+  required = false,
+  placeholder,
+  options = [],
+  hint,
+  requiredMessage,
+  autocomplete,
+  class: className,
+} = Astro.props;
 const id = `field-${name}`;
+const choice = type === 'checkboxes' || type === 'radios';
 
 const control =
   'w-full rounded-control border border-line-strong bg-canvas/60 px-2 py-1.5 text-base text-ink placeholder:text-ink-muted/70 transition-colors hover:border-ink-muted/50 focus:border-highlight focus:outline-none focus-visible:ring-2 focus-visible:ring-highlight/30';
 ---
 
-<div class={clsx('flex flex-col gap-1', className)}>
-  <label for={id} class="text-meta font-medium text-ink-soft">
-    {label}
-    {required && <span aria-hidden="true" class="text-accent"> *</span>}
-  </label>
-  {
-    type === 'select' ? (
-      <div class="relative">
-        <select id={id} name={name} required={required} class={clsx(control, 'min-h-12 appearance-none pr-6')}>
-          <option value="" disabled selected hidden />
-          {options.map((o) => (
-            <option value={o}>{o}</option>
-          ))}
-        </select>
-        <svg
-          aria-hidden="true"
-          class="pointer-events-none absolute right-2 top-1/2 size-icon-sm -translate-y-1/2 text-ink-muted"
-          viewBox="0 0 16 16"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.75"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" d="m4 6 4 4 4-4" />
-        </svg>
+{
+  choice ? (
+    <fieldset
+      class={clsx('flex flex-col gap-1', className)}
+      data-choice-group={type === 'checkboxes' && required ? '' : undefined}
+      data-message={requiredMessage}
+      aria-describedby={hint ? `${id}-hint` : undefined}
+    >
+      <legend class="mb-1 text-meta font-medium text-ink-soft">
+        {label}
+        {required && <span aria-hidden="true" class="text-accent"> *</span>}
+      </legend>
+      {hint && (
+        <p id={`${id}-hint`} class="-mt-1 mb-1 text-meta text-ink-muted">
+          {hint}
+        </p>
+      )}
+      <div class="flex flex-wrap gap-1">
+        {options.map((o, i) => (
+          <label class="group/choice relative inline-flex min-h-[2.75rem] cursor-pointer items-center gap-1 rounded-pill border border-line-strong bg-canvas/60 px-2 py-1 text-sm text-ink-soft transition-colors hover:border-ink-muted/50 hover:text-ink has-[:checked]:border-highlight has-[:checked]:bg-highlight/10 has-[:checked]:text-ink has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-highlight/40">
+            <input
+              type={type === 'checkboxes' ? 'checkbox' : 'radio'}
+              name={type === 'checkboxes' ? `${name}[]` : name}
+              value={o}
+              required={type === 'radios' && required && i === 0}
+              class="peer sr-only"
+            />
+            <span
+              aria-hidden="true"
+              class={clsx(
+                'flex size-icon shrink-0 items-center justify-center border border-line-strong transition-colors peer-checked:border-highlight peer-checked:bg-highlight peer-checked:text-canvas',
+                type === 'checkboxes' ? 'rounded-[0.3rem]' : 'rounded-full',
+                'text-transparent',
+              )}
+            >
+              <svg class="size-icon-xs" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m2.5 6.2 2.3 2.3 4.7-5" />
+              </svg>
+            </span>
+            {o}
+          </label>
+        ))}
       </div>
-    ) : type === 'textarea' ? (
-      <textarea id={id} name={name} required={required} placeholder={placeholder} rows="4" class={clsx(control, 'resize-y')} />
-    ) : (
-      <input
-        id={id}
-        name={name}
-        type={type === 'url' ? 'text' : type}
-        inputmode={type === 'url' ? 'url' : undefined}
-        spellcheck={type === 'url' ? 'false' : undefined}
-        autocapitalize={type === 'url' ? 'off' : undefined}
-        required={required}
-        placeholder={placeholder}
-        autocomplete={autocomplete}
-        class={clsx(control, 'min-h-12')}
-      />
-    )
+    </fieldset>
+  ) : (
+    <div class={clsx('flex flex-col gap-1', className)}>
+      <label for={id} class="text-meta font-medium text-ink-soft">
+        {label}
+        {required && <span aria-hidden="true" class="text-accent"> *</span>}
+      </label>
+      {type === 'select' ? (
+        <div class="relative">
+          <select
+            id={id}
+            name={name}
+            required={required}
+            class={clsx(control, 'min-h-12 appearance-none pr-6 [&_option]:bg-surface-raised [&_option]:text-ink')}
+          >
+            <option value="" disabled selected hidden />
+            {options.map((o) => (
+              <option value={o}>{o}</option>
+            ))}
+          </select>
+          <svg
+            aria-hidden="true"
+            class="pointer-events-none absolute right-2 top-1/2 size-icon-sm -translate-y-1/2 text-ink-muted"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4 6 4 4 4-4" />
+          </svg>
+        </div>
+      ) : type === 'textarea' ? (
+        <textarea id={id} name={name} required={required} placeholder={placeholder} rows="4" class={clsx(control, 'resize-y')} />
+      ) : (
+        <input
+          id={id}
+          name={name}
+          type={type === 'url' ? 'text' : type}
+          inputmode={type === 'url' ? 'url' : undefined}
+          spellcheck={type === 'url' ? 'false' : undefined}
+          autocapitalize={type === 'url' ? 'off' : undefined}
+          required={required}
+          placeholder={placeholder}
+          autocomplete={autocomplete}
+          class={clsx(control, 'min-h-12')}
+        />
+      )}
+    </div>
+  )
+}
+
+<script>
+  // Required checkbox groups: the first box carries the browser's "pick at least one" message until any box is ticked.
+  for (const group of document.querySelectorAll<HTMLFieldSetElement>('[data-choice-group]')) {
+    const boxes = [...group.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')];
+    const message = group.dataset.message ?? 'Please pick at least one option.';
+    const sync = () => {
+      const any = boxes.some((b) => b.checked);
+      boxes[0]?.setCustomValidity(any ? '' : message);
+    };
+    boxes.forEach((b) => b.addEventListener('change', sync));
+    sync();
   }
-</div>
+</script>
