@@ -1,0 +1,50 @@
+---
+// Compact project card for the text list on /portfolio/ ("More of Our Work"): name, domain, and the entry's industry
+// and up to 3 chips when it has them. No image, no logo. The whole card is one link to the live site (new tab),
+// rel from the entry (workRel). Labels come from the page.
+import { workRel, workDomain, type Work } from '../../lib/work';
+
+interface Props {
+  entry: Work;
+  /** Screen-reader suffix, e.g. "visit site, opens in a new tab" */
+  linkHint: string;
+  headingAs?: 'h4' | 'p';
+}
+
+const { entry, linkHint, headingAs: Title = 'h4' } = Astro.props;
+const { data } = entry;
+const chips = data.chips.slice(0, 3);
+---
+
+<a
+  href={data.url}
+  target="_blank"
+  rel={workRel(entry)}
+  class="group flex h-full min-h-[2.75rem] flex-col gap-1 rounded-card border border-line bg-surface-raised/40 px-3 py-2 transition-colors duration-300 hover:border-highlight/40 hover:bg-surface-raised/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight"
+>
+  <span class="flex items-start justify-between gap-2">
+    <Title class="font-display text-lg font-semibold text-ink transition-colors group-hover:text-highlight">{data.name}</Title>
+    <svg
+      class="mt-1 size-icon-sm shrink-0 text-ink-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-highlight"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.75"
+      aria-hidden="true"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 11 11 5M6 5h5v5" />
+    </svg>
+  </span>
+  <span class="text-meta text-ink-muted">{workDomain(data.url)}</span>
+  {data.industry && <span class="text-meta font-semibold text-highlight">{data.industry}</span>}
+  {
+    chips.length > 0 && (
+      <span class="mt-1 flex flex-wrap gap-1">
+        {chips.map((c) => (
+          <span class="rounded-pill border border-line-strong px-1.5 py-0.5 text-xs font-medium text-ink-muted">{c}</span>
+        ))}
+      </span>
+    )
+  }
+  <span class="sr-only">, {linkHint}</span>
+</a>

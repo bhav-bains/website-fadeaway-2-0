@@ -151,7 +151,9 @@ All in `src/components/blocks/`. Mobile-first, semantic tokens only, no copy ins
 ## 8. Content collections and tags
 
 Collections (filled only with real, permission-confirmed content): `case-studies`, `testimonials`, `posts`.
-Each entry has `tags`. Tag names (use exactly): `featured`, `ecommerce`, `wellness-counselling`, `boutique-fitness`, `sports-academies`, `labs`, `labs-product`, `build`, `growth`.
+
+**Central work collection (founder, Oct 4): `src/content/portfolio.yaml` holds every Fadeaway project, one item each** (case-study index entries, featured, list, labs). Pages pull from it through `getWork({ kind, tag, limit })` (`src/lib/work.ts`, skips `hidden: true`); never hardcode projects on a page. Distribution: `/portfolio/` shows all visible work in this order: case studies, featured, labs, list (spec: `copy/portfolio.md`); `/labs/` shows `kind: labs` (Our Products = `owner` ours/cofounded, See It Working = client/demo); Home, Build, Growth and solution pages' "Real Work" show case studies with the page tag first, then featured and labs entries with that tag, max 3 cards; list items appear only on `/portfolio/`. Full case-study stories stay in `src/content/case-studies/`; their `portfolio.yaml` entry points to them with `caseStudy`. Outbound `rel` comes from each entry (`noopener` always; `noreferrer` on featured + list for now; `nofollow` only when set). Adding a project = adding one item; unhiding an entry publishes it everywhere it belongs.
+Each entry has `tags`. Tag names (use exactly): `featured`, `ecommerce`, `wellness-counselling`, `boutique-fitness`, `sports-academies`, `labs`, `labs-product`, `build`, `custom-website`, `website-redesign`, `website-migration`, `growth`. The three website tags are Build sub-tags (founder, Oct 4): keep `build` on the entry for filtering, and use the optional `displayTags` field to pick which chips show (NWP and Echo show Custom Website + Growth).
 **Never invent a client, result, quote, or article.**
 
 - **Real entries** need `permissionConfirmed: true`; the build fails without it.

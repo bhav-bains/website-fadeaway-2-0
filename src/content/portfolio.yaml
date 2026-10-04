@@ -1,0 +1,231 @@
+# CENTRAL WORK COLLECTION (founder, Oct 4): every Fadeaway project lives here, one item each. Pages pull from it;
+# nothing is hardcoded per page. Case studies keep their full story in src/content/case-studies/ and appear here as a
+# `kind: case-study` index entry that points to it (title, summary, image and results come from the case study).
+#
+# Where entries show (helper: getWork({ kind, tag, limit }) in src/lib/work.ts; skips hidden; order = kind order case-study, featured, labs, list; then rank)
+#   /portfolio/          everything visible: case-study, then featured, then labs, then list (founder, Oct 4)
+#   /labs/               kind: labs. "Our Products" = owner ours | cofounded; "See It Working" = owner client | demo
+#   Home, Build, Growth, solution pages ("Real Work" sections): case studies with the page tag first, then featured and
+#                        labs entries with the page tag; max 3 cards; list items never show outside /portfolio/
+#   /case-studies/       the case-studies collection (unchanged)
+#
+# Portfolio entries (/portfolio/). One item per project; add a project by adding one item.
+# Real Fadeaway work only, with client consent (founder, Oct 2). Never invent a project, result or quote.
+#
+# Fields
+#   id          unique slug
+#   name        shown name
+#   url         live site (omit when there is no public link)
+#   kind        featured | list | labs
+#   group       list items only: ecommerce | practices | saas | organizations
+#   industry    featured + labs: short label on the card
+#   summary     featured + labs: 1 to 3 sentences, plain language
+#   chips       featured + labs: short display tags
+#   tags        content tags (src/data/tags.ts) so other pages can pull entries
+#   status      labs only: live | beta | alpha
+#   ongoing     true when the work is still running
+#   image       optional, ../assets/portfolio/<id>/<id>-hero.png; imageAlt with it. Without one, featured + labs cards show line art
+#   art         optional line art for a card without an image (illustrations/ name: ecommerce, wellness, fitness, sports,
+#               wireframe, growth, launch, layers...). Default from tags and kind: ecommerce, wellness-counselling,
+#               boutique-fitness, sports-academies, then labs → launch, build → wireframe, growth → growth
+#   caseStudy   optional case-study slug; when set the card links there instead of the live site
+#   hidden      true = never rendered (kept here so it is not forgotten)
+#   nofollow    true = rel="nofollow" on this entry's outbound link (founder, Oct 4: not used for now; links pass normal SEO credit)
+#   noreferrer  true = rel="noreferrer" on this entry's outbound link (founder, Oct 4: on for all featured + list items, so clicks show as direct traffic in client analytics; Labs and case studies stay normal)
+#               Every external link always gets rel="noopener" and opens in a new tab.
+#   list items may also take optional industry + chips (compact card); without them the card shows name, domain and group only
+#   rank        order within its section (lower first)
+#   owner       labs only: ours | cofounded | client | demo
+#   caseStudy   case-study entries: slug of the entry in src/content/case-studies/
+
+# ---------- Case studies (index entries; full stories in src/content/case-studies/) ----------
+- { id: nwp, name: New West Progressives, url: "https://nwprogress.ca/", kind: case-study, caseStudy: new-west-progressives, tags: [featured, build, custom-website, website-redesign, website-migration, growth], rank: 10 }
+- { id: echo, name: Echo Storytelling Agency, url: "https://www.echostories.com/", kind: case-study, caseStudy: echo-storytelling, tags: [featured, build, custom-website, website-redesign, website-migration, growth], rank: 20 }
+- { id: heartstamp, name: HeartStamp, url: "https://heartstamp.com/", kind: case-study, caseStudy: heartstamp, tags: [featured, growth, ecommerce], rank: 30 }
+
+# ---------- Featured ----------
+- id: routethis
+  name: RouteThis
+  url: https://www.routethis.com/
+  kind: featured
+  industry: SaaS
+  summary: "A headless CMS blog and content hub that RouteThis's demand gen team runs on their own, plus SEO and keyword strategy, landing pages for campaigns, and clear analytics on what content performs."
+  chips: ["Headless CMS", "Content Hub", "SEO", "Landing Pages", "Analytics"]
+  tags: ["growth", "build"]
+  ongoing: false
+  image: ../assets/portfolio/routethis/routethis-hero.png
+  imageAlt: "The RouteThis content hub with webinar cards and filters, and the RouteThis blog"
+  noreferrer: true
+  rank: 10
+
+- id: cpro-solutions
+  name: CenturionPro   # brand on the site; company and domain are CPro Solutions
+  url: https://cprosolutions.com/
+  kind: featured
+  industry: E-commerce
+  summary: "A full website rebuild and Shopify Plus store, connected to HubSpot, with SEO, landing pages, a blog and knowledge base, and email campaigns on custom-built templates."
+  chips: ["Shopify Plus", "Website Rebuild", "HubSpot", "SEO", "Email Campaigns"]
+  tags: ["ecommerce", "build", "growth"]
+  ongoing: false
+  image: ../assets/portfolio/cpro-solutions/cpro-hero.png
+  imageAlt: "A CenturionPro product page for the TableTop Trimmer and the full machine lineup, on the Shopify Plus store"
+  noreferrer: true
+  rank: 20
+
+- id: crane-mountain-dental
+  name: Crane Mountain Dental
+  url: https://cranemountaindental.com/
+  kind: featured
+  industry: Dental practice
+  summary: "A full rebuild of a stale, underperforming site into a modular, multi-location platform for its Oregon and California locations, with a clear site structure, refreshed UX/UI, and SEO and AEO built in, ready to add new locations as the practice grows."
+  chips: ["Website Rebuild", "Multi-Location", "UX/UI", "SEO + AEO"]
+  tags: ["wellness-counselling", "build"]
+  ongoing: false
+  image: ../assets/portfolio/crane-mountain-dental/crane-mountain-hero.png
+  imageAlt: "The Crane Mountain Dental homepage and the Lakeview Dental Clinic location page"
+  noreferrer: true
+  rank: 30
+
+- id: code-hifi
+  name: Code HiFi
+  url: https://codehifi.com/
+  kind: featured
+  industry: IT services
+  summary: "A full website build and go-to-market launch for an IT services company, followed by ongoing lead generation campaigns that bring in new business."
+  chips: ["Website Build", "Go-to-Market", "Lead Generation"]
+  tags: ["build", "growth"]
+  ongoing: true
+  image: ../assets/portfolio/code-hifi/codehifi-hero.png
+  imageAlt: "The Code HiFi homepage and its Mobile and Web App Development service section"
+  noreferrer: true
+  rank: 40
+
+- id: ffd-fresno
+  name: FFD Fresno
+  url: https://ffdfresno.com/
+  kind: featured
+  industry: Dental clinic
+  summary: "Website rebuild in progress."
+  chips: ["Website Rebuild"]
+  tags: ["wellness-counselling", "build"]
+  ongoing: true
+  hidden: true   # founder, Oct 4: new site still in development. Show (with a real summary) once it is live.
+  noreferrer: true
+  rank: 50
+
+# ---------- More of our work (text list) ----------
+- { id: boarderline-skate-shop, name: Boarderline Skate Shop, url: "https://www.boarderlineskateshop.ca/", kind: list, group: ecommerce, tags: [ecommerce], noreferrer: true, rank: 10 }
+- { id: luisa-paixao, name: "Luisa Paixão", url: "https://www.luisa-paixao.com/", kind: list, group: ecommerce, tags: [ecommerce], noreferrer: true, rank: 20 }   # also luisa-paixao.us (one entry)
+- { id: chronic-ink-tattoo, name: Chronic Ink Tattoo, url: "https://chronicinktattoo.com/", kind: list, group: ecommerce, tags: [ecommerce], noreferrer: true, rank: 30 }
+- { id: caddetails, name: CADdetails, url: "https://www.caddetails.com/", kind: list, group: ecommerce, tags: [ecommerce], noreferrer: true, rank: 40 }
+- { id: blanka, name: Blanka, url: "https://blankabrand.com/", kind: list, group: ecommerce, tags: [ecommerce], noreferrer: true, rank: 50 }
+
+- { id: strength-counselling, name: Strength Counselling, url: "https://strengthcounselling.ca/", kind: list, group: practices, tags: [wellness-counselling], noreferrer: true, rank: 10 }
+- { id: phare-counselling, name: Phare Counselling, url: "https://www.pharecounselling.com/", kind: list, group: practices, tags: [wellness-counselling], noreferrer: true, rank: 20 }
+- { id: make-my-skin, name: Make My Skin, url: "https://makemyskin.ca/", kind: list, group: practices, tags: [wellness-counselling], noreferrer: true, rank: 30 }
+- { id: taza-doner, name: Taza Doner, url: "https://tazadoner.ca/", kind: list, group: practices, tags: [], noreferrer: true, rank: 40 }
+
+- { id: upscope, name: Upscope, url: "https://upscope.com/", kind: list, group: saas, tags: [], noreferrer: true, rank: 10 }
+- { id: talentclick, name: TalentClick, url: "https://talentclick.com/", kind: list, group: saas, tags: [], noreferrer: true, rank: 20 }
+- { id: samsung-knox, name: Samsung Knox, url: "https://www.samsungknox.com/en", kind: list, group: saas, tags: [], noreferrer: true, rank: 30 }   # text only, never a logo
+
+- { id: drinksense, name: DrinkSense, url: "https://www.drinksense.ca/", kind: list, group: organizations, tags: [], noreferrer: true, rank: 10 }
+- { id: mocktail-week, name: Mocktail Week, url: "https://mocktailweek.ca/", kind: list, group: organizations, tags: [], noreferrer: true, rank: 20 }
+- { id: stonewall-initiative, name: Stonewall Initiative, url: "https://stonewallinitiative.org/", kind: list, group: organizations, tags: [], noreferrer: true, rank: 30 }
+
+# ---------- From the Lab ----------
+- id: jabjab-mma
+  name: JabJab MMA
+  url: https://jabjabmma.com/
+  kind: labs
+  owner: ours
+  status: live
+  industry: "Our product · Sports media"
+  summary: "Our own MMA web app, taken from idea to MVP: fight matchups, fighter stats, rankings and event schedules for casual and hardcore fans. Automated data ingestion from live APIs keeps it current around the clock. It grows feature by feature, with every page indexed and search traffic climbing."
+  chips: ["Idea to MVP", "Next.js", "Supabase", "Vercel", "API Data Pipelines"]
+  tags: ["labs", "labs-product"]   # not sports-academies (betting-odds product next to youth sports is the wrong fit)
+  rank: 10
+
+- id: anvido
+  name: Anvido
+  url: https://anvido.de/
+  kind: labs
+  owner: cofounded
+  status: live
+  industry: "Co-founded · EdTech · Germany"
+  summary: "A learning-support platform for families of children with dyslexia and dyscalculia, co-founded with a certified learning therapist and taken from idea to MVP. Parents photograph their child's writing and get an AI-powered analysis in about 60 seconds, then personalized exercises and printable story booklets. Built on Next.js with complex backend services, GDPR-compliant and live in the German market."
+  chips: ["Idea to MVP", "AI Product", "Next.js", "EdTech"]
+  tags: ["labs", "labs-product"]
+  rank: 20
+
+- id: nadu-gifhorn
+  name: Nadu Gifhorn
+  url: https://nadu-gifhorn.de/
+  kind: labs
+  owner: client
+  status: live
+  industry: "Client build · Local media · Germany"
+  summary: "A hyperlocal news and community platform for the Gifhorn region, built for a client from idea to MVP. Their editorial team publishes local news, police and emergency updates, and events, alongside weather, a restaurant guide with daily lunch specials, and a directory of community support services."
+  chips: ["Idea to MVP", "Client Build", "Local Media", "Publishing Platform"]
+  tags: ["labs"]
+  rank: 25
+
+- id: sports-demo
+  name: Sports Academy Demo Website
+  url: https://demo-fadeaway-creatives.netlify.app/
+  kind: labs
+  owner: demo
+  status: live
+  industry: "Industry demo"
+  summary: "The demo site behind our free custom demos for sports programs. Request one and we build a personalized version for your club before you commit to anything."
+  chips: ["Industry Demo", "Astro", "Free Demo"]
+  tags: ["labs", "sports-academies"]
+  rank: 30
+
+- id: easytiffin
+  name: Easytiffin
+  kind: labs
+  owner: ours
+  status: beta
+  industry: "Marketplace"
+  summary: "Marketplace, beta launching soon."
+  chips: ["Marketplace"]
+  tags: ["labs", "labs-product"]
+  hidden: true   # founder, Oct 4: hide until beta launches (a few weeks)
+  rank: 40
+
+- id: fadeaway-leads-crm
+  name: Fadeaway Leads CRM
+  kind: labs
+  owner: ours
+  status: alpha
+  industry: "Internal tool"
+  summary: "Our internal lead nurturing, audit and CRM tool, in alpha."
+  chips: ["Internal Tool"]
+  tags: ["labs", "labs-product"]
+  hidden: true   # needs screenshots first; never link the live app
+  rank: 50
+
+- id: fitness-demo
+  name: Yoga Studio Demo Website
+  kind: labs
+  owner: demo
+  status: live
+  industry: "Industry demo"
+  summary: "The demo site behind our free custom demos for boutique fitness studios."
+  chips: ["Industry Demo", "Astro", "Free Demo"]
+  tags: ["labs", "boutique-fitness"]
+  hidden: true   # founder, Oct 4: in build. Add the url and unhide when live.
+  rank: 32
+
+- id: wellness-demo
+  name: Wellness Practice Demo Website
+  kind: labs
+  owner: demo
+  status: live
+  industry: "Industry demo"
+  summary: "The demo site behind our free custom demos for wellness and counselling practices."
+  chips: ["Industry Demo", "Astro", "Free Demo"]
+  tags: ["labs", "wellness-counselling"]
+  hidden: true   # founder, Oct 4: in build. Add the url and unhide when live.
+  rank: 34

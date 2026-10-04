@@ -42,7 +42,8 @@ gallery:
   - image: ../../assets/case-studies/nwp/nwp-news.png
     alt: "The NWP News and Media page with filters for news releases and media coverage"
 url: "https://nwprogress.ca/"
-tags: ["featured", "build", "growth"]
+tags: ["featured", "build", "custom-website", "website-redesign", "website-migration", "growth"]
+displayTags: ["custom-website", "growth"]
 rank: 10
 permissionConfirmed: true
 ---

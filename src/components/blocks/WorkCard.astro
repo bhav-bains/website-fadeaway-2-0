@@ -1,0 +1,146 @@
+---
+// One project card from the central work collection (src/content/portfolio.yaml, via getWork()).
+// variant `featured`: image (or line art when the entry has none, see workArt()), industry, chips, name, summary.
+// variant `labs`: image or line art, status badge (Live / Beta / Alpha), industry line (whose it is), name, summary, chips.
+// Links: an entry with a case study links there ("Read the Case Study"); otherwise to its live site in a new tab
+// ("Visit Site", rel from the entry: noopener + noreferrer / nofollow when set). No url, no link. When linked, the
+// whole card is clickable (stretched link) with one accessible name. `extraLink` adds a second, internal link
+// under the card that sits above the stretched link. Labels come from the page (no copy in the block).
+import { Image } from 'astro:assets';
+import clsx from 'clsx';
+import { workHref, workRel, isExternalWork, workArt, type Work } from '../../lib/work';
+import { illustrations } from '../illustrations';
+
+export interface WorkCardLabels {
+  visitSite: string;
+  readCaseStudy: string;
+  newTab: string;
+  status: { live: string; beta: string; alpha: string };
+}
+
+interface Props {
+  entry: Work;
+  labels: WorkCardLabels;
+  variant?: 'featured' | 'labs';
+  headingAs?: 'h3' | 'h4';
+  extraLink?: { label: string; href: string };
+  class?: string;
+}
+
+const { entry, labels, variant = 'featured', headingAs: Title = 'h3', extraLink, class: className } = Astro.props;
+const { data } = entry;
+const href = workHref(entry);
+const external = isExternalWork(entry);
+const linkLabel = entry.study ? labels.readCaseStudy : labels.visitSite;
+// Status badge on Lab cards only (founder, Oct 4: no Ongoing badge on cards; `ongoing` stays in the data)
+const badge = variant === 'labs' && data.status ? labels.status[data.status] : undefined;
+const badgeLive = data.status === 'live';
+const Art = data.image ? null : illustrations[workArt(entry)];
+---
+
+<article
+  class={clsx(
+    'group relative flex h-full flex-col overflow-hidden rounded-card border border-line-strong bg-surface-raised/60 transition-colors duration-300',
+    href && 'hover:border-highlight/40 has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-highlight',
+    className,
+  )}
+>
+  {
+    data.image && (
+      <div class="overflow-hidden border-b border-line">
+        <Image
+          src={data.image}
+          alt={data.imageAlt ?? ''}
+          widths={[400, 640, 960, 1280]}
+          sizes={variant === 'featured' ? '(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw' : '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw'}
+          class="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] motion-reduce:transition-none"
+        />
+      </div>
+    )
+  }
+  {
+    Art && (
+      <div class="relative flex aspect-[16/10] items-center justify-center overflow-hidden border-b border-line bg-canvas/60 px-3">
+        <div
+          aria-hidden="true"
+          class="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_70%_70%_at_50%_40%,#000_30%,transparent_100%)]"
+        />
+        <Art class="relative h-auto max-h-full w-full max-w-md transition-transform duration-500 group-hover:-translate-y-1 motion-reduce:transition-none" />
+      </div>
+    )
+  }
+  <div class="flex flex-1 flex-col gap-2 p-3 md:p-4">
+    <div class="flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
+      {data.industry && <p class="text-meta font-semibold text-highlight">{data.industry}</p>}
+      {
+        badge && (
+          <p
+            class={clsx(
+              'inline-flex items-center gap-1 rounded-pill border px-1.5 py-0.5 text-xs font-semibold',
+              badgeLive ? 'border-accent/50 text-ink' : 'border-line-strong text-ink-muted',
+            )}
+          >
+            <span aria-hidden="true" class={clsx('size-[0.5rem] rounded-full', badgeLive ? 'bg-accent' : 'bg-ink-muted')} />
+            {badge}
+          </p>
+        )
+      }
+    </div>
+    {
+      data.chips.length > 0 && (
+        <ul class="flex flex-wrap gap-1" aria-label="What we did">
+          {data.chips.map((c) => (
+            <li class="rounded-pill border border-line-strong px-1.5 py-0.5 text-xs font-medium text-ink-muted">{c}</li>
+          ))}
+        </ul>
+      )
+    }
+    <Title class="text-balance font-display text-xl font-bold text-ink md:text-2xl">{data.name}</Title>
+    {data.summary && <p class="text-pretty text-sm text-ink-muted md:text-base">{data.summary}</p>}
+    {
+      (href || extraLink) && (
+        <div class="mt-auto flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-line pt-2">
+          {href && (
+            <a
+              href={href}
+              target={external ? '_blank' : undefined}
+              rel={workRel(entry)}
+              class="inline-flex min-h-[2.75rem] items-center gap-1 font-semibold text-highlight after:absolute after:inset-0 focus-visible:outline-none"
+            >
+              {linkLabel}
+              <span class="sr-only">
+                : {data.name}
+                {external && `, ${labels.newTab}`}
+              </span>
+              <svg
+                class={clsx(
+                  'size-icon-sm transition-transform duration-300',
+                  external ? 'group-hover:-translate-y-0.5 group-hover:translate-x-0.5' : 'group-hover:translate-x-1',
+                )}
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                aria-hidden="true"
+              >
+                {external ? (
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 11 11 5M6 5h5v5" />
+                ) : (
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8h10M9 4l4 4-4 4" />
+                )}
+              </svg>
+            </a>
+          )}
+          {extraLink && (
+            <a
+              href={extraLink.href}
+              class="relative z-10 inline-flex min-h-[2.75rem] items-center gap-1 font-semibold text-ink underline decoration-line-strong underline-offset-4 transition-colors hover:text-highlight hover:decoration-highlight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight/50 rounded-control"
+            >
+              {extraLink.label}
+            </a>
+          )}
+        </div>
+      )
+    }
+  </div>
+</article>

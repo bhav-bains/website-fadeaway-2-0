@@ -66,7 +66,7 @@ const jsonLd = [
 ];
 
 const [lead, ...restGallery] = data.gallery;
-const tagChips = visibleTags(data.tags);
+const tagChips = visibleTags(data.tags, data.displayTags);
 ---
 
 <BaseLayout

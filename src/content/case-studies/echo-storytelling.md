@@ -47,7 +47,8 @@ gallery:
   - image: ../../assets/case-studies/echo/echo-team.png
     alt: "The Echo team page, Talent isn't enough, with filters for writers, designers, and story trainers"
 url: "https://www.echostories.com/"
-tags: ["featured", "build", "growth"]
+tags: ["featured", "build", "custom-website", "website-redesign", "website-migration", "growth"]
+displayTags: ["custom-website", "growth"]
 rank: 20
 permissionConfirmed: true
 ---

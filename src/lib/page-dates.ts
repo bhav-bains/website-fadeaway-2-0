@@ -21,6 +21,7 @@ export const PAGE_SOURCES: Record<string, string[]> = {
   [routes.sports]: [data('sports'), copy('sports')],
   [routes.labs]: [data('labs'), copy('labs')],
   [routes.caseStudies]: [data('case-studies'), copy('case-studies')],
+  [routes.portfolio]: [data('portfolio'), copy('portfolio'), 'src/content/portfolio.yaml'],
   [routes.about]: [data('about'), copy('about')],
   [routes.contact]: [data('contact'), copy('contact')],
   [routes.audit]: [data('audit'), copy('audit')],
