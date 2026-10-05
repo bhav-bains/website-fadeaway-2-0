@@ -10,7 +10,8 @@ canonical: "https://fadeawaycreatives.com/contact/"
 og:
   image: /og-default.jpg
 robots: "index, follow"
-h1: "Contact Fadeaway Creatives"
+display_line: "Your next customer is searching right now."
+h1: "Let's Talk About Your Website, SEO or Growth"
 schema:
   - Organization    # sitewide
   - ContactPage
@@ -32,7 +33,8 @@ audit report keeps its own 24-hour promise.
 |---|---|---|
 | Title tag | Contact Fadeaway Creatives \| Start Your Project (47 chars) | Set (approved Oct 2) |
 | Meta description | Tell us about your business and what you need: a new website, SEO and AEO, an e-commerce store, or custom software. We reply within one business day. (149 chars) | Set (approved Oct 2) |
-| H1 | Contact Fadeaway Creatives | Set (approved Oct 2) |
+| Display line | Your next customer is searching right now. | Set (founder, Oct 4) |
+| H1 | Let's Talk About Your Website, SEO or Growth | Set (founder, Oct 4; was "Contact Fadeaway Creatives") |
 | Schema | Organization (sitewide), ContactPage, BreadcrumbList | Set |
 
 ## Breadcrumb {#breadcrumb}
@@ -42,10 +44,21 @@ Home → Contact
 ## Hero + Form {#hero}
 
 - Eyebrow: Contact
-- H1: Contact Fadeaway Creatives
-- Sub-headline: Tell us about your business and what you need, whether it's a new website, SEO and AEO, an e-commerce store, or custom software. We'll reply within one business day.
-- Under the sub-headline: Email us directly: hello@fadeawaycreatives.com · [Link: Message us on WhatsApp → https://wa.me/17056500328] · Vancouver, BC, working with clients across Canada and the US.
-- Social links: Instagram, Facebook, LinkedIn (from the sitewide entity facts)
+- Display line (above the H1, largest type): **Your next customer is searching right now.**
+- H1: Let's Talk About Your Website, SEO or Growth
+- Sub-headline: Tell us about your business and what you need, whether it's a new website, SEO and AEO, an e-commerce store, or custom software.
+  (Founder, Oct 4: "We'll reply within one business day." removed from the sub-headline; the meta description and the
+  note under the button keep it.)
+
+### Ways to connect (under the sub-headline, founder Oct 4)
+
+- No heading or intro line (founder, Oct 4). 2 x 2 grid of cards (one column on phones).
+- Cards, in this order (each is one link; URLs come from src/data/site.ts, the one place to update contact details):
+  1. **Schedule a Call**: Book a time that works for you → booking page (`siteConfig.bookingUrl`, new tab)  <!-- line: Claude draft, needs approval -->
+  2. **WhatsApp**: Message on WhatsApp → `siteConfig.whatsapp` (built from `whatsappNumber`, new tab)
+  3. **Email**: Contact via Email → mailto:hello@fadeawaycreatives.com (`siteConfig.email`)
+  4. **Instagram**: DM on Instagram → https://www.instagram.com/fadeawaycreatives/ (`siteConfig.social.instagram`, new tab)
+- No Facebook. Then the location line: Vancouver, BC, working with clients across Canada and the US.
 
 Form: Netlify Forms, name `website-contact-form`, honeypot `bot-field`, posts to /contact-success/.
 
@@ -60,23 +73,9 @@ Form: Netlify Forms, name `website-contact-form`, honeypot `bot-field`, posts to
 
 - Submit button: **Send Message**
 - Line under the button: We reply within one business day. We'll only use your details to respond.
-- Line under that: Want to start free? [Link: Get a free audit → /audit/]
 
-## What Happens Next {#next-steps}
-
-1. **We read your message**: We look at what you've sent, and at your current site if you have one.
-2. **We reply within one business day**: With a few questions, or a time for a short call if that makes more sense.
-3. **You get a clear plan**: A written scope and a fixed price before any work starts. No hourly billing, no surprises.
-
-## Prefer to Start Free? {#start-free}
-
-### Already Have a Website?
-Get a free audit of your SEO and AEO readiness, performance, site structure, and on-page copy, in a branded report within 24 hours.
-[Link: Get Your Free Audit → /audit/]
-
-### Fitness Studio, Wellness Practice, or Sports Program?
-We'll build you a free custom demo of your new website first, so you see it before you commit.
-[Link: Get Your Free Demo → /demo-request/]
+(Founder, Oct 4: the What Happens Next and Prefer to Start Free sections are removed. The page is the hero, the
+form and the ways to connect.)
 
 ---
 

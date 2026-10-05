@@ -4,7 +4,7 @@ import { routes } from '../routes';
 import { siteConfig } from '../site';
 import type { BreadcrumbItem } from '../../components/blocks/Breadcrumb.astro';
 import type { FormContent } from '../../components/blocks/FormHero.astro';
-import type { StepItem } from '../../components/blocks/Steps.astro';
+import type { ContactOption } from '../../components/blocks/ContactOptions.astro';
 import type { LinkIndexItem } from '../../components/blocks/LinkIndex.astro';
 
 export const seo = {
@@ -20,13 +20,26 @@ export const breadcrumb: BreadcrumbItem[] = [
 
 export const hero = {
   eyebrow: 'Contact',
-  h1: 'Contact Fadeaway Creatives',
-  sub: "Tell us about your business and what you need, whether it's a new website, SEO and AEO, an e-commerce store, or custom software. We'll reply within one business day.",
-  emailLabel: 'Email us directly:',
-  email: siteConfig.email,
+  // Founder, Oct 4: slogan in a display line above the H1; the H1 carries the service terms
+  displayLine: 'Your next customer is searching right now.',
+  h1: "Let's Talk About Your Website, SEO or Growth",
+  sub: "Tell us about your business and what you need, whether it's a new website, SEO and AEO, an e-commerce store, or custom software.",
   location: siteConfig.locationLine,
-  // WhatsApp (founder, Oct 2: keep it public, as on the old page)
-  whatsapp: { label: 'Message us on WhatsApp', href: siteConfig.whatsapp },
+};
+
+/**
+ * Other ways to connect (founder, Oct 4): book a call first, then WhatsApp, email, Instagram. No Facebook.
+ * No heading or intro (founder, Oct 4); 2 x 2 grid. Every URL comes from src/data/site.ts. WhatsApp / Email / Instagram
+ * lines from the founder's reference; the Schedule a Call line is a Claude draft (needs approval).
+ */
+export const connect: { newTabLabel: string; items: ContactOption[] } = {
+  newTabLabel: 'opens in a new tab',
+  items: [
+    { title: 'Schedule a Call', text: 'Book a time that works for you', href: siteConfig.bookingUrl, icon: 'calendar', external: true },
+    { title: 'WhatsApp', text: 'Message on WhatsApp', href: siteConfig.whatsapp, platform: 'whatsapp', external: true },
+    { title: 'Email', text: 'Contact via Email', href: `mailto:${siteConfig.email}`, icon: 'mail' },
+    { title: 'Instagram', text: 'DM on Instagram', href: siteConfig.social.instagram, platform: 'instagram', external: true },
+  ],
 };
 
 /** Netlify form name unchanged from the old page so existing notifications keep working */
@@ -61,40 +74,6 @@ export const form: FormContent = {
   ],
   submit: 'Send Message',
   note: "We reply within one business day. We'll only use your details to respond.",
-  footer: { text: 'Want to start free?', link: { label: 'Get a free audit', href: routes.audit } },
-};
-
-export const nextSteps: { id: string; heading: string; items: StepItem[] } = {
-  id: 'next-steps',
-  heading: 'What Happens Next',
-  items: [
-    { title: 'We read your message', text: "We look at what you've sent, and at your current site if you have one." },
-    {
-      title: 'We reply within one business day',
-      text: 'With a few questions, or a time for a short call if that makes more sense.',
-    },
-    {
-      title: 'You get a clear plan',
-      text: 'A written scope and a fixed price before any work starts. No hourly billing, no surprises.',
-    },
-  ],
-};
-
-export const startFree: { id: string; heading: string; items: { heading: string; text: string; link: { label: string; href: string } }[] } = {
-  id: 'start-free',
-  heading: 'Prefer to Start Free?',
-  items: [
-    {
-      heading: 'Already Have a Website?',
-      text: 'Get a free audit of your SEO and AEO readiness, performance, site structure, and on-page copy, in a branded report within 24 hours.',
-      link: { label: 'Get Your Free Audit', href: routes.audit },
-    },
-    {
-      heading: 'Fitness Studio, Wellness Practice, or Sports Program?',
-      text: "We'll build you a free custom demo of your new website first, so you see it before you commit.",
-      link: { label: 'Get Your Free Demo', href: routes.demoRequest },
-    },
-  ],
 };
 
 // ---------- Success page (/contact-success/, noindex) ----------

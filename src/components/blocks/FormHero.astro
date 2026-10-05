@@ -2,6 +2,7 @@
 // Hero for lead-capture pages (demo request, free audit): text left (pinned on lg), the form right in a
 // gradient-border panel; phones stack the form directly under the text. No CTA buttons: the form is the action.
 // Netlify Forms markup (hidden form-name + honeypot) is built in. Content comes from the page's data file.
+import clsx from 'clsx';
 import Breadcrumb, { type BreadcrumbItem } from './Breadcrumb.astro';
 import Eyebrow from './Eyebrow.astro';
 import Field, { type FieldProps } from './form/Field.astro';
@@ -25,6 +26,8 @@ export interface FormContent {
 interface Props {
   breadcrumb: BreadcrumbItem[];
   eyebrow: string;
+  /** Optional slogan above the H1 in the largest type; the H1 (with the service term) steps down under it */
+  displayLine?: string;
   h1: string;
   sub: string;
   form: FormContent;
@@ -32,7 +35,7 @@ interface Props {
   halfWidth?: string[];
 }
 
-const { breadcrumb, eyebrow, h1, sub, form, halfWidth = [] } = Astro.props;
+const { breadcrumb, eyebrow, displayLine, h1, sub, form, halfWidth = [] } = Astro.props;
 const half = new Set(halfWidth);
 ---
 
@@ -52,9 +55,21 @@ const half = new Set(halfWidth);
     <div class="flex flex-col items-start lg:sticky lg:top-40">
       <Breadcrumb items={breadcrumb} class="mb-3" />
       <Eyebrow tone="accent">{eyebrow}</Eyebrow>
+      {
+        displayLine && (
+          <p class="mt-3 max-w-2xl text-balance font-display text-[clamp(2.5rem,1.5rem+4vw,4.5rem)] font-bold leading-[1.02] tracking-tight text-ink">
+            {displayLine}
+          </p>
+        )
+      }
       <h1
         id="hero-title"
-        class="mt-3 max-w-2xl text-balance font-display text-[clamp(2.5rem,1.5rem+4vw,4.5rem)] font-bold leading-[1.02] tracking-tight text-ink"
+        class={clsx(
+          'text-balance font-display',
+          displayLine
+            ? 'mt-3 max-w-2xl text-title font-semibold text-ink-soft'
+            : 'mt-3 max-w-2xl text-[clamp(2.5rem,1.5rem+4vw,4.5rem)] font-bold leading-[1.02] tracking-tight text-ink',
+        )}
       >
         {h1}
       </h1>

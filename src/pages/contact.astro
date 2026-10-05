@@ -1,21 +1,13 @@
 ---
-// Contact. Content: src/data/pages/contact.ts (from copy/contact.md). Every "Get a Quote" / "Book a Call" CTA lands here.
+// Contact. Content: src/data/pages/contact.ts (from copy/contact.md).
 // Netlify form name `website-contact-form` is unchanged from the old page, so existing notifications keep working.
-// Hero: FormHero (text + direct contact left, form right). Then what happens next, and the free audit / demo paths.
+// Hero: FormHero (text + other ways to connect left, form right). Contact details come from src/data/site.ts.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FormHero from '../components/blocks/FormHero.astro';
-import Section from '../components/blocks/Section.astro';
-import Steps from '../components/blocks/Steps.astro';
-import ForkCallout from '../components/blocks/ForkCallout.astro';
-import SocialIcon from '../components/ui/SocialIcon.astro';
+import ContactOptions from '../components/blocks/ContactOptions.astro';
 import { breadcrumbSchema, contactPageSchema } from '../lib/schema';
 import { routes } from '../data/routes';
-import { footerSocial } from '../data/navigation';
-import { siteConfig } from '../data/site';
-import { seo, breadcrumb, hero, form, nextSteps, startFree } from '../data/pages/contact';
-
-// LinkedIn (company) joins the footer's Instagram + Facebook here
-const social = [...footerSocial, { name: 'LinkedIn', href: siteConfig.social.linkedin, platform: 'linkedin' as const }];
+import { seo, breadcrumb, hero, form, connect } from '../data/pages/contact';
 
 const jsonLd = [contactPageSchema({ url: routes.contact, name: seo.title, description: seo.description }), breadcrumbSchema(breadcrumb)];
 ---
@@ -24,55 +16,15 @@ const jsonLd = [contactPageSchema({ url: routes.contact, name: seo.title, descri
   <FormHero
     breadcrumb={breadcrumb}
     eyebrow={hero.eyebrow}
+    displayLine={hero.displayLine}
     h1={hero.h1}
     sub={hero.sub}
     form={form}
     halfWidth={['name', 'email', 'business', 'website']}
   >
-    <div class="mt-6 flex flex-col gap-3 border-t border-line pt-4 md:mt-8 md:pt-6">
-      <p class="text-pretty text-base text-ink-soft">
-        {hero.emailLabel}{' '}
-        <a href={`mailto:${hero.email}`} class="font-semibold text-highlight transition-colors hover:text-ink">{hero.email}</a>
-      </p>
-      <p>
-        <a
-          href={hero.whatsapp.href}
-          target="_blank"
-          rel="noopener"
-          class="inline-flex min-h-11 items-center gap-1.5 font-semibold text-highlight transition-colors hover:text-ink"
-        >
-          <SocialIcon platform="whatsapp" class="size-icon" />
-          {hero.whatsapp.label}
-        </a>
-      </p>
+    <div class="mt-6 flex w-full flex-col gap-3 border-t border-line pt-4 md:mt-8 md:pt-6">
+      <ContactOptions items={connect.items} newTabLabel={connect.newTabLabel} />
       <p class="text-pretty text-meta text-ink-muted">{hero.location}</p>
-      <ul class="flex gap-2">
-        {
-          social.map((link) => (
-            <li>
-              <a
-                href={link.href}
-                target="_blank"
-                rel="noopener"
-                class="inline-flex size-11 items-center justify-center rounded-control border border-line text-ink-soft transition-colors hover:border-highlight/40 hover:text-highlight focus-visible:outline-2 focus-visible:outline-highlight"
-              >
-                <span class="sr-only">{link.name}</span>
-                <SocialIcon platform={link.platform} />
-              </a>
-            </li>
-          ))
-        }
-      </ul>
     </div>
   </FormHero>
-
-  <Section id={nextSteps.id} heading={nextSteps.heading} tone="alt">
-    <Steps items={nextSteps.items} />
-  </Section>
-
-  <Section id={startFree.id} heading={startFree.heading} align="start">
-    <div class="grid gap-3 md:grid-cols-2 md:gap-4">
-      {startFree.items.map((item) => <ForkCallout heading={item.heading} text={item.text} link={item.link} class="md:grid-cols-1" />)}
-    </div>
-  </Section>
 </BaseLayout>

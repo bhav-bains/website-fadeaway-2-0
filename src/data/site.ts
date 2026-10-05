@@ -1,4 +1,10 @@
 // Sitewide entity facts (CLAUDE.md section 5). The schema, SEO defaults and footer read from here.
+// Contact details (email, WhatsApp number, booking link, social profiles) live here only: change them here and every
+// page, the footer and the schema follow.
+
+/** WhatsApp number, digits only with country code (wa.me format) */
+const whatsappNumber = '17056500328';
+
 export const siteConfig = {
   name: 'Fadeaway Creatives',
   url: 'https://fadeawaycreatives.com',
@@ -15,7 +21,8 @@ export const siteConfig = {
   language: 'en-US',
   email: 'hello@fadeawaycreatives.com',
   // Contact page only; kept out of `social` so it never lands in Organization sameAs
-  whatsapp: 'https://wa.me/17056500328',
+  whatsappNumber,
+  whatsapp: `https://wa.me/${whatsappNumber}`,
   // Book-a-call link (Google Calendar booking page, founder Oct 4). One place: every "book a call" link reads it.
   bookingUrl: 'https://calendar.app.google/YLZvcmUobteBCjZG7',
   foundingDate: '2023',
@@ -62,7 +69,7 @@ export const siteConfig = {
     'Google Gemini',
   ],
   social: {
-    instagram: 'https://instagram.com/fadeawaycreatives',
+    instagram: 'https://www.instagram.com/fadeawaycreatives/',
     facebook: 'https://facebook.com/fadeawaycreatives',
     linkedin: 'https://www.linkedin.com/company/fadeaway-creatives/',
   },
