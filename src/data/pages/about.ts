@@ -99,6 +99,8 @@ export const beliefs: { id: string; heading: string; items: SpecItem[] } = {
 /** Founder card. Photo and LinkedIn are open items (copy/about.md); the card renders without them. */
 export const founder = {
   id: 'founder',
+  // Hidden for launch (founder, Oct 4): becomes a team section later. Flip to true to show the card again.
+  show: false,
   heading: 'Meet the Founder',
   name: 'Bhav Bains',
   title: 'Founder',
@@ -170,11 +172,11 @@ export const whoWeWorkWith: { id: string; heading: string; items: LinkCardItem[]
 /** Real Work: WorkGrid from getRealWork(tag): case studies with this tag first, then featured and labs work (portfolio.yaml), max `limit`. Renders nothing when none match. */
 export const realWork = {
   id: 'real-work',
-  heading: 'Real Work',
+  heading: "Work We're Proud Of",
   intro: "We'd rather show you than tell you.",
   tag: 'featured',
   limit: 3,
-  // "See Our Work → /portfolio/" renders only once /portfolio exists
+  link: { label: 'View Full Portfolio', href: routes.portfolio },
 } as const;
 
 /** Also feeds the FAQPage schema */

@@ -129,6 +129,9 @@ We don't replace the booking system, CRM, or registration software you already r
 
 ## Meet the Founder {#founder}
 
+(Hidden for launch, founder Oct 4: this becomes a team section later. Kept here so it can return as is. The founder's
+Person schema stays, without the bio, since the FAQ and At a Glance still name him.)
+
 ### Bhav Bains, Founder
 Bhav has spent more than 15 years building websites, search strategies, and digital systems for businesses, and started Fadeaway Creatives in 2023 to give growing businesses the kind of work usually reserved for companies with enterprise budgets. He still leads strategy directly, personally leads our sports and combat sports work, and spends as much time as he can in the lab building what comes next.
 
@@ -174,12 +177,14 @@ MVPs, automation, custom apps, and AI setup for anyone building something new.
 Websites and growth work for businesses outside these industries, scoped to your market.
 [Links: Build Services → /services/build/ · Growth Services → /services/growth/]
 
-## Real Work {#real-work}
+## Work We're Proud Of {#real-work}
+
+(Heading changed from "Real Work", founder Oct 4.)
 
 (ProofGrid, tag `featured`. Renders nothing until an approved case study exists. No client is named on this page outside approved case studies.)
 
 We'd rather show you than tell you.
-[CTA: See Our Work → /portfolio/]  (only once /portfolio exists)
+[Link: View Full Portfolio → /portfolio/]  (added Oct 4; same label as the homepage)
 
 ## Frequently Asked Questions {#faq}
 

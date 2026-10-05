@@ -10,6 +10,7 @@ import SpecGrid from '../components/blocks/SpecGrid.astro';
 import FounderCard from '../components/blocks/FounderCard.astro';
 import IconGrid from '../components/blocks/IconGrid.astro';
 import LinkCards from '../components/blocks/LinkCards.astro';
+import ArrowLink from '../components/ui/ArrowLink.astro';
 import WorkGrid from '../components/blocks/WorkGrid.astro';
 import Faq from '../components/blocks/Faq.astro';
 import CtaBlock from '../components/blocks/CtaBlock.astro';
@@ -36,16 +37,19 @@ import {
 
 const work = await getRealWork(realWork.tag, realWork.limit);
 
-// Bands alternate canvas / lighter "alt". #real-work only renders when it has entries, so the bands after it flip.
+// Bands alternate lighter "alt" / canvas, starting with the glance band under the Hero. Optional sections (#founder,
+// #real-work) only take a band when they render, so the next one keeps the rhythm. Called in page order.
 const hasWork = work.length > 0;
-const band = (lighter: boolean) => (lighter ? 'alt' : 'canvas');
+let bandIndex = 0;
+const nextBand = () => (bandIndex++ % 2 === 0 ? 'alt' : 'canvas');
 
 const jsonLd = [
   aboutPageSchema({ url: routes.about, name: seo.title, description: seo.description }),
-  founderSchema({ description: founder.bio }),
+  founderSchema(founder.show ? { description: founder.bio } : {}),
   breadcrumbSchema(breadcrumb),
   faqSchema(faq.items),
 ];
+
 ---
 
 <BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
@@ -53,52 +57,64 @@ const jsonLd = [
   <HeroPreview content={hero} variant={heroVariant} options={['statement', 'showcase', 'visual']} />
 
   <!-- Answer capsule (AEO summary) is the wide intro; the fact sheet follows -->
-  <Section id={glance.id} heading={glance.heading} intro={answerCapsule} introStyle="wide" tone="alt" align="start">
+  <Section id={glance.id} heading={glance.heading} intro={answerCapsule} introStyle="wide" tone={nextBand()} align="start">
     <FactList items={glance.items} />
   </Section>
 
-  <Section id={whyFadeaway.id} heading={whyFadeaway.heading} layout="split" class="overflow-x-clip">
-    {/* The shot the name comes from, under the pinned heading */}
+  <!-- The name story as two layers: the shot (oversized statement) over the work it stands for (quieter note beside
+       it), with the fadeaway line art bleeding off the right edge on every screen size -->
+  <Section id={whyFadeaway.id} heading={whyFadeaway.heading} tone={nextBand()} align="start" class="overflow-hidden">
     <IllusCourt
-      slot="actions"
-      class="pointer-events-none -ml-6 mt-4 hidden w-[30rem] max-w-none opacity-40 [mask-image:radial-gradient(circle_at_50%_45%,#000_40%,transparent_80%)] lg:block"
+      class="pointer-events-none absolute -right-24 bottom-0 -z-10 w-[34rem] max-w-none text-accent opacity-25 [mask-image:linear-gradient(to_left,#000_35%,transparent_95%)] sm:-right-16 lg:top-1/2 lg:right-0 lg:bottom-auto lg:w-[46rem] lg:-translate-y-1/2 lg:opacity-30"
     />
-    <div class="flex flex-col gap-4">
-      {whyFadeaway.paragraphs.map((p) => <p class="text-pretty text-lg text-ink md:text-2xl md:leading-relaxed">{p}</p>)}
+    <div class="grid gap-4 lg:grid-cols-12 lg:items-end lg:gap-6">
+      <p class="text-balance font-display text-xl font-semibold leading-snug text-ink sm:text-2xl lg:col-span-8 lg:text-3xl xl:text-4xl xl:leading-tight">
+        {whyFadeaway.paragraphs[0]}
+      </p>
+      <div class="border-l-2 border-accent pl-3 lg:col-span-4 lg:pb-1">
+        {whyFadeaway.paragraphs.slice(1).map((p) => <p class="text-pretty text-lg leading-relaxed text-ink-soft">{p}</p>)}
+      </div>
     </div>
     <!-- Founder's own version of the name story (open item in copy/about.md) renders here once supplied -->
   </Section>
 
-  <Section id={beliefs.id} heading={beliefs.heading} tone="alt" align="start" class="overflow-x-clip">
+  <Section id={beliefs.id} heading={beliefs.heading} tone={nextBand()} align="start" class="overflow-x-clip">
     <SpecGrid items={beliefs.items} columns={3} />
   </Section>
 
-  <Section id={founder.id} heading={founder.heading} align="start">
-    <FounderCard name={founder.name} title={founder.title} bio={founder.bio} />
-  </Section>
+  {
+    founder.show && (
+      <Section id={founder.id} heading={founder.heading} tone={nextBand()} align="start">
+        <FounderCard name={founder.name} title={founder.title} bio={founder.bio} />
+      </Section>
+    )
+  }
 
   <!-- Target of the Hero's "See How We Work" -->
-  <Section id={howWeWork.id} heading={howWeWork.heading} tone="alt" align="start">
+  <Section id={howWeWork.id} heading={howWeWork.heading} tone={nextBand()} align="start">
     <IconGrid items={howWeWork.items} columns={3} size="md" />
   </Section>
 
-  <Section id={whoWeWorkWith.id} heading={whoWeWorkWith.heading} align="start">
+  <Section id={whoWeWorkWith.id} heading={whoWeWorkWith.heading} tone={nextBand()} align="start">
     <LinkCards items={whoWeWorkWith.items} />
   </Section>
 
   {
     hasWork && (
-      <Section id={realWork.id} heading={realWork.heading} intro={realWork.intro} tone="alt" align="start">
+      <Section id={realWork.id} heading={realWork.heading} intro={realWork.intro} tone={nextBand()} align="start">
+        <ArrowLink slot="actions" href={realWork.link.href}>
+          {realWork.link.label}
+        </ArrowLink>
         <WorkGrid entries={work} />
       </Section>
     )
   }
 
-  <Section id={faq.id} heading={faq.heading} width="narrow" tone={band(!hasWork)}>
+  <Section id={faq.id} heading={faq.heading} width="narrow" tone={nextBand()}>
     <Faq faq={faq.items} />
   </Section>
 
-  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow" tone={band(hasWork)}>
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow" tone={nextBand()}>
     <CtaBlock
       heading={cta.heading}
       text={cta.text}
