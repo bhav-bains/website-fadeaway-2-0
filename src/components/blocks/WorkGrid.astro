@@ -2,6 +2,7 @@
 // Mixed "Real Work" grid from the central work collection (getRealWork() in src/lib/work.ts): case-study entries
 // render as CaseStudyCard (link to the case study), featured and labs entries as WorkCard (live site, new tab).
 // Renders nothing when given no entries; pages should also skip the surrounding Section (CLAUDE.md section 4).
+// Phones (2 or more cards): a swipeable scroll-snap row, the next card peeking in; from md the grid below.
 // Columns follow the count like ProofGrid: 1 = one wide case study (or one centred card), 2 centred, 3 across on lg.
 import clsx from 'clsx';
 import CaseStudyCard from './CaseStudyCard.astro';
@@ -28,7 +29,16 @@ const layout = single
 
 {
   entries.length > 0 && (
-    <ul class={clsx('grid gap-3 lg:gap-4', layout, className)}>
+    <ul
+      class={clsx(
+        !single &&
+          '-mx-2 flex snap-x snap-mandatory scroll-px-2 gap-2 overflow-x-auto px-2 pb-1 no-scrollbar sm:-mx-3 sm:scroll-px-3 sm:px-3 md:mx-0 md:snap-none md:overflow-visible md:px-0 md:pb-0 [&>li]:shrink-0 [&>li]:basis-[85%] [&>li]:snap-start sm:[&>li]:basis-[60%] md:[&>li]:basis-auto',
+        'md:grid md:gap-3 lg:gap-4',
+        single && 'grid gap-3',
+        layout,
+        className,
+      )}
+    >
       {entries.map((w) =>
         w.study ? (
           <CaseStudyCard entry={w.study} single={single} />

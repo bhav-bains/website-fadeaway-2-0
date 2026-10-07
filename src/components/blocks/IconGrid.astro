@@ -21,27 +21,67 @@ interface Props {
   titleAs?: 'h3' | 'p';
   /** sm: one-line captions (Trust Bar). md: a sentence or two per card. */
   size?: 'sm' | 'md';
+  /** Phones: a swipeable row (scroll-snap) of cards that show icon + title; tap a card to reveal its text and link.
+   *  From lg the cards are the normal grid with the text always shown. */
+  swipe?: boolean;
+  /** Prefix for the toggle ids when more than one swipe grid is on a page */
+  idPrefix?: string;
   class?: string;
 }
 
-const { items, columns = 4, titleAs: Title = 'h3', size = 'sm', class: className } = Astro.props;
+const { items, columns = 4, titleAs: Title = 'h3', size = 'sm', swipe = false, idPrefix = 'icon-card', class: className } = Astro.props;
 const md = size === 'md';
 
 const lgColumns = { 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4' };
 ---
 
-<ul class={clsx('grid gap-2 sm:grid-cols-2 sm:gap-3', lgColumns[columns], className)}>
+<ul
+  class={clsx(
+    swipe
+      ? '-mx-2 flex snap-x snap-mandatory items-start scroll-px-2 gap-2 overflow-x-auto px-2 pb-1 no-scrollbar sm:mx-0 sm:grid sm:snap-none sm:items-stretch sm:gap-3 sm:overflow-visible sm:px-0 sm:pb-0 sm:grid-cols-2'
+      : 'grid gap-2 sm:grid-cols-2 sm:gap-3',
+    lgColumns[columns],
+    className,
+  )}
+>
   {
-    items.map((item) => (
-      <li class="flex flex-col gap-2 rounded-card border border-line-strong bg-surface-lifted p-3 md:p-4">
+    items.map((item, i) => (
+      <li
+        class={clsx(
+          'group/card relative flex flex-col gap-2 rounded-card border border-line-strong bg-surface-lifted p-3 md:p-4',
+          swipe && 'shrink-0 basis-[72%] snap-start has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-highlight sm:basis-auto',
+        )}
+      >
+        {swipe && (
+          <>
+            <input type="checkbox" id={`${idPrefix}-${i}`} class="peer sr-only" />
+            <label
+              for={`${idPrefix}-${i}`}
+              class="absolute inset-0 z-10 cursor-pointer rounded-card sm:hidden"
+              aria-label={`Show details: ${item.title}`}
+            />
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute right-3 top-3 inline-flex size-icon items-center justify-center text-ink-muted transition-transform duration-300 group-has-[:checked]/card:rotate-45 sm:hidden"
+            >
+              <svg viewBox="0 0 20 20" class="size-icon" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <path d="M10 4v12M4 10h12" />
+              </svg>
+            </span>
+          </>
+        )}
         <span class="inline-flex size-11 items-center justify-center rounded-control border border-highlight/20 bg-highlight/10 text-highlight">
           <Icon name={item.icon} />
         </span>
         <div class={clsx('flex flex-col', md ? 'gap-1' : 'gap-0.5')}>
-          <Title class={clsx('font-display font-bold text-ink', md ? 'text-xl md:text-2xl' : 'text-lg')}>{item.title}</Title>
-          <p class={clsx('text-ink-muted', md ? 'text-pretty text-base' : 'text-meta')}>{item.text}</p>
+          <Title class={clsx('font-display font-bold text-ink', md ? 'text-xl md:text-2xl' : 'text-lg', swipe && 'pr-4 sm:pr-0')}>{item.title}</Title>
+          <p class={clsx('text-ink-muted', md ? 'text-pretty text-base' : 'text-meta', swipe && 'hidden group-has-[:checked]/card:block sm:block')}>{item.text}</p>
         </div>
-        {item.link && <ArrowLink href={item.link.href} class="mt-auto self-start pt-1">{item.link.label}</ArrowLink>}
+        {item.link && (
+          <ArrowLink href={item.link.href} class={clsx('mt-auto self-start pt-1', swipe && 'relative z-20 hidden group-has-[:checked]/card:inline-flex sm:inline-flex')}>
+            {item.link.label}
+          </ArrowLink>
+        )}
       </li>
     ))
   }

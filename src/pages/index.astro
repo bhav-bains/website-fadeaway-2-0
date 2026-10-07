@@ -76,7 +76,7 @@ const jsonLd = [
 
   <Section id={labs.id} eyebrow={labs.eyebrow} heading={labs.heading} intro={labs.intro} introStyle="wide" align="start" class="overflow-hidden">
     <IllusLaunch class="pointer-events-none absolute -right-12 -top-10 -z-10 w-[18rem] max-w-none text-highlight opacity-20 sm:-right-16 sm:-top-16 sm:w-[24rem] sm:opacity-30 lg:w-[28rem] lg:opacity-35 [mask-image:radial-gradient(circle_at_65%_35%,#000_30%,transparent_75%)] xl:-right-20 xl:-top-20 xl:w-[36rem]" />
-    <IconGrid items={labs.items} columns={2} size="md" />
+    <IconGrid items={labs.items} columns={2} size="md" swipe idPrefix="labs-card" />
     <CtaBlock {...labs.cta} class="mt-4 md:mt-6" />
   </Section>
 
@@ -118,7 +118,7 @@ const jsonLd = [
   </Section>
 
   <Section id={method.id} heading={method.heading} intro={method.intro} layout="split">
-    <FeatureList items={method.items} />
+    <FeatureList items={method.items} swipe />
   </Section>
 
   <Section id={faq.id} heading={faq.heading} width="narrow">

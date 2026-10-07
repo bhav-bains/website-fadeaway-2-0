@@ -1,7 +1,8 @@
 ---
 // Open list of features: icon beside an H3 title, one sentence under it, hairline dividers, no card boxes.
 // Lighter than IconGrid; good for 4 to 8 "how we do it" points. Pairs well with Section layout="split".
-// Mobile-first: 1 column, `columns` from md.
+// Mobile-first: 1 column, `columns` from md. `swipe`: on phones the points become a swipeable scroll-snap row of outlined
+// cards (next card peeks in); from md the open list above.
 import clsx from 'clsx';
 import Icon, { type IconName } from '../ui/Icon.astro';
 
@@ -14,16 +15,33 @@ export interface FeatureListItem {
 interface Props {
   items: FeatureListItem[];
   columns?: 1 | 2;
+  swipe?: boolean;
   class?: string;
 }
 
-const { items, columns = 2, class: className } = Astro.props;
+const { items, columns = 2, swipe = false, class: className } = Astro.props;
 ---
 
-<ul class={clsx('grid gap-x-6', columns === 2 && 'md:grid-cols-2', className)}>
+<ul
+  class={clsx(
+    swipe
+      ? '-mx-2 flex snap-x snap-mandatory scroll-px-2 gap-2 overflow-x-auto px-2 pb-1 no-scrollbar sm:-mx-3 sm:scroll-px-3 sm:px-3 md:mx-0 md:grid md:snap-none md:overflow-visible md:px-0 md:pb-0'
+      : 'grid',
+    'gap-x-6',
+    columns === 2 && 'md:grid-cols-2',
+    className,
+  )}
+>
   {
     items.map((item) => (
-      <li class="flex flex-col gap-1 border-t border-line py-3 md:py-4">
+      <li
+        class={clsx(
+          'flex flex-col gap-1 md:rounded-none md:border-0 md:border-t md:border-line md:bg-transparent md:px-0 md:py-4',
+          swipe
+            ? 'shrink-0 basis-[82%] snap-start rounded-card border border-line-strong bg-surface-lifted p-3 sm:basis-[55%] md:basis-auto'
+            : 'border-t border-line py-3',
+        )}
+      >
         <div class="flex items-center gap-2">
           <span class="inline-flex size-9 shrink-0 items-center justify-center rounded-control border border-highlight/20 bg-highlight/10 text-highlight">
             <Icon name={item.icon} />
