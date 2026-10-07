@@ -80,6 +80,19 @@ const jsonLd = [
     <CtaBlock {...labs.cta} class="mt-4 md:mt-6" />
   </Section>
 
+  {
+    featuredWork.length > 0 && (
+      <Section id={work.id} heading={work.heading} intro={work.intro}>
+        <WorkGrid entries={featuredWork} />
+        <div class="mt-4 flex justify-center md:mt-6">
+          <Button href={work.cta.href} variant="secondary" size="base">
+            {work.cta.label}
+          </Button>
+        </div>
+      </Section>
+    )
+  }
+
   <Section id={why.id} heading={why.heading} layout="split">
     <NumberedList items={why.items} />
   </Section>
@@ -103,19 +116,6 @@ const jsonLd = [
       <IllusAiShopping class="mx-auto h-auto w-full max-w-2xl" />
     </div>
   </Section>
-
-  {
-    featuredWork.length > 0 && (
-      <Section id={work.id} heading={work.heading} intro={work.intro}>
-        <WorkGrid entries={featuredWork} />
-        <div class="mt-4 flex justify-center md:mt-6">
-          <Button href={work.cta.href} variant="secondary" size="base">
-            {work.cta.label}
-          </Button>
-        </div>
-      </Section>
-    )
-  }
 
   <Section id={method.id} heading={method.heading} intro={method.intro} layout="split">
     <FeatureList items={method.items} />

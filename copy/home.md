@@ -161,6 +161,14 @@ Client portals, internal tools, and live dashboards tracking rankings, bookings,
 **Have a Custom Project in Mind?** Let's map the architecture, scope the MVP, and build a roadmap to bring it to life.
 [CTA: Let's Build Your MVP → /labs/]
 
+## Real Work, Real Results {#work}
+
+Intro: See what we've built for businesses like yours.
+
+Component: tag-based proof grid. Pulls the 3 strongest case studies tagged `featured` from the case-studies collection. **Renders nothing while the collection is empty** (no placeholder cards on the live site). Never hardcode or invent a project, name, or result.
+
+[CTA: View Full Portfolio → /portfolio]
+
 ## Why Growing Businesses Choose Fadeaway {#why}
 
 Layout: split. Heading on the left (pinned on desktop), numbered list 01 to 04 on the right. No cards or icons.
@@ -193,14 +201,6 @@ E-commerce is one of the most competitive spaces in search: established players,
 
 (Removed, founder Oct 7: the "See our e-commerce work" link under the CTA.)
 [Secondary CTA: See the E-commerce Approach → /solutions/ecommerce]
-
-## Real Work, Real Results {#work}
-
-Intro: See what we've built for businesses like yours.
-
-Component: tag-based proof grid. Pulls the 3 strongest case studies tagged `featured` from the case-studies collection. **Renders nothing while the collection is empty** (no placeholder cards on the live site). Never hardcode or invent a project, name, or result.
-
-[CTA: View Full Portfolio → /portfolio]
 
 ## Our SEO & AEO Method {#method}
 
