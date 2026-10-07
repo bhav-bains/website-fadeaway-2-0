@@ -44,7 +44,7 @@ const Art = data.image ? null : illustrations[workArt(entry)];
 
 <article
   class={clsx(
-    'group relative flex h-full flex-col overflow-hidden rounded-card border border-line-strong bg-surface-raised/60 transition-colors duration-300',
+    'group relative flex h-full flex-col overflow-hidden rounded-card border border-line-strong bg-surface-lifted transition-colors duration-300',
     href && 'hover:border-highlight/40 has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-highlight',
     className,
   )}
@@ -64,7 +64,7 @@ const Art = data.image ? null : illustrations[workArt(entry)];
   }
   {
     Art && (
-      <div class="relative flex aspect-[16/10] items-center justify-center overflow-hidden border-b border-line bg-canvas/60 px-3">
+      <div class="relative flex aspect-[16/10] items-center justify-center overflow-hidden border-b border-line bg-surface-alt/60 px-3">
         <div
           aria-hidden="true"
           class="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_70%_70%_at_50%_40%,#000_30%,transparent_100%)]"

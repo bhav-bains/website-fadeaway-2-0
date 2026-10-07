@@ -35,6 +35,7 @@
   --color-surface-deep: var(--color-fadeaway-darker);
   --color-surface-alt: #222225;                     /* alternating section band, a step lighter than canvas */
   --color-surface-raised: #151517;                  /* cards, panels */
+  --color-surface-lifted: #2C2C30;                  /* cards that sit lighter than the section band (Industries) */
   --color-ink: var(--color-neutral-50);             /* headings, primary text */
   --color-ink-soft: var(--color-neutral-300);       /* sub-headlines, lead text */
   --color-ink-muted: var(--color-neutral-400);      /* body copy in cards */

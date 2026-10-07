@@ -144,7 +144,7 @@ const tagChips = visibleTags(data.tags, data.displayTags);
   </section>
 
   <!-- The story, with quick facts and results pinned beside it on lg (above it on phones) -->
-  <Section id="story" tone="alt" labelledBy="cs-title">
+  <Section id="story" labelledBy="cs-title">
     <div class="grid gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,4fr)] lg:gap-12">
       <aside class="flex flex-col gap-6 lg:order-2 lg:sticky lg:top-32 lg:self-start">
         {
@@ -190,7 +190,7 @@ const tagChips = visibleTags(data.tags, data.displayTags);
 
   {
     data.beforeImage && data.image && (
-      <Section id="before-after" heading={detail.beforeAfter.heading} tone={data.gallery.length > 0 ? 'alt' : 'canvas'} align="start">
+      <Section id="before-after" heading={detail.beforeAfter.heading} align="start">
         <div class="grid gap-4 md:grid-cols-2 md:gap-6">
           {[
             { label: detail.beforeAfter.before, src: data.beforeImage, alt: data.beforeImageAlt ?? '', tone: 'border-line-strong text-ink-muted' },
@@ -243,7 +243,7 @@ const tagChips = visibleTags(data.tags, data.displayTags);
 
   {
     others.length > 0 && (
-      <Section id="more" heading={detail.moreHeading} tone="alt" align="start">
+      <Section id="more" heading={detail.moreHeading} align="start">
         <ProofGrid entries={others} />
       </Section>
     )

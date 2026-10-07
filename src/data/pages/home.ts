@@ -29,8 +29,9 @@ export const hero: HeroContent = {
   eyebrow: 'Growth Partner for Local Businesses Across the US & Canada',
   h1: 'Websites, SEO & AI Search for Growing Businesses',
   sub: 'We build websites ready for SEO and AI search, and run growth systems that turn traffic into paying customers. Fixed pricing, no guesswork, built to scale as you grow.',
-  primaryCta: { label: 'See How It Works', href: '#how-it-works' },
-  secondaryCta: { label: 'Get Your Free Audit', href: routes.audit },
+  // Founder, Oct 7: "See How It Works" removed; the audit button became a website box that starts the free audit.
+  // Label and placeholder reuse the Audit CTA block wording (audit.ts); the button keeps the old CTA label.
+  auditForm: { action: routes.audit, label: 'Your website', placeholder: 'yourbusiness.com', button: 'Get Your Free Audit' },
   answerCapsule,
 };
 
@@ -44,8 +45,9 @@ export const trust: { id: string; items: IconGridItem[] } = {
   ],
 };
 
-export const industries: { id: string; heading: string; intro: string; items: CardGridItem[] } = {
+export const industries: { id: string; eyebrow: string; heading: string; intro: string; items: CardGridItem[] } = {
   id: 'industries',
+  eyebrow: 'Our Solutions',
   heading: 'Growth Built Around Your Industry',
   intro: 'Websites, SEO and AEO shaped around how your customers search and book.',
   items: [
@@ -136,13 +138,13 @@ export const ecommerce = {
   id: 'ecommerce',
   heading: 'Your Store, Built for AI Search',
   body: "E-commerce is one of the most competitive spaces in search: established players, deep case-study libraries, years of SEO investment already in place. That's exactly why we treat it as a long-term investment, not a quick fix. We handle the technical SEO and AEO work that gets your store found by Google and by AI shopping assistants, alongside site builds, migrations, and checkout optimization that turn that traffic into sales.",
-  link: { label: 'See our e-commerce work', href: `${routes.portfolio}#ecommerce` },
   cta: { label: 'See the E-commerce Approach', href: routes.ecommerce },
 };
 
 export const labs = {
   id: 'labs',
-  heading: 'Fadeaway Labs: MVPs, AI Automation & Custom Software',
+  eyebrow: 'Fadeaway Labs',
+  heading: 'MVPs, AI Automation & Custom Software',
   intro:
     'Fadeaway Labs is where we build for the love of building: MVPs, business automation, custom software, and AI tools set up properly inside your business. If you can picture a system that would save you hours a week, this is where we make it real.',
   items: [
@@ -170,7 +172,7 @@ export const labs = {
   cta: {
     heading: 'Have a Custom Project in Mind?',
     text: "Let's map the architecture, scope the MVP, and build a roadmap to bring it to life.",
-    cta: { label: "Let's Build Your MVP", href: `${routes.labs}#idea-to-mvp` },
+    cta: { label: "Let's Build Your MVP", href: routes.labs },
   },
 };
 

@@ -28,7 +28,7 @@ const jsonLd = [
   <FormHero breadcrumb={breadcrumb} eyebrow={hero.eyebrow} h1={hero.h1} sub={hero.sub} form={form} halfWidth={['name', 'email']} />
 
   <!-- Answer capsule (AEO summary) is the wide intro of the first section after the Hero -->
-  <Section id={checks.id} heading={checks.heading} intro={answerCapsule} introStyle="wide" tone="alt" align="start">
+  <Section id={checks.id} heading={checks.heading} intro={answerCapsule} introStyle="wide" align="start">
     <FeatureList items={checks.items} columns={2} />
   </Section>
 
@@ -36,7 +36,7 @@ const jsonLd = [
     <Steps items={howItWorks.items} />
   </Section>
 
-  <Section id={faq.id} heading={faq.heading} width="narrow" tone="alt">
+  <Section id={faq.id} heading={faq.heading} width="narrow">
     <Faq faq={faq.items} />
   </Section>
 </BaseLayout>

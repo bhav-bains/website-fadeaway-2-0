@@ -36,7 +36,7 @@ const jsonLd = [
   />
 
   <!-- Answer capsule (AEO summary) is the wide intro of the first section after the Hero -->
-  <Section id={howItWorks.id} heading={howItWorks.heading} intro={answerCapsule} introStyle="wide" tone="alt" align="start">
+  <Section id={howItWorks.id} heading={howItWorks.heading} intro={answerCapsule} introStyle="wide" align="start">
     <Steps items={howItWorks.items} />
   </Section>
 
@@ -44,7 +44,7 @@ const jsonLd = [
     <CardGrid items={industries.items} columns={3} />
   </Section>
 
-  <Section id={faq.id} heading={faq.heading} width="narrow" tone="alt">
+  <Section id={faq.id} heading={faq.heading} width="narrow">
     <Faq faq={faq.items} />
   </Section>
 

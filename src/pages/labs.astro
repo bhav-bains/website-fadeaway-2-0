@@ -65,7 +65,7 @@ const jsonLd = [
   <HeroPreview content={hero} variant={heroVariant} options={['statement', 'showcase', 'visual']} />
 
   <!-- Answer capsule (AEO summary) is the wide intro of the first section, directly under the Hero -->
-  <Section id={build.id} heading={build.heading} intro={answerCapsule} introStyle="wide" tone="alt" align="start" class="scroll-mt-24">
+  <Section id={build.id} heading={build.heading} intro={answerCapsule} introStyle="wide" align="start" class="scroll-mt-24">
     <IconGrid items={build.items} columns={3} size="md" />
     <CtaBlock heading={build.cta.heading} cta={build.cta.cta} secondaryCta={build.cta.secondaryCta} class="mt-6 md:mt-10" />
     <!-- Founder quote (open item in copy/labs.md): renders on this page once supplied, in the founder's words -->
@@ -83,7 +83,7 @@ const jsonLd = [
        co-founded entries with a url get a SoftwareApplication schema node. Renders nothing when none are visible. -->
   {
     productWork.length > 0 && (
-      <Section id={products.id} heading={products.heading} tone="alt" align="start" class="scroll-mt-24">
+      <Section id={products.id} heading={products.heading} align="start" class="scroll-mt-24">
         <ArrowLink slot="actions" href={products.link.href}>
           {products.link.label}
         </ArrowLink>
@@ -101,7 +101,7 @@ const jsonLd = [
   <!-- Internal tools and demo sites (#see-it-working, tag `internal`): no heading, "Internal" badge, never linked -->
   {
     internalWork.length > 0 && (
-      <Section id={seeItWorking.id} tone="alt" align="start" separator={productWork.length > 0} class="scroll-mt-24">
+      <Section id={seeItWorking.id} align="start" separator={productWork.length > 0} class="scroll-mt-24">
         <ul class="grid gap-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
           {internalWork.map((w) => (
             <li>
@@ -126,7 +126,7 @@ const jsonLd = [
     </div>
   </Section>
 
-  <Section id={worksWith.id} heading={worksWith.heading} intro={worksWith.intro} tone="alt" align="start">
+  <Section id={worksWith.id} heading={worksWith.heading} intro={worksWith.intro} align="start">
     <LinkCards items={worksWith.items} />
   </Section>
 
@@ -137,7 +137,7 @@ const jsonLd = [
   <!-- From the Lab (tag labs, data: `blog` in labs.ts): renders nothing until /articles/ has real posts -->
 
   <!-- Bookend: "We always cookin'." returns above the button -->
-  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow" tone="alt">
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
     <CtaBlock
       heading={cta.heading}
       text={cta.text}

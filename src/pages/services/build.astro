@@ -43,10 +43,7 @@ import { auditCta } from '../../data/pages/audit';
 
 const work = await getRealWork(realWork.tag, realWork.limit);
 
-// Bands alternate canvas / lighter "alt". #real-work only renders when it has entries, so the bands after it flip.
 const hasWork = work.length > 0;
-
-const band = (lighter: boolean) => (lighter ? 'alt' : 'canvas');
 
 const jsonLd = [
   breadcrumbSchema(breadcrumb),
@@ -70,7 +67,6 @@ const jsonLd = [
     heading={standard.heading}
     intro={[answerCapsule, standard.intro]}
     introStyle="wide"
-    tone="alt"
     align="start"
     class="overflow-x-clip"
   >
@@ -83,7 +79,7 @@ const jsonLd = [
     <AuditCta {...auditCta} class="mt-6 md:mt-10" />
   </Section>
 
-  <Section id={industries.id} heading={industries.heading} intro={industries.intro} tone="alt">
+  <Section id={industries.id} heading={industries.heading} intro={industries.intro}>
     <CardGrid items={industries.items} columns={2} />
     <div class="mt-4 grid gap-3 border-t border-line pt-4 md:mt-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-6 md:pt-6">
       <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-pretty text-base text-ink-soft md:text-lg">
@@ -107,7 +103,7 @@ const jsonLd = [
     <Steps items={howItWorks.items} direction="vertical" />
   </Section>
 
-  <Section id={pricing.id} heading={pricing.heading} intro={pricing.intro} layout="split" tone="alt">
+  <Section id={pricing.id} heading={pricing.heading} intro={pricing.intro} layout="split">
     <Fragment slot="actions">
       <Button href={pricing.cta.href} variant="primary" size="base">{pricing.cta.label}</Button>
       <IllusQuote
@@ -136,7 +132,7 @@ const jsonLd = [
     )
   }
 
-  <Section id={labs.id} heading={labs.heading} intro={labs.intro} tone={band(hasWork)}>
+  <Section id={labs.id} heading={labs.heading} intro={labs.intro}>
     <IconGrid items={labs.items} columns={2} size="md" />
     <div class="mt-4 flex justify-center md:mt-6">
       <Button href={labs.cta.href} variant="secondary" size="base">{labs.cta.label}</Button>
@@ -145,13 +141,13 @@ const jsonLd = [
 
   <!-- Testimonials (tag build): renders nothing until real, permission-confirmed quotes exist -->
 
-  <Section id={faq.id} heading={faq.heading} width="narrow" tone={band(!hasWork)}>
+  <Section id={faq.id} heading={faq.heading} width="narrow">
     <Faq faq={faq.items} />
   </Section>
 
   <!-- From the Blog (tag build, data: `blog` in build.ts): renders nothing until /articles/ has real Build posts -->
 
-  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow" tone={band(hasWork)}>
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
     <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
   </Section>
 </BaseLayout>

@@ -35,7 +35,7 @@ const jsonLd = [
   />
 
   <!-- Answer capsule (AEO summary) is the wide intro of the first section after the Hero -->
-  <Section id={howItWorks.id} heading={howItWorks.heading} intro={answerCapsule} introStyle="wide" tone="alt" align="start">
+  <Section id={howItWorks.id} heading={howItWorks.heading} intro={answerCapsule} introStyle="wide" align="start">
     <Steps items={howItWorks.items} />
   </Section>
 
@@ -43,7 +43,7 @@ const jsonLd = [
     <Faq faq={faq.items} />
   </Section>
 
-  <Section id={cta.id} labelledBy={`${cta.id}-heading`} tone="alt">
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`}>
     <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} />
   </Section>
 </BaseLayout>

@@ -1,8 +1,11 @@
 ---
-// Stages laid out like a CRM sales pipeline: chevron segments that flow from accent (first stage) to highlight (last).
-// lg and up: one continuous horizontal stage bar, each stage's text under its segment.
-// Below lg: full-width segments pointing down, stacked, text under each.
-// Colours are mixed from theme tokens (no hex); the chevron shape is decoration only (clip-path).
+// Stages laid out like a CRM sales pipeline: outlined, transparent stage tabs with a pointed end, neutral outline, accent numbers.
+// lg and up: one row, each stage's text under its tab (every stage, the last included, has a pointed end drawn with a rotated square's borders, so
+// the fill stays transparent and the outline stays crisp).
+// Below lg: a swipeable row (scroll-snap) of outlined cards, each with its number, title and text; the next card
+// peeks in from the right so it reads as scrollable. The scroll bar is hidden.
+// Theme tokens only; the stage height (lg:h-16 = 4rem) sets the tip: square side = 4rem / sqrt(2) = 2.8284rem, and the tip reaches 2rem past the
+// stage (grid gap-x-5 = 2.5rem leaves a 0.5rem gap; the row's pr-4 keeps the last tip inside the container).
 import clsx from 'clsx';
 
 export interface PipelineItem {
@@ -17,64 +20,37 @@ interface Props {
 
 const { items, class: className } = Astro.props;
 const pad = (n: number) => String(n).padStart(2, '0');
-const last = items.length - 1;
-
-// Stage tint: accent at the first stage, blending to highlight at the last
-const tint = (i: number) => {
-  const accentShare = last > 0 ? Math.round(100 - (i / last) * 100) : 100;
-  return `--stage: color-mix(in oklab, var(--color-accent) ${accentShare}%, var(--color-highlight));`;
-};
 
 const lgColumns = { 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4', 5: 'lg:grid-cols-5', 6: 'lg:grid-cols-6' } as Record<number, string>;
 ---
 
-<ol class={clsx('grid gap-3 lg:gap-x-1 lg:gap-y-0', lgColumns[items.length] ?? 'lg:grid-cols-5', className)}>
+<ol
+  class={clsx(
+    '-mx-2 flex snap-x snap-mandatory scroll-px-2 gap-2 overflow-x-auto px-2 pb-1 no-scrollbar sm:-mx-3 sm:scroll-px-3 sm:px-3',
+    'lg:mx-0 lg:grid lg:snap-none lg:gap-x-5 lg:gap-y-0 lg:overflow-visible lg:px-0 lg:pb-0 lg:pr-4',
+    lgColumns[items.length] ?? 'lg:grid-cols-5',
+    className,
+  )}
+>
   {
     items.map((item, i) => (
-      <li class="flex flex-col gap-2 lg:gap-3" style={tint(i)}>
+      <li class="flex shrink-0 basis-[80%] snap-start flex-col gap-2 sm:basis-[44%] lg:basis-auto lg:gap-3">
         <div
           class={clsx(
-            'pipeline-stage flex min-h-16 items-center gap-1.5 bg-[color-mix(in_oklab,var(--stage)_20%,transparent)] px-3 pb-3 pt-2',
-            'lg:min-h-20 lg:pb-2 lg:pr-5',
-            i === 0 ? 'pipeline-stage--first' : 'lg:pl-6',
+            'relative mr-4 flex h-14 items-center gap-1.5 rounded-l-control border border-r-0 border-line-strong pl-2 pr-1 lg:mr-0 lg:h-16',
           )}
         >
-          <span aria-hidden="true" class="font-display text-meta font-semibold tabular-nums text-[var(--stage)]">
+          <span aria-hidden="true" class="font-display text-lg font-bold tabular-nums text-accent lg:text-meta lg:font-semibold">
             {pad(i + 1)}
           </span>
-          <h3 class="text-balance font-display text-lg font-bold leading-tight text-ink">{item.title}</h3>
+          <h3 class="min-w-0 text-pretty font-display text-lg font-bold leading-tight text-ink lg:text-base xl:text-lg">{item.title}</h3>
+          <span
+              aria-hidden="true"
+              class="pointer-events-none absolute right-0 top-1/2 size-[2.475rem] translate-x-1/2 -translate-y-1/2 rotate-45 border-r border-t border-line-strong lg:size-[2.8284rem]"
+          />
         </div>
-        <p class="text-pretty text-base text-ink-muted lg:pr-2 lg:text-meta xl:text-base">{item.text}</p>
+        <p class="text-pretty pr-2 text-base text-ink-muted lg:pr-2 lg:text-meta lg:leading-snug">{item.text}</p>
       </li>
     ))
   }
 </ol>
-
-<style>
-  /* Phones/tablets: each stage points down. lg: chevrons pointing right, notched to nest into the previous stage. */
-  .pipeline-stage {
-    --tip: 0.75rem;
-    border-radius: var(--radius-control) var(--radius-control) 0 0;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--tip)), 50% 100%, 0 calc(100% - var(--tip)));
-  }
-
-  @media (min-width: 64rem) {
-    .pipeline-stage {
-      --tip: 1rem;
-      border-radius: 0;
-      clip-path: polygon(
-        0 0,
-        calc(100% - var(--tip)) 0,
-        100% 50%,
-        calc(100% - var(--tip)) 100%,
-        0 100%,
-        var(--tip) 50%
-      );
-    }
-
-    .pipeline-stage--first {
-      border-radius: var(--radius-control) 0 0 var(--radius-control);
-      clip-path: polygon(0 0, calc(100% - var(--tip)) 0, 100% 50%, calc(100% - var(--tip)) 100%, 0 100%);
-    }
-  }
-</style>

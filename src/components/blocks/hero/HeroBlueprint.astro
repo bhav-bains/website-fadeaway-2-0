@@ -10,7 +10,7 @@ import { illustrations } from '../../illustrations';
 import type { HeroContent } from './types';
 
 type Props = HeroContent;
-const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta, breadcrumb, visual } = Astro.props;
+const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta, auditForm, breadcrumb, visual } = Astro.props;
 const Visual = visual ? illustrations[visual] : HeroIllustration;
 
 // Crop marks at the sheet corners (blueprint feel)
@@ -68,7 +68,7 @@ const corners = [
 
       {sub && <p class="mt-4 max-w-2xl text-pretty text-lead text-ink-soft md:mt-5">{sub}</p>}
 
-      <HeroActions primary={primaryCta} secondary={secondaryCta} class="mt-5 md:mt-6" />
+      <HeroActions primary={primaryCta} secondary={secondaryCta} audit={auditForm} class="mt-5 md:mt-6" />
     </div>
 
     <!-- Spec sheet -->

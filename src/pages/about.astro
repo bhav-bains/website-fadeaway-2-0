@@ -37,11 +37,7 @@ import {
 
 const work = await getRealWork(realWork.tag, realWork.limit);
 
-// Bands alternate lighter "alt" / canvas, starting with the glance band under the Hero. Optional sections (#founder,
-// #real-work) only take a band when they render, so the next one keeps the rhythm. Called in page order.
 const hasWork = work.length > 0;
-let bandIndex = 0;
-const nextBand = () => (bandIndex++ % 2 === 0 ? 'alt' : 'canvas');
 
 const jsonLd = [
   aboutPageSchema({ url: routes.about, name: seo.title, description: seo.description }),
@@ -57,13 +53,13 @@ const jsonLd = [
   <HeroPreview content={hero} variant={heroVariant} options={['statement', 'showcase', 'visual']} />
 
   <!-- Answer capsule (AEO summary) is the wide intro; the fact sheet follows -->
-  <Section id={glance.id} heading={glance.heading} intro={answerCapsule} introStyle="wide" tone={nextBand()} align="start">
+  <Section id={glance.id} heading={glance.heading} intro={answerCapsule} introStyle="wide" align="start">
     <FactList items={glance.items} />
   </Section>
 
   <!-- The name story as two layers: the shot (oversized statement) over the work it stands for (quieter note beside
        it), with the fadeaway line art bleeding off the right edge on every screen size -->
-  <Section id={whyFadeaway.id} heading={whyFadeaway.heading} tone={nextBand()} align="start" class="overflow-hidden">
+  <Section id={whyFadeaway.id} heading={whyFadeaway.heading} align="start" class="overflow-hidden">
     <IllusCourt
       class="pointer-events-none absolute -right-24 bottom-0 -z-10 w-[34rem] max-w-none text-accent opacity-25 [mask-image:linear-gradient(to_left,#000_35%,transparent_95%)] sm:-right-16 lg:top-1/2 lg:right-0 lg:bottom-auto lg:w-[46rem] lg:-translate-y-1/2 lg:opacity-30"
     />
@@ -78,30 +74,30 @@ const jsonLd = [
     <!-- Founder's own version of the name story (open item in copy/about.md) renders here once supplied -->
   </Section>
 
-  <Section id={beliefs.id} heading={beliefs.heading} tone={nextBand()} align="start" class="overflow-x-clip">
+  <Section id={beliefs.id} heading={beliefs.heading} align="start" class="overflow-x-clip">
     <SpecGrid items={beliefs.items} columns={3} />
   </Section>
 
   {
     founder.show && (
-      <Section id={founder.id} heading={founder.heading} tone={nextBand()} align="start">
+      <Section id={founder.id} heading={founder.heading} align="start">
         <FounderCard name={founder.name} title={founder.title} bio={founder.bio} />
       </Section>
     )
   }
 
   <!-- Target of the Hero's "See How We Work" -->
-  <Section id={howWeWork.id} heading={howWeWork.heading} tone={nextBand()} align="start">
+  <Section id={howWeWork.id} heading={howWeWork.heading} align="start">
     <IconGrid items={howWeWork.items} columns={3} size="md" />
   </Section>
 
-  <Section id={whoWeWorkWith.id} heading={whoWeWorkWith.heading} tone={nextBand()} align="start">
+  <Section id={whoWeWorkWith.id} heading={whoWeWorkWith.heading} align="start">
     <LinkCards items={whoWeWorkWith.items} />
   </Section>
 
   {
     hasWork && (
-      <Section id={realWork.id} heading={realWork.heading} intro={realWork.intro} tone={nextBand()} align="start">
+      <Section id={realWork.id} heading={realWork.heading} intro={realWork.intro} align="start">
         <ArrowLink slot="actions" href={realWork.link.href}>
           {realWork.link.label}
         </ArrowLink>
@@ -110,11 +106,11 @@ const jsonLd = [
     )
   }
 
-  <Section id={faq.id} heading={faq.heading} width="narrow" tone={nextBand()}>
+  <Section id={faq.id} heading={faq.heading} width="narrow">
     <Faq faq={faq.items} />
   </Section>
 
-  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow" tone={nextBand()}>
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
     <CtaBlock
       heading={cta.heading}
       text={cta.text}

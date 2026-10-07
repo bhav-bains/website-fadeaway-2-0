@@ -11,7 +11,7 @@ import { illustrations } from '../../illustrations';
 import type { HeroContent } from './types';
 
 type Props = HeroContent;
-const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta, breadcrumb, visual } = Astro.props;
+const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta, auditForm, breadcrumb, visual } = Astro.props;
 const Visual = visual ? illustrations[visual] : HeroIllustration;
 ---
 
@@ -45,7 +45,7 @@ const Visual = visual ? illustrations[visual] : HeroIllustration;
 
     {sub && <p class="mt-3 max-w-2xl text-pretty text-lead text-ink-muted">{sub}</p>}
 
-    <HeroActions primary={primaryCta} secondary={secondaryCta} align="center" class="mt-4 md:mt-5" />
+    <HeroActions primary={primaryCta} secondary={secondaryCta} audit={auditForm} align="center" class="mt-4 md:mt-5" />
   </div>
 
   <!-- Showcase panel: a framed window with the illustration, fading out at the bottom -->

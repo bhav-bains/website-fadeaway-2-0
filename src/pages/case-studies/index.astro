@@ -39,7 +39,6 @@ const jsonLd = [
     id="case-studies"
     intro={showCapsule ? answerCapsule : undefined}
     introStyle="wide"
-    tone="alt"
     align="start"
   >
     <ProofGrid entries={entries} headingAs="h2" />
@@ -57,7 +56,7 @@ const jsonLd = [
     )
   }
 
-  <Section id="cta" tone="alt" labelledBy="cta-heading">
+  <Section id="cta" labelledBy="cta-heading">
     <AuditCta
       heading={listingCta.heading}
       text={listingCta.text}

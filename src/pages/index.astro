@@ -13,6 +13,8 @@ import Steps from '../components/blocks/Steps.astro';
 import Button from '../components/Button.astro';
 import ArrowLink from '../components/ui/ArrowLink.astro';
 import IllusAiShopping from '../components/illustrations/IllusAiShopping.astro';
+import IllusLaunch from '../components/illustrations/IllusLaunch.astro';
+import IllusSalesperson from '../components/illustrations/IllusSalesperson.astro';
 import CtaBlock from '../components/blocks/CtaBlock.astro';
 import WorkGrid from '../components/blocks/WorkGrid.astro';
 import FeatureList from '../components/blocks/FeatureList.astro';
@@ -41,17 +43,8 @@ import {
 
 const featuredWork = await getRealWork(work.tag, work.limit);
 
-// Sections alternate between the page background and a lighter band (tone "alt"), starting with the Trust Bar.
-// #work is hidden in production until /portfolio exists, so the bands after it flip to keep alternating.
-const hasWork = featuredWork.length > 0;
-const band = (lighter: boolean) => (lighter ? 'alt' : 'canvas');
-
 const jsonLd = [
-  howToSchema({
-    name: howItWorks.heading,
-    steps: howItWorks.items,
-    url: new URL(`/#${howItWorks.id}`, siteConfig.url).toString(),
-  }),
+  // How It Works is hidden for now (founder, Oct 7); its HowTo schema goes with it. Restore both together.
   faqSchema(faq.items),
 ];
 ---
@@ -61,36 +54,45 @@ const jsonLd = [
   <HeroPreview content={hero} variant={heroVariant} options={['centered', 'split', 'editorial', 'visual']} />
 
   <!-- Trust Bar: answer capsule (AEO summary, plain text right under the Hero), then 4 trust signals -->
-  <Section id={trust.id} tone="alt">
+  <Section id={trust.id}>
     <!-- Hidden on phones to keep the first scroll light; still in the HTML for search and AI crawlers -->
     <p class="mx-auto hidden max-w-3xl text-pretty text-center text-lead text-ink-soft sm:block">{answerCapsule}</p>
     <IconGrid items={trust.items} titleAs="p" class="sm:mt-6 md:mt-8" />
   </Section>
 
-  <Section id={industries.id} heading={industries.heading} intro={industries.intro}>
+  <Section id={industries.id} eyebrow={industries.eyebrow} heading={industries.heading} intro={industries.intro}>
     <CardGrid items={industries.items} columns={2} />
   </Section>
 
-  <Section id={salesperson.id} heading={salesperson.heading} intro={salesperson.intro} tone="alt">
+  <Section id={salesperson.id} heading={salesperson.heading} intro={salesperson.intro} introStyle="wide" align="start" class="overflow-hidden">
+    <!-- Decorative line art: large, bleeding off the top-right corner (the section clips it), fading toward the text -->
+    <IllusSalesperson class="pointer-events-none absolute -right-16 -top-10 -z-10 w-[20rem] max-w-none text-highlight opacity-20 sm:-right-20 sm:-top-16 sm:w-[26rem] sm:opacity-30 lg:w-[34rem] lg:opacity-35 [mask-image:radial-gradient(ellipse_65%_65%_at_70%_30%,#000_35%,transparent_100%)] xl:-right-24 xl:-top-24 xl:w-[46rem]" />
     <Pipeline items={salesperson.items} />
+  </Section>
+
+  <Section id={services.id} eyebrow={services.eyebrow} heading={services.heading}>
+    <ServiceGrid items={services.items} />
+  </Section>
+
+  <Section id={labs.id} eyebrow={labs.eyebrow} heading={labs.heading} intro={labs.intro} introStyle="wide" align="start" class="overflow-hidden">
+    <IllusLaunch class="pointer-events-none absolute -right-12 -top-10 -z-10 w-[18rem] max-w-none text-highlight opacity-20 sm:-right-16 sm:-top-16 sm:w-[24rem] sm:opacity-30 lg:w-[28rem] lg:opacity-35 [mask-image:radial-gradient(circle_at_65%_35%,#000_30%,transparent_75%)] xl:-right-20 xl:-top-20 xl:w-[36rem]" />
+    <IconGrid items={labs.items} columns={2} size="md" />
+    <CtaBlock {...labs.cta} class="mt-4 md:mt-6" />
   </Section>
 
   <Section id={why.id} heading={why.heading} layout="split">
     <NumberedList items={why.items} />
   </Section>
 
-  <Section id={services.id} eyebrow={services.eyebrow} heading={services.heading} tone="alt">
-    <ServiceGrid items={services.items} />
-  </Section>
-
+  {/* How It Works hidden for now (founder, Oct 7): restore with its HowTo schema in jsonLd above.
   <Section id={howItWorks.id} heading={howItWorks.heading}>
     <Steps items={howItWorks.items} />
   </Section>
+  */}
 
-  <Section id={ecommerce.id} heading={ecommerce.heading} intro={ecommerce.body} layout="split" tone="alt">
+  <Section id={ecommerce.id} heading={ecommerce.heading} intro={ecommerce.body} layout="split" reverse>
     <Fragment slot="actions">
       <Button href={ecommerce.cta.href} variant="secondary" size="base">{ecommerce.cta.label}</Button>
-      <ArrowLink href={ecommerce.link.href}>{ecommerce.link.label}</ArrowLink>
     </Fragment>
     <div class="relative">
       <div
@@ -102,14 +104,9 @@ const jsonLd = [
     </div>
   </Section>
 
-  <Section id={labs.id} heading={labs.heading} intro={labs.intro}>
-    <IconGrid items={labs.items} columns={2} size="md" />
-    <CtaBlock {...labs.cta} class="mt-4 md:mt-6" />
-  </Section>
-
   {
     featuredWork.length > 0 && (
-      <Section id={work.id} heading={work.heading} intro={work.intro} tone="alt">
+      <Section id={work.id} heading={work.heading} intro={work.intro}>
         <WorkGrid entries={featuredWork} />
         <div class="mt-4 flex justify-center md:mt-6">
           <Button href={work.cta.href} variant="secondary" size="base">
@@ -120,15 +117,15 @@ const jsonLd = [
     )
   }
 
-  <Section id={method.id} heading={method.heading} intro={method.intro} layout="split" tone={band(!hasWork)}>
+  <Section id={method.id} heading={method.heading} intro={method.intro} layout="split">
     <FeatureList items={method.items} />
   </Section>
 
-  <Section id={faq.id} heading={faq.heading} width="narrow" tone={band(hasWork)}>
+  <Section id={faq.id} heading={faq.heading} width="narrow">
     <Faq faq={faq.items} />
   </Section>
 
-  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow" tone={band(!hasWork)}>
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
     <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
   </Section>
 </BaseLayout>

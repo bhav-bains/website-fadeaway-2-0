@@ -63,8 +63,7 @@ Notes for the build:
 - Eyebrow: Growth Partner for Local Businesses Across the US & Canada
 - H1: Websites, SEO & AI Search for Growing Businesses
 - Sub-headline: We build websites ready for SEO and AI search, and run growth systems that turn traffic into paying customers. Fixed pricing, no guesswork, built to scale as you grow.
-- Primary CTA: See How It Works → #how-it-works
-- Secondary CTA: Get Your Free Audit → /audit
+- Free audit box (founder, Oct 7; replaces both CTA buttons, "See How It Works" removed): field label **Your website**, placeholder `yourbusiness.com`, button **Get Your Free Audit**. Submitting carries the URL to /audit/ (`?website=`), which pre-fills its form. Label and placeholder reuse the Audit CTA block wording; button keeps the old CTA label.
 - Visual: illustration (search bar, AI answer card citing a business, bookings chart, reviews, map pin). Hero fits one screen.
 - Answer capsule: not shown inside the Hero (it repeated the sub-headline). It renders as the intro paragraph of the Trust Bar, directly under the Hero.
 
@@ -79,6 +78,8 @@ TODO (later): rework into a subtler row: smaller icon + short heading, 3 to 4 it
 4. **Revenue-Tracked** · Results measured in bookings & sales, not traffic
 
 ## Growth Built Around Your Industry {#industries}
+
+Badge above the heading (founder, Oct 7): **Our Solutions**
 
 Intro: Websites, SEO and AEO shaped around how your customers search and book.
 
@@ -123,22 +124,6 @@ carries one adapted line. Layout suggestion: 5 numbered steps, like a sales pipe
 ADD AT LAUNCH ONLY IF the free audit report workflow is live (so the claim is true):
 "This site works the same way. It brings in and qualifies our own leads around the clock." -->
 
-## Why Growing Businesses Choose Fadeaway {#why}
-
-Layout: split. Heading on the left (pinned on desktop), numbered list 01 to 04 on the right. No cards or icons.
-
-### Clear Pricing & Deliverable Transparency
-Fixed pricing, defined scope, no guesswork. You'll know exactly what you're getting and what it costs before we start.
-
-### Revenue-First
-We track bookings, sales, and customers walking through the door, not traffic or impressions.
-
-### Future-Proof
-SEO and AEO built to scale as your business grows, not just launch and fade.
-
-### Reliable Growth Partner
-Enterprise-level work, real engineering and real strategy, at small-business-reasonable pricing.
-
 ## How We Work With You {#services}
 
 Eyebrow: Our Services
@@ -153,22 +138,11 @@ We start with a clear picture of where you stand: a free Instant Audit, then a F
 Sub-service tiles (no label): Local SEO · AI Search (AEO) · Conversion Optimization · Paid Ads
 [Link: See Growth Services → /services/growth]
 
-## How It Works {#how-it-works}
+## MVPs, AI Automation & Custom Software {#labs}
 
-(Feeds HowTo schema. No prices in this section.)
+Badge above the heading (founder, Oct 7): **Fadeaway Labs**
 
-1. **Instant Audit (Free)**: We run a fast, automated audit of your website, local search visibility, and paid opportunities, and send you the results at no cost.
-2. **Full Audit**: We do a full account review, keyword research, and build a clear action plan for your business.
-3. **Build, Then Grow**: From there, we either build or rebuild your site around your brand, or move straight into an ongoing Growth Plan, whichever your business needs first.
-
-## Your Store, Built for AI Search {#ecommerce}
-
-E-commerce is one of the most competitive spaces in search: established players, deep case-study libraries, years of SEO investment already in place. That's exactly why we treat it as a long-term investment, not a quick fix. We handle the technical SEO and AEO work that gets your store found by Google and by AI shopping assistants, alongside site builds, migrations, and checkout optimization that turn that traffic into sales.
-
-[Link: See our e-commerce work → /portfolio/#ecommerce]
-[Secondary CTA: See the E-commerce Approach → /solutions/ecommerce]
-
-## Fadeaway Labs: MVPs, AI Automation & Custom Software {#labs}
+(Heading dropped its "Fadeaway Labs:" prefix, founder Oct 7: the badge carries the name. Header left aligned.)
 
 Fadeaway Labs is where we build for the love of building: MVPs, business automation, custom software, and AI tools set up properly inside your business. If you can picture a system that would save you hours a week, this is where we make it real.
 
@@ -185,7 +159,40 @@ Most teams already pay for AI tools. We set them up to know your business, conne
 Client portals, internal tools, and live dashboards tracking rankings, bookings, and revenue in one place, so you're never guessing what's working.
 
 **Have a Custom Project in Mind?** Let's map the architecture, scope the MVP, and build a roadmap to bring it to life.
-[CTA: Let's Build Your MVP → /labs#idea-to-mvp]
+[CTA: Let's Build Your MVP → /labs/]
+
+## Why Growing Businesses Choose Fadeaway {#why}
+
+Layout: split. Heading on the left (pinned on desktop), numbered list 01 to 04 on the right. No cards or icons.
+
+### Clear Pricing & Deliverable Transparency
+Fixed pricing, defined scope, no guesswork. You'll know exactly what you're getting and what it costs before we start.
+
+### Revenue-First
+We track bookings, sales, and customers walking through the door, not traffic or impressions.
+
+### Future-Proof
+SEO and AEO built to scale as your business grows, not just launch and fade.
+
+### Reliable Growth Partner
+Enterprise-level work, real engineering and real strategy, at small-business-reasonable pricing.
+
+## How It Works {#how-it-works}
+
+**HIDDEN (founder, Oct 7): not rendered on the site, and its HowTo schema is off, until restored.**
+
+(Feeds HowTo schema. No prices in this section.)
+
+1. **Instant Audit (Free)**: We run a fast, automated audit of your website, local search visibility, and paid opportunities, and send you the results at no cost.
+2. **Full Audit**: We do a full account review, keyword research, and build a clear action plan for your business.
+3. **Build, Then Grow**: From there, we either build or rebuild your site around your brand, or move straight into an ongoing Growth Plan, whichever your business needs first.
+
+## Your Store, Built for AI Search {#ecommerce}
+
+E-commerce is one of the most competitive spaces in search: established players, deep case-study libraries, years of SEO investment already in place. That's exactly why we treat it as a long-term investment, not a quick fix. We handle the technical SEO and AEO work that gets your store found by Google and by AI shopping assistants, alongside site builds, migrations, and checkout optimization that turn that traffic into sales.
+
+(Removed, founder Oct 7: the "See our e-commerce work" link under the CTA.)
+[Secondary CTA: See the E-commerce Approach → /solutions/ecommerce]
 
 ## Real Work, Real Results {#work}
 

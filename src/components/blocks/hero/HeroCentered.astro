@@ -5,7 +5,7 @@ import HeroActions from './HeroActions.astro';
 import type { HeroContent } from './types';
 
 type Props = HeroContent;
-const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta, answerCapsule } = Astro.props;
+const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta, auditForm, answerCapsule } = Astro.props;
 ---
 
 <section
@@ -45,7 +45,7 @@ const { displayLine, eyebrow, h1, sub, primaryCta, secondaryCta, answerCapsule }
 
     {sub && <p class="mt-2 max-w-2xl text-pretty text-lead text-ink-muted">{sub}</p>}
 
-    <HeroActions primary={primaryCta} secondary={secondaryCta} align="center" class="mt-4" />
+    <HeroActions primary={primaryCta} secondary={secondaryCta} audit={auditForm} align="center" class="mt-4" />
 
     {
       answerCapsule && (

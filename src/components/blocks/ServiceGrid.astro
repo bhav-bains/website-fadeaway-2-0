@@ -80,7 +80,7 @@ const tones = {
       return (
         <li
           class={clsx(
-            'group relative isolate flex flex-col overflow-hidden rounded-card border border-line-strong bg-surface-raised/60 transition-colors duration-300 has-[a:focus-visible]:ring-2',
+            'group relative isolate flex flex-col overflow-hidden rounded-card border border-line-strong bg-surface-lifted transition-colors duration-300 has-[a:focus-visible]:ring-2',
             t.card,
           )}
         >
@@ -116,7 +116,7 @@ const tones = {
 
             <ul class="grid gap-1 sm:grid-cols-2">
               {item.includes.map((inc) => (
-                <li class="flex items-center gap-2 rounded-control border border-line bg-canvas/60 px-2 py-2 transition-colors duration-300 group-hover:border-line-strong">
+                <li class="flex items-center gap-2 rounded-control border border-line bg-surface-alt/70 px-2 py-2 transition-colors duration-300 group-hover:border-line-strong">
                   <Icon name={inc.icon} class={clsx('size-icon shrink-0', t.tile)} />
                   <span class="text-sm font-medium text-ink">{inc.label}</span>
                 </li>

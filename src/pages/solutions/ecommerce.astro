@@ -21,10 +21,6 @@ import { seo, breadcrumb, hero, heroVariant, answerCapsule, aiShopping, standard
 
 const work = await getRealWork(realWork.tag, realWork.limit);
 
-// Bands alternate canvas / lighter "alt". #real-work only renders when it has entries, so the bands after it flip.
-const hasWork = work.length > 0;
-const band = (lighter: boolean) => (lighter ? 'alt' : 'canvas');
-
 const jsonLd = [
   breadcrumbSchema(breadcrumb),
   ...serviceSchema({ names: serviceNames, url: routes.ecommerce }),
@@ -41,7 +37,7 @@ const jsonLd = [
   <HeroPreview content={hero} variant={heroVariant} options={['showcase', 'statement', 'visual']} />
 
   <!-- Answer capsule (AEO summary) is the lead paragraph of the first section after the Hero -->
-  <Section id={aiShopping.id} tone="alt" lead={answerCapsule} heading={aiShopping.heading} intro={aiShopping.intro}>
+  <Section id={aiShopping.id} lead={answerCapsule} heading={aiShopping.heading} intro={aiShopping.intro}>
     <AnnotatedVisual visual="ai-shopping" items={aiShopping.items} />
   </Section>
 
@@ -49,7 +45,7 @@ const jsonLd = [
     <BentoGrid items={standard.items} cta={standard.cta} />
   </Section>
 
-  <Section id={services.id} heading={services.heading} tone="alt" align="start" class="overflow-x-clip">
+  <Section id={services.id} heading={services.heading} align="start" class="overflow-x-clip">
     <ServiceIndex items={services.items} cta={services.cta} />
   </Section>
 
@@ -65,7 +61,7 @@ const jsonLd = [
 
   {
     work.length > 0 && (
-      <Section id={realWork.id} heading={realWork.heading} intro={realWork.intro} tone="alt" align="start">
+      <Section id={realWork.id} heading={realWork.heading} intro={realWork.intro} align="start">
         <WorkGrid entries={work} />
         <div class="mt-4 flex flex-col gap-2 border-t border-line pt-4 sm:flex-row sm:items-center sm:justify-between md:mt-6">
           <p class="font-display text-xl font-bold text-ink md:text-2xl">{realWork.ctaText}</p>
@@ -84,7 +80,7 @@ const jsonLd = [
 
   <!-- Testimonials (tag ecommerce): renders nothing until real, permission-confirmed quotes exist -->
 
-  <Section id={faq.id} heading={faq.heading} layout="split" tone={band(!hasWork)}>
+  <Section id={faq.id} heading={faq.heading} layout="split">
     {/* Oversized question-and-answer line art under the pinned heading */}
     <IllusAsk
       slot="actions"
@@ -95,7 +91,7 @@ const jsonLd = [
 
   <!-- From the Blog (tag ecommerce, data: `blog` in ecommerce.ts): renders nothing until /articles/ has real e-commerce posts -->
 
-  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow" tone={band(hasWork)}>
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
     <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
   </Section>
 </BaseLayout>

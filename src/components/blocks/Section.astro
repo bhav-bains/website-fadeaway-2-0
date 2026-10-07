@@ -22,7 +22,11 @@ interface Props {
   /** Standfirst above the header: real text with a thin accent rule, quieter than the heading */
   lead?: string;
   layout?: 'stack' | 'split';
-  tone?: 'canvas' | 'alt' | 'surface' | 'deep';
+  /** Split only: content on the left, header on the right from lg (stacked order on phones is unchanged) */
+  reverse?: boolean;
+  /** `auto` (default): the band alternates canvas / alt by position among the page's sections (see globals.css), so
+   *  moving, adding or hiding a section never needs a tone change. The others force one colour. */
+  tone?: 'auto' | 'canvas' | 'alt' | 'surface' | 'deep';
   width?: 'site' | 'narrow' | 'prose';
   /** Header alignment in the stack layout (split is always left-aligned) */
   align?: 'center' | 'start';
@@ -40,7 +44,8 @@ const {
   intro,
   introStyle = 'default',
   layout = 'stack',
-  tone = 'canvas',
+  reverse = false,
+  tone = 'auto',
   width = 'site',
   align = 'center',
   separator = false,
@@ -53,7 +58,9 @@ const headingId = heading ? `${id}-heading` : undefined;
 const split = layout === 'split';
 const centered = !split && align === 'center';
 
+// `auto` has no class: globals.css colours `main > [data-tone='auto']` by its position among the Sections
 const tones = {
+  auto: '',
   canvas: 'bg-canvas',
   alt: 'bg-surface-alt',
   surface: 'bg-surface',
@@ -76,6 +83,8 @@ const splitHyphens = (text: string) => text.split(/(\S+-\S+)/);
 
 <section
   id={id}
+  data-band
+  data-tone={tone}
   aria-labelledby={headingId ?? labelledBy}
   class={clsx('relative isolate px-2 py-6 sm:px-3 md:py-10 lg:px-4 lg:py-24', tones[tone], className)}
 >
@@ -90,7 +99,8 @@ const splitHyphens = (text: string) => text.split(/(\S+-\S+)/);
     class={clsx(
       'mx-auto w-full',
       widths[width],
-      split && 'grid gap-4 md:gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12',
+      split && 'grid gap-4 md:gap-6 lg:gap-12',
+      split && (reverse ? 'lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]' : 'lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]'),
     )}
   >
     {
@@ -113,6 +123,7 @@ const splitHyphens = (text: string) => text.split(/(\S+-\S+)/);
             'flex flex-col gap-2',
             centered ? 'items-center text-center' : 'items-start text-left',
             split ? 'lg:sticky lg:top-32 lg:self-start' : 'mb-4 md:mb-6',
+            split && reverse && 'lg:order-2',
           )}
         >
           {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
@@ -140,7 +151,7 @@ const splitHyphens = (text: string) => text.split(/(\S+-\S+)/);
         </header>
       )
     }
-    <div class="min-w-0">
+    <div class={clsx('min-w-0', split && reverse && 'lg:order-1')}>
       <slot />
     </div>
   </div>

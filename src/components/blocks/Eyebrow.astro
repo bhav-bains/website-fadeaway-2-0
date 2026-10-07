@@ -1,6 +1,7 @@
 ---
 // Small label above a headline.
-// Phones: plain small text (long labels wrap cleanly, no boxed look). sm and up: tinted pill.
+// A tinted pill at every size (founder, Oct 7: the plain 12px phone text was too small). 14px on phones, 16px from sm;
+// long labels wrap inside the pill, centred.
 import clsx from 'clsx';
 
 interface Props {
@@ -11,14 +12,14 @@ interface Props {
 const { tone = 'highlight', class: className } = Astro.props;
 
 const tones = {
-  highlight: 'text-highlight sm:border-highlight/30 sm:bg-highlight/10',
-  accent: 'text-accent sm:border-accent/30 sm:bg-accent/10',
+  highlight: 'border-highlight/30 bg-highlight/10 text-highlight',
+  accent: 'border-accent/30 bg-accent/10 text-accent',
 };
 ---
 
 <p
   class={clsx(
-    'max-w-full text-balance text-xs font-medium sm:inline-block sm:rounded-pill sm:border sm:px-2 sm:py-1 sm:text-meta',
+    'inline-block max-w-full text-balance rounded-pill border px-2 py-1 text-center text-meta font-medium sm:text-sm',
     tones[tone],
     className,
   )}

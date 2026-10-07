@@ -8,6 +8,15 @@ export interface HeroCta {
   href: string;
 }
 
+/** Inline free-audit box: one website field + button that GETs the audit page (?website=...), replacing the CTA buttons */
+export interface HeroAuditForm {
+  /** Audit page URL */
+  action: string;
+  label: string;
+  placeholder: string;
+  button: string;
+}
+
 export interface HeroContent {
   /** Slogan shown above the H1, largest type in the Hero (CLAUDE.md copy rule) */
   displayLine?: string;
@@ -17,6 +26,8 @@ export interface HeroContent {
   /** Real service-term heading; the page's only H1 */
   h1: string;
   sub?: string;
+  /** Replaces both CTA buttons with a URL box that starts the free audit (homepage) */
+  auditForm?: HeroAuditForm;
   /** Optional: listing pages (e.g. Case Studies) have no Hero buttons */
   primaryCta?: HeroCta;
   secondaryCta?: HeroCta;

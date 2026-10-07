@@ -48,9 +48,7 @@ import {
 
 const work = await getRealWork(realWork.tag, realWork.limit);
 
-// Bands alternate canvas / lighter "alt". #real-work only renders when it has entries, so the bands after it flip.
 const hasWork = work.length > 0;
-const band = (lighter: boolean) => (lighter ? 'alt' : 'canvas');
 
 const jsonLd = [
   breadcrumbSchema(breadcrumb),
@@ -69,7 +67,7 @@ const jsonLd = [
   <HeroPreview content={hero} variant={heroVariant} options={['statement', 'showcase', 'visual']} />
 
   <!-- Target of the Hero's "See What Parents Search For". The answer capsule is the wide intro; the section's own line sits above the bento -->
-  <Section id={problem.id} heading={problem.heading} intro={answerCapsule} introStyle="wide" tone="alt" align="start">
+  <Section id={problem.id} heading={problem.heading} intro={answerCapsule} introStyle="wide" align="start">
     <p class="mb-3 max-w-2xl text-pretty text-base font-medium text-ink md:mb-4 md:text-lg">{problem.intro}</p>
     <BentoGrid items={problem.items} cta={problem.cta} />
   </Section>
@@ -78,7 +76,7 @@ const jsonLd = [
     <ServiceIndex items={programs.items} art="none" />
   </Section>
 
-  <Section id={services.id} heading={services.heading} tone="alt" align="start">
+  <Section id={services.id} heading={services.heading} align="start">
     <IconGrid items={services.items} columns={3} size="md" />
     <ForkCallout heading={services.labs.heading} text={services.labs.text} link={services.labs.link} class="mt-6 md:mt-8" />
   </Section>
@@ -93,7 +91,7 @@ const jsonLd = [
   </Section>
 
   <!-- Primary conversion: the free demo -->
-  <Section id={demo.id} labelledBy={`${demo.id}-heading`} tone="alt">
+  <Section id={demo.id} labelledBy={`${demo.id}-heading`}>
     <DemoOffer
       heading={demo.heading}
       headingId={`${demo.id}-heading`}
@@ -108,7 +106,7 @@ const jsonLd = [
     <PricingSection {...pricing} />
   </Section>
 
-  <Section id={expect.id} heading={expect.heading} intro={expect.intro} tone="alt" align="start">
+  <Section id={expect.id} heading={expect.heading} intro={expect.intro} align="start">
     <Timeline items={expect.items} />
   </Section>
 
@@ -118,14 +116,14 @@ const jsonLd = [
 
   {
     hasWork && (
-      <Section id={realWork.id} heading={realWork.heading} tone="alt" align="start">
+      <Section id={realWork.id} heading={realWork.heading} align="start">
         <WorkGrid entries={work} />
       </Section>
     )
   }
 
   <!-- Founder-led note: one large paragraph with an accent rule -->
-  <Section id={why.id} heading={why.heading} width="narrow" align="start" tone={band(!hasWork)}>
+  <Section id={why.id} heading={why.heading} width="narrow" align="start">
     <p class="border-l-2 border-accent/70 pl-3 text-pretty font-display text-xl font-medium leading-relaxed text-ink-soft md:pl-4 md:text-2xl">
       {why.text}
     </p>
@@ -133,13 +131,13 @@ const jsonLd = [
 
   <!-- Testimonials (tag sports-academies): renders nothing until real, permission-confirmed quotes exist -->
 
-  <Section id={faq.id} heading={faq.heading} width="narrow" tone={band(hasWork)}>
+  <Section id={faq.id} heading={faq.heading} width="narrow">
     <Faq faq={faq.items} />
   </Section>
 
   <!-- From the Blog (tag sports-academies, data: `blog` in sports.ts): renders nothing until /articles/ has real posts -->
 
-  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow" tone={band(!hasWork)}>
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
     <CtaBlock
       heading={cta.heading}
       text={cta.text}

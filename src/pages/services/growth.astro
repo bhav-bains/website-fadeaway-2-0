@@ -43,9 +43,7 @@ import {
 
 const work = await getRealWork(realWork.tag, realWork.limit);
 
-// Bands alternate canvas / lighter "alt". #real-work only renders when it has entries, so the bands after it flip.
 const hasWork = work.length > 0;
-const band = (lighter: boolean) => (lighter ? 'alt' : 'canvas');
 
 const jsonLd = [
   breadcrumbSchema(breadcrumb),
@@ -69,7 +67,6 @@ const jsonLd = [
     heading={standard.heading}
     intro={answerCapsule}
     introStyle="wide"
-    tone="alt"
     align="start"
     class="overflow-x-clip"
   >
@@ -106,7 +103,7 @@ const jsonLd = [
     />
   </Section>
 
-  <Section id={capabilities.id} heading={capabilities.heading} layout="split" tone="alt">
+  <Section id={capabilities.id} heading={capabilities.heading} layout="split">
     {/* Oversized dashboard line art under the pinned heading */}
     <IllusDashboard
       slot="actions"
@@ -120,7 +117,7 @@ const jsonLd = [
     <ForkCallout heading={ladder.note.heading} text={ladder.note.text} link={ladder.note.link} class="mt-6 md:mt-10" />
   </Section>
 
-  <Section id={industries.id} heading={industries.heading} intro={industries.intro} tone="alt" align="start">
+  <Section id={industries.id} heading={industries.heading} intro={industries.intro} align="start">
     <ServiceIndex items={industries.items} art="none" />
   </Section>
 
@@ -130,7 +127,7 @@ const jsonLd = [
 
   {
     hasWork && (
-      <Section id={realWork.id} heading={realWork.heading} tone="alt" align="start">
+      <Section id={realWork.id} heading={realWork.heading} align="start">
         <WorkGrid entries={work} />
       </Section>
     )
@@ -138,13 +135,13 @@ const jsonLd = [
 
   <!-- Testimonials (tag growth): renders nothing until real, permission-confirmed quotes exist -->
 
-  <Section id={faq.id} heading={faq.heading} width="narrow" tone={band(!hasWork)}>
+  <Section id={faq.id} heading={faq.heading} width="narrow">
     <Faq faq={faq.items} />
   </Section>
 
   <!-- From the Blog (tag growth, data: `blog` in growth.ts): renders nothing until /articles/ has real Growth posts -->
 
-  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow" tone={band(hasWork)}>
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
     <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
   </Section>
 </BaseLayout>

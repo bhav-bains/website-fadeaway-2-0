@@ -123,3 +123,15 @@
     linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
   background-size: 4rem 4rem;
 }
+
+/* Section bands alternate by position among the page's Sections (the ones carrying data-band), so the first one under
+   the Hero is the lighter band and each next one flips. Sections that are not rendered never count. A Section with an
+   explicit `tone` keeps its own colour but still counts. Only direct children of <main> take part. */
+@layer components {
+  main > [data-band][data-tone='auto']:nth-child(odd of [data-band]) {
+    background-color: var(--color-surface-alt);
+  }
+  main > [data-band][data-tone='auto']:nth-child(even of [data-band]) {
+    background-color: var(--color-canvas);
+  }
+}
