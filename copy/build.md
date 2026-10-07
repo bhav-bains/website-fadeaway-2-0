@@ -181,7 +181,9 @@ Custom builds, migrations, and e-commerce stores are each quoted on what your pr
 
 [CTA touchpoint: Get a Quote → /contact]
 
-## Real Work, Real Results {#real-work}
+## Results We've Delivered {#real-work}
+
+(Badge above the heading: **Our Work**, founder Oct 7.)
 
 (ProofGrid, tag `build`. Renders nothing until an approved case study exists. No placeholder cards in production.)
 

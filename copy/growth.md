@@ -203,7 +203,9 @@ If your website itself needs to be built or redesigned before growth work makes 
 If what you actually need is custom software, automations, or dashboards rather than a website, that's Fadeaway Labs.
 [Link: See Fadeaway Labs → /labs/]
 
-## Real Work, Real Results {#real-work}
+## Results We've Delivered {#real-work}
+
+(Badge above the heading: **Our Work**, founder Oct 7.)
 
 (ProofGrid, tag `growth`. Renders nothing until an approved case study exists. Growth outcomes only: ranking movement, traffic, leads, bookings, or revenue.)
 

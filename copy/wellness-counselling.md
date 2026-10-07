@@ -288,7 +288,9 @@ A full picture with real numbers on visibility, inquiries, and bookings, and a c
 3. **Launch**: We build or fix your site, connect it to your practice software, set up your tracking, and host it for you if it's built from your demo.
 4. **Grow**: Your Attract or Growth Plan kicks in, with SEO, AEO, content, and reporting tied to new client bookings.
 
-## Real Work, Real Results {#real-work}
+## Results We've Delivered {#real-work}
+
+(Badge above the heading: **Our Work**, founder Oct 7.)
 
 (ProofGrid, tag `wellness-counselling`. Renders nothing until an approved case study exists.)
 

@@ -174,7 +174,9 @@ When your store needs software beyond the storefront, like custom integrations, 
 3. **Build and Grow**: Build work and growth work move on their own real timelines, tied to your store's actual scope, not a one-size schedule.
 4. **Report and Improve**: You get a dashboard tracking traffic, conversions, and revenue, reviewed on a regular cadence, with strategy that adjusts based on what the data shows.
 
-## Real Work, Real Results {#real-work}
+## Results We've Delivered {#real-work}
+
+(Badge above the heading: **Our Work**, founder Oct 7.)
 
 (ProofGrid, tag `ecommerce`. Renders nothing until an approved case study exists. No placeholder cards in production.)
 

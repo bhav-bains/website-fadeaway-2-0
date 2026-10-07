@@ -283,7 +283,9 @@ A full picture with real numbers on inquiries and registrations, and a clear pla
 3. **Launch**: We build or fix your site, connect it to your registration platform, set up your tracking, and host it for you if it's built from your demo.
 4. **Grow, season by season**: Your Attract or Growth Plan kicks in, with SEO, AEO, content, and campaigns timed to your tryouts and registration windows.
 
-## Real Work, Real Results {#real-work}
+## Results We've Delivered {#real-work}
+
+(Badge above the heading: **Our Work**, founder Oct 7.)
 
 (ProofGrid, tag `sports-academies`. Renders nothing until an approved case study exists.)
 

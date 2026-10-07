@@ -161,7 +161,9 @@ Client portals, internal tools, and live dashboards tracking rankings, bookings,
 **Have a Custom Project in Mind?** Let's map the architecture, scope the MVP, and build a roadmap to bring it to life.
 [CTA: Let's Build Your MVP → /labs/]
 
-## Real Work, Real Results {#work}
+## Results We've Delivered {#work}
+
+(Badge above the heading: **Our Work**, founder Oct 7.)
 
 Intro: See what we've built for businesses like yours.
 

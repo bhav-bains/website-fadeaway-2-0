@@ -82,7 +82,7 @@ const jsonLd = [
 
   {
     featuredWork.length > 0 && (
-      <Section id={work.id} heading={work.heading} intro={work.intro}>
+      <Section id={work.id} eyebrow={work.eyebrow} heading={work.heading} intro={work.intro}>
         <WorkGrid entries={featuredWork} />
         <div class="mt-4 flex justify-center md:mt-6">
           <Button href={work.cta.href} variant="secondary" size="base">

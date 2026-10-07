@@ -280,7 +280,9 @@ A full picture with real numbers on visibility, bookings, and memberships, and a
 3. **Launch**: We build or fix your site, connect it to your booking platform, set up your tracking, and host it for you if it's built from your demo.
 4. **Grow**: Your Attract or Growth Plan kicks in, with local SEO, AEO, content, reviews, and reporting tied to booked classes.
 
-## Real Work, Real Results {#real-work}
+## Results We've Delivered {#real-work}
+
+(Badge above the heading: **Our Work**, founder Oct 7.)
 
 (ProofGrid, tag `boutique-fitness`. Renders nothing until an approved case study exists.)
 

@@ -191,7 +191,8 @@ export const howItWorks: { id: string; heading: string; items: StepItem[] } = {
 /** Real Work: WorkGrid from getRealWork(tag): case studies with this tag first, then featured and labs work (portfolio.yaml), max `limit`. Renders nothing when none match. */
 export const realWork = {
   id: 'real-work',
-  heading: 'Real Work, Real Results',
+  eyebrow: 'Our Work',
+  heading: "Results We've Delivered",
   intro: "Stores we've built and grown.",
   tag: 'ecommerce',
   limit: 3,

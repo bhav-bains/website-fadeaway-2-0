@@ -179,7 +179,8 @@ export const labs = {
 /** Real Work: WorkGrid from getRealWork(tag): case studies with this tag first, then featured and labs work (portfolio.yaml), max `limit`. Renders nothing when none match. */
 export const work = {
   id: 'work',
-  heading: 'Real Work, Real Results',
+  eyebrow: 'Our Work',
+  heading: "Results We've Delivered",
   intro: "See what we've built for businesses like yours.",
   tag: 'featured',
   limit: 3,
