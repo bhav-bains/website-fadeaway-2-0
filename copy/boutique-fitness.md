@@ -19,7 +19,7 @@ og:
 twitter:
   card: summary_large_image
 robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-h1: "SEO for Yoga Studios, Built to Fill Every Class"
+h1: "SEO for Yoga Studios. Built to Fill Every Class."
 answer_capsule: >-
   Fadeaway Creatives builds websites and runs local SEO and AEO for yoga,
   pilates, spin, and barre studios across Canada and the US. We connect your
@@ -59,7 +59,7 @@ Reuse the Wellness page blocks exactly; only the copy changes.
 | Title tag | Fadeaway Creatives \| SEO for Yoga & Fitness Studios (51 chars) | Set |
 | Meta description | Websites, local SEO, and AEO for yoga, pilates, spin, and barre studios. Connected to Mindbody or Momence, built to fill every class. Free demo. (144 chars) | Updated, needs approval |
 | Canonical | https://fadeawaycreatives.com/solutions/boutique-fitness/ | Set |
-| H1 | SEO for Yoga Studios, Built to Fill Every Class | Set |
+| H1 | SEO for Yoga Studios. Built to Fill Every Class. (line break after "Studios.", founder Oct 7) | Set |
 | og:title / og:description | Mirror title tag / meta description | Set |
 | og:image / twitter:image | /og-default.jpg | Set (default) |
 | Robots meta | index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1 | Set |
@@ -84,10 +84,10 @@ Home → Boutique Fitness
 ## Hero {#hero}
 
 - Eyebrow: Websites, Local SEO & AEO for Yoga, Pilates, Spin & Barre Studios
-- H1: SEO for Yoga Studios, Built to Fill Every Class
-- Sub-headline: Get found by people searching for a class near them, make booking effortless, and see your new website before you spend a dollar.
-- Primary CTA: Get Your Free Demo → /demo-request/
-- Secondary CTA: Get a Free Audit of Your Current Site → /audit/
+- H1: SEO for Yoga Studios. Built to Fill Every Class. (line break after "Studios.")
+- Sub-headline: Get found by people searching for a class near them and make booking effortless. (Free-demo line removed, founder Oct 7.)
+- Primary CTA (removed, founder Oct 7): the hero no longer has the Get Your Free Demo button; the demo CTAs stay further down the page.
+- Hero CTA (replaced Oct 7): free-audit website box only, same workflow as the homepage hero. Label "Get a Free Audit of Your Current Site", placeholder `yourstudio.com`, button "Get Your Free Audit"; GETs /audit/?website=
 - Answer capsule: renders directly under the Hero, from the frontmatter.
 
 ## What Most Studio Websites Get Wrong {#insights}

@@ -34,10 +34,9 @@ export const heroVariant: HeroVariant = 'statement';
 
 export const hero: HeroContent = {
   eyebrow: 'Websites, Local SEO & AEO for Yoga, Pilates, Spin & Barre Studios',
-  h1: 'SEO for Yoga Studios, Built to Fill Every Class',
-  sub: 'Get found by people searching for a class near them, make booking effortless, and see your new website before you spend a dollar.',
-  primaryCta: { label: 'Get Your Free Demo', href: routes.demoRequest },
-  secondaryCta: { label: 'Get a Free Audit of Your Current Site', href: routes.audit },
+  h1: 'SEO for Yoga Studios.\nBuilt to Fill Every Class.',
+  sub: 'Get found by people searching for a class near them and make booking effortless.',
+  auditForm: { action: routes.audit, label: 'Get a Free Audit of Your Current Site', placeholder: 'yourstudio.com', button: 'Get Your Free Audit' },
   breadcrumb,
   visual: 'fitness',
 };

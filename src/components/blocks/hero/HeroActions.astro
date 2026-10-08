@@ -8,7 +8,7 @@ import type { HeroAuditForm as AuditFormContent, HeroCta } from './types';
 interface Props {
   primary?: HeroCta;
   secondary?: HeroCta;
-  /** Free-audit URL box: replaces the buttons */
+  /** Free-audit URL box: replaces the buttons (when a `primary` CTA is also given it stays above the box) */
   audit?: AuditFormContent;
   align?: 'center' | 'start';
   class?: string;
@@ -19,7 +19,16 @@ const { primary, secondary, audit, align = 'start', class: className } = Astro.p
 
 {
   audit ? (
-    <HeroAuditForm {...audit} align={align} class={className} />
+    primary ? (
+      <div class={clsx('flex w-full flex-col gap-3', align === 'center' ? 'items-center' : 'items-start', className)}>
+        <Button href={primary.href} variant="primary" size="base" className="w-full sm:w-auto">
+          {primary.label}
+        </Button>
+        <HeroAuditForm {...audit} align={align} />
+      </div>
+    ) : (
+      <HeroAuditForm {...audit} align={align} class={className} />
+    )
   ) : (
     <div
       class={clsx(

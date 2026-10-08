@@ -1,7 +1,8 @@
 ---
 // Hero free-audit box: one "your website" field + button. Submitting (GET) carries the URL to the audit page
 // (?website=...), which pre-fills its form so the visitor only adds name, email and business there (same workflow
-// as the AuditCta block). Stacks on phones, one row from sm. Semantic tokens only.
+// as the AuditCta block). Stacks on phones, one row from sm. The label sits over the field only (grid column 1), so it
+// wraps at the field's width and is never wider than the box. Semantic tokens only.
 import clsx from 'clsx';
 import Button from '../../Button.astro';
 import type { HeroAuditForm } from './types';
@@ -15,10 +16,13 @@ const { action, label, placeholder, button, align = 'start', class: className } 
 const fieldId = 'hero-audit-website';
 ---
 
-<form method="GET" action={action} class={clsx('flex w-full max-w-xl flex-col gap-1', align === 'center' && 'mx-auto', className)}>
-  <label for={fieldId} class="text-left text-meta font-medium text-ink-soft">{label}</label>
-  <div class="flex flex-col gap-2 sm:flex-row">
-    <input
+<form
+  method="GET"
+  action={action}
+  class={clsx('grid w-full max-w-2xl gap-x-2 gap-y-1 sm:grid-cols-[minmax(0,1fr)_auto]', align === 'center' && 'mx-auto', className)}
+>
+  <label for={fieldId} class="text-pretty text-left text-meta sm:col-start-1 sm:row-start-1 font-medium text-ink-soft">{label}</label>
+  <input
       id={fieldId}
       name="website"
       type="text"
@@ -28,8 +32,7 @@ const fieldId = 'hero-audit-website';
       autocapitalize="off"
       required
       placeholder={placeholder}
-      class="min-h-12 w-full min-w-0 flex-1 rounded-control border border-line-strong bg-canvas/60 px-2 py-1.5 text-base text-ink placeholder:text-ink-muted/70 transition-colors hover:border-ink-muted/50 focus:border-highlight focus:outline-none focus-visible:ring-2 focus-visible:ring-highlight/30"
+    class="min-h-12 w-full min-w-0 rounded-control sm:col-start-1 sm:row-start-2 border border-line-strong bg-canvas/60 px-2 py-1.5 text-base text-ink placeholder:text-ink-muted/70 transition-colors hover:border-ink-muted/50 focus:border-highlight focus:outline-none focus-visible:ring-2 focus-visible:ring-highlight/30"
     />
-    <Button type="submit" variant="primary" size="base" className="w-full shrink-0 sm:w-auto">{button}</Button>
-  </div>
+  <Button type="submit" variant="primary" size="base" className="mt-1 w-full shrink-0 sm:col-start-2 sm:row-start-2 sm:mt-0 sm:w-auto">{button}</Button>
 </form>
