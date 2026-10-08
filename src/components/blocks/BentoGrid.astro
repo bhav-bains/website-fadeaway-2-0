@@ -1,7 +1,7 @@
 ---
 // Asymmetric bento of numbered points, closing with a CTA tile. Typographic: large outlined numbers, no icons.
 // Built for 5 points + CTA (or 4 + CTA, where the 4th also spans 2 on lg): lg is 4 columns (first and CTA tiles span 2), md is 2 columns (first and CTA full width),
-// phones stack. Other counts still work; only the first item and the CTA get the wide spans.
+// phones are a swipeable scroll-snap row (the CTA tile is the last card). Other counts still work; only the first item and the CTA get the wide spans.
 import clsx from 'clsx';
 import Button from '../Button.astro';
 
@@ -20,7 +20,13 @@ const { items, cta, class: className } = Astro.props;
 const pad = (n: number) => String(n).padStart(2, '0');
 ---
 
-<ul class={clsx('grid gap-2 md:grid-cols-2 md:gap-3 lg:grid-cols-4', className)}>
+<ul
+  class={clsx(
+    '-mx-2 flex snap-x snap-mandatory scroll-px-2 gap-2 overflow-x-auto px-2 pb-1 no-scrollbar sm:-mx-3 sm:scroll-px-3 sm:px-3 [&>li]:shrink-0 [&>li]:basis-[82%] [&>li]:snap-start sm:[&>li]:basis-[55%]',
+    'md:mx-0 md:grid md:snap-none md:grid-cols-2 md:gap-3 md:overflow-visible md:px-0 md:pb-0 md:[&>li]:basis-auto lg:grid-cols-4',
+    className,
+  )}
+>
   {
     items.map((item, i) => {
       const lead = i === 0;
@@ -37,16 +43,16 @@ const pad = (n: number) => String(n).padStart(2, '0');
             aria-hidden="true"
             class={clsx(
               'font-display font-bold leading-none text-transparent transition-colors duration-500 [-webkit-text-stroke:1px_var(--color-line-strong)] group-hover:[-webkit-text-stroke-color:var(--color-highlight)]',
-              lead ? 'text-6xl' : 'text-5xl',
+              'text-5xl',
             )}
           >
             {pad(i + 1)}
           </span>
           <div class="flex flex-col gap-1">
-            <h3 class={clsx('text-balance font-display font-bold text-ink', lead ? 'text-2xl md:text-3xl' : 'text-xl')}>
+            <h3 class="text-balance font-display text-xl font-bold text-ink">
               {item.title}
             </h3>
-            <p class={clsx('text-pretty text-ink-muted', lead ? 'max-w-xl text-base md:text-lg' : 'text-base')}>{item.text}</p>
+            <p class={clsx('text-pretty text-base text-ink-muted', lead && 'max-w-xl')}>{item.text}</p>
           </div>
         </li>
       );

@@ -63,9 +63,20 @@ const jsonLd = [
   <!-- Dev-only preview: /solutions/boutique-fitness/?hero=statement | showcase | visual | all -->
   <HeroPreview content={hero} variant={heroVariant} options={['statement', 'showcase', 'visual']} />
 
-  <!-- Insight: the answer capsule is the wide intro; the section's own line sits above the bento -->
-  <Section id={insights.id} heading={insights.heading} intro={answerCapsule} introStyle="wide" align="start">
-    <p class="mb-3 max-w-2xl text-pretty text-base font-medium text-ink md:mb-4 md:text-lg">{insights.intro}</p>
+  <!-- First section after the Hero (founder, Oct 7). The answer capsule is hidden visually but stays in the HTML as screen-reader text for AEO -->
+  <Section id={services.id} heading={services.heading} align="start">
+    <p class="sr-only">{answerCapsule}</p>
+    <IconGrid items={services.items} columns={3} size="md" />
+    <ForkCallout heading={services.labs.heading} text={services.labs.text} link={services.labs.link} class="mt-6 md:mt-8" />
+  </Section>
+
+  <Section id={audience.id} heading={audience.heading} align="start">
+    <ServiceIndex items={audience.items} art="none" />
+  </Section>
+
+  <!-- Insight: the section's own line sits above the bento -->
+  <Section id={insights.id} heading={insights.heading} align="start">
+    {insights.intro && <p class="mb-3 max-w-2xl text-pretty text-base font-medium text-ink md:mb-4 md:text-lg">{insights.intro}</p>}
     <BentoGrid items={insights.items} cta={insights.cta} />
   </Section>
 
@@ -76,15 +87,6 @@ const jsonLd = [
       class="pointer-events-none -ml-6 mt-4 hidden w-[24rem] max-w-none text-highlight opacity-30 [mask-image:radial-gradient(circle,#000_45%,transparent_80%)] lg:block"
     />
     <FeatureList items={why.items} columns={1} />
-  </Section>
-
-  <Section id={audience.id} heading={audience.heading} align="start">
-    <ServiceIndex items={audience.items} art="none" />
-  </Section>
-
-  <Section id={services.id} heading={services.heading} align="start">
-    <IconGrid items={services.items} columns={3} size="md" />
-    <ForkCallout heading={services.labs.heading} text={services.labs.text} link={services.labs.link} class="mt-6 md:mt-8" />
   </Section>
 
   <!-- Primary conversion: the free demo -->

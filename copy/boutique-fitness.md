@@ -43,7 +43,8 @@ last_updated: TODO
 
 <!--
 Page job: CONVERT. Same funnel and block order as the Wellness & Counselling page:
-  hook (Hero) → insight → why Fadeaway → who it's for → what we do → see it first (free demo)
+  hook (Hero) → what we do → who it's for → insight → why Fadeaway → see it first (free demo)
+  (order changed Oct 7, founder: What We Do for Your Studio first, then Who It's For)
   → what you pay for and get → what to expect → how it works → proof → FAQ → final ask.
 Free demo is the primary CTA. Free audit is the second path for studios keeping their site.
 Reuse the Wellness page blocks exactly; only the copy changes.
@@ -85,16 +86,16 @@ Home → Boutique Fitness
 
 - Eyebrow: Websites, Local SEO & AEO for Yoga, Pilates, Spin & Barre Studios
 - H1: SEO for Yoga Studios. Built to Fill Every Class. (line break after "Studios.")
-- Sub-headline: Get found by people searching for a class near them and make booking effortless. (Free-demo line removed, founder Oct 7.)
+- Sub-headline: More people finding you, more people booking, fewer empty spots in your schedule. (Rewritten, founder Oct 7.)
 - Primary CTA (removed, founder Oct 7): the hero no longer has the Get Your Free Demo button; the demo CTAs stay further down the page.
 - Hero CTA (replaced Oct 7): free-audit website box only, same workflow as the homepage hero. Label "Get a Free Audit of Your Current Site", placeholder `yourstudio.com`, button "Get Your Free Audit"; GETs /audit/?website=
-- Answer capsule: renders directly under the Hero, from the frontmatter.
+- Answer capsule: hidden visually since Oct 7 (founder: it did not make sense on the page); it stays in the HTML as screen-reader-only text, from the frontmatter, so AEO still reads it.
 
 ## What Most Studio Websites Get Wrong {#insights}
 
 (Insight section. Gives the visitor something useful before asking for anything.)
 
-Most studio websites have the same quiet problems, and most owners have never had anyone point them out.
+(Intro line removed, founder Oct 7: "Most studio websites have the same quiet problems, and most owners have never had anyone point them out.")
 
 ### The Booking Flow Loses People
 If booking a class takes more than a couple of taps, or bounces people to a confusing schedule page, some of them simply leave. Most studio sites make this harder than it needs to be. Your site should fill tomorrow's 6am class while you're teaching tonight's.

@@ -35,7 +35,7 @@ export const heroVariant: HeroVariant = 'statement';
 export const hero: HeroContent = {
   eyebrow: 'Websites, Local SEO & AEO for Yoga, Pilates, Spin & Barre Studios',
   h1: 'SEO for Yoga Studios.\nBuilt to Fill Every Class.',
-  sub: 'Get found by people searching for a class near them and make booking effortless.',
+  sub: "More people finding you, more people booking, fewer empty spots in your schedule.",
   auditForm: { action: routes.audit, label: 'Get a Free Audit of Your Current Site', placeholder: 'yourstudio.com', button: 'Get Your Free Audit' },
   breadcrumb,
   visual: 'fitness',
@@ -44,13 +44,12 @@ export const hero: HeroContent = {
 export const insights: {
   id: string;
   heading: string;
-  intro: string;
+  intro?: string;
   items: BentoItem[];
   cta: { text: string; label: string; href: string };
 } = {
   id: 'insights',
   heading: 'What Most Studio Websites Get Wrong',
-  intro: 'Most studio websites have the same quiet problems, and most owners have never had anyone point them out.',
   items: [
     {
       title: 'The Booking Flow Loses People',
