@@ -88,7 +88,7 @@ Home → Boutique Fitness
 - H1: Websites and SEO Growth That Fill Your Classes (line break after "Growth")
 - Sub-headline: More people finding you, more people booking, fewer empty spots in your schedule. (Rewritten, founder Oct 7.)
 - Primary CTA (removed, founder Oct 7): the hero no longer has the Get Your Free Demo button; the demo CTAs stay further down the page.
-- Hero CTA (replaced Oct 7): free-audit website box only, same workflow as the homepage hero. Label "Get a Free Audit of Your Current Site", placeholder `yourstudio.com`, button "Get Your Free Audit"; GETs /audit/?website=
+- Hero CTA (replaced Oct 7): free-audit website box only, same workflow as the homepage hero. Label "Get a Free Audit of Your Current Setup", placeholder `yourstudio.com`, button "Get Your Free Audit"; GETs /audit/?website=
 - Answer capsule: hidden visually since Oct 7 (founder: it did not make sense on the page); it stays in the HTML as screen-reader-only text, from the frontmatter, so AEO still reads it.
 
 ## What Most Studio Websites Get Wrong {#insights}
@@ -129,7 +129,9 @@ We care about each pixel and each interaction, and treat every studio's site lik
 ### Founder-Led, With Fixed Pricing
 15+ years of experience, hands-on from first call to launch. Every price is on this page, with no hourly billing and no surprises.
 
-## Who It's For {#who-its-for}
+## Built for Boutique Studios {#who-its-for}
+
+(Heading changed from "Who It's For", founder Oct 7.)
 
 ### Yoga Studios
 Fill your schedule with locals searching for classes nearby, and turn first-timers into members with a smooth intro offer flow.
@@ -145,6 +147,12 @@ Show off your community and your instructors, and make the first class an easy y
 
 ### Opening a New Studio?
 Starting from scratch is the best time to get your website and local search right. We set up your site, booking, and Google Business Profile before your doors open.
+
+### Call-out tile (sixth card, links to /contact/)
+(DRAFT by Claude, needs approval.)
+Ready for the Next Step?
+Tell us about your studio and we will help you plan what comes next.
+Link: Contact Us
 
 ## What We Do for Your Studio {#services}
 
@@ -166,27 +174,50 @@ Fresh reviews help with both Google and AI tools. We set up reminders that make 
 ### Track Real Bookings, Not Views
 A dashboard showing which searches turn into booked classes and memberships, not just which pages get visited.
 
-### Need Custom Software Instead
+### Need Custom Software Instead (REMOVED from the page, founder Oct 7: it does not belong at the top; not placed elsewhere yet)
 If what you actually need is custom software, automations, or dashboards rather than a website, that's Fadeaway Labs.
 [Link: See Fadeaway Labs → /labs/]
 
-## See Your New Website First {#free-demo}
-
-(Demo funnel capture. Primary conversion section on the page.)
-
-We'll build a free 2 to 4 page demo of your new website, based on what already works for boutique studios and shaped around yours. No cost, no obligation.
-
-1. **Tell us about your studio**: a few details and what you need. It takes about a minute.
-2. **We build your demo**: your homepage and the pages that matter most for booking classes.
-3. **Review it with no pressure**: we send you a private link and a short overview. If you love it, we make it your live site.
-
-[CTA: Get Your Free Demo → /demo-request/]
-
-Already have a website you want to keep? [Link: Get a free audit instead → /audit/]
-
 ## What You Pay For, and What You Get {#pricing}
 
-Fixed prices, complete deliverable lists, and honest expectations. You pay for an audit or a website setup to start, never both.
+(Rebuilt Oct 7, founder direction: two compact plan cards, expandable to the full list, each with a button to /contact/. Button labels and the setup line are DRAFT by Claude, needs approval.)
+
+Fixed prices, complete deliverable lists, and honest expectations.
+
+### Attract Plan: $499 a month
+For studios that want steady, compounding local visibility.
+
+**What's included:**
+- Ongoing technical SEO and site health monitoring
+- Structured data and AEO signals kept current
+- Local SEO and Google Business Profile management
+- Booking platform integration and management
+- A monthly content calendar
+- A review generation system
+- A monthly reporting dashboard
+- A monthly check-in call
+
+**What you get out of it:** a studio that's easier to find on Google Maps, in local search, and in AI answers month over month, more reviews, and a clear monthly view of rankings, traffic, and bookings.
+
+### Growth Plan: $999 a month
+For studios ready to grow faster on more than one channel.
+
+**What's included:**
+- Everything in the Attract Plan
+- Paid ads management across Google and Meta
+- Lead generation campaigns, like intro offers and class passes
+- Email marketing campaigns
+- AI search visibility tracking
+- An expanded dashboard combining paid and organic results
+- Weekly strategy calls
+
+**What you get out of it:** new faces through the door from paid campaigns while your local visibility builds underneath, plus weekly strategy calls timed to your class calendar and busy seasons.
+
+Card buttons: Start with the Attract Plan → /contact/ · Start with the Growth Plan → /contact/
+
+Setup line (under the cards): Every plan starts with a one-time $945 setup: a new website built from your demo, or a Full Audit if you're keeping your current site.
+
+<!-- Removed from the page Oct 7 (founder): the Website Setup and Full Audit cards, the fine print, the custom-build fork and the closing button. Kept for reuse in FAQ/contact:
 
 ### Studio Website Setup: $945 one time
 For studios that want a professional site live fast. Your free demo shows you 2 to 4 pages first. Once you approve it, we build out the rest of your site from our boutique studio library and launch it.
@@ -219,35 +250,6 @@ For studios keeping their current site.
 
 **What you get out of it:** a clear, prioritized picture of what's keeping your classes from filling and exactly what to fix first. If you move ahead with a new website instead, the fee is credited toward it.
 
-### Attract Plan: $499 a month
-For studios that want steady, compounding local visibility.
-
-**What's included:**
-- Ongoing technical SEO and site health monitoring
-- Structured data and AEO signals kept current
-- Local SEO and Google Business Profile management
-- Booking platform integration and management
-- A monthly content calendar
-- A review generation system
-- A monthly reporting dashboard
-- A monthly check-in call
-
-**What you get out of it:** a studio that's easier to find on Google Maps, in local search, and in AI answers month over month, more reviews, and a clear monthly view of rankings, traffic, and bookings.
-
-### Growth Plan: $999 a month
-For studios ready to grow faster on more than one channel.
-
-**What's included:**
-- Everything in the Attract Plan
-- Paid ads management across Google and Meta
-- Lead generation campaigns, like intro offers and class passes
-- Email marketing campaigns
-- AI search visibility tracking
-- An expanded dashboard combining paid and organic results
-- Weekly strategy calls
-
-**What you get out of it:** new faces through the door from paid campaigns while your local visibility builds underneath, plus weekly strategy calls timed to your class calendar and busy seasons.
-
 Fine print (small type, under the plan cards): Plans run on a 6-month minimum. Ad spend is paid directly by you to Google and Meta. Results depend on your market, competition, and starting point; we never guarantee rankings.
 
 ### Need More Than the Website Setup?
@@ -255,6 +257,17 @@ Multi-location studios, heavier customization, or a custom-designed site are sco
 [Link: See Build Services → /services/build/]
 
 [CTA touchpoint: Get Your Free Demo → /demo-request/]
+-->
+
+## Not Sure Yet? Request Your Demo {#demo}
+
+(Rewritten Oct 7, founder direction; copy DRAFT by Claude, needs approval. Moved below pricing; no "free" wording.)
+
+We know boutique studios well, so your demo starts from what already works. We build 4 pages made for your studio, in your branding, ready in 2 business days.
+
+
+[CTA: Request Your Demo → /demo-request/]
+Already have a website you want to keep? [Link: Get a free audit instead → /audit/]
 
 ## What to Expect, Month by Month {#what-to-expect}
 

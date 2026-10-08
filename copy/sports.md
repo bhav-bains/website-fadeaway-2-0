@@ -171,23 +171,46 @@ Cost, season length, age groups, and whether it's worth it. We turn those questi
 ### Reviews After Every Season
 Automated review requests go out after tryouts, tournaments, and season wrap-ups, when families are happiest and most likely to leave one.
 
-## See Your New Website First {#free-demo}
-
-(Demo funnel capture. Primary conversion section on the page.)
-
-We'll build a free 2 to 4 page demo of your new website, based on what already works for sports programs and shaped around yours. No cost, no obligation.
-
-1. **Tell us about your program**: a few details and what you need. It takes about a minute.
-2. **We build your demo**: your homepage and the pages parents check first, like programs, fees, and tryouts.
-3. **Review it with no pressure**: we send you a private link and a short overview you can share with your board or coaches. If you love it, we make it your live site.
-
-[CTA: Get Your Free Demo → /demo-request/]
-
-Already have a website you want to keep? [Link: Get a free audit instead → /audit/]
-
 ## What You Pay For, and What You Get {#pricing}
 
-Fixed prices, complete deliverable lists, and honest expectations. Clear numbers you can take straight to your board. You pay for an audit or a website setup to start, never both.
+(Rebuilt Oct 7, founder direction: two compact plan cards, expandable to the full list, each with a button to /contact/. Button labels and the setup line are DRAFT by Claude, needs approval.)
+
+Fixed prices, complete deliverable lists, and honest expectations. Clear numbers you can take straight to your board.
+
+### Attract Plan: $499 a month
+For programs that want steady, compounding local visibility.
+
+**What's included:**
+- Ongoing technical SEO and site health monitoring
+- Structured data and AEO signals kept current
+- Local SEO and Google Business Profile management
+- Registration platform integration and management
+- A monthly content calendar built around your season
+- A review generation system
+- A monthly reporting dashboard tracking rankings, inquiries, and registrations
+- A monthly check-in call
+
+**What you get out of it:** a program that's easier for parents to find on Google Maps, in local search, and in AI answers season over season, more reviews, and a clear monthly view of inquiries and registrations.
+
+### Growth Plan: $999 a month
+For programs ready to fill rosters and camps faster.
+
+**What's included:**
+- Everything in the Attract Plan
+- Paid ads management across Google and Meta
+- Lead generation campaigns timed to tryouts, camps, and registration windows
+- Email marketing campaigns to past and prospective families
+- AI search visibility tracking
+- An expanded dashboard combining paid and organic results
+- Weekly strategy calls
+
+**What you get out of it:** registrations from paid campaigns when your window opens, while your search visibility builds underneath, plus weekly strategy calls so every campaign lines up with your season calendar.
+
+Card buttons: Start with the Attract Plan → /contact/ · Start with the Growth Plan → /contact/
+
+Setup line (under the cards): Every plan starts with a one-time $945 setup: a new website built from your demo, or a Full Audit if you're keeping your current site.
+
+<!-- Removed from the page Oct 7 (founder): the Website Setup and Full Audit cards, the fine print, the custom-build fork and the closing button. Kept for reuse in FAQ/contact:
 
 ### Program Website Setup: $945 one time
 For programs that want a professional site live fast. Your free demo shows you 2 to 4 pages first. Once you approve it, we build out the rest of your site from our sports program library and launch it.
@@ -221,35 +244,6 @@ For programs keeping their current site.
 
 **What you get out of it:** a clear, prioritized picture of what's costing you registrations and exactly what to fix first, timed to your season. If you move ahead with a new website instead, the fee is credited toward it.
 
-### Attract Plan: $499 a month
-For programs that want steady, compounding local visibility.
-
-**What's included:**
-- Ongoing technical SEO and site health monitoring
-- Structured data and AEO signals kept current
-- Local SEO and Google Business Profile management
-- Registration platform integration and management
-- A monthly content calendar built around your season
-- A review generation system
-- A monthly reporting dashboard tracking rankings, inquiries, and registrations
-- A monthly check-in call
-
-**What you get out of it:** a program that's easier for parents to find on Google Maps, in local search, and in AI answers season over season, more reviews, and a clear monthly view of inquiries and registrations.
-
-### Growth Plan: $999 a month
-For programs ready to fill rosters and camps faster.
-
-**What's included:**
-- Everything in the Attract Plan
-- Paid ads management across Google and Meta
-- Lead generation campaigns timed to tryouts, camps, and registration windows
-- Email marketing campaigns to past and prospective families
-- AI search visibility tracking
-- An expanded dashboard combining paid and organic results
-- Weekly strategy calls
-
-**What you get out of it:** registrations from paid campaigns when your window opens, while your search visibility builds underneath, plus weekly strategy calls so every campaign lines up with your season calendar.
-
 Fine print (small type, under the plan cards): Plans run on a 6-month minimum. Ad spend is paid directly by you to Google and Meta. Results depend on your market, competition, and starting point; we never guarantee rankings.
 
 ### Need More Than the Website Setup?
@@ -257,6 +251,17 @@ Multi-location academies, heavier customization, or a custom-designed site are s
 [Link: See Build Services → /services/build/]
 
 [CTA touchpoint: Get Your Free Demo → /demo-request/]
+-->
+
+## Not Sure Yet? Request Your Demo {#demo}
+
+(Rewritten Oct 7, founder direction; copy DRAFT by Claude, needs approval. Moved below pricing; no "free" wording.)
+
+We know sports programs well, so your demo starts from what already works. We build 4 pages made for your program, in your branding, ready in 2 business days.
+
+
+[CTA: Request Your Demo → /demo-request/]
+Already have a website you want to keep? [Link: Get a free audit instead → /audit/]
 
 ## What to Expect, Season by Season {#what-to-expect}
 

@@ -90,6 +90,10 @@ const jsonLd = [
     <FeatureList items={method.items} columns={1} />
   </Section>
 
+  <Section id={pricing.id} heading={pricing.heading} intro={pricing.intro} align="start">
+    <PricingSection {...pricing} />
+  </Section>
+
   <!-- Primary conversion: the free demo -->
   <Section id={demo.id} labelledBy={`${demo.id}-heading`}>
     <DemoOffer
@@ -100,10 +104,6 @@ const jsonLd = [
       cta={demo.cta}
       fallback={demo.fallback}
     />
-  </Section>
-
-  <Section id={pricing.id} heading={pricing.heading} intro={pricing.intro} align="start">
-    <PricingSection {...pricing} />
   </Section>
 
   <Section id={expect.id} heading={expect.heading} intro={expect.intro} align="start">

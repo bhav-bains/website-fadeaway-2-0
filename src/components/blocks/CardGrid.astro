@@ -2,6 +2,7 @@
 // Grid of content cards: optional illustration, H3 title, real prose, one link.
 // The whole card is clickable (stretched link) but only the link is announced.
 // Mobile-first: 1 column, then `columns` from md.
+// `cta`: a last call-out tile (no illustration, accent outline, whole tile clickable). `swipe`: a swipeable row below md (scroll-snap, next card peeks in). `balanced`: 5 items as 3 + 2 on lg (6-column grid).
 import clsx from 'clsx';
 import { illustrations, type IllustrationName } from '../illustrations';
 
@@ -15,15 +16,26 @@ export interface CardGridItem {
 interface Props {
   items: CardGridItem[];
   columns?: 2 | 3;
+  swipe?: boolean;
+  cta?: { title: string; body: string; label: string; href: string };
+  balanced?: boolean;
   class?: string;
 }
 
-const { items, columns = 2, class: className } = Astro.props;
+const { items, columns = 2, swipe = false, cta, balanced = false, class: className } = Astro.props;
 
 const mdColumns = { 2: 'md:grid-cols-2', 3: 'md:grid-cols-2 lg:grid-cols-3' };
 ---
 
-<ul class={clsx('grid gap-3 lg:gap-4', mdColumns[columns], className)}>
+<ul
+  class={clsx(
+    swipe
+      ? '-mx-2 flex snap-x snap-mandatory scroll-px-2 gap-2 overflow-x-auto px-2 pb-1 no-scrollbar sm:-mx-3 sm:scroll-px-3 sm:px-3 md:mx-0 md:grid md:snap-none md:gap-3 md:overflow-visible md:px-0 md:pb-0 lg:gap-4 [&>li]:shrink-0 [&>li]:basis-[82%] [&>li]:snap-start sm:[&>li]:basis-[55%] md:[&>li]:basis-auto'
+      : 'grid gap-3 lg:gap-4',
+    balanced ? 'md:grid-cols-2 lg:grid-cols-6 lg:[&>li]:col-span-2 lg:[&>li:nth-child(n+4)]:col-span-3' : mdColumns[columns],
+    className,
+  )}
+>
   {
     items.map((item) => {
       const Visual = item.illustration ? illustrations[item.illustration] : null;
@@ -65,4 +77,36 @@ const mdColumns = { 2: 'md:grid-cols-2', 3: 'md:grid-cols-2 lg:grid-cols-3' };
       );
     })
   }
+  {
+    cta && (
+      <li class={clsx('group relative flex flex-col justify-center gap-2 overflow-hidden rounded-card border border-accent/50 bg-surface-lifted p-3 transition-colors duration-300 hover:border-accent has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-highlight md:p-4', swipe && 'max-md:hidden')}>
+        <h3 class="font-display text-xl font-bold text-ink md:text-2xl">{cta.title}</h3>
+        <p class="text-pretty text-base text-ink-muted">{cta.body}</p>
+        <a
+          href={cta.href}
+          class="inline-flex items-center gap-1 pt-1 font-semibold text-highlight after:absolute after:inset-0 focus-visible:outline-none"
+        >
+          {cta.label}
+          <svg class="size-icon-sm transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8h10M9 4l4 4-4 4" />
+          </svg>
+        </a>
+      </li>
+    )
+  }
 </ul>
+{
+  swipe && cta && (
+    <div class="group relative mt-3 flex flex-col gap-2 overflow-hidden rounded-card border border-accent/50 bg-surface-lifted p-3 transition-colors duration-300 hover:border-accent has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-highlight md:hidden">
+      <h3 class="font-display text-xl font-bold text-ink">{cta.title}</h3>
+      <p class="text-pretty text-base text-ink-muted">{cta.body}</p>
+      <a href={cta.href} class="inline-flex items-center gap-1 pt-1 font-semibold text-highlight after:absolute after:inset-0 focus-visible:outline-none">
+        {cta.label}
+        <svg class="size-icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 8h10M9 4l4 4-4 4" />
+        </svg>
+      </a>
+    </div>
+  )
+}
+

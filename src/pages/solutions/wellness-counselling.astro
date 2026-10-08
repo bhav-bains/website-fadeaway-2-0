@@ -88,6 +88,10 @@ const jsonLd = [
     <ForkCallout heading={services.labs.heading} text={services.labs.text} link={services.labs.link} class="mt-6 md:mt-8" />
   </Section>
 
+  <Section id={pricing.id} heading={pricing.heading} intro={pricing.intro} align="start">
+    <PricingSection {...pricing} />
+  </Section>
+
   <!-- Primary conversion: the free demo -->
   <Section id={demo.id} labelledBy={`${demo.id}-heading`}>
     <DemoOffer
@@ -98,10 +102,6 @@ const jsonLd = [
       cta={demo.cta}
       fallback={demo.fallback}
     />
-  </Section>
-
-  <Section id={pricing.id} heading={pricing.heading} intro={pricing.intro} align="start">
-    <PricingSection {...pricing} />
   </Section>
 
   <Section id={expect.id} heading={expect.heading} intro={expect.intro} align="start">

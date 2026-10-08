@@ -1,0 +1,19 @@
+---
+// Barre studio: a wall barre in front of a mirror, with a dancer in an extended pose. Decorative line art (no words), theme colours only.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 400 240" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <rect x="56" y="30" width="288" height="168" rx="14" class="stroke-line-strong" />
+  <path d="M84 48l30 -4M92 70l60 -8" class="stroke-line-strong" opacity=".7" />
+  <path d="M70 122h260" class="stroke-accent" stroke-width="3" />
+  <path d="M96 122v34M304 122v34" class="stroke-accent" opacity=".7" />
+  <path d="M236 198v-64M236 134v-40" class="stroke-highlight" />
+  <circle cx="236" cy="78" r="12" class="stroke-highlight" />
+  <path d="M236 108l-46 14" class="stroke-highlight" />
+  <path d="M236 150l66 -14l8 -6" class="stroke-highlight" />
+  <path d="M220 198h32" class="stroke-highlight" opacity=".6" />
+</svg>

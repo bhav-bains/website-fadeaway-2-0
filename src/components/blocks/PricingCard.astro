@@ -1,8 +1,10 @@
 ---
-// One priced offer: name, price + cadence, who it's for, "What's included" list, and the outcome line.
-// `featured` gets the gradient border (the plan to lead with); others a hairline border. No buttons inside:
-// pricing sections close with one shared next step. Equal-height in a grid (h-full).
+// One priced plan, compact: name, price + cadence, who it's for, a button to start the conversation, and a native
+// <details> that opens to the full "What's included" list and the outcome line (all of it is in the HTML).
+// `featured` gets the gradient border (the plan to lead with); others a hairline border. Cards sit side by side from
+// md up (the grid uses items-start so opening one doesn't stretch its neighbour) and stack on phones.
 import clsx from 'clsx';
+import Button from '../Button.astro';
 
 export interface PricingItem {
   name: string;
@@ -18,25 +20,28 @@ export interface PricingItem {
   outcomeLabel: string;
   outcome: string;
   featured?: boolean;
+  /** Button under the price (e.g. start the conversation on the contact page) */
+  cta?: { label: string; href: string };
 }
 
 interface Props extends PricingItem {
   class?: string;
 }
 
-const { name, price, cadence, for: forWho, note, includedLabel, included, outcomeLabel, outcome, featured, class: className } =
+const { name, price, cadence, for: forWho, note, includedLabel, included, outcomeLabel, outcome, featured, cta, class: className } =
   Astro.props;
+const summary = includedLabel.replace(/:$/, '');
 ---
 
 <article
   class={clsx(
-    'h-full rounded-card p-px',
+    'rounded-card p-px',
     featured ? 'bg-gradient-to-br from-accent/60 via-line to-highlight/50' : 'bg-line-strong',
     className,
   )}
 >
-  <div class="flex h-full flex-col gap-4 rounded-[calc(var(--radius-card)-1px)] bg-surface-raised p-3 md:p-4 lg:p-5">
-    <header class="flex flex-col gap-2 border-b border-line pb-3">
+  <div class="flex flex-col gap-3 rounded-[calc(var(--radius-card)-1px)] bg-surface-raised p-3 md:p-4 lg:p-5">
+    <header class="flex flex-col gap-2">
       <h3 class="font-display text-xl font-bold text-ink md:text-2xl">{name}</h3>
       <p class="flex items-baseline gap-1">
         <span class="font-display text-4xl font-bold tracking-tight text-ink md:text-5xl">{price}</span>
@@ -46,34 +51,51 @@ const { name, price, cadence, for: forWho, note, includedLabel, included, outcom
       {note && <p class="text-pretty text-meta text-ink-muted">{note}</p>}
     </header>
 
-    <div class="flex flex-col gap-2">
-      <p class="text-meta font-semibold uppercase tracking-wider text-ink-muted">{includedLabel}</p>
-      <ul class="flex flex-col gap-1.5">
-        {
-          included.map((line) => (
-            <li class="flex items-start gap-1.5 text-base text-ink-soft">
-              <svg
-                aria-hidden="true"
-                class={clsx('mt-1 size-icon-sm shrink-0', featured ? 'text-accent' : 'text-highlight')}
-                viewBox="0 0 16 16"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" d="m3.5 8.5 3 3 6-7" />
-              </svg>
-              <span class="text-pretty">{line}</span>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+    {cta && <Button href={cta.href} variant={featured ? 'primary' : 'secondary'} size="base" className="w-full">{cta.label}</Button>}
 
-    <div class="mt-auto rounded-control border-l-2 border-highlight/60 bg-canvas/50 p-2 md:p-3">
-      <p class="text-pretty text-base text-ink-soft">
-        <strong class="font-semibold text-ink">{outcomeLabel}</strong>
-        {' '}{outcome}
-      </p>
-    </div>
+    <details class="group/plan border-t border-line">
+      <summary
+        class="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-2 py-1 font-semibold text-ink marker:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight [&::-webkit-details-marker]:hidden"
+      >
+        <span>{summary}</span>
+        <svg
+          aria-hidden="true"
+          class="size-icon-sm shrink-0 text-highlight transition-transform duration-300 group-open/plan:rotate-180"
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4 6 4 4 4-4" />
+        </svg>
+      </summary>
+      <div class="flex flex-col gap-3 pt-1">
+        <ul class="flex flex-col gap-1.5">
+          {
+            included.map((line) => (
+              <li class="flex items-start gap-1.5 text-base text-ink-soft">
+                <svg
+                  aria-hidden="true"
+                  class={clsx('mt-1 size-icon-sm shrink-0', featured ? 'text-accent' : 'text-highlight')}
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m3.5 8.5 3 3 6-7" />
+                </svg>
+                <span class="text-pretty">{line}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="rounded-control border-l-2 border-highlight/60 bg-canvas/50 p-2 md:p-3">
+          <p class="text-pretty text-base text-ink-soft">
+            <strong class="font-semibold text-ink">{outcomeLabel}</strong>
+            {' '}{outcome}
+          </p>
+        </div>
+      </div>
+    </details>
   </div>
 </article>

@@ -16,6 +16,11 @@ import IllusClass from './IllusClass.astro';
 import IllusRadius from './IllusRadius.astro';
 import IllusCourt from './IllusCourt.astro';
 import IllusLaunch from './IllusLaunch.astro';
+import IllusStudioYoga from './IllusStudioYoga.astro';
+import IllusStudioPilates from './IllusStudioPilates.astro';
+import IllusStudioSpin from './IllusStudioSpin.astro';
+import IllusStudioBarre from './IllusStudioBarre.astro';
+import IllusStudioNew from './IllusStudioNew.astro';
 
 export const illustrations = {
   ecommerce: IllusEcommerce,
@@ -35,6 +40,11 @@ export const illustrations = {
   radius: IllusRadius,
   court: IllusCourt,
   launch: IllusLaunch,
+  'studio-yoga': IllusStudioYoga,
+  'studio-pilates': IllusStudioPilates,
+  'studio-spin': IllusStudioSpin,
+  'studio-barre': IllusStudioBarre,
+  'studio-new': IllusStudioNew,
 };
 
 export type IllustrationName = keyof typeof illustrations;

@@ -7,11 +7,10 @@ import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
 import Section from '../../components/blocks/Section.astro';
 import BentoGrid from '../../components/blocks/BentoGrid.astro';
 import FeatureList from '../../components/blocks/FeatureList.astro';
-import ServiceIndex from '../../components/blocks/ServiceIndex.astro';
+import CardGrid from '../../components/blocks/CardGrid.astro';
 import IconGrid from '../../components/blocks/IconGrid.astro';
 import DemoOffer from '../../components/blocks/DemoOffer.astro';
 import PricingSection from '../../components/blocks/PricingSection.astro';
-import ForkCallout from '../../components/blocks/ForkCallout.astro';
 import Timeline from '../../components/blocks/Timeline.astro';
 import Steps from '../../components/blocks/Steps.astro';
 import WorkGrid from '../../components/blocks/WorkGrid.astro';
@@ -67,11 +66,11 @@ const jsonLd = [
   <Section id={services.id} heading={services.heading} align="start">
     <p class="sr-only">{answerCapsule}</p>
     <IconGrid items={services.items} columns={3} size="md" swipe collapse={false} />
-    <ForkCallout heading={services.labs.heading} text={services.labs.text} link={services.labs.link} class="mt-6 md:mt-8" />
+    {/* Labs fork callout (services.labs) removed from here, founder Oct 7: not at the top of the page. Re-place it lower down if wanted. */}
   </Section>
 
   <Section id={audience.id} heading={audience.heading} align="start">
-    <ServiceIndex items={audience.items} art="none" />
+    <CardGrid items={audience.items} cta={audience.cta} columns={3} swipe />
   </Section>
 
   <!-- Insight: the section's own line sits above the bento -->
@@ -89,6 +88,10 @@ const jsonLd = [
     <FeatureList items={why.items} columns={1} />
   </Section>
 
+  <Section id={pricing.id} heading={pricing.heading} intro={pricing.intro} align="start">
+    <PricingSection {...pricing} />
+  </Section>
+
   <!-- Primary conversion: the free demo -->
   <Section id={demo.id} labelledBy={`${demo.id}-heading`}>
     <DemoOffer
@@ -99,10 +102,6 @@ const jsonLd = [
       cta={demo.cta}
       fallback={demo.fallback}
     />
-  </Section>
-
-  <Section id={pricing.id} heading={pricing.heading} intro={pricing.intro} align="start">
-    <PricingSection {...pricing} />
   </Section>
 
   <Section id={expect.id} heading={expect.heading} intro={expect.intro} align="start">

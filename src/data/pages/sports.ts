@@ -184,18 +184,15 @@ export const demo: {
   cta: { label: string; href: string };
   fallback: { text: string; link: { label: string; href: string } };
 } = {
-  id: 'free-demo',
-  heading: 'See Your New Website First',
-  text: "We'll build a free 2 to 4 page demo of your new website, based on what already works for sports programs and shaped around yours. No cost, no obligation.",
+  id: 'demo',
+  heading: 'Not Sure Yet? Request Your Demo',
+  text: 'We know sports programs well, so your demo starts from what already works. We build 4 pages made for your program, in your branding, ready in 2 business days.',
   steps: [
-    { title: 'Tell us about your program', text: 'a few details and what you need. It takes about a minute.' },
-    { title: 'We build your demo', text: 'your homepage and the pages parents check first, like programs, fees, and tryouts.' },
-    {
-      title: 'Review it with no pressure',
-      text: 'we send you a private link and a short overview you can share with your board or coaches. If you love it, we make it your live site.',
-    },
+    { title: 'Tell us about your program', text: 'a few details and your brand. It takes about a minute.' },
+    { title: 'We build your 4 pages', text: 'your homepage and the pages parents check first, like programs, fees, and tryouts, made for your brand.' },
+    { title: 'Experience it', text: 'we send you a private link within 2 business days so you can click through your new site yourself.' },
   ],
-  cta: { label: 'Get Your Free Demo', href: routes.demoRequest },
+  cta: { label: 'Request Your Demo', href: routes.demoRequest },
   fallback: { text: 'Already have a website you want to keep?', link: { label: 'Get a free audit instead', href: routes.audit } },
 };
 
@@ -206,56 +203,11 @@ export const pricing: PricingContent & { id: string; heading: string; intro: str
   id: 'pricing',
   heading: 'What You Pay For, and What You Get',
   intro:
-    'Fixed prices, complete deliverable lists, and honest expectations. Clear numbers you can take straight to your board. You pay for an audit or a website setup to start, never both.',
-  start: [
-    {
-      name: 'Program Website Setup',
-      price: '$945',
-      cadence: 'one time',
-      for: 'For programs that want a professional site live fast.',
-      note: 'Your free demo shows you 2 to 4 pages first. Once you approve it, we build out the rest of your site from our sports program library and launch it.',
-      includedLabel: included,
-      included: [
-        'A complete program website: the pages from your demo, plus the rest your program needs, like programs and teams, fees and season details, tryouts or evaluations, coaches, schedule, about, contact, and FAQ',
-        'All website copy written for you, SEO and AEO ready from day one',
-        'Your branding: logo, colours, photos, and your program details',
-        'Registration connected to your platform, like LeagueApps, TeamSnap, GotSport, or SportsEngine, or to your membership and class booking tools',
-        'Built mobile-first, fast, and secure',
-        'On-page SEO, structured data, and AEO basics set up at launch',
-        'Google Business Profile set up or cleaned up',
-        'Google Analytics and Search Console set up, with registration clicks tracked',
-        "Hosting included while you're on a plan",
-        '1 round of revisions before launch',
-      ],
-      outcomeLabel: outcome,
-      outcome:
-        'a professional, fast website live within 2 weeks of approving your demo, built to answer the questions parents search, ready to be recommended by AI tools, and set up to turn visits into registrations. Paired with an Attract or Growth Plan.',
-      featured: true,
-    },
-    {
-      name: 'Full Audit',
-      price: '$945',
-      cadence: 'one time',
-      for: 'For programs keeping their current site.',
-      includedLabel: included,
-      included: [
-        'A full website and search presence review',
-        'A registration flow review: how many steps it takes to sign up, and where parents drop off',
-        'What parents find when they search for your sport in your area',
-        'Keyword research for your sport and your area',
-        "An in-depth AEO readiness check: how ChatGPT, Perplexity, and Google's AI Overviews describe your program",
-        'A content strategy foundation',
-        'Quick wins identified and ready to act on',
-        'A clear 3 to 6 month action plan you can take to your board',
-      ],
-      outcomeLabel: outcome,
-      outcome:
-        "a clear, prioritized picture of what's costing you registrations and exactly what to fix first, timed to your season. If you move ahead with a new website instead, the fee is credited toward it.",
-    },
-  ],
+    'Fixed prices, complete deliverable lists, and honest expectations. Clear numbers you can take straight to your board.',
   plans: [
     {
       name: 'Attract Plan',
+      cta: { label: 'Start with the Attract Plan', href: routes.contact },
       price: '$499',
       cadence: 'a month',
       for: 'For programs that want steady, compounding local visibility.',
@@ -276,6 +228,7 @@ export const pricing: PricingContent & { id: string; heading: string; intro: str
     },
     {
       name: 'Growth Plan',
+      cta: { label: 'Start with the Growth Plan', href: routes.contact },
       price: '$999',
       cadence: 'a month',
       for: 'For programs ready to fill rosters and camps faster.',
@@ -295,14 +248,8 @@ export const pricing: PricingContent & { id: string; heading: string; intro: str
       featured: true,
     },
   ],
-  finePrint:
-    'Plans run on a 6-month minimum. Ad spend is paid directly by you to Google and Meta. Results depend on your market, competition, and starting point; we never guarantee rankings.',
-  custom: {
-    heading: 'Need More Than the Website Setup?',
-    text: 'Multi-location academies, heavier customization, or a custom-designed site are scoped as a custom build and quoted at a fixed price before we start.',
-    link: { label: 'See Build Services', href: routes.build },
-  },
-  cta: { label: 'Get Your Free Demo', href: routes.demoRequest },
+  setupLine:
+    "Every plan starts with a one-time $945 setup: a new website built from your demo, or a Full Audit if you're keeping your current site.",
 };
 
 export const expect: { id: string; heading: string; intro: string; items: TimelineItem[] } = {
