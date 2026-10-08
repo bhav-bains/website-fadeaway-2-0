@@ -14,7 +14,7 @@ type Props = HeroContent;
 const { displayLine, eyebrow, proofLine, h1, sub, primaryCta, secondaryCta, auditForm, breadcrumb, visual, logos } = Astro.props;
 const Visual = visual ? illustrations[visual] : HeroIllustration;
 
-const statementSize = 'text-[clamp(2.75rem,1.25rem+5.5vw,6rem)] leading-[1]';
+const statementSize = 'text-[clamp(2.5rem,1.25rem+4vw,4.5rem)] leading-[1.02]';
 ---
 
 <section
@@ -25,7 +25,7 @@ const statementSize = 'text-[clamp(2.75rem,1.25rem+5.5vw,6rem)] leading-[1]';
   <!-- Faint illustration bleeding off the right edge -->
   <div
     aria-hidden="true"
-    class="pointer-events-none absolute -right-40 -top-6 -z-10 w-[46rem] max-w-none opacity-20 [mask-image:radial-gradient(ellipse_70%_70%_at_75%_25%,#000_30%,transparent_100%)] sm:-right-20 sm:top-20 sm:w-[48rem] sm:[mask-image:linear-gradient(to_left,#000_40%,transparent_95%)] lg:-right-10 lg:top-1/2 lg:w-[64rem] lg:-translate-y-1/2 lg:opacity-25"
+    class="pointer-events-none absolute -right-40 -top-8 -z-10 w-[46rem] max-w-none opacity-25 [mask-image:radial-gradient(ellipse_55%_50%_at_82%_22%,#000_30%,transparent_100%)] sm:-right-20 sm:top-20 sm:w-[48rem] sm:opacity-20 sm:[mask-image:linear-gradient(to_left,#000_40%,transparent_95%)] lg:-right-10 lg:top-1/2 lg:w-[64rem] lg:-translate-y-1/2 lg:opacity-25"
   >
     <Visual class="h-auto w-full" />
   </div>

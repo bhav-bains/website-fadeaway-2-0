@@ -34,7 +34,7 @@ export const heroVariant: HeroVariant = 'statement';
 
 export const hero: HeroContent = {
   eyebrow: 'Websites, Local SEO & AEO for Yoga, Pilates, Spin & Barre Studios',
-  h1: 'SEO for Yoga Studios.\nBuilt to Fill Every Class.',
+  h1: 'Websites and SEO Growth\nThat Fill Your Classes',
   sub: "More people finding you, more people booking, fewer empty spots in your schedule.",
   auditForm: { action: routes.audit, label: 'Get a Free Audit of Your Current Site', placeholder: 'yourstudio.com', button: 'Get Your Free Audit' },
   breadcrumb,

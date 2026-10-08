@@ -24,12 +24,14 @@ interface Props {
   /** Phones: a swipeable row (scroll-snap) of cards that show icon + title; tap a card to reveal its text and link.
    *  From lg the cards are the normal grid with the text always shown. */
   swipe?: boolean;
+  /** With `swipe`: false keeps the text visible on every card (a plain swipeable row, no tap to reveal) */
+  collapse?: boolean;
   /** Prefix for the toggle ids when more than one swipe grid is on a page */
   idPrefix?: string;
   class?: string;
 }
 
-const { items, columns = 4, titleAs: Title = 'h3', size = 'sm', swipe = false, idPrefix = 'icon-card', class: className } = Astro.props;
+const { items, columns = 4, titleAs: Title = 'h3', size = 'sm', swipe = false, collapse = true, idPrefix = 'icon-card', class: className } = Astro.props;
 const md = size === 'md';
 
 const lgColumns = { 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4' };
@@ -38,7 +40,7 @@ const lgColumns = { 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4
 <ul
   class={clsx(
     swipe
-      ? '-mx-2 flex snap-x snap-mandatory items-start scroll-px-2 gap-2 overflow-x-auto px-2 pb-1 no-scrollbar sm:mx-0 sm:grid sm:snap-none sm:items-stretch sm:gap-3 sm:overflow-visible sm:px-0 sm:pb-0 sm:grid-cols-2'
+      ? clsx(collapse && 'items-start', '-mx-2 flex snap-x snap-mandatory scroll-px-2 gap-2 overflow-x-auto px-2 pb-1 no-scrollbar sm:mx-0 sm:grid sm:snap-none sm:items-stretch sm:gap-3 sm:overflow-visible sm:px-0 sm:pb-0 sm:grid-cols-2')
       : 'grid gap-2 sm:grid-cols-2 sm:gap-3',
     lgColumns[columns],
     className,
@@ -52,7 +54,7 @@ const lgColumns = { 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4
           swipe && 'shrink-0 basis-[72%] snap-start has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-highlight sm:basis-auto',
         )}
       >
-        {swipe && (
+        {swipe && collapse && (
           <>
             <input type="checkbox" id={`${idPrefix}-${i}`} class="peer sr-only" />
             <label
@@ -74,11 +76,11 @@ const lgColumns = { 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4
           <Icon name={item.icon} />
         </span>
         <div class={clsx('flex flex-col', md ? 'gap-1' : 'gap-0.5')}>
-          <Title class={clsx('font-display font-bold text-ink', md ? 'text-xl md:text-2xl' : 'text-lg', swipe && 'pr-4 sm:pr-0')}>{item.title}</Title>
-          <p class={clsx('text-ink-muted', md ? 'text-pretty text-base' : 'text-meta', swipe && 'hidden group-has-[:checked]/card:block sm:block')}>{item.text}</p>
+          <Title class={clsx('font-display font-bold text-ink', md ? 'text-xl md:text-2xl' : 'text-lg', swipe && collapse && 'pr-4 sm:pr-0')}>{item.title}</Title>
+          <p class={clsx('text-ink-muted', md ? 'text-pretty text-base' : 'text-meta', swipe && collapse && 'hidden group-has-[:checked]/card:block sm:block')}>{item.text}</p>
         </div>
         {item.link && (
-          <ArrowLink href={item.link.href} class={clsx('mt-auto self-start pt-1', swipe && 'relative z-20 hidden group-has-[:checked]/card:inline-flex sm:inline-flex')}>
+          <ArrowLink href={item.link.href} class={clsx('mt-auto self-start pt-1', swipe && collapse && 'relative z-20 hidden group-has-[:checked]/card:inline-flex sm:inline-flex')}>
             {item.link.label}
           </ArrowLink>
         )}

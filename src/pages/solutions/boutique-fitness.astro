@@ -66,7 +66,7 @@ const jsonLd = [
   <!-- First section after the Hero (founder, Oct 7). The answer capsule is hidden visually but stays in the HTML as screen-reader text for AEO -->
   <Section id={services.id} heading={services.heading} align="start">
     <p class="sr-only">{answerCapsule}</p>
-    <IconGrid items={services.items} columns={3} size="md" />
+    <IconGrid items={services.items} columns={3} size="md" swipe collapse={false} />
     <ForkCallout heading={services.labs.heading} text={services.labs.text} link={services.labs.link} class="mt-6 md:mt-8" />
   </Section>
 
