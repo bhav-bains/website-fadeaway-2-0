@@ -81,11 +81,13 @@ const jsonLd = [
 
   <Section id={industries.id} heading={industries.heading} intro={industries.intro}>
     <CardGrid items={industries.items} columns={2} />
-    <div class="mt-4 grid gap-3 border-t border-line pt-4 md:mt-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-6 md:pt-6">
+    <div class="mt-4 grid gap-3 border-t border-line pt-4 md:mt-6 md:items-center md:gap-6 md:pt-6">
+      {/* HIDDEN Oct 14 (founder): the free-demo line, since /demo-request/ is hidden. Data stays in build.ts (industries.demo) and copy/build.md. To restore, put the paragraph back:
       <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-pretty text-base text-ink-soft md:text-lg">
         <span><strong class="font-semibold text-ink">{industries.demo.lead}</strong> {industries.demo.text}</span>
         <ArrowLink href={industries.demo.link.href}>{industries.demo.link.label}</ArrowLink>
       </p>
+      */}
       <div class="flex flex-wrap items-center gap-2">
         <span class="text-base text-ink-muted">{industries.audit.text}</span>
         <Button href={industries.audit.cta.href} variant="secondary" size="base">{industries.audit.cta.label}</Button>
