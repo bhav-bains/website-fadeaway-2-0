@@ -135,3 +135,8 @@
     background-color: var(--color-canvas);
   }
 }
+
+/* Lock the page behind an open modal dialog (pricing deliverables) */
+body:has(dialog[open]) {
+  overflow: hidden;
+}

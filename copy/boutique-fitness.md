@@ -65,7 +65,7 @@ Reuse the Wellness page blocks exactly; only the copy changes.
 | og:image / twitter:image | /og-default.jpg | Set (default) |
 | Robots meta | index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1 | Set |
 | Schema: Organization | Inherited sitewide, no LocalBusiness for Fadeaway itself | Set |
-| Schema: Service | Studio Website Setup ($945), Full Audit ($945), Attract Plan ($499/mo), Growth Plan ($999/mo), Custom Website Build (scoped). USD and CAD offers, same numbers | Updated, needs approval |
+| Schema: Service | Studio Website Setup ($945), Full Audit ($945), Attract Plan ($495/mo), Growth Plan ($995/mo), Custom Website Build (scoped). USD and CAD offers, same numbers | Updated, needs approval |
 | Schema: HowTo | From How It Works (4 steps) | Updated, needs approval |
 | Schema: FAQPage | From the FAQ list, matches visible copy verbatim | Set |
 | Schema: BreadcrumbList | Home > Boutique Fitness (no /solutions hub) | Updated, needs approval |
@@ -156,42 +156,98 @@ If what you actually need is custom software, automations, or dashboards rather 
 
 (Rebuilt Oct 7, founder direction: two compact plan cards, expandable to the full list, each with a button to /contact/. Button labels and the setup line are DRAFT by Claude, needs approval.)
 
-(Plan cards, founder Oct 13: price reads "$499 / month" and "$999 / month"; Attract card orange, Growth card green; expander label "See Deliverables" sits above the button; the standard button sits at the bottom of the card and moves down when it opens.)
+(Prices changed Oct 13 (founder): Attract $495 / month, Growth $995 / month. Plan cards: price reads "$495 / month" and "$995 / month"; Attract card orange, Growth card green; expander label "See Deliverables" sits above the button; the standard button sits at the bottom of the card and moves down when it opens.)
 
 (Intro line "Fixed prices, complete deliverable lists, and honest expectations." removed, founder Oct 13.)
 
-### Attract Plan: $499 / month
+(Dialog built Oct 13: "See Deliverables" opens a native dialog (centered panel, full-screen sheet on phones) with the plan name and price at the top, the full grouped list and the outcome line, and the start button pinned at the bottom. The list is in the page HTML while closed.)
+
+(Deliverables rewritten Oct 13, founder direction: show the volume of real work each month, organized as
+Foundation (months 1 to 3) and Every Month. Each card shows 3 short points; "See Deliverables" opens the full
+list in a popup (founder builds the popup). The popup content must be in the page HTML, not loaded on click,
+so search engines and AI tools can read it. Group labels in italics render as small subheadings.)
+
+### Attract Plan: $495 / month
 For studios that want steady, compounding local visibility.
 
-**What's included:**
-- Ongoing technical SEO and site health monitoring
-- Structured data and AEO signals kept current
-- Local SEO and Google Business Profile management
-- Booking platform integration and management
-- A monthly content calendar
-- A review generation system
-- A monthly reporting dashboard
-- A monthly check-in call
+**Card points (always visible):**
+- A full SEO and AEO foundation in your first 3 months
+- New content, reviews and local links every month
+- A live bookings dashboard and a monthly strategy call
+
+**See Deliverables (popup):**
+
+**Months 1 to 3: Build the Foundation**
+
+*Research and planning*
+- Local market and keyword research for your classes and neighbourhoods
+- A keyword map that gives every page one clear job
+- Site structure and URL plan, with redirects so nothing breaks
+
+*Your pages*
+- Page copy written and tuned for search, page by page
+- Page titles and descriptions written to earn the click
+- Structured data (JSON-LD) so Google and AI tools can read your classes, location and reviews
+
+*Technical health*
+- Technical SEO fixes: speed, mobile, indexing and broken links
+- A backlink audit, with spammy links cleaned up
+
+*Local presence*
+- Google Business Profile fully optimized
+- Business listings made consistent across directories
+- Your booking platform connected to your site and your tracking
+
+*Tracking*
+- Google Analytics, Search Console and booking tracking set up
+- Your reporting dashboard built
+
+**Every Month: Grow and Compound**
+- A content calendar built around your classes, neighbourhoods and seasons
+- New content that makes you the go-to local studio for your classes, on Google and in AI answers
+- Link building from local sites and directories
+- Conversion improvements to your booking and intro offer pages
+- Google Business Profile posts and updates
+- Automated review requests for happy clients
+- Site health, rankings and AI search signals monitored
+- A monthly dashboard report
+- A monthly strategy planning call
 
 **What you get out of it:** a studio that's easier to find on Google Maps, in local search, and in AI answers month over month, more reviews, and a clear monthly view of rankings, traffic, and bookings.
 
-### Growth Plan: $999 / month
+### Growth Plan: $995 / month
 For studios ready to grow faster on more than one channel.
 
-**What's included:**
+**Card points (always visible):**
 - Everything in the Attract Plan
-- Paid ads management across Google and Meta
-- Lead generation campaigns, like intro offers and class passes
-- Email marketing campaigns
-- AI search visibility tracking
-- An expanded dashboard combining paid and organic results
+- Paid ads, intro offer campaigns and email
 - Weekly strategy calls
+
+**See Deliverables (popup):**
+
+**Everything in the Attract Plan, plus:**
+
+*Paid campaigns*
+- Google and Meta ad campaigns set up and managed
+- Intro offer and class pass campaigns, each with its own landing page
+- Ongoing testing of ads, audiences and offers
+
+*Email*
+- Welcome emails for new clients
+- Win-back emails for lapsed members
+- Campaigns for new classes, workshops and seasonal offers
+
+*Visibility and reporting*
+- AI search visibility tracking across ChatGPT, Perplexity and Google AI Overviews
+- An expanded dashboard with paid and organic results side by side
+- Weekly strategy calls instead of monthly
 
 **What you get out of it:** new faces through the door from paid campaigns while your local visibility builds underneath, plus weekly strategy calls timed to your class calendar and busy seasons.
 
 Card buttons: Start with the Attract Plan → /contact/ · Start with the Growth Plan → /contact/
 
-Setup line (under the cards): Every plan starts with a one-time $945 setup: a new website built from your demo, or a Full Audit if you're keeping your current site.
+Line under the cards (updated Oct 13; brings back the 6-month minimum, ad spend and no-guarantee fine print from Offer & Pricing):
+Every plan starts with a one-time $945 setup: a new website built from your demo, or a Full Audit if you're keeping your current site. Plans run 6 months (3 months of Foundation, then 3 months of Growth), then month to month. Ad spend is paid directly by you to Google and Meta. We never guarantee rankings.
 
 <!-- Removed from the page Oct 7 (founder): the Website Setup and Full Audit cards, the fine print, the custom-build fork and the closing button. Kept for reuse in FAQ/contact:
 
@@ -236,6 +292,8 @@ Multi-location studios, heavier customization, or a custom-designed site are sco
 -->
 
 ## Not Sure Yet? Request Your Demo {#demo}
+
+(HIDDEN on the page for now, founder Oct 13. The copy stays here for when it comes back.)
 
 (Rewritten Oct 7, founder direction; copy DRAFT by Claude, needs approval. Moved below pricing; no "free" wording.)
 
@@ -328,7 +386,7 @@ copy/templates/case-study-template.md when a studio result is ready. -->
 ```yaml
 faq:
   - q: "How much does SEO for a yoga studio cost?"
-    a: "A new studio website is a one-time $945 setup, or a Full Audit is $945 if you're keeping your current site. After that, the Attract Plan is $499 / month and the Growth Plan is $999 / month, with everything included listed on this page. Plans run on a 6-month minimum."
+    a: "A new studio website is a one-time $945 setup, or a Full Audit is $945 if you're keeping your current site. After that, the Attract Plan is $495 / month and the Growth Plan is $995 / month, with everything included listed on this page. Plans run on a 6-month minimum."
   - q: "Can I do local SEO for my studio myself?"
     a: "You can, and some owners do. Most find they don't have the time once they add up schema, indexing, content, reviews, and Google Business Profile management on top of running classes and a team. That's the gap we fill, so you can focus on your studio."
   - q: "Do you integrate with Mindbody, Momence, or Marianatek?"

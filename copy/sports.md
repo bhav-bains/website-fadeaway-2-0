@@ -69,7 +69,7 @@ Campaign timing (founder, Sept 23): sports outreach runs in Q1, before the sprin
 | og:image / twitter:image | /og-default.jpg (the sports mockup is already in it) | Set (default) |
 | Robots meta | index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1 | Set |
 | Schema: Organization | Inherited sitewide, no LocalBusiness for Fadeaway itself | Set |
-| Schema: Service | Program Website Setup ($945), Full Audit ($945), Attract Plan ($499/mo), Growth Plan ($999/mo), Custom Website Build (scoped). USD and CAD offers, same numbers | Updated, needs approval |
+| Schema: Service | Program Website Setup ($945), Full Audit ($945), Attract Plan ($495/mo), Growth Plan ($995/mo), Custom Website Build (scoped). USD and CAD offers, same numbers | Updated, needs approval |
 | Schema: HowTo | From How It Works (4 steps) | Updated, needs approval |
 | Schema: FAQPage | From the FAQ list, matches visible copy verbatim | Set |
 | Schema: BreadcrumbList | Home > Sports Academies (no /solutions hub) | Updated, needs approval |
@@ -177,7 +177,7 @@ Automated review requests go out after tryouts, tournaments, and season wrap-ups
 
 Fixed prices, complete deliverable lists, and honest expectations. Clear numbers you can take straight to your board.
 
-### Attract Plan: $499 / month
+### Attract Plan: $495 / month
 For programs that want steady, compounding local visibility.
 
 **What's included:**
@@ -192,7 +192,7 @@ For programs that want steady, compounding local visibility.
 
 **What you get out of it:** a program that's easier for parents to find on Google Maps, in local search, and in AI answers season over season, more reviews, and a clear monthly view of inquiries and registrations.
 
-### Growth Plan: $999 / month
+### Growth Plan: $995 / month
 For programs ready to fill rosters and camps faster.
 
 **What's included:**
@@ -316,7 +316,7 @@ words. Personal specifics make this section credible; it shouldn't be written wi
 ```yaml
 faq:
   - q: "How much does a sports club website cost?"
-    a: "A new program website is a one-time $945 setup, or a Full Audit is $945 if you're keeping your current site. After that, the Attract Plan is $499 / month and the Growth Plan is $999 / month, with everything included listed on this page. Plans run on a 6-month minimum."
+    a: "A new program website is a one-time $945 setup, or a Full Audit is $945 if you're keeping your current site. After that, the Attract Plan is $495 / month and the Growth Plan is $995 / month, with everything included listed on this page. Plans run on a 6-month minimum."
   - q: "We already use TeamSnap or LeagueApps. Do we have to switch?"
     a: "No. Keep LeagueApps, TeamSnap, GotSport, SportsEngine, or whatever runs your registration and scheduling today. We build the website parents see first and connect it to your existing platform, so families go from your site to signed up without you moving any data or retraining your staff."
   - q: "When should we start before registration opens?"

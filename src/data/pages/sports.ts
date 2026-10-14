@@ -210,7 +210,7 @@ export const pricing: PricingContent & { id: string; heading: string; intro: str
       name: 'Attract Plan',
       cta: { label: 'Start with the Attract Plan', href: routes.contact },
       tone: 'accent',
-      price: '$499',
+      price: '$495',
       cadence: '/ month',
       for: 'For programs that want steady, compounding local visibility.',
       includedLabel: included,
@@ -232,7 +232,7 @@ export const pricing: PricingContent & { id: string; heading: string; intro: str
       name: 'Growth Plan',
       cta: { label: 'Start with the Growth Plan', href: routes.contact },
       tone: 'highlight',
-      price: '$999',
+      price: '$995',
       cadence: '/ month',
       for: 'For programs ready to fill rosters and camps faster.',
       includedLabel: included,
@@ -323,7 +323,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
   items: [
     {
       q: 'How much does a sports club website cost?',
-      a: "A new program website is a one-time $945 setup, or a Full Audit is $945 if you're keeping your current site. After that, the Attract Plan is $499 a month and the Growth Plan is $999 a month, with everything included listed on this page. Plans run on a 6-month minimum.",
+      a: "A new program website is a one-time $945 setup, or a Full Audit is $945 if you're keeping your current site. After that, the Attract Plan is $495 a month and the Growth Plan is $995 a month, with everything included listed on this page. Plans run on a 6-month minimum.",
     },
     {
       q: 'We already use TeamSnap or LeagueApps. Do we have to switch?',
@@ -364,8 +364,8 @@ export const serviceNames = ['Program Website Setup', 'Full Audit', 'Attract Pla
 export const serviceOffers: Record<string, { price: number; unit?: 'MON' }> = {
   'Program Website Setup': { price: 945 },
   'Full Audit': { price: 945 },
-  'Attract Plan': { price: 499, unit: 'MON' },
-  'Growth Plan': { price: 999, unit: 'MON' },
+  'Attract Plan': { price: 495, unit: 'MON' },
+  'Growth Plan': { price: 995, unit: 'MON' },
 };
 
 export const cta = {

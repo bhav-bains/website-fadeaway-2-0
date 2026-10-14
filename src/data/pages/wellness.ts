@@ -213,7 +213,7 @@ export const pricing: PricingContent & { id: string; heading: string; intro: str
       name: 'Attract Plan',
       cta: { label: 'Start with the Attract Plan', href: routes.contact },
       tone: 'accent',
-      price: '$499',
+      price: '$495',
       cadence: '/ month',
       for: 'For practices that want steady, compounding visibility.',
       includedLabel: included,
@@ -235,7 +235,7 @@ export const pricing: PricingContent & { id: string; heading: string; intro: str
       name: 'Growth Plan',
       cta: { label: 'Start with the Growth Plan', href: routes.contact },
       tone: 'highlight',
-      price: '$999',
+      price: '$995',
       cadence: '/ month',
       for: 'For practices ready to grow faster on more than one channel.',
       includedLabel: included,
@@ -319,7 +319,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
   items: [
     {
       q: 'How much does SEO for therapists cost?',
-      a: "A new practice website is a one-time $945 setup, or a Full Audit is $945 if you're keeping your current site. After that, the Attract Plan is $499 a month and the Growth Plan is $999 a month, with everything included listed on this page. Plans run on a 6-month minimum.",
+      a: "A new practice website is a one-time $945 setup, or a Full Audit is $945 if you're keeping your current site. After that, the Attract Plan is $495 a month and the Growth Plan is $995 a month, with everything included listed on this page. Plans run on a 6-month minimum.",
     },
     {
       q: 'Can I just do my own SEO instead of hiring someone?',
@@ -360,8 +360,8 @@ export const serviceNames = ['Practice Website Setup', 'Full Audit', 'Attract Pl
 export const serviceOffers: Record<string, { price: number; unit?: 'MON' }> = {
   'Practice Website Setup': { price: 945 },
   'Full Audit': { price: 945 },
-  'Attract Plan': { price: 499, unit: 'MON' },
-  'Growth Plan': { price: 999, unit: 'MON' },
+  'Attract Plan': { price: 495, unit: 'MON' },
+  'Growth Plan': { price: 995, unit: 'MON' },
 };
 
 export const cta = {

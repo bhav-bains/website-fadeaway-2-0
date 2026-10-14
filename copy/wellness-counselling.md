@@ -69,7 +69,7 @@ Notes for the build:
 | og:image / twitter:image | /og-default.jpg (a wellness-specific image is optional) | Set (default) |
 | Robots meta | index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1 | Set |
 | Schema: Organization | Inherited sitewide, no LocalBusiness for Fadeaway itself | Set |
-| Schema: Service | Practice Website Setup ($945), Full Audit ($945), Attract Plan ($499/mo), Growth Plan ($999/mo), Custom Website Build (scoped) | Updated, needs approval |
+| Schema: Service | Practice Website Setup ($945), Full Audit ($945), Attract Plan ($495/mo), Growth Plan ($995/mo), Custom Website Build (scoped) | Updated, needs approval |
 | Schema: HowTo | From How It Works (4 steps) | Updated, needs approval |
 | Deliverables | Website setup: full page set, copy by Fadeaway, live within 2 weeks of demo approval, 1 round of revisions before launch (founder, Oct 1) | Set |
 | Schema: FAQPage | From the FAQ list, matches visible copy verbatim | Set |
@@ -183,7 +183,7 @@ shown as a call-out at the end of this section. -->
 
 Fixed prices, complete deliverable lists, and honest expectations.
 
-### Attract Plan: $499 / month
+### Attract Plan: $495 / month
 For practices that want steady, compounding visibility.
 
 **What's included:**
@@ -198,7 +198,7 @@ For practices that want steady, compounding visibility.
 
 **What you get out of it:** a practice that's easier to find on Google Maps, in local search, and in AI answers month over month, more reviews, and a clear monthly view of rankings, traffic, and bookings.
 
-### Growth Plan: $999 / month
+### Growth Plan: $995 / month
 For practices ready to grow faster on more than one channel.
 
 **What's included:**
@@ -313,7 +313,7 @@ not a case study (founder, Sept 30). Use copy/templates/case-study-template.md w
 ```yaml
 faq:
   - q: "How much does SEO for therapists cost?"
-    a: "A new practice website is a one-time $945 setup, or a Full Audit is $945 if you're keeping your current site. After that, the Attract Plan is $499 / month and the Growth Plan is $999 / month, with everything included listed on this page. Plans run on a 6-month minimum."
+    a: "A new practice website is a one-time $945 setup, or a Full Audit is $945 if you're keeping your current site. After that, the Attract Plan is $495 / month and the Growth Plan is $995 / month, with everything included listed on this page. Plans run on a 6-month minimum."
   - q: "Can I just do my own SEO instead of hiring someone?"
     a: "You can, and some practices do. But SEO and AEO take real time every month: keyword research, technical fixes, content, schema, and reviews. Most clinicians don't have that time alongside a full caseload. We handle all of it so you can focus on your clients, not your website."
   - q: "Is my website compliant with HIPAA, PIPEDA, and PHIPA?"

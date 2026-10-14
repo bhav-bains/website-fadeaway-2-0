@@ -82,6 +82,7 @@ const jsonLd = [
     <PricingSection {...pricing} />
   </Section>
 
+  {/* Demo section hidden for now (founder, Oct 13). To bring it back, remove this comment wrapper.
   <!-- Primary conversion: the free demo -->
   <Section id={demo.id} labelledBy={`${demo.id}-heading`}>
     <DemoOffer
@@ -93,6 +94,7 @@ const jsonLd = [
       fallback={demo.fallback}
     />
   </Section>
+  */}
 
   <!-- Insight: the section's own line sits above the bento -->
   <Section id={insights.id} heading={insights.heading} align="start">
