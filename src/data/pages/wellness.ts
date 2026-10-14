@@ -207,12 +207,14 @@ export const pricing: PricingContent & { id: string; heading: string; intro: str
   heading: 'What You Pay For, and What You Get',
   intro: 'Fixed prices, complete deliverable lists, and honest expectations.',
   // Start with one (never both)
+  detailsLabel: 'See Deliverables',
   plans: [
     {
       name: 'Attract Plan',
       cta: { label: 'Start with the Attract Plan', href: routes.contact },
+      tone: 'accent',
       price: '$499',
-      cadence: 'a month',
+      cadence: '/ month',
       for: 'For practices that want steady, compounding visibility.',
       includedLabel: included,
       included: [
@@ -232,8 +234,9 @@ export const pricing: PricingContent & { id: string; heading: string; intro: str
     {
       name: 'Growth Plan',
       cta: { label: 'Start with the Growth Plan', href: routes.contact },
+      tone: 'highlight',
       price: '$999',
-      cadence: 'a month',
+      cadence: '/ month',
       for: 'For practices ready to grow faster on more than one channel.',
       includedLabel: included,
       included: [
@@ -248,7 +251,6 @@ export const pricing: PricingContent & { id: string; heading: string; intro: str
       outcomeLabel: outcome,
       outcome:
         "new client inquiries from paid campaigns while your search visibility builds underneath, plus weekly strategy calls so spend goes to what's actually filling your calendar.",
-      featured: true,
     },
   ],
   setupLine:

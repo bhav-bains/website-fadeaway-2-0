@@ -104,36 +104,58 @@ export const why: { id: string; heading: string; items: FeatureListItem[] } = {
   ],
 };
 
-export const audience: { id: string; heading: string; items: CardGridItem[]; cta: { title: string; body: string; label: string; href: string } } = {
+export const audience: { id: string; heading: string; items: CardGridItem[]; cta: { title: string; body: string; label: string; href: string };
+  strip: { label: string; items: IconGridItem[] };
+} = {
   id: 'who-its-for',
-  heading: 'Built for Boutique Studios',
+  heading: 'Tailored Solutions Built for Boutique Studios',
   items: [
     {
       title: 'Yoga Studios',
       illustration: 'studio-yoga',
-      body: 'Fill your schedule with locals searching for classes nearby, and turn first-timers into members with a smooth intro offer flow.',
     },
     {
       title: 'Pilates Studios',
       illustration: 'studio-pilates',
-      body: 'Reformer and mat studios live on limited spots per class. We help you keep them booked and your waitlist moving.',
     },
     {
       title: 'Spin and Cycling Studios',
       illustration: 'studio-spin',
-      body: 'High-energy brands need sites that feel the same. We build fast, bold sites that turn visitors into riders.',
     },
     {
       title: 'Barre Studios',
       illustration: 'studio-barre',
-      body: 'Show off your community and your instructors, and make the first class an easy yes.',
     },
     {
       title: 'Opening a New Studio?',
       illustration: 'studio-new',
-      body: 'Starting from scratch is the best time to get your website and local search right. We set up your site, booking, and Google Business Profile before your doors open.',
     },
   ],
+  strip: {
+    label: 'For Every Studio',
+    items: [
+      {
+        icon: 'calendar',
+        title: 'Full Classes, Moving Waitlists',
+        text: 'Limited spots are your product. We help you keep every class booked and your waitlist moving.',
+      },
+      {
+        icon: 'sparkles',
+        title: 'A Site That Feels Like Your Studio',
+        text: 'Your look, your energy and your community, in a fast site that makes the first class an easy yes.',
+      },
+      {
+        icon: 'star',
+        title: 'Your Instructors, Front and Center',
+        text: 'Show the people behind your classes, so visitors feel like they know you before they walk in.',
+      },
+      {
+        icon: 'bulb',
+        title: 'Opening Soon? Start Strong',
+        text: 'We set up your site, booking, and Google Business Profile before your doors open.',
+      },
+    ],
+  },
   cta: {
     title: 'Ready for the Next Step?',
     body: 'Tell us about your studio and we will help you plan what comes next.',
@@ -149,7 +171,7 @@ export const services: {
   labs: { heading: string; text: string; link: { label: string; href: string } };
 } = {
   id: 'services',
-  heading: 'What We Do for Your Studio',
+  heading: 'From Search to Booked Class',
   items: [
     {
       icon: 'calendar',
@@ -213,16 +235,17 @@ export const demo: {
 const included = "What's included:";
 const outcome = 'What you get out of it:';
 
-export const pricing: PricingContent & { id: string; heading: string; intro: string } = {
+export const pricing: PricingContent & { id: string; heading: string; intro?: string } = {
   id: 'pricing',
-  heading: 'What You Pay For, and What You Get',
-  intro: 'Fixed prices, complete deliverable lists, and honest expectations.',
+  heading: 'Clear Deliverables.\nTransparent Pricing.',
+  detailsLabel: 'See Deliverables',
   plans: [
     {
       name: 'Attract Plan',
       cta: { label: 'Start with the Attract Plan', href: routes.contact },
+      tone: 'accent',
       price: '$499',
-      cadence: 'a month',
+      cadence: '/ month',
       for: 'For studios that want steady, compounding local visibility.',
       includedLabel: included,
       included: [
@@ -242,8 +265,9 @@ export const pricing: PricingContent & { id: string; heading: string; intro: str
     {
       name: 'Growth Plan',
       cta: { label: 'Start with the Growth Plan', href: routes.contact },
+      tone: 'highlight',
       price: '$999',
-      cadence: 'a month',
+      cadence: '/ month',
       for: 'For studios ready to grow faster on more than one channel.',
       includedLabel: included,
       included: [
@@ -258,7 +282,6 @@ export const pricing: PricingContent & { id: string; heading: string; intro: str
       outcomeLabel: outcome,
       outcome:
         'new faces through the door from paid campaigns while your local visibility builds underneath, plus weekly strategy calls timed to your class calendar and busy seasons.',
-      featured: true,
     },
   ],
   setupLine:

@@ -1,0 +1,31 @@
+---
+// A single call-out card: title, one line, one link. The whole card is clickable (stretched link). Accent outline.
+// Used by CardGrid's `cta` on phones and wherever a page wants the same call-out in another spot.
+import clsx from 'clsx';
+
+interface Props {
+  title: string;
+  body: string;
+  label: string;
+  href: string;
+  class?: string;
+}
+
+const { title, body, label, href, class: className } = Astro.props;
+---
+
+<div
+  class={clsx(
+    'group relative flex flex-col gap-2 overflow-hidden rounded-card border border-accent/50 bg-surface-lifted p-3 transition-colors duration-300 hover:border-accent has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-highlight',
+    className,
+  )}
+>
+  <h3 class="font-display text-xl font-bold text-ink">{title}</h3>
+  <p class="text-pretty text-base text-ink-muted">{body}</p>
+  <a href={href} class="inline-flex items-center gap-1 pt-1 font-semibold text-highlight after:absolute after:inset-0 focus-visible:outline-none">
+    {label}
+    <svg class="size-icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3 8h10M9 4l4 4-4 4" />
+    </svg>
+  </a>
+</div>

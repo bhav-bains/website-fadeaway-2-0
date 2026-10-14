@@ -183,7 +183,7 @@ shown as a call-out at the end of this section. -->
 
 Fixed prices, complete deliverable lists, and honest expectations.
 
-### Attract Plan: $499 a month
+### Attract Plan: $499 / month
 For practices that want steady, compounding visibility.
 
 **What's included:**
@@ -198,7 +198,7 @@ For practices that want steady, compounding visibility.
 
 **What you get out of it:** a practice that's easier to find on Google Maps, in local search, and in AI answers month over month, more reviews, and a clear monthly view of rankings, traffic, and bookings.
 
-### Growth Plan: $999 a month
+### Growth Plan: $999 / month
 For practices ready to grow faster on more than one channel.
 
 **What's included:**
@@ -313,7 +313,7 @@ not a case study (founder, Sept 30). Use copy/templates/case-study-template.md w
 ```yaml
 faq:
   - q: "How much does SEO for therapists cost?"
-    a: "A new practice website is a one-time $945 setup, or a Full Audit is $945 if you're keeping your current site. After that, the Attract Plan is $499 a month and the Growth Plan is $999 a month, with everything included listed on this page. Plans run on a 6-month minimum."
+    a: "A new practice website is a one-time $945 setup, or a Full Audit is $945 if you're keeping your current site. After that, the Attract Plan is $499 / month and the Growth Plan is $999 / month, with everything included listed on this page. Plans run on a 6-month minimum."
   - q: "Can I just do my own SEO instead of hiring someone?"
     a: "You can, and some practices do. But SEO and AEO take real time every month: keyword research, technical fixes, content, schema, and reviews. Most clinicians don't have that time alongside a full caseload. We handle all of it so you can focus on your clients, not your website."
   - q: "Is my website compliant with HIPAA, PIPEDA, and PHIPA?"

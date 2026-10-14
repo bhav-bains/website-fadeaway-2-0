@@ -204,12 +204,14 @@ export const pricing: PricingContent & { id: string; heading: string; intro: str
   heading: 'What You Pay For, and What You Get',
   intro:
     'Fixed prices, complete deliverable lists, and honest expectations. Clear numbers you can take straight to your board.',
+  detailsLabel: 'See Deliverables',
   plans: [
     {
       name: 'Attract Plan',
       cta: { label: 'Start with the Attract Plan', href: routes.contact },
+      tone: 'accent',
       price: '$499',
-      cadence: 'a month',
+      cadence: '/ month',
       for: 'For programs that want steady, compounding local visibility.',
       includedLabel: included,
       included: [
@@ -229,8 +231,9 @@ export const pricing: PricingContent & { id: string; heading: string; intro: str
     {
       name: 'Growth Plan',
       cta: { label: 'Start with the Growth Plan', href: routes.contact },
+      tone: 'highlight',
       price: '$999',
-      cadence: 'a month',
+      cadence: '/ month',
       for: 'For programs ready to fill rosters and camps faster.',
       includedLabel: included,
       included: [
@@ -245,7 +248,6 @@ export const pricing: PricingContent & { id: string; heading: string; intro: str
       outcomeLabel: outcome,
       outcome:
         'registrations from paid campaigns when your window opens, while your search visibility builds underneath, plus weekly strategy calls so every campaign lines up with your season calendar.',
-      featured: true,
     },
   ],
   setupLine:

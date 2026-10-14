@@ -44,7 +44,7 @@ last_updated: TODO
 <!--
 Page job: CONVERT. Same funnel and block order as the Wellness & Counselling page:
   hook (Hero) → what we do → who it's for → insight → why Fadeaway → see it first (free demo)
-  (order changed Oct 7, founder: What We Do for Your Studio first, then Who It's For)
+  (order changed Oct 13, founder: Tailored Solutions Built for Boutique Studios first, then From Search to Booked Class)
   → what you pay for and get → what to expect → how it works → proof → FAQ → final ask.
 Free demo is the primary CTA. Free audit is the second path for studios keeping their site.
 Reuse the Wellness page blocks exactly; only the copy changes.
@@ -91,70 +91,42 @@ Home → Boutique Fitness
 - Hero CTA (replaced Oct 7): free-audit website box only, same workflow as the homepage hero. Label "Get a Free Audit of Your Current Setup", placeholder `yourstudio.com`, button "Get Your Free Audit"; GETs /audit/?website=
 - Answer capsule: hidden visually since Oct 7 (founder: it did not make sense on the page); it stays in the HTML as screen-reader-only text, from the frontmatter, so AEO still reads it.
 
-## What Most Studio Websites Get Wrong {#insights}
+## Tailored Solutions Built for Boutique Studios {#who-its-for}
 
-(Insight section. Gives the visitor something useful before asking for anything.)
+(Heading changed from "Who It's For" to "Built for Boutique Studios" (Oct 7), then to "Tailored Solutions Built for Boutique Studios" (founder, Oct 13).)
 
-(Intro line removed, founder Oct 7: "Most studio websites have the same quiet problems, and most owners have never had anyone point them out.")
+Studio types we work with (tiles show only the line art and the name, no text):
+- Yoga Studios
+- Pilates Studios
+- Spin and Cycling Studios
+- Barre Studios
+- Opening a New Studio?
 
-### The Booking Flow Loses People
-If booking a class takes more than a couple of taps, or bounces people to a confusing schedule page, some of them simply leave. Most studio sites make this harder than it needs to be. Your site should fill tomorrow's 6am class while you're teaching tonight's.
-<!-- Added Oct 2 (founder): "your website is a 24/7 salesperson" framing. One line per page, worded for this audience. -->
+(Founder, Oct 13: the points below apply to every studio type, so the per-type paragraphs were removed. The Yoga paragraph repeated "What We Do" and was dropped. Strip copy approved Oct 13.)
 
-### Invisible on the Map in Your Own Neighbourhood
-Someone searches "yoga studio near me" three blocks from your door, and a studio across town shows up first. That's usually a fixable Google Business Profile and site problem, not bad luck.
+**For Every Studio** (small label above a strip of 4 points under the tiles)
 
-### AI Assistants Now Recommend Studios
-People are starting to ask ChatGPT and Google's AI for class recommendations. Those tools favour studios whose sites clearly state classes, schedule, pricing, location, and fresh reviews.
+### Full Classes, Moving Waitlists
+Limited spots are your product. We help you keep every class booked and your waitlist moving.
 
-### A Brochure, Not a Growth Engine
-A site that just sits there doesn't fill classes. Booking, search, reviews, and reporting need to work together, so you can see which searches turn into booked classes.
+### A Site That Feels Like Your Studio
+Your look, your energy and your community, in a fast site that makes the first class an easy yes.
 
-[CTA touchpoint: Want to see how your studio shows up today? Get a Free Audit → /audit/]
+### Your Instructors, Front and Center
+Show the people behind your classes, so visitors feel like they know you before they walk in.
 
-## Why Studios Work With Fadeaway {#why}
+### Opening Soon? Start Strong
+We set up your site, booking, and Google Business Profile before your doors open.
 
-### Built for Studios, Not Generic Small Businesses
-Class schedules, intro offers, memberships, and instructor pages are built in from the start, because that's how studio clients decide.
-
-### Works With Your Booking Platform
-We connect your site to Mindbody, Momence, or Marianatek, so classes, payments, and clients stay in one place and booking feels seamless.
-
-### Found Locally and in AI Search
-Google Business Profile, neighbourhood pages, schema, and review signals set up so you show up on the map and in AI recommendations.
-
-### Care in Every Detail
-We care about each pixel and each interaction, and treat every studio's site like it's the only one we're building.
-
-### Founder-Led, With Fixed Pricing
-15+ years of experience, hands-on from first call to launch. Every price is on this page, with no hourly billing and no surprises.
-
-## Built for Boutique Studios {#who-its-for}
-
-(Heading changed from "Who It's For", founder Oct 7.)
-
-### Yoga Studios
-Fill your schedule with locals searching for classes nearby, and turn first-timers into members with a smooth intro offer flow.
-
-### Pilates Studios
-Reformer and mat studios live on limited spots per class. We help you keep them booked and your waitlist moving.
-
-### Spin and Cycling Studios
-High-energy brands need sites that feel the same. We build fast, bold sites that turn visitors into riders.
-
-### Barre Studios
-Show off your community and your instructors, and make the first class an easy yes.
-
-### Opening a New Studio?
-Starting from scratch is the best time to get your website and local search right. We set up your site, booking, and Google Business Profile before your doors open.
-
-### Call-out tile (sixth card, links to /contact/)
+### Call-out tile (sixth card, links to /contact/; on phones it shows as a card under "From Search to Booked Class" instead, founder Oct 13)
 (DRAFT by Claude, needs approval.)
 Ready for the Next Step?
 Tell us about your studio and we will help you plan what comes next.
 Link: Contact Us
 
-## What We Do for Your Studio {#services}
+## From Search to Booked Class {#services}
+
+(Heading changed from "What We Do for Your Studio", founder Oct 13. Section now sits below "Tailored Solutions Built for Boutique Studios".)
 
 ### A Website Built Around Your Booking Flow
 Class schedules, intro offers, and memberships connected to your booking platform, so booking a class takes seconds on any phone.
@@ -178,13 +150,17 @@ A dashboard showing which searches turn into booked classes and memberships, not
 If what you actually need is custom software, automations, or dashboards rather than a website, that's Fadeaway Labs.
 [Link: See Fadeaway Labs → /labs/]
 
-## What You Pay For, and What You Get {#pricing}
+## Clear Deliverables. Transparent Pricing. {#pricing}
+
+(Heading changed from "What You Pay For, and What You Get", founder Oct 13. Centered, two rows: "Clear Deliverables." / "Transparent Pricing.".)
 
 (Rebuilt Oct 7, founder direction: two compact plan cards, expandable to the full list, each with a button to /contact/. Button labels and the setup line are DRAFT by Claude, needs approval.)
 
-Fixed prices, complete deliverable lists, and honest expectations.
+(Plan cards, founder Oct 13: price reads "$499 / month" and "$999 / month"; Attract card orange, Growth card green; expander label "See Deliverables" sits above the button; the standard button sits at the bottom of the card and moves down when it opens.)
 
-### Attract Plan: $499 a month
+(Intro line "Fixed prices, complete deliverable lists, and honest expectations." removed, founder Oct 13.)
+
+### Attract Plan: $499 / month
 For studios that want steady, compounding local visibility.
 
 **What's included:**
@@ -199,7 +175,7 @@ For studios that want steady, compounding local visibility.
 
 **What you get out of it:** a studio that's easier to find on Google Maps, in local search, and in AI answers month over month, more reviews, and a clear monthly view of rankings, traffic, and bookings.
 
-### Growth Plan: $999 a month
+### Growth Plan: $999 / month
 For studios ready to grow faster on more than one channel.
 
 **What's included:**
@@ -269,6 +245,44 @@ We know boutique studios well, so your demo starts from what already works. We b
 [CTA: Request Your Demo → /demo-request/]
 Already have a website you want to keep? [Link: Get a free audit instead → /audit/]
 
+## What Most Studio Websites Get Wrong {#insights}
+
+(Insight section. Gives the visitor something useful before asking for anything.)
+
+(Intro line removed, founder Oct 7: "Most studio websites have the same quiet problems, and most owners have never had anyone point them out.")
+
+### The Booking Flow Loses People
+If booking a class takes more than a couple of taps, or bounces people to a confusing schedule page, some of them simply leave. Most studio sites make this harder than it needs to be. Your site should fill tomorrow's 6am class while you're teaching tonight's.
+<!-- Added Oct 2 (founder): "your website is a 24/7 salesperson" framing. One line per page, worded for this audience. -->
+
+### Invisible on the Map in Your Own Neighbourhood
+Someone searches "yoga studio near me" three blocks from your door, and a studio across town shows up first. That's usually a fixable Google Business Profile and site problem, not bad luck.
+
+### AI Assistants Now Recommend Studios
+People are starting to ask ChatGPT and Google's AI for class recommendations. Those tools favour studios whose sites clearly state classes, schedule, pricing, location, and fresh reviews.
+
+### A Brochure, Not a Growth Engine
+A site that just sits there doesn't fill classes. Booking, search, reviews, and reporting need to work together, so you can see which searches turn into booked classes.
+
+[CTA touchpoint: Want to see how your studio shows up today? Get a Free Audit → /audit/]
+
+## Why Studios Work With Fadeaway {#why}
+
+### Built for Studios, Not Generic Small Businesses
+Class schedules, intro offers, memberships, and instructor pages are built in from the start, because that's how studio clients decide.
+
+### Works With Your Booking Platform
+We connect your site to Mindbody, Momence, or Marianatek, so classes, payments, and clients stay in one place and booking feels seamless.
+
+### Found Locally and in AI Search
+Google Business Profile, neighbourhood pages, schema, and review signals set up so you show up on the map and in AI recommendations.
+
+### Care in Every Detail
+We care about each pixel and each interaction, and treat every studio's site like it's the only one we're building.
+
+### Founder-Led, With Fixed Pricing
+15+ years of experience, hands-on from first call to launch. Every price is on this page, with no hourly billing and no surprises.
+
 ## What to Expect, Month by Month {#what-to-expect}
 
 Typical timelines from industry best practice, not promises. Every market is different, and your dashboard shows the real numbers as they happen.
@@ -314,7 +328,7 @@ copy/templates/case-study-template.md when a studio result is ready. -->
 ```yaml
 faq:
   - q: "How much does SEO for a yoga studio cost?"
-    a: "A new studio website is a one-time $945 setup, or a Full Audit is $945 if you're keeping your current site. After that, the Attract Plan is $499 a month and the Growth Plan is $999 a month, with everything included listed on this page. Plans run on a 6-month minimum."
+    a: "A new studio website is a one-time $945 setup, or a Full Audit is $945 if you're keeping your current site. After that, the Attract Plan is $499 / month and the Growth Plan is $999 / month, with everything included listed on this page. Plans run on a 6-month minimum."
   - q: "Can I do local SEO for my studio myself?"
     a: "You can, and some owners do. Most find they don't have the time once they add up schema, indexing, content, reviews, and Google Business Profile management on top of running classes and a team. That's the gap we fill, so you can focus on your studio."
   - q: "Do you integrate with Mindbody, Momence, or Marianatek?"

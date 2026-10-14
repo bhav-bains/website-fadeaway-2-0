@@ -77,7 +77,8 @@ const intros = intro ? (Array.isArray(intro) ? intro : [intro]) : [];
 const hasHeader = eyebrow || heading || intros.length > 0;
 
 // Keep hyphenated words ("E-commerce") on one line in the heading and intro; the text itself is unchanged
-const headingParts = heading ? heading.split(/(\S+-\S+)/) : [];
+// A newline in the heading is a deliberate line break (e.g. a two-row heading)
+const headingLines = heading ? heading.split('\n').map((line) => line.split(/(\S+-\S+)/)) : [];
 const splitHyphens = (text: string) => text.split(/(\S+-\S+)/);
 ---
 
@@ -129,7 +130,12 @@ const splitHyphens = (text: string) => text.split(/(\S+-\S+)/);
           {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
           {heading && (
             <h2 id={headingId} class="max-w-3xl text-balance font-display text-heading font-bold text-ink">
-              {headingParts.map((part, i) => (i % 2 === 1 ? <span class="whitespace-nowrap">{part}</span> : part))}
+              {headingLines.map((parts, li) => (
+                <>
+                  {parts.map((part, i) => (i % 2 === 1 ? <span class="whitespace-nowrap">{part}</span> : part))}
+                  {li < headingLines.length - 1 && <br />}
+                </>
+              ))}
             </h2>
           )}
           {intros.map((text) => (
