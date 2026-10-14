@@ -92,12 +92,14 @@ Home → E-commerce
 - Eyebrow: E-commerce Web Design, Development & Growth
 - H1: Your E-commerce Web Design & Growth Partner
 - Sub-headline: Custom Shopify, WooCommerce, and headless stores, plus the SEO, AEO, and conversion work that turns browsers into buyers.
-- Primary CTA: Get Started → /contact
-- Secondary CTA: See How It Works → #how-it-works
-  (Switch to "See Our E-commerce Work → #real-work" once the Real Work section has at least one approved case study.)
+- Hero CTA (changed Oct 14, founder: same audit box as the three solution pages, since e-commerce is the active push and the free audit is step 1 of How It Works): label "Get a Free Audit of Your Store", placeholder `yourstore.com`, button "Get Your Free Audit"; GETs /audit/?website=
+- Secondary link (small text link under the box, optional): See How It Works → #how-it-works
+- (Removed Oct 14: the "Get Started → /contact" hero button. "Get Started" stays in the CTAs further down the page.)
 - Answer capsule: renders directly under the Hero, from the frontmatter. (Decided Sept 29: shown as the lead paragraph at the top of the AI Shopping section, not as its own block.)
 
 ## Is Your Store Ready for AI Shopping? {#ai-shopping}
+
+(Build note, Oct 14: the slider pagination renders as plain "1 2 3" text. If those are slide buttons, give each an accessible name like "Go to slide 1" and mark the current one with aria-current.)
 
 Shopping is starting to happen through AI assistants and chatbots, not just search bars and category pages. Most stores aren't built for that yet.
 
@@ -120,17 +122,13 @@ Your store is open at 2am. It should sell like it. Every store we build or grow 
 ### Designed to Convert, Not Just Look Good
 Every design decision is built around your actual buying flow: product pages, cart, and checkout, not just visual polish.
 
-### Built for AI Shopping and Search
-Your store is structured with the schema and content signals that AI shopping assistants and search tools read when recommending where to buy.
-
 ### Deep Platform Expertise
-Hands-on experience across Shopify, WooCommerce, and headless commerce, not a generic template applied to every store.
+Hands-on experience across Shopify, WooCommerce, and headless commerce, applied to your store's real catalog and buyers.
 
 ### Tailored to Your Store
 Every recommendation comes from your actual catalog, your actual traffic, and your actual competitors, not a one-size playbook.
 
-### Solid Technical Foundations
-Site structure, category and tag architecture, and technical SEO built to handle a large catalog cleanly as it grows.
+(Oct 14, founder: section cut to 3 cards. "Built for AI Shopping and Search" repeated the AI Shopping section and "Found by Google and AI Shopping Tools"; "Solid Technical Foundations" repeated "A Catalog That Stays Organized as You Grow" almost word for word. "Deep Platform Expertise" no longer says "not a generic template".)
 
 [CTA: Ready to see this in action? Get Started → /contact]
 
@@ -207,7 +205,7 @@ Never invent a number.
 ```yaml
 faq:
   - q: "Do you build on Shopify, WooCommerce, or headless commerce?"
-    a: "Yes, all three. The right platform depends on your catalog size, your budget, and how much control you need over the backend. We help you choose before anything gets built, then design the store, product pages, and checkout around how your customers actually buy, not around a template."
+    a: "Yes, all three. The right platform depends on your catalog size, your budget, and how much control you need over the backend. We help you choose before anything gets built, then design the store, product pages, and checkout around how your customers actually buy."
   - q: "How much do e-commerce web design and SEO cost?"
     a: "It depends on your catalog, your platform, and the scope of work. A small migration and a full custom headless build are very different projects. Every build and growth plan is scoped and quoted at a fixed price before we start, with no hourly billing. Reach out and we'll walk you through real numbers for your store."
   - q: "Can you migrate my store without losing my search rankings?"
@@ -233,6 +231,7 @@ Practical answers to the e-commerce questions we hear most.
 
 Tell us where your store is today, and we'll help you figure out what's next.
 [CTA: Get Started → /contact]
+[Link: Or get a free audit of your current store → /audit/] (added Oct 14, same pattern as the three solution pages)
 
 <!--
 CHANGE LOG vs the Claude Doc draft (rev 20). Originals stay in the Doc.

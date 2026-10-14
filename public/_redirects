@@ -1,5 +1,10 @@
 # Netlify redirects (CLAUDE.md section 6). Old URLs that were live on production, sent to their rebuilt pages.
-# Netlify matches with or without the trailing slash. Add the /blog/* 301s when /articles/ is built.
+# Netlify matches with or without the trailing slash. The old /blog/ URLs go to the homepage for now; when /articles/ is built, point them at /articles/ (and each old post at its new URL).
+
 /sports/              /solutions/sports/                301
 /wellness/            /solutions/wellness-counselling/  301
 /services/web-design/ /services/build/                  301
+/audit-request/       /audit/                           301
+/audit-request/*      /audit/                           301
+/blog/                /                                 301
+/blog/*               /                                 301

@@ -32,8 +32,8 @@ export const hero: HeroContent = {
   eyebrow: 'E-commerce Web Design, Development & Growth',
   h1: 'Your E-commerce Web Design & Growth Partner',
   sub: 'Custom Shopify, WooCommerce, and headless stores, plus the SEO, AEO, and conversion work that turns browsers into buyers.',
-  primaryCta: { label: 'Get Started', href: routes.contact },
-  // Switch to "See Our E-commerce Work" → #real-work once an approved case study exists (copy/ecommerce.md)
+  // Oct 14 (founder): same audit box as the solution pages; "See How It Works" is a small text link under it
+  auditForm: { action: routes.audit, label: 'Get a Free Audit of Your Store', placeholder: 'yourstore.com', button: 'Get Your Free Audit' },
   secondaryCta: { label: 'See How It Works', href: '#how-it-works' },
   breadcrumb,
   visual: 'ecommerce',
@@ -102,20 +102,12 @@ export const standard: { id: string; heading: string; intro: string; items: Bent
       text: 'Every design decision is built around your actual buying flow: product pages, cart, and checkout, not just visual polish.',
     },
     {
-      title: 'Built for AI Shopping and Search',
-      text: 'Your store is structured with the schema and content signals that AI shopping assistants and search tools read when recommending where to buy.',
-    },
-    {
       title: 'Deep Platform Expertise',
-      text: 'Hands-on experience across Shopify, WooCommerce, and headless commerce, not a generic template applied to every store.',
+      text: "Hands-on experience across Shopify, WooCommerce, and headless commerce, applied to your store's real catalog and buyers.",
     },
     {
       title: 'Tailored to Your Store',
       text: 'Every recommendation comes from your actual catalog, your actual traffic, and your actual competitors, not a one-size playbook.',
-    },
-    {
-      title: 'Solid Technical Foundations',
-      text: 'Site structure, category and tag architecture, and technical SEO built to handle a large catalog cleanly as it grows.',
     },
   ],
   cta: { text: 'Ready to see this in action?', label: 'Get Started', href: routes.contact },
@@ -208,7 +200,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
   items: [
     {
       q: 'Do you build on Shopify, WooCommerce, or headless commerce?',
-      a: 'Yes, all three. The right platform depends on your catalog size, your budget, and how much control you need over the backend. We help you choose before anything gets built, then design the store, product pages, and checkout around how your customers actually buy, not around a template.',
+      a: 'Yes, all three. The right platform depends on your catalog size, your budget, and how much control you need over the backend. We help you choose before anything gets built, then design the store, product pages, and checkout around how your customers actually buy.',
     },
     {
       q: 'How much do e-commerce web design and SEO cost?',
@@ -257,4 +249,5 @@ export const cta = {
   heading: 'Ready to Build or Grow Your Store?',
   text: "Tell us where your store is today, and we'll help you figure out what's next.",
   cta: { label: 'Get Started', href: routes.contact },
+  link: { label: 'Or get a free audit of your current store', href: routes.audit },
 };

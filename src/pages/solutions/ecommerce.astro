@@ -92,6 +92,6 @@ const jsonLd = [
   <!-- From the Blog (tag ecommerce, data: `blog` in ecommerce.ts): renders nothing until /articles/ has real e-commerce posts -->
 
   <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
-    <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
+    <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} link={cta.link} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
   </Section>
 </BaseLayout>

@@ -232,7 +232,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
   items: [
     {
       q: "What's included in the free Instant Audit?",
-      a: "A quick, automated review of your website, local search visibility, and paid media opportunities, enough to flag where you're losing ground and what's worth fixing first. We walk you through the results so nothing gets lost in a report. It's free, with no obligation to work with us afterward.",
+      a: "A free review of your website's SEO and AEO readiness, performance, site structure, and on-page copy, with clear priorities for what to fix first. Your branded report arrives within 24 hours. It's free, with no obligation to work with us afterward.",
     },
     {
       q: "What's included in the Full Audit?",

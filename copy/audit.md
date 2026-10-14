@@ -72,7 +72,7 @@ The website field is pre-filled when the visitor arrives from an audit CTA on an
 | What's not working right now? (optional) | concerns | textarea, placeholder: "Not enough enquiries, slow pages, not showing up on Google..." | No |
 
 - Submit button: **Get My Free Audit**
-- Line under the button: Free, with no obligation. We'll only use your details to send your report.
+- Line under the button: Free, with no obligation. We'll use your details to send your report and follow up about it. No spam, and you can opt out any time. (Changed Oct 14, founder: the old "only to send your report" line ruled out follow-ups. A newsletter still needs a separate, unticked consent checkbox under CASL; decide after launch.)
 - Line under that: Starting from scratch? [Link: Get a Quote → /contact]
 
 ## What We Check {#checks}
@@ -102,11 +102,11 @@ Whether your headlines, service pages, and calls to action speak to your custome
 ```yaml
 faq:
   - q: "Is the website audit really free?"
-    a: "Yes. The Instant Audit costs nothing and comes with no obligation. You get the full report either way, and it's yours to keep and act on, whether you work with us or not."
+    a: "Yes. The Instant Audit costs nothing and comes with no obligation. You get the full report either way, and it's yours to keep and act on, whether you work with us or not. It covers your SEO and AEO readiness, performance, site structure, and on-page copy, delivered within 24 hours."
   - q: "What's the difference between the Instant Audit and the Full Audit?"
     a: "The Instant Audit is a high-level check of the four areas that matter most, delivered within 24 hours. The Full Audit is a paid, in-depth review with keyword research and a detailed action plan, and if you move ahead with a build, its fee is credited toward it."
   - q: "What do you need from me?"
-    a: "Just your website address and where to send the report. If you tell us what isn't working right now, we'll look at that first."
+    a: "Just your website address and where to send the report. If you tell us what isn't working right now, we'll look at that first. The form also asks for your name and business name. Your branded report then arrives by email within 24 hours."
 ```
 
 ---

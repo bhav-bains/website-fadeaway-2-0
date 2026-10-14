@@ -46,7 +46,7 @@ export const form: FormContent = {
     },
   ],
   submit: 'Get My Free Audit',
-  note: "Free, with no obligation. We'll only use your details to send your report.",
+  note: "Free, with no obligation. We'll use your details to send your report and follow up about it. No spam, and you can opt out any time.",
   footer: { text: 'Starting from scratch?', link: { label: 'Get a Quote', href: routes.contact } },
 };
 
@@ -101,7 +101,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
   items: [
     {
       q: 'Is the website audit really free?',
-      a: "Yes. The Instant Audit costs nothing and comes with no obligation. You get the full report either way, and it's yours to keep and act on, whether you work with us or not.",
+      a: "Yes. The Instant Audit costs nothing and comes with no obligation. You get the full report either way, and it's yours to keep and act on, whether you work with us or not. It covers your SEO and AEO readiness, performance, site structure, and on-page copy, delivered within 24 hours.",
     },
     {
       q: "What's the difference between the Instant Audit and the Full Audit?",
@@ -109,7 +109,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
     },
     {
       q: 'What do you need from me?',
-      a: "Just your website address and where to send the report. If you tell us what isn't working right now, we'll look at that first.",
+      a: "Just your website address and where to send the report. If you tell us what isn't working right now, we'll look at that first. The form also asks for your name and business name. Your branded report then arrives by email within 24 hours.",
     },
   ],
 };
