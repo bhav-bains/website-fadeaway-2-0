@@ -9,7 +9,9 @@ import BentoGrid from '../../components/blocks/BentoGrid.astro';
 import FeatureList from '../../components/blocks/FeatureList.astro';
 import CalloutCard from '../../components/blocks/CalloutCard.astro';
 import CardGrid from '../../components/blocks/CardGrid.astro';
+import CalloutRow from '../../components/blocks/CalloutRow.astro';
 import IconGrid from '../../components/blocks/IconGrid.astro';
+import StageList from '../../components/blocks/StageList.astro';
 import DemoOffer from '../../components/blocks/DemoOffer.astro';
 import PricingSection from '../../components/blocks/PricingSection.astro';
 import Timeline from '../../components/blocks/Timeline.astro';
@@ -34,6 +36,7 @@ import {
   services,
   demo,
   pricing,
+  customRow,
   expect,
   howItWorks,
   realWork,
@@ -50,11 +53,8 @@ const hasWork = work.length > 0;
 const jsonLd = [
   breadcrumbSchema(breadcrumb),
   ...serviceSchema({ names: serviceNames, url: routes.boutiqueFitness, offers: serviceOffers }),
-  howToSchema({
-    name: howItWorks.heading,
-    steps: howItWorks.items,
-    url: new URL(`${routes.boutiqueFitness}#${howItWorks.id}`, siteConfig.url).toString(),
-  }),
+  // HowTo schema hidden with the How It Works section (founder Oct 13); restore both together:
+  // howToSchema({ name: howItWorks.heading, steps: howItWorks.items, url: new URL(`${routes.boutiqueFitness}#${howItWorks.id}`, siteConfig.url).toString() }),
   faqSchema(faq.items),
 ];
 ---
@@ -66,20 +66,21 @@ const jsonLd = [
   <!-- First section after the Hero. Order (founder, Oct 13): Tailored Solutions, then From Search to Booked Class. The answer capsule is hidden visually but stays in the HTML as screen-reader text for AEO -->
   <Section id={audience.id} heading={audience.heading} align="start">
     <p class="sr-only">{answerCapsule}</p>
-    <CardGrid items={audience.items} cta={audience.cta} swipe compact ctaOnPhones={false} />
+    <CardGrid items={audience.items} cta={audience.cta} swipe compact phoneGrid ctaOnPhones={false} />
     <h3 class="mb-2 mt-6 text-meta font-semibold uppercase tracking-wider text-ink-muted md:mt-8">{audience.strip.label}</h3>
     <IconGrid items={audience.strip.items} columns={4} size="md" swipe collapse={false} idPrefix="studio-strip" />
   </Section>
 
   <Section id={services.id} heading={services.heading} align="start">
-    <IconGrid items={services.items} columns={3} size="md" swipe collapse={false} />
+    <StageList stages={services.stages} />
     {/* Phones only: the contact call-out sits under this section (on larger screens it is the last tile above) */}
     <CalloutCard {...audience.cta} class="mt-3 md:hidden" />
     {/* Labs fork callout (services.labs) removed from here, founder Oct 7: not at the top of the page. Re-place it lower down if wanted. */}
   </Section>
 
-  <Section id={pricing.id} heading={pricing.heading} intro={pricing.intro}>
+  <Section id={pricing.id} eyebrow={pricing.eyebrow} heading={pricing.heading} intro={pricing.intro}>
     <PricingSection {...pricing} />
+    <CalloutRow {...customRow} class="mt-3 md:mt-4" />
   </Section>
 
   {/* Demo section hidden for now (founder, Oct 13). To bring it back, remove this comment wrapper.
@@ -96,11 +97,13 @@ const jsonLd = [
   </Section>
   */}
 
-  <!-- Insight: the section's own line sits above the bento -->
+  {/* HIDDEN Oct 13 (founder): "What Most Studio Websites Get Wrong". Data stays in fitness.ts (insights). To restore, move the Section below back in as written.
+  Insight section:
   <Section id={insights.id} heading={insights.heading} align="start">
     {insights.intro && <p class="mb-3 max-w-2xl text-pretty text-base font-medium text-ink md:mb-4 md:text-lg">{insights.intro}</p>}
     <BentoGrid items={insights.items} cta={insights.cta} />
   </Section>
+  */}
 
   <Section id={why.id} heading={why.heading} layout="split">
     {/* Oversized line art under the pinned heading: class schedule on a phone, neighbourhood pin, review star */}
@@ -115,9 +118,11 @@ const jsonLd = [
     <Timeline items={expect.items} />
   </Section>
 
+  {/* HIDDEN Oct 13 (founder): How It Works (and its HowTo schema above). Data stays in fitness.ts (howItWorks). To restore, put the Section back:
   <Section id={howItWorks.id} heading={howItWorks.heading}>
     <Steps items={howItWorks.items} />
   </Section>
+  */}
 
   {
     hasWork && (

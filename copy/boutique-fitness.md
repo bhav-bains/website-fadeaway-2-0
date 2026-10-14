@@ -7,11 +7,11 @@
 page: boutique-fitness
 url: /solutions/boutique-fitness/
 title: "Fadeaway Creatives | SEO for Yoga & Fitness Studios"
-description: "Websites, local SEO, and AEO for yoga, pilates, spin, and barre studios. Connected to Mindbody or Momence, built to fill every class. Free demo."
+description: "Websites, local SEO, and AEO for yoga, pilates, spin, and barre studios. Connected to Mindbody or Momence, built to fill every class."
 canonical: "https://fadeawaycreatives.com/solutions/boutique-fitness/"
 og:
   title: "Fadeaway Creatives | SEO for Yoga & Fitness Studios"
-  description: "Websites, local SEO, and AEO for yoga, pilates, spin, and barre studios. Connected to Mindbody or Momence, built to fill every class. Free demo."
+  description: "Websites, local SEO, and AEO for yoga, pilates, spin, and barre studios. Connected to Mindbody or Momence, built to fill every class."
   url: "https://fadeawaycreatives.com/solutions/boutique-fitness/"
   type: website
   locale: en_US
@@ -25,7 +25,7 @@ answer_capsule: >-
   pilates, spin, and barre studios across Canada and the US. We connect your
   site to the booking platform you already use, like Mindbody, Momence, or
   Marianatek, get you showing up on Google Maps and in AI recommendations for
-  your neighbourhood, and start with a free custom demo of your new website.
+  your neighbourhood, with fixed monthly plans starting at $495.
 keywords:
   primary: "seo for yoga studios"   # 150/mo US KD 1. In-scope anchor; Canada returns almost nothing.
   secondary: ["marketing for yoga studios", "pilates studio marketing", "local seo for gyms (supporting only)", "gym marketing agency (supporting only)"]
@@ -35,7 +35,7 @@ schema:
   - Organization    # sitewide, from the base layout
   - BreadcrumbList  # Home > Boutique Fitness
   - Service         # Studio Website Setup, Full Audit, Attract Plan, Growth Plan, Custom Website Build. Offers in USD and CAD, same numbers (same pattern as Wellness).
-  - HowTo           # from How It Works (4 steps)
+  # HowTo hidden Oct 13 with the How It Works section
   - FAQPage         # generated from the faq list below
 content_tag: boutique-fitness
 last_updated: TODO
@@ -46,7 +46,7 @@ Page job: CONVERT. Same funnel and block order as the Wellness & Counselling pag
   hook (Hero) → what we do → who it's for → insight → why Fadeaway → see it first (free demo)
   (order changed Oct 13, founder: Tailored Solutions Built for Boutique Studios first, then From Search to Booked Class)
   → what you pay for and get → what to expect → how it works → proof → FAQ → final ask.
-Free demo is the primary CTA. Free audit is the second path for studios keeping their site.
+(Oct 13 review, founder: the free demo is no longer marketed on this page; demo section and How It Works are hidden. Contact is the main CTA, the free audit stays in the hero and closing link. Edits made in that review are DRAFT by Claude, needs approval: meta description, answer capsule, How It Works step 1 and 3, new-studio FAQ answer, closing CTA.)
 Reuse the Wellness page blocks exactly; only the copy changes.
 [Link: text → url] and [CTA: text → url] are link specs, not visible brackets.
 -->
@@ -58,7 +58,7 @@ Reuse the Wellness page blocks exactly; only the copy changes.
 | Field | Value | Status |
 |---|---|---|
 | Title tag | Fadeaway Creatives \| SEO for Yoga & Fitness Studios (51 chars) | Set |
-| Meta description | Websites, local SEO, and AEO for yoga, pilates, spin, and barre studios. Connected to Mindbody or Momence, built to fill every class. Free demo. (144 chars) | Updated, needs approval |
+| Meta description | Websites, local SEO, and AEO for yoga, pilates, spin, and barre studios. Connected to Mindbody or Momence, built to fill every class. (131 chars) | Updated, needs approval |
 | Canonical | https://fadeawaycreatives.com/solutions/boutique-fitness/ | Set |
 | H1 | Websites and SEO Growth That Fill Your Classes (line break after "Growth", founder Oct 7) | Set |
 | og:title / og:description | Mirror title tag / meta description | Set |
@@ -66,14 +66,14 @@ Reuse the Wellness page blocks exactly; only the copy changes.
 | Robots meta | index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1 | Set |
 | Schema: Organization | Inherited sitewide, no LocalBusiness for Fadeaway itself | Set |
 | Schema: Service | Studio Website Setup ($945), Full Audit ($945), Attract Plan ($495/mo), Growth Plan ($995/mo), Custom Website Build (scoped). USD and CAD offers, same numbers | Updated, needs approval |
-| Schema: HowTo | From How It Works (4 steps) | Updated, needs approval |
+| Schema: HowTo | Hidden Oct 13 with the How It Works section | Hidden |
 | Schema: FAQPage | From the FAQ list, matches visible copy verbatim | Set |
 | Schema: BreadcrumbList | Home > Boutique Fitness (no /solutions hub) | Updated, needs approval |
 | Answer capsule | See frontmatter | Updated, needs approval |
 | Visible FAQ block | 6 questions, 40 to 60 word answers | Updated, needs approval |
 | Deliverables | Studio website setup: full page set, copy by Fadeaway, live within 2 weeks of demo approval, 1 round of revisions, hosting while on a plan (same as Wellness, founder Oct 1) | Set |
 | Last updated date | Set at launch | Pending launch |
-| Internal links | /demo-request/, /audit/, /services/build/, /services/growth/, /labs/. Zero `#` placeholders. | To QA |
+| Internal links | /contact/, /audit/, /services/build/, /services/growth/, /labs/. Zero `#` placeholders. | To QA |
 | Primary keyword | seo for yoga studios (150/mo US KD 1) | Set |
 | Secondary keywords | marketing for yoga studios, pilates studio marketing; gym terms supporting only | Set |
 | Pricing display | Real numbers shown (one of the three demo-industry pages) | Set |
@@ -98,16 +98,17 @@ Home → Boutique Fitness
 Studio types we work with (tiles show only the line art and the name, no text):
 - Yoga Studios
 - Pilates Studios
-- Spin and Cycling Studios
+- Spin Studios
 - Barre Studios
-- Opening a New Studio?
+- ~~Opening a New Studio?~~ (hidden for now, founder Oct 13)
 
 (Founder, Oct 13: the points below apply to every studio type, so the per-type paragraphs were removed. The Yoga paragraph repeated "What We Do" and was dropped. Strip copy approved Oct 13.)
 
 **For Every Studio** (small label above a strip of 4 points under the tiles)
 
-### Full Classes, Moving Waitlists
-Limited spots are your product. We help you keep every class booked and your waitlist moving.
+### Keep Your Schedule Full
+Your site and your local search work together, so new faces find you, book online, and show up ready for class.
+(Replaced Oct 13, founder: the old "Full Classes, Moving Waitlists" card did not apply to every studio type.)
 
 ### A Site That Feels Like Your Studio
 Your look, your energy and your community, in a fast site that makes the first class an easy yes.
@@ -120,7 +121,7 @@ We set up your site, booking, and Google Business Profile before your doors open
 
 ### Call-out tile (sixth card, links to /contact/; on phones it shows as a card under "From Search to Booked Class" instead, founder Oct 13)
 (DRAFT by Claude, needs approval.)
-Ready for the Next Step?
+Let's Grow Your Studio
 Tell us about your studio and we will help you plan what comes next.
 Link: Contact Us
 
@@ -128,22 +129,30 @@ Link: Contact Us
 
 (Heading changed from "What We Do for Your Studio", founder Oct 13. Section now sits below "Tailored Solutions Built for Boutique Studios".)
 
-### A Website Built Around Your Booking Flow
-Class schedules, intro offers, and memberships connected to your booking platform, so booking a class takes seconds on any phone.
+(Shown as three stages of two cards each, option 1, founder Oct 13. The three stage labels are DRAFT by Claude, needs approval. The six cards keep their copy word for word.)
 
-### Win the Google Map Pack
+### Stage 1: Get Found (DRAFT label, needs approval)
+
+#### Win the Google Map Pack
 Google Business Profile optimization so your studio shows up when someone nearby searches for a class.
 
-### Neighbourhood Pages
+#### Neighbourhood Pages
 Clients search their own neighbourhood, not just your city. We build pages that capture searches across your whole service area.
 
-### AEO for AI Recommendations
+### Stage 2: Get Chosen (DRAFT label, needs approval)
+
+#### AEO for AI Recommendations
 Structured data and clear studio details, so you're the answer when someone asks an AI assistant for the best studio nearby.
 
-### Automated Review Requests
+#### Automated Review Requests
 Fresh reviews help with both Google and AI tools. We set up reminders that make it easy for happy clients to leave one right after class.
 
-### Track Real Bookings, Not Views
+### Stage 3: Get Booked (DRAFT label, needs approval)
+
+#### A Website Built Around Your Booking Flow
+Class schedules, intro offers, and memberships connected to your booking platform, so booking a class takes seconds on any phone.
+
+#### Track Real Bookings, Not Views
 A dashboard showing which searches turn into booked classes and memberships, not just which pages get visited.
 
 ### Need Custom Software Instead (REMOVED from the page, founder Oct 7: it does not belong at the top; not placed elsewhere yet)
@@ -152,7 +161,7 @@ If what you actually need is custom software, automations, or dashboards rather 
 
 ## Clear Deliverables. Transparent Pricing. {#pricing}
 
-(Heading changed from "What You Pay For, and What You Get", founder Oct 13. Centered, two rows: "Clear Deliverables." / "Transparent Pricing.".)
+(Heading changed from "What You Pay For, and What You Get", founder Oct 13. Centered, two rows: "Clear Deliverables." / "Transparent Pricing.". Eyebrow badge above it: "Pricing", founder Oct 13. Each plan price has a small "Starts from" line above it, founder Oct 13.)
 
 (Rebuilt Oct 7, founder direction: two compact plan cards, expandable to the full list, each with a button to /contact/. Button labels and the setup line are DRAFT by Claude, needs approval.)
 
@@ -171,13 +180,13 @@ so search engines and AI tools can read it. Group labels in italics render as sm
 For studios that want steady, compounding local visibility.
 
 **Card points (always visible):**
-- A full SEO and AEO foundation in your first 3 months
-- New content, reviews and local links every month
-- A live bookings dashboard and a monthly strategy call
+- Full SEO and AEO foundation
+- Content strategy, on-page SEO copy and link building every month
+- Clear dashboard and monthly strategy calls
 
 **See Deliverables (popup):**
 
-**Months 1 to 3: Build the Foundation**
+**Build the Foundation**
 
 *Research and planning*
 - Local market and keyword research for your classes and neighbourhoods
@@ -210,17 +219,17 @@ For studios that want steady, compounding local visibility.
 - Google Business Profile posts and updates
 - Automated review requests for happy clients
 - Site health, rankings and AI search signals monitored
-- A monthly dashboard report
-- A monthly strategy planning call
+- 24x7 reporting dashboard
+- Monthly strategy calls
 
-**What you get out of it:** a studio that's easier to find on Google Maps, in local search, and in AI answers month over month, more reviews, and a clear monthly view of rankings, traffic, and bookings.
+("What you get out of it" blocks removed from both plan popups, founder Oct 13.)
 
 ### Growth Plan: $995 / month
 For studios ready to grow faster on more than one channel.
 
 **Card points (always visible):**
 - Everything in the Attract Plan
-- Paid ads, intro offer campaigns and email
+- Paid ads, intro offers and email campaigns
 - Weekly strategy calls
 
 **See Deliverables (popup):**
@@ -240,14 +249,18 @@ For studios ready to grow faster on more than one channel.
 *Visibility and reporting*
 - AI search visibility tracking across ChatGPT, Perplexity and Google AI Overviews
 - An expanded dashboard with paid and organic results side by side
-- Weekly strategy calls instead of monthly
+- Weekly strategy calls
 
-**What you get out of it:** new faces through the door from paid campaigns while your local visibility builds underneath, plus weekly strategy calls timed to your class calendar and busy seasons.
 
 Card buttons: Start with the Attract Plan → /contact/ · Start with the Growth Plan → /contact/
 
-Line under the cards (updated Oct 13; brings back the 6-month minimum, ad spend and no-guarantee fine print from Offer & Pricing):
-Every plan starts with a one-time $945 setup: a new website built from your demo, or a Full Audit if you're keeping your current site. Plans run 6 months (3 months of Foundation, then 3 months of Growth), then month to month. Ad spend is paid directly by you to Google and Meta. We never guarantee rankings.
+Row card under the pricing cards (DRAFT by Claude, needs approval; founder asked for a Fadeaway Labs and portfolio shoutout: custom website, automations etc.):
+Need Something Custom?
+Fadeaway Labs builds custom websites, automations, and software for studios that need more than a template. See what we've built in our portfolio.
+[Link: Explore Fadeaway Labs → /labs/] · [Link: See Our Portfolio → /portfolio/]
+
+Under each plan price (small, muted, founder Oct 13): $945 one-time website build setup
+(The earlier long paragraph under the cards, with the 6-month term, ad spend and no guaranteed rankings, stays removed.)
 
 <!-- Removed from the page Oct 7 (founder): the Website Setup and Full Audit cards, the fine print, the custom-build fork and the closing button. Kept for reuse in FAQ/contact:
 
@@ -305,6 +318,8 @@ Already have a website you want to keep? [Link: Get a free audit instead → /au
 
 ## What Most Studio Websites Get Wrong {#insights}
 
+(HIDDEN from the page Oct 13, founder: section removed for now. Copy kept below for reuse.)
+
 (Insight section. Gives the visitor something useful before asking for anything.)
 
 (Intro line removed, founder Oct 7: "Most studio websites have the same quiet problems, and most owners have never had anyone point them out.")
@@ -354,16 +369,18 @@ Technical fixes, neighbourhood pages, and the first content go live. Review requ
 ### Months 3 to 6
 This is where local SEO and AEO usually start compounding: better map rankings, more people finding you directly, and more classes booked from your own site.
 
-### Month 6
+### Month 6+
 A full picture with real numbers on visibility, bookings, and memberships, and a clear decision on what's next.
 
 ## How It Works {#how-it-works}
 
+(HIDDEN from the page Oct 13, founder: section and HowTo schema removed for now. Copy kept below for reuse.)
+
 (Emits HowTo schema.)
 
-1. **Start free**: Request a free demo of your new website, or a free audit of the one you have.
+1. **Start free**: Contact us about a new website, or ask for a free audit of the one you have. (DRAFT, section hidden)
 2. **Choose your path**: A new site with the $945 setup, or a Full Audit if you're keeping your current site. Never both.
-3. **Launch**: We build or fix your site, connect it to your booking platform, set up your tracking, and host it for you if it's built from your demo.
+3. **Launch**: We build or fix your site, connect it to your booking platform, set up your tracking, and host it for you if we built it. (DRAFT)
 4. **Grow**: Your Attract or Growth Plan kicks in, with local SEO, AEO, content, reviews, and reporting tied to booked classes.
 
 ## Results We've Delivered {#real-work}
@@ -394,7 +411,7 @@ faq:
   - q: "What if I already have a website?"
     a: "Start with a free audit. We'll show you what's working and what's costing you bookings. If your site is worth keeping, the Full Audit maps the fixes and growth plan. If it needs replacing, the $945 website setup covers it instead, so you never pay for both."
   - q: "I'm opening a new studio. Can you help?"
-    a: "Yes, and it's the best time to start. We set up your website, booking connection, and Google Business Profile before you open, so people searching for classes nearby can find you and book from day one. Request a free demo and we'll show you what your site could look like."
+    a: "Yes, and it's the best time to start. We set up your website, booking connection, and Google Business Profile before you open, so people searching for classes nearby can find you and book from day one. Contact us and we'll plan your launch together." (DRAFT)
   - q: "Do you work with studios outside Canada?"
     a: "Yes. We're based in Vancouver, BC, and work with yoga, pilates, spin, and barre studios across Canada and the United States. Everything happens remotely, and we build your local strategy around the neighbourhoods and searches that matter in your city."
 ```
@@ -411,8 +428,8 @@ The Digital Setup Checklist", "Local SEO for Yoga and Pilates Studios". -->
 
 ## Ready to Fill Every Class? {#cta}
 
-See your new website before you spend a dollar. Tell us about your studio and we'll build you a free demo.
-[CTA: Get Your Free Demo → /demo-request/]
+Tell us about your studio and we will help you plan what comes next. (DRAFT by Claude, reuses the approved call-out line; replaces the free demo line)
+[CTA: Contact Us → /contact/]
 [Link: Or get a free audit of your current site → /audit/]
 
 <!--

@@ -9,7 +9,7 @@ export interface PricingContent {
   detailsLabel: string;
   plans: PricingItem[];
   /** One quiet line about the one-time setup (website from the demo, or a Full Audit) */
-  setupLine: string;
+  setupLine?: string;
 }
 
 type Props = PricingContent;
@@ -17,7 +17,7 @@ type Props = PricingContent;
 const { plans, detailsLabel, setupLine } = Astro.props;
 ---
 
-<div class="grid items-start gap-3 md:grid-cols-2 md:gap-4">
+<div class="grid gap-3 md:grid-cols-2 md:gap-4">
   {plans.map((item) => <PricingCard {...item} detailsLabel={detailsLabel} />)}
 </div>
-<p class="mt-4 max-w-3xl text-pretty text-base text-ink-soft md:mt-6">{setupLine}</p>
+{setupLine && <p class="mt-4 text-center text-meta text-ink-muted md:mt-6">{setupLine}</p>}

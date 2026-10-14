@@ -1,0 +1,39 @@
+---
+// One-row call-out card: title + one line on the left, up to two links on the right (stacked on phones).
+// For a pointer to somewhere else on the site (Labs, Portfolio) under a section. Neutral outline, not a pricing card.
+import clsx from 'clsx';
+import ArrowLink from '../ui/ArrowLink.astro';
+import { illustrations, type IllustrationName } from '../illustrations';
+
+interface Props {
+  title: string;
+  body: string;
+  links: { label: string; href: string }[];
+  /** Oversized faded line art bleeding off the right edge */
+  art?: IllustrationName;
+  class?: string;
+}
+
+const { title, body, links, art, class: className } = Astro.props;
+const Art = art ? illustrations[art] : null;
+---
+
+<div
+  class={clsx(
+    'relative flex flex-col gap-3 overflow-hidden rounded-card border border-line-strong bg-surface-lifted p-3 md:flex-row md:items-center md:justify-between md:gap-6 md:p-4 lg:p-5',
+    className,
+  )}
+>
+  {
+    Art && (
+      <Art class="pointer-events-none absolute -right-10 top-1/2 h-auto w-[20rem] -translate-y-1/2 opacity-20 [mask-image:linear-gradient(to_left,#000_30%,transparent_95%)] md:-right-6 md:w-[26rem]" />
+    )
+  }
+  <div class="relative flex max-w-2xl flex-col gap-1">
+    <h3 class="font-display text-xl font-bold text-ink md:text-2xl">{title}</h3>
+    <p class="text-pretty text-base text-ink-muted">{body}</p>
+  </div>
+  <div class="relative flex flex-col gap-2 md:shrink-0 md:items-end">
+    {links.map((link) => <ArrowLink href={link.href} class="min-h-[44px]">{link.label}</ArrowLink>)}
+  </div>
+</div>

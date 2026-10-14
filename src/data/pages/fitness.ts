@@ -17,7 +17,7 @@ import type { FaqItem } from '../../components/blocks/Faq.astro';
 export const seo = {
   title: 'Fadeaway Creatives | SEO for Yoga & Fitness Studios',
   description:
-    'Websites, local SEO, and AEO for yoga, pilates, spin, and barre studios. Connected to Mindbody or Momence, built to fill every class. Free demo.',
+    'Websites, local SEO, and AEO for yoga, pilates, spin, and barre studios. Connected to Mindbody or Momence, built to fill every class.',
 };
 
 // Home > Boutique Fitness: there is no /solutions hub page
@@ -28,7 +28,7 @@ export const breadcrumb: BreadcrumbItem[] = [
 
 /** AEO answer capsule: the wide intro of the first section after the Hero */
 export const answerCapsule =
-  'Fadeaway Creatives builds websites and runs local SEO and AEO for yoga, pilates, spin, and barre studios across Canada and the US. We connect your site to the booking platform you already use, like Mindbody, Momence, or Marianatek, get you showing up on Google Maps and in AI recommendations for your neighbourhood, and start with a free custom demo of your new website.';
+  'Fadeaway Creatives builds websites and runs local SEO and AEO for yoga, pilates, spin, and barre studios across Canada and the US. We connect your site to the booking platform you already use, like Mindbody, Momence, or Marianatek, get you showing up on Google Maps and in AI recommendations for your neighbourhood, with fixed monthly plans starting at $495.';
 
 export const heroVariant: HeroVariant = 'statement';
 
@@ -119,25 +119,22 @@ export const audience: { id: string; heading: string; items: CardGridItem[]; cta
       illustration: 'studio-pilates',
     },
     {
-      title: 'Spin and Cycling Studios',
+      title: 'Spin Studios',
       illustration: 'studio-spin',
     },
     {
       title: 'Barre Studios',
       illustration: 'studio-barre',
     },
-    {
-      title: 'Opening a New Studio?',
-      illustration: 'studio-new',
-    },
+    // Hidden for now (founder, Oct 13): { title: 'Opening a New Studio?', illustration: 'studio-new' },
   ],
   strip: {
     label: 'For Every Studio',
     items: [
       {
         icon: 'calendar',
-        title: 'Full Classes, Moving Waitlists',
-        text: 'Limited spots are your product. We help you keep every class booked and your waitlist moving.',
+        title: 'Keep Your Schedule Full',
+        text: 'Your site and your local search work together, so new faces find you, book online, and show up ready for class.',
       },
       {
         icon: 'sparkles',
@@ -157,7 +154,7 @@ export const audience: { id: string; heading: string; items: CardGridItem[]; cta
     ],
   },
   cta: {
-    title: 'Ready for the Next Step?',
+    title: "Let's Grow Your Studio",
     body: 'Tell us about your studio and we will help you plan what comes next.',
     label: 'Contact Us',
     href: routes.contact,
@@ -167,41 +164,56 @@ export const audience: { id: string; heading: string; items: CardGridItem[]; cta
 export const services: {
   id: string;
   heading: string;
-  items: IconGridItem[];
+  stages: { title: string; items: IconGridItem[] }[];
   labs: { heading: string; text: string; link: { label: string; href: string } };
 } = {
   id: 'services',
   heading: 'From Search to Booked Class',
-  items: [
+  stages: [
     {
-      icon: 'calendar',
-      title: 'A Website Built Around Your Booking Flow',
-      text: 'Class schedules, intro offers, and memberships connected to your booking platform, so booking a class takes seconds on any phone.',
+      title: 'Get Found',
+      items: [
+        {
+          icon: 'map-pin',
+          title: 'Win the Google Map Pack',
+          text: 'Google Business Profile optimization so your studio shows up when someone nearby searches for a class.',
+        },
+        {
+          icon: 'map',
+          title: 'Neighbourhood Pages',
+          text: 'Clients search their own neighbourhood, not just your city. We build pages that capture searches across your whole service area.',
+        },
+      ],
     },
     {
-      icon: 'map-pin',
-      title: 'Win the Google Map Pack',
-      text: 'Google Business Profile optimization so your studio shows up when someone nearby searches for a class.',
+      title: 'Get Chosen',
+      items: [
+        {
+          icon: 'search-ai',
+          title: 'AEO for AI Recommendations',
+          text: "Structured data and clear studio details, so you're the answer when someone asks an AI assistant for the best studio nearby.",
+        },
+        {
+          icon: 'star',
+          title: 'Automated Review Requests',
+          text: 'Fresh reviews help with both Google and AI tools. We set up reminders that make it easy for happy clients to leave one right after class.',
+        },
+      ],
     },
     {
-      icon: 'map',
-      title: 'Neighbourhood Pages',
-      text: 'Clients search their own neighbourhood, not just your city. We build pages that capture searches across your whole service area.',
-    },
-    {
-      icon: 'search-ai',
-      title: 'AEO for AI Recommendations',
-      text: "Structured data and clear studio details, so you're the answer when someone asks an AI assistant for the best studio nearby.",
-    },
-    {
-      icon: 'star',
-      title: 'Automated Review Requests',
-      text: 'Fresh reviews help with both Google and AI tools. We set up reminders that make it easy for happy clients to leave one right after class.',
-    },
-    {
-      icon: 'dashboard',
-      title: 'Track Real Bookings, Not Views',
-      text: 'A dashboard showing which searches turn into booked classes and memberships, not just which pages get visited.',
+      title: 'Get Booked',
+      items: [
+        {
+          icon: 'calendar',
+          title: 'A Website Built Around Your Booking Flow',
+          text: 'Class schedules, intro offers, and memberships connected to your booking platform, so booking a class takes seconds on any phone.',
+        },
+        {
+          icon: 'dashboard',
+          title: 'Track Real Bookings, Not Views',
+          text: 'A dashboard showing which searches turn into booked classes and memberships, not just which pages get visited.',
+        },
+      ],
     },
   ],
   labs: {
@@ -233,10 +245,10 @@ export const demo: {
 };
 
 const included = "What's included:";
-const outcome = 'What you get out of it:';
 
-export const pricing: PricingContent & { id: string; heading: string; intro?: string } = {
+export const pricing: PricingContent & { id: string; eyebrow?: string; heading: string; intro?: string } = {
   id: 'pricing',
+  eyebrow: 'Pricing',
   heading: 'Clear Deliverables.\nTransparent Pricing.',
   detailsLabel: 'See Deliverables',
   plans: [
@@ -245,17 +257,19 @@ export const pricing: PricingContent & { id: string; heading: string; intro?: st
       cta: { label: 'Start with the Attract Plan', href: routes.contact },
       tone: 'accent',
       price: '$495',
+      priceLead: 'Starts from',
+      priceNote: '$945 one-time website build setup',
       cadence: '/ month',
       for: 'For studios that want steady, compounding local visibility.',
       includedLabel: included,
       points: [
-        'A full SEO and AEO foundation in your first 3 months',
-        'New content, reviews and local links every month',
-        'A live bookings dashboard and a monthly strategy call',
+        'Full SEO and AEO foundation',
+        'Content strategy, on-page SEO copy and link building every month',
+        'Clear dashboard and monthly strategy calls',
       ],
       deliverables: [
         {
-          title: 'Months 1 to 3: Build the Foundation',
+          title: 'Build the Foundation',
           sections: [
             { label: 'Research and planning', items: [
               'Local market and keyword research for your classes and neighbourhoods',
@@ -293,27 +307,26 @@ export const pricing: PricingContent & { id: string; heading: string; intro?: st
               'Google Business Profile posts and updates',
               'Automated review requests for happy clients',
               'Site health, rankings and AI search signals monitored',
-              'A monthly dashboard report',
-              'A monthly strategy planning call',
+              '24x7 reporting dashboard',
+              'Monthly strategy calls',
             ] },
           ],
         },
       ],
-      outcomeLabel: outcome,
-      outcome:
-        "a studio that's easier to find on Google Maps, in local search, and in AI answers month over month, more reviews, and a clear monthly view of rankings, traffic, and bookings.",
     },
     {
       name: 'Growth Plan',
       cta: { label: 'Start with the Growth Plan', href: routes.contact },
       tone: 'highlight',
       price: '$995',
+      priceLead: 'Starts from',
+      priceNote: '$945 one-time website build setup',
       cadence: '/ month',
       for: 'For studios ready to grow faster on more than one channel.',
       includedLabel: included,
       points: [
         'Everything in the Attract Plan',
-        'Paid ads, intro offer campaigns and email',
+        'Paid ads, intro offers and email campaigns',
         'Weekly strategy calls',
       ],
       deliverables: [
@@ -333,18 +346,24 @@ export const pricing: PricingContent & { id: string; heading: string; intro?: st
             { label: 'Visibility and reporting', items: [
               'AI search visibility tracking across ChatGPT, Perplexity and Google AI Overviews',
               'An expanded dashboard with paid and organic results side by side',
-              'Weekly strategy calls instead of monthly',
+              'Weekly strategy calls',
             ] },
           ],
         },
       ],
-      outcomeLabel: outcome,
-      outcome:
-        'new faces through the door from paid campaigns while your local visibility builds underneath, plus weekly strategy calls timed to your class calendar and busy seasons.',
     },
   ],
-  setupLine:
-    "Every plan starts with a one-time $945 setup: a new website built from your demo, or a Full Audit if you're keeping your current site. Plans run 6 months (3 months of Foundation, then 3 months of Growth), then month to month. Ad spend is paid directly by you to Google and Meta. We never guarantee rankings.",
+};
+
+/** Row card under the pricing cards (DRAFT copy, needs approval) */
+export const customRow = {
+  art: 'wireframe' as const,
+  title: 'Need Something Custom?',
+  body: "Fadeaway Labs builds custom websites, automations, and software for studios that need more than a template. See what we've built in our portfolio.",
+  links: [
+    { label: 'Explore Fadeaway Labs', href: routes.labs },
+    { label: 'See Our Portfolio', href: routes.portfolio },
+  ],
 };
 
 export const expect: { id: string; heading: string; intro: string; items: TimelineItem[] } = {
@@ -366,7 +385,7 @@ export const expect: { id: string; heading: string; intro: string; items: Timeli
       text: 'This is where local SEO and AEO usually start compounding: better map rankings, more people finding you directly, and more classes booked from your own site.',
     },
     {
-      title: 'Month 6',
+      title: 'Month 6+',
       text: "A full picture with real numbers on visibility, bookings, and memberships, and a clear decision on what's next.",
     },
   ],
@@ -377,14 +396,14 @@ export const howItWorks: { id: string; heading: string; items: StepItem[] } = {
   id: 'how-it-works',
   heading: 'How It Works',
   items: [
-    { title: 'Start free', text: 'Request a free demo of your new website, or a free audit of the one you have.' },
+    { title: 'Start free', text: 'Contact us about a new website, or ask for a free audit of the one you have.' },
     {
       title: 'Choose your path',
       text: "A new site with the $945 setup, or a Full Audit if you're keeping your current site. Never both.",
     },
     {
       title: 'Launch',
-      text: "We build or fix your site, connect it to your booking platform, set up your tracking, and host it for you if it's built from your demo.",
+      text: "We build or fix your site, connect it to your booking platform, set up your tracking, and host it for you if we built it.",
     },
     {
       title: 'Grow',
@@ -425,7 +444,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
     },
     {
       q: "I'm opening a new studio. Can you help?",
-      a: "Yes, and it's the best time to start. We set up your website, booking connection, and Google Business Profile before you open, so people searching for classes nearby can find you and book from day one. Request a free demo and we'll show you what your site could look like.",
+      a: "Yes, and it's the best time to start. We set up your website, booking connection, and Google Business Profile before you open, so people searching for classes nearby can find you and book from day one. Contact us and we'll plan your launch together.",
     },
     {
       q: 'Do you work with studios outside Canada?',
@@ -457,7 +476,7 @@ export const serviceOffers: Record<string, { price: number; unit?: 'MON' }> = {
 export const cta = {
   id: 'cta',
   heading: 'Ready to Fill Every Class?',
-  text: "See your new website before you spend a dollar. Tell us about your studio and we'll build you a free demo.",
-  cta: { label: 'Get Your Free Demo', href: routes.demoRequest },
+  text: 'Tell us about your studio and we will help you plan what comes next.',
+  cta: { label: 'Contact Us', href: routes.contact },
   link: { label: 'Or get a free audit of your current site', href: routes.audit },
 };
