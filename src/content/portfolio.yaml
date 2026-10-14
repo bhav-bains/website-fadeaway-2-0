@@ -180,7 +180,7 @@
   status: live
   industry: "Industry demo"
   summary: "A demo site we built to show what a sports program website can look like."
-  chips: ["Industry Demo", "Astro", "Free Demo"]
+  chips: ["Industry Demo", "Astro"]
   tags: ["labs", "sports-academies", "internal"]   # internal: not linked yet (founder, Oct 4)
   rank: 30
 
@@ -214,7 +214,7 @@
   status: live
   industry: "Industry demo"
   summary: "A demo site we built to show what a boutique fitness studio website can look like."
-  chips: ["Industry Demo", "Astro", "Free Demo"]
+  chips: ["Industry Demo", "Astro"]
   tags: ["labs", "boutique-fitness", "internal"]   # founder, Oct 4: shown as an internal tool, not linked (still in build)
   rank: 32
 
@@ -225,6 +225,6 @@
   status: live
   industry: "Industry demo"
   summary: "A demo site we built to show what a wellness or counselling practice website can look like."
-  chips: ["Industry Demo", "Astro", "Free Demo"]
+  chips: ["Industry Demo", "Astro"]
   tags: ["labs", "wellness-counselling", "internal"]   # founder, Oct 4: shown as an internal tool, not linked (still in build)
   rank: 34

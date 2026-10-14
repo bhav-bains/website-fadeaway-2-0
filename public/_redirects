@@ -8,3 +8,5 @@
 /audit-request/*      /audit/                           301
 /blog/                /                                 301
 /blog/*               /                                 301
+/demo-request/        /contact/                         301
+/demo-success/        /                                 301
