@@ -40,7 +40,7 @@ const mdColumns = { 2: 'md:grid-cols-2', 3: 'md:grid-cols-2 lg:grid-cols-3' };
 <ul
   class={clsx(
     swipe && phoneGrid
-      ? 'grid grid-cols-2 gap-2 md:gap-3 lg:gap-4'
+      ? clsx('grid grid-cols-2 gap-2 md:gap-3 lg:gap-4', items.length === 3 && 'max-md:[&>li:nth-child(3)]:col-span-2')
       : swipe
         ? '-mx-2 flex snap-x snap-mandatory scroll-px-2 gap-2 overflow-x-auto px-2 pb-1 no-scrollbar sm:-mx-3 sm:scroll-px-3 sm:px-3 md:mx-0 md:grid md:snap-none md:gap-3 md:overflow-visible md:px-0 md:pb-0 lg:gap-4 [&>li]:shrink-0 [&>li]:snap-start md:[&>li]:basis-auto'
         : 'grid gap-3 lg:gap-4',

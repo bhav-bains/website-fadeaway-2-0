@@ -1,14 +1,15 @@
-// Wellness & Counselling Solutions page content, copied word for word from copy/wellness-counselling.md.
-// A conversion funnel: hook → insight → why us → who it's for → what we do → free demo → pricing → what to expect
-// → how it works → proof → FAQ → final ask. Real prices are shown here (one of the three demo-industry pages).
+// Wellness & Counselling Solutions page content, copied word for word from copy/wellness-counselling.md (Oct 14 rewrite).
+// Same blocks and layout as Boutique Fitness: hero audit box → how clients find practices (3 cards) → tailored solutions
+// (practice tiles + strip + call-out) → from search to booked client (3 stages) → pricing → why (4) → what to expect → FAQ → final ask.
+// No demo anywhere until it returns after launch (founder, Oct 14); How It Works and its HowTo schema are hidden.
+// Real prices are shown here (one of the three demo-industry pages).
 import { routes } from '../routes';
 import type { HeroContent, HeroVariant } from '../../components/blocks/hero/types';
 import type { BreadcrumbItem } from '../../components/blocks/Breadcrumb.astro';
 import type { BentoItem } from '../../components/blocks/BentoGrid.astro';
 import type { FeatureListItem } from '../../components/blocks/FeatureList.astro';
-import type { ServiceIndexItem } from '../../components/blocks/ServiceIndex.astro';
+import type { CardGridItem } from '../../components/blocks/CardGrid.astro';
 import type { IconGridItem } from '../../components/blocks/IconGrid.astro';
-import type { DemoOfferStep } from '../../components/blocks/DemoOffer.astro';
 import type { PricingContent } from '../../components/blocks/PricingSection.astro';
 import type { TimelineItem } from '../../components/blocks/Timeline.astro';
 import type { StepItem } from '../../components/blocks/Steps.astro';
@@ -17,7 +18,7 @@ import type { FaqItem } from '../../components/blocks/Faq.astro';
 export const seo = {
   title: 'Fadeaway Creatives | SEO for Therapists & Wellness Practices',
   description:
-    'SEO, AEO, and websites for therapists, counsellors, chiropractors, and wellness practices. Get found beyond directory listings. Free custom demo.',
+    'SEO, AEO, and websites for therapists, counsellors, chiropractors, and wellness practices. Get found beyond directory listings, on Google and in AI search.',
 };
 
 // Home > Wellness & Counselling: there is no /solutions hub page
@@ -26,9 +27,9 @@ export const breadcrumb: BreadcrumbItem[] = [
   { label: 'Wellness & Counselling', href: routes.wellnessCounselling },
 ];
 
-/** AEO answer capsule: the wide intro of the first section after the Hero */
+/** AEO answer capsule: screen-reader text in the first section after the Hero (same as Boutique Fitness) */
 export const answerCapsule =
-  'Fadeaway Creatives builds websites and runs SEO and AEO for therapists, counsellors, chiropractors, and wellness practices across Canada and the US, so new clients find you on Google and in AI assistant recommendations instead of scrolling past you on a directory page. Every site works with the practice software you already use, like Jane App or SimplePractice, and starts with a free custom demo.';
+  'Fadeaway Creatives builds websites and runs SEO and AEO for therapists, counsellors, chiropractors, and wellness practices across Canada and the US, so new clients find you on Google and in AI assistant recommendations instead of scrolling past you on a directory page. Every site works with the practice software you already use, like Jane App or SimplePractice, with monthly plans starting from $495.';
 
 /** Solutions pages ship the statement hero. In `npm run dev`, compare with ?hero=showcase | visual | all. */
 export const heroVariant: HeroVariant = 'statement';
@@ -36,9 +37,8 @@ export const heroVariant: HeroVariant = 'statement';
 export const hero: HeroContent = {
   eyebrow: 'SEO, AEO & Websites for Therapists, Counsellors, Chiropractors & Wellness Practices',
   h1: 'SEO for Therapists, Built to Fill Your Practice',
-  sub: 'Get found by new clients on Google and in AI recommendations, not lost on a directory page with dozens of other providers. See your new website before you spend a dollar.',
-  primaryCta: { label: 'Get Your Free Demo', href: routes.demoRequest },
-  secondaryCta: { label: 'Get a Free Audit of Your Current Site', href: routes.audit },
+  sub: 'Get found by new clients on Google and in AI recommendations, not lost on a directory page with dozens of other providers.',
+  auditForm: { action: routes.audit, label: 'Get a Free Audit of Your Current Site', placeholder: 'yourpractice.com', button: 'Get Your Free Audit' },
   breadcrumb,
   visual: 'wellness',
 };
@@ -46,167 +46,141 @@ export const hero: HeroContent = {
 export const insights: {
   id: string;
   heading: string;
-  intro: string;
   items: BentoItem[];
   cta: { text: string; label: string; href: string };
 } = {
   id: 'insights',
   heading: 'How Clients Find Practices Now',
-  intro:
-    "The way new clients find a therapist, counsellor, or chiropractor has changed. Here's what we see across the practices we look at.",
   items: [
     {
       title: 'Directories Put You Next to Your Competition',
-      text: "A directory profile puts you on the same page as dozens of other providers, sorted by things you don't control. Your own website and search presence are the one place a potential client sees only you.",
+      text: "A directory profile puts you on the same page as dozens of other providers, sorted by things you don't control. Your own website is the one place a potential client sees only you.",
     },
     {
       title: 'Clients Search by Problem and Place',
-      text: 'People rarely search for "a therapist." They search for help with anxiety, couples counselling, back pain, or a sports injury, near where they live or work. Practices with a clear page for each specialty and location get found for those searches.',
+      text: 'People rarely search for "a therapist." They search for help with anxiety, couples counselling, back pain, or a sports injury, near where they live or work. A clear page for each specialty and location gets you found.',
     },
     {
       title: 'AI Assistants Now Recommend Providers',
-      text: "More people ask ChatGPT, Perplexity, or Google's AI Overviews to suggest a provider. Those tools recommend practices whose websites clearly state who they help, where, how to book, and what they accept.",
-    },
-    {
-      title: 'Booking Has to Be Effortless',
-      // Last sentence added Oct 2 (24/7 salesperson framing)
-      text: 'Most first visits happen on a phone, often late at night. If booking takes more than a few taps, or sends people to a confusing third-party page, they leave and book somewhere else. Your website should be the one booking new clients at 11pm, long after your front desk has gone home.',
+      text: "More people ask ChatGPT, Perplexity, or Google's AI Overviews to suggest a provider. Those tools recommend practices whose websites clearly state who they help, where, and how to book.",
     },
   ],
   // CTA touchpoint, rendered as the bento's closing tile
   cta: { text: 'Want to see how your practice shows up today?', label: 'Get a Free Audit', href: routes.audit },
 };
 
-export const why: { id: string; heading: string; items: FeatureListItem[] } = {
-  id: 'why',
-  heading: 'Why Practices Work With Fadeaway',
+export const audience: {
+  id: string;
+  heading: string;
+  items: CardGridItem[];
+  note: string;
+  cta: { title: string; body: string; label: string; href: string };
+  strip: { label: string; items: IconGridItem[] };
+} = {
+  id: 'who-its-for',
+  heading: 'Tailored Solutions Built for Wellness Practices',
   items: [
-    {
-      icon: 'search-ai',
-      title: 'Built to Be Found, Not Just Listed',
-      text: 'Every site is structured with the content and technical signals search engines need to recommend you directly, not just list you in a directory.',
-    },
-    {
-      icon: 'sparkles',
-      title: 'Ready for AI Search',
-      text: "Schema, clear practice details, and content written the way AI assistants read it, so you're the answer when someone asks for a provider near them.",
-    },
-    {
-      icon: 'calendar',
-      title: 'Works With Your Practice Software',
-      text: 'We build around Jane App, SimplePractice, TherapyNotes, and similar platforms, so booking and intake stay where they already are and your clients get a smoother way in.',
-    },
-    {
-      icon: 'shield',
-      title: 'Built Compliance-Ready',
-      text: "We know what health practices have to get right: HIPAA in the US, PIPEDA and PHIPA in Canada, and your college or association's advertising rules. Client health information stays out of website forms and email, intake runs through your secure practice software, and your privacy policy and consent language are in place before launch.",
-    },
-    {
-      icon: 'award',
-      title: 'Founder-Led, With Fixed Pricing',
-      text: '15+ years of experience, hands-on from first call to launch. Every price is on this page, with no hourly billing and no surprises.',
-    },
-  ],
-};
-
-export const practices: { id: string; heading: string; items: ServiceIndexItem[]; note: string } = {
-  id: 'which-practice-fits',
-  heading: 'Which Practice Fits',
-  items: [
-    {
-      title: 'Therapists & Counsellors',
-      text: 'Private practice or group practice, we help you stop relying on directories alone and build a search presence that brings clients directly to you.',
-    },
-    {
-      title: 'Chiropractors',
-      text: "Patients search when they're in pain and ready to book. We help you show up first for the searches that matter in your area.",
-    },
-    {
-      title: 'Physical Therapy',
-      text: 'Referrals matter, but so does being found directly by someone searching for relief right now. We build for both.',
-    },
+    { title: 'Therapists & Counsellors', illustration: 'practice-therapy' },
+    { title: 'Chiropractors', illustration: 'practice-chiro' },
+    { title: 'Physical Therapy', illustration: 'practice-physio' },
   ],
   // Med spas: a light mention only (founder, Oct 1)
   note: 'We also work with med spas and aesthetic practices.',
+  strip: {
+    label: 'For Every Practice',
+    items: [
+      {
+        icon: 'sparkles',
+        title: 'A Site That Feels Like Your Practice',
+        text: 'Calm, clear and welcoming, so a first-time client feels comfortable reaching out.',
+      },
+      {
+        icon: 'star',
+        title: 'Your Clinicians, Front and Center',
+        text: 'Bios, specialties and approach for each clinician, so clients find the right fit before they book.',
+      },
+      {
+        icon: 'workflow',
+        title: 'Works With Your Practice Software',
+        text: "Jane App, SimplePractice, TherapyNotes and similar platforms stay at the centre, so booking and intake don't change for your team.",
+      },
+      {
+        icon: 'bulb',
+        title: 'Starting Your Own Practice?',
+        text: 'We set up your site, booking, and Google Business Profile the right way from day one.',
+      },
+    ],
+  },
+  cta: {
+    title: "Let's Grow Your Practice",
+    body: 'Tell us about your practice and we will help you plan what comes next.',
+    label: 'Contact Us',
+    href: routes.contact,
+  },
 };
 
 export const services: {
   id: string;
   heading: string;
-  items: IconGridItem[];
-  labs: { heading: string; text: string; link: { label: string; href: string } };
+  stages: { title: string; items: IconGridItem[] }[];
 } = {
   id: 'services',
-  heading: 'What We Do for Your Practice',
-  items: [
+  heading: 'From Search to Booked Client',
+  stages: [
     {
-      icon: 'calendar',
-      title: 'A Website Built Around Your Booking Flow',
-      text: 'Connected to the practice software you already use, so booking and intake work the way your clients expect, on any phone.',
+      title: 'Get Found',
+      items: [
+        {
+          icon: 'map',
+          title: 'Specialty and Location Pages',
+          text: 'A clear page for each service you offer and each area you serve, written around the questions clients actually search.',
+        },
+        {
+          icon: 'map-pin',
+          title: 'Win the Local Map Results',
+          text: 'Google Business Profile and local listings optimized so you show up when someone nearby searches for care.',
+        },
+      ],
     },
     {
-      icon: 'shield',
-      title: 'Compliance-Ready Setup',
-      text: "Secure booking and intake links instead of open contact forms for health details, a privacy policy and consent language you approve, and no testimonials or claims that break your profession's advertising rules.",
+      title: 'Get Chosen',
+      items: [
+        {
+          icon: 'search-ai',
+          title: 'AEO for AI Recommendations',
+          text: "Structured data and clear practice details, so you're the answer when someone asks an AI assistant for a provider near them.",
+        },
+        {
+          icon: 'shield',
+          title: 'Trust Before the First Session',
+          text: "Clinician bios, credentials, and a review strategy that follows your college's or association's rules, so new clients feel confident booking.",
+        },
+      ],
     },
     {
-      icon: 'map-pin',
-      title: 'Local SEO and AEO',
-      text: 'Structured data, Google Business Profile, local listings, and content built to get you found on Google and recommended by AI assistants.',
-    },
-    {
-      icon: 'map',
-      title: 'Specialty and Location Pages',
-      text: 'A clear page for each service you offer and each area you serve, written around the questions clients actually search.',
-    },
-    {
-      icon: 'star',
-      title: 'Content and Reviews',
-      text: 'A monthly content calendar and a review generation system that keep new clients finding you and trusting you.',
-    },
-    {
-      icon: 'dashboard',
-      title: 'Reporting and Regular Check-ins',
-      text: 'A dashboard tracking your rankings, traffic, and bookings, with a monthly check-in call, or weekly strategy calls on the Growth Plan.',
+      title: 'Get Booked',
+      items: [
+        {
+          icon: 'calendar',
+          title: 'A Website Built Around Your Booking Flow',
+          text: 'Connected to Jane App, SimplePractice, or the software you already use, so booking a first session takes a few taps, even at 11pm.',
+        },
+        {
+          icon: 'dashboard',
+          title: 'Track Real Bookings, Not Views',
+          text: 'A dashboard showing which searches turn into booked appointments, not just which pages get visited.',
+        },
+      ],
     },
   ],
-  // Labs mention (founder, Oct 1): wording from the approved Growth page
-  labs: {
-    heading: 'Need Custom Software Instead',
-    text: "If what you actually need is custom software, automations, or dashboards rather than a website, that's Fadeaway Labs.",
-    link: { label: 'See Fadeaway Labs', href: routes.labs },
-  },
-};
-
-/** Primary conversion section */
-export const demo: {
-  id: string;
-  heading: string;
-  text: string;
-  steps: DemoOfferStep[];
-  cta: { label: string; href: string };
-  fallback: { text: string; link: { label: string; href: string } };
-} = {
-  id: 'demo',
-  heading: 'Not Sure Yet? Request Your Demo',
-  text: 'We know wellness practices well, so your demo starts from what already works. We build 4 pages made for your practice, in your branding, ready in 2 business days.',
-  steps: [
-    { title: 'Tell us about your practice', text: 'a few details and your brand. It takes about a minute.' },
-    { title: 'We build your 4 pages', text: 'your homepage and the pages that matter most for bookings, made for your brand.' },
-    { title: 'Experience it', text: 'we send you a private link within 2 business days so you can click through your new site yourself.' },
-  ],
-  cta: { label: 'Request Your Demo', href: routes.demoRequest },
-  fallback: { text: 'Already have a website you want to keep?', link: { label: 'Get a free audit instead', href: routes.audit } },
 };
 
 const included = "What's included:";
-const outcome = 'What you get out of it:';
 
-export const pricing: PricingContent & { id: string; heading: string; intro: string } = {
+export const pricing: PricingContent & { id: string; eyebrow?: string; heading: string; intro?: string } = {
   id: 'pricing',
-  heading: 'What You Pay For, and What You Get',
-  intro: 'Fixed prices, complete deliverable lists, and honest expectations.',
-  // Start with one (never both)
+  eyebrow: 'Pricing',
+  heading: 'Clear Deliverables.\nTransparent Pricing.',
   detailsLabel: 'See Deliverables',
   plans: [
     {
@@ -214,47 +188,144 @@ export const pricing: PricingContent & { id: string; heading: string; intro: str
       cta: { label: 'Start with the Attract Plan', href: routes.contact },
       tone: 'accent',
       price: '$495',
+      priceLead: 'Starts from',
+      priceNote: '$945 one-time website build setup',
       cadence: '/ month',
       for: 'For practices that want steady, compounding visibility.',
       includedLabel: included,
-      included: [
-        'Ongoing technical SEO and site health monitoring',
-        'Structured data and AEO signals kept current',
-        'Local SEO and Google Business Profile management',
-        'Booking and practice software integration and management',
-        'A monthly content calendar',
-        "A review generation system, set up within your profession's rules",
-        'A monthly reporting dashboard',
-        'A monthly check-in call',
+      points: [
+        'Full SEO and AEO foundation, set up compliance-ready',
+        'New content, local links and site improvements every month',
+        'Clear dashboard and monthly strategy calls',
       ],
-      outcomeLabel: outcome,
-      outcome:
-        "a practice that's easier to find on Google Maps, in local search, and in AI answers month over month, more reviews, and a clear monthly view of rankings, traffic, and bookings.",
+      deliverables: [
+        {
+          title: 'Build the Foundation',
+          sections: [
+            { label: 'Research and planning', items: [
+              'Local market and keyword research for your specialties and service areas',
+              'A keyword map that gives every page one clear job',
+              'Site structure and URL plan, with redirects so nothing breaks',
+            ] },
+            { label: 'Your pages', items: [
+              'Page copy written and tuned for search, page by page',
+              'Page titles and descriptions written to earn the click',
+              'Structured data (JSON-LD) so Google and AI tools can read your services, clinicians, locations and hours',
+            ] },
+            { label: 'Technical health', items: [
+              'Technical SEO fixes: speed, mobile, indexing and broken links',
+              'A backlink audit, with spammy links cleaned up',
+            ] },
+            { label: 'Compliance', items: [
+              'A compliance check of your forms, privacy policy and claims',
+              'Forms and tracking set up so client health details stay out of email, analytics and ad pixels',
+            ] },
+            { label: 'Local presence', items: [
+              'Google Business Profile fully optimized',
+              'Business listings made consistent across directories',
+              'Your practice software connected to your site and your tracking',
+            ] },
+            { label: 'Tracking', items: [
+              'Google Analytics, Search Console and booking tracking set up',
+              'Your reporting dashboard built',
+            ] },
+          ],
+        },
+        {
+          title: 'Every Month: Grow and Compound',
+          sections: [
+            { items: [
+              'A content calendar built around your specialties, the concerns you treat and the areas you serve',
+              'New content that makes you the trusted local practice for what you treat, on Google and in AI answers',
+              'Link building from local sites and health directories',
+              'Conversion improvements to your booking and service pages',
+              'Google Business Profile posts and updates',
+              "A review strategy that follows your college's or association's rules",
+              'Site health, rankings and AI search signals monitored',
+              '24/7 reporting dashboard',
+              'Monthly strategy calls',
+            ] },
+          ],
+        },
+      ],
     },
     {
       name: 'Growth Plan',
       cta: { label: 'Start with the Growth Plan', href: routes.contact },
       tone: 'highlight',
       price: '$995',
+      priceLead: 'Starts from',
+      priceNote: '$945 one-time website build setup',
       cadence: '/ month',
       for: 'For practices ready to grow faster on more than one channel.',
       includedLabel: included,
-      included: [
+      points: [
         'Everything in the Attract Plan',
-        'Paid ads management across Google and Meta',
-        'Lead generation campaigns',
-        'Email marketing campaigns',
-        'AI search visibility tracking',
-        'An expanded dashboard combining paid and organic results',
+        'Paid ads, consultation campaigns and email',
         'Weekly strategy calls',
       ],
-      outcomeLabel: outcome,
-      outcome:
-        "new client inquiries from paid campaigns while your search visibility builds underneath, plus weekly strategy calls so spend goes to what's actually filling your calendar.",
+      deliverables: [
+        {
+          title: 'Everything in the Attract Plan, plus:',
+          sections: [
+            { label: 'Paid campaigns', items: [
+              'Google and Meta campaigns set up within health advertising rules',
+              'New-client and consultation campaigns, each with its own landing page',
+              'Ongoing testing of ads, audiences and offers',
+            ] },
+            { label: 'Email', items: [
+              'Welcome emails for new clients who opt in',
+              'Newsletters and updates for clients who have opted in',
+              'Announcements for new services, clinicians and locations',
+            ] },
+            { label: 'Visibility and reporting', items: [
+              'AI search visibility tracking across ChatGPT, Perplexity and Google AI Overviews',
+              'An expanded dashboard with paid and organic results side by side',
+              'Weekly strategy calls',
+            ] },
+          ],
+        },
+      ],
     },
   ],
-  setupLine:
-    "Every plan starts with a one-time $945 setup: a new website built from your demo, or a Full Audit if you're keeping your current site.",
+};
+
+/** Row card under the pricing cards (same as Boutique Fitness) */
+export const customRow = {
+  art: 'wireframe' as const,
+  title: 'Need Something Custom?',
+  body: "Multi-location clinics and custom-designed sites are scoped as a custom build, and Fadeaway Labs builds custom apps, automations and dashboards. See what we've built in our portfolio.",
+  links: [
+    { label: 'Explore Fadeaway Labs', href: routes.labs },
+    { label: 'See Our Portfolio', href: routes.portfolio },
+  ],
+};
+
+export const why: { id: string; heading: string; items: FeatureListItem[] } = {
+  id: 'why',
+  heading: 'Why Practices Work With Fadeaway',
+  items: [
+    {
+      icon: 'calendar',
+      title: 'Built for Health Practices, Not Generic Small Businesses',
+      text: "Specialty pages, clinician bios, intake and booking flows are built in from the start, because that's how clients choose a provider.",
+    },
+    {
+      icon: 'shield',
+      title: 'Built Compliance-Ready',
+      text: "We know what health practices have to get right: HIPAA in the US, PIPEDA and PHIPA in Canada, and your college or association's advertising rules. Client health information stays out of website forms and email, intake runs through your secure practice software, and your privacy policy and consent language are in place before launch.",
+    },
+    {
+      icon: 'map-pin',
+      title: 'Found Locally and in AI Search',
+      text: 'Google Business Profile, specialty and location pages, and structured data set up so you show up on the map and in AI recommendations.',
+    },
+    {
+      icon: 'award',
+      title: 'Founder-Led, With Clear Pricing',
+      text: '15+ years of experience, hands-on from first call to launch. Every plan price is on this page, with no hourly billing and no surprises.',
+    },
+  ],
 };
 
 export const expect: { id: string; heading: string; intro: string; items: TimelineItem[] } = {
@@ -269,32 +340,32 @@ export const expect: { id: string; heading: string; intro: string; items: Timeli
     },
     {
       title: 'Months 1 to 2',
-      text: 'Technical fixes, specialty and location pages, and the first content go live. Reviews start coming in. On the Growth Plan, paid campaigns can start bringing in inquiries.',
+      text: 'Technical fixes, specialty and location pages, and the first content go live. Your review strategy starts where your profession allows it. On the Growth Plan, paid campaigns can start bringing in inquiries.',
     },
     {
       title: 'Months 3 to 6',
       text: 'This is where SEO and AEO usually start compounding: better local rankings, more people finding you directly instead of through directories, and more bookings from your own site.',
     },
     {
-      title: 'Month 6',
+      title: 'Month 6+',
       text: "A full picture with real numbers on visibility, inquiries, and bookings, and a clear decision on what's next.",
     },
   ],
 };
 
-/** Also feeds the HowTo schema */
+/** HIDDEN from the page Oct 14 (with its HowTo schema), same as Boutique Fitness. Kept for reuse. */
 export const howItWorks: { id: string; heading: string; items: StepItem[] } = {
   id: 'how-it-works',
   heading: 'How It Works',
   items: [
-    { title: 'Start free', text: 'Request a free demo of your new website, or a free audit of the one you have.' },
+    { title: 'Start free', text: 'Contact us about a new website, or ask for a free audit of the one you have.' },
     {
       title: 'Choose your path',
       text: "A new site with the $945 setup, or a Full Audit if you're keeping your current site. Never both.",
     },
     {
       title: 'Launch',
-      text: "We build or fix your site, connect it to your practice software, set up your tracking, and host it for you if it's built from your demo.",
+      text: 'We build or fix your site, connect it to your practice software, set up your tracking, and host it for you if we built it.',
     },
     {
       title: 'Grow',
@@ -367,7 +438,7 @@ export const serviceOffers: Record<string, { price: number; unit?: 'MON' }> = {
 export const cta = {
   id: 'cta',
   heading: 'Ready to Fill Your Practice?',
-  text: "See your new website before you spend a dollar. Tell us about your practice and we'll build you a free demo.",
-  cta: { label: 'Get Your Free Demo', href: routes.demoRequest },
+  text: 'Tell us about your practice and we will help you plan what comes next.',
+  cta: { label: 'Contact Us', href: routes.contact },
   link: { label: 'Or get a free audit of your current site', href: routes.audit },
 };

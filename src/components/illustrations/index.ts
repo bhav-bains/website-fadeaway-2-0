@@ -21,6 +21,13 @@ import IllusStudioPilates from './IllusStudioPilates.astro';
 import IllusStudioSpin from './IllusStudioSpin.astro';
 import IllusStudioBarre from './IllusStudioBarre.astro';
 import IllusStudioNew from './IllusStudioNew.astro';
+import IllusPracticeTherapy from './IllusPracticeTherapy.astro';
+import IllusPracticeChiro from './IllusPracticeChiro.astro';
+import IllusPracticePhysio from './IllusPracticePhysio.astro';
+import IllusProgramClub from './IllusProgramClub.astro';
+import IllusProgramAcademy from './IllusProgramAcademy.astro';
+import IllusProgramMartial from './IllusProgramMartial.astro';
+import IllusProgramCamp from './IllusProgramCamp.astro';
 
 export const illustrations = {
   ecommerce: IllusEcommerce,
@@ -45,6 +52,13 @@ export const illustrations = {
   'studio-spin': IllusStudioSpin,
   'studio-barre': IllusStudioBarre,
   'studio-new': IllusStudioNew,
+  'practice-therapy': IllusPracticeTherapy,
+  'practice-chiro': IllusPracticeChiro,
+  'practice-physio': IllusPracticePhysio,
+  'program-club': IllusProgramClub,
+  'program-academy': IllusProgramAcademy,
+  'program-martial': IllusProgramMartial,
+  'program-camp': IllusProgramCamp,
 };
 
 export type IllustrationName = keyof typeof illustrations;

@@ -10,11 +10,11 @@ page: sports
 url: /solutions/sports/
 nav_label: "Sports Academies"
 title: "Fadeaway Creatives | Sports Team Website Design & SEO"
-description: "Websites, SEO, and AEO for sports clubs, academies, camps, and combat sports gyms. Get found by parents, keep your registration software. Free demo."
+description: "Websites, SEO, and AEO for sports clubs, academies, camps, and combat sports gyms. Get found by parents, keep your registration software."
 canonical: "https://fadeawaycreatives.com/solutions/sports/"
 og:
   title: "Fadeaway Creatives | Sports Team Website Design & SEO"
-  description: "Websites, SEO, and AEO for sports clubs, academies, camps, and combat sports gyms. Get found by parents, keep your registration software. Free demo."
+  description: "Websites, SEO, and AEO for sports clubs, academies, camps, and combat sports gyms. Get found by parents, keep your registration software."
   url: "https://fadeawaycreatives.com/solutions/sports/"
   type: website
   locale: en_US
@@ -28,7 +28,8 @@ answer_capsule: >-
   academies, camps, and combat sports gyms across Canada and the US. We make
   your program easy for parents to find on Google and in AI answers, with clear
   fees, season, and tryout pages, and we connect it to the registration
-  software you already use, like LeagueApps, TeamSnap, or GotSport.
+  software you already use, like LeagueApps, TeamSnap, or GotSport, with
+  monthly plans starting from $495.
 keywords:
   primary: "sports team website design"   # 30/mo US KD 3. Relevance only; this page is outbound-first.
   secondary: ["club website builder", "youth sports marketing"]
@@ -39,7 +40,7 @@ schema:
   - Organization    # sitewide, from the base layout
   - BreadcrumbList  # Home > Sports Academies
   - Service         # Program Website Setup, Full Audit, Attract Plan, Growth Plan, Custom Website Build. Offers in USD and CAD, same numbers.
-  - HowTo           # from How It Works (4 steps)
+  - HowTo           # OFF while How It Works is hidden (Oct 14, same as Boutique Fitness)
   - FAQPage         # generated from the faq list below
 content_tag: sports-academies
 last_updated: TODO
@@ -62,7 +63,7 @@ Campaign timing (founder, Sept 23): sports outreach runs in Q1, before the sprin
 | Field | Value | Status |
 |---|---|---|
 | Title tag | Fadeaway Creatives \| Sports Team Website Design & SEO (53 chars) | Set |
-| Meta description | Websites, SEO, and AEO for sports clubs, academies, camps, and combat sports gyms. Get found by parents, keep your registration software. Free demo. (148 chars) | Updated, needs approval |
+| Meta description | Websites, SEO, and AEO for sports clubs, academies, camps, and combat sports gyms. Get found by parents, keep your registration software. (137 chars; "Free demo" removed Oct 14) | Updated, needs approval |
 | Canonical | https://fadeawaycreatives.com/solutions/sports/ | Set |
 | H1 | Sports Team Website Design That Fills Your Roster | Set |
 | og:title / og:description | Mirror title tag / meta description | Set |
@@ -70,14 +71,14 @@ Campaign timing (founder, Sept 23): sports outreach runs in Q1, before the sprin
 | Robots meta | index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1 | Set |
 | Schema: Organization | Inherited sitewide, no LocalBusiness for Fadeaway itself | Set |
 | Schema: Service | Program Website Setup ($945), Full Audit ($945), Attract Plan ($495/mo), Growth Plan ($995/mo), Custom Website Build (scoped). USD and CAD offers, same numbers | Updated, needs approval |
-| Schema: HowTo | From How It Works (4 steps) | Updated, needs approval |
+| Schema: HowTo | Off while How It Works is hidden (Oct 14) | Hidden |
 | Schema: FAQPage | From the FAQ list, matches visible copy verbatim | Set |
 | Schema: BreadcrumbList | Home > Sports Academies (no /solutions hub) | Updated, needs approval |
 | Answer capsule | See frontmatter | Updated, needs approval |
 | Visible FAQ block | 6 questions, 40 to 60 word answers | Updated, needs approval |
 | Deliverables | Program website setup: full page set, copy by Fadeaway, live within 2 weeks of demo approval, 1 round of revisions, hosting while on a plan (same as Wellness and Boutique Fitness) | Set |
 | Last updated date | Set at launch | Pending launch |
-| Internal links | /demo-request/, /audit/, /services/build/, /services/growth/, /labs/, /contact/. In-page anchors are real sections. Zero `#` placeholders. | To QA |
+| Internal links | /audit/, /contact/, /labs/, /portfolio/. No /demo-request/ links until the demo returns (Oct 14). Zero `#` placeholders. | To QA |
 | Primary keyword | sports team website design (30/mo US KD 3), relevance only | Set (nominal) |
 | Secondary keywords | club website builder, youth sports marketing; parent-side terms in copy and FAQ | Set (nominal) |
 | Pricing display | Real numbers shown (one of the three demo-industry pages) | Set |
@@ -88,23 +89,19 @@ Home → Sports Academies
 
 ## Hero {#hero}
 
+(Rebuilt Oct 14 to match Boutique Fitness and Wellness, founder: no demo anywhere on the page until it returns; audit box in the hero.)
+
 - Proof line (small, above the eyebrow): Founder-led, 15+ years of experience. You work directly with the founder, who personally leads our sports and combat sports work.
 - Eyebrow: Websites, SEO & AEO for Club Directors, Academy Owners, Coaches & Program Directors
 - H1: Sports Team Website Design That Fills Your Roster
-- Sub-headline: Parents find you on Google and in AI answers before tryouts open. Keep the registration software you already use; we rebuild the front door and wire it in. See your new site before you spend a dollar.
-- Primary CTA: Get Your Free Demo → /demo-request/
-- Secondary CTA: See What Parents Search For → #problem
-- Answer capsule: renders directly under the Hero, from the frontmatter.
+- Sub-headline: Parents find you on Google and in AI answers before tryouts open. Keep the registration software you already use; we rebuild the front door and wire it in.
+- Hero CTA: free-audit website box only, same workflow as Boutique Fitness. Label "See What Parents Find for Your Program", placeholder `yourclub.com`, button "Get Your Free Audit"; GETs /audit/?website=
+- (Removed Oct 14: the "See What Parents Search For → #problem" button.)
+- Answer capsule: renders the same way as on Boutique Fitness (from the frontmatter).
 
 ## What Parents See Before They Ever Call You {#problem}
 
-(Insight section.)
-
-Parents compare clubs online long before they show up to a tryout, and they check fees and tryout dates at midnight. Your site should answer before another club does. Most club websites lose them in a few quiet ways.
-<!-- Added Oct 2 (founder): "your website is a 24/7 salesperson" framing. One line per page, worded for this audience. -->
-
-### Your Site Looks Like Every Other Club's
-Template sites make a serious program look the same as the rec league down the road. Parents paying premium season fees expect a site that looks like the program they're paying for.
+(Cut to 3 cards and the intro line removed, Oct 14. "Your Site Looks Like Every Other Club's" dropped: it called other sites "template sites", which reads badly next to our own library-built setup. The midnight line moved into "Get Registered" below.)
 
 ### Parents Can't Find Your Fees or Season Dates
 "How much is club volleyball" is searched around 300 times a month in the US alone. Clubs with a clear fees page show up in those results and get quoted in AI answers. Most clubs don't have one.
@@ -117,151 +114,158 @@ If a parent has to hunt for the signup link, click through three pages, or land 
 
 [CTA touchpoint: See what parents find for your program. Get a Free Audit → /audit/]
 
-## Built for Every Kind of Sports Program {#programs}
+## Tailored Solutions Built for Sports Programs {#programs}
 
-### Club Teams & Travel Programs
-Volleyball, baseball, softball, soccer, basketball, and more. Parents ask almost the same questions in every sport: what it costs, when the season starts, and whether it's worth it. We build your site to answer them.
+(Replaces "Built for Every Kind of Sports Program", Oct 14, same pattern as Boutique Fitness. DRAFT by Claude, needs approval.)
 
-### Academies & Elite Training
-Skill development and elite training programs need to show serious coaching and real progress. We build sites that make that case before a parent books an evaluation.
+Program types we work with (tiles show only the line art and the name, no text):
+- Club Teams & Travel Programs
+- Academies & Elite Training
+- Martial Arts & Combat Sports
+- Camps & Seasonal Programs
 
-### Martial Arts & Combat Sports
-Boxing, MMA, jiu-jitsu, and martial arts gyms, built to turn a first search into a first class, and connected to the membership and booking tools you already run.
+**For Every Program** (small label above a strip of 4 points under the tiles)
 
-### Camps & Seasonal Programs
-Summer camps, clinics, and seasonal programs depend on the registration window. We build pages that fill spots before the deadline, not after it passes.
-
-## What We Do for Sports Programs {#services}
-
-### A Website That Looks Like a Serious Program
-Custom design built around your club's brand, your teams, and your coaches, mobile-first because most parents look you up on their phone between practices.
+### A Site That Looks Like a Serious Program
+Your colours, your teams and your coaches, in a fast site that matches what parents are paying for.
 
 ### Keep Your Registration Software
-Keep LeagueApps, TeamSnap, GotSport, or SportsEngine running registration and scheduling. We build the front door and connect it, so parents go from your site to signed up without getting lost.
+LeagueApps, TeamSnap, GotSport, or SportsEngine stay in charge of signups and schedules. We build the front door and connect it.
 
-### Fees, Season, and Tryout Pages Parents Search For
-Clear pages for fees, season dates, tryouts, and what a season includes, written to answer the exact questions parents type into Google and ask AI assistants.
+### Your Coaches, Front and Center
+Coach bios and credentials, so parents trust your program before the first tryout or evaluation.
 
-### Season-Ready Content & Campaigns
-Content and campaigns timed to your tryout and registration calendar, so interest peaks when signups open, not after they close.
+### Ready for Your Board
+Clear prices on this page and a written plan your board can review before anyone signs.
 
-### Track Real Registrations
-A dashboard showing which searches turn into a registration or an evaluation booking, not just which pages get visited.
+### Call-out tile (same placement as Boutique Fitness: in the tile grid on desktop, under "From Search to Signed Up" on phones)
+Let's Grow Your Program
+Tell us about your program and we will help you plan what comes next.
+Link: Contact Us → /contact/
+(Build note: render once in the HTML, or let the max-md:hidden / md:hidden classes hide the inactive copy. Do not add aria-hidden or tabindex="-1" to the copy that is visible.)
 
-### Need Custom Software Instead
-Custom registration flows, member portals, and automations beyond your website live at Fadeaway Labs.
-[Link: See Fadeaway Labs → /labs/]
+## From Search to Signed Up {#services}
 
-## Our AEO & SEO Method {#method}
+(Replaces "What We Do for Sports Programs" and "Our AEO & SEO Method", Oct 14. Three stages of two cards each, same as Boutique Fitness. Card copy reused from the two old sections. DRAFT by Claude, needs approval.)
 
-Here's exactly how we get your program found, on Google and in AI search.
+### Stage 1: Get Found
 
-### Win the Map Pack
+#### Win the Map Pack
 We optimize your Google Business Profile so your club shows up on the map when parents search for a program nearby.
 
-### Reach the Towns Parents Drive From
+#### Reach the Towns Parents Drive From
 Families often travel for the right program. We build content for your whole area, not just the town your facility sits in.
 
-### Be the Club AI Recommends
-Parents are starting to ask ChatGPT and Google's AI which club to choose. We structure your programs, fees, and seasons with schema so AI assistants can confidently name you.
+### Stage 2: Get Chosen
 
-### Answer the Questions Parents Ask
-Cost, season length, age groups, and whether it's worth it. We turn those questions into page content and FAQs, the format AI answers quote most often.
+#### Be the Club AI Recommends
+Parents are starting to ask ChatGPT and Google's AI which club to choose. We structure your programs, fees, and seasons so AI assistants can confidently name you.
 
-### Reviews After Every Season
-Automated review requests go out after tryouts, tournaments, and season wrap-ups, when families are happiest and most likely to leave one.
+#### Fees, Season, and Tryout Pages
+Clear pages for fees, season dates, tryouts, and what a season includes, written to answer the exact questions parents search.
 
-## What You Pay For, and What You Get {#pricing}
+### Stage 3: Get Registered
 
-(Rebuilt Oct 7, founder direction: two compact plan cards, expandable to the full list, each with a button to /contact/. Button labels and the setup line are DRAFT by Claude, needs approval.)
+#### Registration Built Into Your Site
+Parents check fees and tryout dates at midnight. Your site connects them straight to registration in a few taps, on any phone.
 
-Fixed prices, complete deliverable lists, and honest expectations. Clear numbers you can take straight to your board.
+#### Track Real Registrations
+A dashboard showing which searches turn into a registration or an evaluation booking, not just which pages get visited.
+
+## Clear Deliverables. Transparent Pricing. {#pricing}
+
+(Rebuilt Oct 14 to match Boutique Fitness: "Pricing" eyebrow badge, centered two-row heading, "Starts from" line above each price, "$945 one-time website build setup" under each price, 3 card points, "See Deliverables" opens the same dialog, start button to /contact/. No intro line, no "What you get out of it" blocks, no fine print under the cards. Deliverables reworded for sports programs, DRAFT by Claude, needs approval.)
 
 ### Attract Plan: $495 / month
 For programs that want steady, compounding local visibility.
 
-**What's included:**
-- Ongoing technical SEO and site health monitoring
-- Structured data and AEO signals kept current
-- Local SEO and Google Business Profile management
-- Registration platform integration and management
-- A monthly content calendar built around your season
-- A review generation system
-- A monthly reporting dashboard tracking rankings, inquiries, and registrations
-- A monthly check-in call
+**Card points (always visible):**
+- Full SEO and AEO foundation
+- New content, local links and site improvements every month
+- Clear dashboard and monthly strategy calls
 
-**What you get out of it:** a program that's easier for parents to find on Google Maps, in local search, and in AI answers season over season, more reviews, and a clear monthly view of inquiries and registrations.
+**See Deliverables (popup):**
+
+**Build the Foundation**
+
+*Research and planning*
+- Local market and keyword research for your sport, your programs and the towns families drive from
+- A keyword map that gives every page one clear job
+- Site structure and URL plan, with redirects so nothing breaks
+
+*Your pages*
+- Page copy written and tuned for search, page by page
+- Page titles and descriptions written to earn the click
+- Structured data (JSON-LD) so Google and AI tools can read your programs, fees, seasons and locations
+
+*Technical health*
+- Technical SEO fixes: speed, mobile, indexing and broken links
+- A backlink audit, with spammy links cleaned up
+
+*Local presence*
+- Google Business Profile fully optimized
+- Business listings made consistent across directories
+- Your registration platform connected to your site and your tracking
+
+*Tracking*
+- Google Analytics, Search Console and registration tracking set up
+- Your reporting dashboard built
+
+**Every Month: Grow and Compound**
+- A content calendar built around your season, tryouts and registration windows
+- New content that answers what parents ask, so you're the club Google and AI assistants name
+- Link building from local sites, leagues and sports directories
+- Conversion improvements to your registration and tryout pages
+- Google Business Profile posts and updates
+- Automated review requests after tryouts, tournaments and season wrap-ups
+- Site health, rankings and AI search signals monitored
+- 24/7 reporting dashboard
+- Monthly strategy calls
 
 ### Growth Plan: $995 / month
 For programs ready to fill rosters and camps faster.
 
-**What's included:**
+**Card points (always visible):**
 - Everything in the Attract Plan
-- Paid ads management across Google and Meta
-- Lead generation campaigns timed to tryouts, camps, and registration windows
-- Email marketing campaigns to past and prospective families
-- AI search visibility tracking
-- An expanded dashboard combining paid and organic results
+- Paid ads, registration campaigns and email
 - Weekly strategy calls
 
-**What you get out of it:** registrations from paid campaigns when your window opens, while your search visibility builds underneath, plus weekly strategy calls so every campaign lines up with your season calendar.
+**See Deliverables (popup):**
+
+**Everything in the Attract Plan, plus:**
+
+*Paid campaigns*
+- Google and Meta ad campaigns set up and managed
+- Tryout, camp and registration campaigns, each with its own landing page
+- Ongoing testing of ads, audiences and offers
+
+*Email*
+- Welcome emails for new families
+- Re-registration reminders for returning families before each season
+- Campaigns for camps, clinics and tryout dates
+
+*Visibility and reporting*
+- AI search visibility tracking across ChatGPT, Perplexity and Google AI Overviews
+- An expanded dashboard with paid and organic results side by side
+- Weekly strategy calls
 
 Card buttons: Start with the Attract Plan → /contact/ · Start with the Growth Plan → /contact/
 
-Setup line (under the cards): Every plan starts with a one-time $945 setup: a new website built from your demo, or a Full Audit if you're keeping your current site.
+Row card under the pricing cards (same as Boutique Fitness):
+Need Something Custom?
+Multi-location academies and custom-designed sites are scoped as a custom build, and Fadeaway Labs builds custom registration flows, member portals and automations. See what we've built in our portfolio.
+[Link: Explore Fadeaway Labs → /labs/] · [Link: See Our Portfolio → /portfolio/]
 
-<!-- Removed from the page Oct 7 (founder): the Website Setup and Full Audit cards, the fine print, the custom-build fork and the closing button. Kept for reuse in FAQ/contact:
+<!-- Old plan lists, setup line and the Oct 7 removed cards are in git history. -->
 
-### Program Website Setup: $945 one time
-For programs that want a professional site live fast. Your free demo shows you 2 to 4 pages first. Once you approve it, we build out the rest of your site from our sports program library and launch it.
+## Why Fadeaway {#why}
 
-**What's included:**
-- A complete program website: the pages from your demo, plus the rest your program needs, like programs and teams, fees and season details, tryouts or evaluations, coaches, schedule, about, contact, and FAQ
-- All website copy written for you, SEO and AEO ready from day one
-- Your branding: logo, colours, photos, and your program details
-- Registration connected to your platform, like LeagueApps, TeamSnap, GotSport, or SportsEngine, or to your membership and class booking tools
-- Built mobile-first, fast, and secure
-- On-page SEO, structured data, and AEO basics set up at launch
-- Google Business Profile set up or cleaned up
-- Google Analytics and Search Console set up, with registration clicks tracked
-- Hosting included while you're on a plan
-- 1 round of revisions before launch
+(Moved up to sit after pricing, Oct 14, same position as Why on the other two pages. Copy unchanged.)
 
-**What you get out of it:** a professional, fast website live within 2 weeks of approving your demo, built to answer the questions parents search, ready to be recommended by AI tools, and set up to turn visits into registrations. Paired with an Attract or Growth Plan.
+Sports programs are personal for us. Our founder leads this work directly and spends real time with coaches, club directors, and people across the sports and combat sports world, so we understand how tryouts, registration seasons, and parent decisions actually work. Founder-led, 15+ years of experience, and every program gets the care we'd want if it were our own.
 
-### Full Audit: $945 one time
-For programs keeping their current site.
-
-**What's included:**
-- A full website and search presence review
-- A registration flow review: how many steps it takes to sign up, and where parents drop off
-- What parents find when they search for your sport in your area
-- Keyword research for your sport and your area
-- An in-depth AEO readiness check: how ChatGPT, Perplexity, and Google's AI Overviews describe your program
-- A content strategy foundation
-- Quick wins identified and ready to act on
-- A clear 3 to 6 month action plan you can take to your board
-
-**What you get out of it:** a clear, prioritized picture of what's costing you registrations and exactly what to fix first, timed to your season. If you move ahead with a new website instead, the fee is credited toward it.
-
-Fine print (small type, under the plan cards): Plans run on a 6-month minimum. Ad spend is paid directly by you to Google and Meta. Results depend on your market, competition, and starting point; we never guarantee rankings.
-
-### Need More Than the Website Setup?
-Multi-location academies, heavier customization, or a custom-designed site are scoped as a custom build and quoted at a fixed price before we start.
-[Link: See Build Services → /services/build/]
-
-[CTA touchpoint: Get Your Free Demo → /demo-request/]
--->
-
-## Not Sure Yet? Request Your Demo {#demo}
-
-(Rewritten Oct 7, founder direction; copy DRAFT by Claude, needs approval. Moved below pricing; no "free" wording.)
-
-We know sports programs well, so your demo starts from what already works. We build 4 pages made for your program, in your branding, ready in 2 business days.
-
-
-[CTA: Request Your Demo → /demo-request/]
-Already have a website you want to keep? [Link: Get a free audit instead → /audit/]
+<!-- OPEN (carried from the Doc): add one or two lines of the founder's own sports background here, in his
+words. Personal specifics make this section credible; it shouldn't be written without him. -->
 
 ## What to Expect, Season by Season {#what-to-expect}
 
@@ -276,34 +280,29 @@ Fees, season, and tryout pages go live, local and area pages follow, and review 
 ### Months 3 to 6
 This is where local SEO and AEO usually start compounding: better map rankings, more parents finding you directly, and more registrations from your own site. That's why starting 3 to 6 months before your registration window matters.
 
-### Month 6
+### Month 6+
 A full picture with real numbers on inquiries and registrations, and a clear plan for the next season.
 
 ## How It Works {#how-it-works}
 
-(Emits HowTo schema.)
+(HIDDEN from the page Oct 14, same as Boutique Fitness: section and HowTo schema off. Copy kept for reuse.)
 
-1. **Start free**: Request a free demo of your new website, or a free audit of the one you have.
+1. **Start free**: Contact us about a new website, or ask for a free audit of the one you have.
 2. **Choose your path**: A new site with the $945 setup, or a Full Audit if you're keeping your current site. Never both.
-3. **Launch**: We build or fix your site, connect it to your registration platform, set up your tracking, and host it for you if it's built from your demo.
+3. **Launch**: We build or fix your site, connect it to your registration platform, set up your tracking, and host it for you if we built it.
 4. **Grow, season by season**: Your Attract or Growth Plan kicks in, with SEO, AEO, content, and campaigns timed to your tryouts and registration windows.
+
+<!-- Demo section removed Oct 14 (founder: no demos on the page until the demo returns after launch). Old copy:
+"Not Sure Yet? Request Your Demo. We know sports programs well, so your demo starts from what already works.
+We build 4 pages made for your program, in your branding, ready in 2 business days." Also in git history. -->
 
 ## Results We've Delivered {#real-work}
 
 (Badge above the heading: **Our Work**, founder Oct 7.)
 
-(ProofGrid, tag `sports-academies`. Renders nothing until an approved case study exists.)
+(ProofGrid, tag `sports-academies`. Renders nothing until an approved case study or featured entry exists.)
 
-<!-- No sports case study yet. Interim proof the research recommends: a real "what parents search in your
-area" example (a live search results screenshot). Use copy/templates/case-study-template.md when a
-sports result is ready. Never fabricate a number or name a client. -->
-
-## Why Fadeaway {#why}
-
-Sports programs are personal for us. Our founder leads this work directly and spends real time with coaches, club directors, and people across the sports and combat sports world, so we understand how tryouts, registration seasons, and parent decisions actually work. Founder-led, 15+ years of experience, and every program gets the care we'd want if it were our own.
-
-<!-- OPEN (carried from the Doc): add one or two lines of the founder's own sports background here, in his
-words. Personal specifics make this section credible; it shouldn't be written without him. -->
+<!-- No sports case study yet. JabJab MMA (Fadeaway's own product) lives on /labs/ and /portfolio/. Never fabricate a number or name a client. -->
 
 ## Testimonials {#testimonials}
 
@@ -316,7 +315,7 @@ words. Personal specifics make this section credible; it shouldn't be written wi
 ```yaml
 faq:
   - q: "How much does a sports club website cost?"
-    a: "A new program website is a one-time $945 setup, or a Full Audit is $945 if you're keeping your current site. After that, the Attract Plan is $495 / month and the Growth Plan is $995 / month, with everything included listed on this page. Plans run on a 6-month minimum."
+    a: "A new program website is a one-time $945 setup, or a Full Audit is $945 if you're keeping your current site. After that, the Attract Plan is $495 a month and the Growth Plan is $995 a month, with everything included listed on this page. Plans run on a 6-month minimum."
   - q: "We already use TeamSnap or LeagueApps. Do we have to switch?"
     a: "No. Keep LeagueApps, TeamSnap, GotSport, SportsEngine, or whatever runs your registration and scheduling today. We build the website parents see first and connect it to your existing platform, so families go from your site to signed up without you moving any data or retraining your staff."
   - q: "When should we start before registration opens?"
@@ -324,7 +323,7 @@ faq:
   - q: "Do parents really search for clubs on Google and AI assistants?"
     a: "Yes. \"How to choose a sports club\" alone is searched about 2,800 times a month in the US, and parents search cost, season dates, and whether a program is worth it for every major sport. Clubs with clear fees and season pages show up in those results and get quoted in AI answers."
   - q: "Our board has to approve spending. Can you help with that?"
-    a: "Yes. Every price is fixed and published on this page. Your free demo shows the board exactly what the new site looks like, and the Full Audit gives you a written three to six month action plan. It's built so your board decides on specifics, not a sales pitch."
+    a: "Yes. Every plan price is published on this page, and the full list of what's included is one click away. The Full Audit gives you a written three to six month action plan you can share. It's built so your board decides on specifics, not a sales pitch."
   - q: "Do you work with martial arts and combat sports gyms?"
     a: "Yes. Boxing, MMA, jiu-jitsu, and martial arts gyms are a core part of our sports work, alongside club teams, academies, and camps. We work with programs across Canada and the United States, and we connect your site to the membership and class booking tools you already use."
 ```
@@ -342,8 +341,8 @@ Volleyball Cost? A Real Breakdown" (300/mo), "How to Start a Travel Baseball Tea
 
 ## Ready to Fill Your Roster? {#cta}
 
-See your new website before you spend a dollar. Tell us about your program and we'll build you a free demo.
-[CTA: Get Your Free Demo → /demo-request/]
+Tell us about your program and we will help you plan what comes next. (Oct 14, same as Boutique Fitness; replaces the free demo line)
+[CTA: Contact Us → /contact/]
 [Link: Or see what parents find for your program with a free audit → /audit/]
 
 <!--
@@ -378,7 +377,14 @@ Founder direction (Oct 1): same conversion funnel and deliverables approach as W
 12. Breadcrumb Home > Sports Academies (no /solutions hub). URLs use the trailing slash. Comma splices
     fixed. The internal AEO/SEO check lines from the Doc are not page copy and are left out.
 
+13. Oct 14 (founder): page rebuilt to match Boutique Fitness. No demo anywhere; audit box in the hero;
+    insights cut to 3; program types became tiles plus a "For Every Program" strip; "What We Do" and the
+    Method section merged into "From Search to Signed Up" (3 stages); pricing uses the Foundation / Every
+    Month deliverables reworded for sports; Why moved up after pricing; How It Works hidden; board FAQ no
+    longer mentions the demo or "fixed"; final CTA goes to /contact/.
+
 OPEN ITEMS
+- Demo returns after launch (founder, Oct 14); placement to be decided on all three solution pages.
 - Founder's own sports background, one or two lines in his words, for Why Fadeaway.
 - No sports case study or testimonial yet. Interim: a real "what parents search in your area" example.
 - Old /sports/ page: 301 to /solutions/sports/ at launch, not before.

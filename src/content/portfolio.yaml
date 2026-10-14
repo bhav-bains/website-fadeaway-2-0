@@ -81,7 +81,7 @@
   industry: Dental practice
   summary: "A full rebuild of a stale, underperforming site into a modular, multi-location platform for its Oregon and California locations, with a clear site structure, refreshed UX/UI, and SEO and AEO built in, ready to add new locations as the practice grows."
   chips: ["Website Rebuild", "Multi-Location", "UX/UI", "SEO + AEO"]
-  tags: ["wellness-counselling", "build"]
+  tags: ["build"]
   ongoing: false
   image: ../assets/portfolio/crane-mountain-dental/crane-mountain-hero.png
   imageAlt: "The Crane Mountain Dental homepage and the Lakeview Dental Clinic location page"

@@ -28,7 +28,7 @@ export const breadcrumb: BreadcrumbItem[] = [
 
 /** AEO answer capsule: the wide intro of the first section after the Hero */
 export const answerCapsule =
-  'Fadeaway Creatives builds websites and runs local SEO and AEO for yoga, pilates, spin, and barre studios across Canada and the US. We connect your site to the booking platform you already use, like Mindbody, Momence, or Marianatek, get you showing up on Google Maps and in AI recommendations for your neighbourhood, with fixed monthly plans starting at $495.';
+  'Fadeaway Creatives builds websites and runs local SEO and AEO for yoga, pilates, spin and cycling, and barre studios across Canada and the US. We connect your site to the booking platform you already use, like Mindbody, Momence, or Marianatek, get you showing up on Google Maps and in AI recommendations for your neighbourhood, with monthly plans starting from $495.';
 
 export const heroVariant: HeroVariant = 'statement';
 
@@ -98,8 +98,8 @@ export const why: { id: string; heading: string; items: FeatureListItem[] } = {
     },
     {
       icon: 'award',
-      title: 'Founder-Led, With Fixed Pricing',
-      text: '15+ years of experience, hands-on from first call to launch. Every price is on this page, with no hourly billing and no surprises.',
+      title: 'Founder-Led, With Clear Pricing',
+      text: '15+ years of experience, hands-on from first call to launch. Every plan price is on this page, with no hourly billing and no surprises.',
     },
   ],
 };
@@ -264,7 +264,7 @@ export const pricing: PricingContent & { id: string; eyebrow?: string; heading: 
       includedLabel: included,
       points: [
         'Full SEO and AEO foundation',
-        'Content strategy, on-page SEO copy and link building every month',
+        'New content, local links and site improvements every month',
         'Clear dashboard and monthly strategy calls',
       ],
       deliverables: [
@@ -307,7 +307,7 @@ export const pricing: PricingContent & { id: string; eyebrow?: string; heading: 
               'Google Business Profile posts and updates',
               'Automated review requests for happy clients',
               'Site health, rankings and AI search signals monitored',
-              '24x7 reporting dashboard',
+              '24/7 reporting dashboard',
               'Monthly strategy calls',
             ] },
           ],
@@ -359,7 +359,7 @@ export const pricing: PricingContent & { id: string; eyebrow?: string; heading: 
 export const customRow = {
   art: 'wireframe' as const,
   title: 'Need Something Custom?',
-  body: "Fadeaway Labs builds custom websites, automations, and software for studios that need more than a template. See what we've built in our portfolio.",
+  body: "Multi-location studios and custom-designed sites are scoped as a custom build, and Fadeaway Labs builds custom apps, automations and dashboards. See what we've built in our portfolio.",
   links: [
     { label: 'Explore Fadeaway Labs', href: routes.labs },
     { label: 'See Our Portfolio', href: routes.portfolio },
@@ -448,7 +448,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
     },
     {
       q: 'Do you work with studios outside Canada?',
-      a: "Yes. We're based in Vancouver, BC, and work with yoga, pilates, spin, and barre studios across Canada and the United States. Everything happens remotely, and we build your local strategy around the neighbourhoods and searches that matter in your city.",
+      a: "Yes. We're based in Vancouver, BC, and work with yoga, pilates, spin and cycling, and barre studios across Canada and the United States. Everything happens remotely, and we build your local strategy around the neighbourhoods and searches that matter in your city.",
     },
   ],
 };

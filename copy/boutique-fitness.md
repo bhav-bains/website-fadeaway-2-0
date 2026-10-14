@@ -22,10 +22,10 @@ robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-previ
 h1: "Websites and SEO Growth That Fill Your Classes"
 answer_capsule: >-
   Fadeaway Creatives builds websites and runs local SEO and AEO for yoga,
-  pilates, spin, and barre studios across Canada and the US. We connect your
+  pilates, spin and cycling, and barre studios across Canada and the US. We connect your
   site to the booking platform you already use, like Mindbody, Momence, or
   Marianatek, get you showing up on Google Maps and in AI recommendations for
-  your neighbourhood, with fixed monthly plans starting at $495.
+  your neighbourhood, with monthly plans starting from $495.
 keywords:
   primary: "seo for yoga studios"   # 150/mo US KD 1. In-scope anchor; Canada returns almost nothing.
   secondary: ["marketing for yoga studios", "pilates studio marketing", "local seo for gyms (supporting only)", "gym marketing agency (supporting only)"]
@@ -124,6 +124,7 @@ We set up your site, booking, and Google Business Profile before your doors open
 Let's Grow Your Studio
 Tell us about your studio and we will help you plan what comes next.
 Link: Contact Us
+(Build note, Oct 14: render this tile once in the HTML. Move it between the desktop and phone positions with CSS, or mark the unused copy aria-hidden="true" so search and AI tools don't read the heading and text twice.)
 
 ## From Search to Booked Class {#services}
 
@@ -181,7 +182,7 @@ For studios that want steady, compounding local visibility.
 
 **Card points (always visible):**
 - Full SEO and AEO foundation
-- Content strategy, on-page SEO copy and link building every month
+- New content, local links and site improvements every month
 - Clear dashboard and monthly strategy calls
 
 **See Deliverables (popup):**
@@ -219,7 +220,7 @@ For studios that want steady, compounding local visibility.
 - Google Business Profile posts and updates
 - Automated review requests for happy clients
 - Site health, rankings and AI search signals monitored
-- 24x7 reporting dashboard
+- 24/7 reporting dashboard
 - Monthly strategy calls
 
 ("What you get out of it" blocks removed from both plan popups, founder Oct 13.)
@@ -256,7 +257,8 @@ Card buttons: Start with the Attract Plan → /contact/ · Start with the Growth
 
 Row card under the pricing cards (DRAFT by Claude, needs approval; founder asked for a Fadeaway Labs and portfolio shoutout: custom website, automations etc.):
 Need Something Custom?
-Fadeaway Labs builds custom websites, automations, and software for studios that need more than a template. See what we've built in our portfolio.
+Multi-location studios and custom-designed sites are scoped as a custom build, and Fadeaway Labs builds custom apps, automations and dashboards. See what we've built in our portfolio.
+(Updated Oct 14, founder: no "template" wording; custom websites belong to Build, apps and automations to Labs.)
 [Link: Explore Fadeaway Labs → /labs/] · [Link: See Our Portfolio → /portfolio/]
 
 Under each plan price (small, muted, founder Oct 13): $945 one-time website build setup
@@ -353,8 +355,9 @@ Google Business Profile, neighbourhood pages, schema, and review signals set up 
 ### Care in Every Detail
 We care about each pixel and each interaction, and treat every studio's site like it's the only one we're building.
 
-### Founder-Led, With Fixed Pricing
-15+ years of experience, hands-on from first call to launch. Every price is on this page, with no hourly billing and no surprises.
+### Founder-Led, With Clear Pricing
+15+ years of experience, hands-on from first call to launch. Every plan price is on this page, with no hourly billing and no surprises.
+(Changed from "Fixed Pricing" Oct 14, founder: plan prices read "Starts from".)
 
 ## What to Expect, Month by Month {#what-to-expect}
 
@@ -413,7 +416,7 @@ faq:
   - q: "I'm opening a new studio. Can you help?"
     a: "Yes, and it's the best time to start. We set up your website, booking connection, and Google Business Profile before you open, so people searching for classes nearby can find you and book from day one. Contact us and we'll plan your launch together." (DRAFT)
   - q: "Do you work with studios outside Canada?"
-    a: "Yes. We're based in Vancouver, BC, and work with yoga, pilates, spin, and barre studios across Canada and the United States. Everything happens remotely, and we build your local strategy around the neighbourhoods and searches that matter in your city."
+    a: "Yes. We're based in Vancouver, BC, and work with yoga, pilates, spin and cycling, and barre studios across Canada and the United States. Everything happens remotely, and we build your local strategy around the neighbourhoods and searches that matter in your city."
 ```
 
 ## From the Blog {#blog}

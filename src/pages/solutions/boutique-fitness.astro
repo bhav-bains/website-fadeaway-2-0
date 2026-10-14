@@ -73,7 +73,7 @@ const jsonLd = [
 
   <Section id={services.id} heading={services.heading} align="start">
     <StageList stages={services.stages} />
-    {/* Phones only: the contact call-out sits under this section (on larger screens it is the last tile above) */}
+    {/* Phones only: the contact call-out sits under this section (on larger screens it is the last tile above). Each copy is display:none at the other breakpoint, so it is not read twice */}
     <CalloutCard {...audience.cta} class="mt-3 md:hidden" />
     {/* Labs fork callout (services.labs) removed from here, founder Oct 7: not at the top of the page. Re-place it lower down if wanted. */}
   </Section>

@@ -7,11 +7,11 @@
 page: wellness-counselling
 url: /solutions/wellness-counselling/
 title: "Fadeaway Creatives | SEO for Therapists & Wellness Practices"
-description: "SEO, AEO, and websites for therapists, counsellors, chiropractors, and wellness practices. Get found beyond directory listings. Free custom demo."
+description: "SEO, AEO, and websites for therapists, counsellors, chiropractors, and wellness practices. Get found beyond directory listings, on Google and in AI search."
 canonical: "https://fadeawaycreatives.com/solutions/wellness-counselling/"
 og:
   title: "Fadeaway Creatives | SEO for Therapists & Wellness Practices"
-  description: "SEO, AEO, and websites for therapists, counsellors, chiropractors, and wellness practices. Get found beyond directory listings. Free custom demo."
+  description: "SEO, AEO, and websites for therapists, counsellors, chiropractors, and wellness practices. Get found beyond directory listings, on Google and in AI search."
   url: "https://fadeawaycreatives.com/solutions/wellness-counselling/"
   type: website
   locale: en_US
@@ -25,8 +25,8 @@ answer_capsule: >-
   counsellors, chiropractors, and wellness practices across Canada and the US,
   so new clients find you on Google and in AI assistant recommendations instead
   of scrolling past you on a directory page. Every site works with the practice
-  software you already use, like Jane App or SimplePractice, and starts with a
-  free custom demo.
+  software you already use, like Jane App or SimplePractice, with monthly plans
+  starting from $495.
 keywords:
   primary: "seo for therapists"   # 1,600/mo US KD 3; 300/mo Canada KD 1; $10 CPC. Best Canadian buyer-intent term in the project.
   secondary: ["therapist seo", "therapist website design", "chiropractic marketing", "how to get more therapy clients", "private practice marketing", "med spa seo"]
@@ -35,7 +35,7 @@ schema:
   - Organization    # sitewide, from the base layout
   - BreadcrumbList  # Home > Wellness & Counselling
   - Service         # Practice Website Setup, Full Audit, Attract Plan, Growth Plan, Custom Website Build. Offers with prices allowed on this page.
-  - HowTo           # from How It Works (4 steps)
+  - HowTo           # OFF while How It Works is hidden (Oct 14, same as Boutique Fitness)
   - FAQPage         # generated from the faq list below
 content_tag: wellness-counselling
 last_updated: TODO
@@ -62,7 +62,7 @@ Notes for the build:
 | Field | Value | Status |
 |---|---|---|
 | Title tag | Fadeaway Creatives \| SEO for Therapists & Wellness Practices (60 chars, at the limit) | Set |
-| Meta description | SEO, AEO, and websites for therapists, counsellors, chiropractors, and wellness practices. Get found beyond directory listings. Free custom demo. (145 chars) | Updated, needs approval |
+| Meta description | SEO, AEO, and websites for therapists, counsellors, chiropractors, and wellness practices. Get found beyond directory listings, on Google and in AI search. (155 chars, at the limit; "Free custom demo" removed Oct 14) | Updated, needs approval |
 | Canonical | https://fadeawaycreatives.com/solutions/wellness-counselling/ | Set |
 | H1 | SEO for Therapists, Built to Fill Your Practice | Set |
 | og:title / og:description | Mirror title tag / meta description | Set |
@@ -70,14 +70,14 @@ Notes for the build:
 | Robots meta | index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1 | Set |
 | Schema: Organization | Inherited sitewide, no LocalBusiness for Fadeaway itself | Set |
 | Schema: Service | Practice Website Setup ($945), Full Audit ($945), Attract Plan ($495/mo), Growth Plan ($995/mo), Custom Website Build (scoped) | Updated, needs approval |
-| Schema: HowTo | From How It Works (4 steps) | Updated, needs approval |
+| Schema: HowTo | Off while How It Works is hidden (Oct 14) | Hidden |
 | Deliverables | Website setup: full page set, copy by Fadeaway, live within 2 weeks of demo approval, 1 round of revisions before launch (founder, Oct 1) | Set |
 | Schema: FAQPage | From the FAQ list, matches visible copy verbatim | Set |
 | Schema: BreadcrumbList | Home > Wellness & Counselling (no /solutions hub) | Updated, needs approval |
-| Answer capsule | See frontmatter (64 words) | Updated, needs approval |
+| Answer capsule | See frontmatter (63 words; demo line replaced by "monthly plans starting from $495", Oct 14) | Updated, needs approval |
 | Visible FAQ block | 6 questions, 40 to 60 word answers | Updated, needs approval |
 | Last updated date | Set at launch | Pending launch |
-| Internal links | /demo-request/, /audit/, /services/build/, /services/growth/, /labs/, /contact/. Zero `#` placeholders. | To QA |
+| Internal links | /audit/, /contact/, /labs/, /portfolio/. No /demo-request/ links until the demo returns (Oct 14). Zero `#` placeholders. | To QA |
 | Primary keyword | seo for therapists (1,600/mo US KD 3; 300/mo Canada KD 1; $10 CPC) | Set |
 | Secondary keywords | therapist seo, therapist website design, chiropractic marketing, how to get more therapy clients, private practice marketing, med spa seo | Set |
 | Pricing display | Real numbers shown (one of the three demo-industry pages) | Set |
@@ -88,185 +88,201 @@ Home → Wellness & Counselling
 
 ## Hero {#hero}
 
+(Rebuilt Oct 14 to match Boutique Fitness, founder: no demo anywhere on the page until it returns; audit box in the hero.)
+
 - Eyebrow: SEO, AEO & Websites for Therapists, Counsellors, Chiropractors & Wellness Practices
 - H1: SEO for Therapists, Built to Fill Your Practice
-- Sub-headline: Get found by new clients on Google and in AI recommendations, not lost on a directory page with dozens of other providers. See your new website before you spend a dollar.
-- Primary CTA: Get Your Free Demo → /demo-request/
-- Secondary CTA: Get a Free Audit of Your Current Site → /audit/
-- Answer capsule: renders directly under the Hero, from the frontmatter.
+- Sub-headline: Get found by new clients on Google and in AI recommendations, not lost on a directory page with dozens of other providers.
+- Hero CTA: free-audit website box only, same workflow as Boutique Fitness. Label "Get a Free Audit of Your Current Site", placeholder `yourpractice.com`, button "Get Your Free Audit"; GETs /audit/?website=
+- Answer capsule: renders the same way as on Boutique Fitness (from the frontmatter).
 
 ## How Clients Find Practices Now {#insights}
 
-(Insight section. Gives the visitor something useful before asking for anything.)
-
-The way new clients find a therapist, counsellor, or chiropractor has changed. Here's what we see across the practices we look at.
+(Cut to 3 cards and the intro line removed, Oct 14, founder. The booking card moved into "Get Booked" below.)
 
 ### Directories Put You Next to Your Competition
-A directory profile puts you on the same page as dozens of other providers, sorted by things you don't control. Your own website and search presence are the one place a potential client sees only you.
+A directory profile puts you on the same page as dozens of other providers, sorted by things you don't control. Your own website is the one place a potential client sees only you.
 
 ### Clients Search by Problem and Place
-People rarely search for "a therapist." They search for help with anxiety, couples counselling, back pain, or a sports injury, near where they live or work. Practices with a clear page for each specialty and location get found for those searches.
+People rarely search for "a therapist." They search for help with anxiety, couples counselling, back pain, or a sports injury, near where they live or work. A clear page for each specialty and location gets you found.
 
 ### AI Assistants Now Recommend Providers
-More people ask ChatGPT, Perplexity, or Google's AI Overviews to suggest a provider. Those tools recommend practices whose websites clearly state who they help, where, how to book, and what they accept.
-
-### Booking Has to Be Effortless
-Most first visits happen on a phone, often late at night. If booking takes more than a few taps, or sends people to a confusing third-party page, they leave and book somewhere else. Your website should be the one booking new clients at 11pm, long after your front desk has gone home.
-<!-- Added Oct 2 (founder): "your website is a 24/7 salesperson" framing. One line per page, worded for this audience. -->
+More people ask ChatGPT, Perplexity, or Google's AI Overviews to suggest a provider. Those tools recommend practices whose websites clearly state who they help, where, and how to book.
 
 [CTA touchpoint: Want to see how your practice shows up today? Get a Free Audit → /audit/]
 
-## Why Practices Work With Fadeaway {#why}
+## Tailored Solutions Built for Wellness Practices {#who-its-for}
 
-### Built to Be Found, Not Just Listed
-Every site is structured with the content and technical signals search engines need to recommend you directly, not just list you in a directory.
+(Replaces "Which Practice Fits", Oct 14, same pattern as Boutique Fitness. DRAFT by Claude, needs approval.)
 
-### Ready for AI Search
-Schema, clear practice details, and content written the way AI assistants read it, so you're the answer when someone asks for a provider near them.
+Practice types we work with (tiles show only the line art and the name, no text):
+- Therapists & Counsellors
+- Chiropractors
+- Physical Therapy
+
+Line under the tiles: We also work with med spas and aesthetic practices.
+
+**For Every Practice** (small label above a strip of 4 points under the tiles)
+
+### A Site That Feels Like Your Practice
+Calm, clear and welcoming, so a first-time client feels comfortable reaching out.
+
+### Your Clinicians, Front and Center
+Bios, specialties and approach for each clinician, so clients find the right fit before they book.
 
 ### Works With Your Practice Software
-We build around Jane App, SimplePractice, TherapyNotes, and similar platforms, so booking and intake stay where they already are and your clients get a smoother way in.
+Jane App, SimplePractice, TherapyNotes and similar platforms stay at the centre, so booking and intake don't change for your team.
 
-### Built Compliance-Ready
-We know what health practices have to get right: HIPAA in the US, PIPEDA and PHIPA in Canada, and your college or association's advertising rules. Client health information stays out of website forms and email, intake runs through your secure practice software, and your privacy policy and consent language are in place before launch.
+### Starting Your Own Practice?
+We set up your site, booking, and Google Business Profile the right way from day one.
 
-### Founder-Led, With Fixed Pricing
-15+ years of experience, hands-on from first call to launch. Every price is on this page, with no hourly billing and no surprises.
+### Call-out tile (same placement as Boutique Fitness: in the tile grid on desktop, under "From Search to Booked Client" on phones)
+Let's Grow Your Practice
+Tell us about your practice and we will help you plan what comes next.
+Link: Contact Us → /contact/
+(Build note: render once in the HTML, or let the max-md:hidden / md:hidden classes hide the inactive copy. Do not add aria-hidden or tabindex="-1" to the copy that is visible.)
 
-## Which Practice Fits {#which-practice-fits}
+## From Search to Booked Client {#services}
 
-### Therapists & Counsellors
-Private practice or group practice, we help you stop relying on directories alone and build a search presence that brings clients directly to you.
+(Replaces "What We Do for Your Practice", Oct 14. Three stages of two cards each, same as Boutique Fitness. DRAFT by Claude, needs approval.)
 
-### Chiropractors
-Patients search when they're in pain and ready to book. We help you show up first for the searches that matter in your area.
+### Stage 1: Get Found
 
-### Physical Therapy
-Referrals matter, but so does being found directly by someone searching for relief right now. We build for both.
-
-We also work with med spas and aesthetic practices.
-
-<!-- Founder, Oct 1: mention med spas, don't go hard on them. The full card ("Med Spas & Aesthetic Practices: A different
-buying decision. Clients want to trust you and see results before they book a consultation, so we design the site to
-earn that trust.") became this one line. Med spas also stay in the last FAQ answer. -->
-
-## What We Do for Your Practice {#services}
-
-### A Website Built Around Your Booking Flow
-Connected to the practice software you already use, so booking and intake work the way your clients expect, on any phone.
-
-### Compliance-Ready Setup
-Secure booking and intake links instead of open contact forms for health details, a privacy policy and consent language you approve, and no testimonials or claims that break your profession's advertising rules.
-
-### Local SEO and AEO
-Structured data, Google Business Profile, local listings, and content built to get you found on Google and recommended by AI assistants.
-
-### Specialty and Location Pages
+#### Specialty and Location Pages
 A clear page for each service you offer and each area you serve, written around the questions clients actually search.
 
-### Content and Reviews
-A monthly content calendar and a review generation system that keep new clients finding you and trusting you.
+#### Win the Local Map Results
+Google Business Profile and local listings optimized so you show up when someone nearby searches for care.
 
-### Reporting and Regular Check-ins
-A dashboard tracking your rankings, traffic, and bookings, with a monthly check-in call, or weekly strategy calls on the Growth Plan.
+### Stage 2: Get Chosen
 
-### Need Custom Software Instead
-If what you actually need is custom software, automations, or dashboards rather than a website, that's Fadeaway Labs.
-[Link: See Fadeaway Labs → /labs/]
+#### AEO for AI Recommendations
+Structured data and clear practice details, so you're the answer when someone asks an AI assistant for a provider near them.
 
-<!-- Founder, Oct 1: add a Labs mention. Wording reused from the approved Growth page ("Need Something Else First?"),
-shown as a call-out at the end of this section. -->
+#### Trust Before the First Session
+Clinician bios, credentials, and a review strategy that follows your college's or association's rules, so new clients feel confident booking.
 
-## What You Pay For, and What You Get {#pricing}
+### Stage 3: Get Booked
 
-(Rebuilt Oct 7, founder direction: two compact plan cards, expandable to the full list, each with a button to /contact/. Button labels and the setup line are DRAFT by Claude, needs approval.)
+#### A Website Built Around Your Booking Flow
+Connected to Jane App, SimplePractice, or the software you already use, so booking a first session takes a few taps, even at 11pm.
 
-Fixed prices, complete deliverable lists, and honest expectations.
+#### Track Real Bookings, Not Views
+A dashboard showing which searches turn into booked appointments, not just which pages get visited.
+
+## Clear Deliverables. Transparent Pricing. {#pricing}
+
+(Rebuilt Oct 14 to match Boutique Fitness: "Pricing" eyebrow badge, centered two-row heading, "Starts from" line above each price, "$945 one-time website build setup" under each price, 3 card points, "See Deliverables" opens the same dialog, start button to /contact/. No intro line, no "What you get out of it" blocks, no fine print under the cards. Deliverables reworded for health practices, DRAFT by Claude, needs approval.)
 
 ### Attract Plan: $495 / month
 For practices that want steady, compounding visibility.
 
-**What's included:**
-- Ongoing technical SEO and site health monitoring
-- Structured data and AEO signals kept current
-- Local SEO and Google Business Profile management
-- Booking and practice software integration and management
-- A monthly content calendar
-- A review generation system, set up within your profession's rules
-- A monthly reporting dashboard
-- A monthly check-in call
+**Card points (always visible):**
+- Full SEO and AEO foundation, set up compliance-ready
+- New content, local links and site improvements every month
+- Clear dashboard and monthly strategy calls
 
-**What you get out of it:** a practice that's easier to find on Google Maps, in local search, and in AI answers month over month, more reviews, and a clear monthly view of rankings, traffic, and bookings.
+**See Deliverables (popup):**
+
+**Build the Foundation**
+
+*Research and planning*
+- Local market and keyword research for your specialties and service areas
+- A keyword map that gives every page one clear job
+- Site structure and URL plan, with redirects so nothing breaks
+
+*Your pages*
+- Page copy written and tuned for search, page by page
+- Page titles and descriptions written to earn the click
+- Structured data (JSON-LD) so Google and AI tools can read your services, clinicians, locations and hours
+
+*Technical health*
+- Technical SEO fixes: speed, mobile, indexing and broken links
+- A backlink audit, with spammy links cleaned up
+
+*Compliance*
+- A compliance check of your forms, privacy policy and claims
+- Forms and tracking set up so client health details stay out of email, analytics and ad pixels
+
+*Local presence*
+- Google Business Profile fully optimized
+- Business listings made consistent across directories
+- Your practice software connected to your site and your tracking
+
+*Tracking*
+- Google Analytics, Search Console and booking tracking set up
+- Your reporting dashboard built
+
+**Every Month: Grow and Compound**
+- A content calendar built around your specialties, the concerns you treat and the areas you serve
+- New content that makes you the trusted local practice for what you treat, on Google and in AI answers
+- Link building from local sites and health directories
+- Conversion improvements to your booking and service pages
+- Google Business Profile posts and updates
+- A review strategy that follows your college's or association's rules
+- Site health, rankings and AI search signals monitored
+- 24/7 reporting dashboard
+- Monthly strategy calls
 
 ### Growth Plan: $995 / month
 For practices ready to grow faster on more than one channel.
 
-**What's included:**
+**Card points (always visible):**
 - Everything in the Attract Plan
-- Paid ads management across Google and Meta
-- Lead generation campaigns
-- Email marketing campaigns
-- AI search visibility tracking
-- An expanded dashboard combining paid and organic results
+- Paid ads, consultation campaigns and email
 - Weekly strategy calls
 
-**What you get out of it:** new client inquiries from paid campaigns while your search visibility builds underneath, plus weekly strategy calls so spend goes to what's actually filling your calendar.
+**See Deliverables (popup):**
+
+**Everything in the Attract Plan, plus:**
+
+*Paid campaigns*
+- Google and Meta campaigns set up within health advertising rules
+- New-client and consultation campaigns, each with its own landing page
+- Ongoing testing of ads, audiences and offers
+
+*Email*
+- Welcome emails for new clients who opt in
+- Newsletters and updates for clients who have opted in
+- Announcements for new services, clinicians and locations
+
+*Visibility and reporting*
+- AI search visibility tracking across ChatGPT, Perplexity and Google AI Overviews
+- An expanded dashboard with paid and organic results side by side
+- Weekly strategy calls
 
 Card buttons: Start with the Attract Plan → /contact/ · Start with the Growth Plan → /contact/
 
-Setup line (under the cards): Every plan starts with a one-time $945 setup: a new website built from your demo, or a Full Audit if you're keeping your current site.
+Row card under the pricing cards (same as Boutique Fitness):
+Need Something Custom?
+Multi-location clinics and custom-designed sites are scoped as a custom build, and Fadeaway Labs builds custom apps, automations and dashboards. See what we've built in our portfolio.
+[Link: Explore Fadeaway Labs → /labs/] · [Link: See Our Portfolio → /portfolio/]
 
-<!-- Removed from the page Oct 7 (founder): the Website Setup and Full Audit cards, the fine print, the custom-build fork and the closing button. Kept for reuse in FAQ/contact:
+<!-- Wellness-specific wording choices (Oct 14), keep when editing:
+- No "automated review requests": many regulated professions (especially therapists and counsellors) restrict
+  asking clients for reviews or testimonials. Chiropractors and physios usually can. "Review strategy that follows
+  your college's or association's rules" covers both.
+- No "win-back emails to lapsed clients": contacting former therapy clients raises confidentiality and ethics issues.
+  Email is opt-in only.
+- Paid ads: Google and Meta restrict health-condition targeting; "within health advertising rules".
+- The Compliance group in Foundation matches the wellness Full Audit addition in Offer & Pricing.
+Old plan lists, setup line and the Oct 7 removed cards are in git history. -->
 
-### Practice Website Setup: $945 one time
-For practices that want a professional site live fast. Your free demo shows you 2 to 4 pages first. Once you approve it, we build out the rest of your site from our wellness practice library and launch it.
+## Why Practices Work With Fadeaway {#why}
 
-**What's included:**
-- A complete practice website: the pages from your demo, plus the rest your practice needs, like services and specialties, about, booking and contact, locations, and FAQ
-- All website copy written for you, SEO and AEO ready from day one
-- Your branding: logo, colours, photos, and your practice details
-- Booking and intake connected to your practice software, like Jane App or SimplePractice
-- Built mobile-first, fast, and secure
-- Compliance-ready setup: no health information in open forms, privacy policy and consent language in place
-- On-page SEO, structured data, and AEO basics set up at launch
-- Google Analytics and Search Console set up, with booking clicks tracked
-- Hosting included while you're on a plan
-- 1 round of revisions before launch
+(Cut to 4, Oct 14. Practice software moved to the "For Every Practice" strip; Built to Be Found and Ready for AI Search are covered by "From Search to Booked Client".)
 
-**What you get out of it:** a professional, fast website live within 2 weeks of approving your demo, written and structured to rank, ready to be recommended by AI tools, and set up to turn visitors into booked appointments. Paired with an Attract or Growth Plan.
+### Built for Health Practices, Not Generic Small Businesses
+Specialty pages, clinician bios, intake and booking flows are built in from the start, because that's how clients choose a provider.
 
-### Full Audit: $945 one time
-For practices keeping their current site.
+### Built Compliance-Ready
+We know what health practices have to get right: HIPAA in the US, PIPEDA and PHIPA in Canada, and your college or association's advertising rules. Client health information stays out of website forms and email, intake runs through your secure practice software, and your privacy policy and consent language are in place before launch.
 
-**What's included:**
-- A full website and account review
-- Keyword research for your specialties and area
-- An in-depth AEO readiness check: how ChatGPT, Perplexity, and Google's AI Overviews see your practice
-- A compliance check of your site's forms, privacy policy, and claims
-- A content strategy foundation
-- Quick wins identified and ready to act on
-- A clear 3 to 6 month action plan
+### Found Locally and in AI Search
+Google Business Profile, specialty and location pages, and structured data set up so you show up on the map and in AI recommendations.
 
-**What you get out of it:** a clear, prioritized picture of what's holding your practice back and exactly what to fix first. If you move ahead with a new website instead, the fee is credited toward it.
-
-Fine print (small type, under the plan cards): Plans run on a 6-month minimum. Ad spend is paid directly by you to Google and Meta. Results depend on your market, competition, and starting point; we never guarantee rankings.
-
-### Need More Than the Website Setup?
-Multi-location clinics, heavier customization, or a custom-designed site are scoped as a custom build and quoted at a fixed price before we start.
-[Link: See Build Services → /services/build/]
-
-[CTA touchpoint: Get Your Free Demo → /demo-request/]
--->
-
-## Not Sure Yet? Request Your Demo {#demo}
-
-(Rewritten Oct 7, founder direction; copy DRAFT by Claude, needs approval. Moved below pricing; no "free" wording.)
-
-We know wellness practices well, so your demo starts from what already works. We build 4 pages made for your practice, in your branding, ready in 2 business days.
-
-
-[CTA: Request Your Demo → /demo-request/]
-Already have a website you want to keep? [Link: Get a free audit instead → /audit/]
+### Founder-Led, With Clear Pricing
+15+ years of experience, hands-on from first call to launch. Every plan price is on this page, with no hourly billing and no surprises.
 
 ## What to Expect, Month by Month {#what-to-expect}
 
@@ -276,35 +292,38 @@ Typical timelines from industry best practice, not promises. Every market is dif
 Your site goes live, or your audit fixes start. Tracking is set up, your Google Business Profile is cleaned up, and compliance basics are in place.
 
 ### Months 1 to 2
-Technical fixes, specialty and location pages, and the first content go live. Reviews start coming in. On the Growth Plan, paid campaigns can start bringing in inquiries.
+Technical fixes, specialty and location pages, and the first content go live. Your review strategy starts where your profession allows it. On the Growth Plan, paid campaigns can start bringing in inquiries.
 
 ### Months 3 to 6
 This is where SEO and AEO usually start compounding: better local rankings, more people finding you directly instead of through directories, and more bookings from your own site.
 
-### Month 6
+### Month 6+
 A full picture with real numbers on visibility, inquiries, and bookings, and a clear decision on what's next.
 
 ## How It Works {#how-it-works}
 
-(Emits HowTo schema.)
+(HIDDEN from the page Oct 14, same as Boutique Fitness: section and HowTo schema off. Copy kept for reuse.)
 
-1. **Start free**: Request a free demo of your new website, or a free audit of the one you have.
+1. **Start free**: Contact us about a new website, or ask for a free audit of the one you have.
 2. **Choose your path**: A new site with the $945 setup, or a Full Audit if you're keeping your current site. Never both.
-3. **Launch**: We build or fix your site, connect it to your practice software, set up your tracking, and host it for you if it's built from your demo.
+3. **Launch**: We build or fix your site, connect it to your practice software, set up your tracking, and host it for you if we built it.
 4. **Grow**: Your Attract or Growth Plan kicks in, with SEO, AEO, content, and reporting tied to new client bookings.
+
+<!-- Demo section removed Oct 14 (founder: no demos on the page until the demo returns after launch). Old copy:
+"Not Sure Yet? Request Your Demo. We know wellness practices well, so your demo starts from what already works.
+We build 4 pages made for your practice, in your branding, ready in 2 business days." Also in git history. -->
 
 ## Results We've Delivered {#real-work}
 
 (Badge above the heading: **Our Work**, founder Oct 7.)
 
-(ProofGrid, tag `wellness-counselling`. Renders nothing until an approved case study exists.)
+(ProofGrid, tag `wellness-counselling`. Renders nothing until an approved wellness case study or featured entry exists.)
 
-<!-- No wellness case study yet. Strength Counselling (strengthcounselling.ca) is a portfolio entry,
-not a case study (founder, Sept 30). Use copy/templates/case-study-template.md when one is ready. -->
+(Oct 14, founder: Crane Mountain Dental no longer shows on this page. Remove the `wellness-counselling` tag from its portfolio.yaml entry. Visitors go to Labs and the portfolio through the "Need Something Custom?" card instead.)
 
 ## Testimonials {#testimonials}
 
-(Testimonials block, tag `wellness-counselling`. Renders nothing until real, permission-confirmed quotes exist.)
+(Testimonials block, tag `wellness-counselling`. Renders nothing until real, permission-confirmed quotes exist. Check the practice's college rules before using any client testimonial.)
 
 ## Frequently Asked Questions {#faq}
 
@@ -313,7 +332,7 @@ not a case study (founder, Sept 30). Use copy/templates/case-study-template.md w
 ```yaml
 faq:
   - q: "How much does SEO for therapists cost?"
-    a: "A new practice website is a one-time $945 setup, or a Full Audit is $945 if you're keeping your current site. After that, the Attract Plan is $495 / month and the Growth Plan is $995 / month, with everything included listed on this page. Plans run on a 6-month minimum."
+    a: "A new practice website is a one-time $945 setup, or a Full Audit is $945 if you're keeping your current site. After that, the Attract Plan is $495 a month and the Growth Plan is $995 a month, with everything included listed on this page. Plans run on a 6-month minimum."
   - q: "Can I just do my own SEO instead of hiring someone?"
     a: "You can, and some practices do. But SEO and AEO take real time every month: keyword research, technical fixes, content, schema, and reviews. Most clinicians don't have that time alongside a full caseload. We handle all of it so you can focus on your clients, not your website."
   - q: "Is my website compliant with HIPAA, PIPEDA, and PHIPA?"
@@ -339,8 +358,8 @@ Clients Without Relying on Psychology Today", "Chiropractic Marketing That Actua
 
 ## Ready to Fill Your Practice? {#cta}
 
-See your new website before you spend a dollar. Tell us about your practice and we'll build you a free demo.
-[CTA: Get Your Free Demo → /demo-request/]
+Tell us about your practice and we will help you plan what comes next. (Oct 14, same as Boutique Fitness; replaces the free demo line)
+[CTA: Contact Us → /contact/]
 [Link: Or get a free audit of your current site → /audit/]
 
 <!--
@@ -383,7 +402,14 @@ Founder direction (Oct 1): a conversion funnel page: insights, why us, pricing, 
 9. Breadcrumb: Home > Wellness & Counselling (no /solutions hub).
 10. URLs use the sitewide trailing slash. Comma splices fixed throughout.
 
+11. Oct 14 (founder): page rebuilt to match Boutique Fitness. No demo anywhere; audit box in the hero;
+    insights cut to 3; "Which Practice Fits" became tiles plus a "For Every Practice" strip; "What We Do"
+    became "From Search to Booked Client" (3 stages); pricing uses the Foundation / Every Month deliverables
+    reworded for health practices; Why cut to 4 with "Clear Pricing"; How It Works hidden; Crane Mountain
+    Dental removed from this page; final CTA goes to /contact/.
+
 OPEN ITEMS
+- Demo returns after launch (founder, Oct 14); placement to be decided on all three solution pages.
 - Revision rounds: confirmed 1 (founder, Oct 1).
 - Planned: a low-cost maintenance plan (hosting, uptime, security, reporting only) for clients who
   finish their plan. Not on the page until it's priced and scoped. Until then, hosting is described as

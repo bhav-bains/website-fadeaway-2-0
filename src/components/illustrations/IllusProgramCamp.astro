@@ -1,0 +1,19 @@
+---
+// Camps and seasonal programs: a tent under a sun with a calendar flag. Decorative line art (no words), theme colours only.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 400 240" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <circle cx="200" cy="118" r="92" class="stroke-line-strong" stroke-dasharray="3 6" />
+  <circle cx="300" cy="62" r="20" class="stroke-accent" />
+  <path d="M300 28v8M300 88v8M266 62h8M326 62h8M276 38l6 6M318 80l6 6M324 38l-6 6M282 80l-6 6" class="stroke-accent" opacity=".7" />
+  <path d="M90 200h230" class="stroke-line-strong" />
+  <path d="M110 200l70-110l70 110z" class="stroke-highlight" />
+  <path d="M180 200l-26-60h52z" class="stroke-highlight" opacity=".6" />
+  <path d="M180 90V60" class="stroke-highlight" />
+  <path d="M180 60h30l-8 8l8 8h-30" class="stroke-accent" />
+  <path d="M60 200c6-12 16-12 20 0M96 200c6-8 14-8 18 0" class="stroke-line-strong" opacity=".6" />
+</svg>

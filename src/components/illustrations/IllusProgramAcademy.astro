@@ -1,0 +1,19 @@
+---
+// Academies and elite training: a podium with a rising progress line and a stopwatch. Decorative line art (no words), theme colours only.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 400 240" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <circle cx="200" cy="118" r="92" class="stroke-line-strong" stroke-dasharray="3 6" />
+  <path d="M90 200h220" class="stroke-line-strong" />
+  <rect x="100" y="150" width="60" height="50" rx="4" class="stroke-highlight" opacity=".6" />
+  <rect x="170" y="110" width="60" height="90" rx="4" class="stroke-highlight" />
+  <rect x="240" y="170" width="60" height="30" rx="4" class="stroke-highlight" opacity=".6" />
+  <path d="M200 60l6 12l13 2l-9 9l2 13l-12-6l-12 6l2-13l-9-9l13-2z" class="stroke-accent" />
+  <path d="M110 120c30 0 50-12 70-40" class="stroke-line-strong" stroke-dasharray="2 5" />
+  <circle cx="290" cy="80" r="16" class="stroke-accent" opacity=".7" />
+  <path d="M290 70v10l7 4M284 60h12" class="stroke-accent" opacity=".7" />
+</svg>

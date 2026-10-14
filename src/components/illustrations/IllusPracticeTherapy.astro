@@ -1,0 +1,19 @@
+---
+// Therapy room: two armchairs facing each other with a speech bubble between them and a plant. Decorative line art (no words), theme colours only.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 400 240" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <ellipse cx="200" cy="208" rx="160" ry="10" class="stroke-line-strong" stroke-dasharray="3 6" />
+  <path d="M70 196v-62c0 -10 8 -18 18 -18h12c10 0 18 8 18 18v40h54v22" class="stroke-highlight" />
+  <path d="M70 174h72M84 196v10M130 196v10" class="stroke-highlight" />
+  <path d="M330 196v-62c0 -10 -8 -18 -18 -18h-12c-10 0 -18 8 -18 18v40h-54v22" class="stroke-highlight" />
+  <path d="M330 174h-72M316 196v10M270 196v10" class="stroke-highlight" />
+  <rect x="152" y="62" width="96" height="48" rx="14" class="stroke-accent" />
+  <path d="M184 110l-6 16l22 -16" class="stroke-accent" />
+  <path d="M176 84h48M176 94h30" class="stroke-accent" opacity=".6" />
+  <path d="M200 208v-26M200 182c-14 -2 -20 -12 -18 -22c12 0 20 8 18 22M200 182c14 -2 20 -12 18 -22c-12 0 -20 8 -18 22" class="stroke-highlight" opacity=".6" />
+</svg>

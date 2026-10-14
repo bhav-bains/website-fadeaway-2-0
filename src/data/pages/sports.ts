@@ -1,14 +1,14 @@
-// Sports Academies Solutions page content, copied word for word from copy/sports.md.
-// Same conversion funnel and offer structure as Wellness and Boutique Fitness, plus a Method section and a
-// founder-led "Why Fadeaway" near the end. Outbound-first: the proof line and eyebrow name the buyer fast.
+// Sports Academies Solutions page content, copied word for word from copy/sports.md (Oct 14 rewrite).
+// Same blocks and layout as Boutique Fitness: hero audit box → what parents see (3 cards) → tailored solutions
+// (program tiles + strip + call-out) → from search to signed up (3 stages) → pricing → why → what to expect → FAQ → final ask.
+// No demo anywhere until it returns after launch (founder, Oct 14); How It Works and its HowTo schema are hidden.
+// Outbound-first (founder outreach), so the Hero keeps the founder proof line.
 import { routes } from '../routes';
 import type { HeroContent, HeroVariant } from '../../components/blocks/hero/types';
 import type { BreadcrumbItem } from '../../components/blocks/Breadcrumb.astro';
 import type { BentoItem } from '../../components/blocks/BentoGrid.astro';
-import type { FeatureListItem } from '../../components/blocks/FeatureList.astro';
-import type { ServiceIndexItem } from '../../components/blocks/ServiceIndex.astro';
+import type { CardGridItem } from '../../components/blocks/CardGrid.astro';
 import type { IconGridItem } from '../../components/blocks/IconGrid.astro';
-import type { DemoOfferStep } from '../../components/blocks/DemoOffer.astro';
 import type { PricingContent } from '../../components/blocks/PricingSection.astro';
 import type { TimelineItem } from '../../components/blocks/Timeline.astro';
 import type { StepItem } from '../../components/blocks/Steps.astro';
@@ -17,7 +17,7 @@ import type { FaqItem } from '../../components/blocks/Faq.astro';
 export const seo = {
   title: 'Fadeaway Creatives | Sports Team Website Design & SEO',
   description:
-    'Websites, SEO, and AEO for sports clubs, academies, camps, and combat sports gyms. Get found by parents, keep your registration software. Free demo.',
+    'Websites, SEO, and AEO for sports clubs, academies, camps, and combat sports gyms. Get found by parents, keep your registration software.',
 };
 
 // Home > Sports Academies: there is no /solutions hub page
@@ -26,9 +26,9 @@ export const breadcrumb: BreadcrumbItem[] = [
   { label: 'Sports Academies', href: routes.sports },
 ];
 
-/** AEO answer capsule: the wide intro of the first section after the Hero */
+/** AEO answer capsule: screen-reader text in the first section after the Hero (same as Boutique Fitness) */
 export const answerCapsule =
-  'Fadeaway Creatives builds websites and runs SEO and AEO for sports clubs, academies, camps, and combat sports gyms across Canada and the US. We make your program easy for parents to find on Google and in AI answers, with clear fees, season, and tryout pages, and we connect it to the registration software you already use, like LeagueApps, TeamSnap, or GotSport.';
+  'Fadeaway Creatives builds websites and runs SEO and AEO for sports clubs, academies, camps, and combat sports gyms across Canada and the US. We make your program easy for parents to find on Google and in AI answers, with clear fees, season, and tryout pages, and we connect it to the registration software you already use, like LeagueApps, TeamSnap, or GotSport, with monthly plans starting from $495.';
 
 export const heroVariant: HeroVariant = 'statement';
 
@@ -37,9 +37,8 @@ export const hero: HeroContent = {
     'Founder-led, 15+ years of experience. You work directly with the founder, who personally leads our sports and combat sports work.',
   eyebrow: 'Websites, SEO & AEO for Club Directors, Academy Owners, Coaches & Program Directors',
   h1: 'Sports Team Website Design That Fills Your Roster',
-  sub: 'Parents find you on Google and in AI answers before tryouts open. Keep the registration software you already use; we rebuild the front door and wire it in. See your new site before you spend a dollar.',
-  primaryCta: { label: 'Get Your Free Demo', href: routes.demoRequest },
-  secondaryCta: { label: 'See What Parents Search For', href: '#problem' },
+  sub: 'Parents find you on Google and in AI answers before tryouts open. Keep the registration software you already use; we rebuild the front door and wire it in.',
+  auditForm: { action: routes.audit, label: 'See What Parents Find for Your Program', placeholder: 'yourclub.com', button: 'Get Your Free Audit' },
   breadcrumb,
   visual: 'sports',
 };
@@ -47,20 +46,12 @@ export const hero: HeroContent = {
 export const problem: {
   id: string;
   heading: string;
-  intro: string;
   items: BentoItem[];
   cta: { text: string; label: string; href: string };
 } = {
   id: 'problem',
   heading: 'What Parents See Before They Ever Call You',
-  // Midnight line added Oct 2 (24/7 salesperson framing)
-  intro:
-    'Parents compare clubs online long before they show up to a tryout, and they check fees and tryout dates at midnight. Your site should answer before another club does. Most club websites lose them in a few quiet ways.',
   items: [
-    {
-      title: "Your Site Looks Like Every Other Club's",
-      text: "Template sites make a serious program look the same as the rec league down the road. Parents paying premium season fees expect a site that looks like the program they're paying for.",
-    },
     {
       title: "Parents Can't Find Your Fees or Season Dates",
       text: `"How much is club volleyball" is searched around 300 times a month in the US alone. Clubs with a clear fees page show up in those results and get quoted in AI answers. Most clubs don't have one.`,
@@ -77,133 +68,116 @@ export const problem: {
   cta: { text: 'See what parents find for your program.', label: 'Get a Free Audit', href: routes.audit },
 };
 
-export const programs: { id: string; heading: string; items: ServiceIndexItem[] } = {
+export const programs: {
+  id: string;
+  heading: string;
+  items: CardGridItem[];
+  cta: { title: string; body: string; label: string; href: string };
+  strip: { label: string; items: IconGridItem[] };
+} = {
   id: 'programs',
-  heading: 'Built for Every Kind of Sports Program',
+  heading: 'Tailored Solutions Built for Sports Programs',
   items: [
-    {
-      title: 'Club Teams & Travel Programs',
-      text: "Volleyball, baseball, softball, soccer, basketball, and more. Parents ask almost the same questions in every sport: what it costs, when the season starts, and whether it's worth it. We build your site to answer them.",
-    },
-    {
-      title: 'Academies & Elite Training',
-      text: 'Skill development and elite training programs need to show serious coaching and real progress. We build sites that make that case before a parent books an evaluation.',
-    },
-    {
-      title: 'Martial Arts & Combat Sports',
-      text: 'Boxing, MMA, jiu-jitsu, and martial arts gyms, built to turn a first search into a first class, and connected to the membership and booking tools you already run.',
-    },
-    {
-      title: 'Camps & Seasonal Programs',
-      text: 'Summer camps, clinics, and seasonal programs depend on the registration window. We build pages that fill spots before the deadline, not after it passes.',
-    },
+    { title: 'Club Teams & Travel Programs', illustration: 'program-club' },
+    { title: 'Academies & Elite Training', illustration: 'program-academy' },
+    { title: 'Martial Arts & Combat Sports', illustration: 'program-martial' },
+    { title: 'Camps & Seasonal Programs', illustration: 'program-camp' },
   ],
+  strip: {
+    label: 'For Every Program',
+    items: [
+      {
+        icon: 'browser',
+        title: 'A Site That Looks Like a Serious Program',
+        text: 'Your colours, your teams and your coaches, in a fast site that matches what parents are paying for.',
+      },
+      {
+        icon: 'workflow',
+        title: 'Keep Your Registration Software',
+        text: 'LeagueApps, TeamSnap, GotSport, or SportsEngine stay in charge of signups and schedules. We build the front door and connect it.',
+      },
+      {
+        icon: 'star',
+        title: 'Your Coaches, Front and Center',
+        text: 'Coach bios and credentials, so parents trust your program before the first tryout or evaluation.',
+      },
+      {
+        icon: 'price-tag',
+        title: 'Ready for Your Board',
+        text: 'Clear prices on this page and a written plan your board can review before anyone signs.',
+      },
+    ],
+  },
+  cta: {
+    title: "Let's Grow Your Program",
+    body: 'Tell us about your program and we will help you plan what comes next.',
+    label: 'Contact Us',
+    href: routes.contact,
+  },
 };
 
 export const services: {
   id: string;
   heading: string;
-  items: IconGridItem[];
-  labs: { heading: string; text: string; link: { label: string; href: string } };
+  stages: { title: string; items: IconGridItem[] }[];
 } = {
   id: 'services',
-  heading: 'What We Do for Sports Programs',
-  items: [
+  heading: 'From Search to Signed Up',
+  stages: [
     {
-      icon: 'browser',
-      title: 'A Website That Looks Like a Serious Program',
-      text: "Custom design built around your club's brand, your teams, and your coaches, mobile-first because most parents look you up on their phone between practices.",
+      title: 'Get Found',
+      items: [
+        {
+          icon: 'map-pin',
+          title: 'Win the Map Pack',
+          text: 'We optimize your Google Business Profile so your club shows up on the map when parents search for a program nearby.',
+        },
+        {
+          icon: 'map',
+          title: 'Reach the Towns Parents Drive From',
+          text: 'Families often travel for the right program. We build content for your whole area, not just the town your facility sits in.',
+        },
+      ],
     },
     {
-      icon: 'workflow',
-      title: 'Keep Your Registration Software',
-      text: 'Keep LeagueApps, TeamSnap, GotSport, or SportsEngine running registration and scheduling. We build the front door and connect it, so parents go from your site to signed up without getting lost.',
+      title: 'Get Chosen',
+      items: [
+        {
+          icon: 'search-ai',
+          title: 'Be the Club AI Recommends',
+          text: "Parents are starting to ask ChatGPT and Google's AI which club to choose. We structure your programs, fees, and seasons so AI assistants can confidently name you.",
+        },
+        {
+          icon: 'sparkles',
+          title: 'Fees, Season, and Tryout Pages',
+          text: 'Clear pages for fees, season dates, tryouts, and what a season includes, written to answer the exact questions parents search.',
+        },
+      ],
     },
     {
-      icon: 'price-tag',
-      title: 'Fees, Season, and Tryout Pages Parents Search For',
-      text: 'Clear pages for fees, season dates, tryouts, and what a season includes, written to answer the exact questions parents type into Google and ask AI assistants.',
-    },
-    {
-      icon: 'calendar',
-      title: 'Season-Ready Content & Campaigns',
-      text: 'Content and campaigns timed to your tryout and registration calendar, so interest peaks when signups open, not after they close.',
-    },
-    {
-      icon: 'chart-up',
-      title: 'Track Real Registrations',
-      text: 'A dashboard showing which searches turn into a registration or an evaluation booking, not just which pages get visited.',
-    },
-  ],
-  labs: {
-    heading: 'Need Custom Software Instead',
-    text: 'Custom registration flows, member portals, and automations beyond your website live at Fadeaway Labs.',
-    link: { label: 'See Fadeaway Labs', href: routes.labs },
-  },
-};
-
-export const method: { id: string; heading: string; intro: string; items: FeatureListItem[] } = {
-  id: 'method',
-  heading: 'Our AEO & SEO Method',
-  intro: "Here's exactly how we get your program found, on Google and in AI search.",
-  items: [
-    {
-      icon: 'map-pin',
-      title: 'Win the Map Pack',
-      text: 'We optimize your Google Business Profile so your club shows up on the map when parents search for a program nearby.',
-    },
-    {
-      icon: 'map',
-      title: 'Reach the Towns Parents Drive From',
-      text: 'Families often travel for the right program. We build content for your whole area, not just the town your facility sits in.',
-    },
-    {
-      icon: 'search-ai',
-      title: 'Be the Club AI Recommends',
-      text: "Parents are starting to ask ChatGPT and Google's AI which club to choose. We structure your programs, fees, and seasons with schema so AI assistants can confidently name you.",
-    },
-    {
-      icon: 'sparkles',
-      title: 'Answer the Questions Parents Ask',
-      text: "Cost, season length, age groups, and whether it's worth it. We turn those questions into page content and FAQs, the format AI answers quote most often.",
-    },
-    {
-      icon: 'star',
-      title: 'Reviews After Every Season',
-      text: 'Automated review requests go out after tryouts, tournaments, and season wrap-ups, when families are happiest and most likely to leave one.',
+      title: 'Get Registered',
+      items: [
+        {
+          icon: 'calendar',
+          title: 'Registration Built Into Your Site',
+          text: 'Parents check fees and tryout dates at midnight. Your site connects them straight to registration in a few taps, on any phone.',
+        },
+        {
+          icon: 'dashboard',
+          title: 'Track Real Registrations',
+          text: 'A dashboard showing which searches turn into a registration or an evaluation booking, not just which pages get visited.',
+        },
+      ],
     },
   ],
-};
-
-/** Primary conversion section */
-export const demo: {
-  id: string;
-  heading: string;
-  text: string;
-  steps: DemoOfferStep[];
-  cta: { label: string; href: string };
-  fallback: { text: string; link: { label: string; href: string } };
-} = {
-  id: 'demo',
-  heading: 'Not Sure Yet? Request Your Demo',
-  text: 'We know sports programs well, so your demo starts from what already works. We build 4 pages made for your program, in your branding, ready in 2 business days.',
-  steps: [
-    { title: 'Tell us about your program', text: 'a few details and your brand. It takes about a minute.' },
-    { title: 'We build your 4 pages', text: 'your homepage and the pages parents check first, like programs, fees, and tryouts, made for your brand.' },
-    { title: 'Experience it', text: 'we send you a private link within 2 business days so you can click through your new site yourself.' },
-  ],
-  cta: { label: 'Request Your Demo', href: routes.demoRequest },
-  fallback: { text: 'Already have a website you want to keep?', link: { label: 'Get a free audit instead', href: routes.audit } },
 };
 
 const included = "What's included:";
-const outcome = 'What you get out of it:';
 
-export const pricing: PricingContent & { id: string; heading: string; intro: string } = {
+export const pricing: PricingContent & { id: string; eyebrow?: string; heading: string; intro?: string } = {
   id: 'pricing',
-  heading: 'What You Pay For, and What You Get',
-  intro:
-    'Fixed prices, complete deliverable lists, and honest expectations. Clear numbers you can take straight to your board.',
+  eyebrow: 'Pricing',
+  heading: 'Clear Deliverables.\nTransparent Pricing.',
   detailsLabel: 'See Deliverables',
   plans: [
     {
@@ -211,47 +185,120 @@ export const pricing: PricingContent & { id: string; heading: string; intro: str
       cta: { label: 'Start with the Attract Plan', href: routes.contact },
       tone: 'accent',
       price: '$495',
+      priceLead: 'Starts from',
+      priceNote: '$945 one-time website build setup',
       cadence: '/ month',
       for: 'For programs that want steady, compounding local visibility.',
       includedLabel: included,
-      included: [
-        'Ongoing technical SEO and site health monitoring',
-        'Structured data and AEO signals kept current',
-        'Local SEO and Google Business Profile management',
-        'Registration platform integration and management',
-        'A monthly content calendar built around your season',
-        'A review generation system',
-        'A monthly reporting dashboard tracking rankings, inquiries, and registrations',
-        'A monthly check-in call',
+      points: [
+        'Full SEO and AEO foundation',
+        'New content, local links and site improvements every month',
+        'Clear dashboard and monthly strategy calls',
       ],
-      outcomeLabel: outcome,
-      outcome:
-        "a program that's easier for parents to find on Google Maps, in local search, and in AI answers season over season, more reviews, and a clear monthly view of inquiries and registrations.",
+      deliverables: [
+        {
+          title: 'Build the Foundation',
+          sections: [
+            { label: 'Research and planning', items: [
+              'Local market and keyword research for your sport, your programs and the towns families drive from',
+              'A keyword map that gives every page one clear job',
+              'Site structure and URL plan, with redirects so nothing breaks',
+            ] },
+            { label: 'Your pages', items: [
+              'Page copy written and tuned for search, page by page',
+              'Page titles and descriptions written to earn the click',
+              'Structured data (JSON-LD) so Google and AI tools can read your programs, fees, seasons and locations',
+            ] },
+            { label: 'Technical health', items: [
+              'Technical SEO fixes: speed, mobile, indexing and broken links',
+              'A backlink audit, with spammy links cleaned up',
+            ] },
+            { label: 'Local presence', items: [
+              'Google Business Profile fully optimized',
+              'Business listings made consistent across directories',
+              'Your registration platform connected to your site and your tracking',
+            ] },
+            { label: 'Tracking', items: [
+              'Google Analytics, Search Console and registration tracking set up',
+              'Your reporting dashboard built',
+            ] },
+          ],
+        },
+        {
+          title: 'Every Month: Grow and Compound',
+          sections: [
+            { items: [
+              'A content calendar built around your season, tryouts and registration windows',
+              "New content that answers what parents ask, so you're the club Google and AI assistants name",
+              'Link building from local sites, leagues and sports directories',
+              'Conversion improvements to your registration and tryout pages',
+              'Google Business Profile posts and updates',
+              'Automated review requests after tryouts, tournaments and season wrap-ups',
+              'Site health, rankings and AI search signals monitored',
+              '24/7 reporting dashboard',
+              'Monthly strategy calls',
+            ] },
+          ],
+        },
+      ],
     },
     {
       name: 'Growth Plan',
       cta: { label: 'Start with the Growth Plan', href: routes.contact },
       tone: 'highlight',
       price: '$995',
+      priceLead: 'Starts from',
+      priceNote: '$945 one-time website build setup',
       cadence: '/ month',
       for: 'For programs ready to fill rosters and camps faster.',
       includedLabel: included,
-      included: [
+      points: [
         'Everything in the Attract Plan',
-        'Paid ads management across Google and Meta',
-        'Lead generation campaigns timed to tryouts, camps, and registration windows',
-        'Email marketing campaigns to past and prospective families',
-        'AI search visibility tracking',
-        'An expanded dashboard combining paid and organic results',
+        'Paid ads, registration campaigns and email',
         'Weekly strategy calls',
       ],
-      outcomeLabel: outcome,
-      outcome:
-        'registrations from paid campaigns when your window opens, while your search visibility builds underneath, plus weekly strategy calls so every campaign lines up with your season calendar.',
+      deliverables: [
+        {
+          title: 'Everything in the Attract Plan, plus:',
+          sections: [
+            { label: 'Paid campaigns', items: [
+              'Google and Meta ad campaigns set up and managed',
+              'Tryout, camp and registration campaigns, each with its own landing page',
+              'Ongoing testing of ads, audiences and offers',
+            ] },
+            { label: 'Email', items: [
+              'Welcome emails for new families',
+              'Re-registration reminders for returning families before each season',
+              'Campaigns for camps, clinics and tryout dates',
+            ] },
+            { label: 'Visibility and reporting', items: [
+              'AI search visibility tracking across ChatGPT, Perplexity and Google AI Overviews',
+              'An expanded dashboard with paid and organic results side by side',
+              'Weekly strategy calls',
+            ] },
+          ],
+        },
+      ],
     },
   ],
-  setupLine:
-    "Every plan starts with a one-time $945 setup: a new website built from your demo, or a Full Audit if you're keeping your current site.",
+};
+
+/** Row card under the pricing cards (same as Boutique Fitness) */
+export const customRow = {
+  art: 'wireframe' as const,
+  title: 'Need Something Custom?',
+  body: "Multi-location academies and custom-designed sites are scoped as a custom build, and Fadeaway Labs builds custom registration flows, member portals and automations. See what we've built in our portfolio.",
+  links: [
+    { label: 'Explore Fadeaway Labs', href: routes.labs },
+    { label: 'See Our Portfolio', href: routes.portfolio },
+  ],
+};
+
+/** Founder-led note after pricing (the founder's own sports background is an open item in the copy file) */
+export const why = {
+  id: 'why',
+  heading: 'Why Fadeaway',
+  text: "Sports programs are personal for us. Our founder leads this work directly and spends real time with coaches, club directors, and people across the sports and combat sports world, so we understand how tryouts, registration seasons, and parent decisions actually work. Founder-led, 15+ years of experience, and every program gets the care we'd want if it were our own.",
 };
 
 export const expect: { id: string; heading: string; intro: string; items: TimelineItem[] } = {
@@ -273,25 +320,25 @@ export const expect: { id: string; heading: string; intro: string; items: Timeli
       text: "This is where local SEO and AEO usually start compounding: better map rankings, more parents finding you directly, and more registrations from your own site. That's why starting 3 to 6 months before your registration window matters.",
     },
     {
-      title: 'Month 6',
+      title: 'Month 6+',
       text: 'A full picture with real numbers on inquiries and registrations, and a clear plan for the next season.',
     },
   ],
 };
 
-/** Also feeds the HowTo schema */
+/** HIDDEN from the page Oct 14 (with its HowTo schema), same as Boutique Fitness. Kept for reuse. */
 export const howItWorks: { id: string; heading: string; items: StepItem[] } = {
   id: 'how-it-works',
   heading: 'How It Works',
   items: [
-    { title: 'Start free', text: 'Request a free demo of your new website, or a free audit of the one you have.' },
+    { title: 'Start free', text: 'Contact us about a new website, or ask for a free audit of the one you have.' },
     {
       title: 'Choose your path',
       text: "A new site with the $945 setup, or a Full Audit if you're keeping your current site. Never both.",
     },
     {
       title: 'Launch',
-      text: "We build or fix your site, connect it to your registration platform, set up your tracking, and host it for you if it's built from your demo.",
+      text: 'We build or fix your site, connect it to your registration platform, set up your tracking, and host it for you if we built it.',
     },
     {
       title: 'Grow, season by season',
@@ -308,13 +355,6 @@ export const realWork = {
   tag: 'sports-academies',
   limit: 3,
 } as const;
-
-/** Founder-led note near the end (the founder's own sports background is an open item in the copy file) */
-export const why = {
-  id: 'why',
-  heading: 'Why Fadeaway',
-  text: "Sports programs are personal for us. Our founder leads this work directly and spends real time with coaches, club directors, and people across the sports and combat sports world, so we understand how tryouts, registration seasons, and parent decisions actually work. Founder-led, 15+ years of experience, and every program gets the care we'd want if it were our own.",
-};
 
 /** Also feeds the FAQPage schema */
 export const faq: { id: string; heading: string; items: FaqItem[] } = {
@@ -339,7 +379,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
     },
     {
       q: 'Our board has to approve spending. Can you help with that?',
-      a: "Yes. Every price is fixed and published on this page. Your free demo shows the board exactly what the new site looks like, and the Full Audit gives you a written three to six month action plan. It's built so your board decides on specifics, not a sales pitch.",
+      a: "Yes. Every plan price is published on this page, and the full list of what's included is one click away. The Full Audit gives you a written three to six month action plan you can share. It's built so your board decides on specifics, not a sales pitch.",
     },
     {
       q: 'Do you work with martial arts and combat sports gyms?',
@@ -371,7 +411,7 @@ export const serviceOffers: Record<string, { price: number; unit?: 'MON' }> = {
 export const cta = {
   id: 'cta',
   heading: 'Ready to Fill Your Roster?',
-  text: "See your new website before you spend a dollar. Tell us about your program and we'll build you a free demo.",
-  cta: { label: 'Get Your Free Demo', href: routes.demoRequest },
+  text: 'Tell us about your program and we will help you plan what comes next.',
+  cta: { label: 'Contact Us', href: routes.contact },
   link: { label: 'Or see what parents find for your program with a free audit', href: routes.audit },
 };
