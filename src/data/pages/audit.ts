@@ -11,7 +11,7 @@ import type { LinkIndexItem } from '../../components/blocks/LinkIndex.astro';
 export const seo = {
   title: 'Free Website Audit | Fadeaway Creatives',
   description:
-    "A free audit of your website's SEO and AEO readiness, performance, site structure, and on-page copy, in a branded report within 24 hours.",
+    "A free audit of your website's SEO and AEO readiness, performance, site structure, and on-page copy, in a branded report.",
 };
 
 export const breadcrumb: BreadcrumbItem[] = [
@@ -21,12 +21,12 @@ export const breadcrumb: BreadcrumbItem[] = [
 
 /** AEO answer capsule: the wide intro of the first section after the Hero */
 export const answerCapsule =
-  "The Fadeaway Creatives Instant Audit is a free review of your website for businesses across Canada and the US. It checks your SEO and AEO readiness, performance, site structure, and on-page copy, and whether your tracking is set up, then sends the findings in a branded report within 24 hours, with clear priorities for what to fix first. There's no cost and no obligation.";
+  "The Fadeaway Creatives Instant Audit is a free review of your website for businesses across Canada and the US. It checks your SEO and AEO readiness, performance, site structure, and on-page copy, and whether your tracking is set up, then sends the findings in a branded report, with clear priorities for what to fix first. There's no cost and no obligation.";
 
 export const hero = {
   eyebrow: 'Free Instant Audit',
   h1: 'Get a Free Website Audit',
-  sub: 'See how ready your site is for Google and AI search, how fast it loads, and how well it turns visitors into customers. Your branded report arrives within 24 hours.',
+  sub: 'See how ready your site is for Google and AI search, how fast it loads, and how well it turns visitors into customers.',
 };
 
 /** Netlify Forms: name `audit-request`. `website` is pre-filled from ?website= (sent by the AuditCta block). */
@@ -89,7 +89,7 @@ export const howItWorks: { id: string; heading: string; items: StepItem[] } = {
     },
     {
       title: 'Get your report',
-      text: "Within 24 hours, you get a branded report showing what's working, what isn't, and what to fix first, and you can book a call to walk through it.",
+      text: "You get a branded report showing what's working, what isn't, and what to fix first, and you can book a call to walk through it.",
     },
   ],
 };
@@ -101,15 +101,15 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
   items: [
     {
       q: 'Is the website audit really free?',
-      a: "Yes. The Instant Audit costs nothing and comes with no obligation. You get the full report either way, and it's yours to keep and act on, whether you work with us or not. It covers your SEO and AEO readiness, performance, site structure, and on-page copy, delivered within 24 hours.",
+      a: "Yes. The Instant Audit costs nothing and comes with no obligation. You get the full report either way, and it's yours to keep and act on, whether you work with us or not. It covers your SEO and AEO readiness, performance, site structure, and on-page copy.",
     },
     {
       q: "What's the difference between the Instant Audit and the Full Audit?",
-      a: 'The Instant Audit is a high-level check of the four areas that matter most, delivered within 24 hours. The Full Audit is a paid, in-depth review with keyword research and a detailed action plan, and if you move ahead with a build, its fee is credited toward it.',
+      a: 'The Instant Audit is a high-level check of the four areas that matter most. The Full Audit is a paid, in-depth review with keyword research and a detailed action plan, and if you move ahead with a build, its fee is credited toward it.',
     },
     {
       q: 'What do you need from me?',
-      a: "Just your website address and where to send the report. If you tell us what isn't working right now, we'll look at that first. The form also asks for your name and business name. Your branded report then arrives by email within 24 hours.",
+      a: "Just your website address and where to send the report. If you tell us what isn't working right now, we'll look at that first. The form also asks for your name and business name. Your branded report then arrives by email.",
     },
   ],
 };
@@ -118,7 +118,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
 
 export const auditCta = {
   heading: 'Not Sure What Your Current Site Needs?',
-  text: 'Get a free audit of your SEO and AEO readiness, performance, site structure, and on-page copy. Your report arrives within 24 hours.',
+  text: 'Get a free audit of your SEO and AEO readiness, performance, site structure, and on-page copy.',
   fieldLabel: 'Your website',
   placeholder: 'yourbusiness.com',
   button: 'Get My Free Audit',
@@ -138,7 +138,7 @@ export const success: {
 } = {
   seo: { title: 'Audit Requested | Fadeaway Creatives', description: 'Your audit request is in.' },
   h1: 'Your Audit Request Is In',
-  text: "Thanks for sharing your site. We're running your audit now, and your branded report will arrive by email within 24 hours.",
+  text: "Thanks for sharing your site. We're running your audit now, and your branded report will arrive by email.",
   linksHeading: 'While you wait, see how we can help.',
   links: [
     { label: 'Build', href: routes.build },
