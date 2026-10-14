@@ -156,6 +156,11 @@ own or co-founded also get a SoftwareApplication schema entry. Oct 4: JabJab MMA
 internal tools, with an "Internal" badge and no link yet. Oct 4: Sports Academy Demo Website, Yoga Studio Demo
 Website, Wellness Practice Demo Website, Fadeaway Leads CRM. Screenshots beat line art when available.)
 
+Demo site card text (Oct 14, no mention of free demos while the demo is hidden; wording from Claude's draft, approved by the founder):
+- Sports Academy Demo Website: A demo site we built to show what a sports program website can look like.
+- Yoga Studio Demo Website: A demo site we built to show what a boutique fitness studio website can look like.
+- Wellness Practice Demo Website: A demo site we built to show what a wellness or counselling practice website can look like.
+
 ## From Idea to MVP: How a Labs Project Works {#idea-to-mvp}
 
 (Emits HowTo schema. This anchor is the networking follow-up link.)

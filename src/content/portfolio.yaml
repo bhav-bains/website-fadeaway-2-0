@@ -179,7 +179,7 @@
   owner: demo
   status: live
   industry: "Industry demo"
-  summary: "The demo site behind our free custom demos for sports programs. Request one and we build a personalized version for your club before you commit to anything."
+  summary: "A demo site we built to show what a sports program website can look like."
   chips: ["Industry Demo", "Astro", "Free Demo"]
   tags: ["labs", "sports-academies", "internal"]   # internal: not linked yet (founder, Oct 4)
   rank: 30
@@ -213,7 +213,7 @@
   owner: demo
   status: live
   industry: "Industry demo"
-  summary: "The demo site behind our free custom demos for boutique fitness studios."
+  summary: "A demo site we built to show what a boutique fitness studio website can look like."
   chips: ["Industry Demo", "Astro", "Free Demo"]
   tags: ["labs", "boutique-fitness", "internal"]   # founder, Oct 4: shown as an internal tool, not linked (still in build)
   rank: 32
@@ -224,7 +224,7 @@
   owner: demo
   status: live
   industry: "Industry demo"
-  summary: "The demo site behind our free custom demos for wellness and counselling practices."
+  summary: "A demo site we built to show what a wellness or counselling practice website can look like."
   chips: ["Industry Demo", "Astro", "Free Demo"]
   tags: ["labs", "wellness-counselling", "internal"]   # founder, Oct 4: shown as an internal tool, not linked (still in build)
   rank: 34
