@@ -16,8 +16,8 @@ h1: "Get a Free Website Audit"
 answer_capsule: >-
   The Fadeaway Creatives Instant Audit is a free review of your website for
   businesses across Canada and the US. It checks your SEO and AEO readiness,
-  performance, site structure, and on-page copy, then sends the findings in a
-  branded report within 24 hours, with clear priorities for what to fix first.
+  performance, site structure, and on-page copy, and whether your tracking is
+  set up, then sends the findings in a branded report within 24 hours, with clear priorities for what to fix first.
   There's no cost and no obligation.
 schema:
   - Organization  # sitewide
@@ -42,7 +42,7 @@ SEO + AEO is listed first wherever the four checks appear (sitewide positioning 
 | Title tag | Free Website Audit \| Fadeaway Creatives (39 chars) | Set (approved Oct 1) |
 | Meta description | A free audit of your website's SEO and AEO readiness, performance, site structure, and on-page copy, in a branded report within 24 hours. (139 chars) | Set (approved Oct 1) |
 | H1 | Get a Free Website Audit | Set (approved Oct 1) |
-| Answer capsule | See frontmatter (58 words) | Set (approved Oct 1) |
+| Answer capsule | See frontmatter (64 words; tracking added Oct 14) | Updated, needs approval |
 | Robots | index, follow (the success page is noindex) | Set |
 | Schema | Organization (sitewide), BreadcrumbList, HowTo, FAQPage | Set |
 
@@ -78,7 +78,8 @@ The website field is pre-filled when the visitor arrives from an audit CTA on an
 ## What We Check {#checks}
 
 ### SEO & AEO Readiness
-Whether Google and AI search tools like ChatGPT and Perplexity can read your site, understand what you offer, and recommend you.
+Whether Google and AI search tools like ChatGPT and Perplexity can read your site, understand what you offer, and recommend you, plus a snapshot of how AI assistants describe your business today.
+(AI snapshot added Oct 14, founder: the audit includes a manual ChatGPT and Perplexity check.)
 
 ### Performance
 How fast your pages load and how they hold up on phones, where most of your customers are browsing.
@@ -95,7 +96,8 @@ Whether your headlines, service pages, and calls to action speak to your custome
 
 1. **Share your site**: Enter your website and a few details. It takes about a minute.
 2. **We run your audit**: We review your SEO and AEO readiness, performance, site structure, and on-page copy.
-3. **Get your report**: Within 24 hours, you get a branded report showing what's working, what isn't, and what to fix first.
+3. **Get your report**: Within 24 hours, you get a branded report showing what's working, what isn't, and what to fix first, and you can book a call to walk through it.
+(Walkthrough line added Oct 14, founder: the report's one next step is a walkthrough call.)
 
 ## Frequently Asked Questions {#faq}
 

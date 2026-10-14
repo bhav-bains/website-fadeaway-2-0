@@ -21,7 +21,7 @@ export const breadcrumb: BreadcrumbItem[] = [
 
 /** AEO answer capsule: the wide intro of the first section after the Hero */
 export const answerCapsule =
-  "The Fadeaway Creatives Instant Audit is a free review of your website for businesses across Canada and the US. It checks your SEO and AEO readiness, performance, site structure, and on-page copy, then sends the findings in a branded report within 24 hours, with clear priorities for what to fix first. There's no cost and no obligation.";
+  "The Fadeaway Creatives Instant Audit is a free review of your website for businesses across Canada and the US. It checks your SEO and AEO readiness, performance, site structure, and on-page copy, and whether your tracking is set up, then sends the findings in a branded report within 24 hours, with clear priorities for what to fix first. There's no cost and no obligation.";
 
 export const hero = {
   eyebrow: 'Free Instant Audit',
@@ -57,7 +57,7 @@ export const checks: { id: string; heading: string; items: FeatureListItem[] } =
     {
       icon: 'search-ai',
       title: 'SEO & AEO Readiness',
-      text: 'Whether Google and AI search tools like ChatGPT and Perplexity can read your site, understand what you offer, and recommend you.',
+      text: 'Whether Google and AI search tools like ChatGPT and Perplexity can read your site, understand what you offer, and recommend you, plus a snapshot of how AI assistants describe your business today.',
     },
     {
       icon: 'gauge',
@@ -89,7 +89,7 @@ export const howItWorks: { id: string; heading: string; items: StepItem[] } = {
     },
     {
       title: 'Get your report',
-      text: "Within 24 hours, you get a branded report showing what's working, what isn't, and what to fix first.",
+      text: "Within 24 hours, you get a branded report showing what's working, what isn't, and what to fix first, and you can book a call to walk through it.",
     },
   ],
 };
