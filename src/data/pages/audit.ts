@@ -89,6 +89,11 @@ export const checks: { id: string; heading: string; items: FeatureListItem[] } =
       title: 'On-Page Copy',
       text: 'Whether your headlines, service pages, and calls to action speak to your customers and give them a clear reason to get in touch.',
     },
+    {
+      icon: 'dashboard',
+      title: 'Tracking',
+      text: 'Whether Google Analytics and your other tracking are set up and working, so you can see where your visitors and enquiries come from.',
+    },
   ],
 };
 
@@ -100,7 +105,7 @@ export const howItWorks: { id: string; heading: string; items: StepItem[] } = {
     { title: 'Share your site', text: 'Enter your website and a few details. It takes about a minute.' },
     {
       title: 'We run your audit',
-      text: 'We review your SEO and AEO readiness, performance, site structure, and on-page copy.',
+      text: 'We review your SEO and AEO readiness, performance, site structure, on-page copy, and tracking.',
     },
     {
       title: 'Get your report',
@@ -120,7 +125,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
     },
     {
       q: "What's the difference between the Instant Audit and the Full Audit?",
-      a: 'The Instant Audit is a high-level check of the four areas that matter most. The Full Audit is a paid, in-depth review with keyword research and a detailed action plan, and if you move ahead with a build, its fee is credited toward it.',
+      a: 'The Instant Audit is a high-level check of the five areas that matter most. The Full Audit is a paid, in-depth review with keyword research and a detailed action plan, and if you move ahead with a build, its fee is credited toward it.',
     },
     {
       q: 'What do you need from me?',

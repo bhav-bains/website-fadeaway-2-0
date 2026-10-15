@@ -32,7 +32,7 @@ Funnel: visitor enters their site URL (on this page, or in the audit CTA on anot
 URL here) → adds name, email, business → we run the audit workflow → report by email
 → follow-up. Goal: capture the lead with a useful, low-commitment offer. Keep the form short.
 Visitors without a site (new custom builds) are pointed to Get a Quote → /contact.
-SEO + AEO is listed first wherever the four checks appear (sitewide positioning rule).
+SEO + AEO is listed first wherever the five checks appear (sitewide positioning rule).
 -->
 
 ## Section 0: Meta Data (/audit)
@@ -91,12 +91,16 @@ How your pages, navigation, and internal links are organized, and whether visito
 ### On-Page Copy
 Whether your headlines, service pages, and calls to action speak to your customers and give them a clear reason to get in touch.
 
+### Tracking
+Whether Google Analytics and your other tracking are set up and working, so you can see where your visitors and enquiries come from.
+(Added Oct 15, founder: tracking is a fifth check. Wording drafted by Claude, awaiting approval.)
+
 ## How It Works {#how-it-works}
 
 (Emits HowTo schema.)
 
 1. **Share your site**: Enter your website and a few details. It takes about a minute.
-2. **We run your audit**: We review your SEO and AEO readiness, performance, site structure, and on-page copy.
+2. **We run your audit**: We review your SEO and AEO readiness, performance, site structure, on-page copy, and tracking.
 3. **Get your report**: You get a report showing what's working, what isn't, and what to fix first, and you can book a call to walk through it.
 (Walkthrough line added Oct 14, founder: the report's one next step is a walkthrough call.)
 
@@ -107,7 +111,7 @@ faq:
   - q: "Is the website audit really free?"
     a: "Yes. The Instant Audit costs nothing and comes with no obligation. You get the full report either way, and it's yours to keep and act on, whether you work with us or not. It covers your SEO and AEO readiness, performance, site structure, and on-page copy."
   - q: "What's the difference between the Instant Audit and the Full Audit?"
-    a: "The Instant Audit is a high-level check of the four areas that matter most. The Full Audit is a paid, in-depth review with keyword research and a detailed action plan, and if you move ahead with a build, its fee is credited toward it."
+    a: "The Instant Audit is a high-level check of the five areas that matter most. The Full Audit is a paid, in-depth review with keyword research and a detailed action plan, and if you move ahead with a build, its fee is credited toward it."
   - q: "What do you need from me?"
     a: "Just your website address and where to send the report. If you tell us what isn't working right now, we'll look at that first. The form also asks for your name and business name. Your report then arrives by email."
 ```
