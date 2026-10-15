@@ -12,7 +12,7 @@ canonical: "https://fadeawaycreatives.com/audit"
 og:
   image: /og-default.jpg
 robots: "index, follow"
-h1: "Get a Free Website Audit"
+h1: "Get a Free Business Audit"
 answer_capsule: >-
   The Fadeaway Creatives Instant Audit is a free review of your website for
   businesses across Canada and the US. It checks your SEO and AEO readiness,
@@ -41,7 +41,7 @@ SEO + AEO is listed first wherever the five checks appear (sitewide positioning 
 |---|---|---|
 | Title tag | Free Website Audit \| Fadeaway Creatives (39 chars) | Set (approved Oct 1) |
 | Meta description | A free audit of your website's SEO and AEO readiness, performance, site structure, and on-page copy, in a report. (113 chars) | Set (approved Oct 1) |
-| H1 | Get a Free Website Audit | Set (approved Oct 1) |
+| H1 | Get a Free Business Audit | Changed by founder, Oct 14 |
 | Answer capsule | See frontmatter (64 words; tracking added Oct 14) | Updated, needs approval |
 | Robots | index, follow (the success page is noindex) | Set |
 | Schema | Organization (sitewide), BreadcrumbList, HowTo, FAQPage | Set |
@@ -52,11 +52,12 @@ Home → Free Audit
 
 ## Hero {#hero}
 
-- Eyebrow: Free Instant Audit
-- H1: Get a Free Website Audit
+- Eyebrow: none (badge removed by founder, Oct 14)
+- H1: Get a Free Business Audit
 - Sub-headline: See how ready your site is for Google and AI search, how fast it loads, and how well it turns visitors into customers.
 - No CTA buttons in the Hero. The form sits beside it on desktop and below it on mobile.
 - Answer capsule: renders as the intro of the first section after the Hero.
+- Ways to connect (founder, Oct 14): under the sub-headline, the same four cards as the Contact page (Schedule a Call, WhatsApp, Email, Instagram); wording and links live in `copy/contact.md` ("Ways to connect") and `src/data/pages/contact.ts`. No heading or location line here.
 
 ## Audit Request Form {#form}
 

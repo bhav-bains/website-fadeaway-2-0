@@ -23,10 +23,10 @@ display_line: "Get ready for the AI search era."
 h1: "SEO Audits Built to Grow Revenue"
 answer_capsule: >-
   Fadeaway Creatives is a growth partner for businesses across Canada and the
-  US. We start with a free Instant Audit and a fixed-price Full Audit to find
-  where your revenue is leaking, fix conversion first, then grow demand through
-  SEO, AEO, and paid media on Google and Meta. Every engagement is scoped to
-  your business and reported in bookings and sales, not rankings.
+  US. We start with an audit to find where your revenue is leaking, fix
+  conversion first, then grow demand through SEO, AEO, and paid media on Google
+  and Meta. Every engagement is scoped to your business and reported in
+  bookings and sales, not rankings.
 keywords:
   primary: "seo audit agency"   # 1,900/mo US KD 9; 20/mo Canada KD 6; $25 CPC
   secondary: ["seo audit services", "aeo agency", "generative engine optimization agency", "ppc management agency"]
@@ -70,7 +70,7 @@ Notes for the build:
 | Schema: FAQPage | From the FAQ list, matches visible copy verbatim | Set |
 | Schema: BreadcrumbList | Home > Growth | Set |
 | Answer capsule | See frontmatter `answer_capsule` | Updated, needs approval |
-| Visible FAQ block | 6 questions, 40 to 60 word answers, no prices | Updated, needs approval |
+| Visible FAQ block | 5 questions, 40 to 60 word answers, no prices | Updated, needs approval |
 | Last updated date | Set at launch | Pending launch |
 | Internal links | All 4 Solutions pages, /services/build/, /labs/, /audit/, /contact/. Zero `#` placeholders. | To QA |
 | Primary keyword | seo audit agency (1,900/mo US KD 9; 20/mo Canada KD 6; $25 CPC) | Set |
@@ -92,8 +92,6 @@ Home → Growth
 - Answer capsule: renders directly under the Hero, from the frontmatter.
 
 ## Audited Right, From Day One {#standard}
-
-Every audit and every ongoing engagement follows the same standard: real data, real reporting, real accountability.
 
 ### Revenue-Tracked Growth
 Every audit and every report measures bookings, sales, and customers, the numbers that actually matter to your business.
@@ -121,9 +119,7 @@ names, each as number + metric + timeframe + client type. Example of the FORMAT 
 
 (Emits HowTo schema. This is the page's centerpiece.)
 
-A great salesperson in an empty room sells nothing. Growth is how we send the right people in.
-
-Growth isn't one tactic. It's a system, and every step feeds the next.
+A great salesperson in an empty room sells nothing. Growth is how we send the right people in. Growth isn't one tactic. It's a system, and every step feeds the next.
 <!-- Added Oct 2 (founder): "your website is a 24/7 salesperson" framing. One line per page, worded for this audience. -->
 
 1. **Measure the baseline**: Before we change anything, we make sure every booking, form, call, and sale is tracked in Google Analytics and Search Console, so you know what your revenue looks like today and can see exactly what moves it.
@@ -159,6 +155,7 @@ Lead capture, nurture sequences, and email campaigns that turn one-time visitors
 One dashboard combining paid, organic, and AI search performance, tied to bookings and sales, with a monthly report and strategy call to walk you through it.
 
 ## The Growth Ladder {#growth-ladder}
+(HIDDEN Oct 14, founder: not on the page for now; copy kept for a possible return.)
 
 Every engagement starts small and grows with the results.
 
@@ -174,24 +171,21 @@ Starting with a new website instead? The build covers the audit's groundwork, so
 
 Search behavior looks different in every industry, so the growth work does too.
 
+(Cards only, no body copy, founder Oct 14: illustration + title, each card links to its solutions page; swipe row on phones.)
+
 ### E-commerce
-E-commerce SEO is a long game in a competitive field. We run the technical audits and ongoing search work that compound over time, not overnight tricks.
-[Link: See E-commerce Growth Work → /solutions/ecommerce/]
+[Link: See E-commerce Solutions → /solutions/ecommerce/]
 
 ### Wellness & Counselling
-"SEO for therapists" alone is searched about 1,600 times a month in the US, and patients search for therapists, counsellors, and chiropractors every day. We build the strategy around that demand, so you're found beyond directory listings.
-[Link: See Wellness & Counselling Growth Work → /solutions/wellness-counselling/]
+[Link: See Wellness & Counselling Solutions → /solutions/wellness-counselling/]
 
 ### Boutique Fitness
-Class bookings live and die by local search and referrals. We run the ongoing SEO work that keeps your studio visible when someone's looking for a new class.
-[Link: See Boutique Fitness Growth Work → /solutions/boutique-fitness/]
+[Link: See Boutique Fitness Solutions → /solutions/boutique-fitness/]
 
 ### Sports Academies
-Parents search for clubs, fees, and season dates all year, and "how to choose a sports club" alone is searched about 2,800 times a month in the US. Our SEO and AEO work makes sure they find your program when they do.
-[Link: See Sports Academies Growth Work → /solutions/sports/]
+[Link: See Sports Academies Solutions → /solutions/sports/]
 
 ### Other Growing Businesses
-Service firms, agencies, local service businesses, and online products. If your customers search before they buy, the same system applies. We scope the work around your market after the audit.
 [Link: Tell Us About Your Business → /contact/]
 
 ## Need Something Else First? {#something-else}
@@ -236,8 +230,8 @@ faq:
     a: "Conversion fixes and technical issues often show results within the first few weeks, because they improve the traffic you already have. SEO and AEO build over the 3 to 6 month window in your action plan, and paid campaigns can bring in customers sooner. Your dashboard tracks bookings and sales the whole way."
   - q: "What if my website needs work too?"
     a: "That's a Build project, not growth work. If your audit shows your site itself needs rebuilding, we loop in the Build team before any SEO work starts, and the audit fee you already paid gets credited toward the build, so you never pay twice for the same work."
-  - q: "Do you work with businesses outside Canada?"
-    a: "Yes. We're based in Vancouver, BC, and work with clients across Canada and the United States. Wherever your business is, we build your strategy around how your specific market searches, from local map results to the answers AI assistants give when your customers ask for a recommendation."
+  # HIDDEN Oct 14 (founder): q: "Do you work with businesses outside Canada?" a: "Yes. We're based in Vancouver, BC, and work with clients across Canada and the United States. Wherever your business is, we build your strategy around how your specific market searches, from local map results to the answers AI assistants give when your customers ask for a recommendation."
+
 ```
 
 ## From the Blog {#blog}

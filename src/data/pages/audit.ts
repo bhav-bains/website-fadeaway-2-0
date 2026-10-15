@@ -24,8 +24,7 @@ export const answerCapsule =
   "The Fadeaway Creatives Instant Audit is a free review of your website for businesses across Canada and the US. It checks your SEO and AEO readiness, performance, site structure, and on-page copy, and whether your tracking is set up, then sends the findings in a report, with clear priorities for what to fix first. There's no cost and no obligation.";
 
 export const hero = {
-  eyebrow: 'Free Instant Audit',
-  h1: 'Get a Free Website Audit',
+  h1: 'Get a Free Business Audit',
   sub: 'See how ready your site is for Google and AI search, how fast it loads, and how well it turns visitors into customers.',
 };
 

@@ -4,6 +4,7 @@
 // ?website=... pre-fills the website field (client-side; the page itself is static).
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FormHero from '../components/blocks/FormHero.astro';
+import ContactOptions from '../components/blocks/ContactOptions.astro';
 import Section from '../components/blocks/Section.astro';
 import FeatureList from '../components/blocks/FeatureList.astro';
 import Steps from '../components/blocks/Steps.astro';
@@ -12,6 +13,8 @@ import { breadcrumbSchema, howToSchema, faqSchema } from '../lib/schema';
 import { siteConfig } from '../data/site';
 import { routes } from '../data/routes';
 import { seo, breadcrumb, answerCapsule, hero, form, checks, howItWorks, faq } from '../data/pages/audit';
+// The same contact options as /contact/ (data lives in contact.ts, shared)
+import { connect } from '../data/pages/contact';
 
 const jsonLd = [
   breadcrumbSchema(breadcrumb),
@@ -25,7 +28,11 @@ const jsonLd = [
 ---
 
 <BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
-  <FormHero breadcrumb={breadcrumb} eyebrow={hero.eyebrow} h1={hero.h1} sub={hero.sub} form={form} halfWidth={['name', 'email']} />
+  <FormHero breadcrumb={breadcrumb} h1={hero.h1} sub={hero.sub} form={form} halfWidth={['name', 'email']}>
+    <div class="mt-6 flex w-full flex-col gap-3 border-t border-line pt-4 md:mt-8 md:pt-6">
+      <ContactOptions items={connect.items} newTabLabel={connect.newTabLabel} />
+    </div>
+  </FormHero>
 
   <!-- Answer capsule (AEO summary) is the wide intro of the first section after the Hero -->
   <Section id={checks.id} heading={checks.heading} intro={answerCapsule} introStyle="wide" align="start">

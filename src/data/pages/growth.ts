@@ -8,7 +8,6 @@ import type { SpecItem } from '../../components/blocks/SpecGrid.astro';
 import type { StepItem } from '../../components/blocks/Steps.astro';
 import type { FeatureListItem } from '../../components/blocks/FeatureList.astro';
 import type { LadderItem } from '../../components/blocks/Ladder.astro';
-import type { ServiceIndexItem } from '../../components/blocks/ServiceIndex.astro';
 import type { CardGridItem } from '../../components/blocks/CardGrid.astro';
 import type { FaqItem } from '../../components/blocks/Faq.astro';
 
@@ -26,7 +25,7 @@ export const breadcrumb: BreadcrumbItem[] = [
 
 /** AEO answer capsule: the wide intro of the first section after the Hero */
 export const answerCapsule =
-  'Fadeaway Creatives is a growth partner for businesses across Canada and the US. We start with a free Instant Audit and a fixed-price Full Audit to find where your revenue is leaking, fix conversion first, then grow demand through SEO, AEO, and paid media on Google and Meta. Every engagement is scoped to your business and reported in bookings and sales, not rankings.';
+  'Fadeaway Creatives is a growth partner for businesses across Canada and the US. We start with an audit to find where your revenue is leaking, fix conversion first, then grow demand through SEO, AEO, and paid media on Google and Meta. Every engagement is scoped to your business and reported in bookings and sales, not rankings.';
 
 /** Service pages ship the blueprint hero. In `npm run dev`, compare with ?hero=statement | showcase | all. */
 export const heroVariant: HeroVariant = 'blueprint';
@@ -42,10 +41,9 @@ export const hero: HeroContent = {
   visual: 'growth',
 };
 
-export const standard: { id: string; heading: string; intro: string; items: SpecItem[] } = {
+export const standard: { id: string; heading: string; items: SpecItem[] } = {
   id: 'standard',
   heading: 'Audited Right, From Day One',
-  intro: 'Every audit and every ongoing engagement follows the same standard: real data, real reporting, real accountability.',
   items: [
     {
       title: 'Revenue-Tracked Growth',
@@ -73,17 +71,15 @@ export const results: { value: string; label: string }[] = [];
 export const revenueSystem: {
   id: string;
   heading: string;
-  intro: string[];
+  intro: string;
   items: StepItem[];
   cta: { heading: string; button: string };
 } = {
   id: 'revenue-system',
   heading: 'How We Move Revenue',
-  intro: [
-    // Added Oct 2 (24/7 salesperson framing)
-    'A great salesperson in an empty room sells nothing. Growth is how we send the right people in.',
-    "Growth isn't one tactic. It's a system, and every step feeds the next.",
-  ],
+  // Added Oct 2 (24/7 salesperson framing); one paragraph since Oct 14
+  intro:
+    "A great salesperson in an empty room sells nothing. Growth is how we send the right people in. Growth isn't one tactic. It's a system, and every step feeds the next.",
   items: [
     {
       title: 'Measure the baseline',
@@ -188,36 +184,21 @@ export const ladder: {
   },
 };
 
-export const industries: { id: string; heading: string; intro: string; items: ServiceIndexItem[] } = {
+export const industries: { id: string; heading: string; intro: string; items: CardGridItem[] } = {
   id: 'industries',
   heading: 'Built Around Your Industry',
   intro: 'Search behavior looks different in every industry, so the growth work does too.',
+  // Cards only, no body copy (founder, Oct 14): illustration + title, each linking to its solutions page
   items: [
-    {
-      title: 'E-commerce',
-      text: 'E-commerce SEO is a long game in a competitive field. We run the technical audits and ongoing search work that compound over time, not overnight tricks.',
-      link: { label: 'See E-commerce Growth Work', href: routes.ecommerce },
-    },
+    { title: 'E-commerce', link: { label: 'See E-commerce Solutions', href: routes.ecommerce }, illustration: 'ecommerce' },
     {
       title: 'Wellness & Counselling',
-      text: '"SEO for therapists" alone is searched about 1,600 times a month in the US, and patients search for therapists, counsellors, and chiropractors every day. We build the strategy around that demand, so you\'re found beyond directory listings.',
-      link: { label: 'See Wellness & Counselling Growth Work', href: routes.wellnessCounselling },
+      link: { label: 'See Wellness & Counselling Solutions', href: routes.wellnessCounselling },
+      illustration: 'wellness',
     },
-    {
-      title: 'Boutique Fitness',
-      text: "Class bookings live and die by local search and referrals. We run the ongoing SEO work that keeps your studio visible when someone's looking for a new class.",
-      link: { label: 'See Boutique Fitness Growth Work', href: routes.boutiqueFitness },
-    },
-    {
-      title: 'Sports Academies',
-      text: 'Parents search for clubs, fees, and season dates all year, and "how to choose a sports club" alone is searched about 2,800 times a month in the US. Our SEO and AEO work makes sure they find your program when they do.',
-      link: { label: 'See Sports Academies Growth Work', href: routes.sports },
-    },
-    {
-      title: 'Other Growing Businesses',
-      text: 'Service firms, agencies, local service businesses, and online products. If your customers search before they buy, the same system applies. We scope the work around your market after the audit.',
-      link: { label: 'Tell Us About Your Business', href: routes.contact },
-    },
+    { title: 'Boutique Fitness', link: { label: 'See Boutique Fitness Solutions', href: routes.boutiqueFitness }, illustration: 'fitness' },
+    { title: 'Sports Academies', link: { label: 'See Sports Academies Solutions', href: routes.sports }, illustration: 'sports' },
+    { title: 'Other Growing Businesses', link: { label: 'Tell Us About Your Business', href: routes.contact }, illustration: 'growth' },
   ],
 };
 
@@ -229,11 +210,13 @@ export const somethingElse: { id: string; heading: string; items: CardGridItem[]
       title: 'Website Needs Work First',
       body: "If your website itself needs to be built or redesigned before growth work makes sense, that's a Build project, not growth work.",
       link: { label: 'See Build Services', href: routes.build },
+      backdrop: 'layers',
     },
     {
       title: 'Need Custom Software Instead',
       body: "If what you actually need is custom software, automations, or dashboards rather than a website, that's Fadeaway Labs.",
       link: { label: 'See Fadeaway Labs', href: routes.labs },
+      backdrop: 'launch',
     },
   ],
 };
@@ -272,10 +255,11 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
       q: 'What if my website needs work too?',
       a: "That's a Build project, not growth work. If your audit shows your site itself needs rebuilding, we loop in the Build team before any SEO work starts, and the audit fee you already paid gets credited toward the build, so you never pay twice for the same work.",
     },
-    {
-      q: 'Do you work with businesses outside Canada?',
-      a: 'Yes. We\'re based in Vancouver, BC, and work with clients across Canada and the United States. Wherever your business is, we build your strategy around how your specific market searches, from local map results to the answers AI assistants give when your customers ask for a recommendation.',
-    },
+    // HIDDEN Oct 14 (founder): "Do you work with businesses outside Canada?" (removed from the visible FAQ and the FAQPage schema together). To restore, put this item back in `items`:
+    // {
+    //   q: 'Do you work with businesses outside Canada?',
+    //   a: 'Yes. We\'re based in Vancouver, BC, and work with clients across Canada and the United States. Wherever your business is, we build your strategy around how your specific market searches, from local map results to the answers AI assistants give when your customers ask for a recommendation.',
+    // },
   ],
 };
 

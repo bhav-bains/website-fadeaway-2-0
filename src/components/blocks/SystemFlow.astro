@@ -1,7 +1,8 @@
 ---
 // A growth system as a pipeline: numbered stations joined by one continuous line. lg: two rows of three that snake
 // (row 1 left to right, a U-turn at the right edge, row 2 right to left), so the last step sits under the first.
-// Below lg: a vertical timeline. Built for 6 steps ("How We Move Revenue"); pair with howToSchema() on the same items.
+// md to lg: a vertical timeline. Phones: a swipeable scroll-snap row of cards (next card peeks in), number above the text.
+// Connector lines are one solid colour (no gradients). Built for 6 steps ("How We Move Revenue"); pair with howToSchema() on the same items.
 import clsx from 'clsx';
 import type { StepItem } from './Steps.astro';
 
@@ -25,19 +26,38 @@ const place = [
 ];
 ---
 
-<ol class={clsx('grid gap-5 lg:grid-cols-3 lg:gap-x-0 lg:gap-y-[3rem]', className)}>
+<ol
+  class={clsx(
+    '-mx-2 flex snap-x snap-mandatory scroll-px-2 gap-2 overflow-x-auto px-2 pb-1 no-scrollbar sm:-mx-3 sm:scroll-px-3 sm:px-3 md:mx-0 md:grid md:snap-none md:gap-5 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3 lg:gap-x-0 lg:gap-y-[3rem]',
+    className,
+  )}
+>
   {
     items.map((item, i) => {
       const row2 = i >= perRow;
       const last = i === items.length - 1;
       const turn = i === perRow - 1 && items.length > perRow; // end of row 1: U-turn down to row 2
       return (
-        <li class={clsx('relative grid grid-cols-[auto_minmax(0,1fr)] gap-x-3 lg:grid-cols-1 lg:gap-y-3 lg:pr-6', place[i])}>
-          {/* Phones/tablet: vertical connector to the next station */}
+        <li
+          class={clsx(
+            'relative grid content-start gap-y-2 max-md:shrink-0 max-md:basis-[82%] max-md:snap-start max-md:rounded-card max-md:border max-md:border-line-strong max-md:bg-surface-lifted max-md:p-3 sm:max-md:basis-[55%] md:grid-cols-[auto_minmax(0,1fr)] md:gap-x-3 md:gap-y-0 lg:grid-cols-1 lg:gap-y-3 lg:pr-6',
+            place[i],
+          )}
+        >
+          {/* Phones: a short line with an arrowhead from this number toward the edge of the card, so the order reads 1, 2, 3 as you swipe */}
           {!last && (
             <span
               aria-hidden="true"
-              class="absolute -bottom-5 left-[1.5rem] top-12 w-px bg-gradient-to-b from-accent/60 to-highlight/60 lg:hidden"
+              class="absolute right-3 top-[3rem] left-[5rem] z-10 h-px bg-highlight/50 md:hidden"
+            >
+              <span class="absolute -right-px top-1/2 size-1 -translate-y-1/2 rotate-45 border-r border-t border-highlight/70" />
+            </span>
+          )}
+          {/* md to lg: vertical connector to the next station */}
+          {!last && (
+            <span
+              aria-hidden="true"
+              class="absolute -bottom-5 left-[1.5rem] top-12 w-px bg-highlight/50 max-md:hidden lg:hidden"
             />
           )}
           {/* lg: horizontal line along the station row, from this node to the column's right edge.
@@ -46,10 +66,7 @@ const place = [
           {((!row2 && !turn && !last) || (row2 && i > perRow)) && (
             <span
               aria-hidden="true"
-              class={clsx(
-                'absolute left-12 right-0 top-[1.5rem] hidden h-px from-accent/60 to-highlight/60 lg:block',
-                row2 ? 'bg-gradient-to-l' : 'bg-gradient-to-r',
-              )}
+              class="absolute left-12 right-0 top-[1.5rem] hidden h-px bg-highlight/50 lg:block"
             />
           )}
           {/* lg: U-turn from the end of row 1 down to the first station of row 2 (same column) */}
@@ -61,10 +78,7 @@ const place = [
           )}
           <span
             aria-hidden="true"
-            class={clsx(
-              'relative z-10 inline-flex size-12 items-center justify-center rounded-full border bg-surface-raised font-display text-base font-semibold tabular-nums',
-              i === 0 ? 'border-accent/50 text-accent' : 'border-highlight/40 text-highlight',
-            )}
+            class="relative z-10 inline-flex size-12 items-center justify-center rounded-full border border-highlight/40 bg-surface-raised font-display text-base font-semibold tabular-nums text-highlight"
           >
             {pad(i + 1)}
           </span>

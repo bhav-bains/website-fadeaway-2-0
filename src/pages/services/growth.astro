@@ -10,7 +10,6 @@ import SystemFlow from '../../components/blocks/SystemFlow.astro';
 import AuditCta from '../../components/blocks/AuditCta.astro';
 import FeatureList from '../../components/blocks/FeatureList.astro';
 import Ladder from '../../components/blocks/Ladder.astro';
-import ServiceIndex from '../../components/blocks/ServiceIndex.astro';
 import CardGrid from '../../components/blocks/CardGrid.astro';
 import WorkGrid from '../../components/blocks/WorkGrid.astro';
 import Faq from '../../components/blocks/Faq.astro';
@@ -61,7 +60,7 @@ const jsonLd = [
   <!-- Dev-only preview: /services/growth/?hero=blueprint | statement | showcase | all -->
   <HeroPreview content={hero} variant={heroVariant} options={['blueprint', 'statement', 'showcase']} />
 
-  <!-- Answer capsule (AEO summary) is the wide intro of the first section after the Hero; the section's own line sits above the grid -->
+  <!-- Answer capsule (AEO summary) is the wide intro of the first section after the Hero -->
   <Section
     id={standard.id}
     heading={standard.heading}
@@ -70,7 +69,6 @@ const jsonLd = [
     align="start"
     class="overflow-x-clip"
   >
-    <p class="mb-3 max-w-2xl text-pretty text-base font-medium text-ink md:mb-4 md:text-lg">{standard.intro}</p>
     <SpecGrid items={standard.items} columns={4} art="gauge" />
   </Section>
 
@@ -112,13 +110,15 @@ const jsonLd = [
     <FeatureList items={capabilities.items} columns={1} />
   </Section>
 
+  {/* HIDDEN Oct 14 (founder): The Growth Ladder. Data stays in growth.ts (ladder) and copy/growth.md. To restore, put the Section back:
   <Section id={ladder.id} heading={ladder.heading} intro={ladder.intro} align="start">
     <Ladder items={ladder.items} />
     <ForkCallout heading={ladder.note.heading} text={ladder.note.text} link={ladder.note.link} class="mt-6 md:mt-10" />
   </Section>
+  */}
 
   <Section id={industries.id} heading={industries.heading} intro={industries.intro} align="start">
-    <ServiceIndex items={industries.items} art="none" />
+    <CardGrid items={industries.items} swipe balanced />
   </Section>
 
   <Section id={somethingElse.id} heading={somethingElse.heading} align="start">
