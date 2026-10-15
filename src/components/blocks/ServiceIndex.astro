@@ -1,16 +1,19 @@
 ---
 // Editorial index of services: full-width rows split by hairlines, no cards, no icons.
-// lg: number | large title | text + optional link, in three columns; phones stack number/title above the text.
+// lg: icon | large title | text + optional link, in three columns; phones stack icon/title above the text.
 // Hover (pointer devices): a highlight rule sweeps along the row's top edge and the title nudges right.
 // Decoration (art="bag", default): an oversized shopping bag with a rising line bleeding off the top-right edge.
 // An optional closing CTA row sits after the last service.
 import clsx from 'clsx';
 import ArrowLink from '../ui/ArrowLink.astro';
 import Button from '../Button.astro';
+import Icon, { type IconName } from '../ui/Icon.astro';
 
 export interface ServiceIndexItem {
   title: string;
   text: string;
+  /** Small line icon tile at the start of the row (replaces the old 01/08 numbers) */
+  icon?: IconName;
   link?: { label: string; href: string };
 }
 
@@ -23,8 +26,6 @@ interface Props {
 }
 
 const { items, cta, art = 'bag', class: className } = Astro.props;
-const pad = (n: number) => String(n).padStart(2, '0');
-const total = pad(items.length);
 ---
 
 <div class={clsx('relative isolate', className)}>
@@ -62,15 +63,14 @@ const total = pad(items.length);
 
   <ol class="border-b border-line">
     {
-      items.map((item, i) => (
+      items.map((item) => (
         <li class="group relative grid gap-x-4 gap-y-2 border-t border-line py-4 md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] md:py-5 lg:grid-cols-[5rem_minmax(0,5fr)_minmax(0,6fr)] lg:gap-x-6 lg:py-6">
           <span
             aria-hidden="true"
             class="absolute -top-px left-0 h-px w-0 bg-gradient-to-r from-highlight to-accent transition-[width] duration-500 ease-out group-hover:w-full motion-reduce:transition-none"
           />
-          <span aria-hidden="true" class="font-display text-meta font-semibold tabular-nums text-highlight md:col-span-2 lg:col-span-1 lg:pt-1.5">
-            {pad(i + 1)}
-            <span class="text-ink-muted/60">/{total}</span>
+          <span aria-hidden="true" class="inline-flex size-11 items-center justify-center rounded-control border border-highlight/20 bg-highlight/10 text-highlight md:col-span-2 lg:col-span-1">
+            {item.icon && <Icon name={item.icon} />}
           </span>
           <h3 class="text-balance font-display text-xl font-bold text-ink transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none md:text-2xl lg:text-[1.75rem] lg:leading-tight">
             {item.title}

@@ -229,7 +229,7 @@ faq:
   - q: "How long until I see results?"
     a: "Conversion fixes and technical issues often show results within the first few weeks, because they improve the traffic you already have. SEO and AEO build over the 3 to 6 month window in your action plan, and paid campaigns can bring in customers sooner. Your dashboard tracks bookings and sales the whole way."
   - q: "What if my website needs work too?"
-    a: "That's a Build project, not growth work. If your audit shows your site itself needs rebuilding, we loop in the Build team before any SEO work starts, and the audit fee you already paid gets credited toward the build, so you never pay twice for the same work."
+    a: "That's a Build project, not growth work. If your audit shows your site itself needs rebuilding, we loop in the Build team before any SEO work starts."
   # HIDDEN Oct 14 (founder): q: "Do you work with businesses outside Canada?" a: "Yes. We're based in Vancouver, BC, and work with clients across Canada and the United States. Wherever your business is, we build your strategy around how your specific market searches, from local map results to the answers AI assistants give when your customers ask for a recommendation."
 
 ```

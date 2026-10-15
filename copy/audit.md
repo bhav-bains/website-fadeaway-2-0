@@ -112,7 +112,7 @@ faq:
   - q: "Is the website audit really free?"
     a: "Yes. The Instant Audit costs nothing and comes with no obligation. You get the full report either way, and it's yours to keep and act on, whether you work with us or not. It covers your SEO and AEO readiness, performance, site structure, and on-page copy."
   - q: "What's the difference between the Instant Audit and the Full Audit?"
-    a: "The Instant Audit is a high-level check of the five areas that matter most. The Full Audit is a paid, in-depth review with keyword research and a detailed action plan, and if you move ahead with a build, its fee is credited toward it."
+    a: "The Instant Audit is a high-level check of the five areas that matter most. The Full Audit is a paid, in-depth review with keyword research and a detailed action plan."
   - q: "What do you need from me?"
     a: "Just your website address and where to send the report. If you tell us what isn't working right now, we'll look at that first. The form also asks for your name and business name. Your report then arrives by email."
 ```

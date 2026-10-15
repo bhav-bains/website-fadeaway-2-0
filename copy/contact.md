@@ -55,9 +55,9 @@ Home → Contact
 - Cards, in this order (each is one link; URLs come from src/data/site.ts, the one place to update contact details):
   1. **Schedule a Call**: Book a time that works for you → booking page (`siteConfig.bookingUrl`, new tab)  <!-- line: Claude draft, needs approval -->
   2. **WhatsApp**: Message on WhatsApp → `siteConfig.whatsapp` (built from `whatsappNumber`, new tab)
-  3. **Email**: Contact via Email → mailto:hello@fadeawaycreatives.com (`siteConfig.email`)
-  4. **Instagram**: DM on Instagram → https://www.instagram.com/fadeawaycreatives/ (`siteConfig.social.instagram`, new tab)
-- No Facebook. Then the location line: Vancouver, BC, working with clients across Canada and the US.
+  3. **Instagram**: DM on Instagram → https://www.instagram.com/fadeawaycreatives/ (`siteConfig.social.instagram`, new tab)
+  4. **Email**: Contact via Email → mailto:hello@fadeawaycreatives.com (`siteConfig.email`)
+- No Facebook. The location line (Vancouver, BC, working with clients across Canada and the US.) is HIDDEN Oct 14 (founder).
 
 Form: Netlify Forms, name `website-contact-form`, honeypot `bot-field`, posts to /contact-success/.
 

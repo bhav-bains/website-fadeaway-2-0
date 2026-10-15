@@ -253,7 +253,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
     },
     {
       q: 'What if my website needs work too?',
-      a: "That's a Build project, not growth work. If your audit shows your site itself needs rebuilding, we loop in the Build team before any SEO work starts, and the audit fee you already paid gets credited toward the build, so you never pay twice for the same work.",
+      a: "That's a Build project, not growth work. If your audit shows your site itself needs rebuilding, we loop in the Build team before any SEO work starts.",
     },
     // HIDDEN Oct 14 (founder): "Do you work with businesses outside Canada?" (removed from the visible FAQ and the FAQPage schema together). To restore, put this item back in `items`:
     // {

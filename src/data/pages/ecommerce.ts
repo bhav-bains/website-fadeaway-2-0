@@ -34,7 +34,7 @@ export const hero: HeroContent = {
   sub: 'Custom Shopify, WooCommerce, and headless stores, plus the SEO, AEO, and conversion work that turns browsers into buyers.',
   // Oct 14 (founder): same audit box as the solution pages; "See How It Works" is a small text link under it
   auditForm: { action: routes.audit, label: 'Get a Free Audit of Your Store', placeholder: 'yourstore.com', button: 'Get Your Free Audit' },
-  secondaryCta: { label: 'See How It Works', href: '#how-it-works' },
+  // HIDDEN Oct 14 (founder): the "See How It Works" link under the box, so the Hero has one CTA. To restore: secondaryCta: { label: 'See How It Works', href: '#how-it-works' },
   breadcrumb,
   visual: 'ecommerce',
   // Only platforms and tools we genuinely build on / use (confirmed by the founder, Sept 29). No partnership claims.
@@ -119,36 +119,44 @@ export const services: { id: string; heading: string; items: ServiceIndexItem[];
   items: [
     {
       title: 'A Store Built to Convert',
+      icon: 'bag',
       text: 'Custom Shopify, WooCommerce, or headless builds, designed around your actual buying flow: add-to-cart, checkout, and everything in between, not just how it looks.',
-      link: { label: 'Store builds and redesigns', href: routes.build },
+      // HIDDEN Oct 14 (founder): link { label: 'Store builds and redesigns', href: routes.build }, keeps visitors on the conversion page
     },
     {
       title: 'Found by Google and AI Shopping Tools',
+      icon: 'search-ai',
       text: "Technical SEO and AEO built into your store from day one, including Shopify SEO and WooCommerce SEO, so you show up whether someone's searching on Google or asking an AI assistant where to buy.",
-      link: { label: 'SEO and AEO growth work', href: routes.growth },
+      // HIDDEN Oct 14 (founder): link { label: 'SEO and AEO growth work', href: routes.growth },
     },
     {
       title: 'A Catalog That Stays Organized as You Grow',
+      icon: 'industries',
       text: 'Site structure, category and tag architecture, and custom apps or plugins built to handle thousands of products cleanly, not just a handful.',
     },
     {
       title: 'More Sales From the Traffic You Already Have',
+      icon: 'chart-up',
       text: 'Ongoing conversion rate optimization and cart abandonment recovery, focused on turning browsers already on your site into buyers.',
     },
     {
       title: 'Growing Into New Markets',
+      icon: 'map',
       text: 'Lead generation, email marketing, and go-to-market strategy for stores ready to expand into new markets or channels.',
     },
     {
       title: 'Migrations and Store Management Without the Risk',
+      icon: 'migrate',
       text: 'Platform migrations and ongoing domain and store management, handled without losing your search rankings.',
     },
     {
       title: "Knowing Exactly What's Working",
+      icon: 'dashboard',
       text: "A dashboard tracking your traffic, conversions, and revenue in one place, so you're never guessing.",
     },
     {
       title: 'Custom Apps and Integrations',
+      icon: 'code',
       text: 'When your store needs software beyond the storefront, like custom integrations, automations, or internal dashboards, Fadeaway Labs builds it.',
       link: { label: 'Fadeaway Labs', href: routes.labs },
     },
@@ -163,11 +171,11 @@ export const howItWorks: { id: string; heading: string; items: StepItem[] } = {
   items: [
     {
       title: 'Audit',
-      text: "We start with a free Instant Audit of your store, your platform, your catalog, and your current traffic. When you need the full picture, the Full Audit maps exactly what's working and what isn't.",
+      text: "We start with an Audit of your store, your platform, your catalog, and your current traffic. It maps exactly what's working and what isn't.",
     },
     {
-      title: 'Plan',
-      text: 'Based on what we find, we map out whether you need a new build, a redesign or migration, ongoing growth work, or a mix. No fixed package forced onto your store, and if you move ahead with a build, your Full Audit fee is credited toward it.',
+      title: 'Strategy',
+      text: 'Based on what we find, we map out whether you need a new build, a redesign or migration, ongoing growth work, or a mix.',
     },
     {
       title: 'Build and Grow',

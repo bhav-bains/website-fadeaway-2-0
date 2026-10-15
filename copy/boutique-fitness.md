@@ -295,7 +295,7 @@ For studios keeping their current site.
 - Quick wins identified and ready to act on
 - A clear 3 to 6 month action plan
 
-**What you get out of it:** a clear, prioritized picture of what's keeping your classes from filling and exactly what to fix first. If you move ahead with a new website instead, the fee is credited toward it.
+**What you get out of it:** a clear, prioritized picture of what's keeping your classes from filling and exactly what to fix first.
 
 Fine print (small type, under the plan cards): Plans run on a 6-month minimum. Ad spend is paid directly by you to Google and Meta. Results depend on your market, competition, and starting point; we never guarantee rankings.
 

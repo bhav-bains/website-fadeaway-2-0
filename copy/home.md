@@ -236,7 +236,7 @@ faq:
     a: "A free review of your website's SEO and AEO readiness, performance, site structure, and on-page copy, with clear priorities for what to fix first. It's free, with no obligation to work with us afterward."
     # Changed Oct 14 (founder): matches the /audit/ page (four checks). Old answer promised local search, paid media and a walkthrough.
   - q: "What's included in the Full Audit?"
-    a: "A full account and website review, keyword research for your market, an in-depth AEO readiness check, a content strategy foundation, quick wins, and a clear 3 to 6 month action plan. It's a fixed, one-time fee with no hourly billing, and if you move ahead with a new website, the fee is credited toward your build."
+    a: "A full account and website review, keyword research for your market, an in-depth AEO readiness check, a content strategy foundation, quick wins, and a clear 3 to 6 month action plan. It's a fixed, one-time fee with no hourly billing."
   - q: "Do you work with the booking system or CRM I already use?"
     a: "Yes. We don't replace the software you already run your business on. We build your website and growth systems to work with what you have, like Jane App, SimplePractice, Mindbody, Momence, LeagueApps, or TeamSnap, so your team keeps its tools and your customers get a smoother way in."
   - q: "Do you work with businesses outside Vancouver?"

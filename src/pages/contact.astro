@@ -24,7 +24,7 @@ const jsonLd = [contactPageSchema({ url: routes.contact, name: seo.title, descri
   >
     <div class="mt-6 flex w-full flex-col gap-3 border-t border-line pt-4 md:mt-8 md:pt-6">
       <ContactOptions items={connect.items} newTabLabel={connect.newTabLabel} />
-      <p class="text-pretty text-meta text-ink-muted">{hero.location}</p>
+      {/* HIDDEN Oct 14 (founder): the location line. To restore: <p class="text-pretty text-meta text-ink-muted">{hero.location}</p> */}
     </div>
   </FormHero>
 </BaseLayout>

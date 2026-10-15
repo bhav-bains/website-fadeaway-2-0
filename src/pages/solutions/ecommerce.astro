@@ -36,8 +36,9 @@ const jsonLd = [
   <!-- Dev-only preview: /solutions/ecommerce?hero=showcase | statement | visual | all -->
   <HeroPreview content={hero} variant={heroVariant} options={['showcase', 'statement', 'visual']} />
 
-  <!-- Answer capsule (AEO summary) is the lead paragraph of the first section after the Hero -->
-  <Section id={aiShopping.id} lead={answerCapsule} heading={aiShopping.heading} intro={aiShopping.intro}>
+  <!-- Answer capsule (AEO summary): hidden visually (founder, Oct 14) but stays in the HTML as screen-reader text, like the other solutions pages. To show it again, pass lead={answerCapsule} to this Section and drop the sr-only paragraph -->
+  <Section id={aiShopping.id} heading={aiShopping.heading} intro={aiShopping.intro}>
+    <p class="sr-only">{answerCapsule}</p>
     <AnnotatedVisual visual="ai-shopping" items={aiShopping.items} />
   </Section>
 
@@ -50,11 +51,16 @@ const jsonLd = [
   </Section>
 
   <!-- Target of the Hero's "See How It Works" button -->
-  <Section id={howItWorks.id} heading={howItWorks.heading} layout="split">
+  <Section id={howItWorks.id} heading={howItWorks.heading} layout="split" class="relative isolate overflow-hidden">
     {/* Oversized loop line art under the pinned heading: step 4 feeds back into step 1 */}
     <IllusCycle
       slot="actions"
       class="pointer-events-none -ml-6 mt-4 hidden w-[26rem] max-w-none text-accent opacity-30 [mask-image:radial-gradient(circle,#000_45%,transparent_80%)] lg:block"
+    />
+    {/* Phones and tablets: the same loop as large, faint art in the section's top-right corner (on lg it sits under the heading) */}
+    <IllusCycle
+      aria-hidden="true"
+      class="pointer-events-none absolute -right-32 -top-20 -z-10 w-[32rem] max-w-none text-accent opacity-15 [mask-image:radial-gradient(circle_at_40%_60%,#000_35%,transparent_75%)] lg:hidden"
     />
     <Steps items={howItWorks.items} direction="vertical" />
   </Section>

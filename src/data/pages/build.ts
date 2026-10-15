@@ -249,7 +249,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
     },
     {
       q: 'How much does a custom website cost?',
-      a: 'Every build is scoped and priced before we start. You get a written scope of work and a fixed price for that scope, never hourly billing. Most projects start with a Full Audit, and if you move ahead with the build, the audit fee is credited toward it.',
+      a: 'Every build is scoped and priced before we start. You get a written scope of work and a fixed price for that scope, never hourly billing. Most projects start with a Full Audit.',
     },
   ],
 };

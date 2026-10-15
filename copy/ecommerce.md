@@ -93,7 +93,7 @@ Home → E-commerce
 - H1: Your E-commerce Web Design & Growth Partner
 - Sub-headline: Custom Shopify, WooCommerce, and headless stores, plus the SEO, AEO, and conversion work that turns browsers into buyers.
 - Hero CTA (changed Oct 14, founder: same audit box as the three solution pages, since e-commerce is the active push and the free audit is step 1 of How It Works): label "Get a Free Audit of Your Store", placeholder `yourstore.com`, button "Get Your Free Audit"; GETs /audit/?website=
-- Secondary link (small text link under the box, optional): See How It Works → #how-it-works
+- Secondary link: HIDDEN Oct 14 (founder), one CTA in the Hero. Was: See How It Works → #how-it-works
 - (Removed Oct 14: the "Get Started → /contact" hero button. "Get Started" stays in the CTAs further down the page.)
 - Answer capsule: renders directly under the Hero, from the frontmatter. (Decided Sept 29: shown as the lead paragraph at the top of the AI Shopping section, not as its own block.)
 
@@ -136,11 +136,11 @@ Every recommendation comes from your actual catalog, your actual traffic, and yo
 
 ### A Store Built to Convert
 Custom Shopify, WooCommerce, or headless builds, designed around your actual buying flow: add-to-cart, checkout, and everything in between, not just how it looks.
-[Link: Store builds and redesigns → /services/build]
+[Link HIDDEN Oct 14 (founder), conversion page: Store builds and redesigns → /services/build]
 
 ### Found by Google and AI Shopping Tools
 Technical SEO and AEO built into your store from day one, including Shopify SEO and WooCommerce SEO, so you show up whether someone's searching on Google or asking an AI assistant where to buy.
-[Link: SEO and AEO growth work → /services/growth]
+[Link HIDDEN Oct 14 (founder), conversion page: SEO and AEO growth work → /services/growth]
 
 ### A Catalog That Stays Organized as You Grow
 Site structure, category and tag architecture, and custom apps or plugins built to handle thousands of products cleanly, not just a handful.
@@ -167,8 +167,8 @@ When your store needs software beyond the storefront, like custom integrations, 
 
 (Emits HowTo schema.)
 
-1. **Audit**: We start with a free Instant Audit of your store, your platform, your catalog, and your current traffic. When you need the full picture, the Full Audit maps exactly what's working and what isn't.
-2. **Plan**: Based on what we find, we map out whether you need a new build, a redesign or migration, ongoing growth work, or a mix. No fixed package forced onto your store, and if you move ahead with a build, your Full Audit fee is credited toward it.
+1. **Audit**: We start with an Audit of your store, your platform, your catalog, and your current traffic. It maps exactly what's working and what isn't.
+2. **Strategy**: Based on what we find, we map out whether you need a new build, a redesign or migration, ongoing growth work, or a mix.
 3. **Build and Grow**: Build work and growth work move on their own real timelines, tied to your store's actual scope, not a one-size schedule.
 4. **Report and Improve**: You get a dashboard tracking traffic, conversions, and revenue, reviewed on a regular cadence, with strategy that adjusts based on what the data shows.
 

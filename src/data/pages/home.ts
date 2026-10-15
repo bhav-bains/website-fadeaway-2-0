@@ -236,7 +236,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
     },
     {
       q: "What's included in the Full Audit?",
-      a: "A full account and website review, keyword research for your market, an in-depth AEO readiness check, a content strategy foundation, quick wins, and a clear 3 to 6 month action plan. It's a fixed, one-time fee with no hourly billing, and if you move ahead with a new website, the fee is credited toward your build.",
+      a: "A full account and website review, keyword research for your market, an in-depth AEO readiness check, a content strategy foundation, quick wins, and a clear 3 to 6 month action plan. It's a fixed, one-time fee with no hourly billing.",
     },
     {
       q: 'Do you work with the booking system or CRM I already use?',

@@ -124,7 +124,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
     },
     {
       q: "What's the difference between the Instant Audit and the Full Audit?",
-      a: 'The Instant Audit is a high-level check of the five areas that matter most. The Full Audit is a paid, in-depth review with keyword research and a detailed action plan, and if you move ahead with a build, its fee is credited toward it.',
+      a: 'The Instant Audit is a high-level check of the five areas that matter most. The Full Audit is a paid, in-depth review with keyword research and a detailed action plan.',
     },
     {
       q: 'What do you need from me?',

@@ -247,7 +247,7 @@ faq:
   - q: "How long does a website project take?"
     a: "Every project gets a written scope of work before anything starts, and that scope includes the timeline, so you know when your site launches before you commit. A focused redesign moves faster than a custom build or a large migration, and your timeline is set around your actual scope, not a template."
   - q: "How much does a custom website cost?"
-    a: "Every build is scoped and priced before we start. You get a written scope of work and a fixed price for that scope, never hourly billing. Most projects start with a Full Audit, and if you move ahead with the build, the audit fee is credited toward it."
+    a: "Every build is scoped and priced before we start. You get a written scope of work and a fixed price for that scope, never hourly billing. Most projects start with a Full Audit."
 ```
 
 ## From the Blog {#blog}

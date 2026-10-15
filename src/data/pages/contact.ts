@@ -28,7 +28,7 @@ export const hero = {
 };
 
 /**
- * Other ways to connect (founder, Oct 4): book a call first, then WhatsApp, email, Instagram. No Facebook.
+ * Other ways to connect (founder, Oct 4): book a call first, then WhatsApp, Instagram, email (email moved last Oct 14). No Facebook.
  * No heading or intro (founder, Oct 4); 2 x 2 grid. Every URL comes from src/data/site.ts. WhatsApp / Email / Instagram
  * lines from the founder's reference; the Schedule a Call line is a Claude draft (needs approval).
  */
@@ -37,8 +37,8 @@ export const connect: { newTabLabel: string; items: ContactOption[] } = {
   items: [
     { title: 'Schedule a Call', text: 'Book a time that works for you', href: siteConfig.bookingUrl, icon: 'calendar', external: true },
     { title: 'WhatsApp', text: 'Message on WhatsApp', href: siteConfig.whatsapp, platform: 'whatsapp', external: true },
-    { title: 'Email', text: 'Contact via Email', href: `mailto:${siteConfig.email}`, icon: 'mail' },
     { title: 'Instagram', text: 'DM on Instagram', href: siteConfig.social.instagram, platform: 'instagram', external: true },
+    { title: 'Email', text: 'Contact via Email', href: `mailto:${siteConfig.email}`, icon: 'mail' },
   ],
 };
 
