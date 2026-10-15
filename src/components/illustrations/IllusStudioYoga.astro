@@ -1,0 +1,19 @@
+---
+// Yoga studio: a figure in tree pose on a mat, with a dashed sun ring behind. Decorative line art (no words), theme colours only.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 400 240" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <circle cx="200" cy="112" r="88" class="stroke-line-strong" stroke-dasharray="3 6" />
+  <circle cx="312" cy="62" r="18" class="stroke-accent" opacity=".8" />
+  <path d="M312 32v-8M312 100v8M282 62h-8M350 62h-8M290 40l-6-6M334 84l6 6M334 40l6-6M290 84l-6 6" class="stroke-accent" opacity=".5" />
+  <rect x="86" y="196" width="228" height="12" rx="6" class="stroke-highlight" />
+  <path d="M200 196v-62M200 134v-44" class="stroke-highlight" />
+  <circle cx="200" cy="72" r="12" class="stroke-highlight" />
+  <path d="M200 92c-26 -8 -26 -40 0 -52M200 92c26 -8 26 -40 0 -52" class="stroke-highlight" opacity=".8" />
+  <path d="M200 150l34 18l-30 10" class="stroke-highlight" />
+
+</svg>

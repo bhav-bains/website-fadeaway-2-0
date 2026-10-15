@@ -78,25 +78,15 @@ const {
             </p>
 
             <div class="flex flex-col sm:flex-row justify-center gap-3 md:gap-4">
-                <a href={ctaLink}>
-                    <Button
+                <Button href={ctaLink}
                         variant="secondary"
                         size="md"
-                        className="md:size-lg min-w-[180px] md:min-w-[200px]"
-                    >
-                        {ctaText}
-                    </Button>
-                </a>
+                        className="md:size-lg min-w-[180px] md:min-w-[200px]">{ctaText}</Button>
                 {cta2Text && cta2Link && (
-                    <a href={cta2Link}>
-                        <Button
+                    <Button href={cta2Link}
                             variant="secondary"
                             size="md"
-                            className="md:size-lg min-w-[180px] md:min-w-[200px]"
-                        >
-                            {cta2Text}
-                        </Button>
-                    </a>
+                            className="md:size-lg min-w-[180px] md:min-w-[200px]">{cta2Text}</Button>
                 )}
             </div>
         </div>

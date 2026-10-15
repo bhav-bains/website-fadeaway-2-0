@@ -1,0 +1,18 @@
+---
+// Martial arts and combat sports: a boxing glove with a punch arc and a heavy bag. Decorative line art (no words), theme colours only.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 400 240" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <circle cx="200" cy="118" r="92" class="stroke-line-strong" stroke-dasharray="3 6" />
+  <path d="M290 30v34" class="stroke-line-strong" />
+  <rect x="270" y="64" width="40" height="110" rx="14" class="stroke-line-strong" />
+  <path d="M270 96h40M270 140h40" class="stroke-line-strong" opacity=".6" />
+  <path d="M110 120c0-26 20-44 46-44h26c20 0 34 14 34 32v34c0 10-8 18-18 18h-60c-18 0-28-14-28-40z" class="stroke-highlight" />
+  <path d="M120 172h72v22h-72z" class="stroke-highlight" opacity=".6" />
+  <path d="M150 112c10 8 30 8 40 0" class="stroke-highlight" opacity=".6" />
+  <path d="M232 100c12-8 22-8 32 0M236 120c10-6 18-6 26 0" class="stroke-accent" />
+</svg>

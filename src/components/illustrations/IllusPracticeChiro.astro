@@ -1,0 +1,23 @@
+---
+// Chiropractic care: a spine drawn as stacked vertebrae with a gentle curve line and a hand-adjustment arrow. Decorative line art (no words), theme colours only.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 400 240" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <circle cx="200" cy="118" r="92" class="stroke-line-strong" stroke-dasharray="3 6" />
+  <rect x="180" y="30" width="40" height="16" rx="6" class="stroke-highlight" />
+  <rect x="178" y="52" width="44" height="16" rx="6" class="stroke-highlight" />
+  <rect x="176" y="74" width="48" height="16" rx="6" class="stroke-highlight" />
+  <rect x="176" y="96" width="48" height="16" rx="6" class="stroke-highlight" />
+  <rect x="178" y="118" width="44" height="16" rx="6" class="stroke-highlight" />
+  <rect x="180" y="140" width="40" height="16" rx="6" class="stroke-highlight" />
+  <rect x="184" y="162" width="32" height="16" rx="6" class="stroke-highlight" />
+  <path d="M200 24v160" class="stroke-highlight" opacity=".4" stroke-dasharray="2 5" />
+  <path d="M290 96c-22 0 -44 -2 -62 6" class="stroke-accent" />
+  <path d="M236 94l-10 8l12 6" class="stroke-accent" />
+  <path d="M290 96c12 0 22 6 22 16s-10 16 -22 16" class="stroke-accent" opacity=".6" />
+  <path d="M90 210h220" class="stroke-line-strong" />
+</svg>

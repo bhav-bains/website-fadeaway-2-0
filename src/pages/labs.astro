@@ -1,0 +1,150 @@
+---
+// Fadeaway Labs. Content: src/data/pages/labs.ts (from copy/labs.md). The founder's most personal page:
+// "We always cookin'." opens (display line, the largest type, not the H1) and closes the page (CTA bookend).
+// Hero art is an original abstract fadeaway jumper on court lines (no real player's likeness).
+// Anchors kept exact for links and networking follow-ups: #what-we-build, #idea-to-mvp, #ai-native, #products, #see-it-working.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroPreview from '../components/blocks/hero/HeroPreview.astro';
+import Section from '../components/blocks/Section.astro';
+import IconGrid from '../components/blocks/IconGrid.astro';
+import CtaBlock from '../components/blocks/CtaBlock.astro';
+import FeatureList from '../components/blocks/FeatureList.astro';
+import Steps from '../components/blocks/Steps.astro';
+import LinkCards from '../components/blocks/LinkCards.astro';
+import WorkCard from '../components/blocks/WorkCard.astro';
+import Faq from '../components/blocks/Faq.astro';
+import Button from '../components/Button.astro';
+import ArrowLink from '../components/ui/ArrowLink.astro';
+import IllusLaunch from '../components/illustrations/IllusLaunch.astro';
+import { breadcrumbSchema, howToSchema, faqSchema, serviceSchema, softwareApplicationSchema } from '../lib/schema';
+import { getWork, isInternalWork } from '../lib/work';
+import { cardLabels } from '../data/pages/portfolio';
+import { siteConfig } from '../data/site';
+import { routes } from '../data/routes';
+import {
+  seo,
+  breadcrumb,
+  hero,
+  heroVariant,
+  answerCapsule,
+  build,
+  aiNative,
+  products,
+  seeItWorking,
+  ideaToMvp,
+  worksWith,
+  faq,
+  serviceNames,
+  cta,
+} from '../data/pages/labs';
+
+// Labs work from the central collection (src/content/portfolio.yaml): live products and client builds, then the
+// internal tools and demo sites (tag `internal`, never linked)
+const labsWork = await getWork({ kind: 'labs', includeInternal: true });
+const productWork = labsWork.filter((w) => !isInternalWork(w));
+const internalWork = labsWork.filter(isInternalWork);
+const schemaOwners: readonly string[] = products.schemaOwners;
+
+const jsonLd = [
+  breadcrumbSchema(breadcrumb),
+  ...productWork.flatMap((w) =>
+    w.data.url && schemaOwners.includes(w.data.owner ?? '') ? [softwareApplicationSchema({ name: w.data.name, url: w.data.url, description: w.data.summary })] : [],
+  ),
+  ...serviceSchema({ names: serviceNames, url: routes.labs }),
+  howToSchema({
+    name: ideaToMvp.heading,
+    steps: ideaToMvp.items,
+    url: new URL(`${routes.labs}#${ideaToMvp.id}`, siteConfig.url).toString(),
+  }),
+  faqSchema(faq.items),
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
+  <!-- Dev-only preview: /labs/?hero=statement | showcase | visual | all -->
+  <HeroPreview content={hero} variant={heroVariant} options={['statement', 'showcase', 'visual']} />
+
+  <!-- Answer capsule (AEO summary): hidden visually (founder, Oct 14) but stays in the HTML as screen-reader text, like the other pages. To show it again, pass intro={answerCapsule} introStyle="wide" to this Section and drop the sr-only paragraph -->
+  <Section id={build.id} heading={build.heading} align="start" class="scroll-mt-24">
+    <p class="sr-only">{answerCapsule}</p>
+    <IconGrid items={build.items} columns={3} size="md" swipe collapse={false} idPrefix="labs-build" />
+    <CtaBlock heading={build.cta.heading} cta={build.cta.cta} secondaryCta={build.cta.secondaryCta} class="mt-6 md:mt-10" />
+    <!-- Founder quote (open item in copy/labs.md): renders on this page once supplied, in the founder's words -->
+  </Section>
+
+  <Section id={aiNative.id} heading={aiNative.heading} intro={aiNative.intro} layout="split">
+    <FeatureList items={aiNative.items} columns={1} />
+    {/* HIDDEN Oct 14 (founder): the "We run Fadeaway this way" proof callout (data stays in labs.ts, aiNative.proof). To restore: <p class="mt-4 border-l-2 border-highlight/60 pl-2 text-pretty text-base text-ink-soft md:pl-3">{aiNative.proof}</p> */}
+    <div class="mt-4 flex">
+      <Button href={aiNative.cta.href} variant="primary" size="base">{aiNative.cta.label}</Button>
+    </div>
+  </Section>
+
+  <!-- From Labs to Live Users (#products): portfolio.yaml labs entries without the `internal` tag, 3 across. Ours and
+       co-founded entries with a url get a SoftwareApplication schema node. Renders nothing when none are visible. -->
+  {
+    productWork.length > 0 && (
+      <Section id={products.id} heading={products.heading} align="start" class="scroll-mt-24">
+        {/* HIDDEN Oct 14 (founder): "See the Full Portfolio" link (data stays in labs.ts, products.link). To restore: <ArrowLink slot="actions" href={products.link.href}>{products.link.label}</ArrowLink> */}
+        <ul class="grid gap-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
+          {productWork.map((w) => (
+            <li>
+              <WorkCard entry={w} labels={cardLabels} variant="labs" />
+            </li>
+          ))}
+        </ul>
+      </Section>
+    )
+  }
+
+  <!-- Internal tools and demo sites (#see-it-working, tag `internal`): no heading, "Internal" badge, never linked -->
+  {
+    internalWork.length > 0 && (
+      <Section id={seeItWorking.id} align="start" separator={productWork.length > 0} class="scroll-mt-24">
+        <ul class="grid gap-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
+          {internalWork.map((w) => (
+            <li>
+              <WorkCard entry={w} labels={cardLabels} variant="labs" />
+            </li>
+          ))}
+        </ul>
+      </Section>
+    )
+  }
+
+  <!-- Networking follow-up anchor. Also the HowTo schema. -->
+  <Section id={ideaToMvp.id} heading={ideaToMvp.heading} layout="split" class="scroll-mt-24">
+    {/* Oversized line art under the pinned heading: idea → architecture → working app */}
+    <IllusLaunch
+      slot="actions"
+      class="pointer-events-none -ml-6 mt-4 hidden w-[24rem] max-w-none text-highlight opacity-30 [mask-image:radial-gradient(circle,#000_45%,transparent_80%)] lg:block"
+    />
+    <Steps items={ideaToMvp.items} direction="vertical" />
+    <div class="mt-6 flex md:mt-8">
+      <Button href={ideaToMvp.cta.href} variant="primary" size="base">{ideaToMvp.cta.label}</Button>
+    </div>
+  </Section>
+
+  <Section id={worksWith.id} heading={worksWith.heading} intro={worksWith.intro} align="start">
+    <LinkCards items={worksWith.items} />
+  </Section>
+
+  <Section id={faq.id} heading={faq.heading} width="narrow">
+    <Faq faq={faq.items} />
+  </Section>
+
+  <!-- From the Lab (tag labs, data: `blog` in labs.ts): renders nothing until /articles/ has real posts -->
+
+  <!-- Bookend: "We always cookin'." returns above the button -->
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
+    <CtaBlock
+      heading={cta.heading}
+      text={cta.text}
+      signoff={cta.signoff}
+      cta={cta.cta}
+      headingAs="h2"
+      headingId={`${cta.id}-heading`}
+      layout="center"
+    />
+  </Section>
+</BaseLayout>

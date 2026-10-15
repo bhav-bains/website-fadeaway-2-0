@@ -1,0 +1,164 @@
+---
+// Shell for every page section: anchor id, optional eyebrow / H2 / intro, background tone, optional separator,
+// content width and responsive spacing. Blocks (CardGrid, IconGrid, NumberedList...) render inside it.
+// Layouts:
+//   stack (default): header above the content
+//   split: header in a left column (pinned while scrolling on lg), content on the right; stacked on phones
+// Optional "actions" slot: links or buttons under the intro, inside the header.
+// Optional `lead`: a standfirst paragraph above the header (e.g. a page's answer capsule in the first section after the Hero).
+// Mobile-first: unprefixed classes are the phone layout; sm/md/lg scale up.
+import clsx from 'clsx';
+import Eyebrow from './Eyebrow.astro';
+
+interface Props {
+  /** Anchor id from the copy file, e.g. "how-it-works" */
+  id: string;
+  eyebrow?: string;
+  heading?: string;
+  /** One paragraph, or several (rendered as separate paragraphs in order) */
+  intro?: string | string[];
+  /** `wide`: the intro runs three quarters of the row on lg instead of the usual measure (the page's answer capsule) */
+  introStyle?: 'default' | 'wide';
+  /** Standfirst above the header: real text with a thin accent rule, quieter than the heading */
+  lead?: string;
+  layout?: 'stack' | 'split';
+  /** Split only: content on the left, header on the right from lg (stacked order on phones is unchanged) */
+  reverse?: boolean;
+  /** `auto` (default): the band alternates canvas / alt by position among the page's sections (see globals.css), so
+   *  moving, adding or hiding a section never needs a tone change. The others force one colour. */
+  tone?: 'auto' | 'canvas' | 'alt' | 'surface' | 'deep';
+  width?: 'site' | 'narrow' | 'prose';
+  /** Header alignment in the stack layout (split is always left-aligned) */
+  align?: 'center' | 'start';
+  /** Faint hairline at the top edge (fades out at both ends): use only between major sections. Sections otherwise share one background. */
+  separator?: boolean;
+  /** Id of a heading rendered inside the content (use when the section has no `heading` of its own) */
+  labelledBy?: string;
+  class?: string;
+}
+
+const {
+  id,
+  eyebrow,
+  heading,
+  intro,
+  introStyle = 'default',
+  layout = 'stack',
+  reverse = false,
+  tone = 'auto',
+  width = 'site',
+  align = 'center',
+  separator = false,
+  labelledBy,
+  lead,
+  class: className,
+} = Astro.props;
+
+const headingId = heading ? `${id}-heading` : undefined;
+const split = layout === 'split';
+const centered = !split && align === 'center';
+
+// `auto` has no class: globals.css colours `main > [data-tone='auto']` by its position among the Sections
+const tones = {
+  auto: '',
+  canvas: 'bg-canvas',
+  alt: 'bg-surface-alt',
+  surface: 'bg-surface',
+  deep: 'bg-surface-deep',
+};
+
+const widths = {
+  site: 'max-w-site',
+  narrow: 'max-w-5xl',
+  prose: 'max-w-3xl',
+};
+
+const intros = intro ? (Array.isArray(intro) ? intro : [intro]) : [];
+const hasHeader = eyebrow || heading || intros.length > 0;
+
+// Keep hyphenated words ("E-commerce") on one line in the heading and intro; the text itself is unchanged
+// A newline in the heading is a deliberate line break (e.g. a two-row heading)
+const headingLines = heading ? heading.split('\n').map((line) => line.split(/(\S+-\S+)/)) : [];
+const splitHyphens = (text: string) => text.split(/(\S+-\S+)/);
+---
+
+<section
+  id={id}
+  data-band
+  data-tone={tone}
+  aria-labelledby={headingId ?? labelledBy}
+  class={clsx('relative isolate px-2 py-6 sm:px-3 md:py-10 lg:px-4 lg:py-24', tones[tone], className)}
+>
+  {
+    separator && (
+      <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 -z-10 flex justify-center">
+        <span class="h-px w-full max-w-4xl bg-gradient-to-r from-transparent via-highlight/25 to-transparent" />
+      </div>
+    )
+  }
+  <div
+    class={clsx(
+      'mx-auto w-full',
+      widths[width],
+      split && 'grid gap-4 md:gap-6 lg:gap-12',
+      split && (reverse ? 'lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]' : 'lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]'),
+    )}
+  >
+    {
+      lead && (
+        <p
+          class={clsx(
+            'max-w-3xl text-pretty border-l-2 border-accent/70 pl-2 text-left text-base text-ink-muted md:pl-3 md:text-lg',
+            centered && 'mx-auto',
+            split ? 'lg:col-span-2' : 'mb-6 md:mb-10',
+          )}
+        >
+          {lead}
+        </p>
+      )
+    }
+    {
+      hasHeader && (
+        <header
+          class={clsx(
+            'flex flex-col gap-2',
+            centered ? 'items-center text-center' : 'items-start text-left',
+            split ? 'lg:sticky lg:top-32 lg:self-start' : 'mb-4 md:mb-6',
+            split && reverse && 'lg:order-2',
+          )}
+        >
+          {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+          {heading && (
+            <h2 id={headingId} class="max-w-3xl text-balance font-display text-heading font-bold text-ink">
+              {headingLines.map((parts, li) => (
+                <>
+                  {parts.map((part, i) => (i % 2 === 1 ? <span class="whitespace-nowrap">{part}</span> : part))}
+                  {li < headingLines.length - 1 && <br />}
+                </>
+              ))}
+            </h2>
+          )}
+          {intros.map((text) => (
+            <p
+              class={clsx(
+                'text-pretty text-ink-soft',
+                'text-base md:text-lg',
+                introStyle === 'wide' ? 'w-full lg:w-3/4' : 'max-w-2xl',
+              )}
+            >
+              {splitHyphens(text).map((part, i) => (i % 2 === 1 ? <span class="whitespace-nowrap">{part}</span> : part))}
+            </p>
+          ))}
+          {Astro.slots.has('actions') && (
+            <div class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2">
+              <slot name="actions" />
+            </div>
+          )}
+        </header>
+      )
+    }
+    <div class={clsx('min-w-0', split && reverse && 'lg:order-1')}>
+      <slot />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,80 @@
+---
+// "Other ways to connect": link cards (icon tile, title, one line, arrow), one column on phones and 2 x 2 from sm,
+// e.g. book a call, WhatsApp, email, Instagram. Heading and intro are optional. Each card is one link; external ones open in a new tab with a screen-reader note.
+// Every URL comes from the page data, which reads src/data/site.ts (one place for contact details). No copy inside.
+import clsx from 'clsx';
+import Icon, { type IconName } from '../ui/Icon.astro';
+import SocialIcon from '../ui/SocialIcon.astro';
+
+export interface ContactOption {
+  title: string;
+  text: string;
+  href: string;
+  /** Line icon, or a brand icon via `platform` */
+  icon?: IconName;
+  platform?: 'instagram' | 'facebook' | 'linkedin' | 'whatsapp';
+  external?: boolean;
+}
+
+interface Props {
+  heading?: string;
+  intro?: string;
+  items: ContactOption[];
+  newTabLabel: string;
+  headingAs?: 'h2' | 'h3';
+  class?: string;
+}
+
+const { heading, intro, items, newTabLabel, headingAs: Heading = 'h2', class: className } = Astro.props;
+---
+
+<div class={clsx('flex flex-col gap-3', className)}>
+  {
+    (heading || intro) && (
+      <div class="flex flex-col gap-1">
+        {heading && <Heading class="text-balance font-display text-2xl font-bold text-ink md:text-3xl">{heading}</Heading>}
+        {intro && <p class="text-pretty text-base text-ink-soft">{intro}</p>}
+      </div>
+    )
+  }
+  <ul class="grid gap-2 sm:grid-cols-2">
+    {
+      items.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            target={item.external ? '_blank' : undefined}
+            rel={item.external ? 'noopener' : undefined}
+            class="group flex h-full min-h-[2.75rem] items-center gap-2 rounded-card border border-line bg-surface-raised/50 p-2 transition-colors duration-300 hover:border-highlight/40 hover:bg-surface-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight"
+          >
+            <span class="flex size-11 shrink-0 items-center justify-center rounded-control border border-line-strong bg-canvas/60 text-ink-soft transition-colors group-hover:border-highlight/40 group-hover:text-highlight">
+              {item.platform ? <SocialIcon platform={item.platform} class="size-icon" /> : item.icon && <Icon name={item.icon} class="size-icon" />}
+            </span>
+            <span class="flex min-w-0 flex-1 flex-col">
+              <span class="font-display text-base font-semibold text-ink md:text-lg">{item.title}</span>
+              <span class="text-meta text-ink-muted">{item.text}</span>
+            </span>
+            {item.external && <span class="sr-only">, {newTabLabel}</span>}
+            <svg
+              class={clsx(
+                'size-icon-sm shrink-0 text-ink-muted transition-all duration-300 group-hover:text-highlight',
+                item.external ? 'group-hover:-translate-y-0.5 group-hover:translate-x-0.5' : 'group-hover:translate-x-1',
+              )}
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              aria-hidden="true"
+            >
+              {item.external ? (
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 11 11 5M6 5h5v5" />
+              ) : (
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8h10M9 4l4 4-4 4" />
+              )}
+            </svg>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

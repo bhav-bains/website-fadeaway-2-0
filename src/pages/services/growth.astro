@@ -1,0 +1,147 @@
+---
+// Growth Services page. Content: src/data/pages/growth.ts (from copy/growth.md v2). No prices anywhere.
+// Service pages use the blueprint Hero and drafting-style line art (paired with Build); the centerpiece is the
+// six-step revenue system (SystemFlow), which also feeds the HowTo schema.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
+import Section from '../../components/blocks/Section.astro';
+import SpecGrid from '../../components/blocks/SpecGrid.astro';
+import SystemFlow from '../../components/blocks/SystemFlow.astro';
+import AuditCta from '../../components/blocks/AuditCta.astro';
+import FeatureList from '../../components/blocks/FeatureList.astro';
+import Ladder from '../../components/blocks/Ladder.astro';
+import CardGrid from '../../components/blocks/CardGrid.astro';
+import WorkGrid from '../../components/blocks/WorkGrid.astro';
+import Faq from '../../components/blocks/Faq.astro';
+import CtaBlock from '../../components/blocks/CtaBlock.astro';
+import ForkCallout from '../../components/blocks/ForkCallout.astro';
+import IllusDashboard from '../../components/illustrations/IllusDashboard.astro';
+import { breadcrumbSchema, howToSchema, faqSchema, serviceSchema } from '../../lib/schema';
+import { getRealWork } from '../../lib/work';
+import { siteConfig } from '../../data/site';
+import { routes } from '../../data/routes';
+import { auditCta } from '../../data/pages/audit';
+import {
+  seo,
+  breadcrumb,
+  hero,
+  heroVariant,
+  answerCapsule,
+  standard,
+  results,
+  revenueSystem,
+  capabilities,
+  ladder,
+  industries,
+  somethingElse,
+  realWork,
+  faq,
+  serviceNames,
+  cta,
+} from '../../data/pages/growth';
+
+const work = await getRealWork(realWork.tag, realWork.limit);
+
+const hasWork = work.length > 0;
+
+const jsonLd = [
+  breadcrumbSchema(breadcrumb),
+  ...serviceSchema({ names: serviceNames, url: routes.growth }),
+  howToSchema({
+    name: revenueSystem.heading,
+    steps: revenueSystem.items,
+    url: new URL(`${routes.growth}#${revenueSystem.id}`, siteConfig.url).toString(),
+  }),
+  faqSchema(faq.items),
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
+  <!-- Dev-only preview: /services/growth/?hero=blueprint | statement | showcase | all -->
+  <HeroPreview content={hero} variant={heroVariant} options={['blueprint', 'statement', 'showcase']} />
+
+  <!-- Answer capsule (AEO summary) is the wide intro of the first section after the Hero -->
+  <Section
+    id={standard.id}
+    heading={standard.heading}
+    intro={answerCapsule}
+    introStyle="wide"
+    align="start"
+    class="overflow-x-clip"
+  >
+    <SpecGrid items={standard.items} columns={4} art="gauge" />
+  </Section>
+
+  <!-- Results Strip: renders only when real, verified, unnamed results exist (results in growth.ts) -->
+  {
+    results.length > 0 && (
+      <section aria-label="Results" class="border-y border-line px-2 py-6 sm:px-3 md:py-8 lg:px-4">
+        <dl class="mx-auto grid w-full max-w-site gap-4 sm:grid-cols-3">
+          {results.map((r) => (
+            <div class="flex flex-col gap-1">
+              <dt class="order-2 text-meta text-ink-muted">{r.label}</dt>
+              <dd class="order-1 font-display text-4xl font-bold text-ink">{r.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    )
+  }
+
+  <!-- Centerpiece. Target of the Hero's "See How We Move Revenue" button. -->
+  <Section id={revenueSystem.id} heading={revenueSystem.heading} intro={revenueSystem.intro} align="start">
+    <SystemFlow items={revenueSystem.items} />
+    <AuditCta
+      heading={revenueSystem.cta.heading}
+      fieldLabel={auditCta.fieldLabel}
+      placeholder={auditCta.placeholder}
+      button={revenueSystem.cta.button}
+      action={auditCta.action}
+      class="mt-6 md:mt-10"
+    />
+  </Section>
+
+  <Section id={capabilities.id} heading={capabilities.heading} layout="split">
+    {/* Oversized dashboard line art under the pinned heading */}
+    <IllusDashboard
+      slot="actions"
+      class="pointer-events-none -ml-6 mt-4 hidden w-[26rem] max-w-none text-highlight opacity-30 [mask-image:radial-gradient(circle,#000_45%,transparent_80%)] lg:block"
+    />
+    <FeatureList items={capabilities.items} columns={1} />
+  </Section>
+
+  {/* HIDDEN Oct 14 (founder): The Growth Ladder. Data stays in growth.ts (ladder) and copy/growth.md. To restore, put the Section back:
+  <Section id={ladder.id} heading={ladder.heading} intro={ladder.intro} align="start">
+    <Ladder items={ladder.items} />
+    <ForkCallout heading={ladder.note.heading} text={ladder.note.text} link={ladder.note.link} class="mt-6 md:mt-10" />
+  </Section>
+  */}
+
+  <Section id={industries.id} heading={industries.heading} intro={industries.intro} align="start">
+    <CardGrid items={industries.items} swipe balanced />
+  </Section>
+
+  <Section id={somethingElse.id} heading={somethingElse.heading} align="start">
+    <CardGrid items={somethingElse.items} columns={2} />
+  </Section>
+
+  {
+    hasWork && (
+      <Section id={realWork.id} eyebrow={realWork.eyebrow} heading={realWork.heading} align="start">
+        <WorkGrid entries={work} />
+      </Section>
+    )
+  }
+
+  <!-- Testimonials (tag growth): renders nothing until real, permission-confirmed quotes exist -->
+
+  <Section id={faq.id} heading={faq.heading} width="narrow">
+    <Faq faq={faq.items} />
+  </Section>
+
+  <!-- From the Blog (tag growth, data: `blog` in growth.ts): renders nothing until /articles/ has real Growth posts -->
+
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
+    <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
+  </Section>
+</BaseLayout>

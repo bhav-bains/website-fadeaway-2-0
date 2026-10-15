@@ -1,0 +1,83 @@
+---
+// Annotated illustration: numbered markers pinned to parts of an illustration, with a matching numbered list.
+// Hovering a list item lights up its marker (pure CSS, no JS; a visual extra, the list reads fine without it). Up to 4 points.
+// Phones: illustration, then the list. lg and up: illustration left (larger), list right.
+import clsx from 'clsx';
+import { illustrations, type IllustrationName } from '../illustrations';
+
+export interface AnnotatedPoint {
+  title: string;
+  text: string;
+  /** Marker position over the illustration, in % of its width / height */
+  at: { x: number; y: number };
+}
+
+interface Props {
+  visual: IllustrationName;
+  items: AnnotatedPoint[];
+  class?: string;
+}
+
+const { visual, items, class: className } = Astro.props;
+const Visual = illustrations[visual];
+---
+
+<div class={clsx('annotated grid items-center gap-5 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-10', className)}>
+  <div class="relative">
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 -z-10 bg-grid [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_30%,transparent_100%)]"
+    >
+    </div>
+    <div class="relative">
+      <Visual class="h-auto w-full" />
+      {
+        items.map((item, i) => (
+          <span
+            aria-hidden="true"
+            data-marker={i + 1}
+            class="marker absolute flex size-4 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-highlight bg-canvas font-display text-meta font-bold text-highlight transition-[scale,background-color,color] duration-300"
+            style={`left:${item.at.x}%;top:${item.at.y}%`}
+          >
+            <span class="absolute inset-0 rounded-full border border-highlight/60 motion-safe:animate-ping" />
+            {i + 1}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+
+  <ol class="flex flex-col">
+    {
+      items.map((item, i) => (
+        <li
+          data-point={i + 1}
+          class="group grid grid-cols-[auto_minmax(0,1fr)] gap-x-3 border-t border-line py-3 last:border-b md:py-4"
+        >
+          <span
+            aria-hidden="true"
+            class="flex size-4 items-center justify-center rounded-full border border-line-strong font-display text-meta font-bold text-ink-muted transition-colors group-hover:border-highlight group-hover:text-highlight"
+          >
+            {i + 1}
+          </span>
+          <div class="flex flex-col gap-1">
+            <h3 class="font-display text-lg font-bold text-ink md:text-xl">{item.title}</h3>
+            <p class="text-pretty text-base text-ink-muted">{item.text}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</div>
+
+<style>
+  /* Light up the marker that matches the hovered point (scale only: Tailwind positions it with `translate`) */
+  .annotated:has([data-point='1']:hover) [data-marker='1'],
+  .annotated:has([data-point='2']:hover) [data-marker='2'],
+  .annotated:has([data-point='3']:hover) [data-marker='3'],
+  .annotated:has([data-point='4']:hover) [data-marker='4'] {
+    scale: 1.3;
+    background-color: var(--color-highlight);
+    color: var(--color-canvas);
+  }
+</style>

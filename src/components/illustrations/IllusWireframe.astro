@@ -1,0 +1,66 @@
+---
+// Build-page line art: a website wireframe on a blueprint sheet. A browser frame with layout blocks, two ghost
+// layers behind it (research, design, development stacked), dimension lines with tick ends, a cursor and
+// a code-bracket chip. No words, line only, theme tokens via currentColor + text-* classes. Decorative.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg
+  aria-hidden="true"
+  focusable="false"
+  viewBox="0 0 480 400"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.25"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+>
+  <!-- Ghost layers behind the frame -->
+  <rect x="96" y="40" width="320" height="236" rx="10" class="text-ink-muted" opacity=".25" stroke-dasharray="3 6" />
+  <rect x="80" y="56" width="320" height="236" rx="10" class="text-ink-muted" opacity=".4" />
+
+  <!-- Browser frame -->
+  <g class="text-ink-soft">
+    <rect x="60" y="74" width="320" height="236" rx="10" class="fill-surface-raised" />
+    <path d="M60 100h320" opacity=".6" />
+    <circle cx="76" cy="87" r="3.5" opacity=".7" />
+    <circle cx="89" cy="87" r="3.5" opacity=".7" />
+    <circle cx="102" cy="87" r="3.5" opacity=".7" />
+    <rect x="128" y="81" width="150" height="12" rx="6" opacity=".5" />
+  </g>
+
+  <!-- Layout blocks -->
+  <g class="text-ink-muted">
+    <rect x="78" y="116" width="160" height="14" rx="3" opacity=".9" />
+    <path d="M78 142h132M78 154h116" opacity=".6" />
+    <rect x="78" y="170" width="76" height="22" rx="11" class="text-accent" />
+    <rect x="254" y="116" width="108" height="76" rx="6" opacity=".7" />
+    <path d="M254 192l30-30 20 18 22-26 36 38" opacity=".55" />
+    <circle cx="336" cy="138" r="7" opacity=".55" />
+    <rect x="78" y="210" width="88" height="80" rx="6" opacity=".6" />
+    <rect x="176" y="210" width="88" height="80" rx="6" opacity=".6" />
+    <rect x="274" y="210" width="88" height="80" rx="6" opacity=".6" />
+  </g>
+
+  <!-- Dimension lines -->
+  <g class="text-highlight" opacity=".85">
+    <path d="M60 334h320" />
+    <path d="M60 328v12M380 328v12M220 330v8" />
+    <path d="M24 74v236" />
+    <path d="M18 74h12M18 310h12M20 192h8" />
+    <path d="M78 202h160" opacity=".6" stroke-dasharray="2 4" />
+  </g>
+
+  <!-- Code-bracket chip -->
+  <g class="text-highlight">
+    <rect x="392" y="236" width="64" height="40" rx="8" class="fill-surface-raised" />
+    <path d="M414 248l-8 8 8 8M434 248l8 8-8 8M427 246l-6 20" />
+  </g>
+
+  <!-- Cursor on the button -->
+  <path d="M140 184v28l7-7 6 13 6-3-6-13h10z" class="text-ink fill-surface-raised" />
+</svg>

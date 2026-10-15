@@ -1,0 +1,34 @@
+---
+// Numbered points (01, 02...) separated by hairlines: no cards, no icons.
+// Good for "why us" / principles lists; pairs with Section layout="split".
+import clsx from 'clsx';
+
+export interface NumberedListItem {
+  title: string;
+  text: string;
+}
+
+interface Props {
+  items: NumberedListItem[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+
+<ol class={clsx('border-b border-line', className)}>
+  {
+    items.map((item, i) => (
+      <li class="grid grid-cols-[auto_minmax(0,1fr)] gap-x-2 border-t border-line py-4 sm:gap-x-4 md:py-5">
+        <span aria-hidden="true" class="pt-0.5 font-display text-meta font-semibold tabular-nums text-highlight md:text-base">
+          {pad(i + 1)}
+        </span>
+        <div class="flex flex-col gap-1">
+          <h3 class="font-display text-xl font-bold text-ink md:text-2xl">{item.title}</h3>
+          <p class="max-w-2xl text-pretty text-base text-ink-muted">{item.text}</p>
+        </div>
+      </li>
+    ))
+  }
+</ol>

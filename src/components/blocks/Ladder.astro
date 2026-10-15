@@ -1,0 +1,58 @@
+---
+// A staircase of rungs: each step sits higher than the one before on lg (start small, grow with results).
+// Each rung: a thick top rule that warms from highlight to accent as it climbs, an index, title and one paragraph.
+// A faint rising line drawn behind the stairs. Phones: stacked, no offsets.
+import clsx from 'clsx';
+
+export interface LadderItem {
+  title: string;
+  text: string;
+}
+
+interface Props {
+  items: LadderItem[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+const pad = (n: number) => String(n).padStart(2, '0');
+
+// lg: earlier rungs sit lower (3 rungs: 8rem, 4rem, 0)
+const lift = ['lg:mt-32', 'lg:mt-16', 'lg:mt-0'];
+const rule = ['bg-highlight/60', 'bg-gradient-to-r from-highlight/70 to-accent/70', 'bg-accent'];
+---
+
+<div class={clsx('relative isolate', className)}>
+  {/* Rising stair line behind the rungs */}
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    viewBox="0 0 1200 300"
+    preserveAspectRatio="none"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.25"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="pointer-events-none absolute inset-x-0 -top-6 -z-10 hidden h-[calc(100%+3rem)] w-full text-highlight opacity-25 lg:block"
+  >
+    <path d="M0 300h80v-60h400v-80h400v-80h320" vector-effect="non-scaling-stroke" stroke-dasharray="4 8" />
+  </svg>
+
+  <ol class="grid gap-3 md:gap-4 lg:grid-cols-3 lg:items-start">
+    {
+      items.map((item, i) => (
+        <li class={clsx('flex flex-col overflow-hidden rounded-card border border-line-strong bg-surface-raised/80', lift[i])}>
+          <span aria-hidden="true" class={clsx('h-1 w-full', rule[i] ?? 'bg-accent')} />
+          <div class="flex flex-col gap-2 p-3 md:p-4">
+            <span aria-hidden="true" class="font-display text-meta font-semibold tabular-nums text-ink-muted">
+              {pad(i + 1)}
+            </span>
+            <h3 class="text-balance font-display text-xl font-bold text-ink md:text-2xl">{item.title}</h3>
+            <p class="text-pretty text-base text-ink-muted">{item.text}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</div>

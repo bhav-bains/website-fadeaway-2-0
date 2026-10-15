@@ -1,0 +1,64 @@
+// Illustration registry: page data names an illustration, blocks render it.
+import IllusEcommerce from './IllusEcommerce.astro';
+import IllusWellness from './IllusWellness.astro';
+import IllusFitness from './IllusFitness.astro';
+import IllusSports from './IllusSports.astro';
+import IllusAiShopping from './IllusAiShopping.astro';
+import IllusCycle from './IllusCycle.astro';
+import IllusAsk from './IllusAsk.astro';
+import IllusWireframe from './IllusWireframe.astro';
+import IllusLayers from './IllusLayers.astro';
+import IllusQuote from './IllusQuote.astro';
+import IllusGrowth from './IllusGrowth.astro';
+import IllusDashboard from './IllusDashboard.astro';
+import IllusBooking from './IllusBooking.astro';
+import IllusClass from './IllusClass.astro';
+import IllusRadius from './IllusRadius.astro';
+import IllusCourt from './IllusCourt.astro';
+import IllusLaunch from './IllusLaunch.astro';
+import IllusStudioYoga from './IllusStudioYoga.astro';
+import IllusStudioPilates from './IllusStudioPilates.astro';
+import IllusStudioSpin from './IllusStudioSpin.astro';
+import IllusStudioBarre from './IllusStudioBarre.astro';
+import IllusStudioNew from './IllusStudioNew.astro';
+import IllusPracticeTherapy from './IllusPracticeTherapy.astro';
+import IllusPracticeChiro from './IllusPracticeChiro.astro';
+import IllusPracticePhysio from './IllusPracticePhysio.astro';
+import IllusProgramClub from './IllusProgramClub.astro';
+import IllusProgramAcademy from './IllusProgramAcademy.astro';
+import IllusProgramMartial from './IllusProgramMartial.astro';
+import IllusProgramCamp from './IllusProgramCamp.astro';
+
+export const illustrations = {
+  ecommerce: IllusEcommerce,
+  wellness: IllusWellness,
+  fitness: IllusFitness,
+  sports: IllusSports,
+  'ai-shopping': IllusAiShopping,
+  cycle: IllusCycle,
+  ask: IllusAsk,
+  wireframe: IllusWireframe,
+  layers: IllusLayers,
+  quote: IllusQuote,
+  growth: IllusGrowth,
+  dashboard: IllusDashboard,
+  booking: IllusBooking,
+  class: IllusClass,
+  radius: IllusRadius,
+  court: IllusCourt,
+  launch: IllusLaunch,
+  'studio-yoga': IllusStudioYoga,
+  'studio-pilates': IllusStudioPilates,
+  'studio-spin': IllusStudioSpin,
+  'studio-barre': IllusStudioBarre,
+  'studio-new': IllusStudioNew,
+  'practice-therapy': IllusPracticeTherapy,
+  'practice-chiro': IllusPracticeChiro,
+  'practice-physio': IllusPracticePhysio,
+  'program-club': IllusProgramClub,
+  'program-academy': IllusProgramAcademy,
+  'program-martial': IllusProgramMartial,
+  'program-camp': IllusProgramCamp,
+};
+
+export type IllustrationName = keyof typeof illustrations;

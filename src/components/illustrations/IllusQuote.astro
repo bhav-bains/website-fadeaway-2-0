@@ -1,0 +1,45 @@
+---
+// Pricing line art: a written scope of work / quote sheet with line items, a ruled total line (no figures)
+// and a signature stroke, with a credit tag clipped to the corner (audit fee credited). Line only, decorative.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg
+  aria-hidden="true"
+  focusable="false"
+  viewBox="0 0 320 320"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.25"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+>
+  <!-- Sheet with a folded corner -->
+  <path d="M80 36h126l34 34v214H80z" />
+  <path d="M206 36v34h34" opacity=".6" />
+  <!-- Heading block + line items with ticks -->
+  <path d="M104 72h70" stroke-width="2" opacity=".8" />
+  <path d="M104 88h46" opacity=".5" />
+  <g opacity=".6">
+    <path d="M104 120l5 5 9-10M128 120h64M204 120h12" />
+    <path d="M104 146l5 5 9-10M128 146h52M204 146h12" />
+    <path d="M104 172l5 5 9-10M128 172h70M204 172h12" />
+    <path d="M104 198l5 5 9-10M128 198h44M204 198h12" />
+  </g>
+  <!-- Ruled total line (fixed price, no figure) -->
+  <path d="M104 226h112" />
+  <path d="M104 232h112" opacity=".5" />
+  <rect x="176" y="240" width="40" height="14" rx="3" opacity=".7" />
+  <!-- Signature -->
+  <path d="M104 262c8 -10 14 6 22 -2s10 -8 16 0 10 4 16 -4" opacity=".7" />
+  <!-- Credit tag clipped to the corner -->
+  <path d="M232 98l38 -8 14 30 -34 16z" opacity=".75" />
+  <circle cx="245" cy="104" r="3.5" opacity=".75" />
+  <path d="M232 98l-8 -14" opacity=".5" />
+  <!-- Rings -->
+  <circle cx="160" cy="160" r="150" opacity=".1" />
+</svg>

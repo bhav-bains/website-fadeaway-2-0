@@ -1,0 +1,90 @@
+---
+// Quiet band of platform/tool marks: small monochrome icon + brand name, muted, brightening on hover.
+// Scrolls slowly in a seamless loop (paused on hover, static for reduced motion). Groups are split by a small divider.
+// The loop's second copy is aria-hidden, so each brand is announced once.
+import clsx from 'clsx';
+import { brandIcons, type BrandIconKey } from '../../lib/brand-icons';
+
+export interface LogoItem {
+  name: string;
+  icon?: BrandIconKey;
+}
+
+interface Props {
+  groups: LogoItem[][];
+  /** Accessible name for the list (not shown) */
+  label: string;
+  class?: string;
+}
+
+const { groups, label, class: className } = Astro.props;
+---
+
+<div
+  class={clsx(
+    'logo-band group/band relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_10%,#000_90%,transparent)]',
+    className,
+  )}
+>
+  <div class="logo-track flex w-max items-center group-hover/band:[animation-play-state:paused]">
+    {
+      [0, 1].map((copy) => (
+        <ul
+          aria-label={copy === 0 ? label : undefined}
+          aria-hidden={copy === 1 ? 'true' : undefined}
+          class="flex shrink-0 items-center gap-x-5 pr-5 md:gap-x-7 md:pr-7"
+        >
+          {groups.map((group, g) => (
+            <>
+              {g > 0 && <li aria-hidden="true" class="h-3 w-px shrink-0 bg-line-strong" />}
+              {group.map((item) => {
+                const icon = item.icon ? brandIcons[item.icon] : undefined;
+                return (
+                  <li class="flex shrink-0 items-center gap-1 text-ink-subtle transition-colors duration-300 hover:text-ink">
+                    {icon && (
+                      <svg class="size-icon shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d={icon.path} />
+                      </svg>
+                    )}
+                    <span class="whitespace-nowrap text-meta font-medium">{item.name}</span>
+                  </li>
+                );
+              })}
+            </>
+          ))}
+        </ul>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .logo-track {
+    animation: logo-marquee 60s linear infinite;
+  }
+  @keyframes logo-marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .logo-track {
+      animation: none;
+      width: auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .logo-track > ul:first-child {
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: 12px;
+      padding-right: 0;
+    }
+    .logo-track > ul:last-child {
+      display: none;
+    }
+    .logo-band {
+      mask-image: none;
+    }
+  }
+</style>

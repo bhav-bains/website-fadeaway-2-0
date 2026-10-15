@@ -1,0 +1,38 @@
+---
+// Labs "idea to MVP" line art: an idea (bulb) sketched on a napkin, unfolding into an architecture diagram
+// (connected boxes), ending in a working app window with a launch arrow. Line only, currentColor, decorative.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg
+  aria-hidden="true"
+  focusable="false"
+  viewBox="0 0 320 320"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.25"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+>
+  <!-- Idea -->
+  <path d="M60 92a22 22 0 1 1 30 20v10h-16v-10a22 22 0 0 1 -14 -20z" />
+  <path d="M74 132h16M78 140h8" opacity=".6" />
+  <path d="M82 50v-10M50 62l-7 -7M114 62l7 -7" opacity=".5" />
+  <!-- Architecture -->
+  <path d="M96 112c30 0 40 20 60 30" opacity=".5" stroke-dasharray="3 5" />
+  <rect x="150" y="128" width="52" height="30" rx="5" />
+  <rect x="120" y="190" width="52" height="30" rx="5" opacity=".75" />
+  <rect x="196" y="190" width="52" height="30" rx="5" opacity=".75" />
+  <path d="M176 158v14M146 172h76M146 172v18M222 172v18" opacity=".6" />
+  <!-- Working app + launch -->
+  <path d="M184 220c10 20 20 30 40 36" opacity=".5" stroke-dasharray="3 5" />
+  <rect x="216" y="238" width="84" height="58" rx="8" />
+  <path d="M216 252h84" opacity=".5" />
+  <path d="M228 270h40M228 282h26" opacity=".5" />
+  <path d="M258 222l26 -26M284 196h-16M284 196v16" />
+  <circle cx="160" cy="160" r="150" opacity=".1" />
+</svg>

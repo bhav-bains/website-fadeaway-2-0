@@ -1,0 +1,37 @@
+---
+// Oversized line art for backgrounds (replaces blurred glow blobs, CLAUDE.md section 2): concentric rings with
+// tick marks and two orbit arcs, like a signal spreading out. Line only, currentColor; the caller sets size,
+// position, colour, opacity and mask. Decorative.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+
+const ticks = Array.from({ length: 24 }, (_, i) => {
+  const a = (i * Math.PI) / 12;
+  const r0 = i % 6 === 0 ? 228 : 236;
+  const p = (r: number) => `${(320 + r * Math.cos(a)).toFixed(1)} ${(320 + r * Math.sin(a)).toFixed(1)}`;
+  return `M${p(r0)}L${p(246)}`;
+}).join('');
+---
+
+<svg
+  aria-hidden="true"
+  focusable="false"
+  viewBox="0 0 640 640"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1"
+  stroke-linecap="round"
+  class={className}
+>
+  <circle cx="320" cy="320" r="88" opacity=".55" />
+  <circle cx="320" cy="320" r="150" opacity=".4" />
+  <circle cx="320" cy="320" r="246" opacity=".3" />
+  <circle cx="320" cy="320" r="310" opacity=".15" stroke-dasharray="2 8" />
+  <path d={ticks} opacity=".35" />
+  <path d="M110 250a220 120 -18 0 1 410 -80" opacity=".45" />
+  <path d="M190 520a220 120 -18 0 0 330 -200" opacity=".3" />
+  <circle cx="520" cy="170" r="5" opacity=".7" />
+  <circle cx="190" cy="520" r="4" opacity=".5" />
+</svg>

@@ -1,0 +1,27 @@
+---
+// Fadeaway logo linking home. Size via `class` (height only; width follows the aspect ratio).
+import { Image } from 'astro:assets';
+import logo from '../../assets/fadeaway-logo-2.png';
+import { siteConfig } from '../../data/site';
+import { routes } from '../../data/routes';
+
+interface Props {
+  class?: string;
+  /** Preload in the header (above the fold); lazy elsewhere */
+  eager?: boolean;
+}
+
+const { class: className = 'h-8 w-auto', eager = false } = Astro.props;
+---
+
+<a href={routes.home} class="inline-flex shrink-0 items-center rounded-control focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-highlight">
+  <Image
+    src={logo}
+    alt={siteConfig.name}
+    widths={[160, 320]}
+    sizes="160px"
+    class={className}
+    loading={eager ? 'eager' : 'lazy'}
+    fetchpriority={eager ? 'high' : undefined}
+  />
+</a>

@@ -1,0 +1,58 @@
+---
+// Salesperson line art ("24/7"): a website window with a headset on top (the website as the salesperson), a chat
+// exchange and a closed-sale check inside, and a sun and moon on a dashed arc over it (always working). Abstract,
+// no words, no people. Decorative.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg
+  aria-hidden="true"
+  focusable="false"
+  viewBox="0 0 480 340"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+>
+  <!-- Day and night: dashed arc with a sun and a moon -->
+  <path d="M30 170a210 210 0 0 1 420 0" stroke-dasharray="3 9" opacity=".55" />
+  <g class="text-accent">
+    <circle cx="62" cy="62" r="13" />
+    <path d="M62 36v8M62 80v8M36 62h8M80 62h8M44 44l6 6M74 74l6 6M80 44l-6 6M50 74l-6 6" opacity=".7" />
+  </g>
+  <g class="text-highlight">
+    <path d="M418 48a15 15 0 1 0 0 30a12 12 0 1 1 0-30z" />
+    <path d="M388 40v8M384 44h8M446 92v6M443 95h6" opacity=".6" />
+  </g>
+
+  <!-- Website window -->
+  <rect x="100" y="120" width="280" height="196" rx="14" />
+  <path d="M100 156h280" opacity=".5" />
+  <circle cx="120" cy="138" r="3.5" opacity=".6" />
+  <circle cx="134" cy="138" r="3.5" opacity=".6" />
+  <circle cx="148" cy="138" r="3.5" opacity=".6" />
+
+  <!-- Headset on top: the site is the one answering -->
+  <g class="text-accent">
+    <path d="M196 118c0-62 88-62 88 0" />
+    <rect x="186" y="104" width="16" height="30" rx="7" class="fill-surface-raised" />
+    <rect x="278" y="104" width="16" height="30" rx="7" class="fill-surface-raised" />
+    <path d="M286 134c0 18-16 24-34 24" opacity=".7" />
+    <circle cx="248" cy="158" r="4" opacity=".7" />
+  </g>
+
+  <!-- Chat: a question, an answer, a closed sale -->
+  <path d="M124 188h110a10 10 0 0 1 10 10v18a10 10 0 0 1-10 10h-92l-14 12v-12h-4a10 10 0 0 1-10-10v-18a10 10 0 0 1 10-10z" opacity=".75" />
+  <path d="M136 200h70M136 212h44" opacity=".45" />
+  <path d="M356 236H250a10 10 0 0 0-10 10v18a10 10 0 0 0 10 10h92l14 12v-12h0a10 10 0 0 0 10-10v-18a10 10 0 0 0-10-10z" class="text-highlight" opacity=".85" />
+  <path d="M254 248h74M254 260h46" class="text-highlight" opacity=".5" />
+  <g class="text-accent">
+    <circle cx="346" cy="196" r="16" />
+    <path d="m338 196 6 6 11-12" />
+  </g>
+</svg>

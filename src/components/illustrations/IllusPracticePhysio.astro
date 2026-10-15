@@ -1,0 +1,19 @@
+---
+// Physical therapy: a figure doing a banded stretch beside an exercise ball, on a mat. Decorative line art (no words), theme colours only.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 400 240" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <ellipse cx="200" cy="208" rx="160" ry="10" class="stroke-line-strong" stroke-dasharray="3 6" />
+  <rect x="70" y="196" width="260" height="10" rx="5" class="stroke-highlight" />
+  <circle cx="108" cy="162" r="32" class="stroke-accent" />
+  <path d="M84 146c14 6 40 6 54 0M80 164c18 8 48 8 64 0" class="stroke-accent" opacity=".5" />
+  <circle cx="232" cy="80" r="12" class="stroke-highlight" />
+  <path d="M232 94v52l-22 50M232 146l26 50" class="stroke-highlight" />
+  <path d="M232 106l-38 22M232 106l40 -26" class="stroke-highlight" />
+  <path d="M272 80c24 -4 40 12 36 34s-24 34 -50 30" class="stroke-accent" stroke-dasharray="4 5" />
+  <path d="M194 128h-10M272 80h10" class="stroke-accent" opacity=".6" />
+</svg>

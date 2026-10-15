@@ -1,0 +1,73 @@
+---
+// Process loop line art: four stations on a ring joined by arrows (audit lens, plan map, build blocks, report bars),
+// so the last step visibly feeds back into the first. Line only, currentColor, decorative.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+
+const c = 160; // centre
+const r = 110; // ring radius
+// Arc segments between the four stations (gaps leave room for the nodes), each ending in an arrowhead
+const arcs = [
+  { from: -90, to: 0 },
+  { from: 0, to: 90 },
+  { from: 90, to: 180 },
+  { from: 180, to: 270 },
+].map(({ from, to }) => {
+  const rad = (d: number) => (d * Math.PI) / 180;
+  const a0 = rad(from + 16);
+  const a1 = rad(to - 16);
+  const p = (a: number) => `${(c + r * Math.cos(a)).toFixed(1)} ${(c + r * Math.sin(a)).toFixed(1)}`;
+  // Arrowhead at the arc end, pointing along the direction of travel (clockwise)
+  const tip = { x: c + r * Math.cos(a1), y: c + r * Math.sin(a1) };
+  const tangent = a1 + Math.PI / 2;
+  const back = (off: number) =>
+    `${(tip.x - 9 * Math.cos(tangent) + off * Math.cos(a1)).toFixed(1)} ${(tip.y - 9 * Math.sin(tangent) + off * Math.sin(a1)).toFixed(1)}`;
+  return { arc: `M${p(a0)} A${r} ${r} 0 0 1 ${p(a1)}`, head: `M${back(6)} L${tip.x.toFixed(1)} ${tip.y.toFixed(1)} L${back(-6)}` };
+});
+---
+
+<svg
+  aria-hidden="true"
+  focusable="false"
+  viewBox="0 0 320 320"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.25"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+>
+  <circle cx={c} cy={c} r="148" opacity=".15" />
+  <circle cx={c} cy={c} r="72" opacity=".2" stroke-dasharray="2 6" />
+  {
+    arcs.map(({ arc, head }) => (
+      <g opacity=".7">
+        <path d={arc} />
+        <path d={head} />
+      </g>
+    ))
+  }
+
+  <!-- Top: audit (magnifier) -->
+  <circle cx="160" cy="50" r="18" />
+  <circle cx="157" cy="47" r="6" />
+  <path d="M161.5 51.5l6 6" />
+
+  <!-- Right: plan (folded map with a route) -->
+  <circle cx="270" cy="160" r="18" />
+  <path d="M259 152l7-3 8 3 7-3v16l-7 3-8-3-7 3z" />
+  <path d="M266 149v16M274 152v16" opacity=".5" />
+
+  <!-- Bottom: build (stacked blocks) -->
+  <circle cx="160" cy="270" r="18" />
+  <rect x="151" y="268" width="8" height="8" rx="1" />
+  <rect x="161" y="268" width="8" height="8" rx="1" />
+  <rect x="156" y="259" width="8" height="8" rx="1" />
+
+  <!-- Left: report (bars) -->
+  <circle cx="50" cy="160" r="18" />
+  <path d="M42 168h16" />
+  <path d="M45 168v-6M50 168v-11M55 168v-15" />
+</svg>

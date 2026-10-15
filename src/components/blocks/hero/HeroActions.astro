@@ -1,0 +1,58 @@
+---
+// Hero CTA row. Mobile: full-width stacked buttons. sm and up: side by side.
+import clsx from 'clsx';
+import Button from '../../Button.astro';
+import ArrowLink from '../../ui/ArrowLink.astro';
+import HeroAuditForm from './HeroAuditForm.astro';
+import type { HeroAuditForm as AuditFormContent, HeroCta } from './types';
+
+interface Props {
+  primary?: HeroCta;
+  secondary?: HeroCta;
+  /** Free-audit URL box: replaces the buttons (when a `primary` CTA is also given it stays above the box; a `secondary` CTA shows as a small text link under the box) */
+  audit?: AuditFormContent;
+  align?: 'center' | 'start';
+  class?: string;
+}
+
+const { primary, secondary, audit, align = 'start', class: className } = Astro.props;
+---
+
+{
+  audit ? (
+    primary ? (
+      <div class={clsx('flex w-full flex-col gap-3', align === 'center' ? 'items-center' : 'items-start', className)}>
+        <Button href={primary.href} variant="primary" size="base" className="w-full sm:w-auto">
+          {primary.label}
+        </Button>
+        <HeroAuditForm {...audit} align={align} />
+      </div>
+    ) : secondary ? (
+      <div class={clsx('flex w-full flex-col gap-2', align === 'center' ? 'items-center' : 'items-start', className)}>
+        <HeroAuditForm {...audit} align={align} />
+        <ArrowLink href={secondary.href} class="text-meta">{secondary.label}</ArrowLink>
+      </div>
+    ) : (
+      <HeroAuditForm {...audit} align={align} class={className} />
+    )
+  ) : (
+    <div
+      class={clsx(
+        'flex w-full flex-col gap-2 sm:w-auto sm:flex-row',
+        align === 'center' ? 'sm:justify-center' : 'sm:justify-start',
+        className,
+      )}
+    >
+      {primary && (
+        <Button href={primary.href} variant="primary" size="base" className="w-full sm:w-auto">
+          {primary.label}
+        </Button>
+      )}
+      {secondary && (
+        <Button href={secondary.href} variant="secondary" size="base" className="w-full sm:w-auto">
+          {secondary.label}
+        </Button>
+      )}
+    </div>
+  )
+}

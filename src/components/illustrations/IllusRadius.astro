@@ -1,0 +1,41 @@
+---
+// Sports "method" line art: a club pin at the centre of drive-time rings with the towns families travel from,
+// a route line coming in, and an AI answer bubble naming the club. Line only, currentColor, decorative.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg
+  aria-hidden="true"
+  focusable="false"
+  viewBox="0 0 320 320"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.25"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+>
+  <!-- Drive-time rings -->
+  <circle cx="150" cy="170" r="48" opacity=".55" />
+  <circle cx="150" cy="170" r="92" opacity=".35" stroke-dasharray="3 6" />
+  <circle cx="150" cy="170" r="136" opacity=".18" stroke-dasharray="2 8" />
+  <!-- Club pin -->
+  <path d="M150 182s-20 -17 -20 -32a20 20 0 0 1 40 0c0 15 -20 32 -20 32z" />
+  <circle cx="150" cy="150" r="6" />
+  <!-- Towns families drive from -->
+  <g opacity=".7">
+    <circle cx="70" cy="128" r="5" />
+    <circle cx="232" cy="214" r="5" />
+    <circle cx="96" cy="250" r="5" />
+    <circle cx="214" cy="96" r="5" />
+  </g>
+  <path d="M96 250c16 -30 30 -50 50 -64" opacity=".6" stroke-dasharray="4 5" />
+  <path d="M140 190l8 -6 -2 10" opacity=".6" />
+  <!-- AI answer bubble naming the club -->
+  <path d="M206 30h82a12 12 0 0 1 12 12v30a12 12 0 0 1-12 12h-48l-14 12v-12h-20a12 12 0 0 1-12-12V42a12 12 0 0 1 12-12z" />
+  <path d="M208 50h52M208 62h34" opacity=".55" />
+  <rect x="248" y="58" width="32" height="10" rx="5" />
+</svg>

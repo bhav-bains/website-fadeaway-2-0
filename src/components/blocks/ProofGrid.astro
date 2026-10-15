@@ -1,0 +1,36 @@
+---
+// Grid of case-study cards (CaseStudyCard): image, client, title, summary, result chips, and a "Read the case study"
+// link to /case-studies/[slug]/; the live-site link lives on the detail page. Renders nothing when given no entries; pages should also skip the surrounding
+// Section (CLAUDE.md section 4).
+// Columns follow the count: a single case study becomes one wide feature (image left, text right from md),
+// 2 sit centred side by side, 3+ go 3 across on lg. `headingAs` sets the card title level (h3 by default).
+import clsx from 'clsx';
+import CaseStudyCard from './CaseStudyCard.astro';
+import type { CaseStudy } from '../../lib/case-studies';
+
+interface Props {
+  entries: CaseStudy[];
+  headingAs?: 'h2' | 'h3';
+  class?: string;
+}
+
+const { entries, headingAs: Title = 'h3', class: className } = Astro.props;
+
+const single = entries.length === 1;
+const layout =
+  single
+    ? ''
+    : entries.length === 2
+      ? 'mx-auto max-w-4xl md:grid-cols-2'
+      : 'md:grid-cols-2 lg:grid-cols-3';
+---
+
+{
+  entries.length > 0 && (
+    <ul class={clsx('grid gap-3 lg:gap-4', layout, className)}>
+      {entries.map((entry) => (
+        <CaseStudyCard entry={entry} headingAs={Title} single={single} />
+      ))}
+    </ul>
+  )
+}

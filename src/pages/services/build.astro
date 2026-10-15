@@ -1,0 +1,152 @@
+---
+// Build Services page. Content: src/data/pages/build.ts (from copy/build.md).
+// Service pages use the blueprint Hero and drafting-style line art, so they read differently from solutions pages.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
+import Section from '../../components/blocks/Section.astro';
+import SpecGrid from '../../components/blocks/SpecGrid.astro';
+import ServiceRows from '../../components/blocks/ServiceRows.astro';
+import AuditCta from '../../components/blocks/AuditCta.astro';
+import CardGrid from '../../components/blocks/CardGrid.astro';
+import Steps from '../../components/blocks/Steps.astro';
+import FeatureList from '../../components/blocks/FeatureList.astro';
+import WorkGrid from '../../components/blocks/WorkGrid.astro';
+import IconGrid from '../../components/blocks/IconGrid.astro';
+import Faq from '../../components/blocks/Faq.astro';
+import CtaBlock from '../../components/blocks/CtaBlock.astro';
+import Button from '../../components/Button.astro';
+import ArrowLink from '../../components/ui/ArrowLink.astro';
+import IllusLayers from '../../components/illustrations/IllusLayers.astro';
+import { breadcrumbSchema, howToSchema, faqSchema, serviceSchema } from '../../lib/schema';
+import { getRealWork } from '../../lib/work';
+import { siteConfig } from '../../data/site';
+import { routes } from '../../data/routes';
+import {
+  seo,
+  breadcrumb,
+  hero,
+  heroVariant,
+  answerCapsule,
+  standard,
+  services,
+  industries,
+  howItWorks,
+  pricing,
+  realWork,
+  labs,
+  faq,
+  serviceNames,
+  cta,
+} from '../../data/pages/build';
+import { auditCta } from '../../data/pages/audit';
+
+const work = await getRealWork(realWork.tag, realWork.limit);
+
+const hasWork = work.length > 0;
+
+const jsonLd = [
+  breadcrumbSchema(breadcrumb),
+  ...serviceSchema({ names: serviceNames, url: routes.build }),
+  howToSchema({
+    name: howItWorks.heading,
+    steps: howItWorks.items,
+    url: new URL(`${routes.build}#${howItWorks.id}`, siteConfig.url).toString(),
+  }),
+  faqSchema(faq.items),
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
+  <!-- Dev-only preview: /services/build/?hero=blueprint | statement | showcase | all -->
+  <HeroPreview content={hero} variant={heroVariant} options={['blueprint', 'statement', 'showcase']} />
+
+  <!-- Answer capsule (AEO summary) directly under the Hero, as the first section's wide, offset intro -->
+  <Section
+    id={standard.id}
+    heading={standard.heading}
+    intro={answerCapsule}
+    introStyle="wide"
+    align="start"
+    class="overflow-x-clip"
+  >
+    <SpecGrid items={standard.items} swipe />
+  </Section>
+
+  <Section id={services.id} eyebrow={services.eyebrow} heading={services.heading} align="start">
+    <ServiceRows items={services.items} />
+    <!-- Next step for visitors with a current site: free audit (URL carries over to /audit/) -->
+    <AuditCta
+      {...auditCta}
+      fallback={{ ...auditCta.fallback, link: { ...auditCta.fallback.link, label: "Let's Connect" } }}
+      class="mt-6 md:mt-10"
+    />
+  </Section>
+
+  <Section id={industries.id} heading={industries.heading} intro={industries.intro}>
+    <CardGrid items={industries.items} columns={2} />
+    {/* HIDDEN Oct 14 (founder): the "Not sure which fits?" audit button (data stays in build.ts, industries.audit) and the free-demo line, since /demo-request/ is hidden (industries.demo). To restore, put a wrapper div with these back under the grid:
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-base text-ink-muted">{industries.audit.text}</span>
+        <Button href={industries.audit.cta.href} variant="secondary" size="base">{industries.audit.cta.label}</Button>
+      </div>
+      <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-pretty text-base text-ink-soft md:text-lg">
+        <span><strong class="font-semibold text-ink">{industries.demo.lead}</strong> {industries.demo.text}</span>
+        <ArrowLink href={industries.demo.link.href}>{industries.demo.link.label}</ArrowLink>
+      </p>
+      */}
+  </Section>
+
+  <Section id={labs.id} eyebrow={labs.eyebrow} heading={labs.heading} intro={labs.intro}>
+    <IconGrid items={labs.items} columns={2} size="md" />
+    <div class="mt-4 flex justify-center md:mt-6">
+      <Button href={labs.cta.href} variant="secondary" size="base">{labs.cta.label}</Button>
+    </div>
+  </Section>
+
+  <!-- Target of the Hero's "See How It Works" button -->
+  <Section id={howItWorks.id} heading={howItWorks.heading} layout="split">
+    <Fragment slot="actions">
+      {/* Closing note (founder, Oct 14): How Pricing Works folded into How It Works under the heading, with the quote button. The pricing points (pricing.items in build.ts, "Start With a Full Audit" and "Priced Around Your Project") are hidden; to restore, put the separate Section back with <FeatureList items={pricing.items} columns={1} /> */}
+      <p id={pricing.id} class="scroll-mt-12 basis-full text-pretty text-base text-ink-soft md:text-lg">
+        {pricing.intro}
+      </p>
+      <Button href={pricing.cta.href} variant="primary" size="base">{pricing.cta.label}</Button>
+      {/* Oversized line art under the pinned heading: research, design and development layers, then growth */}
+      <IllusLayers
+        class="pointer-events-none -ml-6 mt-4 hidden w-[26rem] max-w-none basis-full text-highlight opacity-30 [mask-image:radial-gradient(circle,#000_45%,transparent_80%)] lg:block"
+      />
+    </Fragment>
+    <Steps items={howItWorks.items} direction="vertical" />
+  </Section>
+
+  {
+    hasWork && (
+      <Section id={realWork.id} eyebrow={realWork.eyebrow} heading={realWork.heading} align="start">
+        <WorkGrid entries={work} />
+        <div class="mt-4 flex flex-col gap-2 border-t border-line pt-4 sm:flex-row sm:items-center sm:justify-between md:mt-6">
+          <p class="font-display text-xl font-bold text-ink md:text-2xl">{realWork.ctaText}</p>
+          <div class="flex flex-wrap gap-2">
+            <Button href={realWork.primaryCta.href} variant="primary" size="base">
+              {realWork.primaryCta.label}
+            </Button>
+            <Button href={realWork.secondaryCta.href} variant="secondary" size="base">
+              {realWork.secondaryCta.label}
+            </Button>
+          </div>
+        </div>
+      </Section>
+    )
+  }
+
+  <!-- Testimonials (tag build): renders nothing until real, permission-confirmed quotes exist -->
+
+  <Section id={faq.id} heading={faq.heading} width="narrow">
+    <Faq faq={faq.items} />
+  </Section>
+
+  <!-- From the Blog (tag build, data: `blog` in build.ts): renders nothing until /articles/ has real Build posts -->
+
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
+    <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
+  </Section>
+</BaseLayout>

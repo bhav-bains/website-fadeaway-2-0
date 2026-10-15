@@ -1,0 +1,136 @@
+---
+// Wellness & Counselling Solutions page: a conversion funnel on the same blocks as Boutique Fitness.
+// Content: src/data/pages/wellness.ts (from copy/wellness-counselling.md, Oct 14 rewrite). Order: hook → how clients
+// find practices → tailored solutions → from search to booked client → pricing → why us → what to expect → proof → FAQ → final ask.
+// No demo section and no /demo-request/ links (founder, Oct 14); How It Works and its HowTo schema are hidden.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
+import Section from '../../components/blocks/Section.astro';
+import BentoGrid from '../../components/blocks/BentoGrid.astro';
+import FeatureList from '../../components/blocks/FeatureList.astro';
+import CalloutCard from '../../components/blocks/CalloutCard.astro';
+import CardGrid from '../../components/blocks/CardGrid.astro';
+import CalloutRow from '../../components/blocks/CalloutRow.astro';
+import IconGrid from '../../components/blocks/IconGrid.astro';
+import StageList from '../../components/blocks/StageList.astro';
+import PricingSection from '../../components/blocks/PricingSection.astro';
+import Timeline from '../../components/blocks/Timeline.astro';
+import Steps from '../../components/blocks/Steps.astro';
+import WorkGrid from '../../components/blocks/WorkGrid.astro';
+import Faq from '../../components/blocks/Faq.astro';
+import CtaBlock from '../../components/blocks/CtaBlock.astro';
+import IllusBooking from '../../components/illustrations/IllusBooking.astro';
+import { breadcrumbSchema, howToSchema, faqSchema, serviceSchema } from '../../lib/schema';
+import { getRealWork } from '../../lib/work';
+import { siteConfig } from '../../data/site';
+import { routes } from '../../data/routes';
+import {
+  seo,
+  breadcrumb,
+  hero,
+  heroVariant,
+  answerCapsule,
+  insights,
+  why,
+  audience,
+  services,
+  pricing,
+  customRow,
+  expect,
+  howItWorks,
+  realWork,
+  faq,
+  serviceNames,
+  serviceOffers,
+  cta,
+} from '../../data/pages/wellness';
+
+const work = await getRealWork(realWork.tag, realWork.limit);
+
+const hasWork = work.length > 0;
+
+const jsonLd = [
+  breadcrumbSchema(breadcrumb),
+  ...serviceSchema({ names: serviceNames, url: routes.wellnessCounselling, offers: serviceOffers }),
+  // HowTo schema hidden with the How It Works section (founder Oct 14); restore both together:
+  // howToSchema({ name: howItWorks.heading, steps: howItWorks.items, url: new URL(`${routes.wellnessCounselling}#${howItWorks.id}`, siteConfig.url).toString() }),
+  faqSchema(faq.items),
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
+  <!-- Dev-only preview: /solutions/wellness-counselling/?hero=statement | showcase | visual | all -->
+  <HeroPreview content={hero} variant={heroVariant} options={['statement', 'showcase', 'visual']} />
+
+  <!-- First section after the Hero. The answer capsule is hidden visually but stays in the HTML as screen-reader text for AEO -->
+  <Section id={audience.id} heading={audience.heading} align="start">
+    <p class="sr-only">{answerCapsule}</p>
+    <CardGrid items={audience.items} cta={audience.cta} swipe compact phoneGrid ctaOnPhones={false} />
+    <p class="mt-3 text-pretty text-base text-ink-muted md:mt-4">{audience.note}</p>
+    <h3 class="mb-2 mt-6 text-meta font-semibold uppercase tracking-wider text-ink-muted md:mt-8">{audience.strip.label}</h3>
+    <IconGrid items={audience.strip.items} columns={4} size="md" swipe collapse={false} idPrefix="practice-strip" />
+  </Section>
+
+  <Section id={services.id} heading={services.heading} align="start">
+    <StageList stages={services.stages} />
+    {/* Phones only: the contact call-out sits under this section (on larger screens it is the last tile above). Each copy is display:none at the other breakpoint, so it is not read twice */}
+    <CalloutCard {...audience.cta} class="mt-3 md:hidden" />
+  </Section>
+
+  <Section id={pricing.id} eyebrow={pricing.eyebrow} heading={pricing.heading} intro={pricing.intro}>
+    <PricingSection {...pricing} />
+    <CalloutRow {...customRow} class="mt-3 md:mt-4" />
+  </Section>
+
+  <Section id={why.id} heading={why.heading} layout="split">
+    {/* Oversized line art under the pinned heading: booking on a phone, compliance shield, local pin */}
+    <IllusBooking
+      slot="actions"
+      class="pointer-events-none -ml-6 mt-4 hidden w-[24rem] max-w-none text-highlight opacity-30 [mask-image:radial-gradient(circle,#000_45%,transparent_80%)] lg:block"
+    />
+    <FeatureList items={why.items} columns={1} />
+  </Section>
+
+  <Section id={expect.id} heading={expect.heading} intro={expect.intro} align="start">
+    <Timeline items={expect.items} swipe />
+  </Section>
+
+  {/* HIDDEN Oct 14 (founder): How It Works (and its HowTo schema above). Data stays in wellness.ts (howItWorks). To restore, put the Section back:
+  <Section id={howItWorks.id} heading={howItWorks.heading}>
+    <Steps items={howItWorks.items} />
+  </Section>
+  */}
+
+  {
+    hasWork && (
+      <Section id={realWork.id} eyebrow={realWork.eyebrow} heading={realWork.heading} align="start">
+        <WorkGrid entries={work} />
+      </Section>
+    )
+  }
+
+  <!-- Testimonials (tag wellness-counselling): renders nothing until real, permission-confirmed quotes exist -->
+
+  <!-- Moved just above the FAQ (founder, Oct 14) -->
+  <Section id={insights.id} heading={insights.heading} align="start">
+    <BentoGrid items={insights.items} cta={insights.cta} />
+  </Section>
+
+  <Section id={faq.id} heading={faq.heading} width="narrow">
+    <Faq faq={faq.items} />
+  </Section>
+
+  <!-- From the Blog (tag wellness-counselling, data: `blog` in wellness.ts): renders nothing until /articles/ has real posts -->
+
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
+    <CtaBlock
+      heading={cta.heading}
+      text={cta.text}
+      cta={cta.cta}
+      link={cta.link}
+      headingAs="h2"
+      headingId={`${cta.id}-heading`}
+      layout="center"
+    />
+  </Section>
+</BaseLayout>

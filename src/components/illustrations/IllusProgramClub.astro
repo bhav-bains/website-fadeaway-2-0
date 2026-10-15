@@ -1,0 +1,19 @@
+---
+// Club teams: a team bracket of players' jerseys over a pitch line with a ball. Decorative line art (no words), theme colours only.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 400 240" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <circle cx="200" cy="118" r="92" class="stroke-line-strong" stroke-dasharray="3 6" />
+  <rect x="60" y="40" width="280" height="160" rx="10" class="stroke-line-strong" />
+  <path d="M200 40v160" class="stroke-line-strong" />
+  <circle cx="200" cy="120" r="26" class="stroke-line-strong" />
+  <path d="M60 90h36v60H60M340 90h-36v60h36" class="stroke-line-strong" />
+  <path d="M120 80l12-8l10 6l10-6l12 8l-8 10v22h-28V90z" class="stroke-highlight" />
+  <path d="M250 130l12-8l10 6l10-6l12 8l-8 10v22h-28v-22z" class="stroke-highlight" opacity=".6" />
+  <circle cx="200" cy="120" r="9" class="stroke-accent" />
+  <path d="M200 111v18M191 120h18" class="stroke-accent" opacity=".6" />
+</svg>

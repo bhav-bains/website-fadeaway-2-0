@@ -1,0 +1,18 @@
+---
+// Spin studio: an indoor bike with a flywheel and speed lines. Decorative line art (no words), theme colours only.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 400 240" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M92 204h176M110 204l56 -46M268 204l-90 -44" class="stroke-highlight" />
+  <circle cx="170" cy="150" r="46" class="stroke-highlight" />
+  <circle cx="170" cy="150" r="24" class="stroke-highlight" opacity=".5" stroke-dasharray="3 5" />
+  <path d="M170 150l50 -46M206 98h36M170 150l-34 -60M124 88h32" class="stroke-highlight" />
+  <circle cx="198" cy="122" r="7" class="stroke-accent" />
+  <path d="M60 128h34M44 150h38M62 172h30" class="stroke-accent" opacity=".6" />
+  <path d="M296 90c10 -12 20 -12 30 0" class="stroke-line-strong" />
+  <path d="M300 112c8 -9 16 -9 24 0" class="stroke-line-strong" />
+</svg>

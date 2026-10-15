@@ -1,0 +1,62 @@
+---
+// Numbered process: markers joined by a connector line (accent to highlight), H3 title, one line of prose.
+// Phones: vertical timeline. md and up: steps side by side, or `direction="vertical"` keeps the timeline at every width
+// (for longer step text, e.g. beside a Section layout="split" header).
+// Connectors run through the centre of the 48px number circles (1.5rem; theme spacing step 6 is 48px, so not top-6).
+// Pair with howToSchema() (src/lib/schema.ts) fed from the same items so the HowTo JSON-LD matches the visible text.
+import clsx from 'clsx';
+import ArrowLink from '../ui/ArrowLink.astro';
+
+export interface StepItem {
+  title: string;
+  text: string;
+  /** Optional follow-on link under the text (not part of the HowTo schema) */
+  link?: { label: string; href: string };
+}
+
+interface Props {
+  items: StepItem[];
+  direction?: 'auto' | 'vertical';
+  class?: string;
+}
+
+const { items, direction = 'auto', class: className } = Astro.props;
+const vertical = direction === 'vertical';
+const pad = (n: number) => String(n).padStart(2, '0');
+const mdColumns = { 2: 'md:grid-cols-2', 3: 'md:grid-cols-3', 4: 'md:grid-cols-4' } as Record<number, string>;
+---
+
+<ol class={clsx('grid', vertical ? 'gap-5 md:gap-6' : ['gap-5 md:gap-4', mdColumns[items.length] ?? 'md:grid-cols-3'], className)}>
+  {
+    items.map((item, i) => {
+      const last = i === items.length - 1;
+      return (
+        <li class={clsx('relative grid content-start grid-cols-[auto_minmax(0,1fr)] gap-x-3', vertical ? 'md:gap-x-4' : 'md:grid-cols-1 md:gap-y-3')}>
+          {!last && (
+            <span
+              aria-hidden="true"
+              class={clsx(
+                'absolute left-[1.5rem] top-12 -bottom-5 w-px bg-gradient-to-b from-accent/60 to-highlight/60',
+                vertical ? 'md:-bottom-6' : 'md:left-14 md:right-0 md:top-[1.5rem] md:bottom-auto md:h-px md:w-auto md:bg-gradient-to-r',
+              )}
+            />
+          )}
+          <span
+            aria-hidden="true"
+            class={clsx(
+              'relative inline-flex size-12 items-center justify-center rounded-full border bg-surface-raised font-display text-base font-semibold tabular-nums',
+              i === 0 ? 'border-accent/50 text-accent outline outline-1 outline-offset-4 outline-accent/25' : 'border-highlight/40 text-highlight',
+            )}
+          >
+            {pad(i + 1)}
+          </span>
+          <div class={clsx('flex flex-col gap-1 pb-1', vertical ? 'pt-1.5' : 'md:pr-3')}>
+            <h3 class="font-display text-xl font-bold text-ink md:text-2xl">{item.title}</h3>
+            <p class={clsx('text-pretty text-base text-ink-muted', vertical ? 'max-w-xl' : 'max-w-md')}>{item.text}</p>
+            {item.link && <ArrowLink href={item.link.href} class="mt-1 self-start">{item.link.label}</ArrowLink>}
+          </div>
+        </li>
+      );
+    })
+  }
+</ol>

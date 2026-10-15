@@ -1,0 +1,60 @@
+---
+// Sports Academies: parents searching (with AI), a registration roster filling up,
+// a team shield and a ball. Decorative, no words; colors from theme tokens.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+
+const roster = [
+  { y: 110, done: true },
+  { y: 134, done: true },
+  { y: 158, done: true },
+  { y: 182, done: false },
+];
+const sparkle = 'M0 -7 L1.7 -1.7 L7 0 L1.7 1.7 L0 7 L-1.7 1.7 L-7 0 L-1.7 -1.7 Z';
+---
+
+<svg class={className} viewBox="0 0 400 240" fill="none" aria-hidden="true" focusable="false">
+  <!-- Search -->
+  <rect x="40" y="24" width="212" height="36" rx="18" class="fill-canvas stroke-line-strong" stroke-width="1.5" />
+  <circle cx="61" cy="41" r="6" class="stroke-ink-muted" stroke-width="2" />
+  <path d="M65.5 45.5l4.5 4.5" class="stroke-ink-muted" stroke-width="2" stroke-linecap="round" />
+  <rect x="80" y="38" width="110" height="7" rx="3.5" class="fill-white/15" />
+  <path d={sparkle} transform="translate(232 42)" class="fill-accent" />
+
+  <!-- Registration roster -->
+  <rect x="40" y="74" width="212" height="144" rx="14" class="fill-surface-raised stroke-line-strong" stroke-width="1.5" />
+  <rect x="56" y="90" width="70" height="8" rx="4" class="fill-white/25" />
+  <rect x="206" y="90" width="30" height="8" rx="4" class="fill-highlight/40" />
+  {
+    roster.map((r) => (
+      <g>
+        <circle cx="66" cy={r.y + 8} r="8" class="fill-highlight/25" />
+        <rect x="82" y={r.y + 5} width="90" height="6" rx="3" class="fill-white/15" />
+        {r.done ? (
+          <g>
+            <circle cx="228" cy={r.y + 8} r="7.5" class="fill-highlight/20" />
+            <path d={`M224.5 ${r.y + 8}l2.5 2.5 4.5-5`} class="stroke-highlight" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        ) : (
+          <circle cx="228" cy={r.y + 8} r="6.5" class="stroke-accent/60" stroke-width="1.8" stroke-dasharray="3 3" />
+        )}
+      </g>
+    ))
+  }
+
+  <!-- Team shield -->
+  <path
+    d="M322 36l34 12v30c0 21-14 34-34 42-20-8-34-21-34-42V48z"
+    class="fill-surface-raised stroke-line-strong"
+    stroke-width="1.5"
+    stroke-linejoin="round"
+  />
+  <path d="M322 58l5 10.5 11.5 1.5-8.4 8 2.1 11.4L322 84l-10.2 5.4 2.1-11.4-8.4-8 11.5-1.5z" class="fill-accent" />
+
+  <!-- Ball -->
+  <circle cx="330" cy="178" r="30" class="fill-accent/15 stroke-accent" stroke-width="2" />
+  <path d="M330 148v60M300 178h60" class="stroke-accent/70" stroke-width="1.8" />
+  <path d="M309 157c9 6 9 36 0 42M351 157c-9 6-9 36 0 42" class="stroke-accent/70" stroke-width="1.8" stroke-linecap="round" />
+</svg>

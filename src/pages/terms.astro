@@ -1,0 +1,19 @@
+---
+// Terms of Service. Content: `terms` in src/data/pages/legal.ts (from copy/terms.md, DRAFT pending legal review).
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalDoc from '../components/blocks/LegalDoc.astro';
+import { breadcrumbSchema, webPageSchema } from '../lib/schema';
+import { routes } from '../data/routes';
+import { terms as doc, labels } from '../data/pages/legal';
+
+const breadcrumb = [
+  { label: 'Home', href: routes.home },
+  { label: doc.h1, href: routes.terms },
+];
+
+const jsonLd = [webPageSchema({ url: routes.terms, name: doc.title, description: doc.description }), breadcrumbSchema(breadcrumb)];
+---
+
+<BaseLayout title={doc.title} description={doc.description} jsonLd={jsonLd}>
+  <LegalDoc doc={doc} breadcrumb={breadcrumb} dateLabel={labels.date} tocLabel={labels.toc} />
+</BaseLayout>

@@ -1,0 +1,204 @@
+---
+// One priced plan, compact: name, price + cadence, who it's for, the short points, a "See Deliverables" button and
+// the standard button. The full deliverables list and the outcome line live in a native <dialog> opened with
+// showModal() (Esc closes, focus is trapped). The dialog content is in the page HTML even when closed, so search
+// engines and AI tools can read it. A centered panel from md up, a full-screen sheet on phones; the header and the
+// start button stay pinned while the list scrolls. `tone` colours the card: `accent` (orange) or `highlight` (green).
+// Cards sit side by side from md up at equal height (the details button sits at the bottom) and stack on phones.
+import clsx from 'clsx';
+import Button from '../Button.astro';
+
+export interface DeliverableGroup {
+  /** Group heading, e.g. "Months 1 to 3: Build the Foundation" */
+  title?: string;
+  sections: { label?: string; items: string[] }[];
+}
+
+export interface PricingItem {
+  name: string;
+  price: string;
+  /** e.g. "/ month", "one time" */
+  cadence: string;
+  /** Small line above the price, e.g. "Starts from" */
+  priceLead?: string;
+  /** Small line right under the price, e.g. "$945 one-time website build setup" */
+  priceNote?: string;
+  /** Who it's for (one sentence) */
+  for: string;
+  /** Optional context paragraph under "for" */
+  note?: string;
+  includedLabel?: string;
+  /** Short always-visible points on the card */
+  points?: string[];
+  /** Full deliverables in the expander, grouped (use this or the flat `included`) */
+  deliverables?: DeliverableGroup[];
+  included?: string[];
+  outcomeLabel?: string;
+  outcome?: string;
+  /** Card colour: accent (orange) or highlight (green) */
+  tone?: 'accent' | 'highlight';
+  /** Button at the bottom of the card (e.g. start the conversation on the contact page) */
+  cta?: { label: string; href: string };
+}
+
+interface Props extends PricingItem {
+  /** Label on the button that opens the dialog */
+  detailsLabel: string;
+  class?: string;
+}
+
+const { name, price, priceLead, priceNote, cadence, for: forWho, note, points, deliverables, included, outcomeLabel, outcome, tone = 'accent', cta, detailsLabel, class: className } =
+  Astro.props;
+
+const dialogId = `plan-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`;
+
+const toneStyles = {
+  accent: { border: 'bg-gradient-to-br from-accent/70 via-accent/20 to-line', tick: 'text-accent', bar: 'border-accent/60', edge: 'border-accent/50', button: '' },
+  highlight: { border: 'bg-gradient-to-br from-highlight/70 via-highlight/20 to-line', tick: 'text-highlight', bar: 'border-highlight/60', edge: 'border-highlight/50', button: '!border-highlight !text-highlight hover:!bg-highlight/10 focus-visible:!ring-highlight/50' },
+}[tone];
+---
+
+<article class={clsx('flex flex-col rounded-card p-px', toneStyles.border, className)}>
+  <div class="flex flex-1 flex-col gap-3 rounded-[calc(var(--radius-card)-1px)] bg-surface-lifted p-3 md:p-4 lg:p-5">
+    <header class="flex flex-col gap-2">
+      <h3 class="font-display text-xl font-bold text-ink md:text-2xl">{name}</h3>
+      <p class="flex flex-wrap items-baseline gap-x-1">
+        {priceLead && <span class="w-full text-meta text-ink-muted">{priceLead}</span>}
+        <span class="font-display text-4xl font-bold tracking-tight text-ink md:text-5xl">{price}</span>
+        <span class="text-base text-ink-muted">{cadence}</span>
+      </p>
+      {priceNote && <p class="-mt-1 text-meta text-ink-muted">{priceNote}</p>}
+      <p class="text-pretty text-base text-ink-soft">{forWho}</p>
+      {note && <p class="text-pretty text-meta text-ink-muted">{note}</p>}
+    </header>
+
+    {
+      points && (
+        <ul class="flex flex-col gap-1.5">
+          {points.map((line) => (
+            <li class="flex items-start gap-1.5 text-base text-ink-soft">
+              <svg aria-hidden="true" class={clsx('mt-1 size-icon-sm shrink-0', toneStyles.tick)} viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m3.5 8.5 3 3 6-7" /></svg>
+              <span class="text-pretty">{line}</span>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    <button
+      type="button"
+      data-dialog-open={dialogId}
+      aria-haspopup="dialog"
+      class={clsx('mt-auto flex min-h-[44px] w-full cursor-pointer items-center justify-between gap-2 rounded-control border bg-canvas/40 px-2 py-1 text-left font-semibold text-ink transition-colors duration-200 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight', toneStyles.bar)}
+    >
+      <span>{detailsLabel}</span>
+      <svg aria-hidden="true" class={clsx('size-icon-sm shrink-0', toneStyles.tick)} viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 4h7M6 8h7M6 12h7M2.75 4h.01M2.75 8h.01M2.75 12h.01" />
+      </svg>
+    </button>
+
+    {cta && <Button href={cta.href} variant="secondary" size="base" className={clsx('w-full', toneStyles.button)}>{cta.label}</Button>}
+  </div>
+
+  <dialog
+    id={dialogId}
+    aria-labelledby={`${dialogId}-title`}
+    class={clsx(
+      'm-auto w-[min(92vw,40rem)] max-w-none overflow-hidden rounded-card border bg-surface-lifted p-0 text-ink backdrop:bg-black/70 backdrop:backdrop-blur-sm open:flex open:flex-col',
+      'max-h-[88dvh] max-md:m-0 max-md:h-dvh max-md:max-h-none max-md:w-full max-md:rounded-none max-md:border-0',
+      toneStyles.edge,
+    )}
+  >
+    <div class="flex items-start justify-between gap-2 border-b border-line p-3 md:p-4">
+      <div class="flex flex-col gap-1">
+        <h3 id={`${dialogId}-title`} class="font-display text-xl font-bold text-ink md:text-2xl">{name}</h3>
+        <p class="flex flex-wrap items-baseline gap-x-1">
+          {priceLead && <span class="w-full text-meta text-ink-muted">{priceLead}</span>}
+          <span class="font-display text-2xl font-bold text-ink">{price}</span>
+          <span class="text-base text-ink-muted">{cadence}</span>
+        </p>
+      </div>
+      <button
+        type="button"
+        data-dialog-close
+        aria-label="Close"
+        class="-mr-1 -mt-1 inline-flex size-[44px] shrink-0 cursor-pointer items-center justify-center rounded-control text-ink-soft hover:bg-white/5 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight"
+      >
+        <svg aria-hidden="true" class="size-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m5 5 10 10M15 5 5 15" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="flex flex-1 flex-col gap-4 overflow-y-auto overscroll-contain p-3 md:p-4 [scrollbar-color:var(--color-line-strong)_transparent] [scrollbar-width:thin]">
+      {
+        deliverables?.map((group) => (
+          <div class="flex flex-col gap-2">
+            {group.title && <h4 class="font-display text-lg font-bold text-ink">{group.title}</h4>}
+            {group.sections.map((section) => (
+              <div class="flex flex-col gap-1">
+                {section.label && <p class={clsx('text-meta font-semibold', toneStyles.tick)}>{section.label}</p>}
+                <ul class="flex flex-col gap-1.5">
+                  {section.items.map((line) => (
+                    <li class="flex items-start gap-1.5 text-base text-ink-soft">
+                      <svg aria-hidden="true" class={clsx('mt-1 size-icon-sm shrink-0', toneStyles.tick)} viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m3.5 8.5 3 3 6-7" /></svg>
+                      <span class="text-pretty">{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        ))
+      }
+      {
+        included && (
+          <ul class="flex flex-col gap-1.5">
+            {included.map((line) => (
+              <li class="flex items-start gap-1.5 text-base text-ink-soft">
+                <svg aria-hidden="true" class={clsx('mt-1 size-icon-sm shrink-0', toneStyles.tick)} viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m3.5 8.5 3 3 6-7" /></svg>
+                <span class="text-pretty">{line}</span>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+      {
+        outcome && (
+        <div class={clsx('rounded-control border-l-2 bg-canvas/50 p-2 md:p-3', toneStyles.bar)}>
+          <p class="text-pretty text-base text-ink-soft">
+            <strong class="font-semibold text-ink">{outcomeLabel}</strong>
+            {' '}{outcome}
+          </p>
+        </div>
+        )
+      }
+    </div>
+
+    {
+      cta && (
+        <div class="border-t border-line p-3 md:p-4">
+          <Button href={cta.href} variant="secondary" size="base" className={clsx('w-full', toneStyles.button)}>{cta.label}</Button>
+        </div>
+      )
+    }
+  </dialog>
+</article>
+
+<script>
+  // Open / close the plan dialogs (delegated: one listener for every card on the page). A click on the dim backdrop closes.
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement | null;
+    if (!target) return;
+    const opener = target.closest<HTMLElement>('[data-dialog-open]');
+    if (opener) {
+      (document.getElementById(opener.dataset.dialogOpen ?? '') as HTMLDialogElement | null)?.showModal();
+      return;
+    }
+    if (target.closest('[data-dialog-close]')) {
+      target.closest('dialog')?.close();
+      return;
+    }
+    if (target instanceof HTMLDialogElement && target.open) target.close();
+  });
+</script>

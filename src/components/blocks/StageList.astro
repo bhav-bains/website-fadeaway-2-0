@@ -1,0 +1,61 @@
+---
+// Journey in stages: each stage has an arrow-tab header (number + label, same shape as the Pipeline tabs) with its
+// icon cards listed underneath, each collapsed to icon + title; the text opens on click (native details, text stays in the HTML). A swipeable row of stages on phones and tablets (scroll-snap, next stage peeks in), one column per stage from lg; the columns share rows (subgrid, header + 2 cards each) so cards line up and match in size. Copy comes from the page data.
+import clsx from 'clsx';
+import Icon from '../ui/Icon.astro';
+import type { IconGridItem } from './IconGrid.astro';
+
+export interface Stage {
+  title: string;
+  items: IconGridItem[];
+}
+
+interface Props {
+  stages: Stage[];
+  class?: string;
+}
+
+const { stages, class: className } = Astro.props;
+const lgColumns = { 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4' } as Record<number, string>;
+---
+
+<ol
+  class={clsx(
+    '-mx-2 flex snap-x snap-mandatory scroll-px-2 items-start gap-2 overflow-x-auto px-2 pb-1 no-scrollbar sm:-mx-3 sm:scroll-px-3 sm:px-3 md:gap-3 lg:mx-0 lg:grid lg:snap-none lg:gap-x-4 lg:gap-y-3 lg:overflow-visible lg:px-0 lg:pb-0',
+    lgColumns[stages.length] ?? 'lg:grid-cols-3',
+    className,
+  )}
+>
+  {
+    stages.map((stage, i) => (
+      <li class="flex w-[85%] shrink-0 snap-start flex-col gap-3 sm:w-[60%] md:w-[45%] lg:row-span-3 lg:w-auto lg:grid lg:grid-rows-subgrid">
+        <div class="relative mr-4 flex h-14 items-center rounded-l-control border border-r-0 border-line-strong pl-2 pr-1">
+          <span aria-hidden="true" class="font-display text-lg font-bold text-accent">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="ml-2 font-display text-xl font-bold text-ink">{stage.title}</h3>
+          <span
+            aria-hidden="true"
+            class="absolute right-0 top-1/2 size-[2.475rem] -translate-y-1/2 translate-x-1/2 rotate-45 border-r border-t border-line-strong"
+          />
+        </div>
+        <ul class="flex flex-col gap-3 lg:contents">
+          {stage.items.map((item) => (
+            <li class="group self-start rounded-card border border-line-strong bg-surface-lifted transition-colors duration-300 hover:border-highlight/40 has-[summary:focus-visible]:ring-2 has-[summary:focus-visible]:ring-highlight lg:row-span-1 lg:w-full">
+              <details class="group/d">
+                <summary class="flex min-h-[44px] cursor-pointer list-none items-center gap-2 p-2 md:p-3 [&::-webkit-details-marker]:hidden focus-visible:outline-none">
+                  <span class="inline-flex size-11 shrink-0 items-center justify-center rounded-control border border-highlight/20 bg-highlight/10 text-highlight">
+                    <Icon name={item.icon} />
+                  </span>
+                  <h4 class="flex-1 font-display text-lg font-bold text-ink md:text-xl">{item.title}</h4>
+                  <svg aria-hidden="true" class="size-icon-sm shrink-0 text-ink-muted transition-transform duration-300 group-open/d:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4 6 4 4 4-4" />
+                  </svg>
+                </summary>
+                <p class="text-pretty px-2 pb-2 text-base text-ink-muted md:px-3 md:pb-3">{item.text}</p>
+              </details>
+            </li>
+          ))}
+        </ul>
+      </li>
+    ))
+  }
+</ol>

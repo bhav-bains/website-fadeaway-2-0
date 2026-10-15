@@ -1,0 +1,23 @@
+---
+// Pricing body for the demo-industry pages (Wellness, Boutique Fitness, Sports): the two monthly plans as compact,
+// expandable cards (orange Attract, green Growth) side by side (stacked on phones, never a swipe row so both are always visible), each with its own
+// button at the bottom, then one quiet line about the one-time setup. Renders inside a Section that carries the heading and intro.
+import PricingCard, { type PricingItem } from './PricingCard.astro';
+
+export interface PricingContent {
+  /** Label on each card's expander (e.g. "See Deliverables") */
+  detailsLabel: string;
+  plans: PricingItem[];
+  /** One quiet line about the one-time setup (website from the demo, or a Full Audit) */
+  setupLine?: string;
+}
+
+type Props = PricingContent;
+
+const { plans, detailsLabel, setupLine } = Astro.props;
+---
+
+<div class="grid gap-3 md:grid-cols-2 md:gap-4">
+  {plans.map((item) => <PricingCard {...item} detailsLabel={detailsLabel} />)}
+</div>
+{setupLine && <p class="mt-4 text-center text-meta text-ink-muted md:mt-6">{setupLine}</p>}
