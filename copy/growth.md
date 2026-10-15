@@ -162,7 +162,7 @@ One dashboard combining paid, organic, and AI search performance, tied to bookin
 
 Every engagement starts small and grows with the results.
 
-1. **Instant Audit (free)**: A fast review of your SEO and AEO readiness, performance, site structure, and on-page copy, plus a snapshot of how AI assistants describe you today. You get a branded report within 24 hours, and you can book a call to walk through it.
+1. **Instant Audit (free)**: A fast review of your SEO and AEO readiness, performance, site structure, and on-page copy, plus a snapshot of how AI assistants describe you today. You get a report, and you can book a call to walk through it.
    (Aligned Oct 14 with the locked Instant Audit checklist and the /audit/ page: no local search or paid media checks, walkthrough is optional.)
 2. **Full Audit (fixed price)**: A full account and website review, keyword research for your market, an in-depth AEO readiness check, a content strategy foundation, quick wins ready to act on, and a clear 3 to 6 month action plan.
 3. **Ongoing growth work**: SEO, AEO, conversion, paid media, and email, scoped to your business and your goals, with a fixed monthly fee agreed before anything starts.
@@ -229,7 +229,7 @@ faq:
   - q: "How is your growth work priced?"
     a: "Every engagement starts with an audit, then gets scoped to your business: your market, your goals, and which channels make sense. You get a written scope and a fixed monthly fee before anything starts, never hourly billing. Ad spend for Google and Meta is paid directly by you, so it's always visible."
   - q: "What's included in the free Instant Audit?"
-    a: "A fast review of your SEO and AEO readiness, page performance, site structure, and on-page copy, plus a snapshot of how AI assistants describe your business today. You get a branded report within 24 hours showing where you stand and what's worth fixing first, and you can book a call to walk through it. There's no obligation afterward."
+    a: "A fast review of your SEO and AEO readiness, page performance, site structure, and on-page copy, plus a snapshot of how AI assistants describe your business today. You get a report showing where you stand and what's worth fixing first, and you can book a call to walk through it. There's no obligation afterward."
   - q: "Is AEO actually worth it, or is it just hype?"
     a: "It's real, and it's early. AI search tools like ChatGPT and Perplexity already answer questions your customers are asking, and many businesses haven't touched their AEO yet. The risk isn't that it's hype. It's being invisible while your competitors get there first."
   - q: "How long until I see results?"

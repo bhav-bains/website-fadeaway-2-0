@@ -30,7 +30,7 @@ faq:
   - q: "Do you only work in the industries shown here?"
     a: "No. We work with growing businesses across Canada and the US, with deep experience in e-commerce, wellness and counselling, boutique fitness, and sports programs. Our Build and Growth services are open to any business. Browse our portfolio to see the full range of websites and projects we've delivered."
   - q: "How do I start a project like these?"
-    a: "Start with a free audit. We review your website, SEO and AEO readiness, performance, and local visibility, then send a branded report within 24 hours. You'll know exactly what to fix first, and if you want help, we scope the project with a fixed price before any work starts."
+    a: "Start with a free audit. We review your website, SEO and AEO readiness, performance, and local visibility, then send a report. You'll know exactly what to fix first, and if you want help, we scope the project with a fixed price before any work starts."
 ---
 
 <!--
@@ -125,7 +125,7 @@ One template for every case study. Content comes from the entry file in `src/con
    (stacked on mobile), labels "Before" and "After"
 8. **Testimonial** (only when a permission-confirmed testimonial exists for this client): quote, name, role
 9. **CTA** (AuditCta): Heading: Is Your Website Pulling Its Weight? · Line: A free audit shows what's working,
-   what isn't, and what to fix first, in a branded report within 24 hours. · Button: Get Your Free Audit → /audit/
+   what isn't, and what to fix first, in a report. · Button: Get Your Free Audit → /audit/
 10. **More case studies** (only when 2+ published): up to 2 other cards, heading "More Case Studies"
 
 ## Schema additions (content.config.ts, case-studies collection)

@@ -170,7 +170,7 @@ export const ladder: {
   items: [
     {
       title: 'Instant Audit (free)',
-      text: 'A fast review of your SEO and AEO readiness, performance, site structure, and on-page copy, plus a snapshot of how AI assistants describe you today. You get a branded report within 24 hours, and you can book a call to walk through it.',
+      text: 'A fast review of your SEO and AEO readiness, performance, site structure, and on-page copy, plus a snapshot of how AI assistants describe you today. You get a report, and you can book a call to walk through it.',
     },
     {
       title: 'Full Audit (fixed price)',
@@ -258,7 +258,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
     },
     {
       q: "What's included in the free Instant Audit?",
-      a: "A fast review of your SEO and AEO readiness, page performance, site structure, and on-page copy, plus a snapshot of how AI assistants describe your business today. You get a branded report within 24 hours showing where you stand and what's worth fixing first, and you can book a call to walk through it. There's no obligation afterward.",
+      a: "A fast review of your SEO and AEO readiness, page performance, site structure, and on-page copy, plus a snapshot of how AI assistants describe your business today. You get a report showing where you stand and what's worth fixing first, and you can book a call to walk through it. There's no obligation afterward.",
     },
     {
       q: 'Is AEO actually worth it, or is it just hype?',

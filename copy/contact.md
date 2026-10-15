@@ -23,8 +23,7 @@ last_updated: TODO
 Page job: make it easy to reach out from any page, and send people who'd be better served by a free offer
 to the audit or the demo. Keep the form short.
 Netlify form name stays `website-contact-form` (existing notifications keep working); posts to /contact-success/.
-Reply-time promise: "within one business day" (founder, Oct 2). The old page said "less than 24 hours"; the
-audit report keeps its own 24-hour promise.
+Reply-time promise: "within one business day" (founder, Oct 2). The old page said "less than 24 hours".
 -->
 
 ## Section 0: Meta Data (/contact/)

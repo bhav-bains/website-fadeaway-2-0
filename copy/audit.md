@@ -3,11 +3,11 @@
 #
 # Founder brief (Oct 1): the free (Instant) Audit checks performance, site structure, SEO and AEO readiness,
 # and on-page copy. High level, useful for growth and brand uplift. A workflow will make it near instant and
-# output a branded, templated report.
+# output a templated report.
 page: audit
 url: /audit
 title: "Free Website Audit | Fadeaway Creatives"
-description: "A free audit of your website's SEO and AEO readiness, performance, site structure, and on-page copy, in a branded report."
+description: "A free audit of your website's SEO and AEO readiness, performance, site structure, and on-page copy, in a report."
 canonical: "https://fadeawaycreatives.com/audit"
 og:
   image: /og-default.jpg
@@ -17,7 +17,7 @@ answer_capsule: >-
   The Fadeaway Creatives Instant Audit is a free review of your website for
   businesses across Canada and the US. It checks your SEO and AEO readiness,
   performance, site structure, and on-page copy, and whether your tracking is
-  set up, then sends the findings in a branded report, with clear priorities for what to fix first.
+  set up, then sends the findings in a report, with clear priorities for what to fix first.
   There's no cost and no obligation.
 schema:
   - Organization  # sitewide
@@ -29,7 +29,7 @@ last_updated: TODO
 
 <!--
 Funnel: visitor enters their site URL (on this page, or in the audit CTA on another page, which carries the
-URL here) → adds name, email, business → we run the audit workflow → branded report by email
+URL here) → adds name, email, business → we run the audit workflow → report by email
 → follow-up. Goal: capture the lead with a useful, low-commitment offer. Keep the form short.
 Visitors without a site (new custom builds) are pointed to Get a Quote → /contact.
 SEO + AEO is listed first wherever the four checks appear (sitewide positioning rule).
@@ -40,7 +40,7 @@ SEO + AEO is listed first wherever the four checks appear (sitewide positioning 
 | Field | Value | Status |
 |---|---|---|
 | Title tag | Free Website Audit \| Fadeaway Creatives (39 chars) | Set (approved Oct 1) |
-| Meta description | A free audit of your website's SEO and AEO readiness, performance, site structure, and on-page copy, in a branded report. (121 chars) | Set (approved Oct 1) |
+| Meta description | A free audit of your website's SEO and AEO readiness, performance, site structure, and on-page copy, in a report. (113 chars) | Set (approved Oct 1) |
 | H1 | Get a Free Website Audit | Set (approved Oct 1) |
 | Answer capsule | See frontmatter (64 words; tracking added Oct 14) | Updated, needs approval |
 | Robots | index, follow (the success page is noindex) | Set |
@@ -69,7 +69,8 @@ The website field is pre-filled when the visitor arrives from an audit CTA on an
 | Your name | name | text | Yes |
 | Email | email | email | Yes |
 | Business name | business | text | Yes |
-| What's not working right now? (optional) | concerns | textarea, placeholder: "Not enough enquiries, slow pages, not showing up on Google..." | No |
+| What are your current concerns? | issues | checkboxes (pick all that apply): Not enough enquiries or leads · Not showing up on Google · Not showing up in AI search (ChatGPT, Perplexity) · Pages load slowly · Doesn't work well on phones · Visitors leave without getting in touch · Hard to find things on the site · Not sure, just want a check | No |
+| Anything else we should know? | concerns | textarea | No |
 
 - Submit button: **Get My Free Audit**
 - Line under the button: Free, with no obligation. We'll use your details to send your report and follow up about it. No spam, and you can opt out any time. (Changed Oct 14, founder: the old "only to send your report" line ruled out follow-ups. A newsletter still needs a separate, unticked consent checkbox under CASL; decide after launch.)
@@ -96,7 +97,7 @@ Whether your headlines, service pages, and calls to action speak to your custome
 
 1. **Share your site**: Enter your website and a few details. It takes about a minute.
 2. **We run your audit**: We review your SEO and AEO readiness, performance, site structure, and on-page copy.
-3. **Get your report**: You get a branded report showing what's working, what isn't, and what to fix first, and you can book a call to walk through it.
+3. **Get your report**: You get a report showing what's working, what isn't, and what to fix first, and you can book a call to walk through it.
 (Walkthrough line added Oct 14, founder: the report's one next step is a walkthrough call.)
 
 ## Frequently Asked Questions {#faq}
@@ -108,7 +109,7 @@ faq:
   - q: "What's the difference between the Instant Audit and the Full Audit?"
     a: "The Instant Audit is a high-level check of the four areas that matter most. The Full Audit is a paid, in-depth review with keyword research and a detailed action plan, and if you move ahead with a build, its fee is credited toward it."
   - q: "What do you need from me?"
-    a: "Just your website address and where to send the report. If you tell us what isn't working right now, we'll look at that first. The form also asks for your name and business name. Your branded report then arrives by email."
+    a: "Just your website address and where to send the report. If you tell us what isn't working right now, we'll look at that first. The form also asks for your name and business name. Your report then arrives by email."
 ```
 
 ---
@@ -131,7 +132,7 @@ The URL field carries the visitor's site to /audit, where they finish the form.
 - robots: noindex, nofollow (not in the sitemap)
 - title: "Audit Requested | Fadeaway Creatives"
 - H1: Your Audit Request Is In
-- Copy: Thanks for sharing your site. We're running your audit now, and your branded report will arrive by email.
+- Copy: Thanks for sharing your site. We're running your audit now, and your report will arrive by email.
 - Links heading: While you wait, see how we can help.
 - Links: Build → /services/build · E-commerce → /solutions/ecommerce
 - Button: Back to Home → /

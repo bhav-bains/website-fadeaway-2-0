@@ -11,7 +11,7 @@ import type { LinkIndexItem } from '../../components/blocks/LinkIndex.astro';
 export const seo = {
   title: 'Free Website Audit | Fadeaway Creatives',
   description:
-    "A free audit of your website's SEO and AEO readiness, performance, site structure, and on-page copy, in a branded report.",
+    "A free audit of your website's SEO and AEO readiness, performance, site structure, and on-page copy, in a report.",
 };
 
 export const breadcrumb: BreadcrumbItem[] = [
@@ -21,7 +21,7 @@ export const breadcrumb: BreadcrumbItem[] = [
 
 /** AEO answer capsule: the wide intro of the first section after the Hero */
 export const answerCapsule =
-  "The Fadeaway Creatives Instant Audit is a free review of your website for businesses across Canada and the US. It checks your SEO and AEO readiness, performance, site structure, and on-page copy, and whether your tracking is set up, then sends the findings in a branded report, with clear priorities for what to fix first. There's no cost and no obligation.";
+  "The Fadeaway Creatives Instant Audit is a free review of your website for businesses across Canada and the US. It checks your SEO and AEO readiness, performance, site structure, and on-page copy, and whether your tracking is set up, then sends the findings in a report, with clear priorities for what to fix first. There's no cost and no obligation.";
 
 export const hero = {
   eyebrow: 'Free Instant Audit',
@@ -39,10 +39,25 @@ export const form: FormContent = {
     { name: 'email', label: 'Email', type: 'email', required: true, autocomplete: 'email' },
     { name: 'business', label: 'Business name', type: 'text', required: true, autocomplete: 'organization' },
     {
+      name: 'issues',
+      label: "What are your current concerns?",
+      hint: 'Pick all that apply.',
+      type: 'checkboxes',
+      options: [
+        'Not enough enquiries or leads',
+        'Not showing up on Google',
+        'Not showing up in AI search (ChatGPT, Perplexity)',
+        'Pages load slowly',
+        "Doesn't work well on phones",
+        'Visitors leave without getting in touch',
+        'Hard to find things on the site',
+        'Not sure, just want a check',
+      ],
+    },
+    {
       name: 'concerns',
-      label: "What's not working right now? (optional)",
+      label: 'Anything else we should know?',
       type: 'textarea',
-      placeholder: 'Not enough enquiries, slow pages, not showing up on Google...',
     },
   ],
   submit: 'Get My Free Audit',
@@ -89,7 +104,7 @@ export const howItWorks: { id: string; heading: string; items: StepItem[] } = {
     },
     {
       title: 'Get your report',
-      text: "You get a branded report showing what's working, what isn't, and what to fix first, and you can book a call to walk through it.",
+      text: "You get a report showing what's working, what isn't, and what to fix first, and you can book a call to walk through it.",
     },
   ],
 };
@@ -109,7 +124,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
     },
     {
       q: 'What do you need from me?',
-      a: "Just your website address and where to send the report. If you tell us what isn't working right now, we'll look at that first. The form also asks for your name and business name. Your branded report then arrives by email.",
+      a: "Just your website address and where to send the report. If you tell us what isn't working right now, we'll look at that first. The form also asks for your name and business name. Your report then arrives by email.",
     },
   ],
 };
@@ -138,7 +153,7 @@ export const success: {
 } = {
   seo: { title: 'Audit Requested | Fadeaway Creatives', description: 'Your audit request is in.' },
   h1: 'Your Audit Request Is In',
-  text: "Thanks for sharing your site. We're running your audit now, and your branded report will arrive by email.",
+  text: "Thanks for sharing your site. We're running your audit now, and your report will arrive by email.",
   linksHeading: 'While you wait, see how we can help.',
   links: [
     { label: 'Build', href: routes.build },

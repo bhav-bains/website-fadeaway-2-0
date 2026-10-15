@@ -56,7 +56,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
     },
     {
       q: 'How do I start a project like these?',
-      a: "Start with a free audit. We review your website, SEO and AEO readiness, performance, and local visibility, then send a branded report within 24 hours. You'll know exactly what to fix first, and if you want help, we scope the project with a fixed price before any work starts.",
+      a: "Start with a free audit. We review your website, SEO and AEO readiness, performance, and local visibility, then send a report. You'll know exactly what to fix first, and if you want help, we scope the project with a fixed price before any work starts.",
     },
   ],
 };
@@ -78,7 +78,7 @@ export const detail = {
   beforeAfter: { heading: 'Before and After', before: 'Before', after: 'After' },
   cta: {
     heading: 'Is Your Website Pulling Its Weight?',
-    text: "A free audit shows what's working, what isn't, and what to fix first, in a branded report within 24 hours.",
+    text: "A free audit shows what's working, what isn't, and what to fix first, in a report.",
     button: 'Get Your Free Audit',
   },
   moreHeading: 'More Case Studies',
