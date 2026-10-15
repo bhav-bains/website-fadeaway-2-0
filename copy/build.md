@@ -5,11 +5,11 @@
 # updated with later decisions and the homepage / e-commerce build lessons. Change log at the bottom.
 page: build
 url: /services/build
-title: "Fadeaway Creatives | Custom Web Development & Redesign"
+title: "Custom Web Development & Redesign | Fadeaway Creatives"
 description: "Custom web development, website redesigns, and e-commerce builds. Enterprise-quality work, a fixed price for every scope, AEO built in."
 canonical: "https://fadeawaycreatives.com/services/build"
 og:
-  title: "Fadeaway Creatives | Custom Web Development & Redesign"
+  title: "Custom Web Development & Redesign | Fadeaway Creatives"
   description: "Custom web development, website redesigns, and e-commerce builds. Enterprise-quality work, a fixed price for every scope, AEO built in."
   url: "https://fadeawaycreatives.com/services/build"
   type: website

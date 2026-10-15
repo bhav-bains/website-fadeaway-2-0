@@ -7,11 +7,11 @@
 # Once approved, this file is the source for the build. Do not rewrite copy; flag instead.
 page: ecommerce
 url: /solutions/ecommerce
-title: "Fadeaway Creatives | E-commerce Web Design & Growth"
+title: "E-commerce Web Design & Growth | Fadeaway Creatives"
 description: "E-commerce web design and growth for Shopify, WooCommerce, and headless stores. SEO, AEO, and conversion work that turns browsers into buyers."
 canonical: "https://fadeawaycreatives.com/solutions/ecommerce"
 og:
-  title: "Fadeaway Creatives | E-commerce Web Design & Growth"
+  title: "E-commerce Web Design & Growth | Fadeaway Creatives"
   description: "E-commerce web design and growth for Shopify, WooCommerce, and headless stores. SEO, AEO, and conversion work that turns browsers into buyers."
   url: "https://fadeawaycreatives.com/solutions/ecommerce"
   type: website

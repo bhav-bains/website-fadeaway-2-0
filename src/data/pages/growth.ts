@@ -12,7 +12,7 @@ import type { CardGridItem } from '../../components/blocks/CardGrid.astro';
 import type { FaqItem } from '../../components/blocks/Faq.astro';
 
 export const seo = {
-  title: 'Fadeaway Creatives | SEO Audit Agency & Growth Partners',
+  title: 'SEO Audit Agency & Growth Partners | Fadeaway Creatives',
   description:
     'SEO audits, AEO, and growth work built to turn search visibility into bookings and sales. Every number we report is tied to revenue.',
 };

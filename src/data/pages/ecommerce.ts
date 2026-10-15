@@ -11,7 +11,7 @@ import type { StepItem } from '../../components/blocks/Steps.astro';
 import type { ServiceIndexItem } from '../../components/blocks/ServiceIndex.astro';
 
 export const seo = {
-  title: 'Fadeaway Creatives | E-commerce Web Design & Growth',
+  title: 'E-commerce Web Design & Growth | Fadeaway Creatives',
   description:
     'E-commerce web design and growth for Shopify, WooCommerce, and headless stores. SEO, AEO, and conversion work that turns browsers into buyers.',
 };

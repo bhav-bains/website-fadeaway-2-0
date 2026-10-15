@@ -98,6 +98,9 @@ export function breadcrumbSchema(items: { label: string; href: string }[]): Json
 
 // Service entries for a page, as listed in its copy file. No prices; Fadeaway is the provider.
 // Only services visible on the page (copy rule), linked to the page URL where they're described.
+// Which country each listed currency is for (founder, Oct 14: same price, billed in the client's own currency)
+const CURRENCY_REGION: Record<string, string> = { USD: 'United States', CAD: 'Canada' };
+
 export function serviceSchema({
   names,
   url,
@@ -125,6 +128,9 @@ export function serviceSchema({
           '@type': 'Offer',
           price: offer.price,
           priceCurrency: currency,
+          ...(CURRENCY_REGION[currency] && {
+            eligibleRegion: { '@type': 'Country', name: CURRENCY_REGION[currency] },
+          }),
           ...(offer.unit && {
             priceSpecification: {
               '@type': 'UnitPriceSpecification',

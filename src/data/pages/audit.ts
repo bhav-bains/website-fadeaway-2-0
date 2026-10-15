@@ -61,7 +61,7 @@ export const form: FormContent = {
   ],
   submit: 'Get My Free Audit',
   note: "Free, with no obligation. We'll use your details to send your report and follow up about it. No spam, and you can opt out any time.",
-  footer: { text: 'Starting from scratch?', link: { label: 'Get a Quote', href: routes.contact } },
+  footer: { text: 'Starting from scratch?', link: { label: "Let's Connect", href: routes.contact } },
 };
 
 export const checks: { id: string; heading: string; items: FeatureListItem[] } = {
@@ -142,7 +142,7 @@ export const auditCta = {
   placeholder: 'yourbusiness.com',
   button: 'Get My Free Audit',
   action: routes.audit,
-  fallback: { text: 'Starting from scratch?', link: { label: 'Get a Quote', href: routes.contact } },
+  fallback: { text: 'Starting from scratch?', link: { label: "Let's Connect", href: routes.contact } },
 };
 
 // ---------- Success page (/audit-success/, noindex) ----------

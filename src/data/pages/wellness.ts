@@ -16,7 +16,7 @@ import type { StepItem } from '../../components/blocks/Steps.astro';
 import type { FaqItem } from '../../components/blocks/Faq.astro';
 
 export const seo = {
-  title: 'Fadeaway Creatives | SEO for Therapists & Wellness Practices',
+  title: 'SEO for Therapists & Wellness Practices | Fadeaway Creatives',
   description:
     'SEO, AEO, and websites for therapists, counsellors, chiropractors, and wellness practices. Get found beyond directory listings, on Google and in AI search.',
 };

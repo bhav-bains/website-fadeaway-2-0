@@ -15,7 +15,7 @@ import type { StepItem } from '../../components/blocks/Steps.astro';
 import type { FaqItem } from '../../components/blocks/Faq.astro';
 
 export const seo = {
-  title: 'Fadeaway Creatives | SEO for Yoga & Fitness Studios',
+  title: 'SEO for Yoga & Fitness Studios | Fadeaway Creatives',
   description:
     'Websites, local SEO, and AEO for yoga, pilates, spin, and barre studios. Connected to Mindbody or Momence, built to fill every class.',
 };

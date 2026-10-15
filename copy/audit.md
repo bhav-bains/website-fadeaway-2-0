@@ -31,7 +31,7 @@ last_updated: TODO
 Funnel: visitor enters their site URL (on this page, or in the audit CTA on another page, which carries the
 URL here) → adds name, email, business → we run the audit workflow → report by email
 → follow-up. Goal: capture the lead with a useful, low-commitment offer. Keep the form short.
-Visitors without a site (new custom builds) are pointed to Get a Quote → /contact.
+Visitors without a site (new custom builds) are pointed to Let's Connect → /contact.
 SEO + AEO is listed first wherever the five checks appear (sitewide positioning rule).
 -->
 
@@ -75,7 +75,7 @@ The website field is pre-filled when the visitor arrives from an audit CTA on an
 
 - Submit button: **Get My Free Audit**
 - Line under the button: Free, with no obligation. We'll use your details to send your report and follow up about it. No spam, and you can opt out any time. (Changed Oct 14, founder: the old "only to send your report" line ruled out follow-ups. A newsletter still needs a separate, unticked consent checkbox under CASL; decide after launch.)
-- Line under that: Starting from scratch? [Link: Get a Quote → /contact]
+- Line under that: Starting from scratch? [Link: Let's Connect → /contact]
 
 ## What We Check {#checks}
 
@@ -128,7 +128,7 @@ The URL field carries the visitor's site to /audit, where they finish the form.
 - Text: Get a free audit of your SEO and AEO readiness, performance, site structure, and on-page copy.
 - Field label: Your website
 - Button: Get My Free Audit
-- Line under the field: Starting from scratch? [Link: Get a Quote → /contact]
+- Line under the field: Starting from scratch? [Link: Let's Connect → /contact]
 
 ---
 

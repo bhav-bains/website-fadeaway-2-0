@@ -26,11 +26,11 @@ export const siteConfig = {
   // Book-a-call link (Google Calendar booking page, founder Oct 4). One place: every "book a call" link reads it.
   bookingUrl: 'https://calendar.app.google/YLZvcmUobteBCjZG7',
   foundingDate: '2023',
-  // Founder (About page Person schema; Organization.founder sitewide). linkedin: personal profile, add when supplied.
+  // Founder (About page Person schema; Organization.founder sitewide). linkedin: personal profile (founder, Oct 14).
   founder: {
     name: 'Bhav Bains',
     jobTitle: 'Founder',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/bhavdeep-singh/',
   },
   locationLine: 'Vancouver, BC, working with clients across Canada and the US.',
   address: {

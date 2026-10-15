@@ -15,7 +15,7 @@ import type { StepItem } from '../../components/blocks/Steps.astro';
 import type { FaqItem } from '../../components/blocks/Faq.astro';
 
 export const seo = {
-  title: 'Fadeaway Creatives | Sports Team Website Design & SEO',
+  title: 'Sports Team Website Design & SEO | Fadeaway Creatives',
   description:
     'Websites, SEO, and AEO for sports clubs, academies, camps, and combat sports gyms. Get found by parents, keep your registration software.',
 };
@@ -53,7 +53,7 @@ export const problem: {
   items: [
     {
       title: "Parents Can't Find Your Fees or Season Dates",
-      text: `"How much is club volleyball" is searched around 300 times a month in the US alone. Clubs with a clear fees page show up in those results and get quoted in AI answers. Most clubs don't have one.`,
+      text: `Parents search "how much is club volleyball" before they ever call. Clubs with a clear fees page show up in those results and get quoted in AI answers. Most clubs don't have one.`,
     },
     {
       title: "You're Invisible When Parents Search Near Them",
@@ -374,7 +374,7 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
     },
     {
       q: 'Do parents really search for clubs on Google and AI assistants?',
-      a: 'Yes. "How to choose a sports club" alone is searched about 2,800 times a month in the US, and parents search cost, season dates, and whether a program is worth it for every major sport. Clubs with clear fees and season pages show up in those results and get quoted in AI answers.',
+      a: 'Yes. Parents search "how to choose a sports club", plus cost, season dates, and whether a program is worth it, for every major sport. Clubs with clear fees and season pages show up in those results and get quoted in AI answers.',
     },
     {
       q: 'Our board has to approve spending. Can you help with that?',

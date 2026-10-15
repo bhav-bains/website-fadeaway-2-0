@@ -13,7 +13,7 @@ import type { FaqItem } from '../../components/blocks/Faq.astro';
 import { labs as homeLabs } from './home';
 
 export const seo = {
-  title: 'Fadeaway Creatives | Custom Web Development & Redesign',
+  title: 'Custom Web Development & Redesign | Fadeaway Creatives',
   description:
     'Custom web development, website redesigns, and e-commerce builds. Enterprise-quality work, a fixed price for every scope, AEO built in.',
 };

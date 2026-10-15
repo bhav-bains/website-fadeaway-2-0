@@ -9,11 +9,11 @@
 page: sports
 url: /solutions/sports/
 nav_label: "Sports Academies"
-title: "Fadeaway Creatives | Sports Team Website Design & SEO"
+title: "Sports Team Website Design & SEO | Fadeaway Creatives"
 description: "Websites, SEO, and AEO for sports clubs, academies, camps, and combat sports gyms. Get found by parents, keep your registration software."
 canonical: "https://fadeawaycreatives.com/solutions/sports/"
 og:
-  title: "Fadeaway Creatives | Sports Team Website Design & SEO"
+  title: "Sports Team Website Design & SEO | Fadeaway Creatives"
   description: "Websites, SEO, and AEO for sports clubs, academies, camps, and combat sports gyms. Get found by parents, keep your registration software."
   url: "https://fadeawaycreatives.com/solutions/sports/"
   type: website
@@ -106,7 +106,7 @@ Home → Sports Academies
 (Cut to 3 cards and the intro line removed, Oct 14. "Your Site Looks Like Every Other Club's" dropped: it called other sites "template sites", which reads badly next to our own library-built setup. The midnight line moved into "Get Registered" below.)
 
 ### Parents Can't Find Your Fees or Season Dates
-"How much is club volleyball" is searched around 300 times a month in the US alone. Clubs with a clear fees page show up in those results and get quoted in AI answers. Most clubs don't have one.
+Parents search "how much is club volleyball" before they ever call. Clubs with a clear fees page show up in those results and get quoted in AI answers. Most clubs don't have one.
 
 ### You're Invisible When Parents Search Near Them
 When a parent searches for a club nearby or asks ChatGPT for a recommendation, the clubs with clean local listings and clearly structured information get named. Everyone else gets skipped.
@@ -323,7 +323,7 @@ faq:
   - q: "When should we start before registration opens?"
     a: "Start three to six months before your registration or tryout window. Search visibility builds over time, and our action plan covers that three to six month stretch. A new website can be live within two weeks, but the clubs that start early are the ones parents find first when registration opens."
   - q: "Do parents really search for clubs on Google and AI assistants?"
-    a: "Yes. \"How to choose a sports club\" alone is searched about 2,800 times a month in the US, and parents search cost, season dates, and whether a program is worth it for every major sport. Clubs with clear fees and season pages show up in those results and get quoted in AI answers."
+    a: "Yes. Parents search \"how to choose a sports club\", plus cost, season dates, and whether a program is worth it, for every major sport. Clubs with clear fees and season pages show up in those results and get quoted in AI answers."
   - q: "Our board has to approve spending. Can you help with that?"
     a: "Yes. Every plan price is published on this page, and the full list of what's included is one click away. The Full Audit gives you a written three to six month action plan you can share. It's built so your board decides on specifics, not a sales pitch."
   - q: "Do you work with martial arts and combat sports gyms?"

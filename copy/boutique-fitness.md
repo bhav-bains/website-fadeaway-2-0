@@ -6,11 +6,11 @@
 # insights, why us, what's included, pricing, next steps, capture. Change log at the bottom.
 page: boutique-fitness
 url: /solutions/boutique-fitness/
-title: "Fadeaway Creatives | SEO for Yoga & Fitness Studios"
+title: "SEO for Yoga & Fitness Studios | Fadeaway Creatives"
 description: "Websites, local SEO, and AEO for yoga, pilates, spin, and barre studios. Connected to Mindbody or Momence, built to fill every class."
 canonical: "https://fadeawaycreatives.com/solutions/boutique-fitness/"
 og:
-  title: "Fadeaway Creatives | SEO for Yoga & Fitness Studios"
+  title: "SEO for Yoga & Fitness Studios | Fadeaway Creatives"
   description: "Websites, local SEO, and AEO for yoga, pilates, spin, and barre studios. Connected to Mindbody or Momence, built to fill every class."
   url: "https://fadeawaycreatives.com/solutions/boutique-fitness/"
   type: website

@@ -6,11 +6,11 @@
 # insights, show why us, show pricing, give next steps, capture them. Change log at the bottom.
 page: wellness-counselling
 url: /solutions/wellness-counselling/
-title: "Fadeaway Creatives | SEO for Therapists & Wellness Practices"
+title: "SEO for Therapists & Wellness Practices | Fadeaway Creatives"
 description: "SEO, AEO, and websites for therapists, counsellors, chiropractors, and wellness practices. Get found beyond directory listings, on Google and in AI search."
 canonical: "https://fadeawaycreatives.com/solutions/wellness-counselling/"
 og:
-  title: "Fadeaway Creatives | SEO for Therapists & Wellness Practices"
+  title: "SEO for Therapists & Wellness Practices | Fadeaway Creatives"
   description: "SEO, AEO, and websites for therapists, counsellors, chiropractors, and wellness practices. Get found beyond directory listings, on Google and in AI search."
   url: "https://fadeawaycreatives.com/solutions/wellness-counselling/"
   type: website

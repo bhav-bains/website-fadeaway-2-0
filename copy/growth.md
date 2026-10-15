@@ -6,11 +6,11 @@
 # Fitness, Wellness & Counselling, and Sports pages. Change log at the bottom.
 page: growth
 url: /services/growth
-title: "Fadeaway Creatives | SEO Audit Agency & Growth Partners"
+title: "SEO Audit Agency & Growth Partners | Fadeaway Creatives"
 description: "SEO audits, AEO, and growth work built to turn search visibility into bookings and sales. Every number we report is tied to revenue."
 canonical: "https://fadeawaycreatives.com/services/growth/"
 og:
-  title: "Fadeaway Creatives | SEO Audit Agency & Growth Partners"
+  title: "SEO Audit Agency & Growth Partners | Fadeaway Creatives"
   description: "SEO audits, AEO, and growth work built to turn search visibility into bookings and sales. Every number we report is tied to revenue."
   url: "https://fadeawaycreatives.com/services/growth/"
   type: website
