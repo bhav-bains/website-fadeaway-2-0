@@ -91,7 +91,7 @@ Home → Sports Academies
 
 (Rebuilt Oct 14 to match Boutique Fitness and Wellness, founder: no demo anywhere on the page until it returns; audit box in the hero.)
 
-- Proof line (small, above the eyebrow): Founder-led, 15+ years of experience. You work directly with the founder, who personally leads our sports and combat sports work.
+- Proof line (small, above the eyebrow), HIDDEN Oct 14 (founder): Founder-led, 15+ years of experience. You work directly with the founder, who personally leads our sports and combat sports work.
 - Eyebrow: Websites, SEO & AEO for Club Directors, Academy Owners, Coaches & Program Directors
 - H1: Sports Team Website Design That Fills Your Roster
 - Sub-headline: Parents find you on Google and in AI answers before tryouts open. Keep the registration software you already use; we rebuild the front door and wire it in.
@@ -100,6 +100,8 @@ Home → Sports Academies
 - Answer capsule: renders the same way as on Boutique Fitness (from the frontmatter).
 
 ## What Parents See Before They Ever Call You {#problem}
+
+(Page position: moved just above the FAQ, founder Oct 14. The answer capsule now sits in the first section after the Hero, the tailored solutions section.)
 
 (Cut to 3 cards and the intro line removed, Oct 14. "Your Site Looks Like Every Other Club's" dropped: it called other sites "template sites", which reads badly next to our own library-built setup. The midnight line moved into "Get Registered" below.)
 

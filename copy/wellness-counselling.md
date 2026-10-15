@@ -98,6 +98,8 @@ Home → Wellness & Counselling
 
 ## How Clients Find Practices Now {#insights}
 
+(Page position: moved just above the FAQ, founder Oct 14. The answer capsule now sits in the first section after the Hero, "Who It's For".)
+
 (Cut to 3 cards and the intro line removed, Oct 14, founder. The booking card moved into "Get Booked" below.)
 
 ### Directories Put You Next to Your Competition

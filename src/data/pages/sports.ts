@@ -33,8 +33,7 @@ export const answerCapsule =
 export const heroVariant: HeroVariant = 'statement';
 
 export const hero: HeroContent = {
-  proofLine:
-    'Founder-led, 15+ years of experience. You work directly with the founder, who personally leads our sports and combat sports work.',
+  // HIDDEN Oct 14 (founder): proofLine 'Founder-led, 15+ years of experience. You work directly with the founder, who personally leads our sports and combat sports work.'
   eyebrow: 'Websites, SEO & AEO for Club Directors, Academy Owners, Coaches & Program Directors',
   h1: 'Sports Team Website Design That Fills Your Roster',
   sub: 'Parents find you on Google and in AI answers before tryouts open. Keep the registration software you already use; we rebuild the front door and wire it in.',

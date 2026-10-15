@@ -63,12 +63,8 @@ const jsonLd = [
   <HeroPreview content={hero} variant={heroVariant} options={['statement', 'showcase', 'visual']} />
 
   <!-- First section after the Hero. The answer capsule is hidden visually but stays in the HTML as screen-reader text for AEO -->
-  <Section id={problem.id} heading={problem.heading} align="start">
-    <p class="sr-only">{answerCapsule}</p>
-    <BentoGrid items={problem.items} cta={problem.cta} />
-  </Section>
-
   <Section id={programs.id} heading={programs.heading} align="start">
+    <p class="sr-only">{answerCapsule}</p>
     <CardGrid items={programs.items} cta={programs.cta} swipe compact phoneGrid ctaOnPhones={false} />
     <h3 class="mb-2 mt-6 text-meta font-semibold uppercase tracking-wider text-ink-muted md:mt-8">{programs.strip.label}</h3>
     <IconGrid items={programs.strip.items} columns={4} size="md" swipe collapse={false} idPrefix="program-strip" />
@@ -93,7 +89,7 @@ const jsonLd = [
   </Section>
 
   <Section id={expect.id} heading={expect.heading} intro={expect.intro} align="start">
-    <Timeline items={expect.items} />
+    <Timeline items={expect.items} swipe />
   </Section>
 
   {/* HIDDEN Oct 14 (founder): How It Works (and its HowTo schema above). Data stays in sports.ts (howItWorks). To restore, put the Section back:
@@ -111,6 +107,11 @@ const jsonLd = [
   }
 
   <!-- Testimonials (tag sports-academies): renders nothing until real, permission-confirmed quotes exist -->
+
+  <!-- Moved just above the FAQ (founder, Oct 14) -->
+  <Section id={problem.id} heading={problem.heading} align="start">
+    <BentoGrid items={problem.items} cta={problem.cta} />
+  </Section>
 
   <Section id={faq.id} heading={faq.heading} width="narrow">
     <Faq faq={faq.items} />

@@ -63,12 +63,8 @@ const jsonLd = [
   <HeroPreview content={hero} variant={heroVariant} options={['statement', 'showcase', 'visual']} />
 
   <!-- First section after the Hero. The answer capsule is hidden visually but stays in the HTML as screen-reader text for AEO -->
-  <Section id={insights.id} heading={insights.heading} align="start">
-    <p class="sr-only">{answerCapsule}</p>
-    <BentoGrid items={insights.items} cta={insights.cta} />
-  </Section>
-
   <Section id={audience.id} heading={audience.heading} align="start">
+    <p class="sr-only">{answerCapsule}</p>
     <CardGrid items={audience.items} cta={audience.cta} swipe compact phoneGrid ctaOnPhones={false} />
     <p class="mt-3 text-pretty text-base text-ink-muted md:mt-4">{audience.note}</p>
     <h3 class="mb-2 mt-6 text-meta font-semibold uppercase tracking-wider text-ink-muted md:mt-8">{audience.strip.label}</h3>
@@ -96,7 +92,7 @@ const jsonLd = [
   </Section>
 
   <Section id={expect.id} heading={expect.heading} intro={expect.intro} align="start">
-    <Timeline items={expect.items} />
+    <Timeline items={expect.items} swipe />
   </Section>
 
   {/* HIDDEN Oct 14 (founder): How It Works (and its HowTo schema above). Data stays in wellness.ts (howItWorks). To restore, put the Section back:
@@ -114,6 +110,11 @@ const jsonLd = [
   }
 
   <!-- Testimonials (tag wellness-counselling): renders nothing until real, permission-confirmed quotes exist -->
+
+  <!-- Moved just above the FAQ (founder, Oct 14) -->
+  <Section id={insights.id} heading={insights.heading} align="start">
+    <BentoGrid items={insights.items} cta={insights.cta} />
+  </Section>
 
   <Section id={faq.id} heading={faq.heading} width="narrow">
     <Faq faq={faq.items} />
