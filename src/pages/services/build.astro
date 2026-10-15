@@ -17,7 +17,6 @@ import CtaBlock from '../../components/blocks/CtaBlock.astro';
 import Button from '../../components/Button.astro';
 import ArrowLink from '../../components/ui/ArrowLink.astro';
 import IllusLayers from '../../components/illustrations/IllusLayers.astro';
-import IllusQuote from '../../components/illustrations/IllusQuote.astro';
 import { breadcrumbSchema, howToSchema, faqSchema, serviceSchema } from '../../lib/schema';
 import { getRealWork } from '../../lib/work';
 import { siteConfig } from '../../data/site';
@@ -65,54 +64,59 @@ const jsonLd = [
   <Section
     id={standard.id}
     heading={standard.heading}
-    intro={[answerCapsule, standard.intro]}
+    intro={answerCapsule}
     introStyle="wide"
     align="start"
     class="overflow-x-clip"
   >
-    <SpecGrid items={standard.items} />
+    <SpecGrid items={standard.items} swipe />
   </Section>
 
   <Section id={services.id} eyebrow={services.eyebrow} heading={services.heading} align="start">
     <ServiceRows items={services.items} />
     <!-- Next step for visitors with a current site: free audit (URL carries over to /audit/) -->
-    <AuditCta {...auditCta} class="mt-6 md:mt-10" />
+    <AuditCta
+      {...auditCta}
+      fallback={{ ...auditCta.fallback, link: { ...auditCta.fallback.link, label: "Let's Connect" } }}
+      class="mt-6 md:mt-10"
+    />
   </Section>
 
   <Section id={industries.id} heading={industries.heading} intro={industries.intro}>
     <CardGrid items={industries.items} columns={2} />
-    <div class="mt-4 grid gap-3 border-t border-line pt-4 md:mt-6 md:items-center md:gap-6 md:pt-6">
-      {/* HIDDEN Oct 14 (founder): the free-demo line, since /demo-request/ is hidden. Data stays in build.ts (industries.demo) and copy/build.md. To restore, put the paragraph back:
+    {/* HIDDEN Oct 14 (founder): the "Not sure which fits?" audit button (data stays in build.ts, industries.audit) and the free-demo line, since /demo-request/ is hidden (industries.demo). To restore, put a wrapper div with these back under the grid:
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-base text-ink-muted">{industries.audit.text}</span>
+        <Button href={industries.audit.cta.href} variant="secondary" size="base">{industries.audit.cta.label}</Button>
+      </div>
       <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-pretty text-base text-ink-soft md:text-lg">
         <span><strong class="font-semibold text-ink">{industries.demo.lead}</strong> {industries.demo.text}</span>
         <ArrowLink href={industries.demo.link.href}>{industries.demo.link.label}</ArrowLink>
       </p>
       */}
-      <div class="flex flex-wrap items-center gap-2">
-        <span class="text-base text-ink-muted">{industries.audit.text}</span>
-        <Button href={industries.audit.cta.href} variant="secondary" size="base">{industries.audit.cta.label}</Button>
-      </div>
+  </Section>
+
+  <Section id={labs.id} eyebrow={labs.eyebrow} heading={labs.heading} intro={labs.intro}>
+    <IconGrid items={labs.items} columns={2} size="md" />
+    <div class="mt-4 flex justify-center md:mt-6">
+      <Button href={labs.cta.href} variant="secondary" size="base">{labs.cta.label}</Button>
     </div>
   </Section>
 
   <!-- Target of the Hero's "See How It Works" button -->
   <Section id={howItWorks.id} heading={howItWorks.heading} layout="split">
-    {/* Oversized line art under the pinned heading: research, design and development layers, then growth */}
-    <IllusLayers
-      slot="actions"
-      class="pointer-events-none -ml-6 mt-4 hidden w-[26rem] max-w-none text-highlight opacity-30 [mask-image:radial-gradient(circle,#000_45%,transparent_80%)] lg:block"
-    />
-    <Steps items={howItWorks.items} direction="vertical" />
-  </Section>
-
-  <Section id={pricing.id} heading={pricing.heading} intro={pricing.intro} layout="split">
     <Fragment slot="actions">
+      {/* Closing note (founder, Oct 14): How Pricing Works folded into How It Works under the heading, with the quote button. The pricing points (pricing.items in build.ts, "Start With a Full Audit" and "Priced Around Your Project") are hidden; to restore, put the separate Section back with <FeatureList items={pricing.items} columns={1} /> */}
+      <p id={pricing.id} class="scroll-mt-12 basis-full text-pretty text-base text-ink-soft md:text-lg">
+        {pricing.intro}
+      </p>
       <Button href={pricing.cta.href} variant="primary" size="base">{pricing.cta.label}</Button>
-      <IllusQuote
-        class="pointer-events-none -ml-4 mt-2 hidden w-full basis-full text-accent opacity-25 [mask-image:radial-gradient(circle_at_40%_45%,#000_40%,transparent_78%)] lg:block lg:max-w-[22rem]"
+      {/* Oversized line art under the pinned heading: research, design and development layers, then growth */}
+      <IllusLayers
+        class="pointer-events-none -ml-6 mt-4 hidden w-[26rem] max-w-none basis-full text-highlight opacity-30 [mask-image:radial-gradient(circle,#000_45%,transparent_80%)] lg:block"
       />
     </Fragment>
-    <FeatureList items={pricing.items} columns={1} />
+    <Steps items={howItWorks.items} direction="vertical" />
   </Section>
 
   {
@@ -133,13 +137,6 @@ const jsonLd = [
       </Section>
     )
   }
-
-  <Section id={labs.id} heading={labs.heading} intro={labs.intro}>
-    <IconGrid items={labs.items} columns={2} size="md" />
-    <div class="mt-4 flex justify-center md:mt-6">
-      <Button href={labs.cta.href} variant="secondary" size="base">{labs.cta.label}</Button>
-    </div>
-  </Section>
 
   <!-- Testimonials (tag build): renders nothing until real, permission-confirmed quotes exist -->
 

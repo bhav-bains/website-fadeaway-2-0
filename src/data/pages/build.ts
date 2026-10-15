@@ -26,7 +26,7 @@ export const breadcrumb: BreadcrumbItem[] = [
 
 /** AEO answer capsule: the wide, offset intro of the first section after the Hero */
 export const answerCapsule =
-  "Fadeaway Creatives builds custom websites, redesigns existing sites, and builds e-commerce stores for growing businesses across Canada and the US, engineered for real customers and for AI search, not just Google. Every project starts with a written scope of work and a fixed price, and migrations keep the search rankings you've already earned.";
+  "Fadeaway Creatives builds custom websites, redesigns existing sites, and builds e-commerce stores for growing businesses across Canada and the US, engineered for real customers and for AI search, not just Google. We build your 24/7 salesperson: a site that answers questions, handles doubts, and books the next step while you're busy.";
 
 /** Service pages ship the blueprint hero. In `npm run dev`, compare with ?hero=statement | showcase | all. */
 export const heroVariant: HeroVariant = 'blueprint';
@@ -35,40 +35,44 @@ export const hero: HeroContent = {
   eyebrow: 'Website Design and Development for Growing Businesses',
   h1: 'Custom Web Development, Built to Convert and Rank',
   sub: 'Custom websites, redesigns, and e-commerce stores, built for real customers and for AI search. A clear scope and a fixed price before anything starts.',
-  primaryCta: { label: 'Get a Quote', href: routes.contact },
+  primaryCta: { label: "Let's Connect", href: routes.contact },
   secondaryCta: { label: 'See How It Works', href: '#how-it-works' },
   breadcrumb,
   visual: 'wireframe',
 };
 
-export const standard: { id: string; heading: string; intro: string; items: SpecItem[] } = {
+export const standard: { id: string; heading: string; items: SpecItem[] } = {
   id: 'standard',
   heading: 'Built Right, From Day One',
-  // Added Oct 2 (24/7 salesperson framing); renders after the answer capsule
-  intro: "We build your 24/7 salesperson: a site that answers questions, handles doubts, and books the next step while you're busy.",
   items: [
     {
       title: 'AEO & SEO Built In',
+      icon: 'search-ai',
       text: 'Schema markup, structured data, and answer-ready content from launch, not bolted on later.',
     },
     {
       title: 'Clean, Intuitive UX/UI',
+      icon: 'browser',
       text: 'Designed so your customers find what they need and take action, not just something that looks good.',
     },
     {
       title: 'Custom-Designed for Your Brand',
+      icon: 'sparkles',
       text: 'Every site is designed around your brand, never pulled from a generic, reused template.',
     },
     {
       title: 'Built to Load Fast for Your Customers',
+      icon: 'gauge',
       text: 'Performance that holds up under real traffic, not just a lab test score.',
     },
     {
       title: 'Secure & Scalable',
+      icon: 'shield',
       text: 'Built to handle growth and stay protected as your business scales, not rebuilt when you outgrow it.',
     },
     {
       title: 'Mobile-First Responsive Design',
+      icon: 'phone',
       text: 'Built for how your customers actually browse, not adapted afterward.',
     },
   ],
@@ -77,11 +81,11 @@ export const standard: { id: string; heading: string; intro: string; items: Spec
 export const services: { id: string; eyebrow: string; heading: string; items: ServiceRowItem[] } = {
   id: 'services',
   eyebrow: 'What We Build',
-  heading: 'Start Fresh, Rebuild, or Move Without Losing a Thing',
+  heading: 'Start Fresh, Rebuild, or Migrate Without Losing Rankings',
   items: [
     {
       title: 'Custom Web Development',
-      text: "When your business runs on more than a standard template can handle, we build your website from scratch around exactly what you need. That means custom functionality, integrations with the tools you already use, and a site structured the way your business actually works, not squeezed into someone else's layout.",
+      text: "We build your website from scratch around exactly what you need. That means custom functionality, integrations with the tools you already use, and a site structured the way your business actually works.",
       art: 'custom',
     },
     {
@@ -91,9 +95,8 @@ export const services: { id: string; eyebrow: string; heading: string; items: Se
     },
     {
       title: 'E-commerce Store Builds',
-      text: 'We build the full storefront and checkout experience, not just a homepage. That includes clean product and category structure that scales as your catalog grows, a headless setup with a custom storefront when you need full design control, fast page loads, and a checkout flow designed to reduce abandoned carts, not just look good in a demo.',
+      text: 'We build the full storefront and checkout experience, not just a homepage. That includes clean product and category structure that scales as your catalog grows, a headless setup with a custom storefront, fast page loads, and a checkout flow designed to reduce abandoned carts.',
       art: 'store',
-      link: { label: 'See how we build and grow online stores', href: routes.ecommerce },
     },
     {
       title: 'Website Migration',
@@ -118,25 +121,25 @@ export const industries: {
     {
       title: 'E-commerce',
       body: 'Online stores live and die by conversion. We build storefronts that turn browsers into buyers, not just another product page.',
-      link: { label: 'See E-commerce Work', href: routes.ecommerce },
+      link: { label: 'See E-commerce Solutions', href: routes.ecommerce },
       illustration: 'ecommerce',
     },
     {
       title: 'Wellness & Counselling',
       body: 'Therapists, counsellors, chiropractors, and wellness practices run on booked appointments. We build sites that keep that calendar full.',
-      link: { label: 'See Wellness & Counselling Work', href: routes.wellnessCounselling },
+      link: { label: 'See Wellness & Counselling Solutions', href: routes.wellnessCounselling },
       illustration: 'wellness',
     },
     {
       title: 'Boutique Fitness',
       body: 'Every empty spot in a class is lost revenue. We build sites for yoga, pilates, spin, and barre studios that keep classes booked solid.',
-      link: { label: 'See Boutique Fitness Work', href: routes.boutiqueFitness },
+      link: { label: 'See Boutique Fitness Solutions', href: routes.boutiqueFitness },
       illustration: 'fitness',
     },
     {
       title: 'Sports Academies',
       body: 'Clubs, academies, combat sports gyms, and camps grow when parents can find them. We build sites that make it easy to find you and sign up, connected to the registration software you already use.',
-      link: { label: 'See Sports Work', href: routes.sports },
+      link: { label: 'See Sports Academies Solutions', href: routes.sports },
       illustration: 'sports',
     },
   ],
@@ -185,15 +188,15 @@ export const pricing: {
     {
       icon: 'search-ai',
       title: 'Start With a Full Audit',
-      text: "Most builds start with a Full Audit that maps what your current site is and isn't doing for you. If you move ahead with the build, the audit fee is credited toward it, so you never pay twice for the same work.",
+      text: "Most builds start with a Full Audit that maps what your current site is and isn't doing for you. It shows what to keep, what to fix, and what to drop before any design or development starts, so the build begins with a plan instead of assumptions.",
     },
     {
       icon: 'price-tag',
       title: 'Priced Around Your Project',
-      text: "Custom builds, migrations, and e-commerce stores are each quoted on what your project actually needs, not squeezed into a package that doesn't fit. Audit and plan pricing for fitness, wellness, and sports is listed on those industry pages, and e-commerce is quoted per scope.",
+      text: "Custom builds, migrations, and e-commerce stores are each quoted on what your project actually needs. You get a written scope, a fixed price, and a launch timeline you can plan around.",
     },
   ],
-  cta: { label: 'Get a Quote', href: routes.contact },
+  cta: { label: "Let's Connect", href: routes.contact },
 };
 
 /** Real Work: WorkGrid from getRealWork(tag): case studies with this tag first, then featured and labs work (portfolio.yaml), max `limit`. Renders nothing when none match. */
@@ -202,16 +205,17 @@ export const realWork = {
   eyebrow: 'Our Work',
   heading: "Results We've Delivered",
   tag: 'build',
-  limit: 3,
+  limit: 2,
   ctaText: 'Like what you see?',
-  primaryCta: { label: 'Get a Quote', href: routes.contact },
+  primaryCta: { label: "Let's Connect", href: routes.contact },
   secondaryCta: { label: 'View Full Portfolio', href: routes.portfolio },
 } as const;
 
 /** Cards reuse the homepage Labs items (copy/build.md: same four cards); heading, intro and CTA are this page's own */
 export const labs = {
   id: 'labs',
-  heading: 'Fadeaway Labs, for Everything Beyond a Website',
+  eyebrow: 'Fadeaway Labs',
+  heading: 'For Everything Beyond a Website',
   intro:
     "Not every problem is a website problem. If your business runs on more than a site, like custom software, automations, or AI tools that actually do work for you, that's Fadeaway Labs, and we built it because we love this work.",
   items: homeLabs.items,
@@ -266,5 +270,5 @@ export const cta = {
   id: 'cta',
   heading: 'Ready to Build Something Real?',
   text: "Tell us what you're building, and we'll map out the scope and cost before anything starts.",
-  cta: { label: 'Get a Quote', href: routes.contact },
+  cta: { label: "Let's Connect", href: routes.contact },
 };

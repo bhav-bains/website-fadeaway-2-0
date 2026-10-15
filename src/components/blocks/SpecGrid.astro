@@ -1,13 +1,16 @@
 ---
-// Spec sheet: standards in a hairline table (cells split by 1px rules, no separate cards), each with a ticked
-// box, an index and title + one line. Corner crop marks frame the table; an oversized drafting-compass line drawing
+// Spec sheet: standards in a hairline table (cells split by 1px rules, no separate cards), each with an icon (or a ticked
+// box) and title + one line. Corner crop marks frame the table; an oversized drafting-compass line drawing
 // bleeds off the bottom-right edge behind it. Service pages (Build: "Built Right, From Day One").
-// Phones: 1 column; md: 2; lg: `columns` (3 default). The parent Section should clip overflow (class="overflow-x-clip").
+// Phones: 1 column (or, with `swipe`, a swipeable scroll-snap row with the next card peeking in); md: 2; lg: `columns` (3 default). The parent Section should clip overflow (class="overflow-x-clip").
 import clsx from 'clsx';
+import Icon, { type IconName } from '../ui/Icon.astro';
 
 export interface SpecItem {
   title: string;
   text: string;
+  /** Icon in the tile; without one the tile shows a ticked box */
+  icon?: IconName;
 }
 
 interface Props {
@@ -16,12 +19,13 @@ interface Props {
   columns?: 2 | 3 | 4;
   /** Background drawing: drafting compass (Build) or a gauge with a rising needle (Growth) */
   art?: 'compass' | 'gauge';
+  /** Phones: a swipeable row of cells instead of a stacked table (md and up unchanged) */
+  swipe?: boolean;
   class?: string;
 }
 
-const { items, columns = 3, art = 'compass', class: className } = Astro.props;
+const { items, columns = 3, art = 'compass', swipe = false, class: className } = Astro.props;
 const lgColumns = { 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4' };
-const pad = (n: number) => String(n).padStart(2, '0');
 
 const corners = [
   '-left-1 -top-1 border-l border-t',
@@ -72,13 +76,24 @@ const corners = [
     <circle cx="160" cy="160" r="150" opacity=".12" />
   </svg>
 
-  {corners.map((c) => <span aria-hidden="true" class={clsx('absolute size-3 border-highlight/50', c)} />)}
+  {corners.map((c) => <span aria-hidden="true" class={clsx('absolute size-3 border-highlight/50', swipe && 'max-md:hidden', c)} />)}
 
-  <ul class={clsx('grid gap-px overflow-hidden rounded-card border border-line bg-line md:grid-cols-2', lgColumns[columns])}>
+  <ul
+    class={clsx(
+      swipe
+        ? '-mx-2 flex snap-x snap-mandatory scroll-px-2 gap-2 overflow-x-auto px-2 pb-1 no-scrollbar sm:-mx-3 sm:scroll-px-3 sm:px-3 md:mx-0 md:grid md:snap-none md:gap-px md:overflow-hidden md:rounded-card md:border md:border-line md:bg-line md:px-0 md:pb-0 md:grid-cols-2'
+        : 'grid gap-px overflow-hidden rounded-card border border-line bg-line md:grid-cols-2',
+      lgColumns[columns],
+    )}
+  >
     {
       items.map((item, i) => (
-        <li class="group flex flex-col gap-3 bg-surface-raised/90 p-3 transition-colors duration-300 hover:bg-surface-raised md:p-4">
-          <div class="flex items-center justify-between">
+        <li class={clsx('group flex flex-col gap-3 bg-surface-raised/90 p-3 transition-colors duration-300 hover:bg-surface-raised md:p-4', swipe && 'max-md:shrink-0 max-md:basis-[82%] max-md:snap-start max-md:rounded-card max-md:border max-md:border-line sm:max-md:basis-[55%]')}>
+          {item.icon ? (
+            <span aria-hidden="true" class="flex size-6 items-center justify-center text-highlight">
+              <Icon name={item.icon} class="size-4" />
+            </span>
+          ) : (
             <svg
               aria-hidden="true"
               class="size-6 text-highlight"
@@ -92,10 +107,7 @@ const corners = [
               <rect x="3" y="3" width="18" height="18" rx="4" opacity=".5" />
               <path d="m7.5 12.5 3 3 6-7" class="transition-[stroke-width] duration-300 group-hover:[stroke-width:2.25]" />
             </svg>
-            <span aria-hidden="true" class="font-display text-meta font-semibold tabular-nums text-ink-muted/70">
-              {pad(i + 1)}
-            </span>
-          </div>
+          )}
           <div class="flex flex-col gap-1">
             <h3 class="text-balance font-display text-xl font-bold text-ink">{item.title}</h3>
             <p class="text-pretty text-base text-ink-muted">{item.text}</p>

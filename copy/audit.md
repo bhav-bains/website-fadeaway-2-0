@@ -120,7 +120,7 @@ faq:
 
 # Audit CTA block (used on other pages)
 
-First placement: Build page, directly after "Start Fresh, Rebuild, or Move Without Losing a Thing".
+First placement: Build page, directly after "Start Fresh, Rebuild, or Migrate Without Losing Rankings".
 The URL field carries the visitor's site to /audit, where they finish the form.
 
 - Heading: Not Sure What Your Current Site Needs?

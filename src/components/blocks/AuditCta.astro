@@ -2,7 +2,7 @@
 // Inline free-audit call-out: heading + one line on the left, a single "your website" field + button on the right.
 // Submitting (GET) carries the URL to the audit page (?website=...), which pre-fills its form so the visitor only
 // adds name, email and business there. A fallback line points visitors without a site elsewhere.
-// Gradient border, oversized line art (magnifier over a page with a gauge), no glow. Stacks on phones.
+// Plain hairline border, oversized line art (magnifier over a page with a gauge), no glow. Stacks on phones.
 // Heading is an H3 inside a titled Section, or an H2 (`headingAs`) when it is the section's own heading.
 import clsx from 'clsx';
 import Button from '../Button.astro';
@@ -27,9 +27,9 @@ const { heading, text, fieldLabel, placeholder, button, action, fallback, headin
 const fieldId = 'audit-cta-website';
 ---
 
-<div class={clsx('rounded-card bg-gradient-to-br from-highlight/50 via-line to-accent/50 p-px', className)}>
+<div class={clsx('rounded-card', className)}>
   <div
-    class="relative isolate grid gap-4 overflow-hidden rounded-[calc(var(--radius-card)-1px)] bg-surface-raised p-3 md:p-5 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:items-center lg:gap-10 lg:p-6"
+    class="relative isolate grid gap-4 overflow-hidden rounded-card border border-line bg-surface-raised p-3 md:p-5 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:items-center lg:gap-10 lg:p-6"
   >
     {/* Magnifier over a page with a gauge: "audit your current site" */}
     <svg

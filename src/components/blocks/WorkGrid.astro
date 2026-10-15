@@ -3,7 +3,7 @@
 // render as CaseStudyCard (link to the case study), featured and labs entries as WorkCard (live site, new tab).
 // Renders nothing when given no entries; pages should also skip the surrounding Section (CLAUDE.md section 4).
 // Phones (2 or more cards): a swipeable scroll-snap row, the next card peeking in; from md the grid below.
-// Columns follow the count like ProofGrid: 1 = one wide case study (or one centred card), 2 centred, 3 across on lg.
+// Columns follow the count like ProofGrid: 1 = one wide case study (or one centred card), 2 equal halves at full width, 3 across on lg.
 import clsx from 'clsx';
 import CaseStudyCard from './CaseStudyCard.astro';
 import WorkCard from './WorkCard.astro';
@@ -23,7 +23,7 @@ const layout = single
     ? ''
     : 'mx-auto max-w-xl'
   : entries.length === 2
-    ? 'mx-auto max-w-4xl md:grid-cols-2'
+    ? 'md:grid-cols-2'
     : 'md:grid-cols-2 lg:grid-cols-3';
 ---
 

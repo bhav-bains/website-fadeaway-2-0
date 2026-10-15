@@ -26,7 +26,8 @@ export type IconName =
   | 'shield'
   | 'calendar'
   | 'mail'
-  | 'chat';
+  | 'chat'
+  | 'phone';
 
 interface Props {
   name: IconName;
@@ -88,6 +89,8 @@ const icons: Record<IconName, string> = {
     '<path d="M8 3.5c-2 0-2.5 1.2-2.5 3v2.3c0 1.4-.8 2.2-2 2.2 1.2 0 2 .8 2 2.2v2.3c0 1.8.5 3 2.5 3"/><path d="M16 3.5c2 0 2.5 1.2 2.5 3v2.3c0 1.4.8 2.2 2 2.2-1.2 0-2 .8-2 2.2v2.3c0 1.8-.5 3-2.5 3"/>',
   star: '<path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>',
   // speedometer: site performance
+  // phone with a home bar: mobile-first
+  phone: '<rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M10.5 18h3"/>',
   gauge: '<path d="M4.5 17.5a8.5 8.5 0 1 1 15 0"/><path d="m12 13 4-4.5"/><circle cx="12" cy="13" r="1.5"/>',
   // panels with a chart: apps and dashboards
   dashboard:

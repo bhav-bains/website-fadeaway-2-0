@@ -105,7 +105,7 @@ export const howItWorks: { id: string; heading: string; items: StepItem[] } = {
     { title: 'Share your site', text: 'Enter your website and a few details. It takes about a minute.' },
     {
       title: 'We run your audit',
-      text: 'We review your SEO and AEO readiness, performance, site structure, on-page copy, and tracking.',
+      text: 'We review your SEO and AEO readiness, performance, site structure, and on-page copy.',
     },
     {
       title: 'Get your report',

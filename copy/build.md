@@ -22,9 +22,9 @@ h1: "Custom Web Development, Built to Convert and Rank"
 answer_capsule: >-
   Fadeaway Creatives builds custom websites, redesigns existing sites, and
   builds e-commerce stores for growing businesses across Canada and the US,
-  engineered for real customers and for AI search, not just Google. Every
-  project starts with a written scope of work and a fixed price, and
-  migrations keep the search rankings you've already earned.
+  engineered for real customers and for AI search, not just Google. We build
+  your 24/7 salesperson: a site that answers questions, handles doubts, and
+  books the next step while you're busy.
 keywords:
   primary: "custom web development"   # 3,300/mo US KD 2; 250/mo Canada KD 0
   secondary: ["website redesign agency", "shopify website design", "website migration services"]
@@ -72,7 +72,7 @@ Notes for the build:
 | Schema: HowTo | From How It Works (3 steps) | Set |
 | Schema: FAQPage | From the FAQ list, matches visible copy verbatim | Set |
 | Schema: BreadcrumbList | Home > Build (no /services hub page) | Set (approved Oct 1) |
-| Answer capsule | See frontmatter `answer_capsule` (53 words) | Set (approved Oct 1) |
+| Answer capsule | See frontmatter `answer_capsule` (51 words; changed Oct 14) | Updated by founder, Oct 14 |
 | Visible FAQ block | 6 questions, 40 to 52 word answers | Set |
 | Last updated date | Set at launch | Pending launch |
 | Internal links | All 4 Solutions pages, /labs, /contact, /demo-request, /audit, /portfolio, /resources. Zero `#` placeholders. | To QA |
@@ -89,14 +89,13 @@ Home → Build
 - Eyebrow: Website Design and Development for Growing Businesses
 - H1: Custom Web Development, Built to Convert and Rank
 - Sub-headline: Custom websites, redesigns, and e-commerce stores, built for real customers and for AI search. A clear scope and a fixed price before anything starts.
-- Primary CTA: Get a Quote → /contact
+- Primary CTA: Let's Connect → /contact
 - Secondary CTA: See How It Works → #how-it-works
 - Answer capsule: renders directly under the Hero, from the frontmatter.
 
 ## Built Right, From Day One {#standard}
 
-We build your 24/7 salesperson: a site that answers questions, handles doubts, and books the next step while you're busy.
-<!-- Added Oct 2 (founder): "your website is a 24/7 salesperson" framing. One line per page, worded for this audience. -->
+(Oct 14, founder: the scope-of-work and migration sentence is removed from the answer capsule, and the Oct 2 "24/7 salesperson" line is now part of the same paragraph, shown as the intro under the heading. The capsule is the only intro text.)
 
 ### AEO & SEO Built In
 Schema markup, structured data, and answer-ready content from launch, not bolted on later.
@@ -116,21 +115,20 @@ Built to handle growth and stay protected as your business scales, not rebuilt w
 ### Mobile-First Responsive Design
 Built for how your customers actually browse, not adapted afterward.
 
-## Start Fresh, Rebuild, or Move Without Losing a Thing {#services}
+## Start Fresh, Rebuild, or Migrate Without Losing Rankings {#services}
 
 Eyebrow: What We Build
 
 <!-- Heading changed by the founder (Oct 1). Was "What We Build: Custom Development, Redesigns, and E-commerce Stores" (generic, and it repeated the four service titles below it). -->
 
 ### Custom Web Development
-When your business runs on more than a standard template can handle, we build your website from scratch around exactly what you need. That means custom functionality, integrations with the tools you already use, and a site structured the way your business actually works, not squeezed into someone else's layout.
+We build your website from scratch around exactly what you need. That means custom functionality, integrations with the tools you already use, and a site structured the way your business actually works.
 
 ### Website Redesign
 If your current site is holding your business back, we rebuild it properly. We keep what already works, like your search rankings and content, and fix what doesn't, so the new site converts visitors instead of losing them.
 
 ### E-commerce Store Builds
-We build the full storefront and checkout experience, not just a homepage. That includes clean product and category structure that scales as your catalog grows, a headless setup with a custom storefront when you need full design control, fast page loads, and a checkout flow designed to reduce abandoned carts, not just look good in a demo.
-[Link: See how we build and grow online stores → /solutions/ecommerce]
+We build the full storefront and checkout experience, not just a homepage. That includes clean product and category structure that scales as your catalog grows, a headless setup with a custom storefront, fast page loads, and a checkout flow designed to reduce abandoned carts.
 
 ### Website Migration
 Migrations are the moment most businesses lose the search visibility they worked years to build, and the moment messy backend data becomes impossible to ignore. We handle the technical migration end to end, cleaning up disorganized databases and content along the way, so your rankings, redirects, and content move with you instead of disappearing or dragging old problems into the new site.
@@ -141,72 +139,27 @@ Every industry searches, sells, and converts differently. Pick yours below to se
 
 ### E-commerce
 Online stores live and die by conversion. We build storefronts that turn browsers into buyers, not just another product page.
-[Link: See E-commerce Work → /solutions/ecommerce]
+[Link: See E-commerce Solutions → /solutions/ecommerce]
 
 ### Wellness & Counselling
 Therapists, counsellors, chiropractors, and wellness practices run on booked appointments. We build sites that keep that calendar full.
-[Link: See Wellness & Counselling Work → /solutions/wellness-counselling]
+[Link: See Wellness & Counselling Solutions → /solutions/wellness-counselling]
 
 ### Boutique Fitness
 Every empty spot in a class is lost revenue. We build sites for yoga, pilates, spin, and barre studios that keep classes booked solid.
-[Link: See Boutique Fitness Work → /solutions/boutique-fitness]
+[Link: See Boutique Fitness Solutions → /solutions/boutique-fitness]
 
 ### Sports Academies
 Clubs, academies, combat sports gyms, and camps grow when parents can find them. We build sites that make it easy to find you and sign up, connected to the registration software you already use.
-[Link: See Sports Work → /solutions/sports]
+[Link: See Sports Academies Solutions → /solutions/sports]
 
 **Fitness studio, wellness practice, or sports academy?** We'll build you a free custom demo first.
 [Link: Request Your Free Demo → /demo-request]
 
 [CTA touchpoint: Not sure which fits? Get Your Free Audit → /audit]
 
-## How It Works {#how-it-works}
-
-(Emits HowTo schema.)
-
-1. **Initial Audit and Scope of Work**: We start by understanding your business, your industry, and what your current site is or isn't doing for you. Based on that, we map out whether a proven approach for your niche fits or whether the project calls for something built from scratch, always with a clear scope of work and clear deliverables.
-2. **Build and Launch**: We work in three phases. First, deep research, covering keywords, content strategy, site structure, and getting the site ready for both search engines and AI search from day one. Second, design, covering the look, feel, and user experience that matches your brand. Third, development, covering building, testing, and securing the site before it goes live.
-3. **Growth**: A website is the starting point, not the finish line. Once you're live, we move into ongoing SEO and AEO work under a Growth Plan, so the traffic and rankings keep building.
-   [Link: How Growth works → /services/growth]
-
-## How Pricing Works {#pricing}
-
-Every build is scoped and priced before we start. You get a written scope of work, a fixed price for that scope, and a launch timeline you can plan around. No hourly billing, no surprise invoices.
-
-### Start With a Full Audit
-Most builds start with a Full Audit that maps what your current site is and isn't doing for you. If you move ahead with the build, the audit fee is credited toward it, so you never pay twice for the same work.
-
-### Priced Around Your Project
-Custom builds, migrations, and e-commerce stores are each quoted on what your project actually needs, not squeezed into a package that doesn't fit. Audit and plan pricing for fitness, wellness, and sports is listed on those industry pages, and e-commerce is quoted per scope.
-
-[CTA touchpoint: Get a Quote → /contact]
-
-## Results We've Delivered {#real-work}
-
-(Badge above the heading: **Our Work**, founder Oct 7.)
-
-(ProofGrid, tag `build`. Renders nothing until an approved case study exists. No placeholder cards in production.)
-
-[CTA touchpoint: Like what you see? Get a Quote → /contact]
-[CTA: View Full Portfolio → /portfolio]  (only once /portfolio exists)
-
-<!--
-Case studies (founder, Sept 30): three real case studies. Every other real project is a portfolio
-entry on /portfolio, not a case study. Each case study still needs a verifiable result (number +
-timeframe), written permission to be named, and an image before it renders. Never invent a number.
-- New West Progressives (NWP): website design, setup, and launch for the New Westminster civic party,
-  plus monthly campaign operations (maintenance, landing pages, petition pages, KPI dashboard).
-  Suggested tags: featured, build, growth.
-- Echo Storytelling Agency: website rebuild plus ongoing SEO, AEO, landing pages and campaigns.
-  Suggested tags: featured, build, growth. (Founder, Oct 3: Bhav worked inside Echo's team as part of Fadeaway,
-  so the whole rebuild is Fadeaway work. Don't single out individual pieces like the white paper page.)
-- HeartStamp: go-to-market growth partner (founder, Oct 3): SEO, AEO, technical SEO, catalog and mega menu,
-  content and organic funnels, UX/UI reviews and CRO. Tags: featured, growth, ecommerce.
-Portfolio entries (no case study): Conexus Credit Union Merger, Luisa Paixao, Strength Counselling,
-Boarderline Skate Shop, Blank A Brand, Chronic Ink Tattoo, CAD Details, CPRO Solutions.
--->
-
-## Fadeaway Labs, for Everything Beyond a Website {#labs}
+## For Everything Beyond a Website {#labs}
+(Section badge: Fadeaway Labs)
 
 Not every problem is a website problem. If your business runs on more than a site, like custom software, automations, or AI tools that actually do work for you, that's Fadeaway Labs, and we built it because we love this work.
 
@@ -225,6 +178,53 @@ Most teams already pay for AI tools. We set them up to know your business, conne
 Client portals, internal tools, and live dashboards tracking rankings, bookings, and revenue in one place, so you're never guessing what's working.
 
 [CTA: Have a Custom Project in Mind? → /labs]
+
+## How It Works {#how-it-works}
+
+(Emits HowTo schema.)
+
+1. **Initial Audit and Scope of Work**: We start by understanding your business, your industry, and what your current site is or isn't doing for you. Based on that, we map out whether a proven approach for your niche fits or whether the project calls for something built from scratch, always with a clear scope of work and clear deliverables.
+2. **Build and Launch**: We work in three phases. First, deep research, covering keywords, content strategy, site structure, and getting the site ready for both search engines and AI search from day one. Second, design, covering the look, feel, and user experience that matches your brand. Third, development, covering building, testing, and securing the site before it goes live.
+3. **Growth**: A website is the starting point, not the finish line. Once you're live, we move into ongoing SEO and AEO work under a Growth Plan, so the traffic and rankings keep building.
+   [Link: How Growth works → /services/growth]
+
+### How Pricing Works {#pricing}
+(Folded into How It Works, shown under its heading, Oct 14: this line plus the "Let's Connect" button. The two points below are hidden for now: "Start With a Full Audit" and "Priced Around Your Project".)
+
+Every build is scoped and priced before we start. You get a written scope of work, a fixed price for that scope, and a launch timeline you can plan around. No hourly billing, no surprise invoices.
+
+### Start With a Full Audit
+Most builds start with a Full Audit that maps what your current site is and isn't doing for you. It shows what to keep, what to fix, and what to drop before any design or development starts, so the build begins with a plan instead of assumptions.
+
+### Priced Around Your Project
+Custom builds, migrations, and e-commerce stores are each quoted on what your project actually needs. You get a written scope, a fixed price, and a launch timeline you can plan around.
+
+[CTA touchpoint: Let's Connect → /contact]
+
+## Results We've Delivered {#real-work}
+
+(Badge above the heading: **Our Work**, founder Oct 7.)
+
+(ProofGrid, tag `build`. Renders nothing until an approved case study exists. No placeholder cards in production.)
+
+[CTA touchpoint: Like what you see? Let's Connect → /contact]
+[CTA: View Full Portfolio → /portfolio]  (only once /portfolio exists)
+
+<!--
+Case studies (founder, Sept 30): three real case studies. Every other real project is a portfolio
+entry on /portfolio, not a case study. Each case study still needs a verifiable result (number +
+timeframe), written permission to be named, and an image before it renders. Never invent a number.
+- New West Progressives (NWP): website design, setup, and launch for the New Westminster civic party,
+  plus monthly campaign operations (maintenance, landing pages, petition pages, KPI dashboard).
+  Suggested tags: featured, build, growth.
+- Echo Storytelling Agency: website rebuild plus ongoing SEO, AEO, landing pages and campaigns.
+  Suggested tags: featured, build, growth. (Founder, Oct 3: Bhav worked inside Echo's team as part of Fadeaway,
+  so the whole rebuild is Fadeaway work. Don't single out individual pieces like the white paper page.)
+- HeartStamp: go-to-market growth partner (founder, Oct 3): SEO, AEO, technical SEO, catalog and mega menu,
+  content and organic funnels, UX/UI reviews and CRO. Tags: featured, growth, ecommerce.
+Portfolio entries (no case study): Conexus Credit Union Merger, Luisa Paixao, Strength Counselling,
+Boarderline Skate Shop, Blank A Brand, Chronic Ink Tattoo, CAD Details, CPRO Solutions.
+-->
 
 ## Testimonials {#testimonials}
 
@@ -262,7 +262,7 @@ Real, practical answers to the website questions we hear most.
 ## Ready to Build Something Real? {#cta}
 
 Tell us what you're building, and we'll map out the scope and cost before anything starts.
-[CTA: Get a Quote → /contact]
+[CTA: Let's Connect → /contact]
 
 <!--
 CHANGE LOG vs the Claude Doc draft (rev 313). Originals stay in the Doc.
@@ -278,7 +278,7 @@ CHANGE LOG vs the Claude Doc draft (rev 313). Originals stay in the Doc.
 4. Sub-headline shortened so it no longer repeats the capsule.
 5. Hero CTAs: were "See Our Work → /portfolio" (primary) and "Get Your Free Audit → /audit" (secondary).
    /portfolio doesn't exist and the proof section renders nothing while empty, so primary is now
-   "Get a Quote → /contact" (same ask as this page's other CTAs) and secondary jumps to How It Works.
+   "Let's Connect → /contact" (same ask as this page's other CTAs) and secondary jumps to How It Works.
 6. Breadcrumb: Home > Build. There is no /services hub page (same call as e-commerce, Sept 29).
 7. Industry cards: the demo offer moved off the Boutique Fitness card into one line under the grid covering
    fitness, wellness, and sports (founder decision, Sept 23 evening: demo requests apply to all three).
