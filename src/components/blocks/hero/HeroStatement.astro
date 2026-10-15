@@ -70,5 +70,13 @@ const statementSize = 'text-[clamp(2.5rem,1.25rem+4vw,4.5rem)] leading-[1.02]';
     </div>
   </div>
 
+  {
+    Astro.slots.has('default') && (
+      <div class="mx-auto mt-5 w-full max-w-site md:mt-6">
+        <slot />
+      </div>
+    )
+  }
+
   {logos && <LogoBand label={logos.label} groups={logos.groups} class="mx-auto mt-6 w-full max-w-site md:mt-8" />}
 </section>

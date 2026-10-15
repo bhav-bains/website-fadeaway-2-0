@@ -31,7 +31,7 @@ export const hero: HeroContent = {
   displayLine: 'Proof, not promises.',
   eyebrow: 'Case Studies',
   h1: 'Website and Growth Case Studies',
-  sub: "Real projects, real results. See how we've helped growing businesses get found, win customers, and run better online.",
+  sub: "See how we've helped growing businesses get found, win customers, and run better online.",
   breadcrumb,
   visual: 'launch',
 };

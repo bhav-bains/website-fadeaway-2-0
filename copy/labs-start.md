@@ -110,6 +110,8 @@ From frontmatter `faq` (3 questions). Visible text and FAQPage JSON-LD from the 
 
 ## CTA {#cta}
 
+HIDDEN Oct 14 (founder): this closing CTA is not shown on the page.
+
 - Heading: Want to see what we've built first?
 - Line: Our own products, live with real users, and the tools we build for our own work.
 - Button: Explore Fadeaway Labs → /labs/

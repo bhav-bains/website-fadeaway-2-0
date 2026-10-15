@@ -25,7 +25,7 @@ const heroes = isDev ? [variant, ...options.filter((v) => v !== variant)] : [var
           Dev preview: hero variant "{v}"
         </p>
       )}
-      <Hero variant={v} {...content} />
+      <Hero variant={v} {...content}><slot /></Hero>
     </div>
   ))
 }

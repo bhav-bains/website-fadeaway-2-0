@@ -64,16 +64,17 @@ const jsonLd = [
   <!-- Dev-only preview: /labs/?hero=statement | showcase | visual | all -->
   <HeroPreview content={hero} variant={heroVariant} options={['statement', 'showcase', 'visual']} />
 
-  <!-- Answer capsule (AEO summary) is the wide intro of the first section, directly under the Hero -->
-  <Section id={build.id} heading={build.heading} intro={answerCapsule} introStyle="wide" align="start" class="scroll-mt-24">
-    <IconGrid items={build.items} columns={3} size="md" />
+  <!-- Answer capsule (AEO summary): hidden visually (founder, Oct 14) but stays in the HTML as screen-reader text, like the other pages. To show it again, pass intro={answerCapsule} introStyle="wide" to this Section and drop the sr-only paragraph -->
+  <Section id={build.id} heading={build.heading} align="start" class="scroll-mt-24">
+    <p class="sr-only">{answerCapsule}</p>
+    <IconGrid items={build.items} columns={3} size="md" swipe collapse={false} idPrefix="labs-build" />
     <CtaBlock heading={build.cta.heading} cta={build.cta.cta} secondaryCta={build.cta.secondaryCta} class="mt-6 md:mt-10" />
     <!-- Founder quote (open item in copy/labs.md): renders on this page once supplied, in the founder's words -->
   </Section>
 
   <Section id={aiNative.id} heading={aiNative.heading} intro={aiNative.intro} layout="split">
     <FeatureList items={aiNative.items} columns={1} />
-    <p class="mt-4 border-l-2 border-highlight/60 pl-2 text-pretty text-base text-ink-soft md:pl-3">{aiNative.proof}</p>
+    {/* HIDDEN Oct 14 (founder): the "We run Fadeaway this way" proof callout (data stays in labs.ts, aiNative.proof). To restore: <p class="mt-4 border-l-2 border-highlight/60 pl-2 text-pretty text-base text-ink-soft md:pl-3">{aiNative.proof}</p> */}
     <div class="mt-4 flex">
       <Button href={aiNative.cta.href} variant="primary" size="base">{aiNative.cta.label}</Button>
     </div>
@@ -84,9 +85,7 @@ const jsonLd = [
   {
     productWork.length > 0 && (
       <Section id={products.id} heading={products.heading} align="start" class="scroll-mt-24">
-        <ArrowLink slot="actions" href={products.link.href}>
-          {products.link.label}
-        </ArrowLink>
+        {/* HIDDEN Oct 14 (founder): "See the Full Portfolio" link (data stays in labs.ts, products.link). To restore: <ArrowLink slot="actions" href={products.link.href}>{products.link.label}</ArrowLink> */}
         <ul class="grid gap-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
           {productWork.map((w) => (
             <li>

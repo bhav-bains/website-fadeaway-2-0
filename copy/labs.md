@@ -138,7 +138,7 @@ Your recurring tasks, like proposals, reports, follow-ups, and audits, turned in
 ### Guardrails & Team Training
 Clear rules on what data goes in and who can access what, plus hands-on training so your team uses AI with confidence, not guesswork.
 
-Proof line: We run Fadeaway this way. Our own planning, research, and content workflows run on the same kind of setup we build for you.
+Proof line (HIDDEN Oct 14, founder): We run Fadeaway this way. Our own planning, research, and content workflows run on the same kind of setup we build for you.
 
 [CTA: Get Your Team AI-Ready → /labs/start/]
 
@@ -148,7 +148,7 @@ Proof line: We run Fadeaway this way. Our own planning, research, and content wo
 each with a status badge: Alpha, Beta, or Live. No intro line. Renders nothing when none are visible. Products we
 own or co-founded also get a SoftwareApplication schema entry. Oct 4: JabJab MMA, Anvido, Nadu Gifhorn.)
 
-[Link: See the Full Portfolio → /portfolio/]  <!-- Proposed by Claude Oct 4, needs approval -->
+[Link HIDDEN Oct 14 (founder): See the Full Portfolio → /portfolio/]  <!-- Proposed by Claude Oct 4, needs approval -->
 
 ## Internal Tools {#see-it-working}
 

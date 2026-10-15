@@ -129,7 +129,7 @@
 
 - { id: upscope, name: Upscope, url: "https://upscope.com/", kind: list, group: saas, tags: [], noreferrer: true, rank: 10 }
 - { id: talentclick, name: TalentClick, url: "https://talentclick.com/", kind: list, group: saas, tags: [], noreferrer: true, rank: 20 }
-- { id: samsung-knox, name: Samsung Knox, url: "https://www.samsungknox.com/en", kind: list, group: saas, tags: [], noreferrer: true, rank: 30 }   # text only, never a logo
+- { id: samsung-knox, name: Samsung Knox, url: "https://www.samsungknox.com/en", kind: list, group: saas, tags: [], noreferrer: true, rank: 30, hidden: true }   # text only, never a logo
 
 - { id: drinksense, name: DrinkSense, url: "https://www.drinksense.ca/", kind: list, group: organizations, tags: [], noreferrer: true, rank: 10 }
 - { id: mocktail-week, name: Mocktail Week, url: "https://mocktailweek.ca/", kind: list, group: organizations, tags: [], noreferrer: true, rank: 20 }
@@ -139,6 +139,8 @@
 - id: jabjab-mma
   name: JabJab MMA
   url: https://jabjabmma.com/
+  image: ../assets/portfolio/jabjab-mma/jabjab-hero.png
+  imageAlt: "The JabJab MMA fighter rankings, next event and fighter profile pages on a phone"
   kind: labs
   owner: ours
   status: live
@@ -151,10 +153,12 @@
 - id: anvido
   name: Anvido
   url: https://anvido.de/
+  image: ../assets/portfolio/anvido/anvido-hero.png
+  imageAlt: "The Anvido homepage and its book listing on a phone"
   kind: labs
   owner: cofounded
   status: live
-  industry: "EdTech · Germany"
+  industry: "EdTech"
   summary: "A learning-support platform for families of children with dyslexia and dyscalculia, co-founded with a certified learning therapist and taken from idea to MVP. Parents photograph their child's writing and get an AI-powered analysis in about 60 seconds, then personalized exercises and printable story booklets. Built on Next.js with complex backend services, GDPR-compliant and live in the German market."
   chips: ["Idea to MVP", "AI Product", "Next.js", "EdTech"]
   tags: ["labs", "labs-product"]
@@ -163,10 +167,12 @@
 - id: nadu-gifhorn
   name: Nadu Gifhorn
   url: https://nadu-gifhorn.de/
+  image: ../assets/portfolio/nadu-gifhorn/nadu-hero.png
+  imageAlt: "The Nadu Gifhorn local news homepage and a Christmas market article"
   kind: labs
   owner: cofounded
   status: live
-  industry: "Local media · Germany"
+  industry: "Local media"
   summary: "A hyperlocal news and community platform for the Gifhorn region, built from idea to MVP. Their editorial team publishes local news, police and emergency updates, and events, alongside weather, a restaurant guide with daily lunch specials, and a directory of community support services."
   chips: ["Idea to MVP", "Local Media", "Publishing Platform"]
   tags: ["labs", "labs-product"]
@@ -182,6 +188,7 @@
   summary: "A demo site we built to show what a sports program website can look like."
   chips: ["Industry Demo", "Astro"]
   tags: ["labs", "sports-academies", "internal"]   # internal: not linked yet (founder, Oct 4)
+  hidden: true   # founder, Oct 14: internal tools and demo sites hidden on /labs/ for now
   rank: 30
 
 - id: easytiffin
@@ -205,6 +212,7 @@
   summary: "Our internal lead nurturing, audit and CRM tool, in alpha."
   chips: ["Internal Tool"]
   tags: ["labs", "labs-product", "internal"]   # internal: never linked (founder, Oct 4: shown on /labs/ as an internal tool)
+  hidden: true   # founder, Oct 14: internal tools and demo sites hidden on /labs/ for now
   rank: 50
 
 - id: fitness-demo
@@ -216,6 +224,7 @@
   summary: "A demo site we built to show what a boutique fitness studio website can look like."
   chips: ["Industry Demo", "Astro"]
   tags: ["labs", "boutique-fitness", "internal"]   # founder, Oct 4: shown as an internal tool, not linked (still in build)
+  hidden: true   # founder, Oct 14: internal tools and demo sites hidden on /labs/ for now
   rank: 32
 
 - id: wellness-demo
@@ -227,4 +236,5 @@
   summary: "A demo site we built to show what a wellness or counselling practice website can look like."
   chips: ["Industry Demo", "Astro"]
   tags: ["labs", "wellness-counselling", "internal"]   # founder, Oct 4: shown as an internal tool, not linked (still in build)
+  hidden: true   # founder, Oct 14: internal tools and demo sites hidden on /labs/ for now
   rank: 34

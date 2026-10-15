@@ -61,7 +61,7 @@ Home → Case Studies
 - Display line (bold, largest type, above the H1): **Proof, not promises.**
 - Eyebrow: Case Studies
 - H1: Website and Growth Case Studies
-- Sub-headline: Real projects, real results. See how we've helped growing businesses get found, win customers, and run better online.
+- Sub-headline: See how we've helped growing businesses get found, win customers, and run better online.
 - Answer capsule: renders as real text directly under the Hero (frontmatter).
 
 ## Case Studies {#case-studies}
