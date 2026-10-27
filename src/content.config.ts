@@ -36,6 +36,9 @@ const caseStudies = defineCollection({
         displayTags: z.array(z.enum(CONTENT_TAGS)).optional(),
         rank: z.number().int().default(100), // lower shows first in proof grids
         placeholder: z.boolean().default(false),
+        // Temporarily pulled (e.g. waiting on a testimonial): no detail page, not listed, not in the sitemap, in dev too.
+        // Unhide by removing the flag; see the entry's notes for anything else to restore (redirects, portfolio.yaml).
+        hidden: z.boolean().default(false),
         permissionConfirmed: z.boolean().default(false),
       })
       .refine((d) => d.placeholder || d.permissionConfirmed, {

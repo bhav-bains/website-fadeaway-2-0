@@ -3,6 +3,8 @@
 # Drafted by Claude, Oct 3 2026. Approved by the founder Oct 3 (title and description: AEO added).
 # Resources dropdown item (founder, Oct 3). First real entry: New West Progressives
 # (src/content/case-studies/new-west-progressives.md). Echo Stories and HeartStamp follow the same format.
+# Oct 27 2026: HeartStamp is HIDDEN until a client testimonial arrives (~2 weeks). Restore steps are in
+# src/content/case-studies/heartstamp.md.
 page: case-studies
 url: /case-studies/
 title: "Website, SEO & AEO Case Studies | Fadeaway Creatives"

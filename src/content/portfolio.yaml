@@ -43,7 +43,10 @@
 # ---------- Case studies (index entries; full stories in src/content/case-studies/) ----------
 - { id: nwp, name: New West Progressives, url: "https://nwprogress.ca/", kind: case-study, caseStudy: new-west-progressives, tags: [featured, build, custom-website, website-redesign, website-migration, growth], rank: 10 }
 - { id: echo, name: Echo Storytelling Agency, url: "https://www.echostories.com/", kind: case-study, caseStudy: echo-storytelling, tags: [featured, build, custom-website, website-redesign, website-migration, growth], rank: 20 }
-- { id: heartstamp, name: HeartStamp, url: "https://heartstamp.com/", kind: case-study, caseStudy: heartstamp, tags: [featured, growth, ecommerce], rank: 30 }
+# HeartStamp: case study hidden Oct 27 2026 until a testimonial arrives; shown meanwhile as a plain /portfolio/ list item
+# (More of Our Work, E-commerce) that links to the live site with noreferrer + nofollow. To restore, replace that list
+# line with this one again (see src/content/case-studies/heartstamp.md):
+# - { id: heartstamp, name: HeartStamp, url: "https://heartstamp.com/", kind: case-study, caseStudy: heartstamp, tags: [featured, growth, ecommerce], rank: 30 }
 
 # ---------- Featured ----------
 - id: routethis
@@ -116,6 +119,7 @@
   rank: 50
 
 # ---------- More of our work (text list) ----------
+- { id: heartstamp, name: HeartStamp, url: "https://heartstamp.com/", kind: list, group: ecommerce, tags: [ecommerce], noreferrer: true, nofollow: true, rank: 5 }   # temporary, see the case-study note above
 - { id: boarderline-skate-shop, name: Boarderline Skate Shop, url: "https://www.boarderlineskateshop.ca/", kind: list, group: ecommerce, tags: [ecommerce], noreferrer: true, rank: 10 }
 - { id: luisa-paixao, name: "Luisa Paixão", url: "https://www.luisa-paixao.com/", kind: list, group: ecommerce, tags: [ecommerce], noreferrer: true, rank: 20 }   # also luisa-paixao.us (one entry)
 - { id: chronic-ink-tattoo, name: Chronic Ink Tattoo, url: "https://chronicinktattoo.com/", kind: list, group: ecommerce, tags: [ecommerce], noreferrer: true, rank: 30 }

@@ -8,6 +8,11 @@
 # Founder, Oct 3: keep the work-based chips until real results are sent. HeartStamp's AI features
 # (Stampy AI search, AI-designed cards) are their product, not our work: never claim them.
 # Never round up. No before image: HeartStamp is growth work on their own build, not a redesign.
+# HIDDEN Oct 27 2026 (founder): pulled until a client testimonial arrives (expected within ~2 weeks). To restore:
+#   1. delete `hidden: true` below and add the testimonial;
+#   2. in src/content/portfolio.yaml, swap the HeartStamp `kind: list` line back for the case-study line kept in the comment above it;
+#   3. delete the temporary 302 for /case-studies/heartstamp/ in public/_redirects.
+hidden: true
 title: "Building HeartStamp's organic growth engine from the ground up"
 client: "HeartStamp"
 summary: "HeartStamp is an early-stage startup making personalized greeting cards, printed and mailed or sent digitally. As their go-to-market growth partner, we built the SEO and AEO foundations, organized a fast-growing catalog, and shaped the funnels that turn searchers into buyers."
