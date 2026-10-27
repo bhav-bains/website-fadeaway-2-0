@@ -10,3 +10,14 @@
 /blog/*               /                                 301
 /demo-request/        /contact/                         301
 /demo-success/        /                                 301
+
+# Old WordPress URLs still 404ing after launch (Oct 17 check)
+/services/            /services/build/                  301
+/projects/            /portfolio/                       301
+/project/*            /portfolio/                       301
+/home/                /                                 301
+/sitemap.xml          /sitemap-index.xml                301
+
+# TEMPORARY (Oct 27 2026): HeartStamp case study hidden until its testimonial arrives. 302 = temporary, so search
+# engines keep the page. Delete this rule when the case study is restored (see src/content/case-studies/heartstamp.md).
+/case-studies/heartstamp/   /case-studies/                    302

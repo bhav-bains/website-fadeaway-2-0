@@ -43,7 +43,7 @@ export async function getWork({
       continue;
     }
     const study = await getEntry(entry.data.caseStudy);
-    if (study && (import.meta.env.DEV || !study.data.placeholder)) work.push({ ...entry, study });
+    if (study && !study.data.hidden && (import.meta.env.DEV || !study.data.placeholder)) work.push({ ...entry, study });
     else if (entry.data.kind !== 'case-study') work.push(entry); // featured card falls back to the live site
   }
   work.sort(

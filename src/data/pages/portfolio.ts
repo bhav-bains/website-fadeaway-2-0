@@ -89,10 +89,11 @@ export const moreWork = {
   /**
    * First line under the E-commerce heading. Each part names a portfolio.yaml entry (`work`) and renders only while
    * that entry is visible: "Featured above: [CenturionPro → #featured]. Full story: [HeartStamp → case study]."
+   * `caseStudy: true` parts also need the entry's case study to be live (HeartStamp's is hidden until its testimonial).
    */
   ecommerceNote: [
     { prefix: 'Featured above:', label: 'CenturionPro', work: 'cpro-solutions', href: '#featured' },
-    { prefix: 'Full story:', label: 'HeartStamp', work: 'heartstamp', href: `${routes.caseStudies}heartstamp/` },
+    { prefix: 'Full story:', label: 'HeartStamp', work: 'heartstamp', href: `${routes.caseStudies}heartstamp/`, caseStudy: true },
   ],
 };
 

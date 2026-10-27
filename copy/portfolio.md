@@ -128,7 +128,7 @@ Home → Portfolio
 - Heading: More of Our Work
 - No line under the heading (founder, Oct 4).
 - Data: `kind: list`, grouped by `group`, each group in `rank` order. Group order, headings and anchors:
-  1. **E-commerce** `{#ecommerce}`. First line under the heading: Featured above: [CenturionPro → #featured]. Full story: [HeartStamp → /case-studies/heartstamp/].
+  1. **E-commerce** `{#ecommerce}`. First line under the heading: Featured above: [CenturionPro → #featured]. Full story: [HeartStamp → /case-studies/heartstamp/]. (Oct 27: the HeartStamp part is hidden while its case study is hidden; HeartStamp shows in this E-commerce list meanwhile, linking to heartstamp.com with nofollow + noreferrer.)
   2. **Practices & Local Businesses** `{#practices}`
   3. **SaaS & Enterprise** `{#saas}`
   4. **Organizations** `{#organizations}`

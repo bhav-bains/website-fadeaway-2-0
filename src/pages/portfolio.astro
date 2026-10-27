@@ -42,7 +42,8 @@ const groups = moreWork.groups
   .filter((g) => g.entries.length > 0);
 
 const visibleIds = new Set(work.map((w) => w.id));
-const ecommerceNote = moreWork.ecommerceNote.filter((n) => visibleIds.has(n.work));
+const liveStudyIds = new Set(work.filter((w) => w.study).map((w) => w.id));
+const ecommerceNote = moreWork.ecommerceNote.filter((n) => ('caseStudy' in n && n.caseStudy ? liveStudyIds : visibleIds).has(n.work));
 const rendered = new Set([
   ...(studies.length ? [caseStudies.id] : []),
   ...(featuredWork.length ? [featured.id] : []),
