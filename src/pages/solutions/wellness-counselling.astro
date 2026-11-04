@@ -4,6 +4,7 @@
 // find practices → tailored solutions → from search to booked client → pricing → why us → what to expect → proof → FAQ → final ask.
 // No demo section and no /demo-request/ links (founder, Oct 14); How It Works and its HowTo schema are hidden.
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import FromTheBlog from '../../components/blocks/FromTheBlog.astro';
 import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
 import Section from '../../components/blocks/Section.astro';
 import BentoGrid from '../../components/blocks/BentoGrid.astro';
@@ -43,6 +44,7 @@ import {
   serviceNames,
   serviceOffers,
   cta,
+  blog,
 } from '../../data/pages/wellness';
 
 const work = await getRealWork(realWork.tag, realWork.limit);
@@ -120,7 +122,8 @@ const jsonLd = [
     <Faq faq={faq.items} />
   </Section>
 
-  <!-- From the Blog (tag wellness-counselling, data: `blog` in wellness.ts): renders nothing until /articles/ has real posts -->
+  <!-- From the Blog: newest articles with this page's tag (data: `blog` in wellness.ts); renders nothing until one is published -->
+  <FromTheBlog blog={blog} />
 
   <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
     <CtaBlock

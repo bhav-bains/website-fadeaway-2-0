@@ -94,17 +94,25 @@ const portfolio = defineCollection({
       .refine((d) => d.kind === 'case-study' || d.url || d.kind === 'labs', { message: 'featured and list entries need a url' }),
 });
 
-// Placeholder-era posts (pages parked in src/pages/_inactive/blog). Free-form tags until posts are rebuilt.
-const blog = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    author: z.string(),
-    pubDate: z.coerce.date(),
-    image: z.string().optional(),
-    tags: z.array(z.string()).default([]),
-  }),
+// Articles (/articles/ + /articles/[slug]/), spec: copy/articles.md ("Article fields"). Every article is real, written or
+// approved by the founder. No date fields: published / modified dates come from git (src/lib/page-dates.ts).
+// draft: true = never in a production build (shown in `npm run dev` only, noindex, for review).
+const articles = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/articles' }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      seoTitle: z.string().max(60).optional(),
+      description: z.string().max(155),
+      summary: z.string(), // The Short Answer (answer capsule), 40 to 80 words
+      tags,
+      image: image().optional(), // 16:10, about 1600x1000
+      imageAlt: z.string().optional(),
+      ogImage: image().optional(), // 1200x630 share image
+      takeaways: z.array(z.string()).optional(), // 3 to 5 short lines
+      faq: z.array(z.object({ q: z.string(), a: z.string() })).optional(), // 3 to 6
+      draft: z.boolean().default(false),
+    }),
 });
 
-export const collections = { 'case-studies': caseStudies, portfolio, testimonials, blog };
+export const collections = { 'case-studies': caseStudies, portfolio, testimonials, articles };

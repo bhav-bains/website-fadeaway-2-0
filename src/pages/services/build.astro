@@ -2,6 +2,7 @@
 // Build Services page. Content: src/data/pages/build.ts (from copy/build.md).
 // Service pages use the blueprint Hero and drafting-style line art, so they read differently from solutions pages.
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import FromTheBlog from '../../components/blocks/FromTheBlog.astro';
 import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
 import Section from '../../components/blocks/Section.astro';
 import SpecGrid from '../../components/blocks/SpecGrid.astro';
@@ -37,6 +38,7 @@ import {
   faq,
   serviceNames,
   cta,
+  blog,
 } from '../../data/pages/build';
 import { auditCta } from '../../data/pages/audit';
 
@@ -144,7 +146,8 @@ const jsonLd = [
     <Faq faq={faq.items} />
   </Section>
 
-  <!-- From the Blog (tag build, data: `blog` in build.ts): renders nothing until /articles/ has real Build posts -->
+  <!-- From the Blog: newest articles with this page's tag (data: `blog` in build.ts); renders nothing until one is published -->
+  <FromTheBlog blog={blog} />
 
   <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
     <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />

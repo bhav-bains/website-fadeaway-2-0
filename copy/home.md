@@ -252,7 +252,7 @@ Start with a free Instant Audit: a clear picture of where you stand, no obligati
 
 ## Footer {#footer}
 
-- Tagline: Growth partner for local businesses across the US & Canada.
+- Tagline: Growth partner for local businesses. (Nov 3: "across the US & Canada" dropped; the location line below already says it.)
 - Location line: Vancouver, BC, working with clients across Canada and the US.
 - **Services:** Build → /services/build · Growth → /services/growth · Fadeaway Labs → /labs
 - **Solutions:** E-commerce → /solutions/ecommerce · Wellness & Counselling → /solutions/wellness-counselling · Boutique Fitness → /solutions/boutique-fitness · Sports Academies → /solutions/sports

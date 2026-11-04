@@ -1,6 +1,7 @@
 ---
 // E-commerce Solutions page. Content: src/data/pages/ecommerce.ts (from copy/ecommerce.md).
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import FromTheBlog from '../../components/blocks/FromTheBlog.astro';
 import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
 import Section from '../../components/blocks/Section.astro';
 import AnnotatedVisual from '../../components/blocks/AnnotatedVisual.astro';
@@ -17,7 +18,7 @@ import { breadcrumbSchema, howToSchema, faqSchema, serviceSchema } from '../../l
 import { getRealWork } from '../../lib/work';
 import { siteConfig } from '../../data/site';
 import { routes } from '../../data/routes';
-import { seo, breadcrumb, hero, heroVariant, answerCapsule, aiShopping, standard, services, howItWorks, realWork, faq, serviceNames, cta } from '../../data/pages/ecommerce';
+import { seo, breadcrumb, hero, heroVariant, answerCapsule, aiShopping, standard, services, howItWorks, realWork, faq, serviceNames, cta, blog } from '../../data/pages/ecommerce';
 
 const work = await getRealWork(realWork.tag, realWork.limit);
 
@@ -95,7 +96,8 @@ const jsonLd = [
     <Faq faq={faq.items} />
   </Section>
 
-  <!-- From the Blog (tag ecommerce, data: `blog` in ecommerce.ts): renders nothing until /articles/ has real e-commerce posts -->
+  <!-- From the Blog: newest articles with this page's tag (data: `blog` in ecommerce.ts); renders nothing until one is published -->
+  <FromTheBlog blog={blog} />
 
   <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
     <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} link={cta.link} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />

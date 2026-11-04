@@ -1,0 +1,28 @@
+---
+// "From the Blog" section for service, solution and Labs pages: the 3 newest published articles with the page's tag,
+// then the page's "View All Resources" link. Renders nothing (no Section, no heading) when there are none.
+// Data: `blog` in the page's file in src/data/pages/ ({ id, heading, intro, tag, cta }).
+import Section from './Section.astro';
+import ArticleGrid from './ArticleGrid.astro';
+import ArrowLink from '../ui/ArrowLink.astro';
+import { getArticles } from '../../lib/articles';
+import type { ContentTag } from '../../data/tags';
+
+interface Props {
+  blog: { id: string; heading: string; intro?: string; tag: ContentTag; cta: { label: string; href: string } };
+}
+
+const { blog } = Astro.props;
+const entries = await getArticles({ tag: blog.tag, limit: 3 });
+---
+
+{
+  entries.length > 0 && (
+    <Section id={blog.id} heading={blog.heading} intro={blog.intro}>
+      <ArticleGrid entries={entries} />
+      <div class="mt-4 flex justify-center md:mt-6">
+        <ArrowLink href={blog.cta.href}>{blog.cta.label}</ArrowLink>
+      </div>
+    </Section>
+  )
+}
