@@ -35,7 +35,10 @@ const { data } = entry;
 const { Content, headings } = await render(entry);
 // Markdown articles: render the content layer's HTML minus <!-- build notes --> (they stay in the file, never in
 // the page source). MDX entries fall back to <Content />.
-const html = entry.rendered?.html?.replace(/<!--[\s\S]*?-->/g, '');
+// External links in the body open in a new tab (founder, Nov 3); links to our own pages stay in the same tab.
+const html = entry.rendered?.html
+  ?.replace(/<!--[\s\S]*?-->/g, '')
+  .replace(/<a href="(https?:\/\/[^"]+)"/g, '<a href="$1" target="_blank" rel="noopener"');
 const href = articleHref(entry);
 const topic = visibleTags(data.tags)[0];
 const toc = headings.filter((h) => h.depth === 2);
