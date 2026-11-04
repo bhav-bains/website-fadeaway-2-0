@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { pageDates } from './src/lib/page-dates.ts';
+import { hasPublishedArticles } from './src/lib/article-files.ts';
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,7 +19,10 @@ export default defineConfig({
     // stay out. <lastmod> = the page's latest git date (src/lib/page-dates.ts, same as its JSON-LD dateModified);
     // no known source → no lastmod, never the build time.
     sitemap({
-      filter: (page) => !['/contact-success', '/demo-success', '/audit-success', '/labs/start/success'].some((path) => page.includes(path)),
+      filter: (page) =>
+        !['/contact-success', '/demo-success', '/audit-success', '/labs/start/success'].some((path) => page.includes(path)) &&
+        // /articles/ is noindex (empty state) until the first article is published (copy/articles.md)
+        (hasPublishedArticles() || !new URL(page).pathname.startsWith('/articles/')),
       serialize(item) {
         const { modified } = pageDates(new URL(item.url).pathname);
         return modified ? { ...item, lastmod: modified } : item;

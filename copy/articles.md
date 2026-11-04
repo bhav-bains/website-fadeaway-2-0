@@ -4,6 +4,8 @@
 # ON HOLD (founder, Oct 4): /articles/ is hidden for launch. The founder writes 3 articles first; the page, template
 # and the Resources menu link go live together with them. Not built yet; this file is the spec for then. Build from this file exactly;
 # flag anything that reads wrong instead of rewriting it.
+# BUILT on dev Nov 3 2026 (code: src/pages/articles/, src/data/pages/articles.ts). Still open: the items marked
+# "Needs approval" below, the "within 24 hours" wording (template CTA + FAQ 3), and the OPEN ITEMS at the end.
 # Resources dropdown item "Articles" (founder, Oct 3). Replaces the old /blog/ (see Redirects).
 # Every article is real, written or approved by the founder. Never invent an article, a client, a result or a quote.
 page: articles

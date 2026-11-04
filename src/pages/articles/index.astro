@@ -1,0 +1,67 @@
+---
+// Articles listing (Resources dropdown, link hidden until launch). Content: src/data/pages/articles.ts (from copy/articles.md).
+// Order: Hero → answer capsule + cards (newest as a wide feature) → FAQ → audit CTA.
+// Empty state (no published articles): Hero, one line, the CTA; the page is noindex and out of the sitemap
+// (astro.config.mjs) until the first article is published. Drafts show in `npm run dev` only.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
+import Section from '../../components/blocks/Section.astro';
+import ArticleGrid from '../../components/blocks/ArticleGrid.astro';
+import Faq from '../../components/blocks/Faq.astro';
+import AuditCta from '../../components/blocks/AuditCta.astro';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+import { getArticles, articleHref } from '../../lib/articles';
+import { routes } from '../../data/routes';
+import { auditCta } from '../../data/pages/audit';
+import { seo, breadcrumb, hero, heroVariant, answerCapsule, faq, listingCta, emptyLine } from '../../data/pages/articles';
+
+const entries = await getArticles();
+const hasArticles = entries.length > 0;
+
+const jsonLd = [
+  collectionPageSchema({
+    url: routes.articles,
+    name: seo.title,
+    description: seo.description,
+    items: entries.map((e) => ({ name: e.data.title, url: articleHref(e) })),
+  }),
+  breadcrumbSchema(breadcrumb),
+  ...(hasArticles ? [faqSchema(faq.items)] : []),
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} noIndex={!hasArticles} jsonLd={jsonLd}>
+  <!-- Dev-only preview: /articles/?hero=statement | showcase | visual | all -->
+  <HeroPreview content={hero} variant={heroVariant} options={['statement', 'showcase', 'visual']} />
+
+  <Section id="articles" intro={hasArticles ? answerCapsule : undefined} introStyle="wide" align="start">
+    {
+      hasArticles ? (
+        <ArticleGrid entries={entries} featureFirst headingAs="h2" />
+      ) : (
+        <p class="max-w-3xl text-pretty text-base text-ink-soft md:text-lg">{emptyLine}</p>
+      )
+    }
+  </Section>
+
+  {
+    hasArticles && (
+      <Section id={faq.id} heading={faq.heading} width="narrow">
+        <Faq faq={faq.items} />
+      </Section>
+    )
+  }
+
+  <Section id="cta" labelledBy="cta-heading">
+    <AuditCta
+      heading={listingCta.heading}
+      text={listingCta.text}
+      fieldLabel={auditCta.fieldLabel}
+      placeholder={auditCta.placeholder}
+      button={listingCta.button}
+      action={auditCta.action}
+      headingAs="h2"
+      headingId="cta-heading"
+    />
+  </Section>
+</BaseLayout>

@@ -44,11 +44,11 @@ const ogImageUrl = new URL(ogImage, siteConfig.url).toString();
 
 // Dates from git (src/lib/page-dates.ts; same source as the sitemap <lastmod>). Metadata only, never shown.
 // Indexable pages: dateModified on the page's own node (WebPage, CollectionPage, AboutPage, ContactPage or
-// Article); a page without one gets a WebPage node. Articles also get datePublished + article:*_time meta.
-const PAGE_NODE_TYPES = ['WebPage', 'CollectionPage', 'AboutPage', 'ContactPage', 'Article'];
+// Article / BlogPosting); a page without one gets a WebPage node. Articles also get datePublished + article:*_time meta.
+const PAGE_NODE_TYPES = ['WebPage', 'CollectionPage', 'AboutPage', 'ContactPage', 'Article', 'BlogPosting'];
 const dates = noIndex ? {} : pageDates(path);
 const pageNode = jsonLd.find((node) => PAGE_NODE_TYPES.includes(node['@type'] as string));
-const isArticle = pageNode?.['@type'] === 'Article';
+const isArticle = ['Article', 'BlogPosting'].includes(pageNode?.['@type'] as string);
 const withDates = (node: JsonLdNode): JsonLdNode => ({
   ...node,
   ...(isArticle && dates.published && { datePublished: dates.published }),

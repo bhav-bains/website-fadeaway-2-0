@@ -253,6 +253,39 @@ export function caseStudySchema({
   };
 }
 
+// Article page (/articles/[slug]/): BlogPosting by the founder (Person), published by the Organization.
+// datePublished / dateModified are stamped from git by SeoHead (never typed by hand). Pair with founderSchema() on the
+// same page so the author @id resolves to a full Person node.
+export function blogPostingSchema({
+  url,
+  headline,
+  description,
+  image,
+  about,
+}: {
+  url: string;
+  headline: string;
+  description: string;
+  /** Site-relative or absolute image URL */
+  image?: string;
+  /** The topic, e.g. the article's first tag label */
+  about?: string;
+}): JsonLdNode {
+  return {
+    '@type': 'BlogPosting',
+    '@id': `${abs(url)}#article`,
+    url: abs(url),
+    mainEntityOfPage: abs(url),
+    headline,
+    description,
+    ...(image && { image: abs(image) }),
+    author: { '@id': FOUNDER_ID },
+    publisher: { '@id': ORGANIZATION_ID },
+    ...(about && { about: { '@type': 'Thing', name: about } }),
+    inLanguage: siteConfig.language,
+  };
+}
+
 // Founder as a Person (fullest on the About page). sameAs only when a personal profile URL is supplied.
 export function founderSchema({ description }: { description?: string } = {}): JsonLdNode {
   const { name, jobTitle, linkedin } = siteConfig.founder;

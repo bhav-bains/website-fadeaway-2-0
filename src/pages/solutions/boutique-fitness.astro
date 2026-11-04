@@ -3,6 +3,7 @@
 // Content: src/data/pages/fitness.ts (from copy/boutique-fitness.md). Order (founder, Oct 13): hook → tailored
 // solutions → from search to booked class → pricing → demo → insight → why us → what to expect → how it works → proof → FAQ → final ask.
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import FromTheBlog from '../../components/blocks/FromTheBlog.astro';
 import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
 import Section from '../../components/blocks/Section.astro';
 import BentoGrid from '../../components/blocks/BentoGrid.astro';
@@ -44,6 +45,7 @@ import {
   serviceNames,
   serviceOffers,
   cta,
+  blog,
 } from '../../data/pages/fitness';
 
 const work = await getRealWork(realWork.tag, realWork.limit);
@@ -138,7 +140,8 @@ const jsonLd = [
     <Faq faq={faq.items} />
   </Section>
 
-  <!-- From the Blog (tag boutique-fitness, data: `blog` in fitness.ts): renders nothing until /articles/ has real posts -->
+  <!-- From the Blog: newest articles with this page's tag (data: `blog` in fitness.ts); renders nothing until one is published -->
+  <FromTheBlog blog={blog} />
 
   <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
     <CtaBlock

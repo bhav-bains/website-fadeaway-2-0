@@ -3,6 +3,7 @@
 // Service pages use the blueprint Hero and drafting-style line art (paired with Build); the centerpiece is the
 // six-step revenue system (SystemFlow), which also feeds the HowTo schema.
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import FromTheBlog from '../../components/blocks/FromTheBlog.astro';
 import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
 import Section from '../../components/blocks/Section.astro';
 import SpecGrid from '../../components/blocks/SpecGrid.astro';
@@ -38,6 +39,7 @@ import {
   faq,
   serviceNames,
   cta,
+  blog,
 } from '../../data/pages/growth';
 
 const work = await getRealWork(realWork.tag, realWork.limit);
@@ -139,7 +141,8 @@ const jsonLd = [
     <Faq faq={faq.items} />
   </Section>
 
-  <!-- From the Blog (tag growth, data: `blog` in growth.ts): renders nothing until /articles/ has real Growth posts -->
+  <!-- From the Blog: newest articles with this page's tag (data: `blog` in growth.ts); renders nothing until one is published -->
+  <FromTheBlog blog={blog} />
 
   <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
     <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
