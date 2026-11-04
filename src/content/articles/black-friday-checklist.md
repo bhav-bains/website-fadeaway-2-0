@@ -24,7 +24,7 @@ faq:
     a: "Change prices and stock as needed, but avoid theme updates, new apps, new payment settings and changes to menus or page addresses. Those are the changes most likely to break checkout on your busiest days. If something breaks, fix only that problem, test it on a phone, and write down what you changed."
   - q: "Do I need a developer to get ready?"
     a: "It depends on what the checks find. The checks themselves are easy and need no code: site performance, product pages, discount codes, shipping dates and a test order. Then fix what you find in order of priority, as time allows. Some fixes, like tracking pixels, structured data or apps built into your theme, usually need a developer."
-draft: true
+draft: false
 ---
 
 Your website is your best salesperson. On Black Friday it pulls a double shift: every shopper at once, at 2 a.m. and at noon, and no second chance with the ones who leave. Get it ready now. Once the sale starts, there's no time to retrain it.
@@ -168,4 +168,4 @@ The week after Cyber Monday is when your store has the most to tell you. You won
 
 Then sort the list. Small fixes can go in before Boxing Day or the December rush. Bigger ones, like a new theme, a platform move or a rebuilt checkout, belong in the first quarter of the new year, when there's time to do them properly.
 
-A checklist shows you where to look. A second pair of eyes catches what you've stopped noticing. [See how we work with online stores](/solutions/ecommerce/), or send us your store through our free audit and we'll show you what's working, what's costing you sales and what we'd fix first.
+A checklist shows you where to look. A second pair of eyes catches what you've stopped noticing. [See how we work with online stores](/solutions/ecommerce/), or send us your store through [our free audit](/audit/) and we'll show you what's working, what's costing you sales and what we'd fix first.

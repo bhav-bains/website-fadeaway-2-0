@@ -56,7 +56,7 @@ export const mainNavigation: NavItem[] = [
     links: [
       { label: 'Case Studies', href: routes.caseStudies },
       { label: 'Portfolio Work', href: routes.portfolio },
-      // Articles (routes.articles) hidden for launch (founder, Oct 4): add back with the first 3 articles
+      { label: 'Articles', href: routes.articles }, // live with the first article (founder, Nov 3)
       { label: 'About', href: routes.about },
     ],
   },

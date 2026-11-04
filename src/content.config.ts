@@ -115,18 +115,4 @@ const articles = defineCollection({
     }),
 });
 
-// Placeholder-era posts (pages parked in src/pages/_inactive/blog). Free-form tags until posts are rebuilt.
-// copy/articles.md proposes retiring them in favour of `articles` (founder to confirm).
-const blog = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    author: z.string(),
-    pubDate: z.coerce.date(),
-    image: z.string().optional(),
-    tags: z.array(z.string()).default([]),
-  }),
-});
-
-export const collections = { 'case-studies': caseStudies, portfolio, testimonials, articles, blog };
+export const collections = { 'case-studies': caseStudies, portfolio, testimonials, articles };

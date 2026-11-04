@@ -54,9 +54,9 @@ export const faq: { id: string; heading: string; items: FaqItem[] } = {
       a: "Yes. Every article is written so you can do the work yourself, with clear steps and no paywall. Some fixes take an afternoon, others need a developer or more time than you have. If you'd rather hand it off, a free audit shows exactly what your site needs and what to fix first.",
     },
     {
-      // OPEN (Nov 3): "within 24 hours" is no longer promised on the live site; founder to confirm the wording
+      // Turnaround wording matches the rest of the site, no time promise (founder, Nov 3)
       q: 'How do I know what my own website needs first?',
-      a: 'Start with a free audit. We review your website, SEO and AEO readiness, performance, and local visibility, then send a branded report within 24 hours. It ranks the fixes by impact, so you know what to do first, whether you do it yourself or work with us.',
+      a: 'Start with a free audit. We review your website, SEO and AEO readiness, performance, and local visibility, then send a report. It ranks the fixes by impact, so you know what to do first, whether you do it yourself or work with us.',
     },
   ],
 };
@@ -87,8 +87,8 @@ export const detail = {
   },
   cta: {
     heading: 'Want Help Putting This Into Practice?',
-    // OPEN (Nov 3): "within 24 hours" is no longer promised on the live site; founder to confirm the wording
-    text: "A free audit shows what's working, what isn't, and what to fix first, in a branded report within 24 hours.",
+    // Same sentence as the case-study CTA, no time promise (founder, Nov 3)
+    text: "A free audit shows what's working, what isn't, and what to fix first, in a report.",
     button: 'Get Your Free Audit',
   },
 };

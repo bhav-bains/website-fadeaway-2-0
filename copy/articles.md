@@ -4,8 +4,9 @@
 # ON HOLD (founder, Oct 4): /articles/ is hidden for launch. The founder writes 3 articles first; the page, template
 # and the Resources menu link go live together with them. Not built yet; this file is the spec for then. Build from this file exactly;
 # flag anything that reads wrong instead of rewriting it.
-# BUILT on dev Nov 3 2026 (code: src/pages/articles/, src/data/pages/articles.ts). Still open: the items marked
-# "Needs approval" below, the "within 24 hours" wording (template CTA + FAQ 3), and the OPEN ITEMS at the end.
+# BUILT Nov 3 2026 (code: src/pages/articles/, src/data/pages/articles.ts). Founder, Nov 3: live with ONE article
+# (Black Friday checklist), not three; Articles added to the Resources menu; the 3 placeholder-era blog posts are retired
+# (deleted, /blog/ URLs 301 to /articles/); no turnaround promise ("in a report", same as the case-study CTA).
 # Resources dropdown item "Articles" (founder, Oct 3). Replaces the old /blog/ (see Redirects).
 # Every article is real, written or approved by the founder. Never invent an article, a client, a result or a quote.
 page: articles
@@ -40,7 +41,7 @@ faq:
   - q: "Can I use these guides without hiring an agency?"
     a: "Yes. Every article is written so you can do the work yourself, with clear steps and no paywall. Some fixes take an afternoon, others need a developer or more time than you have. If you'd rather hand it off, a free audit shows exactly what your site needs and what to fix first."
   - q: "How do I know what my own website needs first?"
-    a: "Start with a free audit. We review your website, SEO and AEO readiness, performance, and local visibility, then send a branded report within 24 hours. It ranks the fixes by impact, so you know what to do first, whether you do it yourself or work with us."
+    a: "Start with a free audit. We review your website, SEO and AEO readiness, performance, and local visibility, then send a report. It ranks the fixes by impact, so you know what to do first, whether you do it yourself or work with us."
 ---
 
 <!--
@@ -49,7 +50,7 @@ the right service. Short listing, cards first. One listing page + one article te
 No topic filters until there are 6+ articles.
 Rules: no em or en dashes; no comparisons to other agencies; no invented articles, clients, numbers or quotes;
 no "coming soon" cards. Dates are metadata only, never shown on the page (CLAUDE.md section 4).
-Word counts: answer capsule 54 (40 to 80). FAQ answers 53 / 53 / 47 (40 to 60).
+Word counts: answer capsule 54 (40 to 80). FAQ answers 53 / 53 / 43 (40 to 60).
 -->
 
 ## Section 0: Meta Data & Keyword Targeting (/articles/)
@@ -143,7 +144,7 @@ One template for every article. Content comes from the entry file in `src/conten
 9. **About the author:** "Written by Bhav Bains, founder of Fadeaway Creatives. 15+ years of building and growing
    websites for businesses across Canada and the US." [Link: More About Fadeaway → /about/]
 10. **CTA** (AuditCta): Heading: Want Help Putting This Into Practice? · Line: A free audit shows what's working,
-    what isn't, and what to fix first, in a branded report within 24 hours. · Button: Get Your Free Audit → /audit/
+    what isn't, and what to fix first, in a report. · Button: Get Your Free Audit → /audit/
 11. **Keep reading** (only when 2+ published): up to 3 other articles, same topic first, heading "Keep Reading".
     [Link: All Articles → /articles/]
 
