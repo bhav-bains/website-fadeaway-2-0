@@ -67,7 +67,7 @@ export const headerCta: NavLink = { label: 'Get Your Free Audit', href: routes.a
 
 // ---------- Footer ----------
 
-export const footerTagline = 'Growth partner for local businesses across the US & Canada.';
+export const footerTagline = 'Growth partner for local businesses.'; // geography lives in the location line below it (founder, Nov 3)
 
 export const footerColumns: { title: string; links: NavLink[] }[] = [
   {
