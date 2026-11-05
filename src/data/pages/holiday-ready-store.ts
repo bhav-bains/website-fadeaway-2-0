@@ -14,9 +14,9 @@ export const seo = {
   title: 'Holiday-Ready Store Sprint for Online Stores | Fadeaway',
   description:
     'A 3-month sprint for online stores: a free audit, up to 10 priority fixes, checks through the rush, and a growth plan for the new year.',
-  // TODO (share image): page-specific 1200 x 630 image (Canva) for og:image / twitter:image. Until it exists the page
-  // uses the sitewide default (public/og-default.jpg). Set `ogImage` here to the imported image when it arrives.
-  ogImage: undefined as string | undefined,
+  // Share image (1200 x 630, Nov 5): public/og-holiday-ready-store.jpg.
+  ogImage: '/og-holiday-ready-store.jpg',
+  ogImageAlt: 'Holiday-Ready Store Sprint: get your online store ready for the holiday rush. Foundation Fix, analytics and campaigns, growth strategy.',
 };
 
 export const breadcrumb: BreadcrumbItem[] = [

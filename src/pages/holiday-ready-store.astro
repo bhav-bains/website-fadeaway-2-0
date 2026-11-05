@@ -45,7 +45,7 @@ const jsonLd = [
 ];
 ---
 
-<BaseLayout title={seo.title} description={seo.description} ogImage={seo.ogImage} jsonLd={jsonLd}>
+<BaseLayout title={seo.title} description={seo.description} ogImage={seo.ogImage} ogImageAlt={seo.ogImageAlt} jsonLd={jsonLd}>
   <!-- Dev-only preview: /holiday-ready-store/?hero=showcase | visual | all -->
   <HeroPreview content={hero} variant={heroVariant} options={['showcase', 'visual']}>
     <p class="max-w-3xl text-pretty text-meta text-ink-muted md:text-base">{trustLine}</p>
