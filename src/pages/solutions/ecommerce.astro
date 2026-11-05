@@ -1,6 +1,10 @@
 ---
 // E-commerce Solutions page. Content: src/data/pages/ecommerce.ts (from copy/ecommerce.md).
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CampaignPopup from '../../components/blocks/CampaignPopup.astro';
+import CampaignEvents from '../../components/blocks/CampaignEvents.astro';
+import ArrowLink from '../../components/ui/ArrowLink.astro';
+import { campaignHref, popup } from '../../data/campaign';
 import FromTheBlog from '../../components/blocks/FromTheBlog.astro';
 import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
 import Section from '../../components/blocks/Section.astro';
@@ -101,5 +105,13 @@ const jsonLd = [
 
   <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
     <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} link={cta.link} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
+    {/* Crawlable link to the Holiday-Ready Store Sprint page (founder, Nov 4): the popup alone is script-driven. Wording = the popup's approved link text. */}
+    <p class="mt-4 text-center">
+      <ArrowLink href={campaignHref(popup.sprint.href, { content: 'body-link' })}>{popup.sprint.label}</ArrowLink>
+    </p>
   </Section>
+
+  <!-- Holiday-Ready Store Sprint popup (Nov 4 to 30, 2026): src/data/campaign.ts -->
+  <CampaignPopup page="ecommerce" />
+  <CampaignEvents />
 </BaseLayout>

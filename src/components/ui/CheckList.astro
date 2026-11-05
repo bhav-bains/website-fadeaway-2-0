@@ -1,0 +1,31 @@
+---
+// Plain list with a check mark per line (a "what's included" or "good fit if" list). Real <ul>/<li> text in the HTML.
+import clsx from 'clsx';
+
+interface Props {
+  items: string[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+---
+
+<ul class={clsx('flex flex-col gap-2', className)}>
+  {
+    items.map((item) => (
+      <li class="flex items-start gap-2 text-pretty text-base text-ink-soft md:text-lg">
+        <svg
+          class="mt-[0.4rem] size-icon-sm shrink-0 text-highlight"
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="m3.5 8.5 3 3 6-7" />
+        </svg>
+        <span>{item}</span>
+      </li>
+    ))
+  }
+</ul>

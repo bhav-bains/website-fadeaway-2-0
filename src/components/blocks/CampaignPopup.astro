@@ -1,0 +1,193 @@
+---
+// Holiday-Ready Store Sprint campaign popup (founder, Nov 4 2026). One reusable component; place it on the pages that
+// should show it (Home, E-commerce, Build, Growth), never on /audit/ or the Sprint page. Text and buttons: src/data/campaign.ts.
+//
+// Behaviour (founder-approved defaults):
+// - A small card, not a full-screen overlay: bottom-left corner on desktop, a bottom sheet on phones.
+// - Shows once per visit, after 20 seconds on the page or once the visitor has scrolled halfway, whichever comes first.
+//   It waits while someone is typing in a field or a menu/dialog is open.
+// - Closed by the visitor: stays away for 7 days. A click on either button: never shows again.
+// - Stops showing after the campaign's end date (src/data/campaign.ts), in the browser and at build time.
+// Accessibility: role="dialog" (non-modal), labelled by its heading; a real close button; Esc closes it; focus is never
+// moved onto it (it would interrupt typing, e.g. the audit box in the Home hero), Tab reaches it; closing returns focus to
+// where it was. Fixed position, so showing it never shifts the page. Respects reduced motion.
+// Events (GA4, queued on the dataLayer): holiday_popup_shown, holiday_popup_closed, holiday_popup_click.
+import Button from '../Button.astro';
+import ArrowLink from '../ui/ArrowLink.astro';
+import { campaignActive, campaignEndsAt, campaignHref, popup, type PopupPage } from '../../data/campaign';
+
+interface Props {
+  /** Which page it sits on; becomes the link tag utm_content=popup-<page> */
+  page: PopupPage;
+}
+
+const { page } = Astro.props;
+const content = `popup-${page}`;
+const audit = campaignHref(popup.audit.href, { content, medium: 'popup' });
+const sprint = campaignHref(popup.sprint.href, { content, medium: 'popup' });
+---
+
+{
+  campaignActive() && (
+    <>
+      <div
+        id="holiday-popup"
+        role="dialog"
+        aria-modal="false"
+        aria-labelledby="holiday-popup-title"
+        aria-describedby="holiday-popup-text"
+        data-page={page}
+        data-ends-at={campaignEndsAt}
+        data-delay={popup.delayMs}
+        data-scroll={popup.scrollRatio}
+        data-snooze-days={popup.snoozeDays}
+        hidden
+        class="fixed left-2 right-2 bottom-[max(1rem,env(safe-area-inset-bottom))] z-[90] translate-y-2 rounded-card border border-line-strong bg-surface-raised p-3 opacity-0 shadow-2xl transition-[opacity,transform] duration-300 data-[open]:translate-y-0 data-[open]:opacity-100 motion-reduce:transition-none sm:left-3 sm:right-auto sm:bottom-3 sm:w-[24rem] md:p-4"
+      >
+        <button
+          type="button"
+          data-popup-close
+          aria-label={popup.closeLabel}
+          class="absolute right-1 top-1 inline-flex size-11 items-center justify-center rounded-control text-ink-muted transition-colors hover:bg-white/5 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight"
+        >
+          <svg class="size-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
+            <path d="M5 5l10 10M15 5 5 15" />
+          </svg>
+        </button>
+        <p id="holiday-popup-title" class="pr-6 font-display text-xl font-bold text-ink">{popup.heading}</p>
+        <p id="holiday-popup-text" class="mt-1 text-pretty text-base text-ink-soft">{popup.text}</p>
+        <div class="mt-3 flex flex-col items-start gap-2">
+          <Button href={audit} variant="primary" size="base" fullWidth data-popup-link="audit">
+            {popup.audit.label}
+          </Button>
+          <span data-popup-link="sprint" class="contents">
+            <ArrowLink href={sprint}>{popup.sprint.label}</ArrowLink>
+          </span>
+        </div>
+      </div>
+
+      <script is:inline>
+        (() => {
+          const el = document.getElementById('holiday-popup');
+          if (!el) return;
+          const page = el.dataset.page;
+          const endsAt = Number(el.dataset.endsAt);
+          const delay = Number(el.dataset.delay);
+          const scrollRatio = Number(el.dataset.scroll);
+          const snoozeMs = Number(el.dataset.snoozeDays) * 24 * 60 * 60 * 1000;
+          const STORE = 'holiday-popup';
+          const SESSION = 'holiday-popup-shown';
+
+          const read = () => {
+            try {
+              return JSON.parse(localStorage.getItem(STORE) || '{}');
+            } catch (e) {
+              return {};
+            }
+          };
+          const write = (patch) => {
+            try {
+              localStorage.setItem(STORE, JSON.stringify(Object.assign(read(), patch)));
+            } catch (e) {
+              /* storage blocked: the popup still works, it just can't remember */
+            }
+          };
+          const shownThisVisit = () => {
+            try {
+              return sessionStorage.getItem(SESSION) === '1';
+            } catch (e) {
+              return false;
+            }
+          };
+          // Queue GA4 events on the dataLayer exactly as gtag() does (the page's own gtag is not a global, so call
+          // nothing on window.gtag). GA4 picks the queue up whenever it has loaded; no GA4 means a harmless queue.
+          function gtagQueue() {
+            (window.dataLayer = window.dataLayer || []).push(arguments);
+          }
+          const track = (name, params) => {
+            gtagQueue('event', name, Object.assign({ popup_page: page, transport_type: 'beacon' }, params));
+          };
+
+          const saved = read();
+          const now = Date.now();
+          if (now > endsAt || saved.clicked || (saved.closedAt && now - saved.closedAt < snoozeMs) || shownThisVisit()) return;
+
+          let shown = false;
+          let lastFocus = null;
+          let timer = null;
+
+          // Remember where focus was outside the popup, so closing it by keyboard puts focus back there
+          document.addEventListener('focusin', (event) => {
+            if (!el.contains(event.target)) lastFocus = event.target;
+          });
+
+          const busy = () => {
+            const active = document.activeElement;
+            const typing = active && /^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName);
+            return typing || document.querySelector('dialog[open]') || document.querySelector('#site-header[data-open]');
+          };
+
+          const stopTriggers = () => {
+            clearTimeout(timer);
+            window.removeEventListener('scroll', onScroll);
+          };
+
+          const show = () => {
+            if (shown) return;
+            if (Date.now() > endsAt) return stopTriggers();
+            if (document.hidden) {
+              document.addEventListener('visibilitychange', show, { once: true });
+              return;
+            }
+            if (busy()) {
+              setTimeout(show, 3000);
+              return;
+            }
+            shown = true;
+            stopTriggers();
+            try {
+              sessionStorage.setItem(SESSION, '1');
+            } catch (e) {
+              /* ignore */
+            }
+            el.hidden = false;
+            requestAnimationFrame(() => requestAnimationFrame(() => el.setAttribute('data-open', '')));
+            track('holiday_popup_shown');
+          };
+
+          const close = (method) => {
+            const hadFocus = el.contains(document.activeElement);
+            el.removeAttribute('data-open');
+            el.hidden = true;
+            write({ closedAt: Date.now() });
+            track('holiday_popup_closed', { method });
+            if (hadFocus && lastFocus && document.contains(lastFocus) && lastFocus.focus) lastFocus.focus();
+          };
+
+          const onScroll = () => {
+            const doc = document.documentElement;
+            const scrollable = doc.scrollHeight - window.innerHeight;
+            if (scrollable > 400 && window.scrollY / scrollable >= scrollRatio) show();
+          };
+
+          el.querySelector('[data-popup-close]').addEventListener('click', () => close('button'));
+          el.querySelectorAll('[data-popup-link]').forEach((link) => {
+            link.addEventListener('click', () => {
+              write({ clicked: true });
+              track('holiday_popup_click', { destination: link.getAttribute('data-popup-link') });
+            });
+          });
+          document.addEventListener('keydown', (event) => {
+            if (event.key !== 'Escape' || el.hidden || event.defaultPrevented) return;
+            // Esc belongs to an open modal dialog or menu first
+            if (document.querySelector('dialog[open]') || document.querySelector('#site-header[data-open], [data-menu][data-open]')) return;
+            close('esc');
+          });
+
+          window.addEventListener('scroll', onScroll, { passive: true });
+          timer = setTimeout(show, delay);
+        })();
+      </script>
+    </>
+  )
+}

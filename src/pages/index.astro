@@ -2,6 +2,7 @@
 // Homepage. Content: src/data/pages/home.ts (from copy/home.md). Sections are added as they're rebuilt.
 // The previous homepage is parked at src/pages/_inactive/home-2025.astro for reference.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CampaignPopup from '../components/blocks/CampaignPopup.astro';
 import HeroPreview from '../components/blocks/hero/HeroPreview.astro';
 import Section from '../components/blocks/Section.astro';
 import IconGrid from '../components/blocks/IconGrid.astro';
@@ -128,4 +129,7 @@ const jsonLd = [
   <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
     <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
   </Section>
+
+  <!-- Holiday-Ready Store Sprint popup (Nov 4 to 30, 2026): src/data/campaign.ts -->
+  <CampaignPopup page="home" />
 </BaseLayout>

@@ -1,0 +1,44 @@
+---
+// Campaign tracking for lead forms (Holiday-Ready Store Sprint, founder Nov 4).
+// 1. First touch: the first time a visitor lands on a page with ?utm_campaign=holiday-ready-store, remember its tags for
+//    the visit (sessionStorage), so a lead who came in through the popup and then used the Sprint page's button is still
+//    attributed to the popup.
+// 2. On a page with the lead form: fill the form's hidden utm_* fields from the URL (or the remembered tags when the URL has
+//    none) and the first_touch_content field from the first landing. Netlify keeps those fields with the submission.
+// Static page, so this runs in the browser. No tracking cookies; sessionStorage only. Include on the Sprint page and /audit/.
+import { campaign, UTM_FIELDS, FIRST_TOUCH_FIELD } from '../../data/campaign';
+---
+
+<script is:inline define:vars={{ campaignId: campaign.id, fields: UTM_FIELDS, firstTouchField: FIRST_TOUCH_FIELD }}>
+  (() => {
+    const KEY = 'campaign-first-touch';
+    const params = new URLSearchParams(location.search);
+    const inCampaign = params.get('utm_campaign') === campaignId;
+    const fromUrl = {};
+    fields.forEach((name) => {
+      const value = params.get(name);
+      if (value) fromUrl[name] = value.slice(0, 120);
+    });
+
+    let first = null;
+    try {
+      first = JSON.parse(sessionStorage.getItem(KEY) || 'null');
+      if (!first && inCampaign) {
+        first = fromUrl;
+        sessionStorage.setItem(KEY, JSON.stringify(first));
+      }
+    } catch (e) {
+      /* storage blocked: the URL tags still work */
+    }
+
+    const form = document.querySelector('form[name="audit-request"]');
+    if (!form) return;
+    const values = inCampaign ? fromUrl : first || {};
+    fields.forEach((name) => {
+      const input = form.querySelector('input[name="' + name + '"]');
+      if (input && values[name]) input.value = values[name];
+    });
+    const touch = form.querySelector('input[name="' + firstTouchField + '"]');
+    if (touch && first && first.utm_content) touch.value = first.utm_content;
+  })();
+</script>

@@ -1,0 +1,46 @@
+---
+// Numbered columns, each with a title, a one-line lead and a checked list: for deliverables ("what you get, in three parts").
+// Open layout, no card boxes: hairline rules only. lg: columns split by vertical rules; phones: stacked, split by a top rule.
+// Every point is plain text in the raw HTML.
+import clsx from 'clsx';
+import CheckList from '../ui/CheckList.astro';
+
+export interface ChecklistItem {
+  title: string;
+  /** One line under the title */
+  lead?: string;
+  points: string[];
+}
+
+interface Props {
+  items: ChecklistItem[];
+  /** h3 inside a titled Section */
+  titleAs?: 'h3' | 'h4';
+  class?: string;
+}
+
+const { items, titleAs: Title = 'h3', class: className } = Astro.props;
+const pad = (n: number) => String(n).padStart(2, '0');
+const lgColumns = { 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4' } as Record<number, string>;
+---
+
+<ol class={clsx('grid gap-5 lg:gap-0', lgColumns[items.length] ?? 'lg:grid-cols-3', className)}>
+  {
+    items.map((item, i) => (
+      <li
+        class={clsx(
+          'flex flex-col gap-3 border-t border-line-strong pt-4 lg:border-t-0 lg:pt-0',
+          // First column has no left rule or padding; the others get both (never both variants, so no class conflicts)
+          i === 0 ? 'lg:pr-4' : 'lg:border-l lg:pl-5 lg:pr-4',
+        )}
+      >
+        <span aria-hidden="true" class="font-display text-meta font-semibold tabular-nums text-accent">{pad(i + 1)}</span>
+        <div class="flex flex-col gap-1">
+          <Title class="font-display text-xl font-bold text-ink md:text-2xl">{item.title}</Title>
+          {item.lead && <p class="text-pretty text-base text-ink-muted">{item.lead}</p>}
+        </div>
+        <CheckList items={item.points} />
+      </li>
+    ))
+  }
+</ol>
