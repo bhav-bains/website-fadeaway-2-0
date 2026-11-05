@@ -9,6 +9,7 @@ import Section from '../components/blocks/Section.astro';
 import FeatureList from '../components/blocks/FeatureList.astro';
 import Steps from '../components/blocks/Steps.astro';
 import Faq from '../components/blocks/Faq.astro';
+import CampaignTags from '../components/blocks/CampaignTags.astro';
 import { breadcrumbSchema, howToSchema, faqSchema } from '../lib/schema';
 import { siteConfig } from '../data/site';
 import { routes } from '../data/routes';
@@ -47,6 +48,9 @@ const jsonLd = [
     <Faq faq={faq.items} />
   </Section>
 </BaseLayout>
+
+<!-- Holiday-Ready Store Sprint: keep the campaign tags (utm_*) with the submission -->
+<CampaignTags />
 
 <script is:inline>
   // Pre-fill the website field when arriving from an audit CTA (?website=...); only into an empty field

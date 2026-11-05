@@ -25,6 +25,8 @@ export const routes = {
   // Free (Instant) Audit: every "Get Your Free Audit" CTA lands here
   audit: '/audit/',
   auditSuccess: '/audit-success/',
+  // Holiday-Ready Store Sprint campaign landing page (founder, Nov 4; campaign runs through Nov 30, 2026)
+  holidayReadyStore: '/holiday-ready-store/',
   privacy: '/privacy/',
   terms: '/terms/',
 } as const;

@@ -1,0 +1,95 @@
+---
+// Holiday-Ready Store Sprint: campaign landing page (founder, Nov 4 2026; runs through Nov 30). Content: src/data/pages/holiday-ready-store.ts
+// (word for word from copy/holiday-ready-store.md). No price anywhere. The campaign popup is NOT shown here.
+// Order: hero (+ trust line) → who it's for (answer capsule as the lead) → why start now → the deliverables →
+// how to get started (HowTo) → FAQ → closing CTA.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroPreview from '../components/blocks/hero/HeroPreview.astro';
+import Section from '../components/blocks/Section.astro';
+import ChecklistGrid from '../components/blocks/ChecklistGrid.astro';
+import Steps from '../components/blocks/Steps.astro';
+import Faq from '../components/blocks/Faq.astro';
+import CtaBlock from '../components/blocks/CtaBlock.astro';
+import CampaignTags from '../components/blocks/CampaignTags.astro';
+import CampaignEvents from '../components/blocks/CampaignEvents.astro';
+import CheckList from '../components/ui/CheckList.astro';
+import { breadcrumbSchema, faqSchema, howToSchema, serviceSchema } from '../lib/schema';
+import { siteConfig } from '../data/site';
+import { routes } from '../data/routes';
+import {
+  seo,
+  breadcrumb,
+  answerCapsule,
+  hero,
+  heroVariant,
+  trustLine,
+  who,
+  whyNow,
+  deliverables,
+  howItWorks,
+  faq,
+  cta,
+  serviceNames,
+} from '../data/pages/holiday-ready-store';
+
+const jsonLd = [
+  breadcrumbSchema(breadcrumb),
+  // WebPage (with dateModified from git) is added by SeoHead; one Service, no price, no offers
+  ...serviceSchema({ names: serviceNames, url: routes.holidayReadyStore }),
+  howToSchema({
+    name: howItWorks.heading,
+    steps: howItWorks.items,
+    url: new URL(`${routes.holidayReadyStore}#${howItWorks.id}`, siteConfig.url).toString(),
+  }),
+  faqSchema(faq.items),
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} ogImage={seo.ogImage} jsonLd={jsonLd}>
+  <!-- Dev-only preview: /holiday-ready-store/?hero=showcase | visual | all -->
+  <HeroPreview content={hero} variant={heroVariant} options={['showcase', 'visual']}>
+    <p class="max-w-3xl text-pretty text-meta text-ink-muted md:text-base">{trustLine}</p>
+  </HeroPreview>
+
+  <!-- Answer capsule: real text directly under the Hero, as the first section's standfirst -->
+  <Section id={who.id} heading={who.heading} lead={answerCapsule} layout="split">
+    <div class="flex flex-col gap-4">
+      <p class="text-pretty text-base text-ink-soft md:text-lg">{who.intro}</p>
+      <div class="flex flex-col gap-2">
+        <p class="font-display text-xl font-bold text-ink">{who.fitLead}</p>
+        <CheckList items={who.fit} />
+      </div>
+      <p class="text-pretty text-base text-ink-muted md:text-lg">{who.notFit}</p>
+    </div>
+  </Section>
+
+  <Section id={whyNow.id} heading={whyNow.heading} intro={whyNow.paragraphs} introStyle="wide" align="start" />
+
+  <Section id={deliverables.id} heading={deliverables.heading} intro={deliverables.intro} introStyle="wide" align="start">
+    <ChecklistGrid items={deliverables.items} />
+  </Section>
+
+  <Section id={howItWorks.id} heading={howItWorks.heading} layout="split">
+    <Steps items={howItWorks.items} direction="vertical" />
+  </Section>
+
+  <Section id={faq.id} heading={faq.heading} width="narrow">
+    <Faq faq={faq.items} />
+  </Section>
+
+  <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
+    <CtaBlock
+      heading={cta.heading}
+      text={cta.text}
+      cta={cta.primary}
+      secondaryCta={cta.secondary}
+      headingAs="h2"
+      headingId={`${cta.id}-heading`}
+      layout="center"
+    />
+  </Section>
+
+  <!-- Keep the campaign tags with the audit lead, and report CTA clicks -->
+  <CampaignTags />
+  <CampaignEvents />
+</BaseLayout>

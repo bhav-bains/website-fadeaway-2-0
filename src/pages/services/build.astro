@@ -2,6 +2,7 @@
 // Build Services page. Content: src/data/pages/build.ts (from copy/build.md).
 // Service pages use the blueprint Hero and drafting-style line art, so they read differently from solutions pages.
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CampaignPopup from '../../components/blocks/CampaignPopup.astro';
 import FromTheBlog from '../../components/blocks/FromTheBlog.astro';
 import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
 import Section from '../../components/blocks/Section.astro';
@@ -152,4 +153,7 @@ const jsonLd = [
   <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
     <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
   </Section>
+
+  <!-- Holiday-Ready Store Sprint popup (Nov 4 to 30, 2026): src/data/campaign.ts -->
+  <CampaignPopup page="build" />
 </BaseLayout>

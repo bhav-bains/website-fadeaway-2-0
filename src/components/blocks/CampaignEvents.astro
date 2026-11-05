@@ -1,0 +1,43 @@
+---
+// Click tracking for the Holiday-Ready Store Sprint campaign: sends one GA4 event, `holiday_cta_click`, when a visitor clicks
+// a campaign link on this page. No markup changes and no cookies; it listens for clicks on:
+//  - links tagged utm_campaign=holiday-ready-store  -> placement = the link's utm_content (hero, final-cta, body-link...)
+//  - the site's booking link                          -> placement = the id of the section it sits in (hero, cta)
+// Popup links are skipped here: the popup reports its own events (holiday_popup_click).
+// Sent with transport_type "beacon" so the event survives the click navigating away. Queued on the dataLayer; GA4 reads it.
+import { campaign } from '../../data/campaign';
+import { siteConfig } from '../../data/site';
+---
+
+<script is:inline define:vars={{ campaignId: campaign.id, bookingUrl: siteConfig.bookingUrl }}>
+  (() => {
+    if (window.__holidayCtaEvents) return;
+    window.__holidayCtaEvents = true;
+    document.addEventListener('click', (event) => {
+      const link = event.target && event.target.closest ? event.target.closest('a[href]') : null;
+      if (!link || link.closest('#holiday-popup')) return;
+      let url;
+      try {
+        url = new URL(link.href, location.href);
+      } catch (e) {
+        return;
+      }
+      let placement;
+      let destination;
+      if (url.searchParams.get('utm_campaign') === campaignId) {
+        placement = url.searchParams.get('utm_content') || 'unknown';
+        destination = url.pathname;
+      } else if (link.href.indexOf(bookingUrl) === 0) {
+        const section = link.closest('section');
+        placement = (section && section.id) || 'page';
+        destination = 'booking-call';
+      } else {
+        return;
+      }
+      // Queue the GA4 event on the dataLayer exactly as gtag() does (the page's own gtag is not a global)
+      (function () {
+        (window.dataLayer = window.dataLayer || []).push(arguments);
+      })('event', 'holiday_cta_click', { placement, destination, transport_type: 'beacon' });
+    });
+  })();
+</script>

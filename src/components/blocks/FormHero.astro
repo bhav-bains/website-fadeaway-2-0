@@ -16,6 +16,8 @@ export interface FormContent {
   /** Success page */
   action: string;
   fields: FieldProps[];
+  /** Hidden inputs (names only), kept with the submission; a script fills them (e.g. campaign tags, see CampaignTags) */
+  hidden?: readonly string[];
   submit: string;
   note: string;
   /** One line under the form, e.g. pointing another kind of visitor elsewhere */
@@ -91,6 +93,8 @@ const half = new Set(halfWidth);
         <p class="hidden">
           <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
         </p>
+
+        {form.hidden?.map((name) => <input type="hidden" name={name} value="" />)}
 
         {form.fields.map((field) => <Field {...field} class={half.has(field.name) ? '' : 'sm:col-span-2'} />)}
 

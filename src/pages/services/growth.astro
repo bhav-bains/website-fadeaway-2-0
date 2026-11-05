@@ -3,6 +3,7 @@
 // Service pages use the blueprint Hero and drafting-style line art (paired with Build); the centerpiece is the
 // six-step revenue system (SystemFlow), which also feeds the HowTo schema.
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CampaignPopup from '../../components/blocks/CampaignPopup.astro';
 import FromTheBlog from '../../components/blocks/FromTheBlog.astro';
 import HeroPreview from '../../components/blocks/hero/HeroPreview.astro';
 import Section from '../../components/blocks/Section.astro';
@@ -147,4 +148,7 @@ const jsonLd = [
   <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
     <CtaBlock heading={cta.heading} text={cta.text} cta={cta.cta} headingAs="h2" headingId={`${cta.id}-heading`} layout="center" />
   </Section>
+
+  <!-- Holiday-Ready Store Sprint popup (Nov 4 to 30, 2026): src/data/campaign.ts -->
+  <CampaignPopup page="growth" />
 </BaseLayout>
