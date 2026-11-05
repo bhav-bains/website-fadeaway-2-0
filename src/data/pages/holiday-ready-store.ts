@@ -3,7 +3,6 @@
 // NO PRICE anywhere on the page or in the schema (founder): the price is shared on the call.
 import { routes } from '../routes';
 import { siteConfig } from '../site';
-import { campaignHref } from '../campaign';
 import type { BreadcrumbItem } from '../../components/blocks/Breadcrumb.astro';
 import type { HeroContent, HeroVariant } from '../../components/blocks/hero/types';
 import type { StepItem } from '../../components/blocks/Steps.astro';
@@ -30,12 +29,12 @@ export const answerCapsule =
 
 export const heroVariant: HeroVariant = 'statement';
 
-/** Primary button: the free audit (tagged link). Secondary: the site's existing booking link (never a new one). */
+/** Primary button: the free audit. Secondary: the site's existing booking link (never a new one). */
 export const hero: HeroContent = {
   eyebrow: 'Holiday-Ready Store Sprint',
   h1: 'Get your online store ready for the holiday rush',
   sub: 'An accelerated growth plan for ecommerce stores. We check your store, fix the biggest problems first, and set up the tracking that keeps it selling after the holidays.',
-  primaryCta: { label: 'Get your free Instant Audit', href: campaignHref(routes.audit, { content: 'hero' }) },
+  primaryCta: { label: 'Get your free Instant Audit', href: routes.audit },
   secondaryCta: { label: 'Book a call', href: siteConfig.bookingUrl },
   breadcrumb,
   visual: 'ecommerce',
@@ -179,9 +178,13 @@ export const cta = {
   id: 'cta',
   heading: 'Ready to get your store holiday-ready?',
   text: "Start with a free Instant Audit. You'll see what is working, what may be costing you sales, and what to fix first. Then we can talk about the Sprint.",
-  primary: { label: 'Get your free Instant Audit', href: campaignHref(routes.audit, { content: 'final-cta' }) },
+  primary: { label: 'Get your free Instant Audit', href: routes.audit },
   secondary: { label: 'Book a call', href: siteConfig.bookingUrl },
 };
+
+/** One quiet line under the FAQ that points to the checklist article (founder, Nov 5; wording approved).
+ *  Renders: "Prefer to do it yourself? Start with our <article title>." The link text is the article's own title. */
+export const checklistLine = { lead: 'Prefer to do it yourself?', before: 'Start with our', articleId: 'black-friday-checklist' };
 
 /** Service schema: one Service, no price, no offers */
 export const serviceNames = ['Holiday-Ready Store Sprint'];

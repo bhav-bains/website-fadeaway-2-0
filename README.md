@@ -6,7 +6,7 @@ The website of **Fadeaway Creatives**, a founder-led growth partner for business
 - **Hosting:** Netlify, deploying `main` automatically
 - **Stack:** Astro 7, Tailwind CSS v4, MDX, `@astrojs/sitemap`. Static HTML, no database. Forms use Netlify Forms.
 
-> **Working with Claude Code?** Read [`CLAUDE.md`](CLAUDE.md) first. It holds the standing rules for copy, design, SEO/AEO, structured data and git.
+> **Working with Claude Code?** Read [`CLAUDE.md`](CLAUDE.md) first. It holds the standing rules for copy, design, SEO/AEO, structured data and git. Open to-dos that are not tied to one page live in [`BACKLOG.md`](BACKLOG.md).
 
 ---
 

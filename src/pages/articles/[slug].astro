@@ -13,6 +13,9 @@ import Faq from '../../components/blocks/Faq.astro';
 import AuditCta from '../../components/blocks/AuditCta.astro';
 import ArticleGrid from '../../components/blocks/ArticleGrid.astro';
 import ArrowLink from '../../components/ui/ArrowLink.astro';
+import CampaignCallout from '../../components/blocks/CampaignCallout.astro';
+import CampaignEvents from '../../components/blocks/CampaignEvents.astro';
+import { campaignActive } from '../../data/campaign';
 import { blogPostingSchema, breadcrumbSchema, faqSchema, founderSchema } from '../../lib/schema';
 import { getArticles, articleHref, articleTitleTag, readingMinutes, type Article } from '../../lib/articles';
 import { routes } from '../../data/routes';
@@ -56,6 +59,8 @@ const sameTopic = (e: Article) => e.data.tags.some((t) => data.tags.includes(t))
 const keepReading = [...others.filter(sameTopic), ...others.filter((e) => !sameTopic(e))].slice(0, 3);
 
 const shareImage = data.ogImage ?? data.image;
+// Holiday-Ready Store Sprint callout (founder, Nov 5): e-commerce articles only, while the campaign runs
+const showCampaign = campaignActive() && data.tags.includes('ecommerce');
 
 const jsonLd = [
   blogPostingSchema({ url: href, headline: data.title, description: data.description, image: shareImage?.src, about: topic?.label }),
@@ -181,6 +186,7 @@ const jsonLd = [
           <div class="article-prose">
             {html ? <Fragment set:html={html} /> : <Content />}
           </div>
+          {showCampaign && <CampaignCallout placement="article-callout" class="mt-6 md:mt-8" />}
         </div>
       </div>
     </div>
@@ -225,6 +231,8 @@ const jsonLd = [
       </Section>
     )
   }
+
+  {showCampaign && <CampaignEvents />}
 </BaseLayout>
 
 <style>

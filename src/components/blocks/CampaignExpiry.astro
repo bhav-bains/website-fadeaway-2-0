@@ -1,0 +1,13 @@
+---
+// Hides campaign-only elements once the campaign has ended. Mark an element with data-campaign-ends-at="<timestamp>"
+// (campaignEndsAt in src/data/campaign.ts). The site is static, so this runs in the browser; the same elements are also
+// not rendered at all when the site is built after the end date (campaignActive()). Include once on a page that has them.
+---
+
+<script is:inline>
+  (() => {
+    document.querySelectorAll('[data-campaign-ends-at]').forEach((el) => {
+      if (Date.now() > Number(el.getAttribute('data-campaign-ends-at'))) el.hidden = true;
+    });
+  })();
+</script>

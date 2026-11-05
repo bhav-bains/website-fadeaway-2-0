@@ -5,7 +5,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import LinkIndex from '../components/blocks/LinkIndex.astro';
 import LineRings from '../components/ui/LineRings.astro';
+import CampaignEvents from '../components/blocks/CampaignEvents.astro';
+import CampaignExpiry from '../components/blocks/CampaignExpiry.astro';
 import { success } from '../data/pages/audit';
+import { siteConfig } from '../data/site';
+import { campaignActive, campaignEndsAt, bookCall } from '../data/campaign';
 ---
 
 <BaseLayout title={success.seo.title} description={success.seo.description} noIndex>
@@ -45,12 +49,31 @@ import { success } from '../data/pages/audit';
           {success.h1}
         </h1>
         <p class="mt-4 max-w-xl text-pretty text-lead text-ink-soft">{success.text}</p>
-        <Button href={success.button.href} variant="secondary" size="base" className="mt-5">{success.button.label}</Button>
+        <div class="mt-5 flex flex-wrap items-center gap-2">
+          {
+            /* Holiday-Ready Store Sprint campaign (founder, Nov 5): the warmest moment to offer a call; hides itself after Nov 30 */
+            campaignActive() && (
+              <Button
+                href={siteConfig.bookingUrl}
+                variant="primary"
+                size="base"
+                data-campaign-cta="audit-success"
+                data-campaign-ends-at={campaignEndsAt}
+              >
+                {bookCall.label}
+              </Button>
+            )
+          }
+          <Button href={success.button.href} variant="secondary" size="base">{success.button.label}</Button>
+        </div>
       </div>
 
       <LinkIndex heading={success.linksHeading} id="success-links" links={success.links} />
     </div>
   </section>
+
+  {campaignActive() && <CampaignEvents />}
+  {campaignActive() && <CampaignExpiry />}
 </BaseLayout>
 
 <style>

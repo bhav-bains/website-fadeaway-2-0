@@ -14,17 +14,16 @@
 // Events (GA4, queued on the dataLayer): holiday_popup_shown, holiday_popup_closed, holiday_popup_click.
 import Button from '../Button.astro';
 import ArrowLink from '../ui/ArrowLink.astro';
-import { campaignActive, campaignEndsAt, campaignHref, popup, type PopupPage } from '../../data/campaign';
+import { campaignActive, campaignEndsAt, popup, type PopupPage } from '../../data/campaign';
 
 interface Props {
-  /** Which page it sits on; becomes the link tag utm_content=popup-<page> */
+  /** Which page it sits on; sent as popup_page with every popup event */
   page: PopupPage;
 }
 
 const { page } = Astro.props;
-const content = `popup-${page}`;
-const audit = campaignHref(popup.audit.href, { content, medium: 'popup' });
-const sprint = campaignHref(popup.sprint.href, { content, medium: 'popup' });
+const audit = popup.audit.href;
+const sprint = popup.sprint.href;
 ---
 
 {

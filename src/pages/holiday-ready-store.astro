@@ -10,10 +10,10 @@ import ChecklistGrid from '../components/blocks/ChecklistGrid.astro';
 import Steps from '../components/blocks/Steps.astro';
 import Faq from '../components/blocks/Faq.astro';
 import CtaBlock from '../components/blocks/CtaBlock.astro';
-import CampaignTags from '../components/blocks/CampaignTags.astro';
 import CampaignEvents from '../components/blocks/CampaignEvents.astro';
 import CheckList from '../components/ui/CheckList.astro';
 import { breadcrumbSchema, faqSchema, howToSchema, serviceSchema } from '../lib/schema';
+import { getArticles, articleHref } from '../lib/articles';
 import { siteConfig } from '../data/site';
 import { routes } from '../data/routes';
 import {
@@ -30,7 +30,11 @@ import {
   faq,
   cta,
   serviceNames,
+  checklistLine,
 } from '../data/pages/holiday-ready-store';
+
+// The checklist article (published articles only; drafts show in `npm run dev`)
+const checklist = (await getArticles()).find((entry) => entry.id === checklistLine.articleId);
 
 const jsonLd = [
   breadcrumbSchema(breadcrumb),
@@ -47,9 +51,11 @@ const jsonLd = [
 
 <BaseLayout title={seo.title} description={seo.description} ogImage={seo.ogImage} ogImageAlt={seo.ogImageAlt} jsonLd={jsonLd}>
   <!-- Dev-only preview: /holiday-ready-store/?hero=showcase | visual | all -->
-  <HeroPreview content={hero} variant={heroVariant} options={['showcase', 'visual']}>
-    <p class="max-w-3xl text-pretty text-meta text-ink-muted md:text-base">{trustLine}</p>
-  </HeroPreview>
+  <div data-campaign-cta="hero">
+    <HeroPreview content={hero} variant={heroVariant} options={['showcase', 'visual']}>
+      <p class="max-w-3xl text-pretty text-meta text-ink-muted md:text-base">{trustLine}</p>
+    </HeroPreview>
+  </div>
 
   <!-- Answer capsule: real text directly under the Hero, as the first section's standfirst -->
   <Section id={who.id} heading={who.heading} lead={answerCapsule} layout="split">
@@ -75,21 +81,36 @@ const jsonLd = [
 
   <Section id={faq.id} heading={faq.heading} width="narrow">
     <Faq faq={faq.items} />
+    {
+      checklist && (
+        <p class="mt-4 text-pretty text-base text-ink-soft md:mt-6 md:text-lg" data-campaign-cta="checklist-link">
+          {checklistLine.lead} {checklistLine.before}{' '}
+          <a
+            href={articleHref(checklist)}
+            class="font-semibold text-highlight underline decoration-highlight/40 underline-offset-4 transition-colors hover:decoration-highlight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight/50"
+          >
+            {checklist.data.title}
+          </a>
+          .
+        </p>
+      )
+    }
   </Section>
 
   <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">
-    <CtaBlock
-      heading={cta.heading}
-      text={cta.text}
-      cta={cta.primary}
-      secondaryCta={cta.secondary}
-      headingAs="h2"
-      headingId={`${cta.id}-heading`}
-      layout="center"
-    />
+    <div data-campaign-cta="final-cta">
+      <CtaBlock
+        heading={cta.heading}
+        text={cta.text}
+        cta={cta.primary}
+        secondaryCta={cta.secondary}
+        headingAs="h2"
+        headingId={`${cta.id}-heading`}
+        layout="center"
+      />
+    </div>
   </Section>
 
-  <!-- Keep the campaign tags with the audit lead, and report CTA clicks -->
-  <CampaignTags />
+  <!-- Report clicks on the campaign buttons (GA4 event holiday_cta_click) -->
   <CampaignEvents />
 </BaseLayout>

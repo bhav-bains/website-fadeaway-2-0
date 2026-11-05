@@ -1,6 +1,5 @@
 // Free (Instant) Audit page, success page and the audit CTA block, copied word for word from copy/audit.md
 // (approved Oct 1). Checks are listed SEO + AEO first (sitewide positioning rule).
-import { UTM_FIELDS, FIRST_TOUCH_FIELD } from '../campaign';
 import { routes } from '../routes';
 import type { BreadcrumbItem } from '../../components/blocks/Breadcrumb.astro';
 import type { FormContent } from '../../components/blocks/FormHero.astro';
@@ -33,8 +32,6 @@ export const hero = {
 export const form: FormContent = {
   name: 'audit-request',
   action: routes.auditSuccess,
-  // Campaign tags kept with each submission (filled from the URL by CampaignTags; src/data/campaign.ts)
-  hidden: [...UTM_FIELDS, FIRST_TOUCH_FIELD],
   fields: [
     { name: 'website', label: 'Your website', type: 'url', required: true, autocomplete: 'url', placeholder: 'yourbusiness.com' },
     { name: 'name', label: 'Your name', type: 'text', required: true, autocomplete: 'name' },
