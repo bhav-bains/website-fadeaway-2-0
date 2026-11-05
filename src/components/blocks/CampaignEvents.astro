@@ -1,43 +1,39 @@
 ---
 // Click tracking for the Holiday-Ready Store Sprint campaign: sends one GA4 event, `holiday_cta_click`, when a visitor clicks
-// a campaign link on this page. No markup changes and no cookies; it listens for clicks on:
-//  - links tagged utm_campaign=holiday-ready-store  -> placement = the link's utm_content (hero, final-cta, body-link...)
-//  - the site's booking link                          -> placement = the id of the section it sits in (hero, cta)
+// a campaign button or link. There are no utm_* tags on our own links (founder, Nov 5), so campaign links are recognised by
+// where they sit: a wrapper marked data-campaign-cta="<placement>" (hero, final-cta, body-link). Inside a marked wrapper,
+// only links to the audit page, the Sprint page or the booking link count (a breadcrumb or other link does not).
 // Popup links are skipped here: the popup reports its own events (holiday_popup_click).
+// placement = the wrapper's value; destination = the page path, or "booking-call" for the booking link.
 // Sent with transport_type "beacon" so the event survives the click navigating away. Queued on the dataLayer; GA4 reads it.
-import { campaign } from '../../data/campaign';
+// Include on pages that have a marked wrapper.
+import { routes } from '../../data/routes';
 import { siteConfig } from '../../data/site';
 ---
 
-<script is:inline define:vars={{ campaignId: campaign.id, bookingUrl: siteConfig.bookingUrl }}>
+<script is:inline define:vars={{ bookingUrl: siteConfig.bookingUrl, auditPath: routes.audit, sprintPath: routes.holidayReadyStore }}>
   (() => {
     if (window.__holidayCtaEvents) return;
     window.__holidayCtaEvents = true;
     document.addEventListener('click', (event) => {
       const link = event.target && event.target.closest ? event.target.closest('a[href]') : null;
       if (!link || link.closest('#holiday-popup')) return;
+      const zone = link.closest('[data-campaign-cta]');
+      if (!zone) return;
       let url;
       try {
         url = new URL(link.href, location.href);
       } catch (e) {
         return;
       }
-      let placement;
       let destination;
-      if (url.searchParams.get('utm_campaign') === campaignId) {
-        placement = url.searchParams.get('utm_content') || 'unknown';
-        destination = url.pathname;
-      } else if (link.href.indexOf(bookingUrl) === 0) {
-        const section = link.closest('section');
-        placement = (section && section.id) || 'page';
-        destination = 'booking-call';
-      } else {
-        return;
-      }
+      if (link.href.indexOf(bookingUrl) === 0) destination = 'booking-call';
+      else if (url.pathname === auditPath || url.pathname === sprintPath) destination = url.pathname;
+      else return;
       // Queue the GA4 event on the dataLayer exactly as gtag() does (the page's own gtag is not a global)
       (function () {
         (window.dataLayer = window.dataLayer || []).push(arguments);
-      })('event', 'holiday_cta_click', { placement, destination, transport_type: 'beacon' });
+      })('event', 'holiday_cta_click', { placement: zone.getAttribute('data-campaign-cta'), destination, transport_type: 'beacon' });
     });
   })();
 </script>

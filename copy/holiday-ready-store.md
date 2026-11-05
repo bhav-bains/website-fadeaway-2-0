@@ -39,8 +39,7 @@ Notes for the build:
 - Rules: no price, no "retainer", no ranking promises, no mention of the $945 Full Audit, no em or en dashes.
   Speed: the only speed statement allowed is "we start the next day once you sign and give us access" (founder decision, Nov 4).
 - Primary buttons go to /audit/ (routes.audit). The call button uses siteConfig.bookingUrl (src/data/site.ts). Do not create a new booking link.
-- Tracking (Nov 4): every campaign link carries utm_source, utm_medium, utm_campaign=holiday-ready-store and utm_content for
-  the placement (hero, final-cta, popup-<page>). The /audit/ form keeps those tags with the submission.
+- Tracking: SUPERSEDED Nov 5 (founder): no utm_* tags on our own links (they can overwrite the real traffic source in GA4), and the /audit/ form carries no campaign fields. Clicks are measured with GA4 events instead (holiday_popup_*, holiday_cta_click). Analytics setup is in BACKLOG.md.
 - [CTA: text -> url] and [Link: text -> url] are link specs, not visible brackets.
 - Reuse existing blocks: Hero, CardGrid/Steps (HowTo), Faq, CtaBlock, Breadcrumb. Do not invent new ones unless nothing fits.
 - Campaign scope note: "A review of the campaigns you already run" is a review only for now. Whether campaign management is included,
@@ -171,8 +170,8 @@ Start with a free Instant Audit. You'll see what is working, what may be costing
 | Internal links | /audit/, the booking link, /solutions/ecommerce/ (popup and optional body link), /holiday-ready-store/. Zero `#` placeholders. |
 
 OPEN ITEMS
-- DECIDED Nov 4: robots = index. /solutions/ecommerce/ links to this page in its body (one text link under its closing CTA, wording "See the Holiday-Ready Store Sprint", tagged utm_content=body-link). Popup behavior as above.
+- DECIDED Nov 4: robots = index. /solutions/ecommerce/ links to this page in its body (one text link under its closing CTA, wording "See the Holiday-Ready Store Sprint"). Popup behavior as above.
 - og:image: page-specific share image (TODO). Until then the page uses the sitewide /og-default.jpg; set `ogImage` in src/data/pages/holiday-ready-store.ts.
 - Campaign management scope and the 10-fix cap: open in the offer doc.
 - After Nov 30: the popup stops itself (end date in src/data/campaign.ts) and can then be removed from the four pages; decide what the Sprint page becomes ("see you next season" note, noindex, or unpublish).
-- Tracking (Nov 4): internal links carry utm_source=website, utm_medium=cta (page buttons) or popup, utm_campaign=holiday-ready-store, utm_content=hero | final-cta | body-link | popup-<page>. The booking link is left untagged (external Google page). GA4 events: holiday_popup_shown / _closed / _click and holiday_cta_click.
+- Tracking: no utm_* tags on internal links (founder, Nov 5). GA4 events: holiday_popup_shown / _closed / _click (popup_page, method, destination) and holiday_cta_click (placement, destination). Setup of custom dimensions and the rest of analytics: BACKLOG.md.
