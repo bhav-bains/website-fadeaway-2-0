@@ -142,6 +142,10 @@ faq:
     a: "You keep everything we set up, including your fixes, your tracking and your growth plan. The plan lays out what to do next. If you'd like help carrying it out, we can talk about ongoing work, but there is no obligation to continue."
 ```
 
+**Added Nov 5 (founder, wording approved): one quiet line under the FAQ, above the closing CTA.**
+
+Prefer to do it yourself? Start with our [Link: Black Friday Checklist for Online Stores → /articles/black-friday-checklist/].
+
 ## Ready to get your store holiday-ready? {#cta}
 
 Start with a free Instant Audit. You'll see what is working, what may be costing you sales, and what to fix first. Then we can talk about the Sprint.
@@ -167,7 +171,7 @@ Start with a free Instant Audit. You'll see what is working, what may be costing
 | H1 | Get your online store ready for the holiday rush |
 | FAQ | 6 questions, answers 40 to 60 words |
 | Pricing display | None |
-| Internal links | /audit/, the booking link, /solutions/ecommerce/ (popup and optional body link), /holiday-ready-store/. Zero `#` placeholders. |
+| Internal links | /audit/, the booking link, /solutions/ecommerce/ (popup and optional body link), /holiday-ready-store/, /articles/black-friday-checklist/ (the line under the FAQ, added Nov 5). Zero `#` placeholders. |
 
 OPEN ITEMS
 - DECIDED Nov 4: robots = index. /solutions/ecommerce/ links to this page in its body (one text link under its closing CTA, wording "See the Holiday-Ready Store Sprint"). Popup behavior as above.

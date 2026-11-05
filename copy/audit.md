@@ -141,6 +141,9 @@ The URL field carries the visitor's site to /audit, where they finish the form.
 - Links heading: While you wait, see how we can help.
 - Links: Build → /services/build · E-commerce → /solutions/ecommerce
 - Button: Back to Home → /
+- Added Nov 5 (founder), CAMPAIGN ONLY, ends Nov 30, 2026: a primary button [CTA: Book a call → booking link (siteConfig.bookingUrl)] beside
+  Back to Home. The label is the one approved on the Holiday-Ready Store Sprint page. It is not rendered when the site is built after the
+  end date and hides itself in the browser after it. Making it permanent is a separate decision.
 
 <!--
 OPEN ITEMS

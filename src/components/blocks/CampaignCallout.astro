@@ -1,0 +1,42 @@
+---
+// Inline version of the campaign popup: a calm card with the same approved text and two actions (audit, Sprint page),
+// placed inside content (the Black Friday checklist article), not over it. Text and links: `popup` in src/data/campaign.ts.
+// Shown only while the campaign runs: not rendered when built after the end date, and hidden in the browser after it
+// (data-campaign-ends-at, see CampaignExpiry). `placement` is the click-measurement marker (CampaignEvents).
+import clsx from 'clsx';
+import Button from '../Button.astro';
+import ArrowLink from '../ui/ArrowLink.astro';
+import CampaignExpiry from './CampaignExpiry.astro';
+import { campaignActive, campaignEndsAt, popup } from '../../data/campaign';
+
+interface Props {
+  /** data-campaign-cta value, e.g. "article-callout" */
+  placement: string;
+  class?: string;
+}
+
+const { placement, class: className } = Astro.props;
+---
+
+{
+  campaignActive() && (
+    <>
+      <aside
+        aria-labelledby="campaign-callout-title"
+        data-campaign-cta={placement}
+        data-campaign-ends-at={campaignEndsAt}
+        class={clsx('rounded-card border border-accent/50 bg-surface-lifted p-3 md:p-4', className)}
+      >
+        <p id="campaign-callout-title" class="font-display text-xl font-bold text-ink md:text-2xl">{popup.heading}</p>
+        <p class="mt-1 text-pretty text-base text-ink-soft md:text-lg">{popup.text}</p>
+        <div class="mt-3 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-4">
+          <Button href={popup.audit.href} variant="primary" size="base" className="w-full sm:w-auto">
+            {popup.audit.label}
+          </Button>
+          <ArrowLink href={popup.sprint.href}>{popup.sprint.label}</ArrowLink>
+        </div>
+      </aside>
+      <CampaignExpiry />
+    </>
+  )
+}

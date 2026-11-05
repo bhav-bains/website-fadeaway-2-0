@@ -15,7 +15,7 @@ The site currently loads GA4 and the Meta Pixel on every page and sends only `pa
 | `holiday_popup_shown` | `popup_page` | the campaign popup opens |
 | `holiday_popup_closed` | `popup_page`, `method` (button, esc) | the visitor closes it |
 | `holiday_popup_click` | `popup_page`, `destination` (audit, sprint) | a button in it is clicked |
-| `holiday_cta_click` | `placement` (hero, final-cta, body-link), `destination` (path, or booking-call) | a campaign button or link is clicked |
+| `holiday_cta_click` | `placement` (hero, final-cta, body-link, article-callout, checklist-link, audit-success), `destination` (path, or booking-call) | a campaign button or link is clicked |
 
 **To do in the analytics setup:**
 - [ ] **Register custom dimensions in GA4** (Admin, Custom definitions, scope Event): `popup_page`, `placement`, `destination`, `method`. A custom dimension is not applied to events collected before it was registered, so reports can only break the events down by these from registration onward.
@@ -28,6 +28,6 @@ The site currently loads GA4 and the Meta Pixel on every page and sends only `pa
 
 ## Holiday-Ready Store Sprint close-out (after Nov 30, 2026)
 
-- [ ] The popup stops itself after Nov 30 (Vancouver time). Remove `<CampaignPopup />` from Home, E-commerce, Build and Growth, the E-commerce body link, and the campaign files (see the "Campaign blocks" note in `CLAUDE.md` section 7).
+- [ ] The popup, the article callout and the success-page "Book a call" stop themselves after Nov 30 (Vancouver time). Remove `<CampaignPopup />` from Home, E-commerce, Build and Growth, `<CampaignCallout />` from the article template, the "Book a call" button from the audit success page, the E-commerce body link, and the campaign files (see the "Campaign blocks" note in `CLAUDE.md` section 7). The Sprint page's "Prefer to do it yourself?" line goes with the page.
 - [ ] Decide what `/holiday-ready-store/` becomes: a "see you next season" version, noindex, or retired with a redirect. Its copy mentions November dates.
 - [ ] Campaign-management scope and the 10-fix cap are still open in the offer doc.

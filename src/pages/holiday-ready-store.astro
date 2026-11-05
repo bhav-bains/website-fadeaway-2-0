@@ -13,6 +13,7 @@ import CtaBlock from '../components/blocks/CtaBlock.astro';
 import CampaignEvents from '../components/blocks/CampaignEvents.astro';
 import CheckList from '../components/ui/CheckList.astro';
 import { breadcrumbSchema, faqSchema, howToSchema, serviceSchema } from '../lib/schema';
+import { getArticles, articleHref } from '../lib/articles';
 import { siteConfig } from '../data/site';
 import { routes } from '../data/routes';
 import {
@@ -29,7 +30,11 @@ import {
   faq,
   cta,
   serviceNames,
+  checklistLine,
 } from '../data/pages/holiday-ready-store';
+
+// The checklist article (published articles only; drafts show in `npm run dev`)
+const checklist = (await getArticles()).find((entry) => entry.id === checklistLine.articleId);
 
 const jsonLd = [
   breadcrumbSchema(breadcrumb),
@@ -76,6 +81,20 @@ const jsonLd = [
 
   <Section id={faq.id} heading={faq.heading} width="narrow">
     <Faq faq={faq.items} />
+    {
+      checklist && (
+        <p class="mt-4 text-pretty text-base text-ink-soft md:mt-6 md:text-lg" data-campaign-cta="checklist-link">
+          {checklistLine.lead} {checklistLine.before}{' '}
+          <a
+            href={articleHref(checklist)}
+            class="font-semibold text-highlight underline decoration-highlight/40 underline-offset-4 transition-colors hover:decoration-highlight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight/50"
+          >
+            {checklist.data.title}
+          </a>
+          .
+        </p>
+      )
+    }
   </Section>
 
   <Section id={cta.id} labelledBy={`${cta.id}-heading`} width="narrow">

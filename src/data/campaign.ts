@@ -34,4 +34,7 @@ export const popup = {
   snoozeDays: 7,
 } as const;
 
+/** "Book a call" on the audit success page while the campaign runs (label approved on the Sprint page; founder, Nov 5) */
+export const bookCall = { label: 'Book a call' } as const;
+
 export type PopupPage = 'home' | 'ecommerce' | 'build' | 'growth';

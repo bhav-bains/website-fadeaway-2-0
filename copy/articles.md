@@ -148,6 +148,12 @@ One template for every article. Content comes from the entry file in `src/conten
 11. **Keep reading** (only when 2+ published): up to 3 other articles, same topic first, heading "Keep Reading".
     [Link: All Articles → /articles/]
 
+**Campaign callout (added Nov 5, founder; Holiday-Ready Store Sprint, ends Nov 30, 2026):** on articles tagged `ecommerce` only, a card
+after the body and before the FAQ (between sections 7 and 8). No new copy: it reuses the campaign popup's approved text.
+Heading: Is your store ready for Black Friday? · Line: Get a free Instant Audit and see what to fix first. ·
+[CTA: Get my free audit → /audit/] and [Link: See the Holiday-Ready Store Sprint → /holiday-ready-store/].
+It is not rendered when the site is built after the end date, and it hides itself in the browser after it. Code: `CampaignCallout`.
+
 **Labels:** Read the article · min read · The Short Answer · Key Takeaways · In This Article · Frequently Asked
 Questions · Keep Reading · All Articles · By · Founder
 

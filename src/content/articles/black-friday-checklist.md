@@ -12,7 +12,7 @@ seoTitle: "Black Friday Checklist for Online Stores | Fadeaway"
 description: "A simple Black Friday checklist for online stores: what to check 4 weeks out, what to fix first, and what not to touch once the rush starts."
 summary: "To get an online store ready for Black Friday, check five things in this order: site performance, product pages, cart and checkout, your offer page, and tracking. Make your fixes at least two weeks out, then stop changing the site. Black Friday is November 27, 2026 and Cyber Monday is November 30, so the safe window for changes closes in mid-November."
 tags: ["ecommerce"]
-# ogImage: own 1200 x 630 share image to come (Canva, brand kit)
+ogImage: ../../assets/articles/black-friday-checklist-og.jpg
 faq:
   - q: "When should I start preparing my store for Black Friday?"
     a: "Start about four weeks before, in early November. That gives you two weeks to find and fix problems and one week to test before the sale. Stop making changes to your site the week before Black Friday. After that, only fix what breaks."
