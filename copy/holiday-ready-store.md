@@ -57,7 +57,7 @@ Home → Holiday-Ready Store Sprint
 - Sub-headline: An accelerated growth plan for ecommerce stores. We check your store, fix the biggest problems first, and set up the tracking that keeps it selling after the holidays.
 - Buttons: [CTA: Get your free Instant Audit → /audit/] and [CTA: Book a call → booking link]
 - Trust line: For Shopify, WooCommerce, BigCommerce, Wix, Squarespace and custom stores in Canada and the US.
-- Answer capsule: renders as real text directly under the Hero, from the frontmatter.
+- Answer capsule: stays in the HTML as screen-reader text (hidden visually, founder Nov 5), from the frontmatter.
 
 ## Who is the Holiday-Ready Store Sprint for? {#who}
 
