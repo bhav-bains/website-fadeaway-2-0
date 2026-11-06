@@ -57,8 +57,9 @@ const jsonLd = [
     </HeroPreview>
   </div>
 
-  <!-- Answer capsule: real text directly under the Hero, as the first section's standfirst -->
-  <Section id={who.id} heading={who.heading} lead={answerCapsule} layout="split">
+  <Section id={who.id} heading={who.heading} layout="split">
+    <!-- Answer capsule: kept in the HTML for AEO, hidden visually (founder, Nov 5) -->
+    <p class="sr-only">{answerCapsule}</p>
     <div class="flex flex-col gap-4">
       <p class="text-pretty text-base text-ink-soft md:text-lg">{who.intro}</p>
       <div class="flex flex-col gap-2">
